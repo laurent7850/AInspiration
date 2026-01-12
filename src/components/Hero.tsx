@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Brain, ShieldCheck, Users } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import StartForm from './StartForm';
-import { getOptimizedImageUrl } from '../utils/imageOptimizer';
+
+// Image Unsplash pour le Hero - équipe business avec technologie IA
+const HERO_IMAGE = 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&auto=format&fit=crop&q=80';
 
 export default function Hero() {
   const [showStartForm, setShowStartForm] = useState(false);
@@ -23,51 +26,53 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button
                 onClick={() => setShowStartForm(true)}
-                className="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors"
+                className="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium shadow-lg shadow-indigo-500/25"
               >
                 {t('button.discoverAI')}
               </button>
-              <button
-                onClick={() => setShowStartForm(true)}
-                className="bg-white text-indigo-600 px-8 py-3 rounded-lg border border-indigo-200 hover:bg-indigo-50 transition-colors"
+              <Link
+                to="/contact"
+                className="bg-white text-indigo-600 px-8 py-3 rounded-lg border border-indigo-200 hover:bg-indigo-50 transition-colors font-medium text-center"
               >
                 {t('button.startFreeAudit')}
-              </button>
+              </Link>
             </div>
 
             <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="flex items-center justify-center lg:justify-start gap-2">
-                <Brain className="text-indigo-600 w-5 h-5" />
+                <Brain className="text-indigo-600 w-5 h-5 flex-shrink-0" aria-hidden="true" />
                 <span className="text-sm text-gray-600">{t('hero.features.simple')}</span>
               </div>
               <div className="flex items-center justify-center lg:justify-start gap-2">
-                <ShieldCheck className="text-indigo-600 w-5 h-5" />
+                <ShieldCheck className="text-indigo-600 w-5 h-5 flex-shrink-0" aria-hidden="true" />
                 <span className="text-sm text-gray-600">{t('hero.features.secure')}</span>
               </div>
               <div className="flex items-center justify-center lg:justify-start gap-2">
-                <Users className="text-indigo-600 w-5 h-5" />
+                <Users className="text-indigo-600 w-5 h-5 flex-shrink-0" aria-hidden="true" />
                 <span className="text-sm text-gray-600">{t('hero.features.support')}</span>
               </div>
             </div>
           </div>
-          
+
           <div className="relative mt-8 lg:mt-0">
-            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 to-purple-500/30 rounded-3xl blur-3xl"></div>
-            <img 
-              src={getOptimizedImageUrl("https://images.unsplash.com/photo-1551434678-e076c223a692", 1024)}
-              alt="Intelligence Artificielle en entreprise"
+            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 to-purple-500/30 rounded-3xl blur-3xl" aria-hidden="true"></div>
+            <img
+              src={HERO_IMAGE}
+              alt={t('hero.imageAlt', 'Intelligence Artificielle en entreprise - équipe travaillant avec des outils IA')}
               className="relative rounded-2xl shadow-2xl w-full"
               loading="eager"
-              width="1024"
-              height="683"
+              fetchPriority="high"
+              width="1200"
+              height="800"
+              decoding="async"
             />
           </div>
         </div>
       </div>
 
-      <StartForm 
-        isOpen={showStartForm} 
-        onClose={() => setShowStartForm(false)} 
+      <StartForm
+        isOpen={showStartForm}
+        onClose={() => setShowStartForm(false)}
       />
     </section>
   );

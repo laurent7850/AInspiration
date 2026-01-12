@@ -1,14 +1,66 @@
 {
-  "name": "AInspiration",
+  "name": "AInspiration - Solutions IA",
   "short_name": "AInspiration",
+  "description": "Solutions d'Intelligence Artificielle pour entreprises. Audit gratuit et accompagnement expert.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#4f46e5",
+  "background_color": "#ffffff",
+  "lang": "fr",
+  "categories": ["business", "productivity"],
   "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
     {
       "src": "/android.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
-  "theme_color": "#4f46e5",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Audit Gratuit",
+      "short_name": "Audit",
+      "description": "Demander un audit IA gratuit",
+      "url": "/contact",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Solutions",
+      "short_name": "Solutions",
+      "description": "Découvrir nos solutions IA",
+      "url": "/solutions",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Actualités IA",
+      "url": "/blog",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+    }
+  ]
 }

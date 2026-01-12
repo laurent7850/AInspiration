@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { sanitizeHtml } from '../../utils/validation';
 import {
   CheckCircle,
   TrendingUp,
@@ -100,10 +101,13 @@ export default function EnhancedBlogContent({ content, title }: EnhancedBlogCont
     return colors[index % colors.length];
   };
 
-  const sections = extractSections(content);
-  const metrics = extractMetrics(content);
+  // Sanitize content first for security
+  const sanitizedContent = useMemo(() => sanitizeHtml(content), [content]);
 
-  const introduction = content.split('<h2')[0] || content.split('<h3')[0];
+  const sections = extractSections(sanitizedContent);
+  const metrics = extractMetrics(sanitizedContent);
+
+  const introduction = sanitizedContent.split('<h2')[0] || sanitizedContent.split('<h3')[0];
 
   return (
     <div className="space-y-12">
@@ -165,7 +169,7 @@ export default function EnhancedBlogContent({ content, title }: EnhancedBlogCont
         <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
           <div
             className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: content }}
+            dangerouslySetInnerHTML={{ __html: sanitizedContent }}
           />
         </div>
       )}

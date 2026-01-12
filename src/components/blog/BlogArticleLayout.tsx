@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { LucideIcon } from 'lucide-react';
+import { sanitizeHtml } from '../../utils/validation';
 
 export interface ArticleSection {
   title: string;
@@ -97,7 +98,7 @@ export default function BlogArticleLayout({
               )}
               {section.content && (
                 <div className="text-gray-600 mt-4 prose prose-sm max-w-none">
-                  <div dangerouslySetInnerHTML={{ __html: section.content }} />
+                  <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(section.content) }} />
                 </div>
               )}
             </div>
@@ -123,7 +124,7 @@ export default function BlogArticleLayout({
         <div className="bg-white rounded-xl shadow-sm p-8 md:p-12">
           <div
             className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: content }}
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }}
           />
         </div>
       )}

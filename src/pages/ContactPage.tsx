@@ -5,6 +5,7 @@ import { supabase } from '../utils/supabase';
 import { useTranslation } from 'react-i18next';
 import SEOHead from '../components/SEOHead';
 import { getSEOConfig } from '../config/seoConfig';
+import { validateContactForm, checkRateLimit } from '../utils/validation';
 
 const CONTACT_EMAIL = 'divers@distr-action.com';
 const CONTACT_PHONE = '+32 477 94 28 65';
@@ -23,6 +24,7 @@ const ContactPage: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -33,19 +35,41 @@ const ContactPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setError(null);
+    setFieldErrors({});
+
+    // Rate limiting check
+    if (!checkRateLimit('contactpage', 3, 60000)) {
+      setError(t('contact.error.rateLimit'));
+      return;
+    }
+
+    // Validate form data
+    const validation = validateContactForm({
+      name: formData.name,
+      email: formData.email,
+      company: formData.company,
+      message: formData.message,
+      subject: formData.subject
+    });
+
+    if (!validation.isValid) {
+      setFieldErrors(validation.errors);
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       const { error: insertError } = await supabase
         .from('contact_messages')
         .insert([
           {
-            name: formData.name,
-            email: formData.email,
-            company: formData.company,
-            subject: formData.subject,
-            message: formData.message,
+            name: validation.sanitizedData.name,
+            email: validation.sanitizedData.email,
+            company: validation.sanitizedData.company,
+            subject: validation.sanitizedData.subject,
+            message: validation.sanitizedData.message,
           }
         ]);
 
@@ -60,11 +84,11 @@ const ContactPage: React.FC = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            company: formData.company,
-            subject: formData.subject,
-            message: formData.message,
+            name: validation.sanitizedData.name,
+            email: validation.sanitizedData.email,
+            company: validation.sanitizedData.company,
+            subject: validation.sanitizedData.subject,
+            message: validation.sanitizedData.message,
             timestamp: new Date().toISOString(),
           }),
         });
@@ -80,6 +104,7 @@ const ContactPage: React.FC = () => {
         subject: '',
         message: '',
       });
+      setFieldErrors({});
     } catch (err) {
       setError(t('contact.error.general'));
       console.error(err);
@@ -191,8 +216,9 @@ const ContactPage: React.FC = () => {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${fieldErrors.name ? 'border-red-500' : 'border-gray-300'}`}
                       />
+                      {fieldErrors.name && <p className="text-red-500 text-xs mt-1">{fieldErrors.name}</p>}
                     </div>
 
                     <div>
@@ -206,8 +232,9 @@ const ContactPage: React.FC = () => {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${fieldErrors.email ? 'border-red-500' : 'border-gray-300'}`}
                       />
+                      {fieldErrors.email && <p className="text-red-500 text-xs mt-1">{fieldErrors.email}</p>}
                     </div>
                   </div>
 
@@ -256,8 +283,9 @@ const ContactPage: React.FC = () => {
                       rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${fieldErrors.message ? 'border-red-500' : 'border-gray-300'}`}
                     />
+                    {fieldErrors.message && <p className="text-red-500 text-xs mt-1">{fieldErrors.message}</p>}
                   </div>
 
                   <div>

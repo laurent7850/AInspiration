@@ -60,7 +60,8 @@
     "error": {
       "title": "Erreur lors de l'envoi:",
       "message": "Une erreur est survenue lors de l'envoi du formulaire. Veuillez réessayer ou nous contacter directement par email.",
-      "general": "Une erreur est survenue lors de l'envoi du formulaire. Veuillez réessayer."
+      "general": "Une erreur est survenue lors de l'envoi du formulaire. Veuillez réessayer.",
+      "rateLimit": "Trop de demandes. Veuillez patienter une minute avant de réessayer."
     }
   },
   "products": {
@@ -123,11 +124,15 @@
     "title": "Restez informé",
     "description": "Inscrivez-vous à notre newsletter pour recevoir les dernières actualités et conseils sur l'IA.",
     "placeholder": "Votre adresse email",
-    "submit": "S'inscrire",
-    "loading": "Inscription...",
-    "invalidEmail": "Veuillez entrer une adresse email valide.",
+    "subscribe": "S'inscrire",
+    "subscribing": "Inscription...",
     "success": "Merci pour votre inscription!",
-    "error": "Une erreur est survenue. Veuillez réessayer.",
-    "disclaimer": "Nous respectons votre vie privée et ne partageons jamais vos données. Désinscription facile à tout moment."
+    "privacy": "Nous respectons votre vie privée et ne partageons jamais vos données. Désinscription facile à tout moment.",
+    "dismiss": "Non merci",
+    "error": {
+      "invalidEmail": "Veuillez entrer une adresse email valide.",
+      "general": "Une erreur est survenue. Veuillez réessayer.",
+      "rateLimit": "Trop de demandes. Veuillez patienter une minute avant de réessayer."
+    }
   }
 }

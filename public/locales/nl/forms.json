@@ -60,7 +60,8 @@
     "error": {
       "title": "Fout bij verzenden:",
       "message": "Er is een fout opgetreden bij het verzenden van het formulier. Probeer het opnieuw of neem rechtstreeks contact met ons op via e-mail.",
-      "general": "Er is een fout opgetreden bij het verzenden van het formulier. Probeer het opnieuw."
+      "general": "Er is een fout opgetreden bij het verzenden van het formulier. Probeer het opnieuw.",
+      "rateLimit": "Te veel verzoeken. Wacht een minuut voordat u het opnieuw probeert."
     }
   },
   "products": {
@@ -123,11 +124,15 @@
     "title": "Blijf op de hoogte",
     "description": "Meld u aan voor onze nieuwsbrief om het laatste nieuws en advies over AI te ontvangen.",
     "placeholder": "Uw e-mailadres",
-    "submit": "Inschrijven",
-    "loading": "Inschrijven...",
-    "invalidEmail": "Voer een geldig e-mailadres in.",
+    "subscribe": "Inschrijven",
+    "subscribing": "Inschrijven...",
     "success": "Bedankt voor uw inschrijving!",
-    "error": "Er is een fout opgetreden. Probeer het opnieuw.",
-    "disclaimer": "We respecteren uw privacy en delen uw gegevens nooit. Eenvoudig uitschrijven op elk moment."
+    "privacy": "We respecteren uw privacy en delen uw gegevens nooit. Eenvoudig uitschrijven op elk moment.",
+    "dismiss": "Nee bedankt",
+    "error": {
+      "invalidEmail": "Voer een geldig e-mailadres in.",
+      "general": "Er is een fout opgetreden. Probeer het opnieuw.",
+      "rateLimit": "Te veel verzoeken. Wacht een minuut voordat u het opnieuw probeert."
+    }
   }
 }

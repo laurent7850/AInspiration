@@ -1,12 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Package, CircleDollarSign, Tag, Calendar, ArrowDownUp, PieChart, Eye, EyeOff } from 'lucide-react';
-import { Product } from '../../../utils/types';
+import { Product, Opportunity } from '../../../utils/types';
 import { fetchProducts } from '../../../services/productService';
 import ReportFilters from './ReportFilters';
 import ReportExporter from './ReportExporter';
 import DateRangePicker from './DateRangePicker';
 import { fetchOpportunities } from '../../../services/opportunityService';
-import { Opportunity } from '../../../utils/types';
+
+interface FilterOption {
+  value: string;
+  label: string;
+}
+
+interface FilterConfig {
+  label: string;
+  options: FilterOption[];
+  selected: string[];
+}
+
+type ProductFilters = {
+  is_active: FilterConfig;
+  category: FilterConfig;
+};
 
 const ProductsReport: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -20,8 +35,8 @@ const ProductsReport: React.FC = () => {
     start: new Date(new Date().setDate(new Date().getDate() - 90)),
     end: new Date()
   });
-  
-  const [filters, setFilters] = useState({
+
+  const [filters, setFilters] = useState<ProductFilters>({
     is_active: {
       label: "Statut",
       options: [
@@ -32,7 +47,7 @@ const ProductsReport: React.FC = () => {
     },
     category: {
       label: "Catégorie",
-      options: [] as { value: string; label: string }[],
+      options: [],
       selected: []
     }
   });
@@ -138,22 +153,26 @@ const ProductsReport: React.FC = () => {
         valueB = valueB.getTime();
       }
       
-      if (valueA < valueB) return sortDirection === 'asc' ? -1 : 1;
-      if (valueA > valueB) return sortDirection === 'asc' ? 1 : -1;
+      if (valueA !== undefined && valueB !== undefined) {
+        if (valueA < valueB) return sortDirection === 'asc' ? -1 : 1;
+        if (valueA > valueB) return sortDirection === 'asc' ? 1 : -1;
+      }
       return 0;
     });
-    
+
     setFilteredProducts(result);
   }, [products, filters, sortField, sortDirection, dateRange]);
-  
+
   const handleFilterChange = (filterName: string, values: string[]) => {
-    setFilters(prev => ({
-      ...prev,
-      [filterName]: {
-        ...prev[filterName],
-        selected: values
-      }
-    }));
+    if (filterName in filters) {
+      setFilters(prev => ({
+        ...prev,
+        [filterName]: {
+          ...prev[filterName as keyof ProductFilters],
+          selected: values
+        }
+      }));
+    }
   };
   
   const handleSort = (field: string) => {

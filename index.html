@@ -10,13 +10,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AInspiration | Solutions d'Intelligence Artificielle pour Entreprises</title>
     <meta name="description" content="Transformez votre entreprise avec nos solutions d'IA. Audit gratuit, recommandations personnalisées et accompagnement expert pour optimiser vos processus." />
-    <link rel="canonical" href="https://ainspiration.eu/" />
-    <link rel="preconnect" href="https://images.unsplash.com">
-    <link rel="dns-prefetch" href="https://images.unsplash.com">
+    <link rel="canonical" href="https://ainspiration.be/" />
+
+    <!-- Preconnect pour ressources externes critiques -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Preload font Inter pour éviter FOUT -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+
+    <!-- Preconnect pour Unsplash (images) -->
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+
+    <!-- Preload image Hero LCP critique -->
+    <link rel="preload" href="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&auto=format&fit=crop&q=80" as="image" type="image/webp">
+
+    <!-- Theme color -->
     <meta name="theme-color" content="#4f46e5">
+
+    <!-- PWA meta tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="AInspiration">
+
+    <!-- Critical CSS inline pour le loader initial -->
+    <style>
+      /* Minimal critical CSS for initial loader */
+      .initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to bottom, #eef2ff, #ffffff);
+        z-index: 9999;
+        transition: opacity 0.3s ease-out;
+      }
+      .initial-loader.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .loader-spinner {
+        width: 48px;
+        height: 48px;
+        border: 3px solid #e0e7ff;
+        border-top-color: #4f46e5;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
   </head>
   <body>
+    <!-- Initial loader pendant le chargement JS -->
+    <div id="initial-loader" class="initial-loader">
+      <div class="loader-spinner"></div>
+    </div>
+
     <div id="root"></div>
+
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Script pour cacher le loader initial -->
+    <script>
+      window.addEventListener('load', function() {
+        var loader = document.getElementById('initial-loader');
+        if (loader) {
+          loader.classList.add('hidden');
+          setTimeout(function() { loader.remove(); }, 300);
+        }
+      });
+    </script>
   </body>
 </html>

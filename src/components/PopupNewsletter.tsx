@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { X, Mail, CheckCircle, AlertCircle } from 'lucide-react';
 import { supabase } from '../utils/supabase';
+import { isValidEmail, checkRateLimit, sanitizeString } from '../utils/validation';
+import { useTranslation } from 'react-i18next';
 
 export default function PopupNewsletter() {
+  const { t } = useTranslation('forms');
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -43,27 +46,36 @@ export default function PopupNewsletter() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!email || !email.match(/^\S+@\S+\.\S+$/)) {
+
+    // Rate limiting check
+    if (!checkRateLimit('popup-newsletter', 3, 60000)) {
       setStatus('error');
-      setMessage('Veuillez entrer une adresse email valide.');
+      setMessage(t('newsletter.error.rateLimit'));
+      return;
+    }
+
+    const sanitizedEmail = sanitizeString(email.trim().toLowerCase());
+
+    if (!sanitizedEmail || !isValidEmail(sanitizedEmail)) {
+      setStatus('error');
+      setMessage(t('newsletter.error.invalidEmail'));
       return;
     }
 
     setStatus('loading');
-    
+
     try {
       // Store email in Supabase
       const { error } = await supabase
         .from('newsletter_subscribers')
-        .insert([{ email }]);
+        .insert([{ email: sanitizedEmail }]);
 
       if (error) throw error;
-      
+
       setStatus('success');
-      setMessage('Merci pour votre inscription !');
+      setMessage(t('newsletter.success'));
       setEmail('');
-      
+
       // Close popup after 3 seconds
       setTimeout(() => {
         setIsOpen(false);
@@ -76,7 +88,7 @@ export default function PopupNewsletter() {
     } catch (error) {
       console.error('Error subscribing to newsletter:', error);
       setStatus('error');
-      setMessage('Une erreur est survenue. Veuillez réessayer.');
+      setMessage(t('newsletter.error.general'));
     }
   };
 
@@ -97,10 +109,10 @@ export default function PopupNewsletter() {
             <Mail className="w-8 h-8 text-indigo-600" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Restez à la pointe de l'IA
+            {t('newsletter.title')}
           </h2>
           <p className="text-gray-600">
-            Inscrivez-vous à notre newsletter et recevez nos actualités et conseils IA directement dans votre boîte mail.
+            {t('newsletter.description')}
           </p>
         </div>
         
@@ -112,48 +124,44 @@ export default function PopupNewsletter() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={status === 'loading' || status === 'success'}
-              placeholder="Votre adresse email"
+              placeholder={t('newsletter.placeholder')}
               className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
             />
           </div>
-          
+
           {status === 'error' && (
             <div className="flex items-center gap-2 text-red-600 text-sm">
               <AlertCircle className="w-4 h-4" />
               <span>{message}</span>
             </div>
           )}
-          
+
           {status === 'success' && (
             <div className="flex items-center gap-2 text-green-600 text-sm">
               <CheckCircle className="w-4 h-4" />
               <span>{message}</span>
             </div>
           )}
-          
+
           <button
             type="submit"
             disabled={status === 'loading' || status === 'success'}
             className="w-full bg-indigo-600 text-white px-4 py-3 rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 font-semibold"
           >
-            {status === 'loading' ? 'Inscription...' : 'S\'inscrire à la newsletter'}
+            {status === 'loading' ? t('newsletter.subscribing') : t('newsletter.subscribe')}
           </button>
-          
+
           <p className="text-xs text-gray-500 text-center">
-            En vous inscrivant, vous acceptez notre{' '}
-            <a href="/privacy" className="text-indigo-600 hover:text-indigo-800">
-              politique de confidentialité
-            </a>
-            . Vous pourrez vous désinscrire à tout moment.
+            {t('newsletter.privacy')}
           </p>
         </form>
-        
+
         <div className="mt-6 pt-6 border-t border-gray-100 text-center">
           <button
             onClick={() => setIsOpen(false)}
             className="text-gray-500 hover:text-indigo-600 text-sm"
           >
-            Non merci, je ne souhaite pas m'inscrire
+            {t('newsletter.dismiss', 'Non merci')}
           </button>
         </div>
       </div>

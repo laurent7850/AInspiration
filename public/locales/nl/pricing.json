@@ -1,8 +1,8 @@
 {
-  "title": "Prijzen",
+  "title": "Transparante prijzen",
   "subtitle": "Kies het plan dat bij u past",
-  "monthly": "per maand",
-  "yearly": "per jaar",
+  "popular": "Meest populair",
+  "monthly": "/maand",
   "plans": {
     "starter": {
       "name": "Starter",
@@ -12,7 +12,8 @@
         "Basis AI-analyse",
         "5 projecten",
         "E-mail support",
-        "Maandelijkse updates"
+        "Maandelijkse updates",
+        "1 gebruiker"
       ]
     },
     "pro": {
@@ -25,6 +26,7 @@
         "Prioriteit support",
         "Wekelijkse updates",
         "API-toegang",
+        "5 gebruikers",
         "Aangepaste rapporten"
       ]
     },
@@ -38,6 +40,7 @@
         "24/7 support",
         "Gegarandeerde SLA",
         "Training op locatie",
+        "Onbeperkte gebruikers",
         "Aangepaste integratie"
       ]
     }

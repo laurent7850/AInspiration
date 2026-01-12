@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, ArrowRight, Mail, Building2, Phone, MapPin } from 'lucide-react';
 import { supabase } from '../utils/supabase';
 import { useTranslation } from 'react-i18next';
+import { validateContactForm, checkRateLimit, isValidEmail, isValidPhone } from '../utils/validation';
 
 export const CONTACT_EMAIL = 'info@aimagination.eu';
 const CONTACT_PHONE = '+32 477 94 28 65';
@@ -25,6 +26,7 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const modalRef = useRef<HTMLDivElement>(null);
 
   // Lock body scroll when modal is open
@@ -105,20 +107,42 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setError(null);
+    setFieldErrors({});
+
+    // Rate limiting check
+    if (!checkRateLimit('startform', 3, 60000)) {
+      setError(t('contact.error.rateLimit'));
+      return;
+    }
+
+    // Validate form data
+    const validation = validateContactForm({
+      name: formData.name,
+      email: formData.email,
+      company: formData.company,
+      phone: formData.phone,
+      message: formData.message
+    });
+
+    if (!validation.isValid) {
+      setFieldErrors(validation.errors);
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       const subject = formContent.title;
-      const messageWithDetails = `${formData.message}${formData.phone ? `\n\n${t('contact.phone')}: ${formData.phone}` : ''}${formData.country ? `\n${t('contact.country')}: ${formData.country}` : ''}`;
+      const messageWithDetails = `${validation.sanitizedData.message}${formData.phone ? `\n\n${t('contact.phone')}: ${formData.phone}` : ''}${formData.country ? `\n${t('contact.country')}: ${formData.country}` : ''}`;
 
       const { error: insertError } = await supabase
         .from('contact_messages')
         .insert([
           {
-            name: formData.name,
-            email: formData.email,
-            company: formData.company,
+            name: validation.sanitizedData.name,
+            email: validation.sanitizedData.email,
+            company: validation.sanitizedData.company,
             subject: subject,
             message: messageWithDetails,
           }
@@ -140,6 +164,7 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
           message: ''
         });
         setIsSubmitted(false);
+        setFieldErrors({});
       }, 3000);
     } catch (error) {
       console.error(t('contact.error.title'), error);
@@ -213,9 +238,10 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className={`w-full px-3 py-1.5 text-sm border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 ${fieldErrors.name ? 'border-red-500' : 'border-gray-300'}`}
                 placeholder={t('contact.placeholders.fullName')}
               />
+              {fieldErrors.name && <p className="text-red-500 text-xs mt-1">{fieldErrors.name}</p>}
             </div>
 
             <div>
@@ -286,10 +312,11 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full pl-8 pr-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className={`w-full pl-8 pr-3 py-1.5 text-sm border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 ${fieldErrors.email ? 'border-red-500' : 'border-gray-300'}`}
                   placeholder={t('contact.placeholders.email')}
                 />
               </div>
+              {fieldErrors.email && <p className="text-red-500 text-xs mt-1">{fieldErrors.email}</p>}
             </div>
 
             <div>
@@ -300,10 +327,11 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
                 required
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none"
+                className={`w-full px-3 py-1.5 text-sm border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none ${fieldErrors.message ? 'border-red-500' : 'border-gray-300'}`}
                 rows={3}
                 placeholder={t('contact.placeholders.message')}
               />
+              {fieldErrors.message && <p className="text-red-500 text-xs mt-1">{fieldErrors.message}</p>}
             </div>
 
             <p className="text-xs text-gray-500">* {t('common.required')}</p>

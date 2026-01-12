@@ -1,13 +1,11 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import routes from './config/routes';
 import MainLayout from './components/layout/MainLayout';
+import { PageSkeleton } from './components/ui/Skeleton';
 
-const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
-  </div>
-);
+// Fallback de chargement avec skeleton
+const LoadingFallback = () => <PageSkeleton />;
 
 export default function App() {
   return (
@@ -15,10 +13,10 @@ export default function App() {
       <Suspense fallback={<LoadingFallback />}>
         <Routes>
           {routes.map((route) => (
-            <Route 
-              key={route.path} 
-              path={route.path} 
-              element={<route.component />} 
+            <Route
+              key={route.path}
+              path={route.path}
+              element={<route.component />}
             />
           ))}
         </Routes>
