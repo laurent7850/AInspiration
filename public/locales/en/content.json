@@ -1,0 +1,19 @@
+{
+  "title": "AI Content Writing",
+  "subtitle": "Create impactful content",
+  "features": {
+    "automated": "Automated Writing",
+    "multilingual": "Multi-language",
+    "targeted": "Targeted Content",
+    "formats": "Various Formats"
+  },
+  "types": {
+    "blog": "Blog Articles",
+    "email": "Marketing Emails",
+    "social": "Social Media"
+  },
+  "stats": {
+    "generated": "Generated Articles",
+    "languages": "Supported Languages"
+  }
+}

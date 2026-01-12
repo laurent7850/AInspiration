@@ -1,0 +1,28 @@
+{
+  "title": "Fonctionnalités",
+  "subtitle": "Des outils puissants pour votre entreprise",
+  "analysis": {
+    "title": "Analyse IA",
+    "desc": "Analysez vos données avec précision",
+    "realtime": "Analyse en temps réel",
+    "realtimeDesc": "Surveillez vos métriques en direct"
+  },
+  "recommendations": {
+    "title": "Recommandations",
+    "desc": "Optimisez vos décisions",
+    "realtime": "Suggestions en temps réel",
+    "realtimeDesc": "Recommandations instantanées"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "desc": "Visualisez vos données",
+    "realtime": "Données en direct",
+    "realtimeDesc": "Mises à jour instantanées"
+  },
+  "prompts": {
+    "title": "Bibliothèque de prompts",
+    "desc": "Optimisez vos interactions IA",
+    "management": "Gestion des prompts",
+    "managementDesc": "Organisez et optimisez vos prompts"
+  }
+}

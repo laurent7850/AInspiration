@@ -1,0 +1,30 @@
+{
+  "title": "Geavanceerde AI-analyse",
+  "subtitle": "Ontdek verborgen inzichten in uw gegevens",
+  "realtime": {
+    "title": "Realtime analyse",
+    "description": "Monitor en analyseer uw gegevens continu"
+  },
+  "predictive": {
+    "title": "Voorspellende analyse",
+    "description": "Anticipeer op trends en kansen"
+  },
+  "features": {
+    "realtime": {
+      "title": "Realtime analyse",
+      "description": "Monitor uw belangrijkste metrics live"
+    },
+    "predictive": {
+      "title": "Voorspellende modellen",
+      "description": "Anticipeer op toekomstige trends"
+    }
+  },
+  "cta": {
+    "title": "Start uw analyse",
+    "subtitle": "Krijg direct bruikbare inzichten"
+  },
+  "stats": {
+    "accuracy": "Voorspellingsnauwkeurigheid",
+    "clients": "Analyses uitgevoerd"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Teamsamenwerking",
+  "subtitle": "Werk efficiënt samen",
+  "features": {
+    "realtime": "Realtime samenwerking",
+    "sharing": "Eenvoudig delen",
+    "tracking": "Wijzigingen bijhouden",
+    "permissions": "Toegangsbeheer"
+  },
+  "stats": {
+    "teams": "Actieve teams",
+    "users": "Gebruikers"
+  }
+}

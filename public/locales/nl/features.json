@@ -1,0 +1,28 @@
+{
+  "title": "Functies",
+  "subtitle": "Krachtige tools voor uw bedrijf",
+  "analysis": {
+    "title": "AI Analyse",
+    "desc": "Analyseer uw gegevens met precisie",
+    "realtime": "Realtime analyse",
+    "realtimeDesc": "Bewaak uw statistieken live"
+  },
+  "recommendations": {
+    "title": "Aanbevelingen",
+    "desc": "Optimaliseer uw beslissingen",
+    "realtime": "Realtime suggesties",
+    "realtimeDesc": "Directe aanbevelingen"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "desc": "Visualiseer uw gegevens",
+    "realtime": "Live gegevens",
+    "realtimeDesc": "Directe updates"
+  },
+  "prompts": {
+    "title": "Promptbibliotheek",
+    "desc": "Optimaliseer uw AI-interacties",
+    "management": "Promptbeheer",
+    "managementDesc": "Organiseer en optimaliseer uw prompts"
+  }
+}

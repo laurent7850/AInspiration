@@ -1,0 +1,133 @@
+{
+  "common": {
+    "required": "Verplichte velden",
+    "cancel": "Annuleren",
+    "send": "Verzenden",
+    "sending": "Verzenden...",
+    "save": "Opslaan",
+    "saving": "Opslaan...",
+    "select": "Selecteer"
+  },
+  "contact": {
+    "title": "Vraag een gratis AI-audit aan",
+    "pageTitle": "Neem contact op",
+    "pageSubtitle": "Vragen? Een offerte nodig? Ons team staat voor u klaar.",
+    "sendMessage": "Stuur ons een bericht",
+    "fullName": "Volledige naam*",
+    "company": "Bedrijf*",
+    "country": "Land*",
+    "phone": "Telefoon",
+    "email": "Zakelijk e-mailadres*",
+    "message": "Bericht*",
+    "subject": "Onderwerp*",
+    "selectSubject": "Selecteer een onderwerp",
+    "close": "Sluiten",
+    "placeholders": {
+      "fullName": "Uw naam",
+      "company": "Naam van uw bedrijf",
+      "email": "uw@email.com",
+      "phone": "+32 XXX XX XX",
+      "message": "Beschrijf kort uw project..."
+    },
+    "countries": {
+      "BE": "België",
+      "FR": "Frankrijk",
+      "LU": "Luxemburg",
+      "NL": "Nederland",
+      "DE": "Duitsland",
+      "CH": "Zwitserland",
+      "MC": "Monaco",
+      "AD": "Andorra",
+      "OTHER": "Overig"
+    },
+    "subjects": {
+      "generalInfo": "Verzoek om algemene informatie",
+      "demo": "Demoverzoek",
+      "support": "Technische ondersteuning",
+      "partnership": "Partnerschap",
+      "other": "Overig"
+    },
+    "info": {
+      "email": "E-mail",
+      "phone": "Telefoon",
+      "address": "Adres",
+      "mapTitle": "Locatiekaart"
+    },
+    "success": {
+      "title": "Bericht succesvol verzonden!",
+      "message": "Bedankt voor uw contact. We nemen zo snel mogelijk contact met u op."
+    },
+    "error": {
+      "title": "Fout bij verzenden:",
+      "message": "Er is een fout opgetreden bij het verzenden van het formulier. Probeer het opnieuw of neem rechtstreeks contact met ons op via e-mail.",
+      "general": "Er is een fout opgetreden bij het verzenden van het formulier. Probeer het opnieuw."
+    }
+  },
+  "products": {
+    "auditIA": {
+      "title": "Vraag een gratis AI-audit aan",
+      "description": "Vul het formulier in om van onze audit te profiteren en uw automatiseringspotentieel te ontdekken"
+    },
+    "packDemarrage": {
+      "title": "\"AI Starter\" Pakket",
+      "description": "Vraag een offerte aan voor ons startpakket en ga aan de slag met AI"
+    },
+    "formationIA": {
+      "title": "AI Training voor KMO's",
+      "description": "Schrijf u in voor een van onze trainingen en train uw teams in AI"
+    },
+    "abonnementIA": {
+      "title": "\"AI Daily\" Abonnement",
+      "description": "Neem een abonnement voor continue ondersteuning en AI-tools"
+    },
+    "custom": {
+      "title": "Aangepaste AI-oplossing",
+      "description": "Laten we praten over uw maatwerk project en specifieke behoeften"
+    },
+    "crmSolution": {
+      "title": "Intelligente CRM-oplossing",
+      "description": "Vraag een demo aan van onze intelligente CRM en transformeer uw klantrelaties"
+    },
+    "default": {
+      "title": "Laten we praten over uw project",
+      "description": "Vul het formulier in om ons te vertellen over uw behoeften"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Inloggen",
+      "email": "E-mail",
+      "password": "Wachtwoord",
+      "submit": "Inloggen",
+      "loading": "Inloggen...",
+      "placeholder": {
+        "email": "uw@email.com"
+      },
+      "error": "Er is een fout opgetreden"
+    },
+    "signUp": {
+      "title": "Registreren",
+      "fullName": "Volledige naam",
+      "company": "Bedrijf",
+      "email": "Zakelijk e-mailadres",
+      "password": "Wachtwoord",
+      "submit": "Registreren",
+      "loading": "Registreren...",
+      "placeholder": {
+        "fullName": "Uw naam"
+      },
+      "error": "Er is een fout opgetreden"
+    }
+  },
+  "newsletter": {
+    "title": "Blijf op de hoogte",
+    "description": "Meld u aan voor onze nieuwsbrief om het laatste nieuws en advies over AI te ontvangen.",
+    "placeholder": "Uw e-mailadres",
+    "submit": "Inschrijven",
+    "loading": "Inschrijven...",
+    "invalidEmail": "Voer een geldig e-mailadres in.",
+    "success": "Bedankt voor uw inschrijving!",
+    "error": "Er is een fout opgetreden. Probeer het opnieuw.",
+    "disclaimer": "We respecteren uw privacy en delen uw gegevens nooit. Eenvoudig uitschrijven op elk moment."
+  }
+}

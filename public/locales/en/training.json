@@ -1,0 +1,22 @@
+{
+  "title": "AI Training",
+  "subtitle": "Develop your skills",
+  "modules": {
+    "basics": {
+      "title": "Fundamentals",
+      "desc": "AI Basics"
+    },
+    "advanced": {
+      "title": "Advanced",
+      "desc": "Expert Techniques"
+    },
+    "specific": {
+      "title": "Specialization",
+      "desc": "Industry Training"
+    }
+  },
+  "stats": {
+    "satisfaction": "Satisfaction",
+    "certified": "Trained People"
+  }
+}

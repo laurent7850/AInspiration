@@ -1,0 +1,24 @@
+{
+  "title": "Tableau de Bord",
+  "subtitle": "Pilotez votre performance",
+  "metrics": {
+    "sales": "Ventes",
+    "clients": "Clients",
+    "conversion": "Conversion",
+    "session": "Durée session"
+  },
+  "features": {
+    "realtime": "Temps réel",
+    "realtimeDesc": "Données en direct",
+    "comparative": "Analyse comparative",
+    "comparativeDesc": "Comparez vos performances",
+    "custom": "Personnalisation",
+    "customDesc": "Adaptez vos métriques",
+    "alerts": "Alertes",
+    "alertsDesc": "Notifications intelligentes"
+  },
+  "stats": {
+    "response": "Temps de réponse",
+    "updates": "Mises à jour"
+  }
+}

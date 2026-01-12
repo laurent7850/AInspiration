@@ -1,0 +1,133 @@
+{
+  "common": {
+    "required": "Champs obligatoires",
+    "cancel": "Annuler",
+    "send": "Envoyer",
+    "sending": "Envoi...",
+    "save": "Enregistrer",
+    "saving": "Enregistrement...",
+    "select": "Sélectionnez"
+  },
+  "contact": {
+    "title": "Demander un audit IA gratuit",
+    "pageTitle": "Contactez-nous",
+    "pageSubtitle": "Des questions ? Besoin d'un devis ? Notre équipe est à votre écoute.",
+    "sendMessage": "Envoyez-nous un message",
+    "fullName": "Nom complet*",
+    "company": "Entreprise*",
+    "country": "Pays*",
+    "phone": "Téléphone",
+    "email": "Email professionnel*",
+    "message": "Message*",
+    "subject": "Sujet*",
+    "selectSubject": "Sélectionnez un sujet",
+    "close": "Fermer",
+    "placeholders": {
+      "fullName": "Votre nom",
+      "company": "Nom de votre entreprise",
+      "email": "votre@email.com",
+      "phone": "+32 XXX XX XX",
+      "message": "Décrivez brièvement votre projet..."
+    },
+    "countries": {
+      "BE": "Belgique",
+      "FR": "France",
+      "LU": "Luxembourg",
+      "NL": "Pays-Bas",
+      "DE": "Allemagne",
+      "CH": "Suisse",
+      "MC": "Monaco",
+      "AD": "Andorre",
+      "OTHER": "Autre"
+    },
+    "subjects": {
+      "generalInfo": "Demande d'information générale",
+      "demo": "Demande de démonstration",
+      "support": "Support technique",
+      "partnership": "Partenariat",
+      "other": "Autre"
+    },
+    "info": {
+      "email": "Email",
+      "phone": "Téléphone",
+      "address": "Adresse",
+      "mapTitle": "Carte de localisation"
+    },
+    "success": {
+      "title": "Message envoyé avec succès !",
+      "message": "Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais."
+    },
+    "error": {
+      "title": "Erreur lors de l'envoi:",
+      "message": "Une erreur est survenue lors de l'envoi du formulaire. Veuillez réessayer ou nous contacter directement par email.",
+      "general": "Une erreur est survenue lors de l'envoi du formulaire. Veuillez réessayer."
+    }
+  },
+  "products": {
+    "auditIA": {
+      "title": "Demander un audit IA gratuit",
+      "description": "Complétez le formulaire pour bénéficier de notre audit et découvrir votre potentiel d'automatisation"
+    },
+    "packDemarrage": {
+      "title": "Pack \"Démarrage IA\"",
+      "description": "Demandez un devis pour notre pack de démarrage et lancez-vous avec l'IA"
+    },
+    "formationIA": {
+      "title": "Formation IA pour PME",
+      "description": "Inscrivez-vous à une de nos formations et formez vos équipes à l'IA"
+    },
+    "abonnementIA": {
+      "title": "Abonnement \"IA au Quotidien\"",
+      "description": "Souscrivez à notre abonnement pour un support continu et des outils IA"
+    },
+    "custom": {
+      "title": "Solution IA personnalisée",
+      "description": "Parlons de votre projet sur mesure et de vos besoins spécifiques"
+    },
+    "crmSolution": {
+      "title": "Solution CRM Intelligente",
+      "description": "Demandez une démo de notre CRM intelligent et transformez votre relation client"
+    },
+    "default": {
+      "title": "Parlons de votre projet",
+      "description": "Remplissez le formulaire pour nous parler de vos besoins"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Connexion",
+      "email": "Email",
+      "password": "Mot de passe",
+      "submit": "Se connecter",
+      "loading": "Connexion...",
+      "placeholder": {
+        "email": "votre@email.com"
+      },
+      "error": "Une erreur est survenue"
+    },
+    "signUp": {
+      "title": "Inscription",
+      "fullName": "Nom complet",
+      "company": "Entreprise",
+      "email": "Email professionnel",
+      "password": "Mot de passe",
+      "submit": "S'inscrire",
+      "loading": "Inscription...",
+      "placeholder": {
+        "fullName": "Votre nom"
+      },
+      "error": "Une erreur est survenue"
+    }
+  },
+  "newsletter": {
+    "title": "Restez informé",
+    "description": "Inscrivez-vous à notre newsletter pour recevoir les dernières actualités et conseils sur l'IA.",
+    "placeholder": "Votre adresse email",
+    "submit": "S'inscrire",
+    "loading": "Inscription...",
+    "invalidEmail": "Veuillez entrer une adresse email valide.",
+    "success": "Merci pour votre inscription!",
+    "error": "Une erreur est survenue. Veuillez réessayer.",
+    "disclaimer": "Nous respectons votre vie privée et ne partageons jamais vos données. Désinscription facile à tout moment."
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "title": "AI Audit",
+  "subtitle": "Assess your AI innovation potential",
+  "steps": {
+    "analysis": {
+      "title": "Initial Analysis",
+      "desc": "Complete assessment of your current processes"
+    },
+    "diagnostic": {
+      "title": "In-depth Diagnostic",
+      "desc": "Identification of improvement opportunities"
+    },
+    "impact": {
+      "title": "Impact Analysis",
+      "desc": "Estimation of potential benefits"
+    },
+    "plan": {
+      "title": "Action Plan",
+      "desc": "Detailed recommendations and roadmap"
+    }
+  },
+  "form": {
+    "title": "Start your free audit",
+    "subtitle": "Fill out the form to begin",
+    "company": {
+      "name": "Company Name",
+      "placeholder": "Your company"
+    },
+    "industry": {
+      "title": "Industry",
+      "placeholder": "Select your industry",
+      "tech": "Technology",
+      "finance": "Finance",
+      "health": "Healthcare",
+      "retail": "Retail",
+      "manufacturing": "Manufacturing",
+      "services": "Services",
+      "other": "Other"
+    },
+    "size": {
+      "title": "Company Size",
+      "placeholder": "Select size",
+      "1-10": "1-10 employees",
+      "11-50": "11-50 employees",
+      "51-200": "51-200 employees",
+      "201-500": "201-500 employees",
+      "500+": "500+ employees"
+    },
+    "email": {
+      "title": "Business Email",
+      "placeholder": "your@email.com"
+    },
+    "phone": {
+      "title": "Phone",
+      "placeholder": "+32 XXX XX XX XX"
+    },
+    "privacy": "Your data is protected and will never be shared",
+    "submit": "Start Free Audit",
+    "next": "Next",
+    "back": "Back",
+    "step1": "Company Information",
+    "step2": "Contact"
+  },
+  "success": {
+    "title": "Thank you for your request!",
+    "message": "We have received your audit request",
+    "response": "Response within 24h",
+    "close": "Close"
+  }
+}

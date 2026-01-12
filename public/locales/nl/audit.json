@@ -1,0 +1,70 @@
+{
+  "title": "AI Audit",
+  "subtitle": "Beoordeel uw innovatiepotentieel met AI",
+  "steps": {
+    "analysis": {
+      "title": "Initiële analyse",
+      "desc": "Volledige beoordeling van uw huidige processen"
+    },
+    "diagnostic": {
+      "title": "Grondige diagnose",
+      "desc": "Identificatie van verbeterkansen"
+    },
+    "impact": {
+      "title": "Impactanalyse",
+      "desc": "Schatting van potentiële voordelen"
+    },
+    "plan": {
+      "title": "Actieplan",
+      "desc": "Gedetailleerde aanbevelingen en routekaart"
+    }
+  },
+  "form": {
+    "title": "Start uw gratis audit",
+    "subtitle": "Vul het formulier in om te beginnen",
+    "company": {
+      "name": "Bedrijfsnaam",
+      "placeholder": "Uw bedrijf"
+    },
+    "industry": {
+      "title": "Sector",
+      "placeholder": "Selecteer uw sector",
+      "tech": "Technologie",
+      "finance": "Financiën",
+      "health": "Gezondheidszorg",
+      "retail": "Detailhandel",
+      "manufacturing": "Industrie",
+      "services": "Diensten",
+      "other": "Andere"
+    },
+    "size": {
+      "title": "Bedrijfsgrootte",
+      "placeholder": "Selecteer grootte",
+      "1-10": "1-10 medewerkers",
+      "11-50": "11-50 medewerkers",
+      "51-200": "51-200 medewerkers",
+      "201-500": "201-500 medewerkers",
+      "500+": "500+ medewerkers"
+    },
+    "email": {
+      "title": "Zakelijk e-mailadres",
+      "placeholder": "uw@email.com"
+    },
+    "phone": {
+      "title": "Telefoon",
+      "placeholder": "+32 XXX XX XX XX"
+    },
+    "privacy": "Uw gegevens zijn beschermd en worden nooit gedeeld",
+    "submit": "Start gratis audit",
+    "next": "Volgende",
+    "back": "Terug",
+    "step1": "Bedrijfsinformatie",
+    "step2": "Contact"
+  },
+  "success": {
+    "title": "Bedankt voor uw aanvraag!",
+    "message": "We hebben uw auditaanvraag ontvangen",
+    "response": "Antwoord binnen 24 uur",
+    "close": "Sluiten"
+  }
+}

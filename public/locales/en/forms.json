@@ -1,0 +1,133 @@
+{
+  "common": {
+    "required": "Required fields",
+    "cancel": "Cancel",
+    "send": "Send",
+    "sending": "Sending...",
+    "save": "Save",
+    "saving": "Saving...",
+    "select": "Select"
+  },
+  "contact": {
+    "title": "Request a free AI audit",
+    "pageTitle": "Contact Us",
+    "pageSubtitle": "Have questions? Need a quote? Our team is ready to assist you.",
+    "sendMessage": "Send us a message",
+    "fullName": "Full Name*",
+    "company": "Company*",
+    "country": "Country*",
+    "phone": "Phone",
+    "email": "Business Email*",
+    "message": "Message*",
+    "subject": "Subject*",
+    "selectSubject": "Select a subject",
+    "close": "Close",
+    "placeholders": {
+      "fullName": "Your name",
+      "company": "Your company name",
+      "email": "your@email.com",
+      "phone": "+32 XXX XX XX",
+      "message": "Briefly describe your project..."
+    },
+    "countries": {
+      "BE": "Belgium",
+      "FR": "France",
+      "LU": "Luxembourg",
+      "NL": "Netherlands",
+      "DE": "Germany",
+      "CH": "Switzerland",
+      "MC": "Monaco",
+      "AD": "Andorra",
+      "OTHER": "Other"
+    },
+    "subjects": {
+      "generalInfo": "General information request",
+      "demo": "Demo request",
+      "support": "Technical support",
+      "partnership": "Partnership",
+      "other": "Other"
+    },
+    "info": {
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "mapTitle": "Location map"
+    },
+    "success": {
+      "title": "Message sent successfully!",
+      "message": "Thank you for contacting us. We will respond as soon as possible."
+    },
+    "error": {
+      "title": "Error sending:",
+      "message": "An error occurred while sending the form. Please try again or contact us directly by email.",
+      "general": "An error occurred while sending the form. Please try again."
+    }
+  },
+  "products": {
+    "auditIA": {
+      "title": "Request a free AI audit",
+      "description": "Complete the form to benefit from our audit and discover your automation potential"
+    },
+    "packDemarrage": {
+      "title": "AI Starter Pack",
+      "description": "Request a quote for our starter pack and get started with AI"
+    },
+    "formationIA": {
+      "title": "AI Training for SMEs",
+      "description": "Sign up for one of our trainings and train your teams in AI"
+    },
+    "abonnementIA": {
+      "title": "Daily AI Subscription",
+      "description": "Subscribe to our plan for continuous support and AI tools"
+    },
+    "custom": {
+      "title": "Custom AI Solution",
+      "description": "Let's talk about your custom project and specific needs"
+    },
+    "crmSolution": {
+      "title": "Smart CRM Solution",
+      "description": "Request a demo of our smart CRM and transform your customer relationships"
+    },
+    "default": {
+      "title": "Let's talk about your project",
+      "description": "Fill out the form to tell us about your needs"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign In",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign In",
+      "loading": "Signing in...",
+      "placeholder": {
+        "email": "your@email.com"
+      },
+      "error": "An error occurred"
+    },
+    "signUp": {
+      "title": "Sign Up",
+      "fullName": "Full Name",
+      "company": "Company",
+      "email": "Business Email",
+      "password": "Password",
+      "submit": "Sign Up",
+      "loading": "Signing up...",
+      "placeholder": {
+        "fullName": "Your name"
+      },
+      "error": "An error occurred"
+    }
+  },
+  "newsletter": {
+    "title": "Stay Informed",
+    "description": "Subscribe to our newsletter to receive the latest news and tips about AI.",
+    "placeholder": "Your email address",
+    "submit": "Subscribe",
+    "loading": "Subscribing...",
+    "invalidEmail": "Please enter a valid email address.",
+    "success": "Thank you for subscribing!",
+    "error": "An error occurred. Please try again.",
+    "disclaimer": "We respect your privacy and never share your data. Easy unsubscribe at any time."
+  }
+}

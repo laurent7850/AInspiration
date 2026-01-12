@@ -1,0 +1,32 @@
+{
+  "title": "Prompt Library",
+  "subtitle": "Optimize your AI interactions",
+  "categories": {
+    "development": "Development",
+    "marketing": "Marketing",
+    "education": "Training",
+    "sales": "Sales"
+  },
+  "features": {
+    "management": {
+      "title": "Prompt Management",
+      "desc": "Organize your prompts efficiently"
+    },
+    "ai": {
+      "title": "Advanced AI",
+      "desc": "Automatic optimization"
+    },
+    "version": {
+      "title": "Versioning",
+      "desc": "Track evolution"
+    },
+    "testing": {
+      "title": "Testing",
+      "desc": "Validate your prompts"
+    }
+  },
+  "stats": {
+    "prompts": "Created Prompts",
+    "success": "Success Rate"
+  }
+}

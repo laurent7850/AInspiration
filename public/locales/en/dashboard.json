@@ -1,0 +1,24 @@
+{
+  "title": "Dashboard",
+  "subtitle": "Monitor your performance",
+  "metrics": {
+    "sales": "Sales",
+    "clients": "Clients",
+    "conversion": "Conversion",
+    "session": "Session Duration"
+  },
+  "features": {
+    "realtime": "Real-time",
+    "realtimeDesc": "Live data",
+    "comparative": "Comparative Analysis",
+    "comparativeDesc": "Compare your performance",
+    "custom": "Customization",
+    "customDesc": "Adapt your metrics",
+    "alerts": "Alerts",
+    "alertsDesc": "Smart notifications"
+  },
+  "stats": {
+    "response": "Response Time",
+    "updates": "Updates"
+  }
+}

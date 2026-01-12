@@ -1,0 +1,49 @@
+{
+  "enhancedContent": {
+    "measurableResults": "Résultats Mesurables",
+    "improvement": "Amélioration"
+  },
+  "cta": {
+    "audit": {
+      "title": "Prêt à transformer votre entreprise avec l'IA ?",
+      "description": "Découvrez comment l'IA peut optimiser vos processus et améliorer votre productivité. Commencez par un audit gratuit.",
+      "button": "Demander un audit gratuit",
+      "benefits": {
+        "1": "Identifiez les opportunités d'automatisation",
+        "2": "Obtenez un plan d'action personnalisé",
+        "3": "Estimez le ROI de votre transformation"
+      }
+    },
+    "consultation": {
+      "title": "Besoin d'accompagnement personnalisé ?",
+      "description": "Notre équipe d'experts vous accompagne dans votre transformation numérique, de la stratégie à la mise en œuvre.",
+      "button": "Réserver une consultation",
+      "benefits": {
+        "1": "Conseil stratégique sur mesure",
+        "2": "Accompagnement tout au long du projet",
+        "3": "Expertise technique et métier"
+      }
+    },
+    "formation": {
+      "title": "Formez vos équipes à l'IA",
+      "description": "Développez les compétences de vos collaborateurs avec nos formations pratiques adaptées à vos besoins.",
+      "button": "Découvrir nos formations",
+      "benefits": {
+        "1": "Formations pratiques et interactives",
+        "2": "Contenu adapté à votre secteur",
+        "3": "Certification à la clé"
+      }
+    },
+    "default": {
+      "title": "Passez à l'action dès aujourd'hui",
+      "description": "Transformez votre entreprise avec l'IA. Nos experts sont là pour vous accompagner à chaque étape.",
+      "button": "Commencer maintenant",
+      "benefits": {
+        "1": "Solutions sur mesure pour votre entreprise",
+        "2": "ROI mesurable et rapide",
+        "3": "Support et accompagnement continus"
+      }
+    },
+    "footer": "Sans engagement • Réponse sous 24h • Audit 100% gratuit"
+  }
+}

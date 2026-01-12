@@ -1,0 +1,2 @@
+# Bloquer tout accès direct
+Deny from all

@@ -1,0 +1,33 @@
+{
+  "title": "Advanced AI Analysis",
+  "subtitle": "Discover hidden insights in your data",
+  "features": {
+    "realtime": {
+      "title": "Real-time Analysis",
+      "desc": "Monitor your key metrics live"
+    },
+    "predictive": {
+      "title": "Predictive Analysis",
+      "desc": "Anticipate trends and opportunities"
+    },
+    "optimization": {
+      "title": "Continuous Optimization",
+      "desc": "Automatically improve your processes"
+    },
+    "integration": {
+      "title": "Easy Integration",
+      "desc": "Compatible with your existing tools"
+    }
+  },
+  "stats": {
+    "accuracy": "99.9% accuracy",
+    "processing": "Real-time processing",
+    "improvement": "45% average improvement",
+    "satisfaction": "98% satisfied clients"
+  },
+  "cta": {
+    "title": "Ready to unlock your data's potential?",
+    "subtitle": "Start your free analysis now",
+    "button": "Start Analysis"
+  }
+}

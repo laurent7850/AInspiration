@@ -1,0 +1,49 @@
+{
+  "title": "Prijzen",
+  "subtitle": "Kies het plan dat bij u past",
+  "monthly": "per maand",
+  "yearly": "per jaar",
+  "plans": {
+    "starter": {
+      "name": "Starter",
+      "description": "Perfect om te starten met AI",
+      "price": "€49",
+      "features": [
+        "Basis AI-analyse",
+        "5 projecten",
+        "E-mail support",
+        "Maandelijkse updates"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Voor groeiende teams",
+      "price": "€99",
+      "features": [
+        "Geavanceerde AI-analyse",
+        "Onbeperkte projecten",
+        "Prioriteit support",
+        "Wekelijkse updates",
+        "API-toegang",
+        "Aangepaste rapporten"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "description": "Oplossingen op maat voor grote bedrijven",
+      "price": "Op maat",
+      "features": [
+        "Alle Pro-functies",
+        "Dedicated deployment",
+        "24/7 support",
+        "Gegarandeerde SLA",
+        "Training op locatie",
+        "Aangepaste integratie"
+      ]
+    }
+  },
+  "cta": {
+    "startTrial": "Start gratis proef",
+    "contactUs": "Neem contact op"
+  }
+}

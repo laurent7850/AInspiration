@@ -1,0 +1,133 @@
+{
+  "title": "Intelligente Automatisering",
+  "subtitle": "Bevrijd uw team van repetitieve taken",
+  "mainFeatures": {
+    "workflows": {
+      "title": "Slimme workflows",
+      "description": "Automatiseer uw bedrijfsprocessen van begin tot eind",
+      "examples": [
+        "Automatische documentverwerking",
+        "Intelligente validatie",
+        "Dynamische taakverdeling",
+        "Contextuele meldingen"
+      ]
+    },
+    "integration": {
+      "title": "Naadloze integratie",
+      "description": "Verbind al uw tools en systemen",
+      "examples": [
+        "CRM en ERP",
+        "Communicatietools",
+        "Databases",
+        "Externe API's"
+      ]
+    },
+    "realtime": {
+      "title": "Realtime acties",
+      "description": "Directe reacties op gebeurtenissen",
+      "examples": [
+        "Slimme waarschuwingen",
+        "Voorwaardelijke acties",
+        "Aangepaste triggers",
+        "Live monitoring"
+      ]
+    }
+  },
+  "useCases": {
+    "title": "Gebruikssituaties",
+    "documents": {
+      "title": "Documenten & Gegevens",
+      "tasks": [
+        "Automatische gegevensextractie",
+        "Documentclassificatie",
+        "Intelligente validatie",
+        "Automatische archivering"
+      ]
+    },
+    "processes": {
+      "title": "Bedrijfsprocessen",
+      "tasks": [
+        "Goedkeuringsbeheer",
+        "Ordertracking",
+        "Automatische facturering",
+        "Geautomatiseerde rapportage"
+      ]
+    },
+    "communication": {
+      "title": "Communicatie",
+      "tasks": [
+        "Automatische antwoorden",
+        "Lead kwalificatie",
+        "Geautomatiseerde klantopvolging",
+        "Gepersonaliseerde campagnes"
+      ]
+    }
+  },
+  "metrics": [
+    {
+      "value": "-60%",
+      "label": "Tijd bespaard",
+      "description": "Op handmatige taken"
+    },
+    {
+      "value": "+90%",
+      "label": "Nauwkeurigheid",
+      "description": "In verwerking"
+    },
+    {
+      "value": "24/7",
+      "label": "Beschikbaarheid",
+      "description": "Van processen"
+    }
+  ],
+  "schedule": [
+    {
+      "title": "Planning",
+      "description": "Automatiseer volgens uw schema"
+    },
+    {
+      "title": "Uitvoering",
+      "description": "Continue intelligente verwerking"
+    },
+    {
+      "title": "Melding",
+      "description": "Automatische waarschuwingen en rapporten"
+    }
+  ],
+  "quickStats": {
+    "setup": {
+      "value": "1 dag",
+      "label": "Installatie"
+    },
+    "roi": {
+      "value": "ROI",
+      "label": "Direct"
+    }
+  },
+  "howItWorks": {
+    "title": "Hoe het werkt",
+    "steps": [
+      {
+        "title": "Analyse",
+        "description": "Identificatie van automatiseerbare processen"
+      },
+      {
+        "title": "Configuratie",
+        "description": "Instellen van workflows en regels"
+      },
+      {
+        "title": "Implementatie",
+        "description": "Geleidelijke uitrol"
+      },
+      {
+        "title": "Optimalisatie",
+        "description": "Continue verbetering met AI"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Klaar om uw processen te automatiseren?",
+    "subtitle": "Ontdek hoe AI-automatisering uw bedrijf kan transformeren",
+    "button": "Start automatisering"
+  }
+}

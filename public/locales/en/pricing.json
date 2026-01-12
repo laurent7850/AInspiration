@@ -1,0 +1,52 @@
+{
+  "title": "Transparent Pricing",
+  "subtitle": "Choose the plan that fits your needs",
+  "popular": "Most Popular",
+  "monthly": "/month",
+  "plans": {
+    "starter": {
+      "name": "Starter",
+      "description": "Perfect to start with AI",
+      "price": "€49",
+      "features": [
+        "Basic AI Analysis",
+        "5 projects",
+        "Email support",
+        "Monthly updates",
+        "1 user"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "For growing teams",
+      "price": "€99",
+      "features": [
+        "Advanced AI Analysis",
+        "Unlimited projects",
+        "Priority support",
+        "Weekly updates",
+        "API access",
+        "5 users",
+        "Custom reports"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "description": "Custom solutions for large enterprises",
+      "price": "Custom",
+      "features": [
+        "All Pro features",
+        "Dedicated deployment",
+        "24/7 support",
+        "Guaranteed SLA",
+        "On-site training",
+        "Unlimited users",
+        "Custom integration"
+      ]
+    }
+  },
+  "cta": {
+    "startTrial": "Start Free Trial",
+    "contactUs": "Contact Us"
+  }
+}
