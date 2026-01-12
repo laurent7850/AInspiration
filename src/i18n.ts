@@ -25,7 +25,9 @@ i18n
       'auth',
       'pricing',
       'crm',
-      'forms'
+      'forms',
+      'automation',
+      'blog'
     ],
     defaultNS: 'common',
     debug: process.env.NODE_ENV === 'development',
