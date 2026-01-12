@@ -1,0 +1,26 @@
+{
+  "title": "Ondersteuning",
+  "subtitle": "Deskundige hulp",
+  "channels": {
+    "chat": {
+      "title": "Live chat",
+      "desc": "Onmiddellijke hulp"
+    },
+    "email": {
+      "title": "E-mail",
+      "desc": "Gedetailleerde ondersteuning"
+    },
+    "phone": {
+      "title": "Telefoon",
+      "desc": "Persoonlijke hulp"
+    }
+  },
+  "status": {
+    "available": "Beschikbaar",
+    "unavailable": "Niet beschikbaar"
+  },
+  "stats": {
+    "response": "Reactietijd",
+    "satisfaction": "Klanttevredenheid"
+  }
+}

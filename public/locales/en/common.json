@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "getStarted": "Get Started",
+    "solutions": "AI Solutions",
+    "tools": "Tools",
+    "services": "Services",
+    "pricing": "Pricing",
+    "analysis": "AI Data Analysis",
+    "recommendations": "Recommendations",
+    "dashboard": "Dashboard",
+    "prompts": "Prompt Library",
+    "content": "Content Generation",
+    "support": "Support",
+    "about": "About",
+    "contact": "Contact",
+    "blog": "Blog",
+    "whyAI": "Why AI",
+    "forWho": "For Whom",
+    "transformation": "Digital Transformation",
+    "automation": "Intelligent Automation",
+    "creativity": "Creative Tools",
+    "consulting": "Consulting Services",
+    "formation": "AI Training",
+    "customSupport": "Custom Support",
+    "virtualAssistants": "Virtual Assistants",
+    "promptOptimization": "Prompt Optimization",
+    "products": "Products",
+    "caseStudies": "Case Studies",
+    "crmSolution": "Smart CRM",
+    "visualCreation": "AI Visual Creation",
+    "crmDashboard": "CRM Dashboard"
+  },
+  "button": {
+    "backHome": "Back to Home",
+    "getStarted": "Get Started",
+    "startFreeTrial": "Free Trial",
+    "startNow": "Start Now",
+    "learnMore": "Learn More",
+    "contactUs": "Contact Us",
+    "startAudit": "Start Audit",
+    "requestDemo": "Request Demo",
+    "discoverAI": "Discover AI",
+    "startFreeAudit": "Start Free Audit",
+    "signIn": "Sign In",
+    "signOut": "Sign Out"
+  },
+  "header": {
+    "tagline": "AI Solutions for Businesses"
+  },
+  "hero": {
+    "title": "Artificial Intelligence at the Service of Your Growth",
+    "subtitle": "Optimize your business processes with AI solutions tailored to your challenges",
+    "features": {
+      "simple": "Easy to understand",
+      "secure": "100% secure",
+      "support": "Expert support"
+    }
+  },
+  "footer": {
+    "company": "AInspiration",
+    "rights": "All rights reserved",
+    "description": "Custom Artificial Intelligence solutions to optimize your processes",
+    "sections": {
+      "features": "Features",
+      "legal": "Legal Information",
+      "contact": "Contact"
+    },
+    "links": {
+      "aiAnalysis": "AI Analysis",
+      "aiAudit": "AI Audit",
+      "promptMaster": "PromptMaster Pro",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Use"
+    },
+    "address": {
+      "street": "Grand place 50",
+      "city": "7850 Enghien",
+      "country": "Belgium"
+    },
+    "vat": "VAT: BE0462122648",
+    "contact": {
+      "email": "info@ainspiration.eu",
+      "phone": "+32 477 94 28 65"
+    }
+  },
+  "stats": {
+    "uptime": "24/7 Uptime",
+    "accuracy": "99.9% Accuracy",
+    "clients": "Satisfied Clients",
+    "trained": "5K+ Trained Models",
+    "acceleration": "2-4x Process Acceleration"
+  },
+  "cookies": {
+    "title": "We respect your privacy",
+    "description": "We use cookies to improve your experience, analyze traffic and personalize content. You can choose which cookies you accept. For more information, see our",
+    "privacyPolicy": "privacy policy",
+    "acceptAll": "Accept all cookies",
+    "acceptEssential": "Essential cookies only",
+    "close": "Close"
+  },
+  "testimonials": {
+    "title": "They Simplified Their Daily Lives",
+    "subtitle": "Concrete solutions that truly change entrepreneurs' lives",
+    "thierry": {
+      "name": "Thierry",
+      "role": "Restaurant Owner",
+      "city": "Brussels",
+      "text": "Before, it was hell: calls at all hours, reservations on Instagram, texts... We wasted so much time and had no-shows every week. Now, 100% of our reservations go through WhatsApp Business. The system automatically asks the right questions (date, time, number of people), sends confirmation and even a little reminder the day before. Result: we cut no-shows in half, I save at least 1 hour per day, and my customers love the simplicity. Honestly, it was super simple to set up and I would never go back. I recommend it to all restaurants tired of juggling reservations!",
+      "badge": "-50% no-shows"
+    },
+    "indicators": {
+      "easySetup": "Easy to set up",
+      "timeSaving": "Immediate time savings"
+    },
+    "cta": {
+      "title": "Request a Free Audit",
+      "subtitle": "Response within 24h • No commitment • 100% personalized",
+      "button": "Discover My Opportunities",
+      "badges": {
+        "freeAnalysis": "Free analysis of your case",
+        "customRecommendations": "Custom recommendations",
+        "noCommitment": "No commitment"
+      },
+      "alternative": {
+        "title": "Or choose your approach:",
+        "discuss": "💬 Let's discuss?",
+        "direct": "🚀 I want my audit",
+        "premium": "⭐ VIP Support"
+      }
+    }
+  }
+}

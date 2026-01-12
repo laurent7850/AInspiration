@@ -1,0 +1,26 @@
+{
+  "title": "Support",
+  "subtitle": "Assistance experte",
+  "channels": {
+    "chat": {
+      "title": "Chat en direct",
+      "desc": "Assistance immédiate"
+    },
+    "email": {
+      "title": "Email",
+      "desc": "Support détaillé"
+    },
+    "phone": {
+      "title": "Téléphone",
+      "desc": "Assistance personnelle"
+    }
+  },
+  "status": {
+    "available": "Disponible",
+    "unavailable": "Indisponible"
+  },
+  "stats": {
+    "response": "Temps de réponse",
+    "satisfaction": "Satisfaction client"
+  }
+}

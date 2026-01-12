@@ -1,0 +1,33 @@
+{
+  "title": "Analyse IA Avancée",
+  "subtitle": "Découvrez les insights cachés dans vos données",
+  "features": {
+    "realtime": {
+      "title": "Analyse en temps réel",
+      "desc": "Surveillez vos métriques clés en direct"
+    },
+    "predictive": {
+      "title": "Analyse prédictive",
+      "desc": "Anticipez les tendances et opportunités"
+    },
+    "optimization": {
+      "title": "Optimisation continue",
+      "desc": "Améliorez automatiquement vos processus"
+    },
+    "integration": {
+      "title": "Intégration facile",
+      "desc": "Compatible avec vos outils existants"
+    }
+  },
+  "stats": {
+    "accuracy": "99.9% de précision",
+    "processing": "Traitement en temps réel",
+    "improvement": "45% d'amélioration moyenne",
+    "satisfaction": "98% de clients satisfaits"
+  },
+  "cta": {
+    "title": "Prêt à découvrir le potentiel de vos données ?",
+    "subtitle": "Commencez votre analyse gratuite dès maintenant",
+    "button": "Démarrer l'analyse"
+  }
+}

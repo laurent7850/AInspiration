@@ -1,0 +1,52 @@
+{
+  "title": "Tarifs transparents",
+  "subtitle": "Choisissez le plan qui correspond à vos besoins",
+  "popular": "Plus populaire",
+  "monthly": "/mois",
+  "plans": {
+    "starter": {
+      "name": "Starter",
+      "description": "Parfait pour démarrer avec l'IA",
+      "price": "49€",
+      "features": [
+        "Analyse IA de base",
+        "5 projets",
+        "Support par email",
+        "Mises à jour mensuelles",
+        "1 utilisateur"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Pour les équipes en croissance",
+      "price": "99€",
+      "features": [
+        "Analyse IA avancée",
+        "Projets illimités",
+        "Support prioritaire",
+        "Mises à jour hebdomadaires",
+        "API access",
+        "5 utilisateurs",
+        "Rapports personnalisés"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "description": "Solutions sur mesure pour grandes entreprises",
+      "price": "Sur mesure",
+      "features": [
+        "Toutes les fonctionnalités Pro",
+        "Déploiement dédié",
+        "Support 24/7",
+        "SLA garanti",
+        "Formation sur site",
+        "Utilisateurs illimités",
+        "Intégration personnalisée"
+      ]
+    }
+  },
+  "cta": {
+    "startTrial": "Commencer l'essai gratuit",
+    "contactUs": "Nous contacter"
+  }
+}

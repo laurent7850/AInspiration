@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "getStarted": "Commencer",
+    "solutions": "Solutions IA",
+    "tools": "Outils",
+    "services": "Services",
+    "pricing": "Tarifs",
+    "analysis": "Analyse de données IA",
+    "recommendations": "Recommandations",
+    "dashboard": "Tableau de bord",
+    "prompts": "Bibliothèque de prompts",
+    "content": "Génération de contenu",
+    "support": "Support",
+    "about": "À propos",
+    "contact": "Contact",
+    "blog": "Blog",
+    "whyAI": "Pourquoi l'IA",
+    "forWho": "Pour qui",
+    "transformation": "Transformation numérique",
+    "automation": "Automatisation intelligente",
+    "creativity": "Outils créatifs",
+    "consulting": "Services de conseil",
+    "formation": "Formation IA",
+    "customSupport": "Support personnalisé",
+    "virtualAssistants": "Assistants virtuels",
+    "promptOptimization": "Optimisation de prompts",
+    "products": "Produits",
+    "caseStudies": "Études de cas",
+    "crmSolution": "CRM intelligent",
+    "visualCreation": "Création visuelle IA",
+    "crmDashboard": "Tableau de bord CRM"
+  },
+  "button": {
+    "backHome": "Retour à l'accueil",
+    "getStarted": "Commencer",
+    "startFreeTrial": "Essai gratuit",
+    "startNow": "Commencer maintenant",
+    "learnMore": "En savoir plus",
+    "contactUs": "Nous contacter",
+    "startAudit": "Démarrer l'audit",
+    "requestDemo": "Demander une démo",
+    "discoverAI": "Découvrir l'IA",
+    "startFreeAudit": "Démarrer l'audit gratuit",
+    "signIn": "Se connecter",
+    "signOut": "Déconnexion"
+  },
+  "header": {
+    "tagline": "Solutions d'IA pour Entreprises"
+  },
+  "hero": {
+    "title": "L'Intelligence Artificielle au service de votre croissance",
+    "subtitle": "Optimisez vos processus métiers grâce à des solutions d'IA adaptées à vos enjeux",
+    "features": {
+      "simple": "Simple à comprendre",
+      "secure": "100% sécurisé",
+      "support": "Support expert"
+    }
+  },
+  "footer": {
+    "company": "AInspiration",
+    "rights": "Tous droits réservés",
+    "description": "Solutions d'Intelligence Artificielle sur mesure pour optimiser vos processus",
+    "sections": {
+      "features": "Fonctionnalités",
+      "legal": "Informations Légales",
+      "contact": "Contact"
+    },
+    "links": {
+      "aiAnalysis": "Analyse IA",
+      "aiAudit": "Audit IA",
+      "promptMaster": "PromptMaster Pro",
+      "privacy": "Politique de confidentialité",
+      "terms": "Conditions d'utilisation"
+    },
+    "address": {
+      "street": "Grand place 50",
+      "city": "7850 Enghien",
+      "country": "Belgique"
+    },
+    "vat": "TVA : BE0462122648",
+    "contact": {
+      "email": "info@ainspiration.eu",
+      "phone": "+32 477 94 28 65"
+    }
+  },
+  "stats": {
+    "uptime": "Disponibilité 24/7",
+    "accuracy": "Précision 99.9%",
+    "clients": "Clients satisfaits",
+    "trained": "5K+ modèles entraînés",
+    "acceleration": "2-4x accélération processus"
+  },
+  "cookies": {
+    "title": "Nous respectons votre vie privée",
+    "description": "Nous utilisons des cookies pour améliorer votre expérience, analyser le trafic et personnaliser le contenu. Vous pouvez choisir les cookies que vous acceptez. Pour plus d'informations, consultez notre",
+    "privacyPolicy": "politique de confidentialité",
+    "acceptAll": "Accepter tous les cookies",
+    "acceptEssential": "Cookies essentiels uniquement",
+    "close": "Fermer"
+  },
+  "testimonials": {
+    "title": "Ils ont simplifié leur quotidien",
+    "subtitle": "Des solutions concrètes qui changent vraiment la vie des entrepreneurs",
+    "thierry": {
+      "name": "Thierry",
+      "role": "Restaurateur",
+      "city": "Bruxelles",
+      "text": "Avant, c'était l'enfer : des appels à toute heure, des réservations sur Instagram, des SMS... On perdait un temps fou et on avait des no-shows toutes les semaines. Maintenant, 100% de nos réservations passent par WhatsApp Business. Le système pose les bonnes questions automatiquement (date, heure, nombre de personnes), envoie la confirmation et même un petit rappel la veille. Résultat : on a divisé par deux les no-shows, je gagne au moins 1h par jour, et mes clients adorent la simplicité. Franchement, c'était super simple à mettre en place et je ne reviendrais jamais en arrière. Je recommande à tous les restos qui en ont marre de jongler avec les réservations !",
+      "badge": "-50% de no-shows"
+    },
+    "indicators": {
+      "easySetup": "Simple à mettre en place",
+      "timeSaving": "Gain de temps immédiat"
+    },
+    "cta": {
+      "title": "Demander un audit gratuit",
+      "subtitle": "Réponse sous 24h • Sans engagement • 100% personnalisé",
+      "button": "Découvrir mes opportunités",
+      "badges": {
+        "freeAnalysis": "Analyse gratuite de votre cas",
+        "customRecommendations": "Recommandations sur mesure",
+        "noCommitment": "Aucun engagement"
+      },
+      "alternative": {
+        "title": "Ou choisissez votre approche :",
+        "discuss": "💬 On en discute ?",
+        "direct": "🚀 Je veux mon audit",
+        "premium": "⭐ Accompagnement VIP"
+      }
+    }
+  }
+}

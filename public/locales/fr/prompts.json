@@ -1,0 +1,32 @@
+{
+  "title": "Bibliothèque de Prompts",
+  "subtitle": "Optimisez vos interactions IA",
+  "categories": {
+    "development": "Développement",
+    "marketing": "Marketing",
+    "education": "Formation",
+    "sales": "Ventes"
+  },
+  "features": {
+    "management": {
+      "title": "Gestion des prompts",
+      "desc": "Organisez vos prompts efficacement"
+    },
+    "ai": {
+      "title": "IA avancée",
+      "desc": "Optimisation automatique"
+    },
+    "version": {
+      "title": "Versioning",
+      "desc": "Suivez l'évolution"
+    },
+    "testing": {
+      "title": "Tests",
+      "desc": "Validez vos prompts"
+    }
+  },
+  "stats": {
+    "prompts": "Prompts créés",
+    "success": "Taux de réussite"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "getStarted": "Aan de slag",
+    "solutions": "AI Oplossingen",
+    "tools": "Tools",
+    "services": "Diensten",
+    "pricing": "Prijzen",
+    "analysis": "AI Data Analyse",
+    "recommendations": "Aanbevelingen",
+    "dashboard": "Dashboard",
+    "prompts": "Prompt Bibliotheek",
+    "content": "Content Generatie",
+    "support": "Ondersteuning",
+    "about": "Over ons",
+    "contact": "Contact",
+    "blog": "Blog",
+    "whyAI": "Waarom AI",
+    "forWho": "Voor wie",
+    "transformation": "Digitale Transformatie",
+    "automation": "Intelligente Automatisering",
+    "creativity": "Creatieve Tools",
+    "consulting": "Advies",
+    "formation": "AI Training",
+    "customSupport": "Maatwerk Ondersteuning",
+    "virtualAssistants": "Virtuele Assistenten",
+    "promptOptimization": "Prompt Optimalisatie",
+    "products": "Producten",
+    "caseStudies": "Casestudy's",
+    "crmSolution": "Smart CRM",
+    "visualCreation": "AI Visuele Creatie",
+    "crmDashboard": "CRM Dashboard"
+  },
+  "button": {
+    "backHome": "Terug naar Home",
+    "getStarted": "Aan de slag",
+    "startFreeTrial": "Gratis Proef",
+    "startNow": "Nu Beginnen",
+    "learnMore": "Meer Info",
+    "contactUs": "Contact",
+    "startAudit": "Start Audit",
+    "requestDemo": "Demo Aanvragen",
+    "discoverAI": "Ontdek AI",
+    "startFreeAudit": "Start Gratis Audit",
+    "signIn": "Inloggen",
+    "signOut": "Uitloggen"
+  },
+  "header": {
+    "tagline": "AI Oplossingen voor Bedrijven"
+  },
+  "hero": {
+    "title": "Kunstmatige Intelligentie ten dienste van uw groei",
+    "subtitle": "Optimaliseer uw bedrijfsprocessen met AI-oplossingen aangepast aan uw uitdagingen",
+    "features": {
+      "simple": "Eenvoudig te begrijpen",
+      "secure": "100% veilig",
+      "support": "Expert ondersteuning"
+    }
+  },
+  "footer": {
+    "company": "AInspiration",
+    "rights": "Alle rechten voorbehouden",
+    "description": "Maatwerk Kunstmatige Intelligentie oplossingen om uw processen te optimaliseren",
+    "sections": {
+      "features": "Functies",
+      "legal": "Juridische Informatie",
+      "contact": "Contact"
+    },
+    "links": {
+      "aiAnalysis": "AI Analyse",
+      "aiAudit": "AI Audit",
+      "promptMaster": "PromptMaster Pro",
+      "privacy": "Privacybeleid",
+      "terms": "Gebruiksvoorwaarden"
+    },
+    "address": {
+      "street": "Grand place 50",
+      "city": "7850 Enghien",
+      "country": "België"
+    },
+    "vat": "BTW: BE0462122648",
+    "contact": {
+      "email": "info@ainspiration.eu",
+      "phone": "+32 477 94 28 65"
+    }
+  },
+  "stats": {
+    "uptime": "24/7 Beschikbaarheid",
+    "accuracy": "99.9% Nauwkeurigheid",
+    "clients": "Tevreden klanten",
+    "trained": "5K+ Getrainde Modellen",
+    "acceleration": "2-4x Procesversnelling"
+  },
+  "cookies": {
+    "title": "We respecteren uw privacy",
+    "description": "We gebruiken cookies om uw ervaring te verbeteren, verkeer te analyseren en inhoud te personaliseren. U kunt kiezen welke cookies u accepteert. Voor meer informatie, zie ons",
+    "privacyPolicy": "privacybeleid",
+    "acceptAll": "Alle cookies accepteren",
+    "acceptEssential": "Alleen essentiële cookies",
+    "close": "Sluiten"
+  },
+  "testimonials": {
+    "title": "Zij vereenvoudigden hun dagelijks leven",
+    "subtitle": "Concrete oplossingen die echt het leven van ondernemers veranderen",
+    "thierry": {
+      "name": "Thierry",
+      "role": "Restaurateur",
+      "city": "Brussel",
+      "text": "Eerder was het een hel: telefoontjes op alle uren, reserveringen op Instagram, sms'jes... We verspilden zoveel tijd en hadden elke week no-shows. Nu gaan 100% van onze reserveringen via WhatsApp Business. Het systeem stelt automatisch de juiste vragen (datum, tijd, aantal personen), stuurt bevestiging en zelfs een kleine herinnering de dag ervoor. Resultaat: we hebben no-shows gehalveerd, ik bespaar minstens 1 uur per dag, en mijn klanten houden van de eenvoud. Eerlijk gezegd, het was super eenvoudig om in te stellen en ik zou nooit meer teruggaan. Ik beveel het aan alle restaurants die het zat zijn om met reserveringen te jongleren!",
+      "badge": "-50% no-shows"
+    },
+    "indicators": {
+      "easySetup": "Eenvoudig in te stellen",
+      "timeSaving": "Onmiddellijke tijdsbesparing"
+    },
+    "cta": {
+      "title": "Vraag een Gratis Audit aan",
+      "subtitle": "Antwoord binnen 24u • Geen verplichting • 100% gepersonaliseerd",
+      "button": "Ontdek Mijn Mogelijkheden",
+      "badges": {
+        "freeAnalysis": "Gratis analyse van uw geval",
+        "customRecommendations": "Aanbevelingen op maat",
+        "noCommitment": "Geen verplichting"
+      },
+      "alternative": {
+        "title": "Of kies uw aanpak:",
+        "discuss": "💬 Laten we praten?",
+        "direct": "🚀 Ik wil mijn audit",
+        "premium": "⭐ VIP Begeleiding"
+      }
+    }
+  }
+}

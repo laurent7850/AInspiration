@@ -1,0 +1,28 @@
+{
+  "title": "Features",
+  "subtitle": "Powerful tools for your business",
+  "analysis": {
+    "title": "AI Analysis",
+    "desc": "Analyze your data with precision",
+    "realtime": "Real-time Analysis",
+    "realtimeDesc": "Monitor your metrics live"
+  },
+  "recommendations": {
+    "title": "Recommendations",
+    "desc": "Optimize your decisions",
+    "realtime": "Real-time Suggestions",
+    "realtimeDesc": "Instant recommendations"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "desc": "Visualize your data",
+    "realtime": "Live Data",
+    "realtimeDesc": "Instant updates"
+  },
+  "prompts": {
+    "title": "Prompt Library",
+    "desc": "Optimize your AI interactions",
+    "management": "Prompt Management",
+    "managementDesc": "Organize and optimize your prompts"
+  }
+}

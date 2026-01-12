@@ -1,0 +1,14 @@
+{
+  "title": "Team Collaboration",
+  "subtitle": "Work together efficiently",
+  "features": {
+    "realtime": "Real-time Collaboration",
+    "sharing": "Easy Sharing",
+    "tracking": "Change Tracking",
+    "permissions": "Access Management"
+  },
+  "stats": {
+    "teams": "Active Teams",
+    "users": "Users"
+  }
+}

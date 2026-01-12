@@ -1,0 +1,24 @@
+{
+  "title": "Recommandations intelligentes",
+  "subtitle": "Optimisez vos décisions avec l'IA",
+  "features": {
+    "realtime": "Suggestions en temps réel",
+    "realtimeDesc": "Recommandations instantanées basées sur vos données",
+    "ai": "IA avancée",
+    "aiDesc": "Algorithmes sophistiqués pour des prédictions précises",
+    "custom": "Personnalisation",
+    "customDesc": "Adaptées à votre secteur d'activité",
+    "insights": "Insights actionnables",
+    "insightsDesc": "Transformez les données en actions concrètes"
+  },
+  "stats": {
+    "accuracy": "Précision des recommandations",
+    "clients": "Entreprises accompagnées",
+    "improvement": "Amélioration moyenne"
+  },
+  "cta": {
+    "title": "Optimisez vos processus",
+    "subtitle": "Découvrez la puissance des recommandations IA",
+    "button": "Commencer maintenant"
+  }
+}

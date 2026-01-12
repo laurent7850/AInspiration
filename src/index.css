@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Palette de couleurs */
+  --color-primary: #4F46E5; /* indigo-600 */
+  --color-primary-light: #6366F1; /* indigo-500 */
+  --color-primary-dark: #4338CA; /* indigo-700 */
+  --color-accent: #8B5CF6; /* violet-500 */
+  --color-accent-light: #A78BFA; /* violet-400 */
+  
+  /* Couleurs neutres */
+  --color-neutral-dark: #1F2937; /* gray-800 */
+  --color-neutral-medium: #6B7280; /* gray-500 */
+  --color-neutral-light: #F3F4F6; /* gray-100 */
+  --color-white: #FFFFFF;
+  
+  /* Couleurs sémantiques */
+  --color-success: #10B981; /* green-500 */
+  --color-error: #EF4444; /* red-500 */
+  --color-warning: #F59E0B; /* amber-500 */
+  --color-info: #0EA5E9; /* sky-500 */
+  
+  /* Espacements */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  
+  --primary: #0ea5e9;
+  --primary-dark: #0369a1;
+  --vh: 1vh;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  /* Fix for iOS height issues */
+  height: -webkit-fill-available;
+  width: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Fix for iOS height issues */
+  min-height: -webkit-fill-available;
+}
+
+/* Animation pour les modales */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Classes pour la modal */
+.modal-overlay {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.modal-content {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+/* Animation directe pour la modal */
+.animate-fadeIn {
+  animation: slideIn 0.3s ease forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+/* Fix pour assurer que la modal est toujours au-dessus de tout */
+.z-\[9999\] {
+  z-index: 9999 !important;
+}
+
+/* Classe pour assurer que la boîte de dialogue s'affiche correctement */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ajustements supplémentaires pour formulaires mobiles */
+@media (max-width: 640px) {
+  input, select, textarea, button {
+    font-size: 16px !important; /* Empêche le zoom sur mobile */
+  }
+}
+
+/* Amélioration des contrôles de formulaire sur iOS */
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Optimisation de la lisibilité des formulaires */
+input, select, textarea {
+  @apply focus:ring-2 focus:ring-indigo-300 focus:border-indigo-500 focus:outline-none;
+}
+
+/* Fix for iOS Safari's 100vh issue */
+.h-\[calc\(100\%-1rem\)\] {
+  height: calc(100% - 1rem);
+  height: calc(calc(var(--vh, 1vh) * 100) - 1rem);
+}
+
+/* Make touch targets better on mobile */
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+/* Improved scrolling on iOS */
+.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fil d'Ariane */
+.breadcrumb {
+  @apply flex flex-wrap items-center text-sm text-gray-500;
+}
+
+.breadcrumb-item:not(:last-child) {
+  @apply flex items-center;
+}
+
+.breadcrumb-link {
+  @apply text-gray-500 hover:text-indigo-600 transition-colors;
+}
+
+.breadcrumb-current {
+  @apply font-medium text-indigo-600;
+}

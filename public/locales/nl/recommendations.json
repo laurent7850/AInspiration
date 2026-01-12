@@ -1,0 +1,24 @@
+{
+  "title": "Intelligente aanbevelingen",
+  "subtitle": "Optimaliseer uw beslissingen met AI",
+  "features": {
+    "realtime": "Realtime suggesties",
+    "realtimeDesc": "Directe aanbevelingen op basis van uw gegevens",
+    "ai": "Geavanceerde AI",
+    "aiDesc": "Geavanceerde algoritmen voor nauwkeurige voorspellingen",
+    "custom": "Personalisatie",
+    "customDesc": "Aangepast aan uw sector",
+    "insights": "Bruikbare inzichten",
+    "insightsDesc": "Transformeer gegevens naar concrete acties"
+  },
+  "stats": {
+    "accuracy": "Nauwkeurigheid van aanbevelingen",
+    "clients": "Begeleidde bedrijven",
+    "improvement": "Gemiddelde verbetering"
+  },
+  "cta": {
+    "title": "Optimaliseer uw processen",
+    "subtitle": "Ontdek de kracht van AI-aanbevelingen",
+    "button": "Nu beginnen"
+  }
+}

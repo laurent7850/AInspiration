@@ -1,0 +1,133 @@
+{
+  "title": "Intelligent Automation",
+  "subtitle": "Free your team from repetitive tasks",
+  "mainFeatures": {
+    "workflows": {
+      "title": "Smart Workflows",
+      "description": "Automate your business processes end-to-end",
+      "examples": [
+        "Automatic document processing",
+        "Intelligent validation",
+        "Dynamic task routing",
+        "Contextual notifications"
+      ]
+    },
+    "integration": {
+      "title": "Seamless Integration",
+      "description": "Connect all your tools and systems",
+      "examples": [
+        "CRM and ERP",
+        "Communication tools",
+        "Databases",
+        "External APIs"
+      ]
+    },
+    "realtime": {
+      "title": "Real-time Actions",
+      "description": "Instant responses to events",
+      "examples": [
+        "Smart alerts",
+        "Conditional actions",
+        "Custom triggers",
+        "Live monitoring"
+      ]
+    }
+  },
+  "useCases": {
+    "title": "Use Cases",
+    "documents": {
+      "title": "Documents & Data",
+      "tasks": [
+        "Automatic data extraction",
+        "Document classification",
+        "Intelligent validation",
+        "Automatic archiving"
+      ]
+    },
+    "processes": {
+      "title": "Business Processes",
+      "tasks": [
+        "Approval management",
+        "Order tracking",
+        "Automatic invoicing",
+        "Automated reporting"
+      ]
+    },
+    "communication": {
+      "title": "Communication",
+      "tasks": [
+        "Automatic responses",
+        "Lead qualification",
+        "Automated customer follow-up",
+        "Personalized campaigns"
+      ]
+    }
+  },
+  "metrics": [
+    {
+      "value": "-60%",
+      "label": "Time Saved",
+      "description": "On manual tasks"
+    },
+    {
+      "value": "+90%",
+      "label": "Accuracy",
+      "description": "In processing"
+    },
+    {
+      "value": "24/7",
+      "label": "Availability",
+      "description": "Of processes"
+    }
+  ],
+  "schedule": [
+    {
+      "title": "Planning",
+      "description": "Automate according to your schedule"
+    },
+    {
+      "title": "Execution",
+      "description": "Continuous intelligent processing"
+    },
+    {
+      "title": "Notification",
+      "description": "Automatic alerts and reports"
+    }
+  ],
+  "quickStats": {
+    "setup": {
+      "value": "1 day",
+      "label": "Setup"
+    },
+    "roi": {
+      "value": "ROI",
+      "label": "Immediate"
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "steps": [
+      {
+        "title": "Analysis",
+        "description": "Identification of automatable processes"
+      },
+      {
+        "title": "Configuration",
+        "description": "Setting up workflows and rules"
+      },
+      {
+        "title": "Deployment",
+        "description": "Progressive rollout"
+      },
+      {
+        "title": "Optimization",
+        "description": "Continuous improvement with AI"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to automate your processes?",
+    "subtitle": "Discover how AI automation can transform your business",
+    "button": "Start Automation"
+  }
+}

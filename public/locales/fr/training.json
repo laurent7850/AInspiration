@@ -1,0 +1,22 @@
+{
+  "title": "Formation IA",
+  "subtitle": "Développez vos compétences",
+  "modules": {
+    "basics": {
+      "title": "Fondamentaux",
+      "desc": "Bases de l'IA"
+    },
+    "advanced": {
+      "title": "Avancé",
+      "desc": "Techniques expertes"
+    },
+    "specific": {
+      "title": "Spécialisation",
+      "desc": "Formation métier"
+    }
+  },
+  "stats": {
+    "satisfaction": "Satisfaction",
+    "certified": "Personnes formées"
+  }
+}

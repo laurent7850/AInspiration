@@ -1,0 +1,19 @@
+{
+  "title": "Rédaction IA",
+  "subtitle": "Créez du contenu impactant",
+  "features": {
+    "automated": "Rédaction automatisée",
+    "multilingual": "Multi-langues",
+    "targeted": "Contenu ciblé",
+    "formats": "Formats variés"
+  },
+  "types": {
+    "blog": "Articles blog",
+    "email": "Emails marketing",
+    "social": "Réseaux sociaux"
+  },
+  "stats": {
+    "generated": "Articles générés",
+    "languages": "Langues supportées"
+  }
+}

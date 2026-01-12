@@ -1,0 +1,22 @@
+{
+  "title": "AI Training",
+  "subtitle": "Ontwikkel uw vaardigheden",
+  "modules": {
+    "basics": {
+      "title": "Basis",
+      "desc": "AI-grondbeginselen"
+    },
+    "advanced": {
+      "title": "Gevorderd",
+      "desc": "Experttechnieken"
+    },
+    "specific": {
+      "title": "Specialisatie",
+      "desc": "Vakgerichte training"
+    }
+  },
+  "stats": {
+    "satisfaction": "Tevredenheid",
+    "certified": "Getrainde personen"
+  }
+}

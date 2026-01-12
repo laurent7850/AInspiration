@@ -1,0 +1,24 @@
+{
+  "title": "Dashboard",
+  "subtitle": "Bestuur uw prestaties",
+  "metrics": {
+    "sales": "Verkoop",
+    "clients": "Klanten",
+    "conversion": "Conversie",
+    "session": "Sessieduur"
+  },
+  "features": {
+    "realtime": "Realtime",
+    "realtimeDesc": "Live gegevens",
+    "comparative": "Vergelijkende analyse",
+    "comparativeDesc": "Vergelijk uw prestaties",
+    "custom": "Personalisatie",
+    "customDesc": "Pas uw statistieken aan",
+    "alerts": "Waarschuwingen",
+    "alertsDesc": "Intelligente meldingen"
+  },
+  "stats": {
+    "response": "Reactietijd",
+    "updates": "Updates"
+  }
+}

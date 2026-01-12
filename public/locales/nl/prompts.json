@@ -1,0 +1,32 @@
+{
+  "title": "Promptbibliotheek",
+  "subtitle": "Optimaliseer uw AI-interacties",
+  "categories": {
+    "development": "Ontwikkeling",
+    "marketing": "Marketing",
+    "education": "Training",
+    "sales": "Verkoop"
+  },
+  "features": {
+    "management": {
+      "title": "Promptbeheer",
+      "desc": "Organiseer uw prompts efficiënt"
+    },
+    "ai": {
+      "title": "Geavanceerde AI",
+      "desc": "Automatische optimalisatie"
+    },
+    "version": {
+      "title": "Versiebeheer",
+      "desc": "Volg de evolutie"
+    },
+    "testing": {
+      "title": "Testen",
+      "desc": "Valideer uw prompts"
+    }
+  },
+  "stats": {
+    "prompts": "Aangemaakte prompts",
+    "success": "Succespercentage"
+  }
+}

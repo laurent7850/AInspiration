@@ -1,0 +1,49 @@
+{
+  "enhancedContent": {
+    "measurableResults": "Measurable Results",
+    "improvement": "Improvement"
+  },
+  "cta": {
+    "audit": {
+      "title": "Ready to transform your business with AI?",
+      "description": "Discover how AI can optimize your processes and improve your productivity. Start with a free audit.",
+      "button": "Request a free audit",
+      "benefits": {
+        "1": "Identify automation opportunities",
+        "2": "Get a personalized action plan",
+        "3": "Estimate your transformation ROI"
+      }
+    },
+    "consultation": {
+      "title": "Need personalized support?",
+      "description": "Our team of experts supports you in your digital transformation, from strategy to implementation.",
+      "button": "Book a consultation",
+      "benefits": {
+        "1": "Tailored strategic advice",
+        "2": "Support throughout the project",
+        "3": "Technical and business expertise"
+      }
+    },
+    "formation": {
+      "title": "Train your teams in AI",
+      "description": "Develop your employees' skills with our practical training adapted to your needs.",
+      "button": "Discover our training programs",
+      "benefits": {
+        "1": "Practical and interactive training",
+        "2": "Content adapted to your sector",
+        "3": "Certification included"
+      }
+    },
+    "default": {
+      "title": "Take action today",
+      "description": "Transform your business with AI. Our experts are here to support you every step of the way.",
+      "button": "Get started now",
+      "benefits": {
+        "1": "Custom solutions for your business",
+        "2": "Measurable and fast ROI",
+        "3": "Continuous support and guidance"
+      }
+    },
+    "footer": "No commitment • Response within 24h • 100% free audit"
+  }
+}

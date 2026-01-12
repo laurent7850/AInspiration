@@ -1,0 +1,19 @@
+{
+  "title": "AI Schrijven",
+  "subtitle": "Creëer impactvolle content",
+  "features": {
+    "automated": "Geautomatiseerd schrijven",
+    "multilingual": "Meertalig",
+    "targeted": "Gerichte content",
+    "formats": "Diverse formaten"
+  },
+  "types": {
+    "blog": "Blogartikelen",
+    "email": "Marketing e-mails",
+    "social": "Sociale media"
+  },
+  "stats": {
+    "generated": "Gegenereerde artikelen",
+    "languages": "Ondersteunde talen"
+  }
+}

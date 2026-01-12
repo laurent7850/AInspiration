@@ -1,0 +1,70 @@
+{
+  "title": "Audit IA",
+  "subtitle": "Évaluez votre potentiel d'innovation avec l'IA",
+  "steps": {
+    "analysis": {
+      "title": "Analyse initiale",
+      "desc": "Évaluation complète de vos processus actuels"
+    },
+    "diagnostic": {
+      "title": "Diagnostic approfondi",
+      "desc": "Identification des opportunités d'amélioration"
+    },
+    "impact": {
+      "title": "Analyse d'impact",
+      "desc": "Estimation des bénéfices potentiels"
+    },
+    "plan": {
+      "title": "Plan d'action",
+      "desc": "Recommandations détaillées et feuille de route"
+    }
+  },
+  "form": {
+    "title": "Commencer votre audit gratuit",
+    "subtitle": "Remplissez le formulaire pour débuter",
+    "company": {
+      "name": "Nom de l'entreprise",
+      "placeholder": "Votre entreprise"
+    },
+    "industry": {
+      "title": "Secteur d'activité",
+      "placeholder": "Sélectionnez votre secteur",
+      "tech": "Technologies",
+      "finance": "Finance",
+      "health": "Santé",
+      "retail": "Commerce",
+      "manufacturing": "Industrie",
+      "services": "Services",
+      "other": "Autre"
+    },
+    "size": {
+      "title": "Taille de l'entreprise",
+      "placeholder": "Sélectionnez la taille",
+      "1-10": "1-10 employés",
+      "11-50": "11-50 employés",
+      "51-200": "51-200 employés",
+      "201-500": "201-500 employés",
+      "500+": "500+ employés"
+    },
+    "email": {
+      "title": "Email professionnel",
+      "placeholder": "votre@email.com"
+    },
+    "phone": {
+      "title": "Téléphone",
+      "placeholder": "+32 XXX XX XX XX"
+    },
+    "privacy": "Vos données sont protégées et ne seront jamais partagées",
+    "submit": "Lancer l'audit gratuit",
+    "next": "Suivant",
+    "back": "Retour",
+    "step1": "Informations entreprise",
+    "step2": "Contact"
+  },
+  "success": {
+    "title": "Merci pour votre demande !",
+    "message": "Nous avons bien reçu votre demande d'audit",
+    "response": "Réponse sous 24h",
+    "close": "Fermer"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Smart Recommendations",
+  "subtitle": "Optimize your decisions with AI",
+  "features": {
+    "realtime": "Real-time Suggestions",
+    "realtimeDesc": "Instant recommendations based on your data",
+    "ai": "Advanced AI",
+    "aiDesc": "Sophisticated algorithms for accurate predictions",
+    "custom": "Personalization",
+    "customDesc": "Tailored to your industry",
+    "insights": "Actionable Insights",
+    "insightsDesc": "Transform data into concrete actions"
+  },
+  "stats": {
+    "accuracy": "Recommendation Accuracy",
+    "clients": "Supported Companies",
+    "improvement": "Average Improvement"
+  },
+  "cta": {
+    "title": "Optimize Your Processes",
+    "subtitle": "Discover the power of AI recommendations",
+    "button": "Start Now"
+  }
+}

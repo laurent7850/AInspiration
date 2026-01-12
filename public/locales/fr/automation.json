@@ -1,0 +1,133 @@
+{
+  "title": "Automatisation Intelligente",
+  "subtitle": "Libérez votre équipe des tâches répétitives",
+  "mainFeatures": {
+    "workflows": {
+      "title": "Workflows intelligents",
+      "description": "Automatisez vos processus métier de bout en bout",
+      "examples": [
+        "Traitement automatique des documents",
+        "Validation intelligente",
+        "Routage dynamique des tâches",
+        "Notifications contextuelles"
+      ]
+    },
+    "integration": {
+      "title": "Intégration transparente",
+      "description": "Connectez tous vos outils et systèmes",
+      "examples": [
+        "CRM et ERP",
+        "Outils de communication",
+        "Bases de données",
+        "APIs externes"
+      ]
+    },
+    "realtime": {
+      "title": "Actions temps réel",
+      "description": "Réponses instantanées aux événements",
+      "examples": [
+        "Alertes intelligentes",
+        "Actions conditionnelles",
+        "Déclencheurs personnalisés",
+        "Suivi en direct"
+      ]
+    }
+  },
+  "useCases": {
+    "title": "Cas d'usage",
+    "documents": {
+      "title": "Documents & Données",
+      "tasks": [
+        "Extraction automatique de données",
+        "Classification de documents",
+        "Validation intelligente",
+        "Archivage automatique"
+      ]
+    },
+    "processes": {
+      "title": "Processus métier",
+      "tasks": [
+        "Gestion des approbations",
+        "Suivi des commandes",
+        "Facturation automatique",
+        "Reporting automatisé"
+      ]
+    },
+    "communication": {
+      "title": "Communication",
+      "tasks": [
+        "Réponses automatiques",
+        "Qualification des leads",
+        "Suivi client automatisé",
+        "Campagnes personnalisées"
+      ]
+    }
+  },
+  "metrics": [
+    {
+      "value": "-60%",
+      "label": "Temps gagné",
+      "description": "Sur les tâches manuelles"
+    },
+    {
+      "value": "+90%",
+      "label": "Précision",
+      "description": "Dans le traitement"
+    },
+    {
+      "value": "24/7",
+      "label": "Disponibilité",
+      "description": "Des processus"
+    }
+  ],
+  "schedule": [
+    {
+      "title": "Planification",
+      "description": "Automatisez selon votre calendrier"
+    },
+    {
+      "title": "Exécution",
+      "description": "Traitement intelligent continu"
+    },
+    {
+      "title": "Notification",
+      "description": "Alertes et rapports automatiques"
+    }
+  ],
+  "quickStats": {
+    "setup": {
+      "value": "1 jour",
+      "label": "Mise en place"
+    },
+    "roi": {
+      "value": "ROI",
+      "label": "Immédiat"
+    }
+  },
+  "howItWorks": {
+    "title": "Fonctionnement",
+    "steps": [
+      {
+        "title": "Analyse",
+        "description": "Identification des processus automatisables"
+      },
+      {
+        "title": "Configuration",
+        "description": "Paramétrage des workflows et règles"
+      },
+      {
+        "title": "Déploiement",
+        "description": "Mise en production progressive"
+      },
+      {
+        "title": "Optimisation",
+        "description": "Amélioration continue avec l'IA"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Prêt à automatiser vos processus ?",
+    "subtitle": "Découvrez comment l'automatisation IA peut transformer votre entreprise",
+    "button": "Démarrer l'automatisation"
+  }
+}

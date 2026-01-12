@@ -1,0 +1,49 @@
+{
+  "enhancedContent": {
+    "measurableResults": "Meetbare Resultaten",
+    "improvement": "Verbetering"
+  },
+  "cta": {
+    "audit": {
+      "title": "Klaar om uw bedrijf te transformeren met AI?",
+      "description": "Ontdek hoe AI uw processen kan optimaliseren en uw productiviteit kan verbeteren. Begin met een gratis audit.",
+      "button": "Vraag een gratis audit aan",
+      "benefits": {
+        "1": "Identificeer automatiseringsmogelijkheden",
+        "2": "Krijg een gepersonaliseerd actieplan",
+        "3": "Schat de ROI van uw transformatie"
+      }
+    },
+    "consultation": {
+      "title": "Behoefte aan persoonlijke begeleiding?",
+      "description": "Ons team van experts begeleidt u bij uw digitale transformatie, van strategie tot implementatie.",
+      "button": "Boek een consultatie",
+      "benefits": {
+        "1": "Op maat gemaakt strategisch advies",
+        "2": "Begeleiding gedurende het hele project",
+        "3": "Technische en zakelijke expertise"
+      }
+    },
+    "formation": {
+      "title": "Train uw teams in AI",
+      "description": "Ontwikkel de vaardigheden van uw medewerkers met onze praktische trainingen aangepast aan uw behoeften.",
+      "button": "Ontdek onze trainingen",
+      "benefits": {
+        "1": "Praktische en interactieve trainingen",
+        "2": "Inhoud aangepast aan uw sector",
+        "3": "Certificering inbegrepen"
+      }
+    },
+    "default": {
+      "title": "Neem vandaag actie",
+      "description": "Transformeer uw bedrijf met AI. Onze experts staan klaar om u bij elke stap te ondersteunen.",
+      "button": "Begin nu",
+      "benefits": {
+        "1": "Op maat gemaakte oplossingen voor uw bedrijf",
+        "2": "Meetbare en snelle ROI",
+        "3": "Continue ondersteuning en begeleiding"
+      }
+    },
+    "footer": "Geen verplichting • Reactie binnen 24u • 100% gratis audit"
+  }
+}
