@@ -1,16 +1,56 @@
+# Robots.txt for AInspiration
+# https://ainspiration.be
+
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://ainspiration.eu/sitemap.xml
+# Disallow private/authenticated pages
+Disallow: /dashboard
+Disallow: /crm-dashboard
+Disallow: /opportunities
+Disallow: /contacts
+Disallow: /companies
+Disallow: /products
+Disallow: /tasks
+Disallow: /reports
+Disallow: /messages
+Disallow: /login
 
-# Paramètres spécifiques
+# Disallow API and system files
 Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
 Disallow: /*.json$
-Disallow: /*.js$
-Disallow: /*.css$
+Disallow: /stats.html
 
-# Temps de crawl
-Crawl-delay: 10
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://ainspiration.be/sitemap.xml
+
+# Google specific
+User-agent: Googlebot
+Allow: /
+Disallow: /dashboard
+Disallow: /crm-dashboard
+Disallow: /opportunities
+Disallow: /contacts
+Disallow: /companies
+Disallow: /products
+Disallow: /tasks
+Disallow: /reports
+Disallow: /messages
+Disallow: /login
+
+# Bing specific
+User-agent: Bingbot
+Allow: /
+Disallow: /dashboard
+Disallow: /crm-dashboard
+Disallow: /opportunities
+Disallow: /contacts
+Disallow: /companies
+Disallow: /products
+Disallow: /tasks
+Disallow: /reports
+Disallow: /messages
+Disallow: /login

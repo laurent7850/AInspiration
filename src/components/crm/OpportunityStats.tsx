@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { 
-  TrendingUp, 
-  PieChart, 
-  BarChart2, 
-  Clock, 
-  AlertCircle, 
-  DollarSign 
+import { useEffect, useState } from 'react';
+import {
+  TrendingUp,
+  PieChart,
+  BarChart2,
+  Clock,
+  AlertCircle,
+  DollarSign
 } from 'lucide-react';
 import { fetchOpportunities } from '../../services/opportunityService';
-import { Opportunity } from '../../utils/types';
+import { Opportunity, OpportunityStage } from '../../utils/types';
 
 const OpportunityStats: React.FC = () => {
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
@@ -81,22 +81,22 @@ const OpportunityStats: React.FC = () => {
   };
 
   // Compter les opportunités par étape
-  const stageDistribution = stages => {
-    const distribution = {
+  const getStageDistribution = () => {
+    const distribution: Record<OpportunityStage, number> = {
       'Qualification': 0,
       'Proposition': 0,
       'Négociation': 0,
       'Gagné': 0,
       'Perdu': 0
     };
-    
+
     opportunities.forEach(opp => {
       if (distribution[opp.stage] !== undefined) {
         distribution[opp.stage]++;
       }
     });
-    
-    return Object.keys(distribution).map(stage => ({
+
+    return (Object.keys(distribution) as OpportunityStage[]).map(stage => ({
       stage,
       count: distribution[stage]
     }));

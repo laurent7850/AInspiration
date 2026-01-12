@@ -29,9 +29,8 @@
   --space-4: 1rem; /* 16px */
   --space-6: 1.5rem; /* 24px */
   --space-8: 2rem; /* 32px */
-  
-  --primary: #0ea5e9;
-  --primary-dark: #0369a1;
+
+  /* Viewport height fix pour iOS */
   --vh: 1vh;
 }
 

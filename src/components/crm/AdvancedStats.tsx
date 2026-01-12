@@ -1,4 +1,3 @@
-import React from 'react';
 import { TrendingUp, TrendingDown, Minus, DollarSign, Clock, Target, BarChart2 } from 'lucide-react';
 import { Opportunity, Task, Contact } from '../../utils/types';
 
@@ -42,7 +41,7 @@ const AdvancedStats: React.FC<AdvancedStatsProps> = ({ opportunities, tasks, con
     if (completedWithDates.length === 0) return 0;
 
     const totalDays = completedWithDates.reduce((sum, opp) => {
-      const created = new Date(opp.created_at);
+      const created = new Date(opp.created_at!);
       const updated = new Date(opp.updated_at!);
       const days = Math.floor((updated.getTime() - created.getTime()) / (1000 * 60 * 60 * 24));
       return sum + days;

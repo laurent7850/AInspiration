@@ -3,10 +3,13 @@ import { Contact } from '../utils/types';
 import { recordActivity } from './activityService';
 
 export const fetchContacts = async (): Promise<Contact[]> => {
-  // First, fetch all contacts
+  // Fetch contacts with company information in a single query using join
   const { data: contacts, error } = await supabase
     .from('contacts')
-    .select('*')
+    .select(`
+      *,
+      company:companies(id, name)
+    `)
     .order('created_at', { ascending: false });
 
   if (error) {
@@ -14,49 +17,21 @@ export const fetchContacts = async (): Promise<Contact[]> => {
     throw new Error('Failed to load contacts');
   }
 
-  // Process contacts to include company information
-  const contactsWithCompany = await Promise.all(
-    contacts.map(async (contact) => {
-      if (contact.company_id) {
-        // For each contact with a company_id, fetch the company details
-        const { data: company, error: companyError } = await supabase
-          .from('companies')
-          .select('id, name')
-          .eq('id', contact.company_id)
-          .single();
-
-        if (companyError) {
-          console.warn(`Error fetching company for contact ${contact.id}:`, companyError);
-          return {
-            ...contact,
-            company: null,
-            company_name: null
-          };
-        }
-
-        return {
-          ...contact,
-          company,
-          company_name: company?.name || null
-        };
-      }
-
-      // Return the contact without company information if no company_id
-      return {
-        ...contact,
-        company: null,
-        company_name: null
-      };
-    })
-  );
-
-  return contactsWithCompany;
+  // Transform data to match expected format
+  return contacts.map(contact => ({
+    ...contact,
+    company_name: contact.company?.name || null
+  }));
 };
 
 export const fetchContact = async (id: string): Promise<Contact> => {
+  // Fetch contact with company in a single query
   const { data, error } = await supabase
     .from('contacts')
-    .select('*')
+    .select(`
+      *,
+      company:companies(id, name)
+    `)
     .eq('id', id)
     .single();
 
@@ -65,27 +40,9 @@ export const fetchContact = async (id: string): Promise<Contact> => {
     throw new Error('Failed to load contact details');
   }
 
-  // If contact has company_id, fetch company details
-  let company = null;
-  let company_name = null;
-
-  if (data.company_id) {
-    const { data: companyData, error: companyError } = await supabase
-      .from('companies')
-      .select('id, name')
-      .eq('id', data.company_id)
-      .single();
-
-    if (!companyError && companyData) {
-      company = companyData;
-      company_name = companyData.name;
-    }
-  }
-
   return {
     ...data,
-    company,
-    company_name
+    company_name: data.company?.name || null
   };
 };
 

@@ -128,6 +128,24 @@ export interface ContactMessage {
   updated_at: string;
 }
 
+export interface NewsletterSubscriber {
+  id: string;
+  email: string;
+  created_at?: string;
+}
+
+export interface AccessLog {
+  id: string;
+  user_id?: string;
+  user_agent: string;
+  page_url: string;
+  status?: string;
+  event_type: string;
+  ip_address?: string;
+  metadata?: Record<string, unknown>;
+  created_at?: string;
+}
+
 export interface Database {
   public: {
     Tables: {
@@ -166,6 +184,21 @@ export interface Database {
         Insert: Omit<Activity, 'id' | 'created_at' | 'related_to_name'>;
         Update: Partial<Omit<Activity, 'id' | 'created_at' | 'related_to_name'>>;
       };
-    }
-  }
+      newsletter_subscribers: {
+        Row: NewsletterSubscriber;
+        Insert: Omit<NewsletterSubscriber, 'id' | 'created_at'>;
+        Update: Partial<Omit<NewsletterSubscriber, 'id'>>;
+      };
+      contact_messages: {
+        Row: ContactMessage;
+        Insert: Omit<ContactMessage, 'id' | 'created_at' | 'updated_at' | 'status'>;
+        Update: Partial<Omit<ContactMessage, 'id'>>;
+      };
+      access_logs: {
+        Row: AccessLog;
+        Insert: Omit<AccessLog, 'id' | 'created_at'>;
+        Update: Partial<Omit<AccessLog, 'id'>>;
+      };
+    };
+  };
 }

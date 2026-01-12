@@ -1,10 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { DollarSign, Calendar, User, Building, Package, ArrowDownUp } from 'lucide-react';
 import { Opportunity } from '../../../utils/types';
 import { fetchOpportunities } from '../../../services/opportunityService';
 import ReportFilters from './ReportFilters';
 import ReportExporter from './ReportExporter';
 import DateRangePicker from './DateRangePicker';
+
+interface FilterOption {
+  value: string;
+  label: string;
+}
+
+interface FilterConfig {
+  label: string;
+  options: FilterOption[];
+  selected: string[];
+}
+
+type OpportunityFilters = {
+  stage: FilterConfig;
+};
 
 const OpportunitiesReport: React.FC = () => {
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
@@ -17,8 +32,8 @@ const OpportunitiesReport: React.FC = () => {
     start: new Date(new Date().setDate(new Date().getDate() - 30)),
     end: new Date()
   });
-  
-  const [filters, setFilters] = useState({
+
+  const [filters, setFilters] = useState<OpportunityFilters>({
     stage: {
       label: "Étape",
       options: [
@@ -97,22 +112,26 @@ const OpportunitiesReport: React.FC = () => {
         valueB = valueB.getTime();
       }
       
-      if (valueA < valueB) return sortDirection === 'asc' ? -1 : 1;
-      if (valueA > valueB) return sortDirection === 'asc' ? 1 : -1;
+      if (valueA !== undefined && valueB !== undefined) {
+        if (valueA < valueB) return sortDirection === 'asc' ? -1 : 1;
+        if (valueA > valueB) return sortDirection === 'asc' ? 1 : -1;
+      }
       return 0;
     });
-    
+
     setFilteredOpportunities(result);
   }, [opportunities, filters, sortField, sortDirection, dateRange]);
-  
+
   const handleFilterChange = (filterName: string, values: string[]) => {
-    setFilters(prev => ({
-      ...prev,
-      [filterName]: {
-        ...prev[filterName],
-        selected: values
-      }
-    }));
+    if (filterName in filters) {
+      setFilters(prev => ({
+        ...prev,
+        [filterName]: {
+          ...prev[filterName as keyof OpportunityFilters],
+          selected: values
+        }
+      }));
+    }
   };
   
   const handleSort = (field: string) => {

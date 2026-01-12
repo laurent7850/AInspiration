@@ -1,10 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { User, Mail, Phone, Building, Calendar, ArrowDownUp } from 'lucide-react';
 import { Contact } from '../../../utils/types';
 import { fetchContacts } from '../../../services/contactService';
 import ReportFilters from './ReportFilters';
 import ReportExporter from './ReportExporter';
 import DateRangePicker from './DateRangePicker';
+
+interface FilterOption {
+  value: string;
+  label: string;
+}
+
+interface FilterConfig {
+  label: string;
+  options: FilterOption[];
+  selected: string[];
+}
+
+type ContactFilters = {
+  status: FilterConfig;
+};
 
 const ContactsReport: React.FC = () => {
   const [contacts, setContacts] = useState<Contact[]>([]);
@@ -17,8 +32,8 @@ const ContactsReport: React.FC = () => {
     start: new Date(new Date().setDate(new Date().getDate() - 30)),
     end: new Date()
   });
-  
-  const [filters, setFilters] = useState({
+
+  const [filters, setFilters] = useState<ContactFilters>({
     status: {
       label: "Statut",
       options: [
@@ -95,8 +110,10 @@ const ContactsReport: React.FC = () => {
         valueB = valueB.getTime();
       }
 
-      if (valueA < valueB) return sortDirection === 'asc' ? -1 : 1;
-      if (valueA > valueB) return sortDirection === 'asc' ? 1 : -1;
+      if (valueA !== undefined && valueB !== undefined) {
+        if (valueA < valueB) return sortDirection === 'asc' ? -1 : 1;
+        if (valueA > valueB) return sortDirection === 'asc' ? 1 : -1;
+      }
       return 0;
     });
     
@@ -104,13 +121,15 @@ const ContactsReport: React.FC = () => {
   }, [contacts, filters, sortField, sortDirection, dateRange]);
   
   const handleFilterChange = (filterName: string, values: string[]) => {
-    setFilters(prev => ({
-      ...prev,
-      [filterName]: {
-        ...prev[filterName],
-        selected: values
-      }
-    }));
+    if (filterName in filters) {
+      setFilters(prev => ({
+        ...prev,
+        [filterName]: {
+          ...prev[filterName as keyof ContactFilters],
+          selected: values
+        }
+      }));
+    }
   };
   
   const handleSort = (field: string) => {

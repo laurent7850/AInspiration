@@ -1,10 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { CheckSquare, Calendar, Tag, AlertCircle, Clock, User, ArrowDownUp } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { CheckSquare, Calendar, Tag, AlertCircle, Clock, ArrowDownUp } from 'lucide-react';
 import { Task } from '../../../utils/types';
 import { fetchTasks, getTaskPriorities, getTaskStatuses } from '../../../services/taskService';
 import ReportFilters from './ReportFilters';
 import ReportExporter from './ReportExporter';
 import DateRangePicker from './DateRangePicker';
+
+interface FilterOption {
+  value: string;
+  label: string;
+}
+
+interface FilterConfig {
+  label: string;
+  options: FilterOption[];
+  selected: string[];
+}
+
+type TaskFilters = {
+  status: FilterConfig;
+  priority: FilterConfig;
+  completed: FilterConfig;
+};
 
 const TasksReport: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -17,11 +34,11 @@ const TasksReport: React.FC = () => {
     start: new Date(new Date().setDate(new Date().getDate() - 30)),
     end: new Date()
   });
-  
+
   const priorities = getTaskPriorities();
   const statuses = getTaskStatuses();
-  
-  const [filters, setFilters] = useState({
+
+  const [filters, setFilters] = useState<TaskFilters>({
     status: {
       label: "Statut",
       options: [
@@ -138,22 +155,26 @@ const TasksReport: React.FC = () => {
         valueB = valueB.getTime();
       }
       
-      if (valueA < valueB) return sortDirection === 'asc' ? -1 : 1;
-      if (valueA > valueB) return sortDirection === 'asc' ? 1 : -1;
+      if (valueA !== undefined && valueB !== undefined) {
+        if (valueA < valueB) return sortDirection === 'asc' ? -1 : 1;
+        if (valueA > valueB) return sortDirection === 'asc' ? 1 : -1;
+      }
       return 0;
     });
-    
+
     setFilteredTasks(result);
   }, [tasks, filters, sortField, sortDirection, dateRange]);
-  
+
   const handleFilterChange = (filterName: string, values: string[]) => {
-    setFilters(prev => ({
-      ...prev,
-      [filterName]: {
-        ...prev[filterName],
-        selected: values
-      }
-    }));
+    if (filterName in filters) {
+      setFilters(prev => ({
+        ...prev,
+        [filterName]: {
+          ...prev[filterName as keyof TaskFilters],
+          selected: values
+        }
+      }));
+    }
   };
   
   const handleSort = (field: string) => {

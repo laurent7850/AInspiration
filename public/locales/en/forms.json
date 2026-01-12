@@ -60,7 +60,8 @@
     "error": {
       "title": "Error sending:",
       "message": "An error occurred while sending the form. Please try again or contact us directly by email.",
-      "general": "An error occurred while sending the form. Please try again."
+      "general": "An error occurred while sending the form. Please try again.",
+      "rateLimit": "Too many requests. Please wait a minute before trying again."
     }
   },
   "products": {
@@ -123,11 +124,15 @@
     "title": "Stay Informed",
     "description": "Subscribe to our newsletter to receive the latest news and tips about AI.",
     "placeholder": "Your email address",
-    "submit": "Subscribe",
-    "loading": "Subscribing...",
-    "invalidEmail": "Please enter a valid email address.",
+    "subscribe": "Subscribe",
+    "subscribing": "Subscribing...",
     "success": "Thank you for subscribing!",
-    "error": "An error occurred. Please try again.",
-    "disclaimer": "We respect your privacy and never share your data. Easy unsubscribe at any time."
+    "privacy": "We respect your privacy and never share your data. Easy unsubscribe at any time.",
+    "dismiss": "No thanks",
+    "error": {
+      "invalidEmail": "Please enter a valid email address.",
+      "general": "An error occurred. Please try again.",
+      "rateLimit": "Too many requests. Please wait a minute before trying again."
+    }
   }
 }

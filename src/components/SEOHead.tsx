@@ -1,6 +1,13 @@
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
+import {
+  getSEOConfig,
+  getHreflangTags,
+  getOrganizationSchema,
+  defaultSEO,
+  type SupportedLanguage
+} from '../config/seoConfig';
 
 interface SEOHeadProps {
   title?: string;
@@ -15,6 +22,7 @@ interface SEOHeadProps {
   nofollow?: boolean;
   canonical?: string;
   schema?: object;
+  includeOrganizationSchema?: boolean;
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
@@ -29,34 +37,79 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   noindex = false,
   nofollow = false,
   canonical,
-  schema
+  schema,
+  includeOrganizationSchema = false
 }) => {
   const { i18n } = useTranslation();
   const location = useLocation();
-  const currentLang = i18n.language;
+  const currentLang = (i18n.language?.substring(0, 2) || 'fr') as SupportedLanguage;
 
-  const siteUrl = 'https://aimagination.eu';
-  const defaultImage = `${siteUrl}/og-image.svg`;
+  const { siteUrl, siteName, defaultImage: defaultOgImage, twitterHandle } = defaultSEO;
   const currentUrl = `${siteUrl}${location.pathname}`;
 
-  const pageTitle = title
-    ? `${title} | Aimagination`
-    : 'Aimagination | Solutions d\'Intelligence Artificielle pour Entreprises';
+  // Get SEO config from centralized configuration
+  const seoConfig = getSEOConfig(location.pathname, currentLang);
 
-  const pageDescription = description ||
-    'Transformez votre entreprise avec nos solutions d\'IA. Audit gratuit, recommandations personnalisées et accompagnement expert pour optimiser vos processus.';
-
-  const pageImage = image || defaultImage;
+  // Use provided values or fall back to config
+  const pageTitle = title || seoConfig.title;
+  const pageDescription = description || seoConfig.description;
+  const pageKeywords = keywords || seoConfig.keywords;
+  const pageImage = image || `${siteUrl}${defaultOgImage}`;
 
   const robotsContent = [
     noindex ? 'noindex' : 'index',
     nofollow ? 'nofollow' : 'follow'
   ].join(', ');
 
-  const alternateUrls = {
-    fr: `${siteUrl}/fr${location.pathname}`,
-    en: `${siteUrl}/en${location.pathname}`
+  // Get hreflang tags
+  const hreflangTags = getHreflangTags(location.pathname);
+
+  // Get locale for Open Graph
+  const getOgLocale = (lang: string) => {
+    switch (lang) {
+      case 'en': return 'en_US';
+      case 'nl': return 'nl_BE';
+      default: return 'fr_BE';
+    }
   };
+
+  // Build combined schema
+  const combinedSchema = [];
+
+  if (includeOrganizationSchema) {
+    combinedSchema.push(getOrganizationSchema());
+  }
+
+  if (schema) {
+    combinedSchema.push(schema);
+  }
+
+  // WebPage schema (always included)
+  const webPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': article ? 'Article' : 'WebPage',
+    name: pageTitle,
+    description: pageDescription,
+    url: currentUrl,
+    inLanguage: currentLang,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: siteName,
+      url: siteUrl
+    },
+    ...(article && publishedTime && {
+      datePublished: publishedTime,
+      dateModified: modifiedTime || publishedTime,
+      author: author ? {
+        '@type': 'Person',
+        name: author
+      } : {
+        '@type': 'Organization',
+        name: siteName
+      }
+    })
+  };
+  combinedSchema.push(webPageSchema);
 
   return (
     <Helmet>
@@ -64,7 +117,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <html lang={currentLang} />
       <title>{pageTitle}</title>
       <meta name="description" content={pageDescription} />
-      {keywords && <meta name="keywords" content={keywords} />}
+      {pageKeywords && <meta name="keywords" content={pageKeywords} />}
       <meta name="robots" content={robotsContent} />
       <meta name="googlebot" content={robotsContent} />
 
@@ -72,9 +125,14 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <link rel="canonical" href={canonical || currentUrl} />
 
       {/* Hreflang Tags for Multilingual SEO */}
-      <link rel="alternate" hrefLang="fr" href={alternateUrls.fr} />
-      <link rel="alternate" hrefLang="en" href={alternateUrls.en} />
-      <link rel="alternate" hrefLang="x-default" href={alternateUrls.fr} />
+      {hreflangTags.map((tag) => (
+        <link
+          key={tag.lang}
+          rel="alternate"
+          hrefLang={tag.lang}
+          href={tag.href}
+        />
+      ))}
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={article ? 'article' : 'website'} />
@@ -84,16 +142,19 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta property="og:image" content={pageImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:locale" content={currentLang === 'fr' ? 'fr_FR' : 'en_US'} />
-      <meta property="og:locale:alternate" content={currentLang === 'fr' ? 'en_US' : 'fr_FR'} />
-      <meta property="og:site_name" content="Aimagination" />
+      <meta property="og:locale" content={getOgLocale(currentLang)} />
+      <meta property="og:locale:alternate" content={currentLang === 'fr' ? 'en_US' : 'fr_BE'} />
+      <meta property="og:locale:alternate" content={currentLang === 'nl' ? 'fr_BE' : 'nl_BE'} />
+      <meta property="og:site_name" content={siteName} />
 
-      {article && (
-        <>
-          <meta property="article:published_time" content={publishedTime} />
-          <meta property="article:modified_time" content={modifiedTime} />
-          {author && <meta property="article:author" content={author} />}
-        </>
+      {article && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
+      {article && modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+      )}
+      {article && author && (
+        <meta property="article:author" content={author} />
       )}
 
       {/* Twitter Card */}
@@ -102,17 +163,22 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
       <meta name="twitter:image" content={pageImage} />
-      <meta name="twitter:creator" content="@aimagination" />
+      <meta name="twitter:site" content={twitterHandle} />
+      <meta name="twitter:creator" content={twitterHandle} />
 
       {/* Additional Meta Tags */}
-      <meta name="author" content="Aimagination" />
+      <meta name="author" content={siteName} />
       <meta name="theme-color" content="#4f46e5" />
       <meta name="format-detection" content="telephone=no" />
+      <meta name="geo.region" content="BE" />
+      <meta name="geo.placename" content="Belgium" />
 
       {/* Structured Data (JSON-LD) */}
-      {schema && (
+      {combinedSchema.length > 0 && (
         <script type="application/ld+json">
-          {JSON.stringify(schema)}
+          {JSON.stringify(
+            combinedSchema.length === 1 ? combinedSchema[0] : combinedSchema
+          )}
         </script>
       )}
     </Helmet>

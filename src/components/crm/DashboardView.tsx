@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { 
   BarChart2, 
   DollarSign, 
@@ -329,7 +329,7 @@ const DashboardView: React.FC = () => {
                     </p>
                     <p className="text-xs text-gray-500 mt-0.5">
                       <Clock className="w-3 h-3 inline mr-1" />
-                      {new Date(activity.created_at).toLocaleDateString('fr-FR', {
+                      {new Date(activity.created_at!).toLocaleDateString('fr-FR', {
                         day: 'numeric',
                         month: 'short',
                         hour: '2-digit',
