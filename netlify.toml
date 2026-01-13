@@ -5,6 +5,20 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# Redirect old domain to new domain
+[[redirects]]
+  from = "https://aimagination.eu/*"
+  to = "https://ainspiration.eu/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.aimagination.eu/*"
+  to = "https://ainspiration.eu/:splat"
+  status = 301
+  force = true
+
+# SPA fallback
 [[redirects]]
   from = "/*"
   to = "/index.html"
