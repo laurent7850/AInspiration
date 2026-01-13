@@ -96,7 +96,7 @@ const ProductsPage: React.FC = () => {
       <CrmLayout>
         <section className="py-10 bg-gray-50 min-h-screen">
           <Helmet>
-            <title>Gestion des produits | AImagination CRM</title>
+            <title>Gestion des produits | AInspiration CRM</title>
             <meta name="description" content="Gérez votre catalogue de produits et services dans le CRM." />
           </Helmet>
           

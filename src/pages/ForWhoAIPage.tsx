@@ -24,7 +24,7 @@ const ForWhoAIPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Pour qui l'IA ? | AImagination</title>
+        <title>Pour qui l'IA ? | AInspiration</title>
         <meta name="description" content="Découvrez comment l'IA peut transformer votre entreprise, quelle que soit sa taille ou son secteur d'activité." />
       </Helmet>
       

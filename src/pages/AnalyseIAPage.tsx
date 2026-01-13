@@ -72,7 +72,7 @@ const AnalyseIAPage: React.FC = () => {
         "Analyse du comportement client en magasin et en ligne"
       ],
       testimonial: {
-        quote: "Grâce à l'analyse prédictive d'AImagination, nous avons réduit nos ruptures de stock de 78% tout en diminuant notre stock global de 15%.",
+        quote: "Grâce à l'analyse prédictive d'AInspiration, nous avons réduit nos ruptures de stock de 78% tout en diminuant notre stock global de 15%.",
         author: "Marie Deschamps",
         role: "Directrice Supply Chain, MeubleExpress"
       }
@@ -143,7 +143,7 @@ const AnalyseIAPage: React.FC = () => {
   return (
     <section className="pt-20 bg-gradient-to-b from-gray-50 to-white">
       <Helmet>
-        <title>Analyse IA - Solutions analytiques avancées | AImagination</title>
+        <title>Analyse IA - Solutions analytiques avancées | AInspiration</title>
         <meta name="description" content="Transformez vos données en insights stratégiques avec nos solutions d'analyse IA. Prédictions, détection d'anomalies, segmentation et tableaux de bord personnalisés." />
       </Helmet>
 

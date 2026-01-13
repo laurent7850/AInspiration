@@ -103,7 +103,7 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
         }`}
       >
         <div className="p-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-6">CRM AImagination</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-6">CRM AInspiration</h2>
           
           <nav className="mt-6 space-y-2">
             {menuItems.map((item) => (

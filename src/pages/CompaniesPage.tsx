@@ -96,7 +96,7 @@ const CompaniesPage: React.FC = () => {
       <CrmLayout>
         <section className="py-10 bg-gray-50 min-h-screen">
           <Helmet>
-            <title>Gestion des entreprises | AImagination CRM</title>
+            <title>Gestion des entreprises | AInspiration CRM</title>
             <meta name="description" content="Gérez vos entreprises et clients professionnels et suivez toutes les interactions." />
           </Helmet>
           

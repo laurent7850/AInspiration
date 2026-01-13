@@ -21,7 +21,7 @@ interface Message {
 }
 
 // N8n webhook URL - Mode production
-const N8N_WEBHOOK_URL = "https://n8n.srv767464.hstgr.cloud/webhook/aimagination";
+const N8N_WEBHOOK_URL = "https://n8n.srv767464.hstgr.cloud/webhook/ainspiration";
 
 export default function ChatbotN8n() {
   // Session management

@@ -77,7 +77,7 @@ export default function PrivacyPolicy() {
             <p className="text-gray-600">
               Pour toute question concernant vos données personnelles, contactez notre DPO :
               <br />
-              Email : info@aimagination.eu
+              Email : info@ainspiration.eu
               <br />
               Adresse : Rue de la Loi 227, 1040 Bruxelles, Belgique
             </p>

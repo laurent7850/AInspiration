@@ -23,7 +23,7 @@ const ReportsPage: React.FC = () => {
       <CrmLayout>
         <section className="py-10 bg-gray-50 min-h-screen">
           <Helmet>
-            <title>Rapports et Analyses | AImagination CRM</title>
+            <title>Rapports et Analyses | AInspiration CRM</title>
             <meta name="description" content="Visualisez et analysez vos performances commerciales avec des rapports détaillés et personnalisables." />
           </Helmet>
 
