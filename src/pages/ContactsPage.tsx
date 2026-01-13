@@ -96,7 +96,7 @@ const ContactsPage: React.FC = () => {
       <CrmLayout>
         <section className="py-10 bg-gray-50 min-h-screen">
           <Helmet>
-            <title>Gestion des contacts | AImagination CRM</title>
+            <title>Gestion des contacts | AInspiration CRM</title>
             <meta name="description" content="Gérez vos contacts professionnels et suivez toutes les interactions." />
           </Helmet>
           

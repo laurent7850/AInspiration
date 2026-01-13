@@ -57,7 +57,7 @@ const AboutPage: React.FC = () => {
   const milestones = [
     {
       year: "2019",
-      title: "Création d'AImagination",
+      title: "Création d'AInspiration",
       description: "Fondation de l'entreprise avec pour mission de démocratiser l'IA pour les PME."
     },
     {

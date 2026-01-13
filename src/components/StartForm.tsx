@@ -4,7 +4,7 @@ import { supabase } from '../utils/supabase';
 import { useTranslation } from 'react-i18next';
 import { validateContactForm, checkRateLimit, isValidEmail, isValidPhone } from '../utils/validation';
 
-export const CONTACT_EMAIL = 'info@aimagination.eu';
+export const CONTACT_EMAIL = 'info@ainspiration.eu';
 const CONTACT_PHONE = '+32 477 94 28 65';
 
 interface StartFormProps {

@@ -12,8 +12,8 @@ const ThierryBlogPage: React.FC = () => {
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <Helmet>
-        <title>Comment Thierry a transformé sa facturation grâce à l'IA | AImagination</title>
-        <meta name="description" content="Découvrez comment Thierry a gagné 15 heures par mois en automatisant sa facturation avec AImagination. Un cas concret de transformation numérique pour PME." />
+        <title>Comment Thierry a transformé sa facturation grâce à l'IA | AInspiration</title>
+        <meta name="description" content="Découvrez comment Thierry a gagné 15 heures par mois en automatisant sa facturation avec AInspiration. Un cas concret de transformation numérique pour PME." />
       </Helmet>
 
       <div className="container mx-auto px-4">
@@ -32,7 +32,7 @@ const ThierryBlogPage: React.FC = () => {
           {/* Blog Header */}
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Comment Thierry a transformé sa facturation grâce à l'IA d'AImagination
+              Comment Thierry a transformé sa facturation grâce à l'IA d'AInspiration
             </h1>
 
             <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-6">
@@ -103,7 +103,7 @@ const ThierryBlogPage: React.FC = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">La solution : une approche d'automatisation intelligente</h2>
 
             <p className="text-lg text-gray-700 mb-8">
-              Après un audit gratuit de son processus de facturation, l'équipe d'AImagination a proposé à Thierry une solution d'automatisation sur mesure, intégrant plusieurs technologies d'IA :
+              Après un audit gratuit de son processus de facturation, l'équipe d'AInspiration a proposé à Thierry une solution d'automatisation sur mesure, intégrant plusieurs technologies d'IA :
             </p>
 
             <div className="bg-indigo-50 p-6 rounded-lg my-8">
@@ -373,7 +373,7 @@ const ThierryBlogPage: React.FC = () => {
               />
               <div>
                 <p className="font-bold text-gray-900 mb-1">Sophie Dubois</p>
-                <p className="text-gray-600 text-sm mb-2">Experte en transformation numérique chez AImagination</p>
+                <p className="text-gray-600 text-sm mb-2">Experte en transformation numérique chez AInspiration</p>
                 <p className="text-gray-600 text-sm">
                   Sophie accompagne les PME dans leur transition numérique depuis plus de 10 ans, 
                   avec une expertise particulière dans l'optimisation des processus financiers.

@@ -113,7 +113,7 @@ const CrmDashboardPage: React.FC = () => {
       <CrmLayout>
         <div className="bg-gray-50 min-h-screen">
           <Helmet>
-            <title>CRM Dashboard | AImagination</title>
+            <title>CRM Dashboard | AInspiration</title>
             <meta name="description" content="Gérez vos clients, opportunités et tâches depuis votre tableau de bord CRM." />
           </Helmet>
           

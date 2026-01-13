@@ -128,7 +128,7 @@ const CRMSolutionPage: React.FC = () => {
   // Témoignages clients
   const testimonials = [
     {
-      quote: "Le CRM d'AImagination a révolutionné notre approche commerciale. Nos équipes sont plus réactives et notre taux de conversion a augmenté de 32% en seulement 3 mois.",
+      quote: "Le CRM d'AInspiration a révolutionné notre approche commerciale. Nos équipes sont plus réactives et notre taux de conversion a augmenté de 32% en seulement 3 mois.",
       name: "Marie Dupont",
       position: "Directrice Commerciale",
       company: "TechSolutions",
@@ -255,7 +255,7 @@ const CRMSolutionPage: React.FC = () => {
   return (
     <section className="bg-gradient-to-b from-gray-50 to-white">
       <Helmet>
-        <title>Solution CRM Intelligente | AImagination</title>
+        <title>Solution CRM Intelligente | AInspiration</title>
         <meta name="description" content="Transformez votre relation client avec notre CRM nouvelle génération. Automatisation intelligente, vision 360° de vos clients et augmentation prouvée des conversions." />
         <meta name="keywords" content="CRM, gestion relation client, pipeline vente, automatisation, logiciel CRM" />
       </Helmet>

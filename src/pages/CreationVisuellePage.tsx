@@ -115,7 +115,7 @@ const CreationVisuellePage: React.FC = () => {
   return (
     <section className="pt-20 bg-gradient-to-b from-gray-50 to-white">
       <Helmet>
-        <title>Création Visuelle IA | AImagination</title>
+        <title>Création Visuelle IA | AInspiration</title>
         <meta name="description" content="Générez des images de qualité professionnelle pour tous vos besoins marketing et communication grâce à notre solution de création visuelle propulsée par l'IA." />
       </Helmet>
 

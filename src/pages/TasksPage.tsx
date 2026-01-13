@@ -108,7 +108,7 @@ const TasksPage: React.FC = () => {
       <CrmLayout>
         <section className="py-10 bg-gray-50 min-h-screen">
           <Helmet>
-            <title>Gestion des tâches | AImagination CRM</title>
+            <title>Gestion des tâches | AInspiration CRM</title>
             <meta name="description" content="Gérez et organisez vos tâches, suivez leur avancement et ne manquez jamais une échéance." />
           </Helmet>
           

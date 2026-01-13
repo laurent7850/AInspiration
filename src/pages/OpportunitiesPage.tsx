@@ -100,7 +100,7 @@ const OpportunitiesPage: React.FC = () => {
       <CrmLayout>
         <section className="py-10 bg-gray-50 min-h-screen">
           <Helmet>
-            <title>Gestion des opportunités | AImagination</title>
+            <title>Gestion des opportunités | AInspiration</title>
             <meta name="description" content="Gérez vos opportunités de vente et suivez votre pipeline commercial." />
           </Helmet>
           

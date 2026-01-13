@@ -3,7 +3,7 @@ import { Brain, Mail, Phone, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Newsletter from './Newsletter';
 
-const CONTACT_EMAIL = 'info@aimagination.eu';
+const CONTACT_EMAIL = 'info@ainspiration.eu';
 const CONTACT_PHONE = '+32 477 94 28 65';
 
 export default function Footer() {

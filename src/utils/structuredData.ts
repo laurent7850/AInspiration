@@ -2,10 +2,10 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Aimagination",
-  "url": "https://aimagination.eu",
-  "logo": "https://aimagination.eu/white_logo_-_no_background.svg",
+  "url": "https://ainspiration.eu",
+  "logo": "https://ainspiration.eu/white_logo_-_no_background.svg",
   "description": "Solutions d'Intelligence Artificielle pour entreprises - Audit, conseil, formation et accompagnement IA",
-  "email": "info@aimagination.eu",
+  "email": "info@ainspiration.eu",
   "telephone": "+32477942865",
   "address": {
     "@type": "PostalAddress",
@@ -15,14 +15,14 @@ export const organizationSchema = {
     "addressCountry": "BE"
   },
   "sameAs": [
-    "https://www.linkedin.com/company/aimagination",
-    "https://twitter.com/aimagination"
+    "https://www.linkedin.com/company/ainspiration",
+    "https://twitter.com/ainspiration"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+32477942865",
     "contactType": "customer service",
-    "email": "info@aimagination.eu",
+    "email": "info@ainspiration.eu",
     "availableLanguage": ["French", "English"]
   }
 };
@@ -31,12 +31,12 @@ export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Aimagination",
-  "url": "https://aimagination.eu",
+  "url": "https://ainspiration.eu",
   "potentialAction": {
     "@type": "SearchAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://aimagination.eu/search?q={search_term_string}"
+      "urlTemplate": "https://ainspiration.eu/search?q={search_term_string}"
     },
     "query-input": "required name=search_term_string"
   }
@@ -46,9 +46,9 @@ export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Aimagination",
-  "image": "https://aimagination.eu/og-image.jpg",
-  "@id": "https://aimagination.eu",
-  "url": "https://aimagination.eu",
+  "image": "https://ainspiration.eu/og-image.jpg",
+  "@id": "https://ainspiration.eu",
+  "url": "https://ainspiration.eu",
   "telephone": "+32477942865",
   "priceRange": "€€€",
   "address": {
@@ -76,8 +76,8 @@ export const localBusinessSchema = {
     "closes": "18:00"
   },
   "sameAs": [
-    "https://www.linkedin.com/company/aimagination",
-    "https://twitter.com/aimagination"
+    "https://www.linkedin.com/company/ainspiration",
+    "https://twitter.com/ainspiration"
   ]
 };
 

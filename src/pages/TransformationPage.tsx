@@ -146,7 +146,7 @@ const TransformationPage: React.FC = () => {
   return (
     <section className="pt-20 bg-gradient-to-b from-gray-50 to-white">
       <Helmet>
-        <title>Transformation Numérique | AImagination</title>
+        <title>Transformation Numérique | AInspiration</title>
         <meta name="description" content="Accélérez votre transformation numérique grâce à notre expertise. Accompagnement sur-mesure pour optimiser vos processus et innover efficacement." />
       </Helmet>
 
