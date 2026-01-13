@@ -73,12 +73,27 @@ const AboutPage: React.FC = () => {
     {
       year: "2022",
       title: "Expansion internationale",
-      description: "Ouverture aux marchés francophones européens."
+      description: "Ouverture aux marchés francophones européens : Belgique, Luxembourg et Suisse."
     },
     {
       year: "2023",
-      title: "Innovation continue",
-      description: "Lancement de notre plateforme PromptMaster et de nos solutions d'automatisation avancée."
+      title: "Révolution IA générative",
+      description: "Lancement de notre plateforme PromptMaster et intégration des modèles GPT et Claude dans nos solutions."
+    },
+    {
+      year: "2024",
+      title: "CRM Intelligent & Automatisation avancée",
+      description: "Déploiement de notre solution CRM propulsée par l'IA et automatisation des workflows métier complexes."
+    },
+    {
+      year: "2025",
+      title: "IA Agents & Personnalisation",
+      description: "Lancement des agents IA autonomes et solutions d'analyse prédictive sur mesure pour chaque secteur."
+    },
+    {
+      year: "2026",
+      title: "AInspiration - Nouvelle ère",
+      description: "Rebranding en AInspiration. Plateforme unifiée d'IA pour PME avec accompagnement 360° et formation certifiante."
     }
   ];
 
@@ -86,7 +101,7 @@ const AboutPage: React.FC = () => {
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4">
         <SectionHeader
-          title="À propos d'AImagination"
+          title="À propos d'AInspiration"
           subtitle="Notre mission : rendre l'IA accessible et efficace pour toutes les entreprises"
           centered
         />
@@ -95,7 +110,7 @@ const AboutPage: React.FC = () => {
         <div className="bg-white rounded-xl shadow-lg p-8 mb-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Notre Mission</h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Chez AImagination, nous sommes convaincus que l'Intelligence Artificielle est un levier de croissance incontournable pour les entreprises de toutes tailles. Notre mission est de démocratiser l'accès à l'IA en proposant des solutions innovantes, accessibles et sur mesure qui répondent aux besoins spécifiques des PME.
+            Chez AInspiration, nous sommes convaincus que l'Intelligence Artificielle est un levier de croissance incontournable pour les entreprises de toutes tailles. Notre mission est de démocratiser l'accès à l'IA en proposant des solutions innovantes, accessibles et sur mesure qui répondent aux besoins spécifiques des PME.
           </p>
           <p className="text-lg text-gray-600 leading-relaxed mt-4">
             Nous accompagnons nos clients dans leur transformation digitale en leur offrant non seulement des outils technologiques de pointe, mais aussi l'expertise et le support nécessaires pour les intégrer efficacement dans leur activité quotidienne. Notre objectif est de créer un impact positif mesurable sur leur productivité, leur rentabilité et leur compétitivité.
