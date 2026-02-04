@@ -1,0 +1,533 @@
+{
+  "name": "Newsletter Automation - AInspiration",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 15 * * 4"
+            }
+          ]
+        }
+      },
+      "id": "c60daaad-03af-4f09-b24d-0295ab09117c",
+      "name": "Chaque Jeudi 15h",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        2752,
+        896
+      ],
+      "notes": "Déclenche le workflow chaque jeudi à 15h00 (heure de Bruxelles)"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "newsletter-generate",
+        "options": {}
+      },
+      "id": "429b0ce7-5b86-4ba5-b7da-37e340d4d5c6",
+      "name": "Webhook Generate",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        2752,
+        1104
+      ],
+      "webhookId": "newsletter-generate",
+      "notes": "Webhook pour génération manuelle de contenu"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "newsletter-send",
+        "options": {}
+      },
+      "id": "a206bb1d-f632-42fc-9bb5-7a2d79cf4b56",
+      "name": "Webhook Send",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        2752,
+        1296
+      ],
+      "webhookId": "newsletter-send",
+      "notes": "Webhook pour envoi manuel de newsletter"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "newsletter_subscribers",
+        "returnAll": true,
+        "filterType": "string",
+        "filterString": "status=eq.active"
+      },
+      "id": "0108c0c1-eda1-4b62-aa55-e6c776a1676b",
+      "name": "Récupérer Abonnés Actifs",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2976,
+        896
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "czGJFIa29mQ1myND",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openRouterApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "HTTP-Referer",
+              "value": "https://ainspiration.eu"
+            },
+            {
+              "name": "X-Title",
+              "value": "AInspiration Newsletter"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"anthropic/claude-3.5-sonnet\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Tu es un expert en IA et transformation digitale pour les PME. Tu rédiges une newsletter hebdomadaire pour AInspiration, une entreprise belge spécialisée dans l'accompagnement des PME vers l'adoption de l'IA.\\n\\nTon style est:\\n- Professionnel mais accessible\\n- Pratique avec des exemples concrets\\n- Orienté vers l'action et les bénéfices business\\n- En français, adapté au marché francophone européen\\n\\nStructure de la newsletter:\\n1. Un titre accrocheur (commence par # )\\n2. Une introduction qui capte l'attention\\n3. 2-3 sections avec des conseils pratiques ou des actualités IA\\n4. Un appel à l'action vers un audit gratuit\\n\\nIMPORTANT: Ne génère PAS de signature à la fin. Le footer avec la signature est ajouté automatiquement par le système.\\n\\nRetourne uniquement le contenu texte, pas de JSON.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Génère une newsletter sur les dernières tendances IA et comment les PME peuvent en bénéficier cette semaine. Date: {{ $now.format('DD/MM/YYYY') }}\"\n    }\n  ],\n  \"temperature\": 0.7,\n  \"max_tokens\": 1500\n}",
+        "options": {}
+      },
+      "id": "b23dbfb3-36d6-4aa3-ad05-c2875af42daa",
+      "name": "Générer Contenu (OpenRouter)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3200,
+        896
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "DM6bbYVPNcmrmU3g",
+          "name": "Header Auth account"
+        },
+        "openRouterApi": {
+          "id": "gtjfsOGk7WrWy7p3",
+          "name": "OpenRouter account"
+        }
+      },
+      "notes": "Utilise OpenRouter avec Claude 3.5 Sonnet pour générer le contenu"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse the OpenRouter response\nconst response = $input.first().json;\nconst content = response.choices[0].message.content;\n\n// Extract title from first line or generate one\nconst lines = content.split('\\n').filter(l => l.trim());\nlet subject = 'Newsletter AInspiration - Actualités IA';\nlet bodyContent = content;\n\n// Try to extract title if it starts with # or is the first line\nif (lines[0]) {\n  const firstLine = lines[0].replace(/^#+\\s*/, '').trim();\n  if (firstLine.length < 100) {\n    subject = firstLine;\n    bodyContent = lines.slice(1).join('\\n');\n  }\n}\n\n// Add current date to subject\nconst today = new Date();\nconst dateStr = today.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });\nsubject = `${subject} - ${dateStr}`;\n\n// Get subscribers from previous node\nconst subscribers = $('Récupérer Abonnés Actifs').all();\n\n// Generate HTML version\nconst htmlContent = `\n<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>${subject}</title>\n</head>\n<body style=\"font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f5f5f5;\">\n  <div style=\"background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n    <!-- Header -->\n    <div style=\"text-align: center; margin-bottom: 30px;\">\n      <h1 style=\"color: #4F46E5; margin: 0; font-size: 28px;\">AInspiration</h1>\n      <p style=\"color: #6B7280; margin-top: 5px;\">L'IA accessible aux PME</p>\n    </div>\n    \n    <!-- Content -->\n    <div style=\"color: #374151;\">\n      ${bodyContent.split('\\n').map(p => p.trim() ? `<p style=\"margin-bottom: 15px;\">${p}</p>` : '').join('')}\n    </div>\n    \n    <!-- CTA -->\n    <div style=\"text-align: center; margin: 30px 0;\">\n      <a href=\"https://ainspiration.eu/contact\" style=\"display: inline-block; background-color: #4F46E5; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold;\">Demander un audit gratuit</a>\n    </div>\n    \n    <!-- Footer -->\n    <div style=\"border-top: 1px solid #E5E7EB; padding-top: 20px; margin-top: 30px; text-align: center; color: #6B7280; font-size: 12px;\">\n      <p style=\"margin: 5px 0; font-weight: bold;\">AInspiration - L'IA au service des PME</p>\n      <p style=\"margin: 5px 0;\">Grand Place 50, 7850 Enghien, Belgique</p>\n      <p style=\"margin: 5px 0;\">Tel: +32 477 94 28 65</p>\n      <p style=\"margin: 5px 0;\"><a href=\"https://ainspiration.eu\" style=\"color: #4F46E5;\">www.ainspiration.eu</a></p>\n      <p style=\"margin: 15px 0 5px 0;\"><a href=\"{{UNSUBSCRIBE_URL}}\" style=\"color: #6B7280;\">Se désabonner</a></p>\n    </div>\n  </div>\n</body>\n</html>\n`;\n\nreturn {\n  subject,\n  content: bodyContent,\n  html_content: htmlContent,\n  generated_at: new Date().toISOString(),\n  subscribers: subscribers\n};"
+      },
+      "id": "16a70aeb-0f8e-4c77-a55a-18be8553b34a",
+      "name": "Formater Newsletter",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3424,
+        896
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://inksxnkunsflohglbjid.supabase.co/rest/v1/newsletters",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"subject\": {{ JSON.stringify($json.subject) }},\n  \"content\": {{ JSON.stringify($json.content) }},\n  \"html_content\": {{ JSON.stringify($json.html_content) }},\n  \"status\": \"scheduled\"\n}",
+        "options": {}
+      },
+      "id": "621b5ef1-570f-40c3-b790-6ff457db8e19",
+      "name": "Sauvegarder Newsletter",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3648,
+        896
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Prepare email for each subscriber in the batch\n// HTTP response returns an array, so we need to get the first element\nconst savedNewsletter = $('Sauvegarder Newsletter').first().json;\nconst newsletter = Array.isArray(savedNewsletter) ? savedNewsletter[0] : savedNewsletter;\nconst subscribers = $('Récupérer Abonnés Actifs').all();\n\nconst emails = subscribers.map(sub => {\n  const unsubscribeUrl = `https://ainspiration.eu/unsubscribe?token=${sub.json.unsubscribe_token}`;\n  const htmlWithUnsubscribe = newsletter.html_content.replace('{{UNSUBSCRIBE_URL}}', unsubscribeUrl);\n  \n  return {\n    to: sub.json.email,\n    subject: newsletter.subject,\n    html: htmlWithUnsubscribe,\n    text: newsletter.content + `\\n\\n---\\nPour vous désabonner: ${unsubscribeUrl}`,\n    subscriber_id: sub.json.id,\n    newsletter_id: newsletter.id\n  };\n});\n\nreturn emails;"
+      },
+      "id": "74274e43-27f8-47fb-8b5c-7e3021991ad4",
+      "name": "Préparer Emails",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4096,
+        896
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.to }}",
+        "subject": "={{ $json.subject }}",
+        "message": "={{ $json.html }}",
+        "options": {
+          "replyTo": "info@ainspiration.eu"
+        }
+      },
+      "id": "98a62566-bdbb-4381-9152-19846876b73f",
+      "name": "Envoyer Email (Gmail)",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        4320,
+        896
+      ],
+      "webhookId": "5f7dfd6a-6df6-4fa7-9457-e6c511094833",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "qDwjP4YdFZrQ5vv9",
+          "name": "Gmail account"
+        }
+      },
+      "notes": "Envoie via Gmail OAuth2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://inksxnkunsflohglbjid.supabase.co/rest/v1/newsletter_send_logs",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ newsletter_id: $('Préparer Emails').all()[$itemIndex].json.newsletter_id, subscriber_id: $('Préparer Emails').all()[$itemIndex].json.subscriber_id, status: 'sent' }) }}",
+        "options": {}
+      },
+      "id": "f55bf989-fa0a-4d0b-a1d8-b4b9f59b8a48",
+      "name": "Logger Envoi",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        4544,
+        896
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://inksxnkunsflohglbjid.supabase.co/rest/v1/newsletters?id=eq.{{ $('Préparer Emails').all()[$itemIndex].json.newsletter_id }}",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"status\": \"sent\",\n  \"sent_at\": \"{{ new Date().toISOString() }}\"\n}",
+        "options": {}
+      },
+      "id": "acc6446d-c854-4155-b6c1-4e342f8e1f8a",
+      "name": "Mettre à jour statut",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        4768,
+        896
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openRouterApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "HTTP-Referer",
+              "value": "https://ainspiration.eu"
+            },
+            {
+              "name": "X-Title",
+              "value": "AInspiration Newsletter"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"anthropic/claude-3.5-sonnet\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Tu es un expert en IA et transformation digitale pour les PME. Tu rédiges une newsletter hebdomadaire pour AInspiration, une entreprise belge spécialisée dans l'accompagnement des PME vers l'adoption de l'IA.\\n\\nTon style est:\\n- Professionnel mais accessible\\n- Pratique avec des exemples concrets\\n- Orienté vers l'action et les bénéfices business\\n- En français, adapté au marché francophone européen\\n\\nStructure de la newsletter:\\n1. Un titre accrocheur (commence par # )\\n2. Une introduction qui capte l'attention\\n3. 2-3 sections avec des conseils pratiques ou des actualités IA\\n4. Un appel à l'action vers un audit gratuit\\n\\nIMPORTANT: Ne génère PAS de signature à la fin. Le footer avec la signature est ajouté automatiquement par le système.\\n\\nRetourne le contenu en texte brut, pas en JSON.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Génère une newsletter sur: {{ $json.body.topic || 'les dernières tendances IA et comment les PME peuvent en bénéficier' }}\"\n    }\n  ],\n  \"temperature\": 0.7,\n  \"max_tokens\": 1500\n}",
+        "options": {}
+      },
+      "id": "2d6b61d3-81a7-4a8b-bf31-5a89d6fba99a",
+      "name": "Générer Contenu Manuel (OpenRouter)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2976,
+        1104
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "DM6bbYVPNcmrmU3g",
+          "name": "Header Auth account"
+        },
+        "openRouterApi": {
+          "id": "gtjfsOGk7WrWy7p3",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const response = $input.first().json;\nconst content = response.choices[0].message.content;\n\nconst lines = content.split('\\n').filter(l => l.trim());\nlet subject = 'Newsletter AInspiration';\nlet bodyContent = content;\n\nif (lines[0]) {\n  const firstLine = lines[0].replace(/^#+\\s*/, '').trim();\n  if (firstLine.length < 100) {\n    subject = firstLine;\n    bodyContent = lines.slice(1).join('\\n');\n  }\n}\n\nreturn {\n  subject,\n  content: bodyContent\n};"
+      },
+      "id": "ae9c4163-f1c1-4827-9c9b-f3f3ddd402de",
+      "name": "Formater Manuel",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3200,
+        1104
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ subject: $json.subject, content: $json.content }) }}",
+        "options": {}
+      },
+      "id": "ec65dc48-7610-4e8a-afec-a5f2d861880a",
+      "name": "Répondre Generate",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        3440,
+        1152
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ success: true, message: 'Newsletter envoyée avec succès' }) }}",
+        "options": {}
+      },
+      "id": "e608b700-ccea-47df-b49b-dec7e4f8dcfa",
+      "name": "Répondre Send",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        3424,
+        1296
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Chaque Jeudi 15h": {
+      "main": [
+        [
+          {
+            "node": "Récupérer Abonnés Actifs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Récupérer Abonnés Actifs": {
+      "main": [
+        [
+          {
+            "node": "Générer Contenu (OpenRouter)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Générer Contenu (OpenRouter)": {
+      "main": [
+        [
+          {
+            "node": "Formater Newsletter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formater Newsletter": {
+      "main": [
+        [
+          {
+            "node": "Sauvegarder Newsletter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sauvegarder Newsletter": {
+      "main": [
+        [
+          {
+            "node": "Préparer Emails",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Préparer Emails": {
+      "main": [
+        [
+          {
+            "node": "Envoyer Email (Gmail)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envoyer Email (Gmail)": {
+      "main": [
+        [
+          {
+            "node": "Logger Envoi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Logger Envoi": {
+      "main": [
+        [
+          {
+            "node": "Mettre à jour statut",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Generate": {
+      "main": [
+        [
+          {
+            "node": "Générer Contenu Manuel (OpenRouter)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Générer Contenu Manuel (OpenRouter)": {
+      "main": [
+        [
+          {
+            "node": "Formater Manuel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formater Manuel": {
+      "main": [
+        [
+          {
+            "node": "Répondre Generate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Send": {
+      "main": [
+        [
+          {
+            "node": "Répondre Send",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "a12970a9-4a58-4358-918d-a2e2bc1b2ab5",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "286e57e2238236a75e7b8a6b10da97a21ae06ebc3ce3766f07caad6603e9c745"
+  },
+  "id": "36K717g1IpDdihEQ",
+  "tags": [
+    {
+      "name": "newsletter",
+      "id": "KMYzXVItJvbt2rQ3",
+      "updatedAt": "2026-01-14T15:07:13.570Z",
+      "createdAt": "2026-01-14T15:07:13.570Z"
+    },
+    {
+      "name": "automation",
+      "id": "21BBei2wqCSKFNGo",
+      "updatedAt": "2026-01-14T15:07:13.575Z",
+      "createdAt": "2026-01-14T15:07:13.575Z"
+    }
+  ]
+}

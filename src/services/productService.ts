@@ -38,9 +38,23 @@ export const fetchProductById = async (id: string): Promise<Product> => {
 };
 
 export const createProduct = async (product: Omit<Product, 'id' | 'created_at'>, userId: string): Promise<Product> => {
+  // Build clean insert data with only valid columns
+  const insertData: Record<string, unknown> = {
+    name: product.name,
+    is_active: product.is_active ?? true
+  };
+
+  // Add optional fields only if they have values
+  if (product.description) insertData.description = product.description;
+  if (product.price !== undefined && product.price !== null) insertData.price = product.price;
+  if (product.currency) insertData.currency = product.currency;
+  if (product.category) insertData.category = product.category;
+
+  console.log('Creating product with data:', insertData);
+
   const { data, error } = await supabase
     .from('products')
-    .insert(product)
+    .insert(insertData)
     .select()
     .single();
 
@@ -49,22 +63,29 @@ export const createProduct = async (product: Omit<Product, 'id' | 'created_at'>,
     throw error;
   }
 
-  // Log the activity
-  await recordActivity({
-    user_id: userId,
-    activity_type: 'product_created',
-    description: `Produit créé: ${product.name}`,
-    related_to_type: 'product',
-    related_to: data.id
-  });
+  // Log the activity (non-blocking to prevent errors if activity logging fails)
+  try {
+    await recordActivity({
+      user_id: userId,
+      activity_type: 'product_created',
+      description: `Produit créé: ${product.name}`,
+      related_to_type: 'product',
+      related_to: data.id
+    });
+  } catch (activityError) {
+    console.warn('Activity logging failed (non-blocking):', activityError);
+  }
 
   return data;
 };
 
 export const updateProduct = async (id: string, product: Partial<Omit<Product, 'id' | 'created_at'>>, userId: string): Promise<Product> => {
+  // Remove user_id if present
+  const { user_id, ...updateData } = product as Partial<Product>;
+
   const { data, error } = await supabase
     .from('products')
-    .update(product)
+    .update(updateData)
     .eq('id', id)
     .select()
     .single();
@@ -74,14 +95,18 @@ export const updateProduct = async (id: string, product: Partial<Omit<Product, '
     throw error;
   }
 
-  // Log the activity
-  await recordActivity({
-    user_id: userId,
-    activity_type: 'product_updated',
-    description: `Produit mis à jour: ${data.name}`,
-    related_to_type: 'product',
-    related_to: id
-  });
+  // Log the activity (non-blocking)
+  try {
+    await recordActivity({
+      user_id: userId,
+      activity_type: 'product_updated',
+      description: `Produit mis à jour: ${data.name}`,
+      related_to_type: 'product',
+      related_to: id
+    });
+  } catch (activityError) {
+    console.warn('Activity logging failed (non-blocking):', activityError);
+  }
 
   return data;
 };
@@ -104,15 +129,19 @@ export const deleteProduct = async (id: string, userId: string): Promise<void> =
     throw error;
   }
 
-  // Log the activity
+  // Log the activity (non-blocking)
   if (productData) {
-    await recordActivity({
-      user_id: userId,
-      activity_type: 'product_deleted',
-      description: `Produit supprimé: ${productData.name}`,
-      related_to_type: 'product',
-      related_to: id
-    });
+    try {
+      await recordActivity({
+        user_id: userId,
+        activity_type: 'product_deleted',
+        description: `Produit supprimé: ${productData.name}`,
+        related_to_type: 'product',
+        related_to: id
+      });
+    } catch (activityError) {
+      console.warn('Activity logging failed (non-blocking):', activityError);
+    }
   }
 };
 

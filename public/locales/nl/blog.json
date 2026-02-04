@@ -1,4 +1,12 @@
 {
+  "pageTitle": "AInspiration Blog | AI Nieuws en Inzichten",
+  "pageDescription": "Ontdek de laatste artikelen, use cases en tips over kunstmatige intelligentie voor bedrijven.",
+  "title": "AInspiration Blog",
+  "subtitle": "Inzichten en nieuws over AI voor bedrijven",
+  "noArticles": "Momenteel geen artikelen beschikbaar.",
+  "loadError": "Fout bij het laden van artikelen",
+  "readArticle": "Artikel lezen",
+  "minRead": "min",
   "enhancedContent": {
     "measurableResults": "Meetbare Resultaten",
     "improvement": "Verbetering"

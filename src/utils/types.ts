@@ -56,6 +56,7 @@ export interface Contact {
 export interface Product {
   id: string;
   created_at?: string;
+  user_id?: string;
   name: string;
   description?: string;
   price?: number;
@@ -128,10 +129,43 @@ export interface ContactMessage {
   updated_at: string;
 }
 
+export type NewsletterStatus = 'active' | 'unsubscribed' | 'bounced';
+
 export interface NewsletterSubscriber {
   id: string;
   email: string;
+  status: NewsletterStatus;
+  source?: string;
+  unsubscribe_token?: string;
+  subscribed_at?: string;
+  unsubscribed_at?: string;
   created_at?: string;
+}
+
+export interface Newsletter {
+  id: string;
+  subject: string;
+  content: string;
+  html_content?: string;
+  status: 'draft' | 'scheduled' | 'sent' | 'failed';
+  scheduled_at?: string;
+  sent_at?: string;
+  recipients_count?: number;
+  open_count?: number;
+  click_count?: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface NewsletterSendLog {
+  id: string;
+  newsletter_id: string;
+  subscriber_id: string;
+  status: 'sent' | 'delivered' | 'opened' | 'clicked' | 'bounced' | 'failed';
+  sent_at?: string;
+  opened_at?: string;
+  clicked_at?: string;
+  error_message?: string;
 }
 
 export interface AccessLog {
@@ -186,8 +220,18 @@ export interface Database {
       };
       newsletter_subscribers: {
         Row: NewsletterSubscriber;
-        Insert: Omit<NewsletterSubscriber, 'id' | 'created_at'>;
+        Insert: Omit<NewsletterSubscriber, 'id' | 'created_at' | 'unsubscribe_token'>;
         Update: Partial<Omit<NewsletterSubscriber, 'id'>>;
+      };
+      newsletters: {
+        Row: Newsletter;
+        Insert: Omit<Newsletter, 'id' | 'created_at' | 'updated_at'>;
+        Update: Partial<Omit<Newsletter, 'id'>>;
+      };
+      newsletter_send_logs: {
+        Row: NewsletterSendLog;
+        Insert: Omit<NewsletterSendLog, 'id'>;
+        Update: Partial<Omit<NewsletterSendLog, 'id'>>;
       };
       contact_messages: {
         Row: ContactMessage;

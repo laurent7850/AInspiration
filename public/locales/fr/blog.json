@@ -1,4 +1,12 @@
 {
+  "pageTitle": "Blog AInspiration | Actualités et insights IA",
+  "pageDescription": "Découvrez les derniers articles, cas d'usage et conseils sur l'intelligence artificielle pour les entreprises.",
+  "title": "Blog AInspiration",
+  "subtitle": "Insights et actualités sur l'IA pour les entreprises",
+  "noArticles": "Aucun article disponible pour le moment.",
+  "loadError": "Erreur lors du chargement des articles",
+  "readArticle": "Lire l'article",
+  "minRead": "min",
   "enhancedContent": {
     "measurableResults": "Résultats Mesurables",
     "improvement": "Amélioration"

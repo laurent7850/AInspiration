@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Menu, X, LogOut, ChevronDown, Database, Languages } from 'lucide-react';
+import { Menu, X, LogOut, ChevronDown, Database, Languages, Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
@@ -123,11 +123,15 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
               className="relative group"
             >
               {item.isDropdown ? (
-                <button
-                  className="flex items-center gap-1 text-white hover:text-white/80 transition-colors py-2"
-                >
-                  {t(item.labelKey)}
-                  <ChevronDown className="w-4 h-4" />
+                <>
+                  <span
+                    className="flex items-center gap-1 text-white hover:text-white/80 transition-colors py-2 cursor-pointer"
+                    role="button"
+                    tabIndex={0}
+                  >
+                    {t(item.labelKey)}
+                    <ChevronDown className="w-4 h-4" />
+                  </span>
                   <div className="absolute top-full left-0 w-64 py-3 mt-1 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
                     {item.items?.map((category, catIndex) => (
                       <div key={catIndex} className="px-4 py-2">
@@ -149,7 +153,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
                       </div>
                     ))}
                   </div>
-                </button>
+                </>
               ) : (
                 <button
                   className="text-white hover:text-white/80 transition-colors py-2"
@@ -162,10 +166,14 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
           ))}
 
           <div className="relative group">
-            <button className="flex items-center gap-1 text-white hover:text-white/80 transition-colors py-2">
+            <span
+              className="flex items-center gap-1 text-white hover:text-white/80 transition-colors py-2 cursor-pointer"
+              role="button"
+              tabIndex={0}
+            >
               <span className="uppercase font-semibold">{currentLanguage.substring(0, 2)}</span>
               <ChevronDown className="w-4 h-4" />
-            </button>
+            </span>
             <div className="absolute top-full right-0 w-20 py-2 mt-1 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
               <button
                 onClick={() => changeLanguage('fr')}
@@ -206,6 +214,13 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
                   >
                     <Database className="w-4 h-4" />
                     <span>{t('nav.crmDashboard')}</span>
+                  </button>
+                  <button
+                    onClick={() => navigate('/newsletter-admin')}
+                    className="w-full px-4 py-2 text-left text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 flex items-center gap-2"
+                  >
+                    <Mail className="w-4 h-4" />
+                    <span>Newsletter</span>
                   </button>
                   <button
                     onClick={handleSignOut}
@@ -316,6 +331,13 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
               >
                 <Database className="w-5 h-5" />
                 <span>{t('nav.crmDashboard')}</span>
+              </button>
+              <button
+                onClick={() => navigate('/newsletter-admin')}
+                className="flex items-center gap-2 text-white/80 hover:text-white transition-colors w-full text-left py-1.5"
+              >
+                <Mail className="w-5 h-5" />
+                <span>Newsletter</span>
               </button>
               <button
                 onClick={handleSignOut}

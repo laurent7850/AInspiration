@@ -66,8 +66,8 @@ const SalesFunnelChart: React.FC<SalesFunnelChartProps> = ({ opportunities }) =>
   };
   
   return (
-    <div className="flex flex-col h-full justify-center">
-      <div className="space-y-4">
+    <div className="flex flex-col h-full overflow-hidden">
+      <div className="space-y-3">
         {stageData.map((data, index) => (
           <div key={index} className="flex flex-col">
             <div className="flex justify-between mb-1">

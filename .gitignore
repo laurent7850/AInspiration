@@ -22,3 +22,19 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local Netlify folder
+.netlify
+
+# Temporary files
+tmpclaude-*
+_ul
+
+# Archives (keep locally but don't commit)
+*.tar.gz
+
+# Supabase temp
+supabase/.temp/
+
+# Environment files with secrets
+.env

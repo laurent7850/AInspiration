@@ -1,0 +1,128 @@
+{
+  "name": "CRM AI - AInspiration",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "crm-ai",
+        "options": {
+          "responseMode": "responseNode"
+        }
+      },
+      "id": "1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "HTTP-Referer",
+              "value": "https://ainspiration.eu"
+            },
+            {
+              "name": "X-Title",
+              "value": "AInspiration CRM"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"anthropic/claude-3-haiku\",\n  \"max_tokens\": 800,\n  \"temperature\": 0.3,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Tu es un expert CRM. Selon l'action demandée, analyse les données et réponds UNIQUEMENT en JSON valide, sans texte avant ou après.\\n\\nPour calculate_lead_score, réponds:\\n{\\\"contactId\\\": \\\"[id du contact]\\\", \\\"score\\\": [0-100], \\\"factors\\\": {\\\"engagement\\\": [0-25], \\\"recency\\\": [0-25], \\\"value\\\": [0-25], \\\"fit\\\": [0-25]}, \\\"recommendation\\\": \\\"[conseil]\\\", \\\"priority\\\": \\\"hot\\\" ou \\\"warm\\\" ou \\\"cold\\\"}\\n\\nPour get_ai_insights, réponds avec un tableau JSON d'insights.\\n\\nPour get_followup_suggestions, réponds avec un tableau JSON de suggestions.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Action demandée: {{ $json.body.action }}\\n\\nDonnées du CRM:\\n{{ JSON.stringify($json.body.data, null, 2) }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "2",
+      "name": "OpenRouter AI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [500, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "1",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const response = $input.first().json;\nlet result;\n\ntry {\n  const content = response.choices?.[0]?.message?.content || '';\n  // Chercher un JSON dans la réponse\n  const jsonMatch = content.match(/[\\[\\{][\\s\\S]*[\\]\\}]/);\n  if (jsonMatch) {\n    result = JSON.parse(jsonMatch[0]);\n  } else {\n    result = JSON.parse(content);\n  }\n} catch (e) {\n  result = { \n    error: 'Parse error', \n    raw: response.choices?.[0]?.message?.content || 'No content'\n  };\n}\n\nreturn [{ json: result }];"
+      },
+      "id": "3",
+      "name": "Parse JSON",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [750, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "id": "4",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1000, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "OpenRouter AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter AI": {
+      "main": [
+        [
+          {
+            "node": "Parse JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse JSON": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "versionId": "2"
+}

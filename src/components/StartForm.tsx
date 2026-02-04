@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, ArrowRight, Mail, Building2, Phone, MapPin } from 'lucide-react';
-import { supabase } from '../utils/supabase';
 import { useTranslation } from 'react-i18next';
 import { validateContactForm, checkRateLimit, isValidEmail, isValidPhone } from '../utils/validation';
+
+// Webhook URL for contact forms - unified endpoint
+const CONTACT_WEBHOOK_URL = "https://n8n.srv767464.hstgr.cloud/webhook/Aimaginationcontact";
 
 export const CONTACT_EMAIL = 'info@ainspiration.eu';
 const CONTACT_PHONE = '+32 477 94 28 65';
@@ -136,20 +138,30 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
       const subject = formContent.title;
       const messageWithDetails = `${validation.sanitizedData.message}${formData.phone ? `\n\n${t('contact.phone')}: ${formData.phone}` : ''}${formData.country ? `\n${t('contact.country')}: ${formData.country}` : ''}`;
 
-      const { error: insertError } = await supabase
-        .from('contact_messages')
-        .insert([
-          {
-            name: validation.sanitizedData.name,
-            email: validation.sanitizedData.email,
-            company: validation.sanitizedData.company,
-            subject: subject,
-            message: messageWithDetails,
-          }
-        ]);
+      // Send data to n8n webhook
+      const webhookData = {
+        name: validation.sanitizedData.name,
+        email: validation.sanitizedData.email,
+        company: validation.sanitizedData.company,
+        phone: formData.phone || '',
+        country: formData.country || '',
+        subject: subject,
+        message: messageWithDetails,
+        timestamp: new Date().toISOString(),
+        source: 'website_form',
+        productId: productId || null
+      };
 
-      if (insertError) {
-        throw insertError;
+      const response = await fetch(CONTACT_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(webhookData)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Erreur lors de l'envoi du formulaire: ${response.status}`);
       }
 
       setIsSubmitted(true);
