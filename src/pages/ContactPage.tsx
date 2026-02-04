@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import SectionHeader from '../components/ui/SectionHeader';
 import { Mail, Phone, MapPin, MessageSquare, Send } from 'lucide-react';
-import { supabase } from '../utils/supabase';
 import { useTranslation } from 'react-i18next';
 import SEOHead from '../components/SEOHead';
 import { getSEOConfig } from '../config/seoConfig';
 import { validateContactForm, checkRateLimit } from '../utils/validation';
+
+// Webhook URL for contact forms - unified endpoint
+const CONTACT_WEBHOOK_URL = "https://n8n.srv767464.hstgr.cloud/webhook/Aimaginationcontact";
 
 const CONTACT_EMAIL = 'divers@distr-action.com';
 const CONTACT_PHONE = '+32 477 94 28 65';
@@ -61,39 +63,27 @@ const ContactPage: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const { error: insertError } = await supabase
-        .from('contact_messages')
-        .insert([
-          {
-            name: validation.sanitizedData.name,
-            email: validation.sanitizedData.email,
-            company: validation.sanitizedData.company,
-            subject: validation.sanitizedData.subject,
-            message: validation.sanitizedData.message,
-          }
-        ]);
+      // Send data to n8n webhook
+      const webhookData = {
+        name: validation.sanitizedData.name,
+        email: validation.sanitizedData.email,
+        company: validation.sanitizedData.company,
+        subject: validation.sanitizedData.subject,
+        message: validation.sanitizedData.message,
+        timestamp: new Date().toISOString(),
+        source: 'contact_page'
+      };
 
-      if (insertError) {
-        throw insertError;
-      }
+      const response = await fetch(CONTACT_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(webhookData)
+      });
 
-      try {
-        await fetch('https://n8n.srv767464.hstgr.cloud/webhook/Aimaginationcontact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: validation.sanitizedData.name,
-            email: validation.sanitizedData.email,
-            company: validation.sanitizedData.company,
-            subject: validation.sanitizedData.subject,
-            message: validation.sanitizedData.message,
-            timestamp: new Date().toISOString(),
-          }),
-        });
-      } catch (webhookError) {
-        console.error('Webhook notification failed:', webhookError);
+      if (!response.ok) {
+        throw new Error(`Erreur lors de l'envoi du formulaire: ${response.status}`);
       }
 
       setIsSubmitted(true);

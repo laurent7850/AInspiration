@@ -11,7 +11,10 @@ import {
   ChevronRight,
   Menu,
   X,
-  DollarSign
+  DollarSign,
+  Brain,
+  MessageSquare,
+  Mail
 } from 'lucide-react';
 
 interface CrmLayoutProps {
@@ -28,7 +31,9 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
     {
       path: '/crm-dashboard',
       labelKey: 'crm:menu.dashboard',
-      icon: BarChart2
+      label: 'Dashboard IA',
+      icon: Brain,
+      highlight: true
     },
     {
       path: '/opportunities',
@@ -57,6 +62,20 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
       path: '/tasks',
       labelKey: 'crm:menu.tasks',
       icon: CheckSquare,
+      disabled: false
+    },
+    {
+      path: '/messages',
+      labelKey: 'crm:menu.messages',
+      label: 'Messages',
+      icon: MessageSquare,
+      disabled: false
+    },
+    {
+      path: '/newsletter-admin',
+      labelKey: 'crm:menu.newsletter',
+      label: 'Newsletter',
+      icon: Mail,
       disabled: false
     },
     {
@@ -103,8 +122,13 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
         }`}
       >
         <div className="p-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-6">CRM AInspiration</h2>
-          
+          <div className="flex items-center space-x-2 mb-6">
+            <div className="p-1.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg">
+              <Brain className="w-5 h-5 text-white" />
+            </div>
+            <h2 className="text-xl font-bold text-gray-900">CRM Intelligent</h2>
+          </div>
+
           <nav className="mt-6 space-y-2">
             {menuItems.map((item) => (
               <button
@@ -118,20 +142,24 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
                 disabled={item.disabled}
                 className={`flex items-center w-full px-3 py-2 rounded-lg transition-colors ${
                   isActivePath(item.path)
-                    ? 'bg-indigo-50 text-indigo-600'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600'
+                    ? item.highlight
+                      ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white'
+                      : 'bg-indigo-50 text-indigo-600'
+                    : item.highlight
+                      ? 'text-indigo-700 hover:bg-indigo-50'
+                      : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600'
                 } ${
                   item.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
                 }`}
               >
                 <item.icon className="w-5 h-5 mr-3" />
-                <span>{t(item.labelKey)}</span>
+                <span>{item.label || t(item.labelKey)}</span>
                 {item.disabled && (
                   <span className="ml-auto text-xs bg-gray-200 px-2 py-1 rounded-full">
                     {t('crm:quickLinks.comingSoon')}
                   </span>
                 )}
-                {!item.disabled && isActivePath(item.path) && (
+                {!item.disabled && isActivePath(item.path) && !item.highlight && (
                   <ChevronRight className="w-4 h-4 ml-auto" />
                 )}
               </button>

@@ -231,7 +231,18 @@ const routes: RouteConfig[] = [
     component: lazy(() => import('../pages/MessagesPage')),
     exact: true,
     private: true
-  }
+  },
+  {
+    path: "/newsletter-admin",
+    component: lazy(() => import('../pages/NewsletterAdminPage')),
+    exact: true,
+    private: true
+  },
+  {
+    path: "/unsubscribe",
+    component: lazy(() => import('../pages/UnsubscribePage')),
+    exact: true
+  },
 ];
 
 // Menu structure - Reorganized to eliminate duplication
@@ -277,16 +288,17 @@ export const menuItems: MenuSection[] = [
     path: '/blog'
   },
   {
-    label: 'CRM',
+    label: 'CRM Intelligent',
     path: '/crm-dashboard',
     items: [
-      { label: 'Tableau de bord', path: '/crm-dashboard' },
+      { label: 'Dashboard IA', path: '/crm-dashboard' },
       { label: 'Opportunités', path: '/opportunities' },
       { label: 'Contacts', path: '/contacts' },
       { label: 'Entreprises', path: '/companies' },
       { label: 'Produits', path: '/products' },
       { label: 'Tâches', path: '/tasks' },
       { label: 'Messages', path: '/messages' },
+      { label: 'Newsletter', path: '/newsletter-admin' },
       { label: 'Rapports', path: '/reports' }
     ]
   }

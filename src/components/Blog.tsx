@@ -8,7 +8,7 @@ import type { BlogPost } from '../services/blogService';
 
 export default function Blog() {
   const navigate = useNavigate();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation('blog');
   const [articles, setArticles] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -23,29 +23,32 @@ export default function Blog() {
         setArticles(filteredPosts);
       } catch (err) {
         console.error('Error loading blog posts:', err);
-        setError('Erreur lors du chargement des articles');
+        setError(t('loadError'));
       } finally {
         setLoading(false);
       }
     };
 
     loadArticles();
-  }, [i18n.language]);
+  }, [i18n.language, t]);
+
+  // Get locale for date formatting
+  const dateLocale = i18n.language === 'nl' ? 'nl-NL' : i18n.language === 'en' ? 'en-US' : 'fr-FR';
 
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <Helmet>
-        <title>Blog AInspiration | Actualités et insights IA</title>
-        <meta name="description" content="Découvrez les derniers articles, cas d'usage et conseils sur l'intelligence artificielle pour les entreprises." />
+        <title>{t('pageTitle')}</title>
+        <meta name="description" content={t('pageDescription')} />
       </Helmet>
-      
+
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Blog AInspiration
+            {t('title')}
           </h1>
           <p className="text-xl text-gray-600">
-            Insights et actualités sur l'IA pour les entreprises
+            {t('subtitle')}
           </p>
         </div>
 
@@ -65,7 +68,7 @@ export default function Blog() {
 
         {!loading && !error && articles.length === 0 && (
           <div className="max-w-5xl mx-auto text-center py-20">
-            <p className="text-gray-600">Aucun article disponible pour le moment.</p>
+            <p className="text-gray-600">{t('noArticles')}</p>
           </div>
         )}
 
@@ -73,7 +76,7 @@ export default function Blog() {
           <div className="grid gap-8 max-w-5xl mx-auto">
             {articles.map((article) => {
               const formattedDate = article.published_at
-                ? new Date(article.published_at).toLocaleDateString('fr-FR', {
+                ? new Date(article.published_at).toLocaleDateString(dateLocale, {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'
@@ -115,7 +118,7 @@ export default function Blog() {
                         )}
                         {article.read_time && (
                           <span className="text-gray-500">
-                            {article.read_time} min
+                            {article.read_time} {t('minRead')}
                           </span>
                         )}
                       </div>
@@ -134,7 +137,7 @@ export default function Blog() {
                         onClick={() => navigate(`/blog/${article.slug}`)}
                         className="inline-flex items-center gap-2 text-indigo-600 font-semibold hover:text-indigo-700 transition-colors"
                       >
-                        Lire l'article
+                        {t('readArticle')}
                         <ArrowRight className="w-4 h-4" />
                       </button>
                     </div>

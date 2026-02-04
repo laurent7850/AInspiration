@@ -11,6 +11,13 @@ import {
 } from 'lucide-react';
 import { v4 as uuidv4 } from 'uuid';
 
+interface ActionButton {
+  type: 'link' | 'action';
+  label: string;
+  url?: string;
+  action?: string;
+}
+
 interface Message {
   id: string;
   text: string;
@@ -18,6 +25,7 @@ interface Message {
   timestamp: Date;
   audioUrl?: string;
   audioBase64?: string;
+  actionButtons?: ActionButton[];
 }
 
 // N8n webhook URL - Mode production
@@ -63,7 +71,7 @@ export default function ChatbotN8n() {
     // Add welcome message
     const welcomeMessage: Message = {
       id: uuidv4(),
-      text: "Bonjour ! Je suis l'assistant virtuel d'Aimagination. Comment puis-je vous aider aujourd'hui ?",
+      text: "Salut ! Tu cherches à automatiser certaines tâches, améliorer ta gestion client, ou explorer ce que l'IA peut faire pour toi ?",
       isBot: true,
       timestamp: new Date()
     };
@@ -170,9 +178,11 @@ export default function ChatbotN8n() {
       // Récupérer les données audio depuis la réponse n8n
       const audioUrl = responseData.audioUrl;
       const audioBase64 = responseData.audioBase64;
-      
+      const actionButtons = responseData.action_buttons;
+
       console.log("Audio URL received:", audioUrl);
-      
+      console.log("Action buttons received:", actionButtons);
+
       // Add bot response
       const botMessage: Message = {
         id: uuidv4(),
@@ -180,7 +190,8 @@ export default function ChatbotN8n() {
         isBot: true,
         timestamp: new Date(),
         audioUrl,
-        audioBase64
+        audioBase64,
+        actionButtons
       };
       
       setMessages(prev => [...prev, botMessage]);
@@ -296,6 +307,46 @@ export default function ChatbotN8n() {
               {i < msg.text.split('\n').length - 1 && <br />}
             </React.Fragment>
           ))}
+
+          {/* Action buttons */}
+          {msg.isBot && msg.actionButtons && msg.actionButtons.length > 0 && (
+            <div className="mt-2 flex flex-col gap-1.5">
+              {msg.actionButtons.map((btn, idx) => {
+                const isInternal = btn.url?.startsWith('/') || btn.url?.startsWith('#');
+                return isInternal ? (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      if (btn.url?.startsWith('#')) {
+                        // Scroll to anchor on current page
+                        const element = document.querySelector(btn.url);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      } else {
+                        // Navigate to internal page
+                        window.location.href = btn.url || '/';
+                      }
+                    }}
+                    className="inline-block px-2.5 py-1 bg-indigo-600 text-white text-xs rounded-full hover:bg-indigo-700 transition-colors text-center truncate max-w-full"
+                  >
+                    {btn.label}
+                  </button>
+                ) : (
+                  <a
+                    key={idx}
+                    href={btn.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-2.5 py-1 bg-indigo-600 text-white text-xs rounded-full hover:bg-indigo-700 transition-colors text-center truncate max-w-full"
+                  >
+                    {btn.label}
+                  </a>
+                );
+              })}
+            </div>
+          )}
+
           <div className={`flex justify-between items-center mt-1 text-xs ${msg.isBot ? 'text-gray-500' : 'text-indigo-100'}`}>
             <span>{msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
             {msg.isBot && (isTtsEnabled || msg.audioBase64 || msg.audioUrl) && (
@@ -339,9 +390,9 @@ export default function ChatbotN8n() {
   }
 
   return (
-    <div 
-      className={`fixed bottom-0 right-0 z-50 transition-all duration-300 w-full sm:bottom-4 sm:right-4 sm:w-auto ${
-        isMinimized ? 'h-14 sm:w-64' : 'h-[calc(100%-1rem)] sm:h-[500px] sm:w-[350px] max-h-[calc(100vh-2rem)]'
+    <div
+      className={`fixed bottom-0 right-0 z-50 transition-all duration-300 sm:bottom-4 sm:right-4 ${
+        isMinimized ? 'h-14 w-56' : 'h-[60vh] sm:h-[400px] w-full sm:w-[320px] max-h-[500px]'
       }`}
     >
       <div className={`bg-white rounded-t-lg sm:rounded-lg shadow-2xl flex flex-col h-full max-h-full overflow-hidden ${
@@ -352,7 +403,7 @@ export default function ChatbotN8n() {
           <div className="flex items-center gap-2">
             <Bot className="w-5 h-5 text-indigo-600" />
             <span className="font-semibold text-sm sm:text-base">
-              Assistant Aimagination
+              Marc - Assistant AInspiration
             </span>
           </div>
           <div className="flex items-center">

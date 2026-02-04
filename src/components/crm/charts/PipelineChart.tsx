@@ -41,14 +41,14 @@ const PipelineChart: React.FC<PipelineChartProps> = ({ opportunities }) => {
   const barHeight = 200; // Maximum height for bars in pixels
   
   return (
-    <div ref={chartRef} className="w-full h-full">
-      <div className="flex h-64 items-end justify-center gap-5">
+    <div ref={chartRef} className="w-full h-full flex flex-col">
+      <div className="flex flex-1 items-end justify-center gap-4 pb-8">
         {chartData.map((data, index) => (
-          <div key={index} className="flex flex-col items-center">
+          <div key={index} className="flex flex-col items-center relative">
             <div className="text-xs mb-1 font-medium text-gray-600">
               {formatCurrency(data.value)}
             </div>
-            <div 
+            <div
               className="w-12 rounded-t-md flex items-end justify-center transition-all duration-500"
               style={{
                 height: `${data.value ? (data.value / maxValue) * barHeight : 10}px`,
@@ -57,7 +57,10 @@ const PipelineChart: React.FC<PipelineChartProps> = ({ opportunities }) => {
             >
               <div className="text-white text-xs font-bold py-1">{data.count}</div>
             </div>
-            <div className="text-xs mt-2 truncate max-w-full" style={{color: stageColors[data.stage] || '#94A3B8'}}>
+            <div
+              className="text-xs mt-2 text-center absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap"
+              style={{color: stageColors[data.stage] || '#94A3B8'}}
+            >
               {data.stage}
             </div>
           </div>

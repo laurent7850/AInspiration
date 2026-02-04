@@ -1,0 +1,469 @@
+{
+  "name": "CRM Intelligent - AInspiration (HTTP)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "crm-ai",
+        "options": {
+          "responseMode": "responseNode"
+        }
+      },
+      "id": "a1b2c3d4-webhook",
+      "name": "Webhook CRM",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 400]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "calculate_lead_score",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "lead_score"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "get_ai_insights",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "insights"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "get_followup_suggestions",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "followup"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "analyze_opportunity",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "analyze"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "track_event",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "event"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-switch",
+      "name": "Router Actions",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [460, 400]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "HTTP-Referer",
+              "value": "https://ainspiration.eu"
+            },
+            {
+              "name": "X-Title",
+              "value": "AInspiration CRM"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"anthropic/claude-3-haiku\",\n  \"max_tokens\": 500,\n  \"temperature\": 0.3,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Tu es un expert en qualification de leads B2B. Analyse les données du contact et calcule un score de 0 à 100.\\n\\nRéponds UNIQUEMENT en JSON valide avec cette structure exacte:\\n{\\n  \\\"contactId\\\": \\\"id du contact\\\",\\n  \\\"score\\\": nombre entre 0 et 100,\\n  \\\"factors\\\": {\\n    \\\"engagement\\\": nombre 0-25,\\n    \\\"recency\\\": nombre 0-25,\\n    \\\"value\\\": nombre 0-25,\\n    \\\"fit\\\": nombre 0-25\\n  },\\n  \\\"recommendation\\\": \\\"une phrase de recommandation\\\",\\n  \\\"priority\\\": \\\"hot\\\" ou \\\"warm\\\" ou \\\"cold\\\"\\n}\\n\\nCritères:\\n- hot: score >= 70\\n- warm: score 40-69\\n- cold: score < 40\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Analyse ce lead:\\n\\nContact: {{ $json.data.contact.first_name }} {{ $json.data.contact.last_name }}\\nEmail: {{ $json.data.contact.email || 'Non renseigné' }}\\nEntreprise: {{ $json.data.contact.company_name || 'Non renseignée' }}\\nNombre d'activités: {{ $json.data.activityCount }}\\nValeur opportunités: {{ $json.data.totalOpportunityValue }}€\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-lead",
+      "name": "OpenRouter Lead Score",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 140],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "openrouter-header",
+          "name": "OpenRouter API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "HTTP-Referer",
+              "value": "https://ainspiration.eu"
+            },
+            {
+              "name": "X-Title",
+              "value": "AInspiration CRM"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"anthropic/claude-3-haiku\",\n  \"max_tokens\": 1000,\n  \"temperature\": 0.5,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Tu es un conseiller commercial IA expert en CRM. Analyse les statistiques et génère des insights actionnables.\\n\\nRéponds UNIQUEMENT en JSON valide avec un tableau d'insights:\\n[\\n  {\\n    \\\"id\\\": \\\"insight-1\\\",\\n    \\\"type\\\": \\\"opportunity\\\" ou \\\"task\\\" ou \\\"contact\\\" ou \\\"general\\\",\\n    \\\"title\\\": \\\"titre court\\\",\\n    \\\"description\\\": \\\"description\\\",\\n    \\\"action\\\": \\\"action recommandée\\\",\\n    \\\"priority\\\": \\\"high\\\" ou \\\"medium\\\" ou \\\"low\\\",\\n    \\\"createdAt\\\": \\\"{{ $now.toISO() }}\\\"\\n  }\\n]\\n\\nGénère 3-5 insights pertinents.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Statistiques CRM:\\n\\nOpportunités totales: {{ $json.data.stats.totalOpportunities }}\\nOpportunités actives: {{ $json.data.stats.activeOpportunities }}\\nTâches en attente: {{ $json.data.stats.pendingTasks }}\\nTâches en retard: {{ $json.data.stats.overdueTasks }}\\nContacts: {{ $json.data.stats.totalContacts }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-insights",
+      "name": "OpenRouter Insights",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 320],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "openrouter-header",
+          "name": "OpenRouter API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "HTTP-Referer",
+              "value": "https://ainspiration.eu"
+            },
+            {
+              "name": "X-Title",
+              "value": "AInspiration CRM"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"anthropic/claude-3-haiku\",\n  \"max_tokens\": 1500,\n  \"temperature\": 0.4,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Tu es un expert en relation client B2B. Suggère des actions de relance pertinentes.\\n\\nRéponds UNIQUEMENT en JSON valide avec un tableau de suggestions:\\n[\\n  {\\n    \\\"contactId\\\": \\\"id\\\",\\n    \\\"contactName\\\": \\\"nom\\\",\\n    \\\"reason\\\": \\\"raison\\\",\\n    \\\"suggestedAction\\\": \\\"action\\\",\\n    \\\"suggestedDate\\\": \\\"YYYY-MM-DD\\\",\\n    \\\"priority\\\": \\\"high\\\" ou \\\"medium\\\" ou \\\"low\\\",\\n    \\\"template\\\": \\\"modèle email\\\"\\n  }\\n]\\n\\nMax 10 suggestions.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Contacts à analyser: {{ JSON.stringify($json.data.contacts.slice(0, 10)) }}\\n\\nOpportunités: {{ JSON.stringify($json.data.opportunities.slice(0, 10)) }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-followup",
+      "name": "OpenRouter Follow-up",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 500],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "openrouter-header",
+          "name": "OpenRouter API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "HTTP-Referer",
+              "value": "https://ainspiration.eu"
+            },
+            {
+              "name": "X-Title",
+              "value": "AInspiration CRM"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"anthropic/claude-3-haiku\",\n  \"max_tokens\": 800,\n  \"temperature\": 0.3,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Tu es un analyste commercial. Analyse l'opportunité.\\n\\nRéponds en JSON:\\n{\\n  \\\"analysis\\\": \\\"analyse\\\",\\n  \\\"recommendations\\\": [\\\"rec1\\\", \\\"rec2\\\"],\\n  \\\"riskLevel\\\": \\\"low\\\" ou \\\"medium\\\" ou \\\"high\\\"\\n}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Opportunité: {{ $json.data.opportunity.name }}\\nÉtape: {{ $json.data.opportunity.stage }}\\nValeur: {{ $json.data.opportunity.estimated_value || 0 }}€\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-analyze",
+      "name": "OpenRouter Analyze",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 680],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "openrouter-header",
+          "name": "OpenRouter API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract et parse la réponse OpenRouter\nconst response = $input.first().json;\n\nlet result;\ntry {\n  // La réponse OpenRouter est dans choices[0].message.content\n  const content = response.choices?.[0]?.message?.content || '';\n  \n  // Essayer d'extraire le JSON\n  const jsonMatch = content.match(/[\\[\\{][\\s\\S]*[\\]\\}]/);\n  if (jsonMatch) {\n    result = JSON.parse(jsonMatch[0]);\n  } else {\n    result = JSON.parse(content);\n  }\n} catch (e) {\n  // Retourner la réponse brute en cas d'erreur\n  result = { \n    error: 'Parse error', \n    raw: response.choices?.[0]?.message?.content || response \n  };\n}\n\nreturn [{ json: result }];"
+      },
+      "id": "a1b2c3d4-parse",
+      "name": "Parse Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [940, 400]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "id": "a1b2c3d4-respond",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1160, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Track event - juste logger et confirmer\nconst data = $input.first().json;\nconsole.log('Event:', data.data?.eventType);\nreturn [{ json: { success: true, tracked: data.data?.eventType } }];"
+      },
+      "id": "a1b2c3d4-event",
+      "name": "Track Event",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 860]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ success: true }) }}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-respond-event",
+      "name": "Respond Event",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [940, 860]
+    }
+  ],
+  "connections": {
+    "Webhook CRM": {
+      "main": [
+        [
+          {
+            "node": "Router Actions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Router Actions": {
+      "main": [
+        [
+          {
+            "node": "OpenRouter Lead Score",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OpenRouter Insights",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OpenRouter Follow-up",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OpenRouter Analyze",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Track Event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Lead Score": {
+      "main": [
+        [
+          {
+            "node": "Parse Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Insights": {
+      "main": [
+        [
+          {
+            "node": "Parse Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Follow-up": {
+      "main": [
+        [
+          {
+            "node": "Parse Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Analyze": {
+      "main": [
+        [
+          {
+            "node": "Parse Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Response": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Track Event": {
+      "main": [
+        [
+          {
+            "node": "Respond Event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "versionId": "1"
+}

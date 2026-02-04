@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Mail, CheckCircle, AlertCircle } from 'lucide-react';
-import { supabase } from '../utils/supabase';
 import { isValidEmail, checkRateLimit, sanitizeString } from '../utils/validation';
 import { useTranslation } from 'react-i18next';
+import { addSubscriber } from '../services/newsletterService';
 
 export default function Newsletter() {
   const { t } = useTranslation('forms');
@@ -31,12 +31,8 @@ export default function Newsletter() {
     setStatus('loading');
 
     try {
-      // Store email in Supabase
-      const { error } = await supabase
-        .from('newsletter_subscribers')
-        .insert([{ email: sanitizedEmail }]);
-
-      if (error) throw error;
+      // Add subscriber directly to Supabase
+      await addSubscriber(sanitizedEmail, 'newsletter_form');
 
       setStatus('success');
       setMessage(t('newsletter.success'));
