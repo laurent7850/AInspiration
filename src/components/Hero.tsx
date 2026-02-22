@@ -3,6 +3,7 @@ import { Brain, ShieldCheck, Users, Play, Pause } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import StartForm from './StartForm';
+import AnimatedStats from './AnimatedStats';
 
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&auto=format&fit=crop&q=80';
 
@@ -127,6 +128,13 @@ export default function Hero() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Animated Stats Bar */}
+      <div className="container mx-auto px-4 mt-16">
+        <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100 p-8 sm:p-10">
+          <AnimatedStats />
         </div>
       </div>
 

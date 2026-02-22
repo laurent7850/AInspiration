@@ -90,6 +90,12 @@
     "trained": "5K+ modèles entraînés",
     "acceleration": "2-4x accélération processus"
   },
+  "animatedStats": {
+    "roi": "ROI moyen",
+    "satisfaction": "Satisfaction client",
+    "productivity": "Productivité",
+    "processing": "Temps de traitement"
+  },
   "cookies": {
     "title": "Nous respectons votre vie privée",
     "description": "Nous utilisons des cookies pour améliorer votre expérience, analyser le trafic et personnaliser le contenu. Vous pouvez choisir les cookies que vous acceptez. Pour plus d'informations, consultez notre",

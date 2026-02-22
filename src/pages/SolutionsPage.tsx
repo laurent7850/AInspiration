@@ -21,6 +21,7 @@ import {
   PenTool
 } from 'lucide-react';
 import StartForm from '../components/StartForm';
+import AnimatedStats from '../components/AnimatedStats';
 import SEOHead from '../components/SEOHead';
 import { getSEOConfig } from '../config/seoConfig';
 import { createServiceSchema } from '../utils/structuredData';
@@ -299,16 +300,7 @@ const SolutionsPage: React.FC = () => {
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
-            <div className="grid grid-cols-2 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                <div className="text-3xl font-bold mb-1">+180%</div>
-                <div className="text-indigo-100">ROI moyen</div>
-              </div>
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                <div className="text-3xl font-bold mb-1">98%</div>
-                <div className="text-indigo-100">Satisfaction client</div>
-              </div>
-            </div>
+            <AnimatedStats variant="dark" className="grid-cols-2" />
           </div>
         </div>
         

@@ -90,6 +90,12 @@
     "trained": "5K+ Getrainde Modellen",
     "acceleration": "2-4x Procesversnelling"
   },
+  "animatedStats": {
+    "roi": "Gemiddelde ROI",
+    "satisfaction": "Klanttevredenheid",
+    "productivity": "Productiviteit",
+    "processing": "Verwerkingstijd"
+  },
   "cookies": {
     "title": "We respecteren uw privacy",
     "description": "We gebruiken cookies om uw ervaring te verbeteren, verkeer te analyseren en inhoud te personaliseren. U kunt kiezen welke cookies u accepteert. Voor meer informatie, zie ons",
