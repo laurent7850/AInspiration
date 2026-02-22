@@ -1,15 +1,43 @@
-import React, { useState } from 'react';
-import { Brain, ShieldCheck, Users } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Brain, ShieldCheck, Users, Play, Pause } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import StartForm from './StartForm';
 
-// Image Unsplash pour le Hero - équipe business avec technologie IA
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&auto=format&fit=crop&q=80';
+
+const VIDEO_SOURCES: Record<string, string> = {
+  fr: '/videos/intro-fr.mp4',
+  en: '/videos/intro-en.mp4',
+  nl: '/videos/intro-nl.mp4',
+};
 
 export default function Hero() {
   const [showStartForm, setShowStartForm] = useState(false);
-  const { t } = useTranslation('common');
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [hasEnded, setHasEnded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const { t, i18n } = useTranslation('common');
+
+  const lang = i18n.language?.substring(0, 2) || 'fr';
+  const videoSrc = VIDEO_SOURCES[lang] || VIDEO_SOURCES.fr;
+
+  const handlePlayPause = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (hasEnded) {
+      video.currentTime = 0;
+      video.play();
+      setHasEnded(false);
+      setIsPlaying(true);
+    } else if (video.paused) {
+      video.play();
+      setIsPlaying(true);
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-indigo-50 to-white pt-20 lg:pt-32 pb-12 lg:pb-20">
@@ -56,16 +84,48 @@ export default function Hero() {
 
           <div className="relative mt-8 lg:mt-0">
             <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 to-purple-500/30 rounded-3xl blur-3xl" aria-hidden="true"></div>
-            <img
-              src={HERO_IMAGE}
-              alt={t('hero.imageAlt', 'Intelligence Artificielle en entreprise - équipe travaillant avec des outils IA')}
-              className="relative rounded-2xl shadow-2xl w-full"
-              loading="eager"
-              fetchPriority="high"
-              width="1200"
-              height="800"
-              decoding="async"
-            />
+            <div className="relative rounded-2xl shadow-2xl overflow-hidden">
+              {/* Video layer */}
+              <div className={`transition-opacity duration-700 ${hasEnded ? 'opacity-0' : 'opacity-100'}`}>
+                <video
+                  ref={videoRef}
+                  key={videoSrc}
+                  className="w-full rounded-2xl cursor-pointer"
+                  playsInline
+                  autoPlay
+                  muted
+                  onClick={handlePlayPause}
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                  onEnded={() => { setIsPlaying(false); setHasEnded(true); }}
+                >
+                  <source src={videoSrc} type="video/mp4" />
+                </video>
+                {/* Pause overlay (visible on hover during playback) */}
+                {!hasEnded && (
+                  <div
+                    className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 cursor-pointer ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}
+                    onClick={handlePlayPause}
+                  >
+                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-lg transition-transform duration-200 hover:scale-110">
+                      {isPlaying ? (
+                        <Pause className="w-8 h-8 text-indigo-600" />
+                      ) : (
+                        <Play className="w-8 h-8 text-indigo-600 ml-1" />
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+              {/* Image layer - fades in when video ends */}
+              <div className={`absolute inset-0 transition-opacity duration-700 ${hasEnded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                <img
+                  src={HERO_IMAGE}
+                  alt={t('hero.imageAlt', 'Intelligence Artificielle en entreprise')}
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
