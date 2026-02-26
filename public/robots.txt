@@ -1,5 +1,5 @@
 # Robots.txt for AInspiration
-# https://ainspiration.be
+# https://ainspiration.eu
 
 User-agent: *
 Allow: /
@@ -15,6 +15,8 @@ Disallow: /tasks
 Disallow: /reports
 Disallow: /messages
 Disallow: /login
+Disallow: /newsletter-admin
+Disallow: /unsubscribe
 
 # Disallow API and system files
 Disallow: /api/
@@ -25,7 +27,7 @@ Disallow: /stats.html
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://ainspiration.be/sitemap.xml
+Sitemap: https://ainspiration.eu/sitemap.xml
 
 # Google specific
 User-agent: Googlebot
@@ -40,6 +42,8 @@ Disallow: /tasks
 Disallow: /reports
 Disallow: /messages
 Disallow: /login
+Disallow: /newsletter-admin
+Disallow: /unsubscribe
 
 # Bing specific
 User-agent: Bingbot
@@ -54,3 +58,5 @@ Disallow: /tasks
 Disallow: /reports
 Disallow: /messages
 Disallow: /login
+Disallow: /newsletter-admin
+Disallow: /unsubscribe

@@ -37,4 +37,14 @@ _ul
 supabase/.temp/
 
 # Environment files with secrets
+# Les fichiers .local ne sont JAMAIS commités (contiennent les clés API)
 .env
+.env.local
+.env.development.local
+.env.production.local
+
+# Les fichiers .env.development et .env.production PEUVENT être commités
+# car ils ne contiennent que des config (pas de vraies clés)
+!.env.development
+!.env.production
+!.env.example

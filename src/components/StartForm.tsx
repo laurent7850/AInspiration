@@ -3,8 +3,8 @@ import { X, ArrowRight, Mail, Building2, Phone, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { validateContactForm, checkRateLimit, isValidEmail, isValidPhone } from '../utils/validation';
 
-// Webhook URL for contact forms - unified endpoint
-const CONTACT_WEBHOOK_URL = "https://n8n.srv767464.hstgr.cloud/webhook/Aimaginationcontact";
+// Proxy backend — le webhook n8n est appelé via le serveur Express
+const CONTACT_WEBHOOK_URL = "/api/webhook/contact";
 
 export const CONTACT_EMAIL = 'info@ainspiration.eu';
 const CONTACT_PHONE = '+32 477 94 28 65';

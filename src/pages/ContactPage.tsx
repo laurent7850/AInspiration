@@ -6,8 +6,8 @@ import SEOHead from '../components/SEOHead';
 import { getSEOConfig } from '../config/seoConfig';
 import { validateContactForm, checkRateLimit } from '../utils/validation';
 
-// Webhook URL for contact forms - unified endpoint
-const CONTACT_WEBHOOK_URL = "https://n8n.srv767464.hstgr.cloud/webhook/Aimaginationcontact";
+// Proxy backend — le webhook n8n est appelé via le serveur Express
+const CONTACT_WEBHOOK_URL = "/api/webhook/contact";
 
 const CONTACT_EMAIL = 'divers@distr-action.com';
 const CONTACT_PHONE = '+32 477 94 28 65';
@@ -178,9 +178,18 @@ const ContactPage: React.FC = () => {
               </h2>
 
               {isSubmitted ? (
-                <div className="bg-green-50 text-green-700 p-4 rounded-lg">
-                  <h3 className="font-semibold text-lg mb-2">{t('contact.success.title')}</h3>
-                  <p>{t('contact.success.message')}</p>
+                <div className="bg-green-50 border border-green-200 text-green-700 p-6 rounded-xl text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Send className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h3 className="font-semibold text-xl mb-2">{t('contact.success.title')}</h3>
+                  <p className="mb-4">{t('contact.success.message')}</p>
+                  <button
+                    onClick={() => setIsSubmitted(false)}
+                    className="text-sm text-green-700 underline hover:text-green-900"
+                  >
+                    Envoyer un autre message
+                  </button>
                 </div>
               ) : (
                 <form

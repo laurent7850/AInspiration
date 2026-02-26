@@ -4,276 +4,276 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://ainspiration.be/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Why AI -->
   <url>
-    <loc>https://ainspiration.be/pourquoi-ia</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/pourquoi-ia"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/pourquoi-ia"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/pourquoi-ia"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/pourquoi-ia"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/pourquoi-ia</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/pourquoi-ia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/pourquoi-ia"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/pourquoi-ia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/pourquoi-ia"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- For Who AI -->
   <url>
-    <loc>https://ainspiration.be/pour-qui-ia</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/pour-qui-ia"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/pour-qui-ia"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/pour-qui-ia"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/pour-qui-ia"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/pour-qui-ia</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/pour-qui-ia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/pour-qui-ia"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/pour-qui-ia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/pour-qui-ia"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Solutions -->
   <url>
-    <loc>https://ainspiration.be/solutions</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/solutions"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/solutions"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/solutions"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/solutions"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/solutions</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/solutions"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/solutions"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/solutions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/solutions"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- AI Analysis -->
   <url>
-    <loc>https://ainspiration.be/analyse-ia</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/analyse-ia"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/analyse-ia"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/analyse-ia"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/analyse-ia"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/analyse-ia</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/analyse-ia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/analyse-ia"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/analyse-ia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/analyse-ia"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Transformation -->
   <url>
-    <loc>https://ainspiration.be/transformation</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/transformation"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/transformation"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/transformation"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/transformation"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/transformation</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/transformation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/transformation"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/transformation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/transformation"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Visual Creation -->
   <url>
-    <loc>https://ainspiration.be/creation-visuelle</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/creation-visuelle"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/creation-visuelle"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/creation-visuelle"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/creation-visuelle"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/creation-visuelle</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/creation-visuelle"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/creation-visuelle"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/creation-visuelle"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/creation-visuelle"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Automation -->
   <url>
-    <loc>https://ainspiration.be/automatisation</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/automatisation"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/automatisation"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/automatisation"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/automatisation"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/automatisation</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/automatisation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/automatisation"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/automatisation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/automatisation"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Virtual Assistants -->
   <url>
-    <loc>https://ainspiration.be/assistants</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/assistants"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/assistants"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/assistants"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/assistants"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/assistants</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/assistants"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/assistants"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/assistants"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/assistants"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Prompts -->
   <url>
-    <loc>https://ainspiration.be/prompts</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/prompts"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/prompts"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/prompts"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/prompts"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/prompts</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/prompts"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/prompts"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/prompts"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/prompts"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Creativity -->
   <url>
-    <loc>https://ainspiration.be/creativite</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/creativite"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/creativite"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/creativite"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/creativite"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/creativite</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/creativite"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/creativite"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/creativite"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/creativite"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- CRM Solution -->
   <url>
-    <loc>https://ainspiration.be/crm</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/crm"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/crm"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/crm"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/crm"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/crm</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/crm"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/crm"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/crm"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/crm"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Products -->
   <url>
-    <loc>https://ainspiration.be/produits</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/produits"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/produits"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/produits"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/produits"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/produits</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/produits"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/produits"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/produits"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/produits"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Case Studies -->
   <url>
-    <loc>https://ainspiration.be/etudes-de-cas</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/etudes-de-cas"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/etudes-de-cas"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/etudes-de-cas"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/etudes-de-cas"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/etudes-de-cas</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/etudes-de-cas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/etudes-de-cas"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/etudes-de-cas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/etudes-de-cas"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Consulting -->
   <url>
-    <loc>https://ainspiration.be/conseil</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/conseil"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/conseil"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/conseil"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/conseil"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/conseil</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/conseil"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/conseil"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/conseil"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/conseil"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Training -->
   <url>
-    <loc>https://ainspiration.be/formation</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/formation"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/formation"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/formation"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/formation"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/formation</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/formation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/formation"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/formation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/formation"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Custom Support -->
   <url>
-    <loc>https://ainspiration.be/accompagnement</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/accompagnement"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/accompagnement"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/accompagnement"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/accompagnement"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/accompagnement</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/accompagnement"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/accompagnement"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/accompagnement"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/accompagnement"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Recommendations -->
   <url>
-    <loc>https://ainspiration.be/recommandations</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/recommandations"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/recommandations"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/recommandations"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/recommandations"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/recommandations</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/recommandations"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/recommandations"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/recommandations"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/recommandations"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- About -->
   <url>
-    <loc>https://ainspiration.be/a-propos</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/a-propos"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/a-propos"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/a-propos"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/a-propos"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/a-propos</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/a-propos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/a-propos"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/a-propos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/a-propos"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- Contact -->
   <url>
-    <loc>https://ainspiration.be/contact</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/contact"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/contact"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/contact"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/contact"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/contact"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Blog -->
   <url>
-    <loc>https://ainspiration.be/blog</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/blog"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/blog"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/blog"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/blog"/>
-    <lastmod>2026-01-12</lastmod>
-    <changefreq>daily</changefreq>
+    <loc>https://ainspiration.eu/blog</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/blog"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/blog"/>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Blog Post - Thierry -->
   <url>
-    <loc>https://ainspiration.be/blog/thierry-facturation-ia</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/blog/thierry-facturation-ia"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/blog/thierry-facturation-ia"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/blog/thierry-facturation-ia"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/blog/thierry-facturation-ia"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/blog/thierry-facturation-ia</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/blog/thierry-facturation-ia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/blog/thierry-facturation-ia"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/blog/thierry-facturation-ia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/blog/thierry-facturation-ia"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Privacy Policy -->
   <url>
-    <loc>https://ainspiration.be/privacy</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.be/privacy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.be/en/privacy"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.be/nl/privacy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.be/privacy"/>
-    <lastmod>2026-01-12</lastmod>
+    <loc>https://ainspiration.eu/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ainspiration.eu/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ainspiration.eu/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ainspiration.eu/nl/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainspiration.eu/privacy"/>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

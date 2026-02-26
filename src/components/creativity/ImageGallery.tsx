@@ -13,9 +13,10 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {images.map((image, index) => (
         <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden">
-          <img 
-            src={image.url} 
+          <img
+            src={image.url}
             alt={image.title}
+            loading="lazy"
             className="w-full h-48 object-cover"
           />
           <div className="p-6">

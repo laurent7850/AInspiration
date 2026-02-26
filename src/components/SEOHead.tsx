@@ -5,6 +5,7 @@ import {
   getSEOConfig,
   getHreflangTags,
   getOrganizationSchema,
+  getBreadcrumbSchema,
   defaultSEO,
   type SupportedLanguage
 } from '../config/seoConfig';
@@ -82,6 +83,11 @@ const SEOHead: React.FC<SEOHeadProps> = ({
 
   if (schema) {
     combinedSchema.push(schema);
+  }
+
+  // BreadcrumbList schema (included on all pages except homepage)
+  if (location.pathname !== '/') {
+    combinedSchema.push(getBreadcrumbSchema(location.pathname, currentLang));
   }
 
   // WebPage schema (always included)

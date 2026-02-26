@@ -54,8 +54,18 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#terms" className="text-gray-400 hover:text-indigo-400 text-sm">
+                <a href="/mentions-legales" className="text-gray-400 hover:text-indigo-400 text-sm">
+                  Mentions légales
+                </a>
+              </li>
+              <li>
+                <a href="/cgv" className="text-gray-400 hover:text-indigo-400 text-sm">
                   {t('footer.links.terms')}
+                </a>
+              </li>
+              <li>
+                <a href="/cgu" className="text-gray-400 hover:text-indigo-400 text-sm">
+                  CGU
                 </a>
               </li>
               <li className="text-gray-400 text-sm">

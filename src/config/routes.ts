@@ -150,6 +150,25 @@ const routes: RouteConfig[] = [
     exact: true
   },
   {
+    path: "/mentions-legales",
+    component: lazy(() => import('../pages/MentionsLegalesPage')),
+    exact: true
+  },
+  {
+    path: "/cgv",
+    component: lazy(() => import('../pages/CGVPage')),
+    exact: true
+  },
+  {
+    path: "/cgu",
+    component: lazy(() => import('../pages/CGUPage')),
+    exact: true
+  },
+  {
+    path: "*",
+    component: lazy(() => import('../pages/NotFoundPage')),
+  },
+  {
     path: "/crm",
     component: lazy(() => import('../pages/CRMSolutionPage')),
     exact: true

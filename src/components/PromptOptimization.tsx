@@ -101,9 +101,10 @@ export default function PromptOptimization() {
             <div className="grid md:grid-cols-2 gap-6 mt-8">
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <div className="flex items-center gap-2 mb-2">
-                  <img 
-                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop" 
-                    alt="Sophie M." 
+                  <img
+                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop"
+                    alt="Sophie M."
+                    loading="lazy"
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>
@@ -118,9 +119,10 @@ export default function PromptOptimization() {
 
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <div className="flex items-center gap-2 mb-2">
-                  <img 
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop" 
-                    alt="Marc L." 
+                  <img
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop"
+                    alt="Marc L."
+                    loading="lazy"
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>

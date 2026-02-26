@@ -6,11 +6,13 @@ import {
   TestimonialsSkeleton,
   CardSkeleton
 } from '../components/ui/Skeleton';
-import { getOrganizationSchema } from '../config/seoConfig';
+import { getOrganizationSchema, getFAQSchema, getReviewSchema } from '../config/seoConfig';
 
 const Hero = lazy(() => import('../components/Hero'));
+const SocialProof = lazy(() => import('../components/SocialProof'));
 const Features = lazy(() => import('../components/Features'));
 const Testimonials = lazy(() => import('../components/Testimonials'));
+const FAQ = lazy(() => import('../components/FAQ'));
 const AuditSection = lazy(() => import('../components/AuditSection'));
 
 // Skeleton pour la section Audit
@@ -29,17 +31,42 @@ const AuditSkeleton = () => (
   </section>
 );
 
+const faqData = [
+  { question: "Faut-il des compétences techniques pour utiliser vos solutions ?", answer: "Absolument pas ! Nos solutions sont conçues pour être simples d'utilisation. Nous nous occupons de toute la partie technique." },
+  { question: "Combien de temps faut-il pour mettre en place une solution IA ?", answer: "La plupart de nos solutions sont opérationnelles en 48h. L'audit gratuit prend 24h." },
+  { question: "L'audit est-il vraiment gratuit et sans engagement ?", answer: "Oui, 100% gratuit et sans engagement. Nous analysons votre activité et vous livrons un plan d'action concret." },
+  { question: "Mes données sont-elles en sécurité ?", answer: "Absolument. Nous sommes conformes RGPD et toutes les données sont hébergées en Europe." },
+  { question: "Quel type d'entreprise peut bénéficier de vos services ?", answer: "Toute PME peut en bénéficier ! Restaurants, e-commerces, agences marketing, cabinets de conseil, artisans..." }
+];
+
+const reviewData = [
+  { author: "Thierry", rating: 5, text: "On a divisé par deux les no-shows, je gagne au moins 1h par jour." },
+  { author: "Sophie M.", rating: 5, text: "Notre taux d'engagement a bondi de 40% et on publie 3 fois plus souvent." },
+  { author: "Marc D.", rating: 5, text: "70% des demandes sont traitées automatiquement. Le ROI a été visible dès le premier mois." }
+];
+
+const combinedSchema = [
+  getOrganizationSchema(),
+  getFAQSchema(faqData),
+  getReviewSchema(reviewData)
+];
+
 export default function HomePage() {
   return (
     <main>
       <SEOHead
         includeOrganizationSchema={true}
-        schema={getOrganizationSchema()}
+        schema={combinedSchema}
       />
 
       {/* Hero Section - priorité haute, pas de lazy loading excessif */}
       <Suspense fallback={<HeroSkeleton />}>
         <Hero />
+      </Suspense>
+
+      {/* Social Proof Bar */}
+      <Suspense fallback={null}>
+        <SocialProof />
       </Suspense>
 
       {/* Features Section */}
@@ -50,6 +77,11 @@ export default function HomePage() {
       {/* Testimonials Section */}
       <Suspense fallback={<TestimonialsSkeleton />}>
         <Testimonials />
+      </Suspense>
+
+      {/* FAQ Section */}
+      <Suspense fallback={null}>
+        <FAQ />
       </Suspense>
 
       {/* Audit CTA Section */}

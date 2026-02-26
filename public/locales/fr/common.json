@@ -48,12 +48,12 @@
     "tagline": "Solutions d'IA pour Entreprises"
   },
   "hero": {
-    "title": "L'Intelligence Artificielle au service de votre croissance",
-    "subtitle": "Optimisez vos processus métiers grâce à des solutions d'IA adaptées à vos enjeux",
+    "title": "Gagnez 10h par semaine grâce à l'IA",
+    "subtitle": "Rejoignez les PME qui automatisent leurs tâches répétitives et boostent leur chiffre d'affaires avec nos solutions d'Intelligence Artificielle — sans compétence technique requise.",
     "features": {
-      "simple": "Simple à comprendre",
-      "secure": "100% sécurisé",
-      "support": "Support expert"
+      "simple": "Mise en place en 48h",
+      "secure": "Données 100% sécurisées",
+      "support": "Accompagnement personnalisé"
     }
   },
   "footer": {
@@ -114,6 +114,20 @@
       "text": "Avant, c'était l'enfer : des appels à toute heure, des réservations sur Instagram, des SMS... On perdait un temps fou et on avait des no-shows toutes les semaines. Maintenant, 100% de nos réservations passent par WhatsApp Business. Le système pose les bonnes questions automatiquement (date, heure, nombre de personnes), envoie la confirmation et même un petit rappel la veille. Résultat : on a divisé par deux les no-shows, je gagne au moins 1h par jour, et mes clients adorent la simplicité. Franchement, c'était super simple à mettre en place et je ne reviendrais jamais en arrière. Je recommande à tous les restos qui en ont marre de jongler avec les réservations !",
       "badge": "-50% de no-shows"
     },
+    "sophie": {
+      "name": "Sophie M.",
+      "role": "Directrice Marketing",
+      "city": "Lyon",
+      "text": "On passait des heures à rédiger nos newsletters et posts LinkedIn. Avec l'IA d'AInspiration, on génère du contenu de qualité en quelques minutes. Notre taux d'engagement a bondi de 40% et on publie 3 fois plus souvent. L'équipe est ravie de pouvoir se concentrer sur la stratégie plutôt que la rédaction.",
+      "badge": "+40% engagement"
+    },
+    "marc": {
+      "name": "Marc D.",
+      "role": "Gérant e-commerce",
+      "city": "Bruxelles",
+      "text": "Notre service client était submergé. Depuis qu'on a mis en place l'assistant virtuel, 70% des demandes sont traitées automatiquement. Nos clients ont des réponses instantanées 24h/24, et mon équipe peut enfin se concentrer sur les cas complexes. Le ROI a été visible dès le premier mois.",
+      "badge": "70% automatisé"
+    },
     "indicators": {
       "easySetup": "Simple à mettre en place",
       "timeSaving": "Gain de temps immédiat"
@@ -134,5 +148,17 @@
         "premium": "⭐ Accompagnement VIP"
       }
     }
+  },
+  "faq": {
+    "q1": "Faut-il des compétences techniques pour utiliser vos solutions ?",
+    "a1": "Absolument pas ! Nos solutions sont conçues pour être simples d'utilisation. Nous nous occupons de toute la partie technique.",
+    "q2": "Combien de temps faut-il pour mettre en place une solution IA ?",
+    "a2": "La plupart de nos solutions sont opérationnelles en 48h. L'audit gratuit prend 24h.",
+    "q3": "L'audit est-il vraiment gratuit et sans engagement ?",
+    "a3": "Oui, 100% gratuit et sans engagement. Nous analysons votre activité et vous livrons un plan d'action concret.",
+    "q4": "Mes données sont-elles en sécurité ?",
+    "a4": "Absolument. Nous sommes conformes RGPD et toutes les données sont hébergées en Europe.",
+    "q5": "Quel type d'entreprise peut bénéficier de vos services ?",
+    "a5": "Toute PME peut en bénéficier ! Restaurants, e-commerces, agences marketing, cabinets de conseil, artisans..."
   }
 }

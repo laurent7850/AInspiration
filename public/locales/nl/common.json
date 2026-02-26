@@ -48,12 +48,12 @@
     "tagline": "AI Oplossingen voor Bedrijven"
   },
   "hero": {
-    "title": "Kunstmatige Intelligentie ten dienste van uw groei",
-    "subtitle": "Optimaliseer uw bedrijfsprocessen met AI-oplossingen aangepast aan uw uitdagingen",
+    "title": "Bespaar 10 uur per week dankzij AI",
+    "subtitle": "Sluit u aan bij de KMO's die repetitieve taken automatiseren en hun omzet verhogen met onze AI-oplossingen — geen technische kennis vereist.",
     "features": {
-      "simple": "Eenvoudig te begrijpen",
-      "secure": "100% veilig",
-      "support": "Expert ondersteuning"
+      "simple": "Operationeel in 48u",
+      "secure": "100% beveiligde gegevens",
+      "support": "Persoonlijke begeleiding"
     }
   },
   "footer": {
@@ -114,6 +114,20 @@
       "text": "Eerder was het een hel: telefoontjes op alle uren, reserveringen op Instagram, sms'jes... We verspilden zoveel tijd en hadden elke week no-shows. Nu gaan 100% van onze reserveringen via WhatsApp Business. Het systeem stelt automatisch de juiste vragen (datum, tijd, aantal personen), stuurt bevestiging en zelfs een kleine herinnering de dag ervoor. Resultaat: we hebben no-shows gehalveerd, ik bespaar minstens 1 uur per dag, en mijn klanten houden van de eenvoud. Eerlijk gezegd, het was super eenvoudig om in te stellen en ik zou nooit meer teruggaan. Ik beveel het aan alle restaurants die het zat zijn om met reserveringen te jongleren!",
       "badge": "-50% no-shows"
     },
+    "sophie": {
+      "name": "Sophie M.",
+      "role": "Marketing Directeur",
+      "city": "Lyon",
+      "text": "We besteedden uren aan het schrijven van newsletters en LinkedIn-posts. Met de AI van AInspiration genereren we kwalitatieve content in enkele minuten. Ons engagementpercentage steeg met 40% en we publiceren 3 keer vaker. Het team is blij zich op strategie te kunnen richten in plaats van op schrijfwerk.",
+      "badge": "+40% engagement"
+    },
+    "marc": {
+      "name": "Marc D.",
+      "role": "E-commerce Manager",
+      "city": "Brussel",
+      "text": "Onze klantenservice was overbelast. Sinds we de virtuele assistent hebben geïmplementeerd, wordt 70% van de verzoeken automatisch afgehandeld. Onze klanten krijgen 24/7 direct antwoord, en mijn team kan zich eindelijk richten op complexe gevallen. De ROI was al zichtbaar vanaf de eerste maand.",
+      "badge": "70% geautomatiseerd"
+    },
     "indicators": {
       "easySetup": "Eenvoudig in te stellen",
       "timeSaving": "Onmiddellijke tijdsbesparing"
@@ -134,5 +148,17 @@
         "premium": "⭐ VIP Begeleiding"
       }
     }
+  },
+  "faq": {
+    "q1": "Heb ik technische vaardigheden nodig om uw oplossingen te gebruiken?",
+    "a1": "Absoluut niet! Onze oplossingen zijn ontworpen om eenvoudig te gebruiken. Wij zorgen voor alle technische aspecten.",
+    "q2": "Hoe lang duurt het om een AI-oplossing te implementeren?",
+    "a2": "De meeste van onze oplossingen zijn operationeel binnen 48 uur. De gratis audit duurt 24 uur.",
+    "q3": "Is de audit echt gratis en vrijblijvend?",
+    "a3": "Ja, 100% gratis en vrijblijvend. We analyseren uw bedrijf en leveren een concreet actieplan.",
+    "q4": "Zijn mijn gegevens veilig?",
+    "a4": "Absoluut. We zijn AVG-conform en alle gegevens worden in Europa gehost.",
+    "q5": "Welk type bedrijf kan profiteren van uw diensten?",
+    "a5": "Elke KMO kan ervan profiteren! Restaurants, e-commerce, marketingbureaus, adviesbureaus, ambachtslieden..."
   }
 }

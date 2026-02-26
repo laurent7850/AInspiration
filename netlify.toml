@@ -4,6 +4,35 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  VITE_APP_ENV = "production"
+  VITE_SITE_URL = "https://ainspiration.eu"
+  VITE_API_URL = "https://ainspiration.eu/api"
+  VITE_DEBUG = "false"
+  VITE_LOG_LEVEL = "error"
+  VITE_ENABLE_DEVTOOLS = "false"
+  VITE_ENABLE_ANALYTICS = "true"
+  VITE_SHOW_DEBUG_PANEL = "false"
+
+# Context: Deploy Previews (branches de feature / PR)
+[context.deploy-preview]
+  command = "npm run build:dev"
+
+[context.deploy-preview.environment]
+  VITE_APP_ENV = "development"
+  VITE_DEBUG = "true"
+  VITE_LOG_LEVEL = "debug"
+  VITE_ENABLE_ANALYTICS = "false"
+  VITE_SHOW_DEBUG_PANEL = "true"
+
+# Context: Branch deploys
+[context.branch-deploy]
+  command = "npm run build:dev"
+
+[context.branch-deploy.environment]
+  VITE_APP_ENV = "development"
+  VITE_DEBUG = "true"
+  VITE_LOG_LEVEL = "debug"
+  VITE_ENABLE_ANALYTICS = "false"
 
 # Redirect old domain to new domain
 [[redirects]]

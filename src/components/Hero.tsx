@@ -55,15 +55,16 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button
                 onClick={() => setShowStartForm(true)}
-                className="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium shadow-lg shadow-indigo-500/25"
-              >
-                {t('button.discoverAI')}
-              </button>
-              <Link
-                to="/contact"
-                className="bg-white text-indigo-600 px-8 py-3 rounded-lg border border-indigo-200 hover:bg-indigo-50 transition-colors font-medium text-center"
+                className="bg-indigo-600 text-white px-8 py-4 rounded-lg hover:bg-indigo-700 transition-all font-semibold shadow-lg shadow-indigo-500/25 text-lg transform hover:-translate-y-0.5"
               >
                 {t('button.startFreeAudit')}
+                <span className="block text-sm font-normal opacity-80 mt-0.5">{t('hero.ctaSubtext', 'Résultats en 24h — Sans engagement')}</span>
+              </button>
+              <Link
+                to="/etudes-de-cas"
+                className="bg-white text-indigo-600 px-8 py-4 rounded-lg border border-indigo-200 hover:bg-indigo-50 transition-colors font-medium text-center"
+              >
+                {t('button.seeCaseStudies', 'Voir les résultats clients')}
               </Link>
             </div>
 

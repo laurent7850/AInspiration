@@ -122,9 +122,10 @@ const AboutPage: React.FC = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {teamMembers.map((member, index) => (
             <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <img 
-                src={member.image} 
+              <img
+                src={member.image}
                 alt={member.name}
+                loading="lazy"
                 className="w-full h-64 object-cover"
               />
               <div className="p-6">

@@ -305,9 +305,10 @@ const CRMSolutionPage: React.FC = () => {
             </div>
             <div className="relative hidden md:block">
               <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 to-purple-500/30 rounded-3xl blur-3xl"></div>
-              <img 
+              <img
                 src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1024&auto=format&fit=crop"
                 alt="Interface CRM intelligente"
+                loading="lazy"
                 className="relative rounded-2xl shadow-2xl w-full"
                 width="1024"
                 height="683"
@@ -326,11 +327,11 @@ const CRMSolutionPage: React.FC = () => {
             </h2>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-70">
-            <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=60&fit=crop&auto=format" alt="Logo client 1" className="h-8 object-contain grayscale" />
-            <img src="https://images.unsplash.com/photo-1603731125990-2c0aec2261f8?w=200&h=60&fit=crop&auto=format" alt="Logo client 2" className="h-8 object-contain grayscale" />
-            <img src="https://images.unsplash.com/photo-1622042349683-caa882b50724?w=200&h=60&fit=crop&auto=format" alt="Logo client 3" className="h-8 object-contain grayscale" />
-            <img src="https://images.unsplash.com/photo-1559130614-8fa487e2d0c0?w=200&h=60&fit=crop&auto=format" alt="Logo client 4" className="h-8 object-contain grayscale" />
-            <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=60&fit=crop&auto=format" alt="Logo client 5" className="h-8 object-contain grayscale" />
+            <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=60&fit=crop&auto=format" alt="Logo client 1" loading="lazy" className="h-8 object-contain grayscale" />
+            <img src="https://images.unsplash.com/photo-1603731125990-2c0aec2261f8?w=200&h=60&fit=crop&auto=format" alt="Logo client 2" loading="lazy" className="h-8 object-contain grayscale" />
+            <img src="https://images.unsplash.com/photo-1622042349683-caa882b50724?w=200&h=60&fit=crop&auto=format" alt="Logo client 3" loading="lazy" className="h-8 object-contain grayscale" />
+            <img src="https://images.unsplash.com/photo-1559130614-8fa487e2d0c0?w=200&h=60&fit=crop&auto=format" alt="Logo client 4" loading="lazy" className="h-8 object-contain grayscale" />
+            <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=60&fit=crop&auto=format" alt="Logo client 5" loading="lazy" className="h-8 object-contain grayscale" />
           </div>
         </div>
       </div>

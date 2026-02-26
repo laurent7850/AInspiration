@@ -181,9 +181,10 @@ const ThierryBlogPage: React.FC = () => {
               "Cette solution a complètement transformé notre approche de la facturation. Non seulement elle m'a libéré un temps précieux que je peux désormais consacrer au développement de l'entreprise, mais elle a également amélioré notre relation client. Les factures sont émises rapidement, elles sont claires, détaillées et les relais automatiques sont faits avec tact. C'est un investissement qui a été rentabilisé en moins de deux mois."
             </blockquote>
             <div className="flex items-center gap-4">
-              <img 
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&auto=format&fit=crop&q=80" 
-                alt="Thierry Martin" 
+              <img
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&auto=format&fit=crop&q=80"
+                alt="Thierry Martin"
+                loading="lazy"
                 className="w-12 h-12 rounded-full object-cover"
               />
               <div>
@@ -316,9 +317,10 @@ const ThierryBlogPage: React.FC = () => {
             
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-white rounded-xl shadow overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80" 
-                  alt="Automatisation des processus administratifs" 
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80"
+                  alt="Automatisation des processus administratifs"
+                  loading="lazy"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -339,9 +341,10 @@ const ThierryBlogPage: React.FC = () => {
               </div>
               
               <div className="bg-white rounded-xl shadow overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&auto=format&fit=crop&q=80" 
-                  alt="ROI de l'automatisation" 
+                <img
+                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&auto=format&fit=crop&q=80"
+                  alt="ROI de l'automatisation"
+                  loading="lazy"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -366,9 +369,10 @@ const ThierryBlogPage: React.FC = () => {
           {/* Author Bio */}
           <div className="bg-gray-50 rounded-xl p-6 mb-8">
             <div className="flex items-start gap-4">
-              <img 
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&auto=format&fit=crop&q=80" 
-                alt="Sophie Dubois" 
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&auto=format&fit=crop&q=80"
+                alt="Sophie Dubois"
+                loading="lazy"
                 className="w-16 h-16 rounded-full object-cover"
               />
               <div>

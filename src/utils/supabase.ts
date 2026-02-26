@@ -1,11 +1,13 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { env, logger } from '@/config/environment';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const { supabaseUrl, supabaseAnonKey } = env;
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Supabase credentials are missing');
+  throw new Error('Supabase credentials are missing. Check your .env files.');
 }
+
+logger.debug('Supabase initialized:', { url: supabaseUrl });
 
 // Using generic client to avoid strict type errors until proper types are generated
 // TODO: Generate proper types with `supabase gen types typescript`

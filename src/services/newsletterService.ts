@@ -1,10 +1,9 @@
 import { supabase } from '../utils/supabase';
 import { NewsletterSubscriber, Newsletter, NewsletterSendLog } from '../utils/types';
 
-// n8n webhook URLs
-const N8N_BASE_URL = "https://n8n.srv767464.hstgr.cloud/webhook";
-const NEWSLETTER_WEBHOOK_URL = `${N8N_BASE_URL}/newsletter-send`;
-const NEWSLETTER_GENERATE_URL = `${N8N_BASE_URL}/newsletter-generate`;
+// Proxy backend — les webhooks n8n sont appelés via le serveur Express
+const NEWSLETTER_WEBHOOK_URL = '/api/webhook/newsletter-send';
+const NEWSLETTER_GENERATE_URL = '/api/webhook/newsletter-generate';
 
 // Generate a unique unsubscribe token
 const generateUnsubscribeToken = (): string => {

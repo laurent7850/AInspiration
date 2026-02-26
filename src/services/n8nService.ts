@@ -4,18 +4,10 @@
  */
 
 import { Contact, Opportunity, Task, Activity } from '../utils/types';
+import { logger } from '@/config/environment';
 
-// Configuration n8n
-const N8N_WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL || 'https://n8n.srv767464.hstgr.cloud/webhook/crm-ai';
-const N8N_WEBHOOK_TEST_URL = 'https://n8n.srv767464.hstgr.cloud/webhook-test/207e8cf0-f77b-454e-af6b-75aaa4df535d';
-
-// Utiliser l'URL de test en développement, production en production
-const getWebhookUrl = () => {
-  if (import.meta.env.DEV) {
-    return N8N_WEBHOOK_TEST_URL;
-  }
-  return N8N_WEBHOOK_URL;
-};
+// Proxy backend — les webhooks n8n sont appelés via le serveur Express
+const getWebhookUrl = () => '/api/webhook/crm';
 
 export interface LeadScore {
   contactId: string;
@@ -83,7 +75,7 @@ async function sendToN8N<T>(payload: N8NPayload): Promise<N8NResponse<T>> {
     const result = await response.json();
     return { success: true, data: result };
   } catch (error) {
-    console.error('Erreur n8n:', error);
+    logger.error('Erreur n8n:', error);
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Erreur inconnue'

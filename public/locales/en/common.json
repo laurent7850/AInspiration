@@ -48,12 +48,12 @@
     "tagline": "AI Solutions for Businesses"
   },
   "hero": {
-    "title": "Artificial Intelligence at the Service of Your Growth",
-    "subtitle": "Optimize your business processes with AI solutions tailored to your challenges",
+    "title": "Save 10 Hours a Week with AI",
+    "subtitle": "Join the SMEs automating repetitive tasks and boosting revenue with our AI solutions — no technical skills required.",
     "features": {
-      "simple": "Easy to understand",
-      "secure": "100% secure",
-      "support": "Expert support"
+      "simple": "Up and running in 48h",
+      "secure": "100% secure data",
+      "support": "Personalized support"
     }
   },
   "footer": {
@@ -114,6 +114,20 @@
       "text": "Before, it was hell: calls at all hours, reservations on Instagram, texts... We wasted so much time and had no-shows every week. Now, 100% of our reservations go through WhatsApp Business. The system automatically asks the right questions (date, time, number of people), sends confirmation and even a little reminder the day before. Result: we cut no-shows in half, I save at least 1 hour per day, and my customers love the simplicity. Honestly, it was super simple to set up and I would never go back. I recommend it to all restaurants tired of juggling reservations!",
       "badge": "-50% no-shows"
     },
+    "sophie": {
+      "name": "Sophie M.",
+      "role": "Marketing Director",
+      "city": "Lyon",
+      "text": "We spent hours writing newsletters and LinkedIn posts. With AInspiration's AI, we generate quality content in minutes. Our engagement rate jumped 40% and we publish 3 times more often. The team is thrilled to focus on strategy rather than writing.",
+      "badge": "+40% engagement"
+    },
+    "marc": {
+      "name": "Marc D.",
+      "role": "E-commerce Manager",
+      "city": "Brussels",
+      "text": "Our customer service was overwhelmed. Since we implemented the virtual assistant, 70% of requests are handled automatically. Our customers get instant responses 24/7, and my team can finally focus on complex cases. The ROI was visible from the very first month.",
+      "badge": "70% automated"
+    },
     "indicators": {
       "easySetup": "Easy to set up",
       "timeSaving": "Immediate time savings"
@@ -134,5 +148,17 @@
         "premium": "⭐ VIP Support"
       }
     }
+  },
+  "faq": {
+    "q1": "Do I need technical skills to use your solutions?",
+    "a1": "Absolutely not! Our solutions are designed to be easy to use. We handle all the technical aspects.",
+    "q2": "How long does it take to implement an AI solution?",
+    "a2": "Most of our solutions are operational within 48 hours. The free audit takes 24 hours.",
+    "q3": "Is the audit really free with no strings attached?",
+    "a3": "Yes, 100% free and no commitment. We analyze your business and deliver a concrete action plan.",
+    "q4": "Is my data secure?",
+    "a4": "Absolutely. We are GDPR compliant and all data is hosted in Europe.",
+    "q5": "What type of business can benefit from your services?",
+    "a5": "Any SME can benefit! Restaurants, e-commerce, marketing agencies, consulting firms, craftsmen..."
   }
 }

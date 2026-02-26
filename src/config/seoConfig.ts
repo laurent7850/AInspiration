@@ -18,27 +18,27 @@ interface SEOPageConfig {
 
 export const defaultSEO = {
   siteName: 'AInspiration',
-  siteUrl: 'https://ainspiration.be',
-  defaultImage: '/images/og-default.jpg',
+  siteUrl: 'https://ainspiration.eu',
+  defaultImage: '/og-image.png',
   twitterHandle: '@ainspiration',
 };
 
 export const seoPages: Record<string, SEOPageConfig> = {
   '/': {
     fr: {
-      title: 'AInspiration | Solutions d\'Intelligence Artificielle pour Entreprises',
-      description: 'Transformez votre entreprise avec nos solutions d\'IA. Audit gratuit, recommandations personnalisées et accompagnement expert pour optimiser vos processus.',
-      keywords: 'intelligence artificielle, IA entreprise, transformation digitale, audit IA, solutions IA, automatisation'
+      title: 'AInspiration | Gagnez 10h/semaine avec l\'IA — Audit Gratuit PME',
+      description: 'Automatisez vos tâches répétitives et boostez votre CA grâce à l\'IA. +180% ROI moyen. Audit gratuit en 24h, sans engagement. 50+ PME accompagnées en Belgique et France.',
+      keywords: 'intelligence artificielle PME, IA entreprise, automatisation IA, audit IA gratuit, solutions IA Belgique, transformation digitale PME'
     },
     en: {
-      title: 'AInspiration | Artificial Intelligence Solutions for Businesses',
-      description: 'Transform your business with our AI solutions. Free audit, personalized recommendations and expert support to optimize your processes.',
-      keywords: 'artificial intelligence, business AI, digital transformation, AI audit, AI solutions, automation'
+      title: 'AInspiration | Save 10h/week with AI — Free SME Audit',
+      description: 'Automate repetitive tasks and boost revenue with AI. +180% average ROI. Free audit in 24h, no commitment. 50+ SMEs supported in Belgium and France.',
+      keywords: 'artificial intelligence SME, business AI, AI automation, free AI audit, AI solutions Belgium, digital transformation SME'
     },
     nl: {
-      title: 'AInspiration | Kunstmatige Intelligentie Oplossingen voor Bedrijven',
-      description: 'Transformeer uw bedrijf met onze AI-oplossingen. Gratis audit, gepersonaliseerde aanbevelingen en deskundige begeleiding om uw processen te optimaliseren.',
-      keywords: 'kunstmatige intelligentie, AI bedrijf, digitale transformatie, AI audit, AI oplossingen, automatisering'
+      title: 'AInspiration | Bespaar 10u/week met AI — Gratis KMO Audit',
+      description: 'Automatiseer repetitieve taken en verhoog uw omzet met AI. +180% gemiddelde ROI. Gratis audit in 24u, zonder verplichtingen. 50+ KMO\'s begeleid in België en Frankrijk.',
+      keywords: 'kunstmatige intelligentie KMO, AI bedrijf, AI automatisering, gratis AI audit, AI oplossingen België, digitale transformatie KMO'
     }
   },
   '/login': {
@@ -162,9 +162,9 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/solutions': {
     fr: {
-      title: 'Solutions IA | Services d\'Intelligence Artificielle | AInspiration',
-      description: 'Découvrez nos solutions IA complètes : analyse de données, automatisation, assistants virtuels, création visuelle et accompagnement personnalisé.',
-      keywords: 'solutions IA, services intelligence artificielle, offres IA, solutions entreprise, packages IA'
+      title: 'Solutions IA pour PME | Automatisation, CRM, Chatbot Belgique | AInspiration',
+      description: 'Découvrez nos solutions IA complètes pour PME : automatisation, CRM intelligent, chatbots, création visuelle. +180% ROI. Accompagnement en Belgique et France.',
+      keywords: 'solutions IA PME, services intelligence artificielle Belgique, automatisation IA, CRM IA, chatbot entreprise, packages IA'
     },
     en: {
       title: 'AI Solutions | Artificial Intelligence Services | AInspiration',
@@ -179,9 +179,9 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/produits': {
     fr: {
-      title: 'Produits IA | Nos Offres et Tarifs | AInspiration',
-      description: 'Consultez notre gamme de produits IA. Des solutions adaptées à chaque budget, de l\'audit gratuit aux accompagnements premium.',
-      keywords: 'produits IA, tarifs IA, offres intelligence artificielle, prix solutions IA'
+      title: 'Offres IA PME | Audit Gratuit, Formation, Accompagnement dès 490\u20AC | AInspiration',
+      description: 'Consultez nos offres IA pour PME. Audit gratuit, formation IA, accompagnement premium. Solutions adaptées à chaque budget en Belgique et France.',
+      keywords: 'offres IA PME, tarifs IA Belgique, audit IA gratuit, formation IA prix, accompagnement IA'
     },
     en: {
       title: 'AI Products | Our Offers and Pricing | AInspiration',
@@ -230,9 +230,9 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/contact': {
     fr: {
-      title: 'Contact | Demandez Votre Audit IA Gratuit | AInspiration',
-      description: 'Contactez-nous pour un audit IA gratuit. Notre équipe vous répond sous 24h pour discuter de vos projets et besoins en intelligence artificielle.',
-      keywords: 'contact IA, audit gratuit, demande devis IA, rendez-vous IA, consultation gratuite'
+      title: 'Contactez AInspiration | Audit IA Gratuit Belgique — Réponse sous 24h',
+      description: 'Demandez votre audit IA gratuit. Notre équipe basée en Belgique vous répond sous 24h. Sans engagement, 100% personnalisé pour votre PME.',
+      keywords: 'contact IA Belgique, audit IA gratuit, devis IA PME, consultation IA gratuite, rendez-vous IA'
     },
     en: {
       title: 'Contact | Request Your Free AI Audit | AInspiration',
@@ -695,6 +695,60 @@ export const getFAQSchema = (faqs: Array<{ question: string; answer: string }>) 
     }
   }))
 });
+
+// Génère les données structurées BreadcrumbList pour le fil d'Ariane
+export const getBreadcrumbSchema = (path: string, lang: SupportedLanguage = 'fr') => {
+  const baseUrl = defaultSEO.siteUrl;
+  const segments = path.split('/').filter(Boolean);
+
+  const breadcrumbNames: Record<string, Record<string, string>> = {
+    'pourquoi-ia': { fr: 'Pourquoi l\'IA', en: 'Why AI', nl: 'Waarom AI' },
+    'pour-qui-ia': { fr: 'Pour qui', en: 'For Who', nl: 'Voor wie' },
+    'solutions': { fr: 'Solutions', en: 'Solutions', nl: 'Oplossingen' },
+    'analyse-ia': { fr: 'Analyse IA', en: 'AI Analysis', nl: 'AI Analyse' },
+    'transformation': { fr: 'Transformation', en: 'Transformation', nl: 'Transformatie' },
+    'creation-visuelle': { fr: 'Création visuelle', en: 'Visual Creation', nl: 'Visuele Creatie' },
+    'automatisation': { fr: 'Automatisation', en: 'Automation', nl: 'Automatisering' },
+    'assistants': { fr: 'Assistants', en: 'Assistants', nl: 'Assistenten' },
+    'prompts': { fr: 'Prompts', en: 'Prompts', nl: 'Prompts' },
+    'creativite': { fr: 'Créativité', en: 'Creativity', nl: 'Creativiteit' },
+    'crm': { fr: 'CRM', en: 'CRM', nl: 'CRM' },
+    'produits': { fr: 'Produits', en: 'Products', nl: 'Producten' },
+    'etudes-de-cas': { fr: 'Études de cas', en: 'Case Studies', nl: 'Casestudies' },
+    'conseil': { fr: 'Conseil', en: 'Consulting', nl: 'Advies' },
+    'formation': { fr: 'Formation', en: 'Training', nl: 'Opleiding' },
+    'accompagnement': { fr: 'Accompagnement', en: 'Support', nl: 'Begeleiding' },
+    'recommandations': { fr: 'Recommandations', en: 'Recommendations', nl: 'Aanbevelingen' },
+    'a-propos': { fr: 'À propos', en: 'About', nl: 'Over ons' },
+    'contact': { fr: 'Contact', en: 'Contact', nl: 'Contact' },
+    'blog': { fr: 'Blog', en: 'Blog', nl: 'Blog' },
+    'privacy': { fr: 'Confidentialité', en: 'Privacy', nl: 'Privacy' },
+  };
+
+  const homeName = { fr: 'Accueil', en: 'Home', nl: 'Home' };
+
+  const items = [
+    { '@type': 'ListItem', position: 1, name: homeName[lang], item: baseUrl + '/' }
+  ];
+
+  let currentPath = '';
+  segments.forEach((segment, index) => {
+    currentPath += '/' + segment;
+    const name = breadcrumbNames[segment]?.[lang] || segment;
+    items.push({
+      '@type': 'ListItem',
+      position: index + 2,
+      name,
+      item: baseUrl + currentPath
+    });
+  });
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items
+  };
+};
 
 // Génère les données structurées pour les avis/témoignages
 export const getReviewSchema = (reviews: Array<{ author: string; rating: number; text: string }>) => ({

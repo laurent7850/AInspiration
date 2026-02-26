@@ -89,9 +89,10 @@ const CaseStudiesPage: React.FC = () => {
               <div className="grid md:grid-cols-12 gap-0">
                 {/* Image - 5 columns */}
                 <div className="md:col-span-5 h-full">
-                  <img 
-                    src={study.image} 
+                  <img
+                    src={study.image}
                     alt={study.title}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>

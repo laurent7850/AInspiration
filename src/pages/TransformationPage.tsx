@@ -188,9 +188,10 @@ const TransformationPage: React.FC = () => {
           
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
-            <img 
+            <img
               src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=1200&auto=format&fit=crop&q=80"
               alt="Transformation numérique en entreprise"
+              loading="lazy"
               className="relative rounded-xl shadow-xl w-full"
             />
           </div>
@@ -360,9 +361,10 @@ const TransformationPage: React.FC = () => {
                 </div>
                 
                 <div className="bg-indigo-100 flex items-center justify-center p-8">
-                  <img 
+                  <img
                     src={`https://images.unsplash.com/photo-${index === 0 ? '1576091160550-2173dba999ef' : '1581291518857-4e27b48ff24e'}?w=600&auto=format&fit=crop&q=80`}
                     alt={`${story.company} - Transformation numérique`}
+                    loading="lazy"
                     className="rounded-lg shadow-lg max-h-80 object-contain"
                   />
                 </div>

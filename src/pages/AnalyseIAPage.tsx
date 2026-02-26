@@ -186,9 +186,10 @@ const AnalyseIAPage: React.FC = () => {
           
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
-            <img 
+            <img
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80"
               alt="Tableau de bord d'analyse de données"
+              loading="lazy"
               className="relative rounded-xl shadow-xl w-full"
             />
           </div>
@@ -301,9 +302,10 @@ const AnalyseIAPage: React.FC = () => {
               <div className={`order-1 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
-                  <img 
+                  <img
                     src={`https://images.unsplash.com/photo-${index === 0 ? '1551288049-bebda4e38f71' : '1460925895917-afdab827c52f'}?w=800&auto=format&fit=crop&q=80`}
                     alt={`${useCase.title} - Analyse IA`}
+                    loading="lazy"
                     className="relative rounded-xl shadow-xl w-full"
                   />
                 </div>

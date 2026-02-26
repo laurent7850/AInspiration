@@ -28,8 +28,8 @@ interface Message {
   actionButtons?: ActionButton[];
 }
 
-// N8n webhook URL - Mode production
-const N8N_WEBHOOK_URL = "https://n8n.srv767464.hstgr.cloud/webhook/ainspiration";
+// Proxy backend — le webhook n8n est appelé via le serveur Express
+const N8N_WEBHOOK_URL = "/api/webhook/chat";
 
 export default function ChatbotN8n() {
   // Session management

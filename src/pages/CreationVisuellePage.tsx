@@ -157,9 +157,10 @@ const CreationVisuellePage: React.FC = () => {
           
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
-            <img 
+            <img
               src="https://images.unsplash.com/photo-1634986666676-ec8fd927c23d?w=1200&auto=format&fit=crop&q=80"
               alt="Création d'images avec l'IA"
+              loading="lazy"
               className="relative rounded-xl shadow-xl w-full"
             />
           </div>
@@ -281,9 +282,10 @@ const CreationVisuellePage: React.FC = () => {
               <div className={index % 2 === 0 ? "order-2" : "order-2 md:order-1"}>
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
-                  <img 
+                  <img
                     src={useCase.image}
                     alt={useCase.title}
+                    loading="lazy"
                     className="relative rounded-xl shadow-xl w-full"
                   />
                 </div>

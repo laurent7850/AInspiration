@@ -24,37 +24,37 @@ const Features = () => {
       icon: LineChart,
       titleKey: 'features:dashboard.title',
       descKey: 'features:dashboard.desc',
-      path: '/dashboard'
+      path: '/crm'
     },
     {
       icon: BookOpen,
       titleKey: 'features:prompts.title',
       descKey: 'features:prompts.desc',
-      path: '/prompt-library'
+      path: '/prompts'
     },
     {
       icon: Users,
       titleKey: 'collaboration:title',
       descKey: 'collaboration:subtitle',
-      path: '/collaboration'
+      path: '/assistants'
     },
     {
       icon: Award,
       titleKey: 'training:title',
       descKey: 'training:subtitle',
-      path: '/training'
+      path: '/formation'
     },
     {
       icon: Pencil,
       titleKey: 'content:title',
       descKey: 'content:subtitle',
-      path: '/content-writing'
+      path: '/creativite'
     },
     {
       icon: MessageSquare,
       titleKey: 'support:title',
       descKey: 'support:subtitle',
-      path: '/support'
+      path: '/accompagnement'
     }
   ];
 

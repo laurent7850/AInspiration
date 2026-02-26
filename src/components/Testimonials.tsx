@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, Quote, TrendingDown, Clock, CheckCircle, ArrowRight } from 'lucide-react';
+import { Star, Quote, TrendingDown, TrendingUp, Bot, Clock, CheckCircle, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import StartForm from './StartForm';
 
@@ -33,6 +33,30 @@ const Testimonials: React.FC = () => {
         text: t('testimonials.thierry.badge'),
         color: 'from-green-500 to-emerald-600'
       }
+    },
+    {
+      id: 'sophie-marketing',
+      name: t('testimonials.sophie.name'),
+      role: t('testimonials.sophie.role'),
+      city: t('testimonials.sophie.city'),
+      text: t('testimonials.sophie.text'),
+      badge: {
+        icon: TrendingUp,
+        text: t('testimonials.sophie.badge'),
+        color: 'from-blue-500 to-indigo-600'
+      }
+    },
+    {
+      id: 'marc-ecommerce',
+      name: t('testimonials.marc.name'),
+      role: t('testimonials.marc.role'),
+      city: t('testimonials.marc.city'),
+      text: t('testimonials.marc.text'),
+      badge: {
+        icon: Bot,
+        text: t('testimonials.marc.badge'),
+        color: 'from-purple-500 to-violet-600'
+      }
     }
   ];
 
@@ -51,7 +75,7 @@ const Testimonials: React.FC = () => {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="max-w-5xl mx-auto mb-12">
+        <div className="max-w-6xl mx-auto mb-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial) => {
             const BadgeIcon = testimonial.badge.icon;
 

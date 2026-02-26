@@ -3,8 +3,10 @@
  * Utilise GPT/Claude via OpenRouter pour des analyses intelligentes
  */
 
-const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const OPENROUTER_API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY || '';
+import { logger } from '@/config/environment';
+
+// Proxy backend — la clé API est stockée côté serveur uniquement
+const AI_PROXY_URL = '/api/ai/chat';
 
 // Modèle par défaut - Claude 3 Haiku pour un bon rapport qualité/prix
 const DEFAULT_MODEL = 'anthropic/claude-3-haiku';
@@ -29,19 +31,11 @@ async function sendToOpenRouter(
   messages: ChatMessage[],
   model: string = DEFAULT_MODEL
 ): Promise<string | null> {
-  if (!OPENROUTER_API_KEY) {
-    console.warn('Clé API OpenRouter non configurée');
-    return null;
-  }
-
   try {
-    const response = await fetch(OPENROUTER_API_URL, {
+    const response = await fetch(AI_PROXY_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-        'HTTP-Referer': window.location.origin,
-        'X-Title': 'AInspiration CRM',
       },
       body: JSON.stringify({
         model,
@@ -58,7 +52,7 @@ async function sendToOpenRouter(
     const data: OpenRouterResponse = await response.json();
     return data.choices[0]?.message?.content || null;
   } catch (error) {
-    console.error('Erreur OpenRouter:', error);
+    logger.error('Erreur OpenRouter:', error);
     return null;
   }
 }
@@ -154,7 +148,7 @@ Réponds en JSON avec la structure: { "analysis": "", "recommendations": ["", ""
       return JSON.parse(jsonMatch[0]);
     }
   } catch (e) {
-    console.error('Erreur parsing réponse IA:', e);
+    logger.error('Erreur parsing réponse IA:', e);
   }
 
   return null;
@@ -204,7 +198,7 @@ Réponds en JSON: { "insights": ["insight1", "insight2", "insight3"] }`;
       return parsed.insights || null;
     }
   } catch (e) {
-    console.error('Erreur parsing insights:', e);
+    logger.error('Erreur parsing insights:', e);
   }
 
   return null;
@@ -261,7 +255,7 @@ Réponds en JSON: { "score": 0, "reasoning": "", "priority": "hot|warm|cold" }
       return JSON.parse(jsonMatch[0]);
     }
   } catch (e) {
-    console.error('Erreur parsing lead score:', e);
+    logger.error('Erreur parsing lead score:', e);
   }
 
   return null;
