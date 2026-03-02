@@ -227,7 +227,7 @@ CREATE TABLE IF NOT EXISTS newsletter_send_logs (
 -- Indexes for performance
 -- =====================================================
 CREATE INDEX IF NOT EXISTS idx_blog_posts_slug ON blog_posts(slug);
-CREATE INDEX IF NOT EXISTS idx_blog_posts_published ON blog_posts(published);
+CREATE INDEX IF NOT EXISTS idx_blog_posts_status ON blog_posts(status);
 CREATE INDEX IF NOT EXISTS idx_blog_posts_language ON blog_posts(language);
 CREATE INDEX IF NOT EXISTS idx_blog_posts_featured ON blog_posts(featured);
 CREATE INDEX IF NOT EXISTS idx_blog_comments_post ON blog_comments(post_id);
@@ -235,7 +235,7 @@ CREATE INDEX IF NOT EXISTS idx_companies_name ON companies(name);
 CREATE INDEX IF NOT EXISTS idx_contacts_company ON contacts(company_id);
 CREATE INDEX IF NOT EXISTS idx_contacts_email ON contacts(email);
 CREATE INDEX IF NOT EXISTS idx_opportunities_company ON opportunities(company_id);
-CREATE INDEX IF NOT EXISTS idx_opportunities_stage ON opportunities(stage);
+CREATE INDEX IF NOT EXISTS idx_opportunities_status ON opportunities(status);
 CREATE INDEX IF NOT EXISTS idx_tasks_status ON tasks(status);
 CREATE INDEX IF NOT EXISTS idx_tasks_due_date ON tasks(due_date);
 CREATE INDEX IF NOT EXISTS idx_activities_user ON activities(user_id);
