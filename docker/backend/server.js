@@ -25,6 +25,10 @@ const pool = process.env.DATABASE_URL
 app.use(cors());
 app.use(express.json());
 
+// Health check (before any auth middleware)
+app.get('/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }));
+app.get('/api/status', (req, res) => res.json({ status: 'running' }));
+
 // ==================== AUTH MIDDLEWARE ====================
 
 function optionalAuth(req, res, next) {
@@ -1238,16 +1242,19 @@ const distPath = path.join(__dirname, 'dist');
 // Serve static frontend files (if dist/ exists alongside server.js)
 app.use(express.static(distPath));
 
+// 404 for unknown API routes
+app.all('/api/*', (req, res) => {
+  res.status(404).json({ error: 'Not found' });
+});
+
 // SPA fallback: any non-API route serves index.html
 app.get('*', (req, res) => {
-  if (!req.path.startsWith('/api')) {
-    res.sendFile(path.join(distPath, 'index.html'));
-  }
+  res.sendFile(path.join(distPath, 'index.html'));
 });
 
 // ==================== START SERVER ====================
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Secure server on ${PORT}`);
 });
