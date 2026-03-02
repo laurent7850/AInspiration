@@ -106,7 +106,7 @@ export interface Task {
 
 export interface Activity {
   id: string;
-  user_id: string;
+  user_id?: string;
   activity_type: string;
   description: string;
   related_to_type?: 'opportunity' | 'contact' | 'company' | 'task' | 'product';

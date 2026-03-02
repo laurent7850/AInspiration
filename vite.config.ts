@@ -1,12 +1,14 @@
-import { defineConfig, type UserConfig } from 'vite';
+import { defineConfig, loadEnv, type UserConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { compression } from 'vite-plugin-compression2';
+import { sitemapPlugin } from './scripts/vite-plugin-sitemap';
 
 export default defineConfig(({ mode }): UserConfig => {
   const isDev = mode === 'development';
   const isProd = mode === 'production';
+  const env = loadEnv(mode, process.cwd(), 'VITE_');
 
   console.log(`\n🔧 Building in ${mode.toUpperCase()} mode\n`);
 
@@ -35,6 +37,10 @@ export default defineConfig(({ mode }): UserConfig => {
           brotliSize: true
         }),
       ] : []),
+      // Sitemap dynamique (routes statiques + blog posts depuis Express API)
+      ...(isProd ? [
+        sitemapPlugin(env.VITE_SITE_URL || 'https://ainspiration.eu'),
+      ] : []),
     ],
     build: {
       outDir: 'dist',
@@ -55,7 +61,6 @@ export default defineConfig(({ mode }): UserConfig => {
           manualChunks: {
             'react-vendor': ['react', 'react-dom', 'react-router-dom'],
             'ui-vendor': ['lucide-react'],
-            'supabase-vendor': ['@supabase/supabase-js'],
             'i18n-vendor': ['i18next', 'react-i18next', 'i18next-http-backend', 'i18next-browser-languagedetector']
           }
         }
@@ -94,7 +99,6 @@ export default defineConfig(({ mode }): UserConfig => {
         'react',
         'react-dom',
         'react-router-dom',
-        '@supabase/supabase-js',
         'i18next',
         'react-i18next'
       ]

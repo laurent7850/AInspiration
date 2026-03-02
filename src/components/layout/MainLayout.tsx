@@ -16,7 +16,8 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  // Match /, /en, /en/, /nl, /nl/
+  const isHomePage = /^\/(en|nl)?\/?$/.test(location.pathname);
 
   return (
     <div className="min-h-screen bg-white flex flex-col">

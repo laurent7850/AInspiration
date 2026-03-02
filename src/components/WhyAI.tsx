@@ -14,6 +14,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import StartForm from './StartForm';
+import OptimizedImage from './ui/OptimizedImage';
 
 export default function WhyAI() {
   const [showStartForm, setShowStartForm] = useState(false);
@@ -136,10 +137,10 @@ export default function WhyAI() {
               }`}>
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 to-purple-500/30 rounded-2xl blur-3xl"></div>
-                  <img
+                  <OptimizedImage
                     src={useCase.image}
                     alt={useCase.title}
-                    loading="lazy"
+                    responsive="half"
                     className="relative rounded-xl shadow-xl w-full h-[300px] object-cover"
                   />
                   <div className="absolute bottom-4 right-4 bg-indigo-600 text-white py-2 px-4 rounded-lg shadow-lg">

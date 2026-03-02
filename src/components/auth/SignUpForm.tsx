@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Mail, Lock, Building2, User, AlertCircle } from 'lucide-react';
-import { supabase } from '../../utils/supabase';
 
 export default function SignUpForm() {
   const { signUp } = useAuth();
@@ -20,20 +19,7 @@ export default function SignUpForm() {
     setLoading(true);
 
     try {
-      // Inscription avec Supabase Auth
-      const { error: signUpError } = await supabase.auth.signUp({
-        email: formData.email,
-        password: formData.password,
-        options: {
-          data: {
-            name: formData.name,
-            company: formData.company
-          }
-        }
-      });
-
-      if (signUpError) throw signUpError;
-
+      await signUp(formData.email, formData.password, formData.name, formData.company);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Une erreur est survenue');
     } finally {

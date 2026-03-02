@@ -1,9 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { Menu, X, LogOut, ChevronDown, Database, Languages, Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import NotificationCenter from '../ui/NotificationCenter';
+import { useLocalizedPath } from '../../hooks/useLocalizedPath';
 
 interface NavMenuProps {
   onAuditClick: () => void;
@@ -14,9 +15,8 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
   const [openSubmenuIndex, setOpenSubmenuIndex] = useState<number | null>(null);
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
-  const { t, i18n } = useTranslation('common');
-
-  const currentLanguage = i18n.language || 'fr';
+  const { t } = useTranslation('common');
+  const { switchLanguageTo, currentLang, localizedPath } = useLocalizedPath();
 
   // Dedicated structure for service navigation - using translations
   const serviceCategories = useMemo(() => [
@@ -73,15 +73,11 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
     }
   ], [serviceCategories]);
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
-
   const handleMenuItemClick = (path?: string, action?: string) => {
     if (action === 'audit') {
       onAuditClick();
     } else if (path) {
-      navigate(path);
+      navigate(localizedPath(path));
     }
     setIsOpen(false);
     setOpenSubmenuIndex(null);
@@ -90,7 +86,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
   const handleSignOut = async () => {
     try {
       await signOut();
-      navigate('/');
+      navigate(localizedPath('/'));
     } catch (error) {
       console.error('Erreur lors de la déconnexion:', error);
     }
@@ -106,7 +102,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
       <div className="flex items-center justify-between h-16">
         <div
           className="flex items-center cursor-pointer"
-          onClick={() => navigate('/')}
+          onClick={() => navigate(localizedPath('/'))}
         >
           <img
             src="/white_logo_-_no_background.svg"
@@ -171,25 +167,25 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
               role="button"
               tabIndex={0}
             >
-              <span className="uppercase font-semibold">{currentLanguage.substring(0, 2)}</span>
+              <span className="uppercase font-semibold">{currentLang}</span>
               <ChevronDown className="w-4 h-4" />
             </span>
             <div className="absolute top-full right-0 w-20 py-2 mt-1 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
               <button
-                onClick={() => changeLanguage('fr')}
-                className={`w-full px-4 py-2 text-center hover:bg-indigo-50 transition-colors ${currentLanguage.startsWith('fr') ? 'bg-indigo-50 text-indigo-600 font-semibold' : 'text-gray-700'}`}
+                onClick={() => switchLanguageTo('fr')}
+                className={`w-full px-4 py-2 text-center hover:bg-indigo-50 transition-colors ${currentLang === 'fr' ? 'bg-indigo-50 text-indigo-600 font-semibold' : 'text-gray-700'}`}
               >
                 FR
               </button>
               <button
-                onClick={() => changeLanguage('en')}
-                className={`w-full px-4 py-2 text-center hover:bg-indigo-50 transition-colors ${currentLanguage.startsWith('en') ? 'bg-indigo-50 text-indigo-600 font-semibold' : 'text-gray-700'}`}
+                onClick={() => switchLanguageTo('en')}
+                className={`w-full px-4 py-2 text-center hover:bg-indigo-50 transition-colors ${currentLang === 'en' ? 'bg-indigo-50 text-indigo-600 font-semibold' : 'text-gray-700'}`}
               >
                 EN
               </button>
               <button
-                onClick={() => changeLanguage('nl')}
-                className={`w-full px-4 py-2 text-center hover:bg-indigo-50 transition-colors ${currentLanguage.startsWith('nl') ? 'bg-indigo-50 text-indigo-600 font-semibold' : 'text-gray-700'}`}
+                onClick={() => switchLanguageTo('nl')}
+                className={`w-full px-4 py-2 text-center hover:bg-indigo-50 transition-colors ${currentLang === 'nl' ? 'bg-indigo-50 text-indigo-600 font-semibold' : 'text-gray-700'}`}
               >
                 NL
               </button>
@@ -209,14 +205,14 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
                 {/* Dropdown menu */}
                 <div className="absolute right-0 w-48 mt-2 bg-white rounded-lg shadow-lg overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
                   <button
-                    onClick={() => navigate('/crm-dashboard')}
+                    onClick={() => navigate(localizedPath('/crm-dashboard'))}
                     className="w-full px-4 py-2 text-left text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 flex items-center gap-2"
                   >
                     <Database className="w-4 h-4" />
                     <span>{t('nav.crmDashboard')}</span>
                   </button>
                   <button
-                    onClick={() => navigate('/newsletter-admin')}
+                    onClick={() => navigate(localizedPath('/newsletter-admin'))}
                     className="w-full px-4 py-2 text-left text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 flex items-center gap-2"
                   >
                     <Mail className="w-4 h-4" />
@@ -234,7 +230,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
             </div>
           ) : (
             <button
-              onClick={() => navigate('/login')}
+              onClick={() => navigate(localizedPath('/login'))}
               className="text-white/50 hover:text-white/70 transition-colors text-sm"
             >
               {t('button.signIn')}
@@ -262,20 +258,20 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
             </div>
             <div className="flex gap-2">
               <button
-                onClick={() => changeLanguage('fr')}
-                className={`flex-1 px-3 py-1.5 rounded-md transition-colors ${currentLanguage.startsWith('fr') ? 'bg-white text-indigo-600 font-semibold' : 'bg-white/10 text-white'}`}
+                onClick={() => switchLanguageTo('fr')}
+                className={`flex-1 px-3 py-1.5 rounded-md transition-colors ${currentLang === 'fr' ? 'bg-white text-indigo-600 font-semibold' : 'bg-white/10 text-white'}`}
               >
                 FR
               </button>
               <button
-                onClick={() => changeLanguage('en')}
-                className={`flex-1 px-3 py-1.5 rounded-md transition-colors ${currentLanguage.startsWith('en') ? 'bg-white text-indigo-600 font-semibold' : 'bg-white/10 text-white'}`}
+                onClick={() => switchLanguageTo('en')}
+                className={`flex-1 px-3 py-1.5 rounded-md transition-colors ${currentLang === 'en' ? 'bg-white text-indigo-600 font-semibold' : 'bg-white/10 text-white'}`}
               >
                 EN
               </button>
               <button
-                onClick={() => changeLanguage('nl')}
-                className={`flex-1 px-3 py-1.5 rounded-md transition-colors ${currentLanguage.startsWith('nl') ? 'bg-white text-indigo-600 font-semibold' : 'bg-white/10 text-white'}`}
+                onClick={() => switchLanguageTo('nl')}
+                className={`flex-1 px-3 py-1.5 rounded-md transition-colors ${currentLang === 'nl' ? 'bg-white text-indigo-600 font-semibold' : 'bg-white/10 text-white'}`}
               >
                 NL
               </button>
@@ -326,14 +322,14 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
             <div className="mt-4 space-y-2 px-2 border-t border-white/20 pt-4">
               <div className="text-white/90">{user.email}</div>
               <button
-                onClick={() => navigate('/crm-dashboard')}
+                onClick={() => navigate(localizedPath('/crm-dashboard'))}
                 className="flex items-center gap-2 text-white/80 hover:text-white transition-colors w-full text-left py-1.5"
               >
                 <Database className="w-5 h-5" />
                 <span>{t('nav.crmDashboard')}</span>
               </button>
               <button
-                onClick={() => navigate('/newsletter-admin')}
+                onClick={() => navigate(localizedPath('/newsletter-admin'))}
                 className="flex items-center gap-2 text-white/80 hover:text-white transition-colors w-full text-left py-1.5"
               >
                 <Mail className="w-5 h-5" />
@@ -350,7 +346,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
           ) : (
             <button
               onClick={() => {
-                navigate('/login');
+                navigate(localizedPath('/login'));
                 setIsOpen(false);
               }}
               className="mt-4 w-full text-white/50 hover:text-white/70 transition-colors text-sm text-left px-2"

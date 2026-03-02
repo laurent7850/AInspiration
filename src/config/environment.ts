@@ -3,8 +3,6 @@
  */
 
 export const env = {
-  supabaseUrl: import.meta.env.VITE_SUPABASE_URL as string,
-  supabaseAnonKey: import.meta.env.VITE_SUPABASE_ANON_KEY as string,
   appEnv: (import.meta.env.VITE_APP_ENV || 'production') as string,
   debug: import.meta.env.VITE_DEBUG === 'true',
   logLevel: (import.meta.env.VITE_LOG_LEVEL || 'error') as string,

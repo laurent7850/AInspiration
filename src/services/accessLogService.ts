@@ -1,4 +1,4 @@
-import { supabase } from '../utils/supabase';
+import { api } from '../utils/api';
 
 export interface AccessLog {
   id?: string;
@@ -14,22 +14,11 @@ export interface AccessLog {
 
 export const logAccess = async (log: Omit<AccessLog, 'id' | 'created_at'>): Promise<void> => {
   try {
-    const { data: { user } } = await supabase.auth.getUser();
-
-    const logEntry = {
+    await api.post('/access-logs', {
       ...log,
-      user_id: user?.id || log.user_id,
       user_agent: navigator.userAgent,
       page_url: log.page_url || window.location.href,
-    };
-
-    const { error } = await supabase
-      .from('access_logs')
-      .insert(logEntry);
-
-    if (error) {
-      console.error('Error logging access:', error);
-    }
+    });
   } catch (err) {
     console.error('Failed to log access:', err);
   }
@@ -81,28 +70,11 @@ export const fetchAccessLogs = async (
   limit: number = 50,
   eventType?: string
 ): Promise<AccessLog[]> => {
-  let query = supabase
-    .from('access_logs')
-    .select('*')
-    .order('created_at', { ascending: false })
-    .limit(limit);
-
-  if (userId) {
-    query = query.eq('user_id', userId);
-  }
-
-  if (eventType) {
-    query = query.eq('event_type', eventType);
-  }
-
-  const { data, error } = await query;
-
-  if (error) {
-    console.error('Error fetching access logs:', error);
-    throw error;
-  }
-
-  return data || [];
+  return api.get<AccessLog[]>('/access-logs', {
+    user_id: userId,
+    limit,
+    event_type: eventType
+  });
 };
 
 export const fetchAccessLogStats = async (userId?: string): Promise<{
@@ -111,39 +83,5 @@ export const fetchAccessLogStats = async (userId?: string): Promise<{
   byStatus: Record<string, number>;
   recentLogins: number;
 }> => {
-  let query = supabase.from('access_logs').select('event_type, status, created_at');
-
-  if (userId) {
-    query = query.eq('user_id', userId);
-  }
-
-  const { data, error } = await query;
-
-  if (error) {
-    console.error('Error fetching access log stats:', error);
-    throw error;
-  }
-
-  const stats = {
-    total: data?.length || 0,
-    byEventType: {} as Record<string, number>,
-    byStatus: {} as Record<string, number>,
-    recentLogins: 0
-  };
-
-  if (data) {
-    const oneDayAgo = new Date();
-    oneDayAgo.setDate(oneDayAgo.getDate() - 1);
-
-    data.forEach(log => {
-      stats.byEventType[log.event_type] = (stats.byEventType[log.event_type] || 0) + 1;
-      stats.byStatus[log.status] = (stats.byStatus[log.status] || 0) + 1;
-
-      if (log.event_type === 'login' && new Date(log.created_at) > oneDayAgo) {
-        stats.recentLogins++;
-      }
-    });
-  }
-
-  return stats;
+  return api.get('/access-logs/stats', { user_id: userId });
 };

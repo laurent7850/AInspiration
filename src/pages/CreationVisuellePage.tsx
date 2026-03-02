@@ -14,6 +14,7 @@ import {
   Clock
 } from 'lucide-react';
 import StartForm from '../components/StartForm';
+import OptimizedImage from '../components/ui/OptimizedImage';
 
 const CreationVisuellePage: React.FC = () => {
   const [showStartForm, setShowStartForm] = useState(false);
@@ -157,10 +158,10 @@ const CreationVisuellePage: React.FC = () => {
           
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
-            <img
-              src="https://images.unsplash.com/photo-1634986666676-ec8fd927c23d?w=1200&auto=format&fit=crop&q=80"
+            <OptimizedImage
+              src="https://images.unsplash.com/photo-1634986666676-ec8fd927c23d"
               alt="Création d'images avec l'IA"
-              loading="lazy"
+              responsive="half"
               className="relative rounded-xl shadow-xl w-full"
             />
           </div>
@@ -213,9 +214,10 @@ const CreationVisuellePage: React.FC = () => {
             {galleryImages.map((image, index) => (
               <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="aspect-w-16 aspect-h-9 h-48 w-full">
-                  <img
+                  <OptimizedImage
                     src={image.url}
                     alt={`Image générée par IA #${index+1}`}
+                    responsive="third"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -282,10 +284,10 @@ const CreationVisuellePage: React.FC = () => {
               <div className={index % 2 === 0 ? "order-2" : "order-2 md:order-1"}>
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
-                  <img
+                  <OptimizedImage
                     src={useCase.image}
                     alt={useCase.title}
-                    loading="lazy"
+                    responsive="half"
                     className="relative rounded-xl shadow-xl w-full"
                   />
                 </div>

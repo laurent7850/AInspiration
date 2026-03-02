@@ -35,7 +35,8 @@ i18n
       escapeValue: false,
     },
     detection: {
-      order: ['querystring', 'cookie', 'localStorage', 'navigator'],
+      order: ['path', 'querystring', 'cookie', 'localStorage', 'navigator'],
+      lookupFromPathIndex: 0,
       lookupQuerystring: 'lng',
       lookupCookie: 'i18next',
       lookupLocalStorage: 'i18nextLng',
@@ -46,3 +47,4 @@ i18n
     }
   });
 
+export default i18n;

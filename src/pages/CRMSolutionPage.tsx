@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import StartForm from '../components/StartForm';
 import { useNavigate } from 'react-router-dom';
+import OptimizedImage from '../components/ui/OptimizedImage';
 
 const CRMSolutionPage: React.FC = () => {
   const [showStartForm, setShowStartForm] = useState(false);
@@ -305,13 +306,13 @@ const CRMSolutionPage: React.FC = () => {
             </div>
             <div className="relative hidden md:block">
               <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 to-purple-500/30 rounded-3xl blur-3xl"></div>
-              <img
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1024&auto=format&fit=crop"
+              <OptimizedImage
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692"
                 alt="Interface CRM intelligente"
-                loading="lazy"
+                responsive="half"
+                width={1024}
+                height={683}
                 className="relative rounded-2xl shadow-2xl w-full"
-                width="1024"
-                height="683"
               />
             </div>
           </div>
@@ -404,9 +405,10 @@ const CRMSolutionPage: React.FC = () => {
                 data-aos-delay={index * 150}
               >
                 <div className="aspect-w-16 aspect-h-9">
-                  <img
+                  <OptimizedImage
                     src={screenshot.image}
                     alt={screenshot.title}
+                    responsive="third"
                     className="w-full h-48 object-cover"
                   />
                 </div>

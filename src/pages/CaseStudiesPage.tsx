@@ -10,6 +10,7 @@ import {
   CheckCircle
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import OptimizedImage from '../components/ui/OptimizedImage';
 
 const CaseStudiesPage: React.FC = () => {
   const navigate = useNavigate();
@@ -89,10 +90,10 @@ const CaseStudiesPage: React.FC = () => {
               <div className="grid md:grid-cols-12 gap-0">
                 {/* Image - 5 columns */}
                 <div className="md:col-span-5 h-full">
-                  <img
+                  <OptimizedImage
                     src={study.image}
                     alt={study.title}
-                    loading="lazy"
+                    responsive="half"
                     className="w-full h-full object-cover"
                   />
                 </div>

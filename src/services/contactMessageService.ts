@@ -1,68 +1,27 @@
-import { supabase } from '../utils/supabase';
+import { api } from '../utils/api';
 import type { ContactMessage } from '../utils/types';
 
 export const contactMessageService = {
   async getAll(status?: string): Promise<ContactMessage[]> {
-    let query = supabase
-      .from('contact_messages')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (status && status !== 'all') {
-      query = query.eq('status', status);
-    }
-
-    const { data, error } = await query;
-
-    if (error) {
-      console.error('Error fetching contact messages:', error);
-      throw error;
-    }
-
-    return data || [];
+    return api.get<ContactMessage[]>('/contact-messages', {
+      status: status && status !== 'all' ? status : undefined
+    });
   },
 
   async getById(id: string): Promise<ContactMessage | null> {
-    const { data, error } = await supabase
-      .from('contact_messages')
-      .select('*')
-      .eq('id', id)
-      .maybeSingle();
-
-    if (error) {
-      console.error('Error fetching contact message:', error);
-      throw error;
+    try {
+      return await api.get<ContactMessage>(`/contact-messages/${id}`);
+    } catch {
+      return null;
     }
-
-    return data;
   },
 
   async updateStatus(id: string, status: string): Promise<ContactMessage | null> {
-    const { data, error } = await supabase
-      .from('contact_messages')
-      .update({ status })
-      .eq('id', id)
-      .select()
-      .maybeSingle();
-
-    if (error) {
-      console.error('Error updating contact message status:', error);
-      throw error;
-    }
-
-    return data;
+    return api.put<ContactMessage>(`/contact-messages/${id}`, { status });
   },
 
   async delete(id: string): Promise<void> {
-    const { error } = await supabase
-      .from('contact_messages')
-      .delete()
-      .eq('id', id);
-
-    if (error) {
-      console.error('Error deleting contact message:', error);
-      throw error;
-    }
+    await api.delete(`/contact-messages/${id}`);
   },
 
   async getStats(): Promise<{
@@ -72,23 +31,6 @@ export const contactMessageService = {
     replied: number;
     archived: number;
   }> {
-    const { data, error } = await supabase
-      .from('contact_messages')
-      .select('status');
-
-    if (error) {
-      console.error('Error fetching contact message stats:', error);
-      throw error;
-    }
-
-    const stats = {
-      total: data?.length || 0,
-      new: data?.filter(m => m.status === 'new').length || 0,
-      read: data?.filter(m => m.status === 'read').length || 0,
-      replied: data?.filter(m => m.status === 'replied').length || 0,
-      archived: data?.filter(m => m.status === 'archived').length || 0,
-    };
-
-    return stats;
+    return api.get('/contact-messages/stats');
   }
 };

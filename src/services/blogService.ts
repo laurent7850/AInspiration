@@ -1,5 +1,3 @@
-import { supabase } from '../utils/supabase';
-
 export interface BlogPost {
   id: string;
   title: string;
@@ -39,229 +37,89 @@ export interface BlogComment {
   content: string;
   approved: boolean;
   created_at: string;
-  
+
   // Joined fields
   user_name?: string;
   user_avatar?: string;
 }
 
-// Fetch all published blog posts
-export const fetchPublishedPosts = async (): Promise<BlogPost[]> => {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .eq('published', true)
-    .order('published_at', { ascending: false });
+const API_BASE = '/api/blog-posts';
 
-  if (error) {
-    console.error('Error fetching published posts:', error);
-    throw error;
+export async function fetchPublishedPosts(): Promise<BlogPost[]> {
+  const res = await fetch(`${API_BASE}?language=fr`);
+  if (!res.ok) throw new Error('Failed to fetch posts');
+  return res.json();
+}
+
+export async function fetchPostBySlug(slug: string): Promise<BlogPost> {
+  const res = await fetch(`${API_BASE}/slug/${slug}`);
+  if (!res.ok) {
+    if (res.status === 404) throw new Error(`Post with slug ${slug} not found`);
+    throw new Error('Failed to fetch post');
   }
+  return res.json();
+}
 
-  return data || [];
-};
+export async function fetchFeaturedPosts(limit = 1): Promise<BlogPost[]> {
+  const posts = await fetchPublishedPosts();
+  return posts.filter(p => p.featured).slice(0, limit);
+}
 
-// Fetch a single blog post by slug
-export const fetchPostBySlug = async (slug: string): Promise<BlogPost> => {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .eq('slug', slug)
-    .maybeSingle();
+export async function fetchPostsByCategory(category: string): Promise<BlogPost[]> {
+  const res = await fetch(`${API_BASE}?language=fr&category=${encodeURIComponent(category)}`);
+  if (!res.ok) throw new Error('Failed to fetch posts by category');
+  return res.json();
+}
 
-  if (error) {
-    console.error(`Error fetching post with slug ${slug}:`, error);
-    throw error;
+export async function fetchCategories(): Promise<BlogCategory[]> {
+  const posts = await fetchPublishedPosts();
+  const counts: Record<string, number> = {};
+  for (const p of posts) {
+    if (p.category) counts[p.category] = (counts[p.category] || 0) + 1;
   }
-
-  if (!data) {
-    throw new Error(`Post with slug ${slug} not found`);
-  }
-
-  return data;
-};
-
-// Fetch featured blog posts
-export const fetchFeaturedPosts = async (limit: number = 1): Promise<BlogPost[]> => {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .eq('published', true)
-    .eq('featured', true)
-    .order('published_at', { ascending: false })
-    .limit(limit);
-
-  if (error) {
-    console.error('Error fetching featured posts:', error);
-    throw error;
-  }
-
-  return data || [];
-};
-
-// Fetch posts by category
-export const fetchPostsByCategory = async (category: string): Promise<BlogPost[]> => {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .eq('published', true)
-    .eq('category', category)
-    .order('published_at', { ascending: false });
-
-  if (error) {
-    console.error(`Error fetching posts for category ${category}:`, error);
-    throw error;
-  }
-
-  return data || [];
-};
-
-// Fetch all categories with post count
-export const fetchCategories = async (): Promise<BlogCategory[]> => {
-  // First get all categories
-  const { data: categories, error: categoriesError } = await supabase
-    .from('blog_categories')
-    .select('*')
-    .order('name');
-
-  if (categoriesError) {
-    console.error('Error fetching categories:', categoriesError);
-    throw categoriesError;
-  }
-
-  // Then get post counts for each category
-  const { data: posts, error: postsError } = await supabase
-    .from('blog_posts')
-    .select('category')
-    .eq('published', true);
-
-  if (postsError) {
-    console.error('Error fetching post categories:', postsError);
-    throw postsError;
-  }
-
-  // Count posts per category
-  const categoryCounts: Record<string, number> = {};
-  posts.forEach(post => {
-    if (post.category) {
-      categoryCounts[post.category] = (categoryCounts[post.category] || 0) + 1;
-    }
-  });
-
-  // Combine the data
-  return categories.map(category => ({
-    ...category,
-    post_count: categoryCounts[category.name] || 0
+  return Object.entries(counts).map(([name, count]) => ({
+    id: name,
+    name,
+    slug: name.toLowerCase().replace(/\s+/g, '-'),
+    post_count: count,
   }));
-};
+}
 
-// Fetch comments for a post
-export const fetchComments = async (postId: string): Promise<BlogComment[]> => {
-  const { data, error } = await supabase
-    .from('blog_comments')
-    .select('*')
-    .eq('post_id', postId)
-    .eq('approved', true)
-    .order('created_at', { ascending: true });
+/** Stub -- not yet supported via local API. */
+export async function fetchComments(_postId: string): Promise<BlogComment[]> {
+  return [];
+}
 
-  if (error) {
-    console.error(`Error fetching comments for post ${postId}:`, error);
-    throw error;
-  }
+/** Stub -- not yet supported via local API. */
+export async function addComment(
+  _postId: string,
+  _content: string,
+  _userId?: string,
+  _name?: string,
+  _email?: string
+): Promise<BlogComment> {
+  throw new Error('Comments not yet supported');
+}
 
-  return data || [];
-};
+export async function searchPosts(query: string): Promise<BlogPost[]> {
+  const posts = await fetchPublishedPosts();
+  const q = query.toLowerCase();
+  return posts.filter(p =>
+    p.title.toLowerCase().includes(q) ||
+    (p.excerpt && p.excerpt.toLowerCase().includes(q)) ||
+    p.content.toLowerCase().includes(q)
+  );
+}
 
-// Add a comment to a post
-export const addComment = async (
-  postId: string, 
-  content: string, 
-  userId?: string,
-  name?: string,
-  email?: string
-): Promise<BlogComment> => {
-  const comment = {
-    post_id: postId,
-    content,
-    user_id: userId,
-    name: userId ? undefined : name,
-    email: userId ? undefined : email,
-    approved: userId ? true : false // Auto-approve comments from logged-in users
-  };
+/** Admin stubs -- use the webhook API instead. */
+export async function createPost(_post: Omit<BlogPost, 'id' | 'created_at' | 'updated_at'>): Promise<BlogPost> {
+  throw new Error('Use webhook API to create posts');
+}
 
-  const { data, error } = await supabase
-    .from('blog_comments')
-    .insert(comment)
-    .select()
-    .single();
+export async function updatePost(_id: string, _updates: Partial<BlogPost>): Promise<BlogPost> {
+  throw new Error('Use webhook API to update posts');
+}
 
-  if (error) {
-    console.error('Error adding comment:', error);
-    throw error;
-  }
-
-  return data;
-};
-
-// Search blog posts
-export const searchPosts = async (query: string): Promise<BlogPost[]> => {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .eq('published', true)
-    .or(`title.ilike.%${query}%,excerpt.ilike.%${query}%,content.ilike.%${query}%`)
-    .order('published_at', { ascending: false });
-
-  if (error) {
-    console.error(`Error searching posts for "${query}":`, error);
-    throw error;
-  }
-
-  return data || [];
-};
-
-// Create a new blog post (for admin use)
-export const createPost = async (post: Omit<BlogPost, 'id' | 'created_at' | 'updated_at'>): Promise<BlogPost> => {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .insert(post)
-    .select()
-    .single();
-
-  if (error) {
-    console.error('Error creating post:', error);
-    throw error;
-  }
-
-  return data;
-};
-
-// Update a blog post (for admin use)
-export const updatePost = async (id: string, updates: Partial<BlogPost>): Promise<BlogPost> => {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .update(updates)
-    .eq('id', id)
-    .select()
-    .single();
-
-  if (error) {
-    console.error(`Error updating post ${id}:`, error);
-    throw error;
-  }
-
-  return data;
-};
-
-// Delete a blog post (for admin use)
-export const deletePost = async (id: string): Promise<void> => {
-  const { error } = await supabase
-    .from('blog_posts')
-    .delete()
-    .eq('id', id);
-
-  if (error) {
-    console.error(`Error deleting post ${id}:`, error);
-    throw error;
-  }
-};
+export async function deletePost(_id: string): Promise<void> {
+  throw new Error('Use webhook API to delete posts');
+}

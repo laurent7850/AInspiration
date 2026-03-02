@@ -35,6 +35,7 @@ services:
       DB_NAME: ainspiration
       DB_USER: ainspiration
       DB_PASSWORD: ${DB_PASSWORD:-ainspiration_secret_2026}
+      JWT_SECRET: ${JWT_SECRET:-ainspiration_jwt_secret_change_me}
     depends_on:
       postgres:
         condition: service_healthy

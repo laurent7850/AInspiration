@@ -1,21 +1,22 @@
-import React, { createContext, useContext, ReactNode, useState } from 'react';
-import { LanguageProvider } from './LanguageContext';
+import { type ReactNode } from 'react';
 import { AuthProvider } from './AuthContext';
 import { NotificationProvider } from './NotificationContext';
 import { HelmetProvider } from 'react-helmet-async';
 
-const AppContextProvider: React.FC<{children: ReactNode}> = ({ children }) => {
+interface AppContextProviderProps {
+  children: ReactNode;
+}
+
+function AppContextProvider({ children }: AppContextProviderProps) {
   return (
     <HelmetProvider>
-      <LanguageProvider>
-        <AuthProvider>
-          <NotificationProvider>
-            {children}
-          </NotificationProvider>
-        </AuthProvider>
-      </LanguageProvider>
+      <AuthProvider>
+        <NotificationProvider>
+          {children}
+        </NotificationProvider>
+      </AuthProvider>
     </HelmetProvider>
   );
-};
+}
 
 export default AppContextProvider;
