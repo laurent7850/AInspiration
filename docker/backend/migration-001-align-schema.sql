@@ -14,3 +14,6 @@ ALTER TABLE newsletters ADD COLUMN IF NOT EXISTS html_content TEXT;
 
 -- Index for product_id on opportunities
 CREATE INDEX IF NOT EXISTS idx_opportunities_product ON opportunities(product_id);
+
+-- Add password column to users for JWT auth
+ALTER TABLE users ADD COLUMN IF NOT EXISTS password TEXT;

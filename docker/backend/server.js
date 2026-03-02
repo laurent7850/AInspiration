@@ -7,17 +7,19 @@ const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 3001;
+// Port is set at the bottom of the file
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-in-production';
 
-// PostgreSQL connection
-const pool = new Pool({
-  host: process.env.DB_HOST || 'postgres',
-  port: process.env.DB_PORT || 5432,
-  database: process.env.DB_NAME || 'ainspiration',
-  user: process.env.DB_USER || 'ainspiration',
-  password: process.env.DB_PASSWORD || 'ainspiration_secret'
-});
+// PostgreSQL connection — supports DATABASE_URL or individual vars
+const pool = process.env.DATABASE_URL
+  ? new Pool({ connectionString: process.env.DATABASE_URL })
+  : new Pool({
+      host: process.env.DB_HOST || 'postgres',
+      port: process.env.DB_PORT || 5432,
+      database: process.env.DB_NAME || 'ainspiration',
+      user: process.env.DB_USER || 'ainspiration',
+      password: process.env.DB_PASSWORD || 'ainspiration_secret'
+    });
 
 // Middleware
 app.use(cors());
@@ -1228,8 +1230,24 @@ app.post('/api/webhook/newsletter-generate', async (req, res) => {
   res.json({ subject: 'Newsletter AInspiration', content: '' });
 });
 
+// ==================== STATIC FILES + SPA FALLBACK ====================
+
+const path = require('path');
+const distPath = path.join(__dirname, 'dist');
+
+// Serve static frontend files (if dist/ exists alongside server.js)
+app.use(express.static(distPath));
+
+// SPA fallback: any non-API route serves index.html
+app.get('*', (req, res) => {
+  if (!req.path.startsWith('/api')) {
+    res.sendFile(path.join(distPath, 'index.html'));
+  }
+});
+
 // ==================== START SERVER ====================
 
-app.listen(port, () => {
-  console.log(`AInspiration API running on port ${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Secure server on ${PORT}`);
 });
