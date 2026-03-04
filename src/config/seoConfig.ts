@@ -26,7 +26,7 @@ export const defaultSEO = {
 export const seoPages: Record<string, SEOPageConfig> = {
   '/': {
     fr: {
-      title: 'AInspiration | Gagnez 10h/semaine avec l\'IA — Audit Gratuit PME',
+      title: 'AInspiration | Gagnez 10h/semaine grâce à l\'IA | Audit PME',
       description: 'Automatisez vos tâches répétitives et boostez votre CA grâce à l\'IA. +180% ROI moyen. Audit gratuit en 24h, sans engagement. 50+ PME accompagnées en Belgique et France.',
       keywords: 'intelligence artificielle PME, IA entreprise, automatisation IA, audit IA gratuit, solutions IA Belgique, transformation digitale PME'
     },

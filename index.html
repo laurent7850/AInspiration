@@ -8,9 +8,60 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AInspiration | Gagnez 10h/semaine avec l'IA — Audit Gratuit PME</title>
+    <title>AInspiration | Gagnez 10h/semaine grâce à l'IA | Audit PME</title>
     <meta name="description" content="Automatisez vos tâches répétitives et boostez votre CA grâce à l'IA. +180% ROI moyen. Audit gratuit en 24h, sans engagement. 50+ PME accompagnées." />
     <link rel="canonical" href="https://ainspiration.eu/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ainspiration.eu/" />
+    <meta property="og:title" content="AInspiration | Gagnez 10h/semaine grâce à l'IA | Audit PME" />
+    <meta property="og:description" content="Automatisez vos tâches répétitives et boostez votre CA grâce à l'IA. +180% ROI moyen. Audit gratuit en 24h, sans engagement." />
+    <meta property="og:image" content="https://ainspiration.eu/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="fr_BE" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="nl_BE" />
+    <meta property="og:site_name" content="AInspiration" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AInspiration | Gagnez 10h/semaine grâce à l'IA | Audit PME" />
+    <meta name="twitter:description" content="Automatisez vos tâches répétitives et boostez votre CA grâce à l'IA. +180% ROI moyen. Audit gratuit en 24h, sans engagement." />
+    <meta name="twitter:image" content="https://ainspiration.eu/og-image.png" />
+
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "AInspiration",
+          "url": "https://ainspiration.eu",
+          "logo": "https://ainspiration.eu/og-image.png",
+          "description": "Solutions d'Intelligence Artificielle pour PME — automatisation, audit gratuit, accompagnement personnalisé.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "BE"
+          },
+          "sameAs": []
+        },
+        {
+          "@type": "WebSite",
+          "name": "AInspiration",
+          "url": "https://ainspiration.eu",
+          "inLanguage": ["fr", "en", "nl"],
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://ainspiration.eu/blog?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
 
     <!-- Preconnect pour ressources externes critiques -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,9 +73,6 @@
 
     <!-- Preconnect pour Unsplash (images) -->
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-
-    <!-- Preconnect pour Supabase -->
-    <link rel="preconnect" href="https://inksxnkunsflohglbjid.supabase.co" crossorigin>
 
     <!-- DNS prefetch pour le chatbot n8n -->
     <link rel="dns-prefetch" href="https://n8n.srv767464.hstgr.cloud">
@@ -80,7 +128,11 @@
       <div class="loader-spinner"></div>
     </div>
 
-    <div id="root"></div>
+    <div id="root">
+      <!-- Contenu initial pour crawlers SEO (remplacé par React au chargement) -->
+      <h1>Gagnez 10h par semaine grâce à l'IA</h1>
+      <p>Rejoignez les PME qui automatisent leurs tâches répétitives et boostent leur chiffre d'affaires avec nos solutions d'Intelligence Artificielle.</p>
+    </div>
 
     <script type="module" src="/src/main.tsx"></script>
 
