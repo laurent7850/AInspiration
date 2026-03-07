@@ -1,14 +1,13 @@
 import { lazy, Suspense } from 'react';
 import SEOHead from '../components/SEOHead';
+import Hero from '../components/Hero';
 import {
-  HeroSkeleton,
   FeaturesSkeleton,
   TestimonialsSkeleton,
   CardSkeleton
 } from '../components/ui/Skeleton';
 import { getOrganizationSchema, getFAQSchema, getReviewSchema } from '../config/seoConfig';
 
-const Hero = lazy(() => import('../components/Hero'));
 const SocialProof = lazy(() => import('../components/SocialProof'));
 const Features = lazy(() => import('../components/Features'));
 const Testimonials = lazy(() => import('../components/Testimonials'));
@@ -59,10 +58,8 @@ export default function HomePage() {
         schema={combinedSchema}
       />
 
-      {/* Hero Section - priorité haute, pas de lazy loading excessif */}
-      <Suspense fallback={<HeroSkeleton />}>
-        <Hero />
-      </Suspense>
+      {/* Hero Section - chargement direct, pas de lazy (LCP critique) */}
+      <Hero />
 
       {/* Social Proof Bar */}
       <Suspense fallback={null}>

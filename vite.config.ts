@@ -20,12 +20,12 @@ export default defineConfig(({ mode }): UserConfig => {
         compression({
           algorithm: 'gzip',
           exclude: [/\.(br)$/, /\.(gz)$/],
-          threshold: 1024
+          threshold: 512
         }),
         compression({
           algorithm: 'brotliCompress',
           exclude: [/\.(br)$/, /\.(gz)$/],
-          threshold: 1024
+          threshold: 512
         }),
       ] : []),
       // Bundle analyzer uniquement en production

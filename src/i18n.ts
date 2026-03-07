@@ -10,30 +10,15 @@ i18n
   .init({
     fallbackLng: 'fr',
     supportedLngs: ['fr', 'en', 'nl'],
-    ns: [
-      'common',
-      'analysis',
-      'recommendations',
-      'features',
-      'audit',
-      'dashboard',
-      'prompts',
-      'collaboration',
-      'training',
-      'content',
-      'support',
-      'auth',
-      'pricing',
-      'crm',
-      'forms',
-      'automation',
-      'blog'
-    ],
+    // Only load 'common' on initial render - other namespaces loaded on demand
+    ns: ['common'],
     defaultNS: 'common',
-    debug: process.env.NODE_ENV === 'development',
+    debug: false,
     interpolation: {
       escapeValue: false,
     },
+    // Load other namespaces only when needed
+    partialBundledLanguages: true,
     detection: {
       order: ['path', 'querystring', 'cookie', 'localStorage', 'navigator'],
       lookupFromPathIndex: 0,

@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import HomeButton from '../HomeButton';
 import ScrollToTop from '../ScrollToTop';
 import CookieBanner from '../CookieBanner';
-import ChatbotN8n from '../ChatbotN8n';
-import PopupNewsletter from '../PopupNewsletter';
 import Breadcrumbs from './Breadcrumbs';
 import NotificationToast from '../ui/NotificationToast';
+
+// Deferred: not needed for initial render
+const ChatbotN8n = lazy(() => import('../ChatbotN8n'));
+const PopupNewsletter = lazy(() => import('../PopupNewsletter'));
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -49,8 +51,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       {/* Footer et éléments flottants */}
       <Footer />
       <CookieBanner />
-      <ChatbotN8n />
-      <PopupNewsletter />
+      <Suspense fallback={null}>
+        <ChatbotN8n />
+      </Suspense>
+      <Suspense fallback={null}>
+        <PopupNewsletter />
+      </Suspense>
       <NotificationToast />
     </div>
   );
