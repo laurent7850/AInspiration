@@ -94,7 +94,7 @@ export default function Hero() {
           </div>
 
           <div className="relative mt-8 lg:mt-0">
-            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 to-purple-500/30 rounded-3xl blur-3xl" aria-hidden="true"></div>
+            <div className="absolute -inset-4 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-3xl" aria-hidden="true"></div>
             <div className="relative rounded-2xl shadow-2xl overflow-hidden">
               {/* Image poster - visible immédiatement (LCP) */}
               <img
@@ -154,7 +154,7 @@ export default function Hero() {
 
       {/* Animated Stats Bar */}
       <div className="container mx-auto px-4 mt-16">
-        <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100 p-8 sm:p-10">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 sm:p-10">
           <AnimatedStats />
         </div>
       </div>

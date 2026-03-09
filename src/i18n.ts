@@ -3,6 +3,9 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 
+// Bundle French translations to eliminate HTTP roundtrip for default language (LCP)
+import frCommon from '../public/locales/fr/common.json';
+
 i18n
   .use(Backend)
   .use(LanguageDetector)
@@ -10,14 +13,16 @@ i18n
   .init({
     fallbackLng: 'fr',
     supportedLngs: ['fr', 'en', 'nl'],
-    // Only load 'common' on initial render - other namespaces loaded on demand
     ns: ['common'],
     defaultNS: 'common',
     debug: false,
     interpolation: {
       escapeValue: false,
     },
-    // Load other namespaces only when needed
+    // French bundled inline, en/nl loaded via HTTP backend on demand
+    resources: {
+      fr: { common: frCommon }
+    },
     partialBundledLanguages: true,
     detection: {
       order: ['path', 'querystring', 'cookie', 'localStorage', 'navigator'],

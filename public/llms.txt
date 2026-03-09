@@ -1,0 +1,8 @@
+# Ainspiration
+> Ainspiration est dédié à l'exploration et à la compréhension des innovations dans le domaine de l'intelligence artificielle. Notre mission est de fournir des ressources et des informations précieuses pour les passionnés et les professionnels de l'IA.
+## Contenu principal
+### Pages Principales
+- [Accueil](https://ainspiration.eu): Découvrez les dernières tendances et innovations en intelligence artificielle sur notre page d'accueil.
+- [Contact](https://ainspiration.eu/contact): Contactez-nous pour toute question ou suggestion concernant notre contenu ou nos services.
+## A propos
+Ainspiration se concentre sur la diffusion de connaissances sur l'intelligence artificielle. Bien que nous n'ayons pas encore publié d'articles, nous travaillons à créer un ensemble de ressources utiles et informatives pour notre audience. Restez connectés pour des mises à jour futures !

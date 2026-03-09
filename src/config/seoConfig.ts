@@ -26,19 +26,19 @@ export const defaultSEO = {
 export const seoPages: Record<string, SEOPageConfig> = {
   '/': {
     fr: {
-      title: 'AInspiration | Gagnez 10h/semaine grâce à l\'IA | Audit PME',
+      title: 'AInspiration | Solutions Intelligence Artificielle PME | Audit IA Gratuit Belgique',
       description: 'Automatisez vos tâches répétitives et boostez votre CA grâce à l\'IA. +180% ROI moyen. Audit gratuit en 24h, sans engagement. 50+ PME accompagnées en Belgique et France.',
-      keywords: 'intelligence artificielle PME, IA entreprise, automatisation IA, audit IA gratuit, solutions IA Belgique, transformation digitale PME'
+      keywords: 'intelligence artificielle PME, IA entreprise, automatisation IA, audit IA gratuit, solutions IA Belgique, transformation digitale PME, machine learning, deep learning, outils IA'
     },
     en: {
-      title: 'AInspiration | Save 10h/week with AI — Free SME Audit',
+      title: 'AInspiration | AI Solutions for SMEs | Free Artificial Intelligence Audit',
       description: 'Automate repetitive tasks and boost revenue with AI. +180% average ROI. Free audit in 24h, no commitment. 50+ SMEs supported in Belgium and France.',
-      keywords: 'artificial intelligence SME, business AI, AI automation, free AI audit, AI solutions Belgium, digital transformation SME'
+      keywords: 'artificial intelligence SME, business AI, AI automation, free AI audit, AI solutions Belgium, digital transformation SME, machine learning, deep learning, AI tools'
     },
     nl: {
-      title: 'AInspiration | Bespaar 10u/week met AI — Gratis KMO Audit',
+      title: 'AInspiration | AI Oplossingen voor KMO | Gratis Kunstmatige Intelligentie Audit',
       description: 'Automatiseer repetitieve taken en verhoog uw omzet met AI. +180% gemiddelde ROI. Gratis audit in 24u, zonder verplichtingen. 50+ KMO\'s begeleid in België en Frankrijk.',
-      keywords: 'kunstmatige intelligentie KMO, AI bedrijf, AI automatisering, gratis AI audit, AI oplossingen België, digitale transformatie KMO'
+      keywords: 'kunstmatige intelligentie KMO, AI bedrijf, AI automatisering, gratis AI audit, AI oplossingen België, digitale transformatie KMO, machine learning, deep learning, AI tools'
     }
   },
   '/login': {
@@ -162,9 +162,9 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/solutions': {
     fr: {
-      title: 'Solutions IA pour PME | Automatisation, CRM, Chatbot Belgique | AInspiration',
-      description: 'Découvrez nos solutions IA complètes pour PME : automatisation, CRM intelligent, chatbots, création visuelle. +180% ROI. Accompagnement en Belgique et France.',
-      keywords: 'solutions IA PME, services intelligence artificielle Belgique, automatisation IA, CRM IA, chatbot entreprise, packages IA'
+      title: 'Solutions IA pour PME | Automatisation, Machine Learning, Chatbot Belgique | AInspiration',
+      description: 'Découvrez nos solutions IA complètes pour PME : automatisation, CRM intelligent, chatbots, machine learning, deep learning. +180% ROI. Accompagnement en Belgique et France.',
+      keywords: 'solutions IA PME, services intelligence artificielle Belgique, automatisation IA, CRM IA, chatbot entreprise, machine learning applications, deep learning, NLP, outils IA startups'
     },
     en: {
       title: 'AI Solutions | Artificial Intelligence Services | AInspiration',
@@ -366,19 +366,19 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/blog': {
     fr: {
-      title: 'Blog IA | Actualités et Conseils Intelligence Artificielle | AInspiration',
-      description: 'Découvrez nos articles sur l\'IA : conseils pratiques, cas d\'usage, tendances et dernières actualités en intelligence artificielle.',
-      keywords: 'blog IA, actualités intelligence artificielle, articles IA, conseils IA, tendances IA'
+      title: 'Blog IA | Actualités Intelligence Artificielle, Machine Learning & Deep Learning | AInspiration',
+      description: 'Découvrez nos articles sur l\'IA : conseils pratiques, cas d\'usage, tendances machine learning, deep learning, NLP et dernières actualités en intelligence artificielle.',
+      keywords: 'blog IA, actualités intelligence artificielle, articles IA, tendances IA 2026, machine learning, deep learning, NLP, natural language processing, éthique IA, outils IA, startups IA'
     },
     en: {
-      title: 'AI Blog | News and Tips on Artificial Intelligence | AInspiration',
-      description: 'Discover our AI articles: practical tips, use cases, trends and latest news in artificial intelligence.',
-      keywords: 'AI blog, artificial intelligence news, AI articles, AI tips, AI trends'
+      title: 'AI Blog | Artificial Intelligence News, Machine Learning & Deep Learning | AInspiration',
+      description: 'Discover our AI articles: practical tips, use cases, machine learning trends, deep learning, NLP and latest news in artificial intelligence.',
+      keywords: 'AI blog, artificial intelligence news, AI articles, AI trends 2026, machine learning, deep learning, NLP, natural language processing, AI ethics, AI tools, AI startups'
     },
     nl: {
-      title: 'AI Blog | Nieuws en Tips over Kunstmatige Intelligentie | AInspiration',
-      description: 'Ontdek onze AI-artikelen: praktische tips, use cases, trends en laatste nieuws in kunstmatige intelligentie.',
-      keywords: 'AI blog, kunstmatige intelligentie nieuws, AI artikelen, AI tips, AI trends'
+      title: 'AI Blog | Kunstmatige Intelligentie Nieuws, Machine Learning & Deep Learning | AInspiration',
+      description: 'Ontdek onze AI-artikelen: praktische tips, use cases, machine learning trends, deep learning, NLP en laatste nieuws in kunstmatige intelligentie.',
+      keywords: 'AI blog, kunstmatige intelligentie nieuws, AI artikelen, AI trends 2026, machine learning, deep learning, NLP, AI ethiek, AI tools, AI startups'
     }
   },
   '/blog/thierry-facturation-ia': {

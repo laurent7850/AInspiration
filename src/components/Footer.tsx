@@ -1,6 +1,7 @@
 import React from 'react';
 import { Brain, Mail, Phone, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import Newsletter from './Newsletter';
 
 const CONTACT_EMAIL = 'info@ainspiration.eu';
@@ -28,19 +29,29 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">{t('footer.sections.features')}</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#features" className="text-gray-400 hover:text-indigo-400 text-sm">
+                <Link to="/analyse-ia" className="text-gray-400 hover:text-indigo-400 text-sm">
                   {t('footer.links.aiAnalysis')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#audit" className="text-gray-400 hover:text-indigo-400 text-sm">
+                <Link to="/contact" className="text-gray-400 hover:text-indigo-400 text-sm">
                   {t('footer.links.aiAudit')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#prompts" className="text-gray-400 hover:text-indigo-400 text-sm">
+                <Link to="/prompts" className="text-gray-400 hover:text-indigo-400 text-sm">
                   {t('footer.links.promptMaster')}
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link to="/automatisation" className="text-gray-400 hover:text-indigo-400 text-sm">
+                  Automatisation IA
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-gray-400 hover:text-indigo-400 text-sm">
+                  Blog
+                </Link>
               </li>
             </ul>
           </div>
@@ -49,24 +60,24 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">{t('footer.sections.legal')}</h3>
             <ul className="space-y-2">
               <li>
-                <a href="/privacy" className="text-gray-400 hover:text-indigo-400 text-sm">
+                <Link to="/privacy" className="text-gray-400 hover:text-indigo-400 text-sm">
                   {t('footer.links.privacy')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/mentions-legales" className="text-gray-400 hover:text-indigo-400 text-sm">
+                <Link to="/mentions-legales" className="text-gray-400 hover:text-indigo-400 text-sm">
                   Mentions légales
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/cgv" className="text-gray-400 hover:text-indigo-400 text-sm">
+                <Link to="/cgv" className="text-gray-400 hover:text-indigo-400 text-sm">
                   {t('footer.links.terms')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/cgu" className="text-gray-400 hover:text-indigo-400 text-sm">
+                <Link to="/cgu" className="text-gray-400 hover:text-indigo-400 text-sm">
                   CGU
-                </a>
+                </Link>
               </li>
               <li className="text-gray-400 text-sm">
                 {t('footer.vat')}

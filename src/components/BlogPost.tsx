@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Calendar, User, Tag, ArrowLeft, Clock } from 'lucide-react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Calendar, User, Tag, ArrowLeft, Clock, ArrowRight } from 'lucide-react';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { fetchPostBySlug, BlogPost as BlogPostType } from '../services/blogService';
 import BlogCTA from './blog/BlogCTA';
 import EnhancedBlogContent from './blog/EnhancedBlogContent';
+import SEOHead from './SEOHead';
+import { getBlogPostSchema } from '../config/seoConfig';
 
 export default function BlogPost() {
   const navigate = useNavigate();
@@ -100,8 +102,26 @@ export default function BlogPost() {
     return 'audit';
   };
 
+  const articleDescription = post.content
+    ? post.content.replace(/<[^>]*>/g, '').substring(0, 155).trim() + '...'
+    : post.title;
+
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <SEOHead
+        title={`${post.title} | Blog AInspiration`}
+        description={articleDescription}
+        image={post.image_url}
+        article={true}
+        publishedTime={post.published_at || post.created_at}
+        author={post.author_name || 'AInspiration'}
+        schema={getBlogPostSchema(
+          post.title,
+          articleDescription,
+          post.published_at || post.created_at,
+          post.author_name || 'AInspiration'
+        )}
+      />
       <div className="container mx-auto px-4">
         <button
           onClick={() => navigate('/blog')}
@@ -144,7 +164,7 @@ export default function BlogPost() {
           </div>
 
           {post.image_url && (
-            <div className="relative h-[400px] rounded-2xl overflow-hidden mb-12 shadow-2xl">
+            <div className="relative h-[250px] sm:h-[350px] md:h-[400px] rounded-2xl overflow-hidden mb-12 shadow-2xl">
               <img
                 src={post.image_url}
                 alt={post.title}
@@ -157,6 +177,25 @@ export default function BlogPost() {
           <EnhancedBlogContent content={post.content} title={post.title} />
 
           <BlogCTA variant={getCtaVariant()} />
+
+          {/* Internal linking - pages de services liees */}
+          <nav className="mt-12 pt-8 border-t border-gray-200" aria-label="Articles et services liés">
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">Découvrir nos solutions</h2>
+            <div className="grid sm:grid-cols-3 gap-4">
+              <Link to="/automatisation" className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition-colors">
+                <ArrowRight className="w-4 h-4" />
+                Automatisation IA
+              </Link>
+              <Link to="/solutions" className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition-colors">
+                <ArrowRight className="w-4 h-4" />
+                Toutes nos solutions
+              </Link>
+              <Link to="/contact" className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition-colors">
+                <ArrowRight className="w-4 h-4" />
+                Audit IA gratuit
+              </Link>
+            </div>
+          </nav>
         </article>
       </div>
     </section>
