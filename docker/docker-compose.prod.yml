@@ -7,6 +7,8 @@ services:
       POSTGRES_DB: ainspiration
       POSTGRES_USER: ainspiration
       POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "127.0.0.1:5435:5432"
     volumes:
       - ainspiration_pgdata:/var/lib/postgresql/data
     healthcheck:
