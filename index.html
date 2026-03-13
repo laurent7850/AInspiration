@@ -8,14 +8,14 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AInspiration | Solutions Intelligence Artificielle PME | Audit IA Gratuit Belgique</title>
+    <title>AInspiration | Solutions IA pour PME - Audit Gratuit</title>
     <meta name="description" content="Automatisez vos tâches répétitives et boostez votre CA grâce à l'IA. +180% ROI moyen. Audit gratuit en 24h, sans engagement. 50+ PME accompagnées." />
     <link rel="canonical" href="https://ainspiration.eu/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ainspiration.eu/" />
-    <meta property="og:title" content="AInspiration | Solutions Intelligence Artificielle PME | Audit IA Gratuit Belgique" />
+    <meta property="og:title" content="AInspiration | Solutions IA pour PME - Audit Gratuit" />
     <meta property="og:description" content="Automatisez vos tâches répétitives et boostez votre CA grâce à l'IA. +180% ROI moyen. Audit gratuit en 24h, sans engagement." />
     <meta property="og:image" content="https://ainspiration.eu/og-image.png" />
     <meta property="og:image:width" content="1200" />
@@ -38,24 +38,53 @@
       "@graph": [
         {
           "@type": "Organization",
+          "@id": "https://ainspiration.eu/#organization",
           "name": "AInspiration",
           "url": "https://ainspiration.eu",
-          "logo": "https://ainspiration.eu/og-image.png",
-          "description": "Solutions d'Intelligence Artificielle pour PME — automatisation, audit gratuit, accompagnement personnalisé.",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://ainspiration.eu/logo-ainspiration.png",
+            "width": 512,
+            "height": 512
+          },
+          "image": "https://ainspiration.eu/og-image.png",
+          "description": "Solutions d'Intelligence Artificielle pour PME — automatisation, audit gratuit, conseil, formation et accompagnement IA en Belgique et France.",
+          "email": "info@ainspiration.eu",
+          "telephone": "+32477942865",
           "address": {
             "@type": "PostalAddress",
+            "streetAddress": "Grand place 50",
+            "addressLocality": "Enghien",
+            "postalCode": "7850",
+            "addressRegion": "Hainaut",
             "addressCountry": "BE"
           },
-          "sameAs": []
+          "areaServed": [
+            { "@type": "Country", "name": "Belgium" },
+            { "@type": "Country", "name": "France" }
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+32477942865",
+            "contactType": "customer service",
+            "email": "info@ainspiration.eu",
+            "availableLanguage": ["French", "English", "Dutch"]
+          },
+          "sameAs": ["https://www.linkedin.com/company/ainspiration"]
         },
         {
           "@type": "WebSite",
+          "@id": "https://ainspiration.eu/#website",
           "name": "AInspiration",
           "url": "https://ainspiration.eu",
           "inLanguage": ["fr", "en", "nl"],
+          "publisher": { "@id": "https://ainspiration.eu/#organization" },
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://ainspiration.eu/blog?q={search_term_string}",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://ainspiration.eu/blog?q={search_term_string}"
+            },
             "query-input": "required name=search_term_string"
           }
         }

@@ -26,17 +26,17 @@ export const defaultSEO = {
 export const seoPages: Record<string, SEOPageConfig> = {
   '/': {
     fr: {
-      title: 'AInspiration | Solutions Intelligence Artificielle PME | Audit IA Gratuit Belgique',
+      title: 'AInspiration | Solutions IA pour PME - Audit Gratuit',
       description: 'Automatisez vos tâches répétitives et boostez votre CA grâce à l\'IA. +180% ROI moyen. Audit gratuit en 24h, sans engagement. 50+ PME accompagnées en Belgique et France.',
       keywords: 'intelligence artificielle PME, IA entreprise, automatisation IA, audit IA gratuit, solutions IA Belgique, transformation digitale PME, machine learning, deep learning, outils IA'
     },
     en: {
-      title: 'AInspiration | AI Solutions for SMEs | Free Artificial Intelligence Audit',
+      title: 'AInspiration | AI Solutions for SMEs - Free Audit',
       description: 'Automate repetitive tasks and boost revenue with AI. +180% average ROI. Free audit in 24h, no commitment. 50+ SMEs supported in Belgium and France.',
       keywords: 'artificial intelligence SME, business AI, AI automation, free AI audit, AI solutions Belgium, digital transformation SME, machine learning, deep learning, AI tools'
     },
     nl: {
-      title: 'AInspiration | AI Oplossingen voor KMO | Gratis Kunstmatige Intelligentie Audit',
+      title: 'AInspiration | AI Oplossingen KMO - Gratis Audit',
       description: 'Automatiseer repetitieve taken en verhoog uw omzet met AI. +180% gemiddelde ROI. Gratis audit in 24u, zonder verplichtingen. 50+ KMO\'s begeleid in België en Frankrijk.',
       keywords: 'kunstmatige intelligentie KMO, AI bedrijf, AI automatisering, gratis AI audit, AI oplossingen België, digitale transformatie KMO, machine learning, deep learning, AI tools'
     }
@@ -60,17 +60,17 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/pourquoi-ia': {
     fr: {
-      title: 'Pourquoi l\'IA | Avantages de l\'Intelligence Artificielle | AInspiration',
+      title: 'Pourquoi l\'IA ? Avantages pour PME | AInspiration',
       description: 'Découvrez pourquoi l\'IA est essentielle pour votre entreprise. Gains de productivité, automatisation et innovation pour rester compétitif sur le marché.',
       keywords: 'avantages IA, bénéfices intelligence artificielle, productivité IA, ROI IA, pourquoi adopter IA'
     },
     en: {
-      title: 'Why AI | Benefits of Artificial Intelligence | AInspiration',
+      title: 'Why AI? Benefits for SMEs | AInspiration',
       description: 'Discover why AI is essential for your business. Productivity gains, automation and innovation to stay competitive in the market.',
       keywords: 'AI benefits, artificial intelligence advantages, AI productivity, AI ROI, why adopt AI'
     },
     nl: {
-      title: 'Waarom AI | Voordelen van Kunstmatige Intelligentie | AInspiration',
+      title: 'Waarom AI? Voordelen voor KMO | AInspiration',
       description: 'Ontdek waarom AI essentieel is voor uw bedrijf. Productiviteitswinst, automatisering en innovatie om concurrerend te blijven.',
       keywords: 'AI voordelen, kunstmatige intelligentie voordelen, AI productiviteit, AI ROI, waarom AI adopteren'
     }
@@ -111,34 +111,34 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/transformation': {
     fr: {
-      title: 'Transformation Numérique | Digitalisation avec l\'IA | AInspiration',
+      title: 'Transformation Digitale IA | PME Belgique | AInspiration',
       description: 'Accélérez votre transformation digitale grâce à l\'IA. Modernisez vos processus, optimisez vos opérations et préparez l\'avenir de votre entreprise.',
       keywords: 'transformation digitale, digitalisation entreprise, modernisation processus, innovation numérique'
     },
     en: {
-      title: 'Digital Transformation | Digitalization with AI | AInspiration',
+      title: 'Digital Transformation with AI | AInspiration',
       description: 'Accelerate your digital transformation with AI. Modernize your processes, optimize your operations and prepare the future of your business.',
       keywords: 'digital transformation, business digitalization, process modernization, digital innovation'
     },
     nl: {
-      title: 'Digitale Transformatie | Digitalisering met AI | AInspiration',
+      title: 'Digitale Transformatie met AI | AInspiration',
       description: 'Versnel uw digitale transformatie met AI. Moderniseer uw processen, optimaliseer uw operaties en bereid de toekomst van uw bedrijf voor.',
       keywords: 'digitale transformatie, bedrijfsdigitalisering, procesmodernisering, digitale innovatie'
     }
   },
   '/creation-visuelle': {
     fr: {
-      title: 'Création Visuelle IA | Images et Design Générés par IA | AInspiration',
+      title: 'Création Visuelle IA | Design Génératif | AInspiration',
       description: 'Créez des visuels uniques avec l\'IA générative. Logos, images marketing, illustrations personnalisées pour votre communication.',
       keywords: 'création visuelle IA, images IA, design IA, génération images, IA générative, DALL-E, Midjourney'
     },
     en: {
-      title: 'AI Visual Creation | AI-Generated Images and Design | AInspiration',
+      title: 'AI Visual Creation | Generative Design | AInspiration',
       description: 'Create unique visuals with generative AI. Logos, marketing images, custom illustrations for your communication.',
       keywords: 'AI visual creation, AI images, AI design, image generation, generative AI, DALL-E, Midjourney'
     },
     nl: {
-      title: 'AI Visuele Creatie | AI-Gegenereerde Afbeeldingen en Design | AInspiration',
+      title: 'AI Visuele Creatie | Generatief Design | AInspiration',
       description: 'Creëer unieke visuals met generatieve AI. Logo\'s, marketingafbeeldingen, gepersonaliseerde illustraties voor uw communicatie.',
       keywords: 'AI visuele creatie, AI afbeeldingen, AI design, beeldgeneratie, generatieve AI, DALL-E, Midjourney'
     }
@@ -162,8 +162,8 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/solutions': {
     fr: {
-      title: 'Solutions IA pour PME | Automatisation, Machine Learning, Chatbot Belgique | AInspiration',
-      description: 'Découvrez nos solutions IA complètes pour PME : automatisation, CRM intelligent, chatbots, machine learning, deep learning. +180% ROI. Accompagnement en Belgique et France.',
+      title: 'Solutions IA PME Belgique | Automatisation & ML | AInspiration',
+      description: 'Solutions IA complètes pour PME : automatisation, CRM intelligent, chatbots, machine learning. +180% ROI moyen. Accompagnement en Belgique et France.',
       keywords: 'solutions IA PME, services intelligence artificielle Belgique, automatisation IA, CRM IA, chatbot entreprise, machine learning applications, deep learning, NLP, outils IA startups'
     },
     en: {
@@ -179,7 +179,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/produits': {
     fr: {
-      title: 'Offres IA PME | Audit Gratuit, Formation, Accompagnement dès 490\u20AC | AInspiration',
+      title: 'Offres IA PME | Audit Gratuit dès 490€ | AInspiration',
       description: 'Consultez nos offres IA pour PME. Audit gratuit, formation IA, accompagnement premium. Solutions adaptées à chaque budget en Belgique et France.',
       keywords: 'offres IA PME, tarifs IA Belgique, audit IA gratuit, formation IA prix, accompagnement IA'
     },
@@ -230,7 +230,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/contact': {
     fr: {
-      title: 'Contactez AInspiration | Audit IA Gratuit Belgique — Réponse sous 24h',
+      title: 'Contact | Audit IA Gratuit Belgique | AInspiration',
       description: 'Demandez votre audit IA gratuit. Notre équipe basée en Belgique vous répond sous 24h. Sans engagement, 100% personnalisé pour votre PME.',
       keywords: 'contact IA Belgique, audit IA gratuit, devis IA PME, consultation IA gratuite, rendez-vous IA'
     },
@@ -247,7 +247,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/prompts': {
     fr: {
-      title: 'Bibliothèque de Prompts IA | Optimisation ChatGPT | AInspiration',
+      title: 'Prompts IA | Bibliothèque ChatGPT & Claude | AInspiration',
       description: 'Accédez à notre bibliothèque de prompts optimisés pour ChatGPT, Claude et autres IA. Gagnez du temps avec des prompts professionnels testés.',
       keywords: 'prompts IA, prompts ChatGPT, bibliothèque prompts, optimisation prompts, prompt engineering'
     },
@@ -264,17 +264,17 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/automatisation': {
     fr: {
-      title: 'Automatisation IA | Workflows et Processus Automatisés | AInspiration',
+      title: 'Automatisation IA | Workflows Intelligents | AInspiration',
       description: 'Automatisez vos tâches répétitives avec l\'IA. Workflows intelligents, intégrations et gain de productivité pour votre équipe.',
       keywords: 'automatisation IA, workflows automatisés, RPA, processus automatiques, productivité IA'
     },
     en: {
-      title: 'AI Automation | Automated Workflows and Processes | AInspiration',
+      title: 'AI Automation | Smart Workflows | AInspiration',
       description: 'Automate your repetitive tasks with AI. Smart workflows, integrations and productivity gains for your team.',
       keywords: 'AI automation, automated workflows, RPA, automatic processes, AI productivity'
     },
     nl: {
-      title: 'AI Automatisering | Geautomatiseerde Workflows en Processen | AInspiration',
+      title: 'AI Automatisering | Slimme Workflows | AInspiration',
       description: 'Automatiseer uw repetitieve taken met AI. Slimme workflows, integraties en productiviteitswinst voor uw team.',
       keywords: 'AI automatisering, geautomatiseerde workflows, RPA, automatische processen, AI productiviteit'
     }
@@ -315,17 +315,17 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/conseil': {
     fr: {
-      title: 'Conseil Stratégique IA | Consulting en Intelligence Artificielle | AInspiration',
+      title: 'Conseil Stratégique IA | Consulting IA | AInspiration',
       description: 'Bénéficiez de notre expertise en conseil stratégique IA. Audit, roadmap, accompagnement pour une intégration réussie de l\'IA.',
       keywords: 'conseil IA, consulting intelligence artificielle, stratégie IA, audit entreprise, roadmap IA'
     },
     en: {
-      title: 'AI Strategic Consulting | Artificial Intelligence Consulting | AInspiration',
+      title: 'AI Strategic Consulting | AI Advisory | AInspiration',
       description: 'Benefit from our AI strategic consulting expertise. Audit, roadmap, support for successful AI integration.',
       keywords: 'AI consulting, artificial intelligence consulting, AI strategy, business audit, AI roadmap'
     },
     nl: {
-      title: 'AI Strategisch Advies | Kunstmatige Intelligentie Consulting | AInspiration',
+      title: 'AI Strategisch Advies | KI Consulting | AInspiration',
       description: 'Profiteer van onze expertise in AI strategisch advies. Audit, roadmap, begeleiding voor een succesvolle AI-integratie.',
       keywords: 'AI consulting, kunstmatige intelligentie advies, AI strategie, bedrijfsaudit, AI roadmap'
     }
@@ -366,18 +366,18 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/blog': {
     fr: {
-      title: 'Blog IA | Actualités Intelligence Artificielle, Machine Learning & Deep Learning | AInspiration',
-      description: 'Découvrez nos articles sur l\'IA : conseils pratiques, cas d\'usage, tendances machine learning, deep learning, NLP et dernières actualités en intelligence artificielle.',
+      title: 'Blog IA | Actualités & Tendances ML 2026 | AInspiration',
+      description: 'Articles IA : conseils pratiques, cas d\'usage, tendances machine learning, deep learning, NLP et actualités intelligence artificielle pour PME.',
       keywords: 'blog IA, actualités intelligence artificielle, articles IA, tendances IA 2026, machine learning, deep learning, NLP, natural language processing, éthique IA, outils IA, startups IA'
     },
     en: {
-      title: 'AI Blog | Artificial Intelligence News, Machine Learning & Deep Learning | AInspiration',
-      description: 'Discover our AI articles: practical tips, use cases, machine learning trends, deep learning, NLP and latest news in artificial intelligence.',
+      title: 'AI Blog | ML & Deep Learning News 2026 | AInspiration',
+      description: 'AI articles: practical tips, use cases, machine learning trends, deep learning, NLP and latest artificial intelligence news for SMEs.',
       keywords: 'AI blog, artificial intelligence news, AI articles, AI trends 2026, machine learning, deep learning, NLP, natural language processing, AI ethics, AI tools, AI startups'
     },
     nl: {
-      title: 'AI Blog | Kunstmatige Intelligentie Nieuws, Machine Learning & Deep Learning | AInspiration',
-      description: 'Ontdek onze AI-artikelen: praktische tips, use cases, machine learning trends, deep learning, NLP en laatste nieuws in kunstmatige intelligentie.',
+      title: 'AI Blog | ML & Deep Learning Nieuws 2026 | AInspiration',
+      description: 'AI-artikelen: praktische tips, use cases, machine learning trends, deep learning, NLP en laatste KI-nieuws voor KMO\'s.',
       keywords: 'AI blog, kunstmatige intelligentie nieuws, AI artikelen, AI trends 2026, machine learning, deep learning, NLP, AI ethiek, AI tools, AI startups'
     }
   },
@@ -415,19 +415,70 @@ export const seoPages: Record<string, SEOPageConfig> = {
       keywords: 'privacybeleid, AVG, gegevensbescherming, privacy, persoonlijke gegevens'
     }
   },
+  '/mentions-legales': {
+    fr: {
+      title: 'Mentions Légales | AInspiration',
+      description: 'Mentions légales du site ainspiration.eu. Informations sur l\'éditeur, l\'hébergeur et les conditions d\'utilisation.',
+      keywords: 'mentions légales, éditeur, hébergeur, conditions'
+    },
+    en: {
+      title: 'Legal Notice | AInspiration',
+      description: 'Legal notice for ainspiration.eu. Information about the publisher, host and terms of use.',
+      keywords: 'legal notice, publisher, host, terms'
+    },
+    nl: {
+      title: 'Juridische Vermeldingen | AInspiration',
+      description: 'Juridische vermeldingen van ainspiration.eu. Informatie over de uitgever, host en gebruiksvoorwaarden.',
+      keywords: 'juridische vermeldingen, uitgever, host, voorwaarden'
+    }
+  },
+  '/cgv': {
+    fr: {
+      title: 'Conditions Générales de Vente | AInspiration',
+      description: 'Consultez nos conditions générales de vente. Modalités de paiement, livraison et garanties pour nos services IA.',
+      keywords: 'CGV, conditions générales de vente, paiement, garanties'
+    },
+    en: {
+      title: 'Terms of Sale | AInspiration',
+      description: 'View our general terms of sale. Payment terms, delivery and guarantees for our AI services.',
+      keywords: 'terms of sale, payment terms, guarantees'
+    },
+    nl: {
+      title: 'Algemene Verkoopsvoorwaarden | AInspiration',
+      description: 'Bekijk onze algemene verkoopsvoorwaarden. Betalingsvoorwaarden, levering en garanties voor onze AI-diensten.',
+      keywords: 'algemene verkoopsvoorwaarden, betalingsvoorwaarden, garanties'
+    }
+  },
+  '/cgu': {
+    fr: {
+      title: 'Conditions Générales d\'Utilisation | AInspiration',
+      description: 'Consultez nos conditions générales d\'utilisation du site ainspiration.eu et de nos services IA.',
+      keywords: 'CGU, conditions générales d\'utilisation, règles'
+    },
+    en: {
+      title: 'Terms of Use | AInspiration',
+      description: 'View our terms of use for ainspiration.eu and our AI services.',
+      keywords: 'terms of use, rules, conditions'
+    },
+    nl: {
+      title: 'Gebruiksvoorwaarden | AInspiration',
+      description: 'Bekijk onze gebruiksvoorwaarden voor ainspiration.eu en onze AI-diensten.',
+      keywords: 'gebruiksvoorwaarden, regels, voorwaarden'
+    }
+  },
   '/crm': {
     fr: {
-      title: 'Solution CRM IA | Gestion Relation Client Intelligente | AInspiration',
+      title: 'CRM IA | Gestion Client Intelligente | AInspiration',
       description: 'Optimisez votre relation client avec notre CRM propulsé par l\'IA. Automatisation, insights et suivi intelligent de vos opportunités.',
       keywords: 'CRM IA, gestion relation client, CRM intelligent, automatisation ventes, pipeline commercial'
     },
     en: {
-      title: 'AI CRM Solution | Intelligent Customer Relationship Management | AInspiration',
+      title: 'AI CRM | Smart Customer Management | AInspiration',
       description: 'Optimize your customer relationships with our AI-powered CRM. Automation, insights and intelligent tracking of your opportunities.',
       keywords: 'AI CRM, customer relationship management, intelligent CRM, sales automation, sales pipeline'
     },
     nl: {
-      title: 'AI CRM Oplossing | Intelligente Klantrelatiebeheer | AInspiration',
+      title: 'AI CRM | Slim Klantenbeheer | AInspiration',
       description: 'Optimaliseer uw klantrelaties met onze AI-aangedreven CRM. Automatisering, inzichten en intelligente opvolging van uw kansen.',
       keywords: 'AI CRM, klantrelatiebeheer, intelligente CRM, verkoopautomatisering, verkooppijplijn'
     }
@@ -626,22 +677,40 @@ export const getHreflangTags = (path: string) => {
 export const getOrganizationSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': `${defaultSEO.siteUrl}/#organization`,
   name: 'AInspiration',
   url: defaultSEO.siteUrl,
-  logo: `${defaultSEO.siteUrl}/logo.png`,
-  description: 'Solutions d\'Intelligence Artificielle pour entreprises belges et européennes',
+  logo: {
+    '@type': 'ImageObject',
+    url: `${defaultSEO.siteUrl}/logo-ainspiration.png`,
+    width: 512,
+    height: 512
+  },
+  image: `${defaultSEO.siteUrl}/og-image.png`,
+  description: 'Solutions d\'Intelligence Artificielle pour PME — automatisation, audit gratuit, conseil, formation et accompagnement IA en Belgique et France.',
+  email: 'info@ainspiration.eu',
+  telephone: '+32477942865',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Grand place 50',
+    addressLocality: 'Enghien',
+    postalCode: '7850',
+    addressRegion: 'Hainaut',
     addressCountry: 'BE'
   },
+  areaServed: [
+    { '@type': 'Country', name: 'Belgium' },
+    { '@type': 'Country', name: 'France' }
+  ],
   contactPoint: {
     '@type': 'ContactPoint',
+    telephone: '+32477942865',
     contactType: 'customer service',
+    email: 'info@ainspiration.eu',
     availableLanguage: ['French', 'English', 'Dutch']
   },
   sameAs: [
-    'https://www.linkedin.com/company/ainspiration',
-    'https://twitter.com/ainspiration'
+    'https://www.linkedin.com/company/ainspiration'
   ]
 });
 
@@ -662,23 +731,55 @@ export const getServiceSchema = (serviceName: string, description: string) => ({
 });
 
 // Génère les données structurées pour un article de blog
-export const getBlogPostSchema = (title: string, description: string, datePublished: string, author: string) => ({
+export const getBlogPostSchema = (
+  title: string,
+  description: string,
+  datePublished: string,
+  author: string,
+  options?: {
+    image?: string;
+    dateModified?: string;
+    slug?: string;
+    wordCount?: number;
+    category?: string;
+  }
+) => ({
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: title,
   description: description,
   datePublished: datePublished,
+  dateModified: options?.dateModified || datePublished,
   author: {
     '@type': 'Person',
     name: author
   },
   publisher: {
     '@type': 'Organization',
+    '@id': `${defaultSEO.siteUrl}/#organization`,
     name: 'AInspiration',
     logo: {
       '@type': 'ImageObject',
-      url: `${defaultSEO.siteUrl}/logo.png`
+      url: `${defaultSEO.siteUrl}/logo-ainspiration.png`
     }
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': options?.slug ? `${defaultSEO.siteUrl}/blog/${options.slug}` : defaultSEO.siteUrl
+  },
+  ...(options?.image && {
+    image: {
+      '@type': 'ImageObject',
+      url: options.image
+    }
+  }),
+  ...(options?.wordCount && { wordCount: options.wordCount }),
+  ...(options?.category && { articleSection: options.category }),
+  inLanguage: 'fr',
+  isPartOf: {
+    '@type': 'Blog',
+    '@id': `${defaultSEO.siteUrl}/blog`,
+    name: 'Blog AInspiration'
   }
 });
 

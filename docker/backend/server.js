@@ -7,6 +7,7 @@ const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
 const app = express();
+app.disable('x-powered-by');
 // Port is set at the bottom of the file
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-in-production';
 
@@ -1240,7 +1241,15 @@ const path = require('path');
 const distPath = path.join(__dirname, 'dist');
 
 // Serve static frontend files (if dist/ exists alongside server.js)
-app.use(express.static(distPath));
+app.use(express.static(distPath, {
+  setHeaders: (res, filePath) => {
+    if (filePath.match(/\.(js|css|woff2?|png|jpg|jpeg|svg|webp|avif|ico|gif)$/)) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    } else if (filePath.endsWith('.xml') || filePath.endsWith('.txt')) {
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+    }
+  }
+}));
 
 // 404 for unknown API routes
 app.all('/api/*', (req, res) => {
@@ -1249,6 +1258,7 @@ app.all('/api/*', (req, res) => {
 
 // SPA fallback: any non-API route serves index.html
 app.get('*', (req, res) => {
+  res.setHeader('Cache-Control', 'no-cache');
   res.sendFile(path.join(distPath, 'index.html'));
 });
 

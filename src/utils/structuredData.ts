@@ -1,42 +1,69 @@
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Aimagination",
+  "@id": "https://ainspiration.eu/#organization",
+  "name": "AInspiration",
   "url": "https://ainspiration.eu",
-  "logo": "https://ainspiration.eu/white_logo_-_no_background.svg",
-  "description": "Solutions d'Intelligence Artificielle pour entreprises - Audit, conseil, formation et accompagnement IA",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://ainspiration.eu/logo-ainspiration.png",
+    "width": 512,
+    "height": 512
+  },
+  "image": "https://ainspiration.eu/og-image.png",
+  "description": "Solutions d'Intelligence Artificielle pour PME — automatisation, audit gratuit, conseil, formation et accompagnement IA en Belgique et France.",
   "email": "info@ainspiration.eu",
   "telephone": "+32477942865",
+  "foundingDate": "2025",
+  "founder": {
+    "@type": "Person",
+    "name": "Laurent Doyen"
+  },
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Grand place 50",
     "addressLocality": "Enghien",
     "postalCode": "7850",
+    "addressRegion": "Hainaut",
     "addressCountry": "BE"
   },
+  "areaServed": [
+    { "@type": "Country", "name": "Belgium" },
+    { "@type": "Country", "name": "France" }
+  ],
+  "knowsAbout": [
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Business Automation",
+    "Digital Transformation",
+    "Chatbots",
+    "Data Analysis"
+  ],
   "sameAs": [
-    "https://www.linkedin.com/company/ainspiration",
-    "https://twitter.com/ainspiration"
+    "https://www.linkedin.com/company/ainspiration"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+32477942865",
     "contactType": "customer service",
     "email": "info@ainspiration.eu",
-    "availableLanguage": ["French", "English"]
+    "availableLanguage": ["French", "English", "Dutch"]
   }
 };
 
 export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Aimagination",
+  "@id": "https://ainspiration.eu/#website",
+  "name": "AInspiration",
   "url": "https://ainspiration.eu",
+  "inLanguage": ["fr", "en", "nl"],
+  "publisher": { "@id": "https://ainspiration.eu/#organization" },
   "potentialAction": {
     "@type": "SearchAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://ainspiration.eu/search?q={search_term_string}"
+      "urlTemplate": "https://ainspiration.eu/blog?q={search_term_string}"
     },
     "query-input": "required name=search_term_string"
   }
@@ -44,18 +71,21 @@ export const websiteSchema = {
 
 export const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Aimagination",
-  "image": "https://ainspiration.eu/og-image.jpg",
-  "@id": "https://ainspiration.eu",
+  "@type": "ProfessionalService",
+  "@id": "https://ainspiration.eu/#localbusiness",
+  "name": "AInspiration",
+  "image": "https://ainspiration.eu/og-image.png",
   "url": "https://ainspiration.eu",
   "telephone": "+32477942865",
-  "priceRange": "€€€",
+  "email": "info@ainspiration.eu",
+  "priceRange": "€€-€€€",
+  "description": "Conseil et accompagnement en Intelligence Artificielle pour PME. Audit gratuit, formation, automatisation.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Grand place 50",
     "addressLocality": "Enghien",
     "postalCode": "7850",
+    "addressRegion": "Hainaut",
     "addressCountry": "BE"
   },
   "geo": {
@@ -65,19 +95,26 @@ export const localBusinessSchema = {
   },
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday"
-    ],
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     "opens": "09:00",
     "closes": "18:00"
   },
+  "areaServed": [
+    { "@type": "Country", "name": "Belgium" },
+    { "@type": "Country", "name": "France" }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Solutions IA",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Audit IA gratuit" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Formation IA" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Accompagnement IA" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatisation IA" } }
+    ]
+  },
   "sameAs": [
-    "https://www.linkedin.com/company/ainspiration",
-    "https://twitter.com/ainspiration"
+    "https://www.linkedin.com/company/ainspiration"
   ]
 };
 

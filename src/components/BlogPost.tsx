@@ -114,12 +114,20 @@ export default function BlogPost() {
         image={post.image_url}
         article={true}
         publishedTime={post.published_at || post.created_at}
+        modifiedTime={post.updated_at || post.published_at || post.created_at}
         author={post.author_name || 'AInspiration'}
         schema={getBlogPostSchema(
           post.title,
           articleDescription,
           post.published_at || post.created_at,
-          post.author_name || 'AInspiration'
+          post.author_name || 'AInspiration',
+          {
+            image: post.image_url,
+            dateModified: post.updated_at || post.published_at || post.created_at,
+            slug: slug,
+            wordCount: post.content ? post.content.replace(/<[^>]*>/g, '').split(/\s+/).length : undefined,
+            category: post.category
+          }
         )}
       />
       <div className="container mx-auto px-4">
