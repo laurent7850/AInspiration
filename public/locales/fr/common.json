@@ -149,6 +149,16 @@
       }
     }
   },
+  "seoIntro": {
+    "title": "L'Intelligence Artificielle au service des PME belges et françaises",
+    "p1": "En 2026, l'Intelligence Artificielle n'est plus réservée aux grandes entreprises. Chez AInspiration, nous rendons l'IA accessible à toutes les PME : restaurants, e-commerces, cabinets de conseil, agences marketing, artisans et indépendants. Notre mission est simple — vous faire gagner du temps et de l'argent grâce à des solutions d'automatisation intelligentes, sans aucune compétence technique requise.",
+    "subtitle1": "Des résultats concrets, mesurables dès le premier mois",
+    "p2": "Nos clients constatent en moyenne un ROI de 180%, une réduction de 60% du temps consacré aux tâches répétitives et une augmentation de 45% de leur productivité. Que ce soit pour automatiser la gestion des réservations, générer du contenu marketing, mettre en place un assistant virtuel ou optimiser votre service client, nos solutions s'adaptent à votre métier et à vos besoins spécifiques.",
+    "subtitle2": "Un accompagnement personnalisé de A à Z",
+    "p3": "Tout commence par un audit gratuit et sans engagement. En 24 heures, nous analysons vos processus, identifions les opportunités d'automatisation et vous livrons un plan d'action concret. Ensuite, nous déployons la solution en 48 heures maximum. Basés à Enghien en Belgique, nous accompagnons les entreprises en Belgique et en France avec un support multilingue en français, anglais et néerlandais.",
+    "subtitle3": "Sécurité et conformité RGPD",
+    "p4": "Toutes vos données sont hébergées en Europe et traitées dans le strict respect du RGPD. Nous utilisons des technologies de pointe — chatbots intelligents, analyse de données par IA, génération de contenu, CRM intelligent — tout en garantissant la confidentialité et la sécurité de vos informations professionnelles."
+  },
   "faq": {
     "q1": "Faut-il des compétences techniques pour utiliser vos solutions ?",
     "a1": "Absolument pas ! Nos solutions sont conçues pour être simples d'utilisation. Nous nous occupons de toute la partie technique.",

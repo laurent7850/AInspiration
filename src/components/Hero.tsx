@@ -93,6 +93,8 @@ export default function Hero() {
                   ref={videoRef}
                   key={videoSrc}
                   className="w-full rounded-2xl cursor-pointer"
+                  poster="/images/hero-ai-business.webp"
+                  preload="auto"
                   playsInline
                   autoPlay
                   muted

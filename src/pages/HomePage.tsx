@@ -9,6 +9,7 @@ import {
 import { getOrganizationSchema, getFAQSchema, getReviewSchema } from '../config/seoConfig';
 
 const SocialProof = lazy(() => import('../components/SocialProof'));
+const SEOIntro = lazy(() => import('../components/SEOIntro'));
 const Features = lazy(() => import('../components/Features'));
 const Testimonials = lazy(() => import('../components/Testimonials'));
 const FAQ = lazy(() => import('../components/FAQ'));
@@ -64,6 +65,11 @@ export default function HomePage() {
       {/* Social Proof Bar */}
       <Suspense fallback={null}>
         <SocialProof />
+      </Suspense>
+
+      {/* SEO Intro Section */}
+      <Suspense fallback={null}>
+        <SEOIntro />
       </Suspense>
 
       {/* Features Section */}

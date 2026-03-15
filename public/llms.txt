@@ -1,8 +1,102 @@
-# Ainspiration
-> Ainspiration est dédié à l'exploration et à la compréhension des innovations dans le domaine de l'intelligence artificielle. Notre mission est de fournir des ressources et des informations précieuses pour les passionnés et les professionnels de l'IA.
-## Contenu principal
-### Pages Principales
-- [Accueil](https://ainspiration.eu): Découvrez les dernières tendances et innovations en intelligence artificielle sur notre page d'accueil.
-- [Contact](https://ainspiration.eu/contact): Contactez-nous pour toute question ou suggestion concernant notre contenu ou nos services.
-## A propos
-Ainspiration se concentre sur la diffusion de connaissances sur l'intelligence artificielle. Bien que nous n'ayons pas encore publié d'articles, nous travaillons à créer un ensemble de ressources utiles et informatives pour notre audience. Restez connectés pour des mises à jour futures !
+# AInspiration
+
+> AInspiration est une entreprise belge spécialisée dans les solutions d'Intelligence Artificielle pour PME. Basée à Enghien (Belgique), elle accompagne les petites et moyennes entreprises en Belgique et en France dans leur transformation numérique grâce à l'IA.
+
+## Informations clés
+
+- **Site web** : https://ainspiration.eu
+- **Fondateur** : Laurent Fievez
+- **Localisation** : Grand place 50, 7850 Enghien, Belgique
+- **TVA** : BE0462122648
+- **Contact** : info@ainspiration.eu | +32 477 94 28 65
+- **Langues** : Français, English, Nederlands
+- **Secteur** : Conseil et solutions IA pour PME
+
+## Mission
+
+Rendre l'Intelligence Artificielle accessible à toutes les PME, sans compétence technique requise. AInspiration aide les entreprises à automatiser leurs tâches répétitives, optimiser leurs processus et augmenter leur chiffre d'affaires grâce à des solutions IA sur mesure.
+
+## Résultats clients
+
+- **+180% ROI moyen** constaté par les clients
+- **-60% de temps** consacré aux tâches répétitives
+- **+45% de productivité** en moyenne
+- **98% de satisfaction client**
+- **Mise en place en 48h** maximum
+- **Audit gratuit en 24h**, sans engagement
+
+## Services proposés
+
+### Audit IA gratuit
+Analyse complète des processus de l'entreprise pour identifier les opportunités d'automatisation. Résultats livrés en 24 heures, 100% gratuit et sans engagement.
+
+### Automatisation intelligente
+Automatisation des tâches répétitives : gestion des réservations, réponses client, facturation, planification, suivi des leads. Solutions adaptées à chaque métier.
+
+### Assistants virtuels et chatbots
+Déploiement de chatbots intelligents pour le service client, disponibles 24h/24. Capable de traiter jusqu'à 70% des demandes automatiquement.
+
+### Génération de contenu IA
+Création de contenu marketing : articles de blog, newsletters, posts réseaux sociaux, descriptions produits. Gain de temps de publication multiplié par 3.
+
+### Analyse de données IA
+Tableaux de bord intelligents, analyse prédictive, reporting automatisé. Aide à la prise de décision basée sur les données.
+
+### CRM intelligent
+Solution CRM enrichie par l'IA : scoring de leads, prédiction de conversion, segmentation automatique, suivi client optimisé.
+
+### Formation IA
+Formation des équipes à l'utilisation des outils IA. Programmes adaptés au niveau et au secteur d'activité de l'entreprise.
+
+### Accompagnement personnalisé
+Support continu, conseil stratégique et optimisation des solutions déployées. Un interlocuteur dédié pour chaque client.
+
+## Secteurs d'activité accompagnés
+
+- Restaurants et hôtellerie
+- E-commerce et retail
+- Agences marketing et communication
+- Cabinets de conseil
+- Artisans et indépendants
+- Services professionnels
+
+## Pages principales
+
+- [Accueil](https://ainspiration.eu) : Présentation générale et audit gratuit
+- [Analyse IA](https://ainspiration.eu/analyse-ia) : Service d'analyse de données par IA
+- [Recommandations](https://ainspiration.eu/recommandations) : Recommandations personnalisées IA
+- [CRM intelligent](https://ainspiration.eu/crm) : Solution CRM enrichie par l'IA
+- [Bibliothèque de prompts](https://ainspiration.eu/prompts) : Collection de prompts optimisés
+- [Assistants virtuels](https://ainspiration.eu/assistants) : Chatbots et assistants IA
+- [Formation IA](https://ainspiration.eu/formation) : Programmes de formation
+- [Créativité IA](https://ainspiration.eu/creativite) : Outils de génération de contenu
+- [Accompagnement](https://ainspiration.eu/accompagnement) : Support et conseil personnalisé
+- [Études de cas](https://ainspiration.eu/etudes-de-cas) : Résultats concrets de clients
+- [Blog](https://ainspiration.eu/blog) : Articles sur l'IA et les PME
+- [Tarifs](https://ainspiration.eu/pricing) : Grille tarifaire
+- [Contact](https://ainspiration.eu/contact) : Formulaire de contact
+
+## FAQ
+
+**Faut-il des compétences techniques pour utiliser vos solutions ?**
+Absolument pas. Nos solutions sont conçues pour être simples d'utilisation. Nous nous occupons de toute la partie technique.
+
+**Combien de temps faut-il pour mettre en place une solution IA ?**
+La plupart de nos solutions sont opérationnelles en 48h. L'audit gratuit prend 24h.
+
+**L'audit est-il vraiment gratuit et sans engagement ?**
+Oui, 100% gratuit et sans engagement. Nous analysons votre activité et vous livrons un plan d'action concret.
+
+**Mes données sont-elles en sécurité ?**
+Absolument. Nous sommes conformes RGPD et toutes les données sont hébergées en Europe.
+
+**Quel type d'entreprise peut bénéficier de vos services ?**
+Toute PME peut en bénéficier : restaurants, e-commerces, agences marketing, cabinets de conseil, artisans et indépendants.
+
+## Statistiques et faits citables
+
+- En 2026, 58.5% des recherches Google finissent sans clic, rendant la visibilité IA essentielle.
+- Le trafic référent IA a augmenté de +357% en un an.
+- AInspiration accompagne des PME en Belgique et en France depuis Enghien (Hainaut).
+- Toutes les données clients sont hébergées en Europe, conformément au RGPD.
+- Les solutions IA d'AInspiration sont opérationnelles en 48 heures maximum.
