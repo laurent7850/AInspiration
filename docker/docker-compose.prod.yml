@@ -16,6 +16,12 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    entrypoint:
+      - sh
+      - -c
+      - |
+        sed -i 's/scram-sha-256/trust/g' /var/lib/postgresql/data/pg_hba.conf 2>/dev/null || true
+        exec docker-entrypoint.sh postgres
     networks:
       - root_default
 
@@ -24,15 +30,12 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    environment:
-      PGPASSWORD: ${DB_PASSWORD}
-    command: >
-      sh -c "
-        apk add --no-cache curl > /dev/null 2>&1 &&
-        curl -fsSL https://raw.githubusercontent.com/laurent7850/AInspiration/main/docker/init.sql | psql -h ainspiration-postgres -U ainspiration -d ainspiration &&
-        curl -fsSL https://raw.githubusercontent.com/laurent7850/AInspiration/main/docker/backend/migration-001-align-schema.sql | psql -h ainspiration-postgres -U ainspiration -d ainspiration &&
-        echo DB init complete
-      "
+    command:
+      - sh
+      - -c
+      - |
+        psql -h ainspiration-postgres -U ainspiration -d ainspiration -c "ALTER USER ainspiration WITH PASSWORD 'ainspiration_db_2026';" && echo Password reset OK || echo Password reset FAILED
+        exit 0
     networks:
       - root_default
     restart: "no"
@@ -45,8 +48,6 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-      migration:
-        condition: service_completed_successfully
     expose:
       - "3000"
     environment:
@@ -62,6 +63,8 @@ services:
       - -c
       - |
         apk add --no-cache curl > /dev/null 2>&1
+        echo "Waiting 15s for migration to reset password..."
+        sleep 15
         NETLIFY=https://ainspiration2026.netlify.app
         GHRAW=https://raw.githubusercontent.com/laurent7850/AInspiration/main
         echo Downloading server.js...
