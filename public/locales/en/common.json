@@ -149,6 +149,9 @@
       }
     }
   },
+  "darwinQuote": {
+    "text": "It is not the strongest of the species that survives, nor the most intelligent. It is the one most adaptable to change."
+  },
   "seoIntro": {
     "title": "Artificial Intelligence for Belgian and French SMEs",
     "p1": "In 2026, Artificial Intelligence is no longer reserved for large corporations. At AInspiration, we make AI accessible to all SMEs: restaurants, e-commerce businesses, consulting firms, marketing agencies, craftsmen and freelancers. Our mission is simple — save you time and money through intelligent automation solutions, with no technical skills required.",

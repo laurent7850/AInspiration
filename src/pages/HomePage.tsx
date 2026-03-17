@@ -9,6 +9,7 @@ import {
 import { getOrganizationSchema, getFAQSchema, getReviewSchema } from '../config/seoConfig';
 
 const SocialProof = lazy(() => import('../components/SocialProof'));
+const DarwinQuote = lazy(() => import('../components/DarwinQuote'));
 const SEOIntro = lazy(() => import('../components/SEOIntro'));
 const Features = lazy(() => import('../components/Features'));
 const Testimonials = lazy(() => import('../components/Testimonials'));
@@ -65,6 +66,11 @@ export default function HomePage() {
       {/* Social Proof Bar */}
       <Suspense fallback={null}>
         <SocialProof />
+      </Suspense>
+
+      {/* Darwin Quote */}
+      <Suspense fallback={null}>
+        <DarwinQuote />
       </Suspense>
 
       {/* SEO Intro Section */}
