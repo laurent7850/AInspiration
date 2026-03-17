@@ -32,14 +32,7 @@ export default function LoginPage() {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         {isLogin ? <SignInForm /> : <SignUpForm />}
         
-        <div className="mt-4 text-center">
-          <button
-            onClick={() => setIsLogin(!isLogin)}
-            className="text-indigo-600 hover:text-indigo-500"
-          >
-            {isLogin ? "Pas encore de compte ? S'inscrire" : "Déjà un compte ? Se connecter"}
-          </button>
-        </div>
+{/* Sign up toggle removed — demo-only access */}
       </div>
     </div>
   );

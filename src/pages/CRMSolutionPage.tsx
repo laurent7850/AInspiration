@@ -274,11 +274,11 @@ const CRMSolutionPage: React.FC = () => {
                 Notre CRM intelligent unifie vos données, automatise vos processus et révèle les insights qui font la différence.
               </p>
               <div className="pt-4 flex flex-col sm:flex-row gap-4">
-                <button 
-                  onClick={() => setShowStartForm(true)} 
+                <button
+                  onClick={() => navigate('/login')}
                   className="bg-white text-indigo-700 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition flex items-center justify-center gap-2"
                 >
-                  Demander une démo
+                  Démo
                   <ArrowRight className="w-5 h-5" />
                 </button>
                 <button 
@@ -690,11 +690,11 @@ const CRMSolutionPage: React.FC = () => {
               Rejoignez plus de 1 200 entreprises qui ont déjà révolutionné leur approche commerciale avec notre solution CRM.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => setShowStartForm(true)}
+              <button
+                onClick={() => navigate('/login')}
                 className="bg-white text-indigo-700 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition flex items-center justify-center gap-2"
               >
-                Demander une démo
+                Démo
                 <ArrowRight className="w-5 h-5" />
               </button>
               <button
