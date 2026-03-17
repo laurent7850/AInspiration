@@ -77,9 +77,6 @@ services:
           curl -fsSL "$${NETLIFY}/$$f" -o "/app/dist/$$f" 2>/dev/null || true
         done < /tmp/manifest.txt
         echo "Frontend: $$(find /app/dist -type f | wc -l) files"
-        GA4='<!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-FMCN24CNYW"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-FMCN24CNYW");</script>'
-        sed -i "s|</head>|$$GA4</head>|" /app/dist/index.html
-        echo GA4 tag injected
         echo Starting server...
         exec node /app/server.js
     labels:
