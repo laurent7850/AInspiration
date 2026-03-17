@@ -16,12 +16,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-    entrypoint:
-      - sh
-      - -c
-      - |
-        sed -i 's/scram-sha-256/trust/g' /var/lib/postgresql/data/pg_hba.conf 2>/dev/null || true
-        exec docker-entrypoint.sh postgres
     networks:
       - root_default
 
@@ -30,11 +24,13 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    environment:
+      PGPASSWORD: ${DB_PASSWORD}
     command:
       - sh
       - -c
       - |
-        psql -h ainspiration-postgres -U ainspiration -d ainspiration -c "ALTER USER ainspiration WITH PASSWORD 'ainspiration_db_2026';" && echo Password reset OK || echo Password reset FAILED
+        psql -h ainspiration-postgres -U ainspiration -d ainspiration -c "SELECT 1;" && echo DB connection OK || echo DB connection FAILED
         exit 0
     networks:
       - root_default
