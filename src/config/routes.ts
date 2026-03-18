@@ -95,6 +95,11 @@ const routes: RouteConfig[] = [
     exact: true
   },
   {
+    path: "/audit",
+    component: lazy(() => import('../pages/AuditPage')),
+    exact: true
+  },
+  {
     path: "/prompts",
     component: lazy(() => import('../pages/PromptOptimizationPage')),
     exact: true
@@ -262,6 +267,12 @@ const routes: RouteConfig[] = [
     component: lazy(() => import('../pages/UnsubscribePage')),
     exact: true
   },
+  {
+    path: "/linkedin",
+    component: lazy(() => import('../pages/LinkedinPage')),
+    exact: true,
+    private: true
+  },
 ];
 
 // Menu structure - Reorganized to eliminate duplication
@@ -271,7 +282,7 @@ export const menuItems: MenuSection[] = [
     items: [
       { label: 'Pourquoi l\'IA', path: '/pourquoi-ia' },
       { label: 'Pour qui l\'IA', path: '/pour-qui-ia' },
-      { label: 'Audit gratuit', action: () => {} /* Will be set dynamically */ },
+      { label: 'Audit gratuit', path: '/audit' },
       { label: 'À propos', path: '/a-propos' }
     ]
   },
@@ -318,6 +329,7 @@ export const menuItems: MenuSection[] = [
       { label: 'Tâches', path: '/tasks' },
       { label: 'Messages', path: '/messages' },
       { label: 'Newsletter', path: '/newsletter-admin' },
+      { label: 'LinkedIn', path: '/linkedin' },
       { label: 'Rapports', path: '/reports' }
     ]
   }

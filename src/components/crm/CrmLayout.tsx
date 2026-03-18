@@ -14,7 +14,8 @@ import {
   DollarSign,
   Brain,
   MessageSquare,
-  Mail
+  Mail,
+  Linkedin
 } from 'lucide-react';
 
 interface CrmLayoutProps {
@@ -76,6 +77,13 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
       labelKey: 'crm:menu.newsletter',
       label: 'Newsletter',
       icon: Mail,
+      disabled: false
+    },
+    {
+      path: '/linkedin',
+      labelKey: 'crm:menu.linkedin',
+      label: 'LinkedIn',
+      icon: Linkedin,
       disabled: false
     },
     {
