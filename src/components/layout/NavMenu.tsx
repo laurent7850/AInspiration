@@ -105,7 +105,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
           onClick={() => navigate(localizedPath('/'))}
         >
           <img
-            src="/logo-ainspiration.svg"
+            src="/logo-ainspiration.png"
             alt="AInspiration - AI Solutions pour entreprises"
             className="h-10 md:h-12 w-auto"
           />
