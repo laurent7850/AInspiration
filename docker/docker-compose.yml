@@ -1,0 +1,157 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ainspiration-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ainspiration
+      POSTGRES_USER: ainspiration
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "127.0.0.1:5435:5432"
+    volumes:
+      - ainspiration_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ainspiration -d ainspiration"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - root_default
+
+  migration:
+    image: postgres:16-alpine
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PGPASSWORD: ${DB_PASSWORD}
+    command: >
+      sh -c "
+        apk add --no-cache curl > /dev/null 2>&1 &&
+        curl -fsSL https://raw.githubusercontent.com/laurent7850/AInspiration/main/docker/init.sql | psql -h ainspiration-postgres -U ainspiration -d ainspiration 2>/dev/null;
+        curl -fsSL https://raw.githubusercontent.com/laurent7850/AInspiration/main/docker/backend/migration-001-align-schema.sql | psql -h ainspiration-postgres -U ainspiration -d ainspiration 2>/dev/null;
+        curl -fsSL https://raw.githubusercontent.com/laurent7850/AInspiration/main/docker/backend/migration-002-linkedin.sql | psql -h ainspiration-postgres -U ainspiration -d ainspiration 2>/dev/null;
+        echo DB migration attempted; exit 0
+      "
+    networks:
+      - root_default
+    restart: "no"
+
+  web:
+    image: node:20-alpine
+    container_name: ainspiration-web
+    working_dir: /app
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    expose:
+      - "3000"
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://ainspiration:${DB_PASSWORD}@ainspiration-postgres:5432/ainspiration
+      JWT_SECRET: ${JWT_SECRET}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      N8N_BASE: https://n8n.srv767464.hstgr.cloud/webhook
+      WEBHOOK_SECRET: seopilot-ainspiration-secret-2026
+      LINKEDIN_CLIENT_ID: ${LINKEDIN_CLIENT_ID:-78kcbcs6pe3b46}
+      LINKEDIN_CLIENT_SECRET: ${LINKEDIN_CLIENT_SECRET}
+      LINKEDIN_REDIRECT_URI: https://ainspiration.eu/api/linkedin/callback
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY}
+      PORT: "3000"
+    command:
+      - sh
+      - -c
+      - |
+        apk add --no-cache curl > /dev/null 2>&1
+        NETLIFY=https://ainspiration2026.netlify.app
+        GHRAW=https://raw.githubusercontent.com/laurent7850/AInspiration/main
+
+        echo "Downloading server.js and LinkedIn modules..."
+        curl -fsSL $${GHRAW}/docker/backend/server.js -o /app/server.js
+        curl -fsSL $${GHRAW}/docker/backend/crypto.js -o /app/crypto.js
+        curl -fsSL $${GHRAW}/docker/backend/linkedin.js -o /app/linkedin.js
+        curl -fsSL $${GHRAW}/docker/backend/content-generator.js -o /app/content-generator.js
+
+        echo "Installing deps..."
+        cd /app
+        npm init -y 2>/dev/null || true
+        npm install express@4 pg@8 jsonwebtoken@9 bcryptjs@2 uuid@9 cors dotenv 2>&1 | tail -1
+
+        echo "Downloading frontend from Netlify..."
+        rm -rf /app/dist
+        mkdir -p /app/dist /app/dist/assets /app/dist/images /app/dist/videos
+
+        # 1. Download index.html
+        curl -fsSL $${NETLIFY}/index.html -o /app/dist/index.html
+
+        # 2. Extract and download all assets referenced in index.html (src= and href=)
+        sed -n 's/.*\(src\|href\)="\(\/[^"]*\)".*/\2/p' /app/dist/index.html | sort -u | while read -r asset; do
+          dir=$$(dirname "/app/dist$$asset")
+          mkdir -p "$$dir"
+          curl -fsSL "$${NETLIFY}$$asset" -o "/app/dist$$asset" 2>/dev/null || true
+        done
+
+        # 3. Download all JS chunks from main bundle (lazy-loaded routes)
+        MAIN_JS=$$(sed -n 's/.*src="\/\(assets\/index-[^"]*\.js\)".*/\1/p' /app/dist/index.html)
+        if [ -n "$$MAIN_JS" ] && [ -f "/app/dist/$$MAIN_JS" ]; then
+          # Extract chunk filenames from the main JS bundle
+          grep -o '"[^"]*-[A-Za-z0-9_-]*\.js"' "/app/dist/$$MAIN_JS" | tr -d '"' | sort -u | while read -r chunk; do
+            [ ! -f "/app/dist/assets/$$chunk" ] && curl -fsSL "$${NETLIFY}/assets/$$chunk" -o "/app/dist/assets/$$chunk" 2>/dev/null || true
+          done
+          grep -o '"[^"]*-[A-Za-z0-9_-]*\.css"' "/app/dist/$$MAIN_JS" | tr -d '"' | sort -u | while read -r chunk; do
+            [ ! -f "/app/dist/assets/$$chunk" ] && curl -fsSL "$${NETLIFY}/assets/$$chunk" -o "/app/dist/assets/$$chunk" 2>/dev/null || true
+          done
+        fi
+
+        # 4. Download static root files
+        for f in favicon.ico favicon.png favicon-16x16.png favicon-32x32.png apple-touch-icon.png site.webmanifest robots.txt sitemap.xml llms.txt og-image.png logo-ainspiration.png sw.js white_logo_-_no_background.svg android.png iphone.png browser.png; do
+          curl -fsSL "$${NETLIFY}/$$f" -o "/app/dist/$$f" 2>/dev/null || true
+        done
+
+        # 5. Download locales
+        for lang in fr en nl; do
+          mkdir -p "/app/dist/locales/$$lang"
+          for ns in common forms auth blog crm dashboard features pricing prompts recommendations support audit automation analysis collaboration content training; do
+            curl -fsSL "$${NETLIFY}/locales/$$lang/$$ns.json" -o "/app/dist/locales/$$lang/$$ns.json" 2>/dev/null || true
+          done
+        done
+
+        # 6. Download videos and hero image
+        for lang in fr en nl; do
+          curl -fsSL "$${NETLIFY}/videos/intro-$$lang.mp4" -o "/app/dist/videos/intro-$$lang.mp4" 2>/dev/null || true
+        done
+        curl -fsSL "$${NETLIFY}/images/hero-ai-business.webp" -o "/app/dist/images/hero-ai-business.webp" 2>/dev/null || true
+
+        echo "Frontend: $$(find /app/dist -type f | wc -l) files"
+
+        # 7. Inject GA4 tag
+        sed -i 's|</head>|<!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-FMCN24CNYW"></script><script>window.dataLayer=window.dataLayer\|\|[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FMCN24CNYW");</script></head>|' /app/dist/index.html
+        echo "GA4 tag injected"
+
+        echo "Starting server..."
+        exec node /app/server.js
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ainspiration.rule=Host(`ainspiration.eu`)"
+      - "traefik.http.routers.ainspiration.entrypoints=websecure"
+      - "traefik.http.routers.ainspiration.tls.certresolver=letsencrypt"
+      - "traefik.http.services.ainspiration.loadbalancer.server.port=3000"
+      - "traefik.http.routers.ainspiration-www.rule=Host(`www.ainspiration.eu`)"
+      - "traefik.http.routers.ainspiration-www.entrypoints=websecure"
+      - "traefik.http.routers.ainspiration-www.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.ainspiration-www.middlewares=ainspiration-www-redirect"
+      - "traefik.http.middlewares.ainspiration-www-redirect.redirectregex.regex=^https://www\\.ainspiration\\.eu/(.*)"
+      - "traefik.http.middlewares.ainspiration-www-redirect.redirectregex.replacement=https://ainspiration.eu/$${1}"
+      - "traefik.http.middlewares.ainspiration-www-redirect.redirectregex.permanent=true"
+      - "traefik.docker.network=root_default"
+    networks:
+      - root_default
+
+volumes:
+  ainspiration_pgdata:
+
+networks:
+  root_default:
+    external: true
