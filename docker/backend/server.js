@@ -1407,7 +1407,7 @@ const N8N_BASE = process.env.N8N_BASE || 'https://n8n.srv767464.hstgr.cloud/webh
 
 app.post('/api/webhook/chat', async (req, res) => {
   try {
-    const n8nUrl = `${N8N_BASE}/chat`;
+    const n8nUrl = `${N8N_BASE}/ainspiration`;
     const response = await fetch(n8nUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
