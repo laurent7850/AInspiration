@@ -1,10 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
-  MessageSquare, 
-  Send, 
-  X, 
-  MinusCircle, 
-  Bot,
+  MessageSquare,
+  Send,
+  X,
+  MinusCircle,
   AlertTriangle,
   Loader2,
   Volume2
@@ -71,7 +70,7 @@ export default function ChatbotN8n() {
     // Add welcome message
     const welcomeMessage: Message = {
       id: uuidv4(),
-      text: "Salut ! Tu cherches à automatiser certaines tâches, améliorer ta gestion client, ou explorer ce que l'IA peut faire pour toi ?",
+      text: "Bienvenue ! Comment puis-je vous aider aujourd'hui ? Vous cherchez à automatiser certaines tâches, améliorer votre relation client, ou explorer ce que l'IA peut apporter à votre activité ?",
       isBot: true,
       timestamp: new Date()
     };
@@ -401,9 +400,13 @@ export default function ChatbotN8n() {
         {/* Header */}
         <div className="flex items-center justify-between p-3 sm:p-4 border-b">
           <div className="flex items-center gap-2">
-            <Bot className="w-5 h-5 text-indigo-600" />
+            <img
+              src="/images/maud-avatar.webp"
+              alt="Maud - Assistante IA"
+              className="w-8 h-8 rounded-full object-cover border border-gray-200 flex-shrink-0"
+            />
             <span className="font-semibold text-sm sm:text-base">
-              Marc - Assistant AInspiration
+              Maud - Assistante IA
             </span>
           </div>
           <div className="flex items-center">
