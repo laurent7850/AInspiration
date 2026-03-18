@@ -2,6 +2,7 @@ import { api } from '../utils/api';
 import { NewsletterSubscriber, Newsletter, NewsletterSendLog } from '../utils/types';
 
 // Proxy backend — les webhooks n8n sont appelés via le serveur Express
+// Le backend forwarde vers n8n: https://n8n.srv767464.hstgr.cloud/webhook/
 const NEWSLETTER_WEBHOOK_URL = '/api/webhook/newsletter-send';
 const NEWSLETTER_GENERATE_URL = '/api/webhook/newsletter-generate';
 

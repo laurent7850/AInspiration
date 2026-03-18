@@ -1403,12 +1403,44 @@ app.get('/api/newsletter-stats', async (req, res) => {
 
 // ==================== WEBHOOK PASSTHROUGH (n8n) ====================
 
+const N8N_BASE = process.env.N8N_BASE || 'https://n8n.srv767464.hstgr.cloud/webhook';
+
 app.post('/api/webhook/newsletter-send', async (req, res) => {
-  res.json({ success: true, message: 'Newsletter send queued' });
+  try {
+    const n8nUrl = `${N8N_BASE}/newsletter-send`;
+    const response = await fetch(n8nUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body)
+    });
+    if (!response.ok) {
+      throw new Error(`n8n responded with ${response.status}`);
+    }
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error('Error forwarding to n8n newsletter-send:', error.message);
+    res.status(502).json({ success: false, message: 'Erreur de connexion au service d\'envoi' });
+  }
 });
 
 app.post('/api/webhook/newsletter-generate', async (req, res) => {
-  res.json({ subject: 'Newsletter AInspiration', content: '' });
+  try {
+    const n8nUrl = `${N8N_BASE}/newsletter-generate`;
+    const response = await fetch(n8nUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body)
+    });
+    if (!response.ok) {
+      throw new Error(`n8n responded with ${response.status}`);
+    }
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error('Error forwarding to n8n newsletter-generate:', error.message);
+    res.status(502).json({ subject: '', content: '', error: 'Erreur de connexion au service de génération' });
+  }
 });
 
 // ==================== STATIC FILES + SPA FALLBACK ====================

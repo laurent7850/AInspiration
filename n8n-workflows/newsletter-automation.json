@@ -51,10 +51,10 @@
       "typeVersion": 1.1,
       "position": [
         2752,
-        1296
+        1496
       ],
       "webhookId": "newsletter-send",
-      "notes": "Webhook pour envoi manuel de newsletter"
+      "notes": "Webhook pour envoi manuel de newsletter depuis l'admin"
     },
     {
       "parameters": {
@@ -100,7 +100,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"model\": \"anthropic/claude-3.5-sonnet\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Tu es un expert en IA et transformation digitale pour les PME. Tu rédiges une newsletter hebdomadaire pour AInspiration, une entreprise belge spécialisée dans l'accompagnement des PME vers l'adoption de l'IA.\\n\\nTon style est:\\n- Professionnel mais accessible\\n- Pratique avec des exemples concrets\\n- Orienté vers l'action et les bénéfices business\\n- En français, adapté au marché francophone européen\\n\\nStructure de la newsletter:\\n1. Un titre accrocheur (commence par # )\\n2. Une introduction qui capte l'attention\\n3. 2-3 sections avec des conseils pratiques ou des actualités IA\\n4. Un appel à l'action vers un audit gratuit\\n\\nIMPORTANT: Ne génère PAS de signature à la fin. Le footer avec la signature est ajouté automatiquement par le système.\\n\\nRetourne uniquement le contenu texte, pas de JSON.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Génère une newsletter sur les dernières tendances IA et comment les PME peuvent en bénéficier cette semaine. Date: {{ $now.format('DD/MM/YYYY') }}\"\n    }\n  ],\n  \"temperature\": 0.7,\n  \"max_tokens\": 1500\n}",
+        "jsonBody": "={\n  \"model\": \"anthropic/claude-3.5-sonnet\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Tu es le rédacteur de la newsletter hebdomadaire d'AInspiration (ainspiration.eu), une entreprise belge basée à Enghien qui accompagne les PME dans l'adoption de l'IA.\\n\\nSERVICES PROPOSÉS PAR AINSPIRATION (à mentionner naturellement dans les newsletters) :\\n- Audit IA gratuit en 24h : analyse des processus, identification des tâches automatisables, estimation du temps gagné, 3 recommandations prioritaires\\n- Automatisation intelligente : workflows sur mesure pour automatiser les tâches répétitives (emails, facturation, suivi commandes, qualification leads) — mise en place en 48h, 60% de temps gagné\\n- Assistants virtuels IA : chatbots service client 24/7 (30+ langues, 90% résolution auto), assistants d'analyse de données, assistants de processus\\n- CRM intelligent : vue client 360°, prévisions de ventes, qualification automatique des leads, reporting personnalisé\\n- Création visuelle IA : génération d'images professionnelles (4K, 10+ formats, droits inclus) pour tous supports de communication\\n- Rédaction IA : articles SEO, emails marketing, posts réseaux sociaux, fiches produits — multilingue\\n- Analyse IA avancée : analyse prédictive, monitoring temps réel, optimisation continue, 99.9% de précision\\n- Conseil stratégique IA : diagnostic (2-3 sem.), stratégie (3-4 sem.), exécution (2-6 mois) — ROI visible en 3 mois, -30% coûts opérationnels\\n- Formation IA pratique (3 jours) : ChatGPT avancé, génération d'images (Midjourney, DALL-E) — 98% satisfaction, applicable immédiatement\\n- Pack Express Automatisation : 1 workflow sur mesure, livré en 5 jours, 1490€ HTVA\\n\\nSECTEURS CIBLES : restaurants, e-commerce, agences marketing, cabinets conseil, avocats, comptables, architectes, artisans, indépendants, PME de 5 à 50+ employés\\n\\nRÉSULTATS CLIENTS : 180% ROI moyen, 60% réduction tâches répétitives, 45% gain productivité, 10h gagnées par semaine\\n\\nTon style :\\n- Professionnel mais chaleureux et accessible\\n- Pratique avec des exemples concrets issus de vrais secteurs d'activité\\n- Orienté action et bénéfices business mesurables\\n- En français, adapté au marché belge/francophone européen\\n- Tutoiement possible mais pas obligatoire\\n\\nStructure de la newsletter :\\n1. Un titre accrocheur (commence par # )\\n2. Une introduction courte qui capte l'attention (2-3 phrases max)\\n3. 2-3 sections thématiques avec des conseils pratiques, actualités IA ou cas d'usage concrets liés aux services AInspiration\\n4. Un appel à l'action clair vers l'audit gratuit ou un service spécifique\\n\\nIMPORTANT :\\n- Ne génère PAS de signature ni de footer (ajouté automatiquement)\\n- Varie les thèmes d'une semaine à l'autre\\n- Mentionne au moins un service AInspiration de manière naturelle et non publicitaire\\n- Donne de la vraie valeur : le lecteur doit apprendre quelque chose d'utile même sans être client\\n- Retourne uniquement le contenu texte, pas de JSON\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Génère la newsletter de cette semaine. Choisis un angle original parmi : automatisation, assistants IA, création de contenu, analyse de données, formation, ou actualité IA pour les PME. Date: {{ $now.format('DD/MM/YYYY') }}\"\n    }\n  ],\n  \"temperature\": 0.8,\n  \"max_tokens\": 1800\n}",
         "options": {}
       },
       "id": "b23dbfb3-36d6-4aa3-ad05-c2875af42daa",
@@ -125,7 +125,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Parse the OpenRouter response\nconst response = $input.first().json;\nconst content = response.choices[0].message.content;\n\n// Extract title from first line or generate one\nconst lines = content.split('\\n').filter(l => l.trim());\nlet subject = 'Newsletter AInspiration - Actualités IA';\nlet bodyContent = content;\n\n// Try to extract title if it starts with # or is the first line\nif (lines[0]) {\n  const firstLine = lines[0].replace(/^#+\\s*/, '').trim();\n  if (firstLine.length < 100) {\n    subject = firstLine;\n    bodyContent = lines.slice(1).join('\\n');\n  }\n}\n\n// Add current date to subject\nconst today = new Date();\nconst dateStr = today.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });\nsubject = `${subject} - ${dateStr}`;\n\n// Get subscribers from previous node\nconst subscribers = $('Récupérer Abonnés Actifs').all();\n\n// Generate HTML version\nconst htmlContent = `\n<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>${subject}</title>\n</head>\n<body style=\"font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f5f5f5;\">\n  <div style=\"background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n    <!-- Header -->\n    <div style=\"text-align: center; margin-bottom: 30px;\">\n      <h1 style=\"color: #4F46E5; margin: 0; font-size: 28px;\">AInspiration</h1>\n      <p style=\"color: #6B7280; margin-top: 5px;\">L'IA accessible aux PME</p>\n    </div>\n    \n    <!-- Content -->\n    <div style=\"color: #374151;\">\n      ${bodyContent.split('\\n').map(p => p.trim() ? `<p style=\"margin-bottom: 15px;\">${p}</p>` : '').join('')}\n    </div>\n    \n    <!-- CTA -->\n    <div style=\"text-align: center; margin: 30px 0;\">\n      <a href=\"https://ainspiration.eu/contact\" style=\"display: inline-block; background-color: #4F46E5; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold;\">Demander un audit gratuit</a>\n    </div>\n    \n    <!-- Footer -->\n    <div style=\"border-top: 1px solid #E5E7EB; padding-top: 20px; margin-top: 30px; text-align: center; color: #6B7280; font-size: 12px;\">\n      <p style=\"margin: 5px 0; font-weight: bold;\">AInspiration - L'IA au service des PME</p>\n      <p style=\"margin: 5px 0;\">Grand Place 50, 7850 Enghien, Belgique</p>\n      <p style=\"margin: 5px 0;\">Tel: +32 477 94 28 65</p>\n      <p style=\"margin: 5px 0;\"><a href=\"https://ainspiration.eu\" style=\"color: #4F46E5;\">www.ainspiration.eu</a></p>\n      <p style=\"margin: 15px 0 5px 0;\"><a href=\"{{UNSUBSCRIBE_URL}}\" style=\"color: #6B7280;\">Se désabonner</a></p>\n    </div>\n  </div>\n</body>\n</html>\n`;\n\nreturn {\n  subject,\n  content: bodyContent,\n  html_content: htmlContent,\n  generated_at: new Date().toISOString(),\n  subscribers: subscribers\n};"
+        "jsCode": "// Parse the OpenRouter response\nconst response = $input.first().json;\nconst content = response.choices[0].message.content;\n\n// Extract title from first line or generate one\nconst lines = content.split('\\n').filter(l => l.trim());\nlet subject = 'Newsletter AInspiration - Actualités IA';\nlet bodyContent = content;\n\n// Try to extract title if it starts with # or is the first line\nif (lines[0]) {\n  const firstLine = lines[0].replace(/^#+\\s*/, '').trim();\n  if (firstLine.length < 100) {\n    subject = firstLine;\n    bodyContent = lines.slice(1).join('\\n');\n  }\n}\n\n// Add current date to subject\nconst today = new Date();\nconst dateStr = today.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });\nsubject = `${subject} - ${dateStr}`;\n\n// Get subscribers from previous node\nconst subscribers = $('Récupérer Abonnés Actifs').all();\n\n// Convert markdown-style content to HTML\nfunction markdownToHtml(text) {\n  return text.split('\\n').map(line => {\n    const trimmed = line.trim();\n    if (!trimmed) return '';\n    if (trimmed.startsWith('## ')) return `<h2 style=\"color: #4F46E5; margin-top: 25px; margin-bottom: 10px; font-size: 20px;\">${trimmed.replace(/^## /, '')}</h2>`;\n    if (trimmed.startsWith('### ')) return `<h3 style=\"color: #374151; margin-top: 20px; margin-bottom: 8px; font-size: 17px;\">${trimmed.replace(/^### /, '')}</h3>`;\n    if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) return `<li style=\"margin-bottom: 6px;\">${trimmed.replace(/^[-*] /, '').replace(/\\*\\*(.+?)\\*\\*/g, '<strong>$1</strong>')}</li>`;\n    return `<p style=\"margin-bottom: 12px;\">${trimmed.replace(/\\*\\*(.+?)\\*\\*/g, '<strong>$1</strong>')}</p>`;\n  }).join('\\n');\n}\n\nconst htmlBody = markdownToHtml(bodyContent);\n\n// Generate HTML version\nconst htmlContent = `\n<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>${subject}</title>\n</head>\n<body style=\"font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.7; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f3f4f6;\">\n  <div style=\"background-color: white; padding: 35px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);\">\n    <!-- Header -->\n    <div style=\"text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #EEF2FF;\">\n      <h1 style=\"color: #4F46E5; margin: 0; font-size: 28px; letter-spacing: -0.5px;\">AInspiration</h1>\n      <p style=\"color: #6B7280; margin-top: 5px; font-size: 14px;\">L'IA accessible aux PME</p>\n    </div>\n    \n    <!-- Content -->\n    <div style=\"color: #374151; font-size: 15px;\">\n      ${htmlBody}\n    </div>\n    \n    <!-- CTA -->\n    <div style=\"text-align: center; margin: 35px 0; padding: 25px; background: linear-gradient(135deg, #EEF2FF, #E0E7FF); border-radius: 10px;\">\n      <p style=\"margin: 0 0 15px 0; color: #374151; font-weight: 600;\">Prêt à gagner 10h par semaine grâce à l'IA ?</p>\n      <a href=\"https://ainspiration.eu/contact\" style=\"display: inline-block; background-color: #4F46E5; color: white; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 15px;\">Demander mon audit gratuit</a>\n    </div>\n    \n    <!-- Footer -->\n    <div style=\"border-top: 1px solid #E5E7EB; padding-top: 20px; margin-top: 30px; text-align: center; color: #6B7280; font-size: 12px;\">\n      <p style=\"margin: 5px 0; font-weight: bold;\">AInspiration - L'IA au service des PME</p>\n      <p style=\"margin: 5px 0;\">Grand Place 50, 7850 Enghien, Belgique</p>\n      <p style=\"margin: 5px 0;\">Tel: +32 477 94 28 65</p>\n      <p style=\"margin: 5px 0;\"><a href=\"https://ainspiration.eu\" style=\"color: #4F46E5;\">www.ainspiration.eu</a></p>\n      <p style=\"margin: 15px 0 5px 0;\"><a href=\"{{UNSUBSCRIBE_URL}}\" style=\"color: #9CA3AF; font-size: 11px;\">Se désabonner de cette newsletter</a></p>\n    </div>\n  </div>\n</body>\n</html>\n`;\n\nreturn {\n  subject,\n  content: bodyContent,\n  html_content: htmlContent,\n  generated_at: new Date().toISOString(),\n  subscribers: subscribers\n};"
       },
       "id": "16a70aeb-0f8e-4c77-a55a-18be8553b34a",
       "name": "Formater Newsletter",
@@ -181,7 +181,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4096,
+        3872,
         896
       ]
     },
@@ -199,7 +199,7 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        4320,
+        4096,
         896
       ],
       "webhookId": "5f7dfd6a-6df6-4fa7-9457-e6c511094833",
@@ -243,7 +243,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        4544,
+        4320,
         896
       ]
     },
@@ -279,7 +279,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        4768,
+        4544,
         896
       ]
     },
@@ -304,7 +304,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"model\": \"anthropic/claude-3.5-sonnet\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Tu es un expert en IA et transformation digitale pour les PME. Tu rédiges une newsletter hebdomadaire pour AInspiration, une entreprise belge spécialisée dans l'accompagnement des PME vers l'adoption de l'IA.\\n\\nTon style est:\\n- Professionnel mais accessible\\n- Pratique avec des exemples concrets\\n- Orienté vers l'action et les bénéfices business\\n- En français, adapté au marché francophone européen\\n\\nStructure de la newsletter:\\n1. Un titre accrocheur (commence par # )\\n2. Une introduction qui capte l'attention\\n3. 2-3 sections avec des conseils pratiques ou des actualités IA\\n4. Un appel à l'action vers un audit gratuit\\n\\nIMPORTANT: Ne génère PAS de signature à la fin. Le footer avec la signature est ajouté automatiquement par le système.\\n\\nRetourne le contenu en texte brut, pas en JSON.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Génère une newsletter sur: {{ $json.body.topic || 'les dernières tendances IA et comment les PME peuvent en bénéficier' }}\"\n    }\n  ],\n  \"temperature\": 0.7,\n  \"max_tokens\": 1500\n}",
+        "jsonBody": "={\n  \"model\": \"anthropic/claude-3.5-sonnet\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Tu es le rédacteur de la newsletter d'AInspiration (ainspiration.eu), une entreprise belge basée à Enghien qui accompagne les PME dans l'adoption de l'IA.\\n\\nSERVICES PROPOSÉS PAR AINSPIRATION :\\n- Audit IA gratuit en 24h : analyse des processus, identification des tâches automatisables, 3 recommandations prioritaires\\n- Automatisation intelligente : workflows sur mesure (emails, facturation, suivi commandes, qualification leads) — 48h de mise en place, 60% de temps gagné\\n- Assistants virtuels IA : chatbots 24/7 (30+ langues, 90% résolution auto), assistants d'analyse, assistants de processus\\n- CRM intelligent : vue 360°, prévisions de ventes, qualification auto des leads\\n- Création visuelle IA : images pro (4K, droits inclus) pour tous supports\\n- Rédaction IA : articles SEO, emails marketing, posts réseaux sociaux, fiches produits — multilingue\\n- Analyse IA avancée : analyse prédictive, monitoring temps réel\\n- Conseil stratégique IA : diagnostic, stratégie, exécution — ROI visible en 3 mois\\n- Formation IA (3 jours) : ChatGPT avancé, Midjourney, DALL-E — 98% satisfaction\\n- Pack Express : 1 workflow sur mesure, 5 jours, 1490€ HTVA\\n\\nSecteurs cibles : restaurants, e-commerce, agences marketing, cabinets conseil, artisans, indépendants, PME 5-50+ employés\\nRésultats : 180% ROI, 60% réduction tâches répétitives, 10h gagnées/semaine\\n\\nStyle : professionnel, accessible, pratique, orienté action. Français adapté au marché belge/européen.\\n\\nStructure :\\n1. Titre accrocheur (commence par # )\\n2. Introduction courte (2-3 phrases)\\n3. 2-3 sections avec conseils pratiques ou cas d'usage\\n4. Appel à l'action vers l'audit gratuit\\n\\nNe génère PAS de signature. Retourne le contenu en texte brut.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Génère une newsletter sur: {{ $json.body.topic || 'les dernières tendances IA et comment les PME peuvent en bénéficier' }}\"\n    }\n  ],\n  \"temperature\": 0.8,\n  \"max_tokens\": 1800\n}",
         "options": {}
       },
       "id": "2d6b61d3-81a7-4a8b-bf31-5a89d6fba99a",
@@ -351,7 +351,118 @@
       "typeVersion": 1,
       "position": [
         3440,
-        1152
+        1104
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Prepare emails from webhook body (manual send from admin)\nconst webhookData = $('Webhook Send').first().json.body;\nconst newsletter = webhookData.newsletter;\nconst subscribers = webhookData.subscribers || [];\n\nif (!newsletter || !newsletter.subject) {\n  throw new Error('Missing newsletter data in webhook body');\n}\n\nif (subscribers.length === 0) {\n  throw new Error('No subscribers provided');\n}\n\n// Generate HTML if not provided\nfunction markdownToHtml(text) {\n  if (!text) return '';\n  return text.split('\\n').map(line => {\n    const trimmed = line.trim();\n    if (!trimmed) return '';\n    if (trimmed.startsWith('## ')) return `<h2 style=\"color: #4F46E5; margin-top: 25px; margin-bottom: 10px; font-size: 20px;\">${trimmed.replace(/^## /, '')}</h2>`;\n    if (trimmed.startsWith('### ')) return `<h3 style=\"color: #374151; margin-top: 20px; margin-bottom: 8px; font-size: 17px;\">${trimmed.replace(/^### /, '')}</h3>`;\n    if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) return `<li style=\"margin-bottom: 6px;\">${trimmed.replace(/^[-*] /, '').replace(/\\*\\*(.+?)\\*\\*/g, '<strong>$1</strong>')}</li>`;\n    return `<p style=\"margin-bottom: 12px;\">${trimmed.replace(/\\*\\*(.+?)\\*\\*/g, '<strong>$1</strong>')}</p>`;\n  }).join('\\n');\n}\n\nconst htmlBody = newsletter.html_content || `\n<!DOCTYPE html>\n<html>\n<head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"></head>\n<body style=\"font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.7; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f3f4f6;\">\n  <div style=\"background-color: white; padding: 35px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);\">\n    <div style=\"text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #EEF2FF;\">\n      <h1 style=\"color: #4F46E5; margin: 0; font-size: 28px;\">AInspiration</h1>\n      <p style=\"color: #6B7280; margin-top: 5px; font-size: 14px;\">L'IA accessible aux PME</p>\n    </div>\n    <div style=\"color: #374151; font-size: 15px;\">${markdownToHtml(newsletter.content)}</div>\n    <div style=\"text-align: center; margin: 35px 0; padding: 25px; background: linear-gradient(135deg, #EEF2FF, #E0E7FF); border-radius: 10px;\">\n      <p style=\"margin: 0 0 15px 0; color: #374151; font-weight: 600;\">Prêt à gagner 10h par semaine grâce à l'IA ?</p>\n      <a href=\"https://ainspiration.eu/contact\" style=\"display: inline-block; background-color: #4F46E5; color: white; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: bold;\">Demander mon audit gratuit</a>\n    </div>\n    <div style=\"border-top: 1px solid #E5E7EB; padding-top: 20px; margin-top: 30px; text-align: center; color: #6B7280; font-size: 12px;\">\n      <p style=\"margin: 5px 0; font-weight: bold;\">AInspiration - L'IA au service des PME</p>\n      <p style=\"margin: 5px 0;\">Grand Place 50, 7850 Enghien, Belgique</p>\n      <p style=\"margin: 5px 0;\">Tel: +32 477 94 28 65</p>\n      <p style=\"margin: 5px 0;\"><a href=\"https://ainspiration.eu\" style=\"color: #4F46E5;\">www.ainspiration.eu</a></p>\n      <p style=\"margin: 15px 0 5px 0;\"><a href=\"{{UNSUBSCRIBE_URL}}\" style=\"color: #9CA3AF; font-size: 11px;\">Se désabonner</a></p>\n    </div>\n  </div>\n</body>\n</html>`;\n\nconst emails = subscribers.map(sub => {\n  const unsubscribeUrl = `https://ainspiration.eu/unsubscribe?token=${sub.unsubscribe_token}`;\n  const html = htmlBody.replace(/\\{\\{UNSUBSCRIBE_URL\\}\\}/g, unsubscribeUrl);\n  \n  return {\n    to: sub.email,\n    subject: newsletter.subject,\n    html: html,\n    text: (newsletter.content || newsletter.subject) + `\\n\\n---\\nPour vous désabonner: ${unsubscribeUrl}`,\n    subscriber_id: sub.id,\n    newsletter_id: newsletter.id\n  };\n});\n\nreturn emails;"
+      },
+      "id": "d1a2b3c4-e5f6-7890-abcd-ef1234567890",
+      "name": "Préparer Emails Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2976,
+        1496
+      ],
+      "notes": "Prépare les emails à partir des données envoyées par le frontend"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.to }}",
+        "subject": "={{ $json.subject }}",
+        "message": "={{ $json.html }}",
+        "options": {
+          "replyTo": "info@ainspiration.eu"
+        }
+      },
+      "id": "b2c3d4e5-f6a7-8901-bcde-f23456789012",
+      "name": "Envoyer Email Webhook (Gmail)",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        3200,
+        1496
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "qDwjP4YdFZrQ5vv9",
+          "name": "Gmail account"
+        }
+      },
+      "notes": "Envoie les emails via Gmail (chemin webhook)"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://inksxnkunsflohglbjid.supabase.co/rest/v1/newsletter_send_logs",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ newsletter_id: $('Préparer Emails Webhook').all()[$itemIndex].json.newsletter_id, subscriber_id: $('Préparer Emails Webhook').all()[$itemIndex].json.subscriber_id, status: 'sent' }) }}",
+        "options": {}
+      },
+      "id": "c3d4e5f6-a7b8-9012-cdef-345678901234",
+      "name": "Logger Envoi Webhook",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3424,
+        1496
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://inksxnkunsflohglbjid.supabase.co/rest/v1/newsletters?id=eq.{{ $('Préparer Emails Webhook').all()[$itemIndex].json.newsletter_id }}",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"status\": \"sent\",\n  \"sent_at\": \"{{ new Date().toISOString() }}\"\n}",
+        "options": {}
+      },
+      "id": "d4e5f6a7-b8c9-0123-defa-456789012345",
+      "name": "Mettre à jour statut Webhook",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3648,
+        1496
       ]
     },
     {
@@ -365,8 +476,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1,
       "position": [
-        3424,
-        1296
+        3872,
+        1496
       ]
     }
   ],
@@ -497,6 +608,50 @@
       "main": [
         [
           {
+            "node": "Préparer Emails Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Préparer Emails Webhook": {
+      "main": [
+        [
+          {
+            "node": "Envoyer Email Webhook (Gmail)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envoyer Email Webhook (Gmail)": {
+      "main": [
+        [
+          {
+            "node": "Logger Envoi Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Logger Envoi Webhook": {
+      "main": [
+        [
+          {
+            "node": "Mettre à jour statut Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mettre à jour statut Webhook": {
+      "main": [
+        [
+          {
             "node": "Répondre Send",
             "type": "main",
             "index": 0
@@ -505,12 +660,12 @@
       ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "a12970a9-4a58-4358-918d-a2e2bc1b2ab5",
+  "versionId": "b23081b0-5b69-4469-929e-b3c3bd2c3d4e",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "286e57e2238236a75e7b8a6b10da97a21ae06ebc3ce3766f07caad6603e9c745"
