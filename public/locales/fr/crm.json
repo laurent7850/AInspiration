@@ -117,7 +117,9 @@
     "delete": "Supprimer",
     "edit": "Modifier",
     "view": "Voir",
-    "actions": "Actions"
+    "actions": "Actions",
+    "close": "Fermer le menu",
+    "open": "Ouvrir le menu"
   },
   "stages": {
     "qualification": "Qualification",
@@ -145,6 +147,8 @@
     "companies": "Entreprises",
     "products": "Produits",
     "tasks": "Tâches",
-    "reports": "Rapports"
+    "reports": "Rapports",
+    "messages": "Messages",
+    "newsletter": "Newsletter"
   }
 }

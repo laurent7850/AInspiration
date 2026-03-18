@@ -1405,6 +1405,25 @@ app.get('/api/newsletter-stats', async (req, res) => {
 
 const N8N_BASE = process.env.N8N_BASE || 'https://n8n.srv767464.hstgr.cloud/webhook';
 
+app.post('/api/webhook/chat', async (req, res) => {
+  try {
+    const n8nUrl = `${N8N_BASE}/chat`;
+    const response = await fetch(n8nUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body)
+    });
+    if (!response.ok) {
+      throw new Error(`n8n responded with ${response.status}`);
+    }
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error('Error forwarding to n8n chat:', error.message);
+    res.status(502).json({ message: 'Le chatbot est temporairement indisponible. Veuillez réessayer.' });
+  }
+});
+
 app.post('/api/webhook/newsletter-send', async (req, res) => {
   try {
     const n8nUrl = `${N8N_BASE}/newsletter-send`;

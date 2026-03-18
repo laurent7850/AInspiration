@@ -117,7 +117,9 @@
     "delete": "Verwijderen",
     "edit": "Bewerken",
     "view": "Bekijken",
-    "actions": "Acties"
+    "actions": "Acties",
+    "close": "Menu sluiten",
+    "open": "Menu openen"
   },
   "stages": {
     "qualification": "Kwalificatie",
@@ -145,6 +147,8 @@
     "companies": "Bedrijven",
     "products": "Producten",
     "tasks": "Taken",
-    "reports": "Rapporten"
+    "reports": "Rapporten",
+    "messages": "Berichten",
+    "newsletter": "Nieuwsbrief"
   }
 }
