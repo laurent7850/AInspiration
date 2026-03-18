@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5a5cff"/>
+      <stop offset="100%" stop-color="#3a3acc"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Brain icon (simplified vector) -->
+  <g transform="translate(50,50)">
+    <path d="M80 20 
+             C40 20,20 50,20 80 
+             C20 110,40 140,80 140 
+             C120 140,140 110,140 80 
+             C140 50,120 20,80 20 Z"
+          fill="none" stroke="url(#grad)" stroke-width="8"/>
+    <line x1="80" y1="40" x2="80" y2="120" stroke="url(#grad)" stroke-width="6"/>
+  </g>
+
+  <!-- Text -->
+  <text x="220" y="140" font-size="100" font-family="Arial, sans-serif" fill="#ffffff">
+    <tspan fill="url(#grad)">AI</tspan>nspiration
+  </text>
+</svg>
