@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Brain, ShieldCheck, Users, Play, Pause } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import StartForm from './StartForm';
+import AuditForm from './AuditForm';
 import AnimatedStats from './AnimatedStats';
 
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&auto=format&fit=crop&q=80';
@@ -62,9 +62,13 @@ export default function Hero() {
               </button>
               <Link
                 to="/etudes-de-cas"
-                className="bg-white text-indigo-600 px-8 py-4 rounded-lg border border-indigo-200 hover:bg-indigo-50 transition-colors font-medium text-center"
+                className="group relative px-8 py-4 rounded-lg font-semibold text-center text-indigo-600 border-2 border-indigo-300 hover:border-indigo-500 bg-white/80 backdrop-blur-sm hover:bg-indigo-50 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-500/10"
               >
-                {t('button.seeCaseStudies', 'Voir les résultats clients')}
+                <span className="flex items-center justify-center gap-2">
+                  {t('button.seeCaseStudies', 'Voir les résultats clients')}
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                </span>
+                <span className="block text-sm font-normal opacity-60 mt-0.5">{t('hero.caseStudiesSubtext', '+50 PME accompagnées')}</span>
               </Link>
             </div>
 
@@ -141,7 +145,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <StartForm
+      <AuditForm
         isOpen={showStartForm}
         onClose={() => setShowStartForm(false)}
       />
