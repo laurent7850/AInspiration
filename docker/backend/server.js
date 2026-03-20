@@ -283,6 +283,41 @@ app.use((req, res, next) => {
   next();
 });
 
+// ==================== BLOG SEED (auto-restore if empty) ====================
+async function ensureBlogPosts() {
+  try {
+    const { rows } = await pool.query('SELECT COUNT(*) FROM blog_posts');
+    if (parseInt(rows[0].count) > 0) return;
+    console.log('[BLOG] No posts found — seeding default articles...');
+    const catRows = await pool.query('SELECT id, name FROM blog_categories');
+    const catMap = {};
+    catRows.rows.forEach(c => catMap[c.name] = c.id);
+
+    const posts = [
+      { title: "Comment l'IA transforme la gestion client des PME belges", slug: 'ia-gestion-client-pme-belges', excerpt: "Découvrez comment l'intelligence artificielle révolutionne la relation client pour les PME en Belgique.", content: "<h2>L'IA au service des PME</h2><p>Les PME belges font face à un défi de taille : offrir un service client de qualité tout en maîtrisant leurs coûts. L'intelligence artificielle apporte des solutions concrètes et accessibles.</p><h3>Chatbots intelligents</h3><p>Les chatbots alimentés par l'IA peuvent gérer jusqu'à 80% des demandes récurrentes, libérant vos équipes pour les tâches à forte valeur ajoutée.</p><h3>Analyse prédictive</h3><p>Grâce au machine learning, anticipez les besoins de vos clients avant même qu'ils ne les expriment.</p><h3>Automatisation du suivi</h3><p>L'IA automatise le suivi commercial, programme les rappels et priorise les opportunités les plus prometteuses.</p><h3>Résultats concrets</h3><p>Nos clients PME constatent en moyenne une augmentation de 35% de leur taux de conversion et une réduction de 50% du temps de réponse.</p>", cat: 'Automatisation' },
+      { title: "5 cas d'usage concrets de l'IA pour les entreprises wallonnes", slug: '5-cas-usage-ia-entreprises-wallonnes', excerpt: "De la facturation automatisée aux assistants virtuels, voici 5 applications concrètes de l'IA en Wallonie.", content: "<h2>L'IA en action en Wallonie</h2><p>L'intelligence artificielle n'est plus réservée aux grandes entreprises.</p><h3>1. Facturation automatisée</h3><p>Thierry, gérant d'une brasserie à Hainaut, a automatisé sa facturation grâce à l'IA. Résultat : 10 heures gagnées par semaine.</p><h3>2. Chatbot de réservation</h3><p>Un restaurant namurois utilise un chatbot IA pour gérer ses réservations 24h/24.</p><h3>3. Analyse de données commerciales</h3><p>Un studio créatif liégeois a augmenté son chiffre d'affaires de 22% en 6 mois.</p><h3>4. Génération de contenu marketing</h3><p>Une agence immobilière bruxelloise génère automatiquement ses descriptions de biens et newsletters.</p><h3>5. Support client intelligent</h3><p>Un cabinet comptable utilise un assistant IA pour les questions fréquentes sur la TVA et les déclarations.</p>", cat: "Cas d'usage" },
+      { title: "Guide complet : intégrer l'IA dans votre stratégie digitale", slug: 'guide-integrer-ia-strategie-digitale', excerpt: "Un guide étape par étape pour intégrer l'intelligence artificielle dans votre stratégie digitale.", content: "<h2>Votre feuille de route IA</h2><p>Intégrer l'IA ne se fait pas du jour au lendemain. Voici notre méthodologie en 5 étapes.</p><h3>Étape 1 : L'audit IA gratuit</h3><p>Nous analysons vos processus et identifions les opportunités d'automatisation.</p><h3>Étape 2 : Définir les priorités</h3><p>Nous priorisons selon le ratio impact/effort pour maximiser votre ROI.</p><h3>Étape 3 : Prototypage rapide</h3><p>En 2 à 4 semaines, nous développons un prototype fonctionnel.</p><h3>Étape 4 : Déploiement et formation</h3><p>La solution est déployée et vos équipes sont formées.</p><h3>Étape 5 : Optimisation continue</h3><p>L'IA s'améliore avec le temps grâce à l'analyse des performances.</p>", cat: 'Formation' },
+      { title: "L'IA générative pour la création de contenu : mythes et réalités", slug: 'ia-generative-creation-contenu-mythes-realites', excerpt: "ChatGPT, Claude, Midjourney... Démêlons le vrai du faux pour une utilisation professionnelle efficace.", content: "<h2>Au-delà du buzz</h2><p>L'IA générative fait les gros titres depuis 2023. Que peut-elle réellement apporter ?</p><h3>Mythe 1 : L'IA va remplacer les rédacteurs</h3><p><strong>Réalité :</strong> L'IA est un outil d'augmentation qui accélère la production de 3x à 5x.</p><h3>Mythe 2 : Tout le contenu IA se ressemble</h3><p><strong>Réalité :</strong> Avec les bons prompts, le contenu peut être unique et refléter votre marque.</p><h3>Mythe 3 : C'est gratuit et instantané</h3><p><strong>Réalité :</strong> Les outils professionnels ont un coût et demandent de l'expertise.</p><h3>Notre recommandation</h3><p>Utilisez l'IA pour les premiers jets et la structuration. Laissez l'humain pour la validation et l'expertise métier.</p>", cat: 'Innovation' },
+      { title: "CRM intelligent : pourquoi les PME doivent passer à l'IA en 2026", slug: 'crm-intelligent-pme-ia-2026', excerpt: "Un CRM classique ne suffit plus. Découvrez comment un CRM augmenté par l'IA peut transformer votre gestion commerciale.", content: "<h2>Le CRM traditionnel a atteint ses limites</h2><p>Vous utilisez encore un tableur Excel pour gérer vos clients ? En 2026, c'est comme conduire sans GPS.</p><h3>Scoring automatique des leads</h3><p>L'IA évalue chaque prospect et vous indique où concentrer vos efforts.</p><h3>Prédiction de churn</h3><p>Identifiez les clients à risque de départ avant qu'il ne soit trop tard.</p><h3>Rapports automatisés</h3><p>Le CRM intelligent génère automatiquement vos rapports avec des insights actionnables.</p><h3>Notre solution</h3><p>Chez AInspiration, nous avons développé un CRM intelligent spécialement conçu pour les PME belges.</p>", cat: 'Innovation' },
+      { title: "Automatiser sa prospection LinkedIn avec l'IA", slug: 'automatiser-prospection-linkedin-ia', excerpt: "LinkedIn est le réseau B2B par excellence. Voici comment l'IA peut automatiser votre prospection.", content: "<h2>LinkedIn + IA = prospection surpuissante</h2><p>LinkedIn compte plus de 5 millions d'utilisateurs en Belgique.</p><h3>Génération de contenu</h3><p>L'IA crée des posts engageants adaptés à votre audience.</p><h3>Personnalisation des messages</h3><p>L'IA analyse le profil de chaque prospect et génère un message personnalisé.</p><h3>Analyse des performances</h3><p>L'IA optimise votre stratégie en continu en analysant vos métriques.</p><h3>Les limites à respecter</h3><p>Notre approche combine IA et intervention humaine pour rester dans les clous de LinkedIn.</p>", cat: 'Automatisation' }
+    ];
+
+    for (const p of posts) {
+      await pool.query(
+        `INSERT INTO blog_posts (id, title, slug, excerpt, content, category_id, status, published_at, language, author_name)
+         VALUES (uuid_generate_v4(), $1, $2, $3, $4, $5, 'published', NOW() - interval '1 day' * (random() * 30)::int, 'fr', 'Laurent Quintin')`,
+        [p.title, p.slug, p.excerpt, p.content, catMap[p.cat] || null]
+      );
+    }
+    console.log('[BLOG] Seeded', posts.length, 'articles');
+  } catch (err) {
+    console.error('[BLOG] Seed error:', err.message);
+  }
+}
+
+// Run on startup
+ensureBlogPosts();
+
 // Health check (before any auth middleware)
 app.get('/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }));
 app.get('/api/status', (req, res) => res.json({ status: 'running' }));
