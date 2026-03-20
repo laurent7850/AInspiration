@@ -102,6 +102,9 @@ const webhookLimiter = rateLimit({
 // Apply general rate limit to all API routes
 app.use('/api/', apiLimiter);
 
+// Trust first proxy (Traefik) so rate-limiter sees real client IPs
+app.set('trust proxy', 1);
+
 app.use(express.json({ limit: '1mb' }));
 
 // ==================== DEMO AUTO-RESET ====================
