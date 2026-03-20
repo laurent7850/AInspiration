@@ -6,6 +6,7 @@ import LanguageHandler from './components/LanguageHandler';
 import MainLayout from './components/layout/MainLayout';
 import ErrorBoundary from './components/ErrorBoundary';
 import Analytics from './components/Analytics';
+import PrivateRoute from './components/PrivateRoute';
 import { PageSkeleton } from './components/ui/Skeleton';
 
 // Fallback de chargement avec skeleton
@@ -52,7 +53,11 @@ export default function App() {
               <Route
                 key={route.path}
                 path={route.path}
-                element={<route.component />}
+                element={
+                  route.private
+                    ? <PrivateRoute><route.component /></PrivateRoute>
+                    : <route.component />
+                }
               />
             ))}
           </Routes>

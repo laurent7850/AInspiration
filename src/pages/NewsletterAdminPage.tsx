@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { sanitizeHtml } from '../utils/validation';
 import {
   Mail,
   Users,
@@ -687,7 +688,7 @@ export default function NewsletterAdminPage() {
                             <h5 className="text-sm font-medium text-gray-700 mb-2">Aperçu HTML:</h5>
                             <div
                               className="bg-white p-4 rounded border prose prose-sm max-w-none"
-                              dangerouslySetInnerHTML={{ __html: nl.html_content }}
+                              dangerouslySetInnerHTML={{ __html: sanitizeHtml(nl.html_content) }}
                             />
                           </div>
                         )}

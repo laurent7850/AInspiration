@@ -10,11 +10,14 @@ import frCollaboration from '../public/locales/fr/collaboration.json';
 import frTraining from '../public/locales/fr/training.json';
 import frContent from '../public/locales/fr/content.json';
 import frSupport from '../public/locales/fr/support.json';
+import frCrm from '../public/locales/fr/crm.json';
 
 const allNamespaces = [
   'common', 'features', 'analysis', 'audit', 'auth', 'automation', 'blog',
   'collaboration', 'content', 'crm', 'dashboard', 'forms', 'pricing',
-  'prompts', 'recommendations', 'support', 'training'
+  'prompts', 'recommendations', 'support', 'training',
+  'legal', 'about', 'caseStudies', 'pages',
+  'transformation', 'forWho'
 ];
 
 i18n
@@ -39,11 +42,12 @@ i18n
         training: frTraining,
         content: frContent,
         support: frSupport,
+        crm: frCrm,
       }
     },
     partialBundledLanguages: true,
     detection: {
-      order: ['path', 'querystring', 'cookie', 'localStorage', 'navigator'],
+      order: ['path', 'querystring', 'navigator'],
       lookupFromPathIndex: 0,
       lookupQuerystring: 'lng',
       lookupCookie: 'i18next',

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react';
 import { api, getToken } from '../utils/api';
+import { useAuth } from './AuthContext';
 import type { ContactMessage } from '../utils/types';
 
 interface Notification {
@@ -43,10 +44,15 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({ chil
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [newMessagesCount, setNewMessagesCount] = useState(0);
   const prevCountRef = useRef<number | null>(null);
+  const { user } = useAuth();
 
   useEffect(() => {
-    // Only poll if authenticated
-    if (!getToken()) return;
+    // Only poll when user is authenticated (not just token present)
+    if (!user) {
+      prevCountRef.current = null;
+      setNewMessagesCount(0);
+      return;
+    }
 
     loadNewMessagesCount();
 
@@ -57,7 +63,7 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({ chil
     }, POLL_INTERVAL);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [user]);
 
   const loadNewMessagesCount = async () => {
     try {

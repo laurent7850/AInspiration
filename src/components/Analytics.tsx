@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { isProd, env } from '@/config/environment';
 
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // TODO: Replace with actual GA4 ID
+const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || '';
 
 function loadGA() {
   if (document.getElementById('ga-script')) return;
@@ -40,7 +40,7 @@ export default function Analytics() {
   // Load GA only if consent given, analytics enabled, and in production
   useEffect(() => {
     if (!isProd || !env.analyticsEnabled) return;
-    if (GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') return; // Skip if not configured
+    if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') return;
 
     const analyticsConsent = Cookies.get('analytics-enabled');
     if (analyticsConsent === 'true') {

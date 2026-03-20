@@ -81,11 +81,12 @@ export default defineConfig(({ mode }): UserConfig => {
       watch: {
         usePolling: false
       },
-      // En dev, proxy les appels /api vers le VPS production
+      // En dev, proxy les appels /api — utiliser DEV_API_TARGET pour pointer vers un backend local
+      // Par défaut: production (ATTENTION: modifie les données réelles!)
       ...(isDev ? {
         proxy: {
           '/api': {
-            target: 'https://ainspiration.eu',
+            target: process.env.DEV_API_TARGET || 'https://ainspiration.eu',
             changeOrigin: true,
             secure: true,
           }

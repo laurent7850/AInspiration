@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
   BarChart2,
@@ -24,71 +24,70 @@ interface CrmLayoutProps {
 
 const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const navigate = useNavigate();
   const location = useLocation();
-  const { t } = useTranslation();
+  const { t } = useTranslation('crm');
 
   const menuItems = [
     {
       path: '/crm-dashboard',
-      labelKey: 'crm:menu.dashboard',
+      labelKey: 'menu.dashboard',
       label: 'Dashboard IA',
       icon: Brain,
       highlight: true
     },
     {
       path: '/opportunities',
-      labelKey: 'crm:menu.opportunities',
+      labelKey: 'menu.opportunities',
       icon: DollarSign
     },
     {
       path: '/contacts',
-      labelKey: 'crm:menu.contacts',
+      labelKey: 'menu.contacts',
       icon: Users,
       disabled: false
     },
     {
       path: '/companies',
-      labelKey: 'crm:menu.companies',
+      labelKey: 'menu.companies',
       icon: Building2,
       disabled: false
     },
     {
       path: '/products',
-      labelKey: 'crm:menu.products',
+      labelKey: 'menu.products',
       icon: Package,
       disabled: false
     },
     {
       path: '/tasks',
-      labelKey: 'crm:menu.tasks',
+      labelKey: 'menu.tasks',
       icon: CheckSquare,
       disabled: false
     },
     {
       path: '/messages',
-      labelKey: 'crm:menu.messages',
+      labelKey: 'menu.messages',
       label: 'Messages',
       icon: MessageSquare,
       disabled: false
     },
     {
       path: '/newsletter-admin',
-      labelKey: 'crm:menu.newsletter',
+      labelKey: 'menu.newsletter',
       label: 'Newsletter',
       icon: Mail,
       disabled: false
     },
     {
       path: '/linkedin',
-      labelKey: 'crm:menu.linkedin',
+      labelKey: 'menu.linkedin',
       label: 'LinkedIn',
       icon: Linkedin,
       disabled: false
     },
     {
       path: '/reports',
-      labelKey: 'crm:menu.reports',
+      labelKey: 'menu.reports',
       icon: FileText,
       disabled: false
     }
@@ -109,7 +108,7 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
         <button
           onClick={toggleSidebar}
           className="bg-indigo-600 text-white p-3 rounded-full shadow-lg"
-          aria-label={sidebarOpen ? t('crm:common.close', 'Fermer le menu') : t('crm:common.open', 'Ouvrir le menu')}
+          aria-label={sidebarOpen ? t('common.close', 'Fermer le menu') : t('common.open', 'Ouvrir le menu')}
         >
           {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -138,40 +137,44 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
           </div>
 
           <nav className="mt-6 space-y-2">
-            {menuItems.map((item) => (
-              <button
-                key={item.path}
-                onClick={() => {
-                  if (!item.disabled) {
-                    navigate(item.path);
-                    setSidebarOpen(false);
-                  }
-                }}
-                disabled={item.disabled}
-                className={`flex items-center w-full px-3 py-2 rounded-lg transition-colors ${
-                  isActivePath(item.path)
-                    ? item.highlight
-                      ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white'
-                      : 'bg-indigo-50 text-indigo-600'
-                    : item.highlight
-                      ? 'text-indigo-700 hover:bg-indigo-50'
-                      : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600'
-                } ${
-                  item.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
-                }`}
-              >
-                <item.icon className="w-5 h-5 mr-3" />
-                <span>{item.label || t(item.labelKey)}</span>
-                {item.disabled && (
-                  <span className="ml-auto text-xs bg-gray-200 px-2 py-1 rounded-full">
-                    {t('crm:quickLinks.comingSoon')}
+            {menuItems.map((item) => {
+              if (item.disabled) {
+                return (
+                  <span
+                    key={item.path}
+                    className="flex items-center w-full px-3 py-2 rounded-lg opacity-50 cursor-not-allowed text-gray-700"
+                  >
+                    <item.icon className="w-5 h-5 mr-3" />
+                    <span>{item.label || t(item.labelKey)}</span>
+                    <span className="ml-auto text-xs bg-gray-200 px-2 py-1 rounded-full">
+                      {t('quickLinks.comingSoon')}
+                    </span>
                   </span>
-                )}
-                {!item.disabled && isActivePath(item.path) && !item.highlight && (
-                  <ChevronRight className="w-4 h-4 ml-auto" />
-                )}
-              </button>
-            ))}
+                );
+              }
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setSidebarOpen(false)}
+                  className={`flex items-center w-full px-3 py-2 rounded-lg transition-colors ${
+                    isActivePath(item.path)
+                      ? item.highlight
+                        ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white'
+                        : 'bg-indigo-50 text-indigo-600'
+                      : item.highlight
+                        ? 'text-indigo-700 hover:bg-indigo-50'
+                        : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600'
+                  }`}
+                >
+                  <item.icon className="w-5 h-5 mr-3" />
+                  <span>{item.label || t(item.labelKey)}</span>
+                  {isActivePath(item.path) && !item.highlight && (
+                    <ChevronRight className="w-4 h-4 ml-auto" />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
         </div>
       </aside>
