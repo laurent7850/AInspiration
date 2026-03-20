@@ -33,14 +33,15 @@ const routes: RouteConfig[] = [
     component: lazy(() => import('../pages/LoginPage')),
     exact: true
   },
+  // Redirects — pages fusionnées/supprimées (Comité #2)
   {
     path: "/pourquoi-ia",
-    component: lazy(() => import('../pages/WhyAIPage')),
+    component: lazy(() => import('../pages/HomePage')),
     exact: true
   },
   {
     path: "/pour-qui-ia",
-    component: lazy(() => import('../pages/ForWhoAIPage')),
+    component: lazy(() => import('../pages/SolutionsPage')),
     exact: true
   },
   {
@@ -54,8 +55,13 @@ const routes: RouteConfig[] = [
     exact: true
   },
   {
+    path: "/creation-ia",
+    component: lazy(() => import('../pages/CreationIAPage')),
+    exact: true
+  },
+  {
     path: "/creation-visuelle",
-    component: lazy(() => import('../pages/CreationVisuellePage')),
+    component: lazy(() => import('../pages/CreationIAPage')),
     exact: true
   },
   {
@@ -116,7 +122,7 @@ const routes: RouteConfig[] = [
   },
   {
     path: "/creativite",
-    component: lazy(() => import('../pages/CreativityPage')),
+    component: lazy(() => import('../pages/CreationIAPage')),
     exact: true
   },
   {
@@ -168,10 +174,6 @@ const routes: RouteConfig[] = [
     path: "/cgu",
     component: lazy(() => import('../pages/CGUPage')),
     exact: true
-  },
-  {
-    path: "*",
-    component: lazy(() => import('../pages/NotFoundPage')),
   },
   {
     path: "/crm",
@@ -273,6 +275,10 @@ const routes: RouteConfig[] = [
     exact: true,
     private: true
   },
+  {
+    path: "*",
+    component: lazy(() => import('../pages/NotFoundPage')),
+  },
 ];
 
 // Menu structure - Reorganized to eliminate duplication
@@ -296,7 +302,7 @@ export const menuItems: MenuSection[] = [
       { label: 'Automatisation', path: '/automatisation' },
       { label: 'Assistants virtuels', path: '/assistants' },
       { label: 'Bibliothèque de prompts', path: '/prompts' },
-      { label: 'Création visuelle IA', path: '/creation-visuelle' },
+      { label: 'Création IA', path: '/creation-ia' },
       { label: 'Solution CRM', path: '/crm' }
     ]
   },
