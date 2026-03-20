@@ -318,6 +318,110 @@ async function ensureBlogPosts() {
 // Run on startup
 ensureBlogPosts();
 
+// ==================== BLOG I18N SYNC (daily) ====================
+const BLOG_SYNC_INTERVAL = 24 * 60 * 60 * 1000; // 24 hours
+const TARGET_LANGS = ['en', 'nl'];
+const LANG_PAIRS = { en: 'fr|en', nl: 'fr|nl' };
+
+async function translateText(text, langPair) {
+  if (!text || !text.trim()) return text;
+  // Split long texts into chunks (MyMemory limit ~500 chars for best quality)
+  const MAX_CHUNK = 450;
+  if (text.length <= MAX_CHUNK) {
+    return await callMyMemory(text, langPair);
+  }
+  // Split HTML on block-level tags to preserve structure
+  const parts = text.split(/(<\/(?:p|h[1-6]|li|div|blockquote|tr|td|th)>)/i);
+  let chunk = '';
+  const chunks = [];
+  for (const part of parts) {
+    if ((chunk + part).length > MAX_CHUNK && chunk) {
+      chunks.push(chunk);
+      chunk = part;
+    } else {
+      chunk += part;
+    }
+  }
+  if (chunk) chunks.push(chunk);
+
+  const translated = [];
+  for (const c of chunks) {
+    translated.push(await callMyMemory(c, langPair));
+    // Rate limit: small delay between requests
+    await new Promise(r => setTimeout(r, 300));
+  }
+  return translated.join('');
+}
+
+async function callMyMemory(text, langPair) {
+  try {
+    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${langPair}&de=contact@ainspiration.eu`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data.responseStatus === 200 && data.responseData?.translatedText) {
+      return data.responseData.translatedText;
+    }
+    console.warn('[I18N] MyMemory fallback — status:', data.responseStatus);
+    return text;
+  } catch (err) {
+    console.error('[I18N] Translation error:', err.message);
+    return text;
+  }
+}
+
+function translatedSlug(slug, lang) {
+  return `${slug}-${lang}`;
+}
+
+async function syncBlogTranslations() {
+  try {
+    // Get all French posts
+    const { rows: frPosts } = await pool.query(
+      "SELECT * FROM blog_posts WHERE language = 'fr' AND status = 'published'"
+    );
+    if (frPosts.length === 0) return;
+
+    // Get all existing non-FR slugs for quick lookup
+    const { rows: existing } = await pool.query(
+      "SELECT slug, language FROM blog_posts WHERE language != 'fr'"
+    );
+    const existingSet = new Set(existing.map(r => `${r.slug}:${r.language}`));
+
+    let created = 0;
+    for (const post of frPosts) {
+      for (const lang of TARGET_LANGS) {
+        const targetSlug = translatedSlug(post.slug, lang);
+        if (existingSet.has(`${targetSlug}:${lang}`)) continue;
+
+        console.log(`[I18N] Translating "${post.title}" → ${lang}...`);
+        const langPair = LANG_PAIRS[lang];
+
+        const title = await translateText(post.title, langPair);
+        const excerpt = post.excerpt ? await translateText(post.excerpt, langPair) : null;
+        const content = await translateText(post.content, langPair);
+
+        await pool.query(
+          `INSERT INTO blog_posts (id, title, slug, excerpt, content, category_id, status, published_at, language, author_name, featured_image)
+           VALUES (uuid_generate_v4(), $1, $2, $3, $4, $5, 'published', $6, $7, $8, $9)`,
+          [title, targetSlug, excerpt, content, post.category_id, post.published_at, lang, post.author_name, post.featured_image]
+        );
+        created++;
+        console.log(`[I18N] Created ${lang} version: ${targetSlug}`);
+      }
+    }
+
+    if (created > 0) {
+      console.log(`[I18N] Sync complete — ${created} translations created`);
+    }
+  } catch (err) {
+    console.error('[I18N] Sync error:', err.message);
+  }
+}
+
+// Run once on startup (after blog seed), then daily
+setTimeout(() => syncBlogTranslations(), 10000);
+setInterval(syncBlogTranslations, BLOG_SYNC_INTERVAL);
+
 // Health check (before any auth middleware)
 app.get('/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }));
 app.get('/api/status', (req, res) => res.json({ status: 'running' }));
