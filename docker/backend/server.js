@@ -1,6 +1,8 @@
 const express = require('express');
 const { Pool } = require('pg');
 const cors = require('cors');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const { v4: uuidv4 } = require('uuid');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
@@ -8,23 +10,99 @@ require('dotenv').config();
 
 const app = express();
 app.disable('x-powered-by');
-// Port is set at the bottom of the file
-const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-in-production';
+
+// JWT Secret — MUST be set in production, no weak fallback
+if (!process.env.JWT_SECRET) {
+  console.error('FATAL: JWT_SECRET environment variable is not set. Exiting.');
+  process.exit(1);
+}
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // PostgreSQL connection — supports DATABASE_URL or individual vars
 const pool = process.env.DATABASE_URL
-  ? new Pool({ connectionString: process.env.DATABASE_URL })
+  ? new Pool({
+      connectionString: process.env.DATABASE_URL,
+      max: 20,
+      idleTimeoutMillis: 30000,
+      connectionTimeoutMillis: 5000,
+    })
   : new Pool({
       host: process.env.DB_HOST || 'postgres',
       port: process.env.DB_PORT || 5432,
       database: process.env.DB_NAME || 'ainspiration',
       user: process.env.DB_USER || 'ainspiration',
-      password: process.env.DB_PASSWORD || 'ainspiration_secret'
+      password: process.env.DB_PASSWORD || 'ainspiration_secret',
+      max: 20,
+      idleTimeoutMillis: 30000,
+      connectionTimeoutMillis: 5000,
     });
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+// ==================== SECURITY MIDDLEWARE ====================
+
+// Helmet — HTTP security headers (CSP, HSTS, X-Frame-Options, etc.)
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://www.googletagmanager.com", "https://www.google-analytics.com"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      imgSrc: ["'self'", "data:", "https:", "blob:"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      connectSrc: ["'self'", "https://www.google-analytics.com", "https://n8n.srv767464.hstgr.cloud", "https://openrouter.ai"],
+      frameSrc: ["'none'"],
+      objectSrc: ["'none'"],
+    },
+  },
+  crossOriginEmbedderPolicy: false, // allow loading external images
+}));
+
+// CORS — restrict to known origins
+const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'https://ainspiration.eu,https://www.ainspiration.eu,https://ainspiration2026.netlify.app').split(',');
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, curl, server-to-server)
+    if (!origin || ALLOWED_ORIGINS.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
+// Rate limiting — auth endpoints
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 15, // 15 attempts per window
+  message: { error: 'Too many attempts. Please try again later.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// Rate limiting — general API
+const apiLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 100, // 100 requests per minute
+  message: { error: 'Too many requests. Please slow down.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// Rate limiting — webhooks (tighter)
+const webhookLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 10,
+  message: { error: 'Too many webhook calls.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// Apply general rate limit to all API routes
+app.use('/api/', apiLimiter);
+
+app.use(express.json({ limit: '1mb' }));
 
 // ==================== DEMO AUTO-RESET ====================
 const DEMO_USER_ID = 'a0000000-0000-0000-0000-000000000001';
@@ -235,11 +313,24 @@ app.use(optionalAuth);
 
 // ==================== AUTH ROUTES ====================
 
-app.post('/api/auth/register', async (req, res) => {
+app.post('/api/auth/register', authLimiter, async (req, res) => {
   try {
+    // Registration is disabled by default — set ALLOW_REGISTRATION=true to enable
+    if (process.env.ALLOW_REGISTRATION !== 'true') {
+      return res.status(403).json({ error: 'Registration is currently disabled. Contact admin.' });
+    }
+
     const { email, password, name, company } = req.body;
     if (!email || !password) {
       return res.status(400).json({ error: 'Email and password are required' });
+    }
+
+    // Password strength validation
+    if (password.length < 8) {
+      return res.status(400).json({ error: 'Password must be at least 8 characters' });
+    }
+    if (!/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
+      return res.status(400).json({ error: 'Password must contain uppercase, lowercase and a number' });
     }
 
     const existing = await pool.query('SELECT id FROM users WHERE email = $1', [email.toLowerCase()]);
@@ -271,7 +362,7 @@ app.post('/api/auth/register', async (req, res) => {
   }
 });
 
-app.post('/api/auth/login', async (req, res) => {
+app.post('/api/auth/login', authLimiter, async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -1405,7 +1496,7 @@ app.get('/api/newsletter-stats', async (req, res) => {
 
 const N8N_BASE = process.env.N8N_BASE || 'https://n8n.srv767464.hstgr.cloud/webhook';
 
-app.post('/api/webhook/chat', async (req, res) => {
+app.post('/api/webhook/chat', webhookLimiter, async (req, res) => {
   try {
     const n8nUrl = `${N8N_BASE}/ainspiration`;
     const response = await fetch(n8nUrl, {
@@ -1424,7 +1515,7 @@ app.post('/api/webhook/chat', async (req, res) => {
   }
 });
 
-app.post('/api/webhook/newsletter-send', async (req, res) => {
+app.post('/api/webhook/newsletter-send', webhookLimiter, requireAuth, async (req, res) => {
   try {
     const n8nUrl = `${N8N_BASE}/newsletter-send`;
     const response = await fetch(n8nUrl, {
@@ -1443,7 +1534,7 @@ app.post('/api/webhook/newsletter-send', async (req, res) => {
   }
 });
 
-app.post('/api/webhook/newsletter-generate', async (req, res) => {
+app.post('/api/webhook/newsletter-generate', webhookLimiter, requireAuth, async (req, res) => {
   try {
     const n8nUrl = `${N8N_BASE}/newsletter-generate`;
     const response = await fetch(n8nUrl, {
@@ -1663,10 +1754,10 @@ app.put('/api/linkedin/settings', requireAuth, async (req, res) => {
 });
 
 // LinkedIn Webhook — n8n automated generate + publish
-app.post('/api/webhook/linkedin-post', async (req, res) => {
+app.post('/api/webhook/linkedin-post', webhookLimiter, async (req, res) => {
   try {
     const webhookSecret = req.headers['x-webhook-secret'];
-    if (webhookSecret !== process.env.WEBHOOK_SECRET) {
+    if (!process.env.WEBHOOK_SECRET || !webhookSecret || webhookSecret !== process.env.WEBHOOK_SECRET) {
       return res.status(401).json({ error: 'Invalid webhook secret' });
     }
 
