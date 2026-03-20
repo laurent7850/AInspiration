@@ -10,6 +10,7 @@ require('dotenv').config();
 
 const app = express();
 app.disable('x-powered-by');
+app.set('trust proxy', 1); // Trust first proxy (Traefik)
 
 // JWT Secret — MUST be set in production, no weak fallback
 if (!process.env.JWT_SECRET) {
