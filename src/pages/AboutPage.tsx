@@ -1,145 +1,110 @@
 import React from 'react';
 import SectionHeader from '../components/ui/SectionHeader';
-import { 
-  Users, 
-  Award, 
-  Shield, 
-  Globe, 
-  Clock, 
-  CheckCircle 
+import SEOHead from '../components/SEOHead';
+import { useTranslation } from 'react-i18next';
+import {
+  Users,
+  Award,
+  Shield,
+  Globe,
+  Lightbulb,
+  Target,
+  HeartHandshake
 } from 'lucide-react';
-import OptimizedImage from '../components/ui/OptimizedImage';
+import RelatedServices from '../components/ui/RelatedServices';
 
 const AboutPage: React.FC = () => {
-  const teamMembers = [
+  const { t } = useTranslation('about');
+
+  const approachPillars = [
     {
-      name: "Maxence Durand",
-      role: "Fondateur & CEO",
-      bio: "15+ ans d'expérience en IA et transformation digitale. Passionné par l'innovation accessible aux PME.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop"
+      icon: Lightbulb,
+      title: t('approach.pillar1_title'),
+      description: t('approach.pillar1_desc')
     },
     {
-      name: "Sophie Laurent",
-      role: "Directrice des Opérations",
-      bio: "Experte en optimisation des processus et en gestion de projet agile. Accompagne les clients dans leur transition numérique.",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop"
+      icon: Target,
+      title: t('approach.pillar2_title'),
+      description: t('approach.pillar2_desc')
     },
     {
-      name: "Thomas Lefevre",
-      role: "Lead IA",
-      bio: "Docteur en Intelligence Artificielle, spécialiste des solutions adaptées aux besoins spécifiques des PME.",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop"
+      icon: HeartHandshake,
+      title: t('approach.pillar3_title'),
+      description: t('approach.pillar3_desc')
     }
   ];
-  
+
   const values = [
     {
       icon: Globe,
-      title: "Innovation accessible",
-      description: "Nous croyons que l'IA doit être accessible à toutes les entreprises, quelle que soit leur taille."
+      title: t('values.val1_title'),
+      description: t('values.val1_desc')
     },
     {
       icon: Shield,
-      title: "Éthique & Transparence",
-      description: "Nous développons des solutions éthiques et nous sommes transparents sur nos pratiques."
+      title: t('values.val2_title'),
+      description: t('values.val2_desc')
     },
     {
       icon: Users,
-      title: "Humain au centre",
-      description: "Nos technologies visent à améliorer l'humain, pas à le remplacer."
+      title: t('values.val3_title'),
+      description: t('values.val3_desc')
     },
     {
       icon: Award,
-      title: "Excellence",
-      description: "Nous visons l'excellence dans chaque solution que nous proposons à nos clients."
+      title: t('values.val4_title'),
+      description: t('values.val4_desc')
     }
   ];
 
   const milestones = [
-    {
-      year: "2019",
-      title: "Création d'AInspiration",
-      description: "Fondation de l'entreprise avec pour mission de démocratiser l'IA pour les PME."
-    },
-    {
-      year: "2020",
-      title: "Lancement des premiers produits",
-      description: "Développement de solutions d'automatisation et d'analyse de données."
-    },
-    {
-      year: "2021",
-      title: "Élargissement de l'offre",
-      description: "Introduction des assistants virtuels et des services d'IA générative."
-    },
-    {
-      year: "2022",
-      title: "Expansion internationale",
-      description: "Ouverture aux marchés francophones européens : Belgique, Luxembourg et Suisse."
-    },
-    {
-      year: "2023",
-      title: "Révolution IA générative",
-      description: "Lancement de notre plateforme PromptMaster et intégration des modèles GPT et Claude dans nos solutions."
-    },
-    {
-      year: "2024",
-      title: "CRM Intelligent & Automatisation avancée",
-      description: "Déploiement de notre solution CRM propulsée par l'IA et automatisation des workflows métier complexes."
-    },
-    {
-      year: "2025",
-      title: "IA Agents & Personnalisation",
-      description: "Lancement des agents IA autonomes et solutions d'analyse prédictive sur mesure pour chaque secteur."
-    },
-    {
-      year: "2026",
-      title: "AInspiration - Nouvelle ère",
-      description: "Rebranding en AInspiration. Plateforme unifiée d'IA pour PME avec accompagnement 360° et formation certifiante."
-    }
+    { year: "2019", title: t('history.m2019_title'), description: t('history.m2019_desc') },
+    { year: "2020", title: t('history.m2020_title'), description: t('history.m2020_desc') },
+    { year: "2021", title: t('history.m2021_title'), description: t('history.m2021_desc') },
+    { year: "2022", title: t('history.m2022_title'), description: t('history.m2022_desc') },
+    { year: "2023", title: t('history.m2023_title'), description: t('history.m2023_desc') },
+    { year: "2024", title: t('history.m2024_title'), description: t('history.m2024_desc') },
+    { year: "2025", title: t('history.m2025_title'), description: t('history.m2025_desc') },
+    { year: "2026", title: t('history.m2026_title'), description: t('history.m2026_desc') }
   ];
 
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <SEOHead canonical="/a-propos" />
       <div className="container mx-auto px-4">
         <SectionHeader
-          title="À propos d'AInspiration"
-          subtitle="Notre mission : rendre l'IA accessible et efficace pour toutes les entreprises"
+          title={t('pageTitle')}
+          subtitle={t('pageSubtitle')}
           centered
         />
 
-        {/* Notre Mission */}
+        {/* Mission */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Notre Mission</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('mission.title')}</h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Chez AInspiration, nous sommes convaincus que l'Intelligence Artificielle est un levier de croissance incontournable pour les entreprises de toutes tailles. Notre mission est de démocratiser l'accès à l'IA en proposant des solutions innovantes, accessibles et sur mesure qui répondent aux besoins spécifiques des PME.
+            {t('mission.p1')}
           </p>
           <p className="text-lg text-gray-600 leading-relaxed mt-4">
-            Nous accompagnons nos clients dans leur transformation digitale en leur offrant non seulement des outils technologiques de pointe, mais aussi l'expertise et le support nécessaires pour les intégrer efficacement dans leur activité quotidienne. Notre objectif est de créer un impact positif mesurable sur leur productivité, leur rentabilité et leur compétitivité.
+            {t('mission.p2')}
           </p>
         </div>
 
-        {/* Notre Équipe */}
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Notre Équipe</h2>
+        {/* Approche */}
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('approach.title')}</h2>
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {teamMembers.map((member, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <OptimizedImage
-                src={member.image}
-                alt={member.name}
-                responsive="third"
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
-                <p className="text-indigo-600 font-medium mb-3">{member.role}</p>
-                <p className="text-gray-600">{member.bio}</p>
+          {approachPillars.map((pillar, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-lg p-8">
+              <div className="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mb-5">
+                <pillar.icon className="w-7 h-7 text-indigo-600" />
               </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">{pillar.title}</h3>
+              <p className="text-gray-600 leading-relaxed">{pillar.description}</p>
             </div>
           ))}
         </div>
 
-        {/* Nos Valeurs */}
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Nos Valeurs</h2>
+        {/* Valeurs */}
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('values.title')}</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {values.map((value, index) => (
             <div key={index} className="bg-white rounded-xl shadow-lg p-6">
@@ -156,12 +121,12 @@ const AboutPage: React.FC = () => {
           ))}
         </div>
 
-        {/* Notre Histoire */}
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Notre Histoire</h2>
+        {/* Histoire */}
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('history.title')}</h2>
         <div className="relative">
           {/* Timeline line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-indigo-100"></div>
-          
+
           <div className="space-y-12 relative">
             {milestones.map((milestone, index) => (
               <div key={index} className="flex justify-center">
@@ -169,17 +134,27 @@ const AboutPage: React.FC = () => {
                   <h3 className="text-xl font-bold text-gray-900 mb-1">{milestone.title}</h3>
                   <p className="text-gray-600">{milestone.description}</p>
                 </div>
-                
+
                 <div className="w-2/12 flex justify-center">
                   <div className="bg-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg z-10">
                     {milestone.year}
                   </div>
                 </div>
-                
+
                 <div className={`w-5/12 ${index % 2 === 0 ? 'order-last text-left pl-8' : 'text-right pr-8'}`}></div>
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Related Services */}
+        <div className="mt-16 mb-8">
+          <RelatedServices links={[
+            { path: '/etudes-de-cas', title: 'Études de cas', description: 'Résultats concrets de nos clients' },
+            { path: '/contact', title: 'Contact', description: 'Parlons de votre projet IA' },
+            { path: '/blog', title: 'Blog', description: 'Articles et guides sur l\'IA pour PME' },
+            { path: '/audit', title: 'Audit IA Gratuit', description: 'Analyse complète de votre activité en 24h' },
+          ]} />
         </div>
       </div>
     </section>

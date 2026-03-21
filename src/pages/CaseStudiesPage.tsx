@@ -1,75 +1,79 @@
 import React from 'react';
 import SectionHeader from '../components/ui/SectionHeader';
-import { 
-  Building, 
-  Users, 
-  TrendingUp, 
-  Clock, 
+import SEOHead from '../components/SEOHead';
+import {
+  Building,
+  Users,
+  TrendingUp,
+  Clock,
   BarChart3,
   DollarSign,
   CheckCircle
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import OptimizedImage from '../components/ui/OptimizedImage';
+import RelatedServices from '../components/ui/RelatedServices';
 
 const CaseStudiesPage: React.FC = () => {
   const navigate = useNavigate();
-  
+  const { t } = useTranslation('caseStudies');
+
   const caseStudies = [
     {
-      title: "Optimisation du service client avec un chatbot IA",
+      title: t('study1.title'),
       company: "CommerceXpress",
-      industry: "E-commerce",
+      industry: t('study1.industry'),
       employees: "11-50",
-      challenge: "Face à une croissance rapide, CommerceXpress peinait à répondre efficacement aux demandes clients, entraînant des délais de réponse longs et une satisfaction client en baisse.",
-      solution: "Mise en place d'un chatbot IA capable de traiter 80% des demandes courantes, intégré au site web et aux réseaux sociaux, avec transfert intelligent vers les agents humains.",
+      challenge: t('study1.challenge'),
+      solution: t('study1.solution'),
       results: [
-        "Réduction de 75% du temps de réponse",
-        "Augmentation de 30% de la satisfaction client",
-        "Économie de 45k€ annuels en coûts de support",
-        "Disponibilité du support 24/7"
+        t('study1.result1'),
+        t('study1.result2'),
+        t('study1.result3'),
+        t('study1.result4')
       ],
       testimonial: {
-        quote: "Notre chatbot IA est devenu indispensable. Il répond instantanément aux questions fréquentes, libérant nos équipes pour les demandes complexes. La satisfaction client a bondi et nos coûts ont diminué.",
-        author: "Marie Lefèvre, Directrice Service Client"
+        quote: t('study1.quote'),
+        author: t('study1.author')
       },
       image: "https://images.unsplash.com/photo-1556155092-490a1ba16284?q=80&w=1600&auto=format&fit=crop"
     },
     {
-      title: "Automatisation de la gestion des factures",
+      title: t('study2.title'),
       company: "TechnoServic",
-      industry: "Services IT",
+      industry: t('study2.industry'),
       employees: "51-200",
-      challenge: "TechnoServic traitait manuellement plus de 500 factures par mois, entraînant des retards de paiement, des erreurs coûteuses et mobilisant deux employés à temps plein.",
-      solution: "Déploiement d'une solution IA d'extraction automatique des données de factures, intégrée au système comptable existant, avec validation intelligente et classification automatique.",
+      challenge: t('study2.challenge'),
+      solution: t('study2.solution'),
       results: [
-        "Réduction de 90% du temps de traitement",
-        "Diminution de 95% des erreurs de saisie",
-        "Économie de 65k€ annuels",
-        "Redéploiement de 1,5 ETP vers des tâches à valeur ajoutée"
+        t('study2.result1'),
+        t('study2.result2'),
+        t('study2.result3'),
+        t('study2.result4')
       ],
       testimonial: {
-        quote: "Notre département comptable a été transformé. L'IA extrait et traite les données des factures avec une précision remarquable, libérant nos équipes pour des analyses plus stratégiques.",
-        author: "Thomas Dubois, DAF"
+        quote: t('study2.quote'),
+        author: t('study2.author')
       },
       image: "https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=1600&auto=format&fit=crop"
     },
     {
-      title: "Optimisation des stocks grâce à l'analyse prédictive",
+      title: t('study3.title'),
       company: "MobiliFrance",
-      industry: "Mobilier",
+      industry: t('study3.industry'),
       employees: "201-500",
-      challenge: "MobiliFrance souffrait de ruptures de stock fréquentes sur les articles populaires tout en immobilisant trop de capital dans des produits à faible rotation.",
-      solution: "Implémentation d'un système d'analyse prédictive basé sur l'IA intégrant les données historiques, les tendances saisonnières, et les facteurs externes pour optimiser la gestion des stocks.",
+      challenge: t('study3.challenge'),
+      solution: t('study3.solution'),
       results: [
-        "Réduction de 85% des ruptures de stock",
-        "Diminution de 25% du stock global",
-        "Augmentation de 15% du taux de rotation des stocks",
-        "ROI de 180% sur la première année"
+        t('study3.result1'),
+        t('study3.result2'),
+        t('study3.result3'),
+        t('study3.result4')
       ],
       testimonial: {
-        quote: "L'IA prédictive a révolutionné notre gestion des stocks. Nous anticipons maintenant précisément la demande, évitant les ruptures tout en optimisant nos niveaux d'inventaire.",
-        author: "Julie Moreau, Responsable Supply Chain"
+        quote: t('study3.quote'),
+        author: t('study3.author')
       },
       image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1600&auto=format&fit=crop"
     }
@@ -77,10 +81,11 @@ const CaseStudiesPage: React.FC = () => {
 
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <SEOHead canonical="/etudes-de-cas" />
       <div className="container mx-auto px-4">
         <SectionHeader
-          title="Études de cas"
-          subtitle="Découvrez comment des entreprises comme la vôtre transforment leur activité grâce à nos solutions IA"
+          title={t('pageTitle')}
+          subtitle={t('pageSubtitle')}
           centered
         />
 
@@ -97,7 +102,7 @@ const CaseStudiesPage: React.FC = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                
+
                 {/* Content - 7 columns */}
                 <div className="md:col-span-7 p-8">
                   <div className="flex items-center gap-2 mb-2">
@@ -111,23 +116,23 @@ const CaseStudiesPage: React.FC = () => {
                       <span className="text-gray-600 text-sm">{study.employees}</span>
                     </div>
                   </div>
-                  
+
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">
                     {study.title}
                   </h2>
-                  
+
                   <div className="mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Défi</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('labels.challenge')}</h3>
                     <p className="text-gray-600">{study.challenge}</p>
                   </div>
-                  
+
                   <div className="mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('labels.solution')}</h3>
                     <p className="text-gray-600">{study.solution}</p>
                   </div>
-                  
+
                   <div className="mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Résultats</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('labels.results')}</h3>
                     <div className="grid sm:grid-cols-2 gap-2">
                       {study.results.map((result, idx) => (
                         <div key={idx} className="flex items-start gap-2">
@@ -137,7 +142,7 @@ const CaseStudiesPage: React.FC = () => {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div className="mt-6 p-4 bg-indigo-50 rounded-lg">
                     <blockquote className="italic text-gray-700 mb-2">
                       "{study.testimonial.quote}"
@@ -151,48 +156,58 @@ const CaseStudiesPage: React.FC = () => {
             </div>
           ))}
         </div>
-        
+
         {/* Statistics */}
         <div className="grid md:grid-cols-4 gap-8 mb-16">
           <div className="bg-white rounded-xl shadow-lg p-6 text-center">
             <TrendingUp className="w-12 h-12 text-indigo-600 mx-auto mb-4" />
             <div className="text-3xl font-bold text-indigo-600 mb-2">+45%</div>
-            <div className="text-lg font-medium text-gray-900">Augmentation de la productivité</div>
+            <div className="text-lg font-medium text-gray-900">{t('stats.productivity')}</div>
           </div>
-          
+
           <div className="bg-white rounded-xl shadow-lg p-6 text-center">
             <Clock className="w-12 h-12 text-indigo-600 mx-auto mb-4" />
             <div className="text-3xl font-bold text-indigo-600 mb-2">-60%</div>
-            <div className="text-lg font-medium text-gray-900">Réduction du temps de traitement</div>
+            <div className="text-lg font-medium text-gray-900">{t('stats.processing')}</div>
           </div>
-          
+
           <div className="bg-white rounded-xl shadow-lg p-6 text-center">
             <DollarSign className="w-12 h-12 text-indigo-600 mx-auto mb-4" />
             <div className="text-3xl font-bold text-indigo-600 mb-2">+25%</div>
-            <div className="text-lg font-medium text-gray-900">Augmentation du CA</div>
+            <div className="text-lg font-medium text-gray-900">{t('stats.revenue')}</div>
           </div>
-          
+
           <div className="bg-white rounded-xl shadow-lg p-6 text-center">
             <BarChart3 className="w-12 h-12 text-indigo-600 mx-auto mb-4" />
-            <div className="text-3xl font-bold text-indigo-600 mb-2">180%</div>
-            <div className="text-lg font-medium text-gray-900">ROI moyen</div>
+            <div className="text-3xl font-bold text-indigo-600 mb-2">50+</div>
+            <div className="text-lg font-medium text-gray-900">{t('stats.clients')}</div>
           </div>
         </div>
-        
+
         {/* CTA */}
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Prêt à transformer votre entreprise ?
+            {t('cta.title')}
           </h2>
           <p className="text-lg text-gray-600 mb-8">
-            Découvrez comment nos solutions IA peuvent résoudre vos défis spécifiques
+            {t('cta.subtitle')}
           </p>
           <button
             onClick={() => navigate('/contact')}
             className="bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
           >
-            Discutons de votre projet
+            {t('cta.button')}
           </button>
+        </div>
+
+        {/* Related Services */}
+        <div className="mt-16 mb-8">
+          <RelatedServices links={[
+            { path: '/audit', title: 'Audit IA Gratuit', description: 'Analyse complète de votre activité en 24h' },
+            { path: '/solutions', title: 'Nos Solutions', description: 'Découvrez toutes nos solutions IA' },
+            { path: '/blog', title: 'Blog', description: 'Articles et guides sur l\'IA pour PME' },
+            { path: '/contact', title: 'Contact', description: 'Parlons de votre projet IA' },
+          ]} />
         </div>
       </div>
     </section>
