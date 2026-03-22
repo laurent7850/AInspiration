@@ -23,24 +23,24 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => !!getToken());
 
   useEffect(() => {
-    // Vérifier le token existant au mount
+    // Only check token if one exists — don't block first paint
     const token = getToken();
     if (token) {
-      api.get<{ user: AuthUser }>('/auth/me')
-        .then(({ user }) => {
-          setUser(user);
-        })
-        .catch(() => {
-          // Token invalide/expiré
-          clearToken();
-          setUser(null);
-        })
-        .finally(() => setLoading(false));
-    } else {
-      setLoading(false);
+      // Use requestIdleCallback to defer auth check after LCP
+      const check = () => {
+        api.get<{ user: AuthUser }>('/auth/me')
+          .then(({ user }) => setUser(user))
+          .catch(() => { clearToken(); setUser(null); })
+          .finally(() => setLoading(false));
+      };
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(check, { timeout: 2000 });
+      } else {
+        setTimeout(check, 100);
+      }
     }
   }, []);
 

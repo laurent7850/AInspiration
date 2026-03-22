@@ -47,12 +47,10 @@ i18n
     },
     partialBundledLanguages: true,
     detection: {
-      order: ['path', 'querystring', 'navigator'],
+      order: ['path', 'querystring'],
       lookupFromPathIndex: 0,
       lookupQuerystring: 'lng',
-      lookupCookie: 'i18next',
-      lookupLocalStorage: 'i18nextLng',
-      caches: ['localStorage', 'cookie'],
+      caches: [],
     },
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',

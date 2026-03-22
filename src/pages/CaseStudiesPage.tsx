@@ -87,6 +87,7 @@ const CaseStudiesPage: React.FC = () => {
           title={t('pageTitle')}
           subtitle={t('pageSubtitle')}
           centered
+          as="h1"
         />
 
         <div className="space-y-16 mb-12">

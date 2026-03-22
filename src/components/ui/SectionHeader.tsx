@@ -7,6 +7,7 @@ interface SectionHeaderProps {
   icon?: React.ElementType;
   tagline?: string;
   className?: string;
+  as?: 'h1' | 'h2' | 'h3';
 }
 
 const SectionHeader: React.FC<SectionHeaderProps> = ({
@@ -16,6 +17,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   icon: Icon,
   tagline,
   className = "",
+  as: Tag = 'h2',
 }) => {
   return (
     <div className={`${centered ? 'text-center' : 'text-left'} mb-12 ${className}`}>
@@ -24,20 +26,20 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
           {tagline}
         </span>
       )}
-      
+
       {Icon ? (
         <div className={`flex items-center gap-2 ${centered ? 'justify-center' : 'justify-start'} mb-4`}>
           <Icon className="h-8 w-8 text-indigo-600" />
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+          <Tag className="text-3xl lg:text-4xl font-bold text-gray-900">
             {title}
-          </h2>
+          </Tag>
         </div>
       ) : (
-        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+        <Tag className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
           {title}
-        </h2>
+        </Tag>
       )}
-      
+
       {subtitle && (
         <p className={`text-xl text-gray-600 ${centered ? 'max-w-3xl mx-auto' : ''}`}>
           {subtitle}
