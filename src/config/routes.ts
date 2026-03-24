@@ -33,17 +33,7 @@ const routes: RouteConfig[] = [
     component: lazy(() => import('../pages/LoginPage')),
     exact: true
   },
-  // Redirects — pages fusionnées/supprimées (Comité #2)
-  {
-    path: "/pourquoi-ia",
-    component: lazy(() => import('../pages/HomePage')),
-    exact: true
-  },
-  {
-    path: "/pour-qui-ia",
-    component: lazy(() => import('../pages/SolutionsPage')),
-    exact: true
-  },
+  // NOTE: /pourquoi-ia → / and /pour-qui-ia → /solutions redirects are in App.tsx
   {
     path: "/analyse-ia",
     component: lazy(() => import('../pages/AnalyseIAPage')),
@@ -59,11 +49,7 @@ const routes: RouteConfig[] = [
     component: lazy(() => import('../pages/CreationIAPage')),
     exact: true
   },
-  {
-    path: "/creation-visuelle",
-    component: lazy(() => import('../pages/CreationIAPage')),
-    exact: true
-  },
+  // NOTE: /creation-visuelle → /creation-ia redirect is in App.tsx
   {
     path: "/recommandations",
     component: lazy(() => import('../pages/RecommendationsPage')),
@@ -120,11 +106,7 @@ const routes: RouteConfig[] = [
     component: lazy(() => import('../pages/VirtualAssistantsPage')),
     exact: true
   },
-  {
-    path: "/creativite",
-    component: lazy(() => import('../pages/CreationIAPage')),
-    exact: true
-  },
+  // NOTE: /creativite → /creation-ia redirect is in App.tsx
   {
     path: "/conseil",
     component: lazy(() => import('../pages/ConsultingPage')),

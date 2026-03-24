@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
+import SEOHead from '../components/SEOHead';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
-import PrivateRoute from '../components/PrivateRoute';
+
 import CrmLayout from '../components/crm/CrmLayout';
 import ContactList from '../components/crm/ContactList';
 import ContactForm from '../components/crm/ContactForm';
@@ -9,6 +10,7 @@ import ContactDetail from '../components/crm/ContactDetail';
 import { fetchContactById } from '../services/contactService';
 
 const ContactsPage: React.FC = () => {
+  const { t } = useTranslation('crm');
   const [isCreatingNew, setIsCreatingNew] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [selectedContactId, setSelectedContactId] = useState<string | null>(null);
@@ -81,28 +83,28 @@ const ContactsPage: React.FC = () => {
 
   if (loading) {
     return (
-      <PrivateRoute>
+      <>
         <CrmLayout>
           <div className="flex justify-center items-center h-64">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
           </div>
         </CrmLayout>
-      </PrivateRoute>
+      </>
     );
   }
 
   return (
-    <PrivateRoute>
+    <>
       <CrmLayout>
         <section className="py-10 bg-gray-50 min-h-screen">
-          <Helmet>
-            <title>Gestion des contacts | AInspiration CRM</title>
-            <meta name="description" content="Gérez vos contacts professionnels et suivez toutes les interactions." />
-          </Helmet>
-          
+          <SEOHead
+            title={t('pages.contacts.seoTitle')}
+            description={t('pages.contacts.seoDescription')}
+          />
+
           <div className="container mx-auto px-4">
             {isCreatingNew ? (
-              <ContactForm 
+              <ContactForm
                 onClose={handleCloseForm}
                 onSaved={handleSaved}
               />
@@ -121,7 +123,7 @@ const ContactsPage: React.FC = () => {
             ) : (
               <>
                 <h1 className="text-3xl font-bold text-gray-900 mb-8">
-                  Gestion des contacts
+                  {t('pages.contacts.heading')}
                 </h1>
                 
                 <ContactList
@@ -133,7 +135,7 @@ const ContactsPage: React.FC = () => {
           </div>
         </section>
       </CrmLayout>
-    </PrivateRoute>
+    </>
   );
 };
 

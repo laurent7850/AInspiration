@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Brain, ShieldCheck, Users, Play, Pause } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -15,10 +15,19 @@ const VIDEO_SOURCES: Record<string, string> = {
 
 export default function Hero() {
   const [showStartForm, setShowStartForm] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [hasEnded, setHasEnded] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const { t, i18n } = useTranslation('common');
+
+  // Defer video loading after LCP — start loading after 2s
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVideoReady(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const lang = i18n.language?.substring(0, 2) || 'fr';
   const videoSrc = VIDEO_SOURCES[lang] || VIDEO_SOURCES.fr;
@@ -58,17 +67,17 @@ export default function Hero() {
                 className="bg-indigo-600 text-white px-8 py-4 rounded-lg hover:bg-indigo-700 transition-all font-semibold shadow-lg shadow-indigo-500/25 text-lg transform hover:-translate-y-0.5"
               >
                 {t('button.startFreeAudit')}
-                <span className="block text-sm font-normal opacity-80 mt-0.5">{t('hero.ctaSubtext', 'Résultats en 24h — Sans engagement')}</span>
+                <span className="block text-sm font-normal opacity-80 mt-0.5">{t('hero.ctaSubtext')}</span>
               </button>
               <Link
                 to="/etudes-de-cas"
                 className="group relative px-8 py-4 rounded-lg font-semibold text-center text-indigo-600 border-2 border-indigo-300 hover:border-indigo-500 bg-white/80 backdrop-blur-sm hover:bg-indigo-50 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-500/10"
               >
                 <span className="flex items-center justify-center gap-2">
-                  {t('button.seeCaseStudies', 'Voir les résultats clients')}
+                  {t('button.seeCaseStudies')}
                   <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                 </span>
-                <span className="block text-sm font-normal opacity-60 mt-0.5">{t('hero.caseStudiesSubtext', '+50 PME accompagnées')}</span>
+                <span className="block text-sm font-normal opacity-60 mt-0.5">{t('hero.caseStudiesSubtext')}</span>
               </Link>
             </div>
 
@@ -89,28 +98,41 @@ export default function Hero() {
           </div>
 
           <div className="relative mt-8 lg:mt-0">
-            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 to-purple-500/30 rounded-3xl blur-3xl" aria-hidden="true"></div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-3xl blur-xl" aria-hidden="true"></div>
             <div className="relative rounded-2xl shadow-2xl overflow-hidden">
-              {/* Video layer */}
+              {/* Video layer — deferred loading for LCP optimization */}
               <div className={`transition-opacity duration-700 ${hasEnded ? 'opacity-0' : 'opacity-100'}`}>
-                <video
-                  ref={videoRef}
-                  key={videoSrc}
-                  className="w-full rounded-2xl cursor-pointer"
-                  poster="/images/hero-ai-business.webp"
-                  preload="auto"
-                  playsInline
-                  autoPlay
-                  muted
-                  onClick={handlePlayPause}
-                  onPlay={() => setIsPlaying(true)}
-                  onPause={() => setIsPlaying(false)}
-                  onEnded={() => { setIsPlaying(false); setHasEnded(true); }}
-                >
-                  <source src={videoSrc} type="video/mp4" />
-                </video>
+                {/* Poster image as LCP element — loads immediately */}
+                {!videoReady && (
+                  <img
+                    src="/images/hero-ai-business.webp"
+                    alt={t('hero.imageAlt')}
+                    className="w-full rounded-2xl"
+                    fetchPriority="high"
+                    width={600}
+                    height={400}
+                  />
+                )}
+                {videoReady && (
+                  <video
+                    ref={videoRef}
+                    key={videoSrc}
+                    className="w-full rounded-2xl cursor-pointer"
+                    poster="/images/hero-ai-business.webp"
+                    preload="none"
+                    playsInline
+                    autoPlay
+                    muted
+                    onClick={handlePlayPause}
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
+                    onEnded={() => { setIsPlaying(false); setHasEnded(true); }}
+                  >
+                    <source src={videoSrc} type="video/mp4" />
+                  </video>
+                )}
                 {/* Pause overlay (visible on hover during playback) */}
-                {!hasEnded && (
+                {videoReady && !hasEnded && (
                   <div
                     className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 cursor-pointer ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}
                     onClick={handlePlayPause}
@@ -129,7 +151,7 @@ export default function Hero() {
               <div className={`absolute inset-0 transition-opacity duration-700 ${hasEnded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <img
                   src={HERO_IMAGE}
-                  alt={t('hero.imageAlt', 'Intelligence Artificielle en entreprise')}
+                  alt={t('hero.imageAlt')}
                   className="w-full h-full object-cover rounded-2xl"
                 />
               </div>

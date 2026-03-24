@@ -1,6 +1,12 @@
 import React from 'react';
 import VirtualAssistants from '../components/VirtualAssistants';
+import SEOHead from '../components/SEOHead';
 
 export default function VirtualAssistantsPage() {
-  return <VirtualAssistants />;
+  return (
+    <>
+      <SEOHead canonical="/assistants" />
+      <VirtualAssistants />
+    </>
+  );
 }

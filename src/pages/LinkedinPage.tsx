@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
+import SEOHead from '../components/SEOHead';
 import CrmLayout from '../components/crm/CrmLayout';
-import PrivateRoute from '../components/PrivateRoute';
+
 import {
   Linkedin,
   Plus,
@@ -39,17 +40,18 @@ import {
   updateLinkedinSettings
 } from '../services/linkedinService';
 
-const STATUS_CONFIG: Record<string, { label: string; color: string; icon: React.ElementType }> = {
-  generated: { label: 'Généré', color: 'bg-blue-100 text-blue-700', icon: Sparkles },
-  review_pending: { label: 'En attente', color: 'bg-yellow-100 text-yellow-700', icon: Clock },
-  approved: { label: 'Approuvé', color: 'bg-green-100 text-green-700', icon: Check },
-  published: { label: 'Publié', color: 'bg-emerald-100 text-emerald-700', icon: CheckCircle },
-  failed: { label: 'Échoué', color: 'bg-red-100 text-red-700', icon: XCircle },
-  queued: { label: 'En file', color: 'bg-orange-100 text-orange-700', icon: Clock },
-  draft: { label: 'Brouillon', color: 'bg-gray-100 text-gray-700', icon: Edit3 }
+const STATUS_COLORS: Record<string, { color: string; icon: React.ElementType }> = {
+  generated: { color: 'bg-blue-100 text-blue-700', icon: Sparkles },
+  review_pending: { color: 'bg-yellow-100 text-yellow-700', icon: Clock },
+  approved: { color: 'bg-green-100 text-green-700', icon: Check },
+  published: { color: 'bg-emerald-100 text-emerald-700', icon: CheckCircle },
+  failed: { color: 'bg-red-100 text-red-700', icon: XCircle },
+  queued: { color: 'bg-orange-100 text-orange-700', icon: Clock },
+  draft: { color: 'bg-gray-100 text-gray-700', icon: Edit3 }
 };
 
 const LinkedinPage: React.FC = () => {
+  const { t } = useTranslation('crm');
   const [status, setStatus] = useState<LinkedinStatus | null>(null);
   const [posts, setPosts] = useState<LinkedinPost[]>([]);
   const [total, setTotal] = useState(0);
@@ -78,7 +80,7 @@ const LinkedinPage: React.FC = () => {
       setTotal(postsRes.total);
       setSettings(settingsRes);
     } catch (err: any) {
-      setError(err.message || 'Erreur de chargement');
+      setError(err.message || t('pages.linkedin.errors.loading'));
     } finally {
       setLoading(false);
     }
@@ -91,7 +93,7 @@ const LinkedinPage: React.FC = () => {
       const { url } = await fetchLinkedinConnectUrl();
       window.location.href = url;
     } catch (err: any) {
-      setError(err.message || 'Erreur de connexion LinkedIn');
+      setError(err.message || t('pages.linkedin.errors.connection'));
     }
   };
 
@@ -100,10 +102,10 @@ const LinkedinPage: React.FC = () => {
       setGenerating(true);
       setError('');
       const post = await generateLinkedinPost();
-      setSuccess(`Post généré : "${post.title}"`);
+      setSuccess(t('pages.linkedin.success.generated', { title: post.title }));
       await loadData();
     } catch (err: any) {
-      setError(err.message || 'Erreur de génération');
+      setError(err.message || t('pages.linkedin.errors.generation'));
     } finally {
       setGenerating(false);
     }
@@ -114,10 +116,10 @@ const LinkedinPage: React.FC = () => {
       setPublishing(id);
       setError('');
       const result = await publishLinkedinPost(id);
-      setSuccess(result.postUrl ? `Publié sur LinkedIn !` : 'Publication réussie');
+      setSuccess(result.postUrl ? t('pages.linkedin.success.published') : t('pages.linkedin.success.publishedAlt'));
       await loadData();
     } catch (err: any) {
-      setError(err.message || 'Erreur de publication');
+      setError(err.message || t('pages.linkedin.errors.publishing'));
     } finally {
       setPublishing(null);
     }
@@ -126,7 +128,7 @@ const LinkedinPage: React.FC = () => {
   const handleApprove = async (id: string) => {
     try {
       await approveLinkedinPost(id);
-      setSuccess('Post approuvé');
+      setSuccess(t('pages.linkedin.success.approved'));
       await loadData();
     } catch (err: any) {
       setError(err.message);
@@ -134,7 +136,7 @@ const LinkedinPage: React.FC = () => {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Supprimer ce post ?')) return;
+    if (!confirm(t('pages.linkedin.errors.deleteConfirm'))) return;
     try {
       await deleteLinkedinPost(id);
       setSelectedPost(null);
@@ -149,7 +151,7 @@ const LinkedinPage: React.FC = () => {
     try {
       await updateLinkedinPost(editingPost.id, { content: editContent });
       setEditingPost(null);
-      setSuccess('Post mis à jour');
+      setSuccess(t('pages.linkedin.success.updated'));
       await loadData();
     } catch (err: any) {
       setError(err.message);
@@ -165,7 +167,7 @@ const LinkedinPage: React.FC = () => {
     };
     try {
       await updateLinkedinSettings('linkedin_config', newConfig);
-      setSuccess(newConfig.auto_publish ? 'Publication automatique activée' : 'Approbation manuelle activée');
+      setSuccess(newConfig.auto_publish ? t('pages.linkedin.success.autoPublishOn') : t('pages.linkedin.success.manualApproval'));
       await loadData();
     } catch (err: any) {
       setError(err.message);
@@ -176,22 +178,22 @@ const LinkedinPage: React.FC = () => {
 
   if (loading) {
     return (
-      <PrivateRoute>
+      <>
         <CrmLayout>
           <div className="flex items-center justify-center h-64">
             <Loader2 className="w-8 h-8 text-indigo-600 animate-spin" />
           </div>
         </CrmLayout>
-      </PrivateRoute>
+      </>
     );
   }
 
   return (
-    <PrivateRoute>
+    <>
       <CrmLayout>
-        <Helmet>
-          <title>LinkedIn Auto-Publishing | AInspiration CRM</title>
-        </Helmet>
+        <SEOHead
+          title={t('pages.linkedin.seoTitle')}
+        />
 
         <div className="p-6 max-w-6xl mx-auto">
           {/* Header */}
@@ -202,7 +204,7 @@ const LinkedinPage: React.FC = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">LinkedIn</h1>
-                <p className="text-sm text-gray-500">Publication automatique de contenu IA</p>
+                <p className="text-sm text-gray-500">{t('pages.linkedin.subtitle')}</p>
               </div>
             </div>
             <div className="flex gap-2">
@@ -218,7 +220,7 @@ const LinkedinPage: React.FC = () => {
                 className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors"
               >
                 {generating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
-                Générer un post
+                {t('pages.linkedin.generatePost')}
               </button>
             </div>
           </div>
@@ -247,11 +249,11 @@ const LinkedinPage: React.FC = () => {
                 <div>
                   <p className="font-medium text-gray-900">
                     {status?.connected
-                      ? `Connecté : ${status.profileData?.name || 'LinkedIn'}`
-                      : 'Non connecté à LinkedIn'}
+                      ? t('pages.linkedin.connected', { name: status.profileData?.name || 'LinkedIn' })
+                      : t('pages.linkedin.notConnected')}
                   </p>
                   {status?.connected && status.daysLeft && (
-                    <p className="text-xs text-gray-500">Token expire dans {status.daysLeft} jours</p>
+                    <p className="text-xs text-gray-500">{t('pages.linkedin.tokenExpires', { days: status.daysLeft })}</p>
                   )}
                 </div>
               </div>
@@ -261,7 +263,7 @@ const LinkedinPage: React.FC = () => {
                   className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   <Link2 className="w-4 h-4" />
-                  Connecter LinkedIn
+                  {t('pages.linkedin.connectLinkedin')}
                 </button>
               )}
             </div>
@@ -270,10 +272,10 @@ const LinkedinPage: React.FC = () => {
           {/* Settings Panel */}
           {showSettings && settings && (
             <div className="mb-6 p-4 bg-white border rounded-lg">
-              <h3 className="font-semibold text-gray-900 mb-3">Configuration</h3>
+              <h3 className="font-semibold text-gray-900 mb-3">{t('pages.linkedin.settingsTitle')}</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <span className="text-sm text-gray-700">Publication automatique</span>
+                  <span className="text-sm text-gray-700">{t('pages.linkedin.autoPublish')}</span>
                   <button
                     onClick={handleToggleAutoPublish}
                     className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
@@ -286,13 +288,13 @@ const LinkedinPage: React.FC = () => {
                   </button>
                 </div>
                 <div className="p-3 bg-gray-50 rounded-lg">
-                  <span className="text-sm text-gray-500">Planning</span>
+                  <span className="text-sm text-gray-500">{t('pages.linkedin.schedule')}</span>
                   <p className="text-sm font-medium">
                     {settings.scheduling_config?.cron_day || 'jeudi'} à {settings.scheduling_config?.cron_hour || 10}h
                   </p>
                 </div>
                 <div className="p-3 bg-gray-50 rounded-lg">
-                  <span className="text-sm text-gray-500">Total posts</span>
+                  <span className="text-sm text-gray-500">{t('pages.linkedin.totalPosts')}</span>
                   <p className="text-sm font-medium">{total}</p>
                 </div>
               </div>
@@ -311,7 +313,7 @@ const LinkedinPage: React.FC = () => {
                     : 'bg-white border text-gray-600 hover:bg-gray-50'
                 }`}
               >
-                {f === '' ? 'Tous' : STATUS_CONFIG[f]?.label || f}
+                {f === '' ? t('pages.linkedin.filterAll') : t(`pages.linkedin.status.${f}`, f)}
               </button>
             ))}
             <button onClick={loadData} className="ml-auto p-2 text-gray-500 hover:bg-gray-100 rounded-lg">
@@ -323,19 +325,19 @@ const LinkedinPage: React.FC = () => {
           {posts.length === 0 ? (
             <div className="text-center py-12 bg-white rounded-lg border">
               <Linkedin className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-              <p className="text-gray-500">Aucun post LinkedIn</p>
+              <p className="text-gray-500">{t('pages.linkedin.noPostsTitle')}</p>
               <button
                 onClick={handleGenerate}
                 disabled={generating}
                 className="mt-3 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm"
               >
-                Générer le premier post
+                {t('pages.linkedin.generateFirst')}
               </button>
             </div>
           ) : (
             <div className="space-y-3">
               {posts.map(post => {
-                const statusConf = STATUS_CONFIG[post.status] || STATUS_CONFIG.draft;
+                const statusConf = STATUS_COLORS[post.status] || STATUS_COLORS.draft;
                 const StatusIcon = statusConf.icon;
 
                 return (
@@ -346,7 +348,7 @@ const LinkedinPage: React.FC = () => {
                           <div className="flex items-center gap-2 mb-1">
                             <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${statusConf.color}`}>
                               <StatusIcon className="w-3 h-3" />
-                              {statusConf.label}
+                              {t(`pages.linkedin.status.${post.status}`, post.status)}
                             </span>
                             {post.angle && (
                               <span className="text-xs text-gray-400">{post.angle.replace('_', ' ')}</span>
@@ -355,7 +357,7 @@ const LinkedinPage: React.FC = () => {
                               {new Date(post.created_at).toLocaleDateString('fr-BE', { day: 'numeric', month: 'short', year: 'numeric' })}
                             </span>
                           </div>
-                          <h3 className="font-medium text-gray-900 truncate">{post.title || 'Sans titre'}</h3>
+                          <h3 className="font-medium text-gray-900 truncate">{post.title || t('pages.linkedin.noTitle')}</h3>
                           <p className="text-sm text-gray-500 line-clamp-2 mt-1">
                             {post.hook || post.content?.slice(0, 150)}
                           </p>
@@ -441,7 +443,7 @@ const LinkedinPage: React.FC = () => {
                             </p>
                           )}
                           {post.error_message && (
-                            <p className="mt-2 text-xs text-red-500">Erreur : {post.error_message}</p>
+                            <p className="mt-2 text-xs text-red-500">{t('pages.linkedin.errorPrefix')}{post.error_message}</p>
                           )}
                         </div>
                       )}
@@ -457,7 +459,7 @@ const LinkedinPage: React.FC = () => {
             <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
               <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[80vh] flex flex-col">
                 <div className="flex items-center justify-between p-4 border-b">
-                  <h3 className="font-semibold text-gray-900">Modifier le post</h3>
+                  <h3 className="font-semibold text-gray-900">{t('pages.linkedin.editModalTitle')}</h3>
                   <button onClick={() => setEditingPost(null)} className="text-gray-400 hover:text-gray-600">
                     <X className="w-5 h-5" />
                   </button>
@@ -468,21 +470,21 @@ const LinkedinPage: React.FC = () => {
                     onChange={e => setEditContent(e.target.value)}
                     className="w-full h-64 p-3 border rounded-lg text-sm font-sans resize-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                   />
-                  <p className="text-xs text-gray-400 mt-1">{editContent.length} caractères</p>
+                  <p className="text-xs text-gray-400 mt-1">{t('pages.linkedin.charCount', { count: editContent.length })}</p>
                 </div>
                 <div className="flex justify-end gap-2 p-4 border-t">
                   <button
                     onClick={() => setEditingPost(null)}
                     className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"
                   >
-                    Annuler
+                    {t('pages.linkedin.cancel')}
                   </button>
                   <button
                     onClick={handleSaveEdit}
                     className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
                   >
                     <Save className="w-4 h-4" />
-                    Enregistrer
+                    {t('pages.linkedin.save')}
                   </button>
                 </div>
               </div>
@@ -490,7 +492,7 @@ const LinkedinPage: React.FC = () => {
           )}
         </div>
       </CrmLayout>
-    </PrivateRoute>
+    </>
   );
 };
 

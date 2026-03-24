@@ -20,8 +20,9 @@ import {
   Image,
   PenTool
 } from 'lucide-react';
-import StartForm from '../components/StartForm';
+import AuditForm from '../components/AuditForm';
 import AnimatedStats from '../components/AnimatedStats';
+import RelatedServices from '../components/ui/RelatedServices';
 import SEOHead from '../components/SEOHead';
 import { getSEOConfig } from '../config/seoConfig';
 import { createServiceSchema } from '../utils/structuredData';
@@ -334,11 +335,21 @@ const SolutionsPage: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Related Services */}
+        <div className="mt-16 mb-8">
+          <RelatedServices links={[
+            { path: '/audit', title: 'Audit IA Gratuit', description: 'Analyse complète de votre activité en 24h' },
+            { path: '/automatisation', title: 'Automatisation IA', description: 'Réduisez 60% de vos tâches répétitives' },
+            { path: '/assistants', title: 'Assistants Virtuels', description: 'Chatbots et assistants IA 24/7' },
+            { path: '/analyse-ia', title: 'Analyse IA', description: 'Exploitez vos données avec l\'IA' },
+          ]} />
+        </div>
       </div>
 
-      <StartForm 
-        isOpen={showStartForm} 
-        onClose={() => setShowStartForm(false)} 
+      <AuditForm
+        isOpen={showStartForm}
+        onClose={() => setShowStartForm(false)}
       />
       </section>
     </>

@@ -1,27 +1,26 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import PrivateRoute from '../components/PrivateRoute';
+import { useTranslation } from 'react-i18next';
+import SEOHead from '../components/SEOHead';
 import DashboardView from '../components/crm/DashboardView';
 import CrmLayout from '../components/crm/CrmLayout';
 
 const CrmDashboardPage: React.FC = () => {
+  const { t } = useTranslation('crm');
   return (
-    <PrivateRoute>
-      <CrmLayout>
-        <div className="bg-gray-50 min-h-screen">
-          <Helmet>
-            <title>CRM Intelligent | AInspiration</title>
-            <meta name="description" content="Tableau de bord CRM intelligent propulsé par l'IA. Gérez vos leads, opportunités et suivez vos performances commerciales." />
-          </Helmet>
+    <CrmLayout>
+      <div className="bg-gray-50 min-h-screen">
+        <SEOHead
+          title={t('dashboardView.title') + ' | AInspiration'}
+          description={t('dashboardView.subtitle')}
+        />
 
-          <section className="py-6 md:py-10">
-            <div className="container mx-auto px-4">
-              <DashboardView />
-            </div>
-          </section>
-        </div>
-      </CrmLayout>
-    </PrivateRoute>
+        <section className="py-6 md:py-10">
+          <div className="container mx-auto px-4">
+            <DashboardView />
+          </div>
+        </section>
+      </div>
+    </CrmLayout>
   );
 };
 

@@ -145,6 +145,7 @@ const ContactPage: React.FC = () => {
             title={t('contact.pageTitle')}
             subtitle={t('contact.pageSubtitle')}
             centered
+            as="h1"
           />
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">

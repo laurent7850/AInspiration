@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E3ZE8FSYN1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-E3ZE8FSYN1');
-    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -100,7 +92,8 @@
     }
     </script>
 
-    <!-- DNS prefetch pour le chatbot n8n (non bloquant) -->
+    <!-- Preconnect pour les API critiques -->
+    <link rel="preconnect" href="https://ainspiration.eu" crossorigin>
     <link rel="dns-prefetch" href="https://n8n.srv767464.hstgr.cloud">
 
     <!-- Preconnect pour images Unsplash -->
@@ -108,9 +101,6 @@
 
     <!-- Preload poster Hero LCP critique -->
     <link rel="preload" href="/images/hero-ai-business.webp" as="image" type="image/webp" fetchpriority="high">
-
-    <!-- Preload video Hero (FR par défaut) -->
-    <link rel="preload" href="/videos/intro-fr.mp4" as="video" type="video/mp4">
 
     <!-- Theme color -->
     <meta name="theme-color" content="#4f46e5">
@@ -124,27 +114,83 @@
   <body>
     <div id="root">
       <!-- Contenu initial pour crawlers SEO (remplacé par React au chargement) -->
-      <h1>Gagnez 10h par semaine grâce à l'IA</h1>
-      <p>Rejoignez les PME qui automatisent leurs tâches répétitives et boostent leur chiffre d'affaires avec nos solutions d'Intelligence Artificielle — sans compétence technique requise.</p>
-      <h2>L'Intelligence Artificielle au service des PME</h2>
-      <p>AInspiration rend l'IA accessible à toutes les PME : restaurants, e-commerces, cabinets de conseil, agences marketing, artisans et indépendants. Nos clients constatent en moyenne un ROI de 180%, une réduction de 60% du temps consacré aux tâches répétitives et une augmentation de 45% de leur productivité.</p>
-      <h3>Nos services</h3>
-      <ul>
-        <li>Audit IA gratuit en 24h, sans engagement</li>
-        <li>Automatisation intelligente des processus</li>
-        <li>Assistants virtuels et chatbots 24h/24</li>
-        <li>Génération de contenu marketing par IA</li>
-        <li>Analyse de données et tableaux de bord IA</li>
-        <li>CRM intelligent avec scoring de leads</li>
-        <li>Formation IA pour vos équipes</li>
-        <li>Accompagnement personnalisé de A à Z</li>
-      </ul>
-      <h3>Résultats concrets</h3>
-      <p>Mise en place en 48h maximum. 98% de satisfaction client. Données 100% sécurisées et conformes RGPD, hébergées en Europe. Basés à Enghien en Belgique, nous accompagnons les entreprises en Belgique et en France en français, anglais et néerlandais.</p>
-      <h3>Questions fréquentes</h3>
-      <p>Faut-il des compétences techniques ? Non, nos solutions sont simples d'utilisation. L'audit est-il gratuit ? Oui, 100% gratuit et sans engagement. Vos données sont-elles en sécurité ? Absolument, nous sommes conformes RGPD.</p>
+      <header>
+        <nav aria-label="Navigation principale">
+          <a href="/">AInspiration</a> |
+          <a href="/audit">Audit IA gratuit</a> |
+          <a href="/solutions">Solutions IA</a> |
+          <a href="/automatisation">Automatisation</a> |
+          <a href="/formation">Formation IA</a> |
+          <a href="/blog">Blog</a> |
+          <a href="/contact">Contact</a>
+        </nav>
+      </header>
+      <main>
+        <h1>Gagnez 10h par semaine grâce à l'IA — Solutions d'Intelligence Artificielle pour PME</h1>
+        <p>AInspiration aide les PME à automatiser leurs tâches répétitives et booster leur chiffre d'affaires grâce à l'Intelligence Artificielle. Audit IA gratuit en 24h, sans engagement. Plus de 50 entreprises accompagnées en Belgique et en France.</p>
+
+        <h2>Pourquoi choisir l'IA pour votre PME ?</h2>
+        <p>L'Intelligence Artificielle n'est plus réservée aux grandes entreprises. AInspiration rend l'IA accessible à toutes les PME : restaurants, e-commerces, cabinets de conseil, agences marketing, artisans et indépendants. Nos clients constatent en moyenne un ROI de 180%, une réduction de 60% du temps consacré aux tâches répétitives et une augmentation de 45% de leur productivité. Que vous cherchiez à automatiser votre service client, optimiser votre marketing ou analyser vos données, nous avons une solution adaptée à votre activité.</p>
+
+        <h2>Nos solutions d'Intelligence Artificielle</h2>
+        <ul>
+          <li><strong>Audit IA gratuit</strong> — Analyse complète de votre activité en 24h. Identification des processus automatisables et plan d'action concret.</li>
+          <li><strong>Automatisation intelligente</strong> — Réduction de 60% des tâches répétitives grâce aux workflows IA : facturation, emails, relances, reporting.</li>
+          <li><strong>Chatbots et assistants virtuels</strong> — Service client 24h/24, qualification de leads automatique, réponses instantanées.</li>
+          <li><strong>Génération de contenu IA</strong> — Articles de blog, posts réseaux sociaux, newsletters, visuels marketing créés par IA.</li>
+          <li><strong>Analyse de données IA</strong> — Tableaux de bord intelligents, prédictions de ventes, segmentation clients avancée.</li>
+          <li><strong>CRM intelligent</strong> — Scoring de leads automatique, suivi des opportunités, recommandations IA.</li>
+          <li><strong>Formation IA pour entreprises</strong> — Apprenez à utiliser ChatGPT, Copilot et les outils IA pour votre métier.</li>
+          <li><strong>Accompagnement personnalisé</strong> — De la stratégie à la mise en œuvre, un expert IA dédié à votre projet.</li>
+        </ul>
+
+        <h2>Résultats concrets pour nos clients</h2>
+        <p>Mise en place en 48h maximum. 98% de satisfaction client. Plus de 180% de ROI moyen. Données 100% sécurisées et conformes RGPD, hébergées en Europe. Basés à Enghien (Hainaut, Belgique), nous accompagnons les entreprises en Belgique et en France en français, anglais et néerlandais.</p>
+
+        <h2>Témoignages clients</h2>
+        <blockquote>« On a divisé par deux les no-shows, je gagne au moins 1h par jour. » — Thierry, restaurateur</blockquote>
+        <blockquote>« Notre taux d'engagement a bondi de 40% et on publie 3 fois plus souvent. » — Sophie M., agence marketing</blockquote>
+        <blockquote>« 70% des demandes sont traitées automatiquement. Le ROI a été visible dès le premier mois. » — Marc D., e-commerce</blockquote>
+
+        <h2>Questions fréquentes sur l'IA pour les PME</h2>
+        <dl>
+          <dt>Faut-il des compétences techniques pour utiliser vos solutions ?</dt>
+          <dd>Absolument pas. Nos solutions sont conçues pour être simples d'utilisation. Nous nous occupons de toute la partie technique et vous accompagnons à chaque étape.</dd>
+          <dt>Combien de temps faut-il pour mettre en place une solution IA ?</dt>
+          <dd>La plupart de nos solutions sont opérationnelles en 48h. L'audit gratuit prend seulement 24h et vous livre un plan d'action concret.</dd>
+          <dt>L'audit IA est-il vraiment gratuit et sans engagement ?</dt>
+          <dd>Oui, 100% gratuit et sans engagement. Nous analysons votre activité et vous livrons un plan d'action personnalisé avec les gains estimés.</dd>
+          <dt>Mes données sont-elles en sécurité ?</dt>
+          <dd>Absolument. Nous sommes conformes RGPD et toutes les données sont hébergées en Europe sur des serveurs sécurisés.</dd>
+          <dt>Quel type d'entreprise peut bénéficier de vos services IA ?</dt>
+          <dd>Toute PME peut en bénéficier : restaurants, e-commerces, agences marketing, cabinets de conseil, artisans, indépendants et professions libérales.</dd>
+          <dt>Quel est le prix d'une solution IA pour PME ?</dt>
+          <dd>Nos tarifs s'adaptent à la taille et aux besoins de votre entreprise. L'audit gratuit vous permet d'obtenir un devis précis sans engagement.</dd>
+        </dl>
+
+        <h2>Blog — Derniers articles sur l'IA pour les entreprises</h2>
+        <ul>
+          <li><a href="/blog/chatgpt-pour-pme-cas-usage">ChatGPT pour les PME : cas d'usage concrets</a></li>
+          <li><a href="/blog/avantages-ia-pme">Les avantages de l'IA pour les PME</a></li>
+          <li><a href="/blog/integrer-ia-pme">Comment intégrer l'IA dans une PME</a></li>
+          <li><a href="/blog/meilleurs-outils-ia-pme">Les meilleurs outils IA pour petites entreprises</a></li>
+        </ul>
+      </main>
+      <footer>
+        <p>AInspiration — Solutions d'Intelligence Artificielle pour PME | Grand Place 50, 7850 Enghien, Belgique | info@ainspiration.eu | +32 477 94 28 65</p>
+        <p><a href="/privacy">Politique de confidentialité</a> | <a href="/mentions-legales">Mentions légales</a> | <a href="/cgv">CGV</a></p>
+      </footer>
     </div>
 
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Google tag (gtag.js) — déféré après le rendu pour optimiser LCP/FCP -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E3ZE8FSYN1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E3ZE8FSYN1');
+    </script>
   </body>
 </html>

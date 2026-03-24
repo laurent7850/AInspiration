@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { 
-  Brain, 
-  LineChart, 
-  PieChart, 
-  BarChart2, 
-  TrendingUp, 
+import { useTranslation } from 'react-i18next';
+import {
+  Brain,
+  LineChart,
+  PieChart,
+  BarChart2,
+  TrendingUp,
   Zap,
   ArrowRight,
   CheckCircle,
@@ -13,139 +13,64 @@ import {
   Database,
   Eye
 } from 'lucide-react';
-import StartForm from '../components/StartForm';
+import AuditForm from '../components/AuditForm';
+import RelatedServices from '../components/ui/RelatedServices';
+import SEOHead from '../components/SEOHead';
+import { getServiceSchema, getFAQSchema } from '../config/seoConfig';
 
 const AnalyseIAPage: React.FC = () => {
+  const { t } = useTranslation('analysis');
   const [showStartForm, setShowStartForm] = useState(false);
 
-  const mainFeatures = [
-    {
-      icon: LineChart,
-      title: "Analyse prédictive",
-      description: "Anticipez les tendances futures grâce à des algorithmes avancés d'apprentissage automatique qui identifient les patterns dans vos données historiques",
-      benefits: [
-        "Prévisions de ventes précises",
-        "Anticipation des comportements clients",
-        "Identification précoce des opportunités"
-      ]
-    },
-    {
-      icon: PieChart,
-      title: "Segmentation intelligente",
-      description: "Découvrez des segments de clients invisibles à l'œil nu grâce à des algorithmes de clustering qui révèlent des groupes homogènes dans vos données",
-      benefits: [
-        "Personnalisation ultra-ciblée",
-        "Optimisation des campagnes marketing",
-        "Découverte de niches inexploitées"
-      ]
-    },
-    {
-      icon: BarChart2,
-      title: "Tableaux de bord dynamiques",
-      description: "Visualisez vos KPIs en temps réel dans des interfaces interactives qui s'adaptent à vos besoins et vous alertent des changements significatifs",
-      benefits: [
-        "Vue d'ensemble instantanée",
-        "Alertes intelligentes automatisées",
-        "Personnalisation complète des vues"
-      ]
-    },
-    {
-      icon: Eye,
-      title: "Détection d'anomalies",
-      description: "Identifiez automatiquement les valeurs aberrantes et événements inhabituels dans vos données qui pourraient signaler des problèmes ou opportunités",
-      benefits: [
-        "Détection précoce des fraudes",
-        "Identification des dysfonctionnements",
-        "Repérage d'opportunités uniques"
-      ]
-    }
+  const featureIcons = [LineChart, PieChart, BarChart2, Eye];
+
+  const mainFeatures = (t('mainFeatures', { returnObjects: true }) as Array<{
+    title: string;
+    description: string;
+    benefits: string[];
+  }>).map((feature, index) => ({
+    ...feature,
+    icon: featureIcons[index],
+  }));
+
+  const metrics = t('metrics', { returnObjects: true }) as Array<{
+    value: string;
+    label: string;
+    description: string;
+  }>;
+
+  const useCaseItems = (t('useCases.items', { returnObjects: true }) as Array<{
+    title: string;
+    description: string;
+    examples: string[];
+    testimonialQuote: string;
+    testimonialAuthor: string;
+    testimonialRole: string;
+  }>);
+
+  const processSteps = (t('process.steps', { returnObjects: true }) as Array<{
+    title: string;
+    description: string;
+  }>).map((step, index) => ({ ...step, step: index + 1 }));
+
+  const analyseFAQs = [
+    { question: "Comment l'IA analyse-t-elle mes données ?", answer: "Nos algorithmes d'IA analysent vos données de ventes, clients et opérations pour identifier des tendances, prédire les comportements et recommander des actions concrètes." },
+    { question: "Mes données sont-elles en sécurité ?", answer: "Absolument. Toutes les données sont hébergées en Europe, chiffrées et conformes RGPD. Nous ne partageons jamais vos données avec des tiers." },
+    { question: "Quels types de données peut-on analyser ?", answer: "Données de ventes, comportement clients, performance marketing, stocks, flux financiers, activité web — tout type de données structurées ou semi-structurées." }
   ];
 
-  const useCases = [
-    {
-      title: "Commerce & Distribution",
-      description: "Optimisez vos stocks, prévoyez les ventes et personnalisez l'expérience client grâce à l'analyse prédictive de données.",
-      examples: [
-        "Prévision de la demande par produit et par magasin",
-        "Optimisation des prix en temps réel",
-        "Personnalisation des recommandations produits",
-        "Analyse du comportement client en magasin et en ligne"
-      ],
-      testimonial: {
-        quote: "Grâce à l'analyse prédictive d'AInspiration, nous avons réduit nos ruptures de stock de 78% tout en diminuant notre stock global de 15%.",
-        author: "Marie Deschamps",
-        role: "Directrice Supply Chain, MeubleExpress"
-      }
-    },
-    {
-      title: "Services financiers",
-      description: "Détectez les fraudes, évaluez les risques et identifiez de nouvelles opportunités d'investissement grâce à l'analyse avancée.",
-      examples: [
-        "Scoring crédit automatisé et personnalisé",
-        "Détection de fraudes en temps réel",
-        "Analyse des tendances de marché",
-        "Optimisation de portefeuilles d'investissement"
-      ],
-      testimonial: {
-        quote: "L'implémentation du système de détection d'anomalies nous a permis d'identifier 34% plus de transactions frauduleuses, tout en réduisant les faux positifs de 56%.",
-        author: "Thomas Lefèvre",
-        role: "RSSI, CréditPro"
-      }
-    }
-  ];
-
-  const metrics = [
-    {
-      value: "+67%",
-      label: "Précision prédictive",
-      description: "Par rapport aux méthodes conventionnelles"
-    },
-    {
-      value: "10x",
-      label: "Plus rapide",
-      description: "Analyses en temps réel"
-    },
-    {
-      value: "98%",
-      label: "Satisfaction client",
-      description: "Solutions adaptées"
-    },
-    {
-      value: "ROI +245%",
-      label: "Retour sur investissement",
-      description: "En moyenne sur 12 mois"
-    }
-  ];
-
-  const process = [
-    {
-      step: 1,
-      title: "Audit des données",
-      description: "Évaluation de vos sources de données, identification des lacunes et des opportunités d'enrichissement"
-    },
-    {
-      step: 2,
-      title: "Conception de la solution",
-      description: "Définition des objectifs d'analyse, sélection des algorithmes et création d'une architecture sur mesure"
-    },
-    {
-      step: 3,
-      title: "Implémentation & Test",
-      description: "Développement de la solution, intégration à vos systèmes et validation des résultats"
-    },
-    {
-      step: 4,
-      title: "Déploiement & Suivi",
-      description: "Mise en production, formation des équipes et optimisation continue des performances"
-    }
+  const analyseSchema = [
+    getServiceSchema("Analyse de Données IA pour PME", "Tableaux de bord intelligents, prédictions de ventes et segmentation clients avancée grâce à l'intelligence artificielle. Données hébergées en Europe, conformes RGPD."),
+    getFAQSchema(analyseFAQs)
   ];
 
   return (
     <section className="pt-20 bg-gradient-to-b from-gray-50 to-white">
-      <Helmet>
-        <title>Analyse IA - Solutions analytiques avancées | AInspiration</title>
-        <meta name="description" content="Transformez vos données en insights stratégiques avec nos solutions d'analyse IA. Prédictions, détection d'anomalies, segmentation et tableaux de bord personnalisés." />
-      </Helmet>
+      <SEOHead
+        title={t('seo.title')}
+        description={t('seo.description')}
+        schema={analyseSchema}
+      />
 
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16">
@@ -153,42 +78,40 @@ const AnalyseIAPage: React.FC = () => {
           <div>
             <div className="inline-flex gap-2 items-center bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium mb-6">
               <Brain className="w-4 h-4" />
-              <span>Solution d'analyse avancée</span>
+              <span>{t('hero.badge')}</span>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-              Transformez vos données en <span className="text-indigo-600">décisions stratégiques</span>
+              {t('hero.title')} <span className="text-indigo-600">{t('hero.titleHighlight')}</span>
             </h1>
-            
+
             <p className="text-lg text-gray-600 mb-8">
-              Notre solution d'analyse IA transforme vos données brutes en insights actionnables, 
-              révélant les tendances cachées et prédisant les évolutions futures pour vous donner 
-              un avantage concurrentiel décisif.
+              {t('hero.description')}
             </p>
-            
+
             <div className="flex flex-wrap gap-4">
-              <button 
+              <button
                 onClick={() => setShowStartForm(true)}
                 className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2 shadow-lg"
               >
-                Demander une démo
+                {t('hero.ctaDemo')}
                 <ArrowRight className="w-5 h-5" />
               </button>
-              
-              <button 
+
+              <button
                 onClick={() => setShowStartForm(true)}
                 className="bg-white border border-indigo-200 text-indigo-600 px-6 py-3 rounded-lg hover:bg-indigo-50 transition-colors"
               >
-                Consulter la documentation
+                {t('hero.ctaDocs')}
               </button>
             </div>
           </div>
-          
+
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
             <img
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80"
-              alt="Tableau de bord d'analyse de données"
+              alt={t('hero.imageAlt')}
               loading="lazy"
               className="relative rounded-xl shadow-xl w-full"
             />
@@ -200,29 +123,28 @@ const AnalyseIAPage: React.FC = () => {
       <div className="container mx-auto px-4 py-16 border-b border-gray-100">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Des fonctionnalités analytiques puissantes
+            {t('features.sectionTitle')}
           </h2>
           <p className="text-lg text-gray-600">
-            Notre plateforme combine des algorithmes avancés et une interface intuitive 
-            pour rendre l'analyse de données accessible à tous les niveaux de votre organisation.
+            {t('features.sectionDescription')}
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {mainFeatures.map((feature, index) => (
             <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
               <div className="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-5">
                 <feature.icon className="w-7 h-7 text-indigo-600" />
               </div>
-              
+
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 {feature.title}
               </h3>
-              
+
               <p className="text-gray-600 mb-5">
                 {feature.description}
               </p>
-              
+
               <ul className="space-y-2">
                 {feature.benefits.map((benefit, idx) => (
                   <li key={idx} className="flex items-start gap-2">
@@ -244,7 +166,7 @@ const AnalyseIAPage: React.FC = () => {
               <div key={index} className="text-center text-white">
                 <div className="text-4xl font-bold mb-2">{metric.value}</div>
                 <div className="text-xl font-semibold mb-1">{metric.label}</div>
-                <div className="text-indigo-200">{metric.description}</div>
+                <div className="text-indigo-100">{metric.description}</div>
               </div>
             ))}
           </div>
@@ -255,32 +177,32 @@ const AnalyseIAPage: React.FC = () => {
       <div className="container mx-auto px-4 py-16 border-b border-gray-100">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Applications sectorielles
+            {t('useCases.sectionTitle')}
           </h2>
           <p className="text-lg text-gray-600">
-            Découvrez comment notre solution d'analyse IA transforme les industries
+            {t('useCases.sectionDescription')}
           </p>
         </div>
-        
+
         <div className="space-y-16">
-          {useCases.map((useCase, index) => (
+          {useCaseItems.map((useCase, index) => (
             <div key={index} className="grid md:grid-cols-2 gap-8 items-center">
               <div className={`order-2 ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                   <Lightbulb className="w-6 h-6 text-indigo-600" />
                   {useCase.title}
                 </h3>
-                
+
                 <p className="text-gray-600 mb-6 text-lg">
                   {useCase.description}
                 </p>
-                
+
                 <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
                   <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                     <Database className="w-5 h-5 text-indigo-600" />
-                    Applications concrètes
+                    {t('useCases.concreteApplications')}
                   </h4>
-                  
+
                   <ul className="space-y-2">
                     {useCase.examples.map((example, idx) => (
                       <li key={idx} className="flex items-start gap-2">
@@ -290,21 +212,21 @@ const AnalyseIAPage: React.FC = () => {
                     ))}
                   </ul>
                 </div>
-                
+
                 <blockquote className="bg-indigo-50 p-5 rounded-lg border-l-4 border-indigo-600">
-                  <p className="text-gray-700 italic mb-4">"{useCase.testimonial.quote}"</p>
+                  <p className="text-gray-700 italic mb-4">"{useCase.testimonialQuote}"</p>
                   <footer className="font-medium">
-                    <span className="text-indigo-600">{useCase.testimonial.author}</span>, {useCase.testimonial.role}
+                    <span className="text-indigo-600">{useCase.testimonialAuthor}</span>, {useCase.testimonialRole}
                   </footer>
                 </blockquote>
               </div>
-              
+
               <div className={`order-1 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
                   <img
                     src={`https://images.unsplash.com/photo-${index === 0 ? '1551288049-bebda4e38f71' : '1460925895917-afdab827c52f'}?w=800&auto=format&fit=crop&q=80`}
-                    alt={`${useCase.title} - Analyse IA`}
+                    alt={`${useCase.title} - ${t('useCases.imageAlt')}`}
                     loading="lazy"
                     className="relative rounded-xl shadow-xl w-full"
                   />
@@ -319,24 +241,24 @@ const AnalyseIAPage: React.FC = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Notre processus d'implémentation
+            {t('process.sectionTitle')}
           </h2>
           <p className="text-lg text-gray-600">
-            Une approche structurée pour garantir des résultats concrets
+            {t('process.sectionDescription')}
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {process.map((step) => (
+          {processSteps.map((step) => (
             <div key={step.step} className="bg-white rounded-xl shadow-lg p-6">
               <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-4">
                 {step.step}
               </div>
-              
+
               <h3 className="text-xl font-bold text-gray-900 mb-2">
                 {step.title}
               </h3>
-              
+
               <p className="text-gray-600">
                 {step.description}
               </p>
@@ -351,57 +273,56 @@ const AnalyseIAPage: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="text-white">
               <h2 className="text-3xl font-bold mb-6">
-                Prêt à exploiter la puissance de vos données ?
+                {t('cta.title')}
               </h2>
               <p className="text-xl text-indigo-100 mb-8">
-                Découvrez comment notre solution d'analyse IA peut transformer votre approche métier 
-                et vous donner un avantage concurrentiel décisif.
+                {t('cta.description')}
               </p>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Zap className="w-6 h-6 text-yellow-300" />
-                  <span className="text-indigo-100">Mise en place en moins de 2 semaines</span>
+                  <span className="text-indigo-100">{t('cta.bullet1')}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <TrendingUp className="w-6 h-6 text-yellow-300" />
-                  <span className="text-indigo-100">ROI mesurable dès le premier mois</span>
+                  <span className="text-indigo-100">{t('cta.bullet2')}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Database className="w-6 h-6 text-yellow-300" />
-                  <span className="text-indigo-100">Compatible avec toutes vos sources de données</span>
+                  <span className="text-indigo-100">{t('cta.bullet3')}</span>
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-white rounded-xl shadow-xl p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Planifiez votre démo gratuite
+                {t('cta.demoTitle')}
               </h3>
-              
+
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Présentation personnalisée de la solution</span>
+                  <span className="text-gray-700">{t('cta.check1')}</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Analyse de vos besoins spécifiques</span>
+                  <span className="text-gray-700">{t('cta.check2')}</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Exemple concret avec vos données</span>
+                  <span className="text-gray-700">{t('cta.check3')}</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Proposition sur mesure en 48h</span>
+                  <span className="text-gray-700">{t('cta.check4')}</span>
                 </div>
               </div>
-              
-              <button 
+
+              <button
                 onClick={() => setShowStartForm(true)}
                 className="w-full bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2 shadow-lg"
               >
-                Planifier ma démo
+                {t('cta.button')}
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
@@ -409,10 +330,20 @@ const AnalyseIAPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Related Services */}
+      <div className="container mx-auto px-4 mt-16 mb-8">
+        <RelatedServices links={[
+          { path: '/audit', title: 'Audit IA Gratuit', description: 'Analyse complète de votre activité en 24h' },
+          { path: '/automatisation', title: 'Automatisation IA', description: 'Réduisez 60% de vos tâches répétitives' },
+          { path: '/formation', title: 'Formation IA', description: 'Formez vos équipes aux outils IA' },
+          { path: '/solutions', title: 'Nos Solutions', description: 'Découvrez toutes nos solutions IA' },
+        ]} />
+      </div>
+
       {/* Contact Form Modal */}
-      <StartForm 
-        isOpen={showStartForm} 
-        onClose={() => setShowStartForm(false)} 
+      <AuditForm
+        isOpen={showStartForm}
+        onClose={() => setShowStartForm(false)}
       />
     </section>
   );
