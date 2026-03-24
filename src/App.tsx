@@ -1,5 +1,5 @@
 import { Suspense, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import routes from './config/routes';
 import LanguageHandler from './components/LanguageHandler';
@@ -48,6 +48,11 @@ export default function App() {
             <Route path="/en/*" element={<LanguageHandler />} />
             {/* Dutch routes under /nl/* */}
             <Route path="/nl/*" element={<LanguageHandler />} />
+            {/* Redirects for old/merged pages (SEO 301-equivalent) */}
+            <Route path="/pourquoi-ia" element={<Navigate to="/" replace />} />
+            <Route path="/pour-qui-ia" element={<Navigate to="/solutions" replace />} />
+            <Route path="/creation-visuelle" element={<Navigate to="/creation-ia" replace />} />
+            <Route path="/creativite" element={<Navigate to="/creation-ia" replace />} />
             {/* Default French routes (no prefix) */}
             {routes.map((route) => (
               <Route

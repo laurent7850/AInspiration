@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
+import SEOHead from '../components/SEOHead';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { LayoutList, Kanban } from 'lucide-react';
 import OpportunityList from '../components/crm/OpportunityList';
@@ -7,11 +8,12 @@ import OpportunityKanban from '../components/crm/OpportunityKanban';
 import OpportunityForm from '../components/crm/OpportunityForm';
 import OpportunityDetail from '../components/crm/OpportunityDetail';
 import OpportunityStats from '../components/crm/OpportunityStats';
-import PrivateRoute from '../components/PrivateRoute';
+
 import CrmLayout from '../components/crm/CrmLayout';
 import { fetchOpportunityById } from '../services/opportunityService';
 
 const OpportunitiesPage: React.FC = () => {
+  const { t } = useTranslation('crm');
   const [isCreatingNew, setIsCreatingNew] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [selectedOpportunityId, setSelectedOpportunityId] = useState<string | null>(null);
@@ -85,24 +87,24 @@ const OpportunitiesPage: React.FC = () => {
 
   if (loading) {
     return (
-      <PrivateRoute>
+      <>
         <CrmLayout>
           <div className="flex justify-center items-center h-64">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
           </div>
         </CrmLayout>
-      </PrivateRoute>
+      </>
     );
   }
 
   return (
-    <PrivateRoute>
+    <>
       <CrmLayout>
         <section className="py-10 bg-gray-50 min-h-screen">
-          <Helmet>
-            <title>Gestion des opportunités | AInspiration</title>
-            <meta name="description" content="Gérez vos opportunités de vente et suivez votre pipeline commercial." />
-          </Helmet>
+          <SEOHead
+            title={t('pages.opportunities.seoTitle')}
+            description={t('pages.opportunities.seoDescription')}
+          />
           
           <div className="container mx-auto px-4">
             {isCreatingNew ? (
@@ -126,7 +128,7 @@ const OpportunitiesPage: React.FC = () => {
               <>
                 <div className="flex justify-between items-center mb-8">
                   <h1 className="text-3xl font-bold text-gray-900">
-                    Pipeline commercial
+                    {t('pages.opportunities.heading')}
                   </h1>
 
                   <div className="flex gap-2">
@@ -139,7 +141,7 @@ const OpportunitiesPage: React.FC = () => {
                       }`}
                     >
                       <LayoutList className="w-5 h-5" />
-                      Liste
+                      {t('pages.opportunities.viewList')}
                     </button>
                     <button
                       onClick={() => setViewMode('kanban')}
@@ -150,7 +152,7 @@ const OpportunitiesPage: React.FC = () => {
                       }`}
                     >
                       <Kanban className="w-5 h-5" />
-                      Kanban
+                      {t('pages.opportunities.viewKanban')}
                     </button>
                   </div>
                 </div>
@@ -174,7 +176,7 @@ const OpportunitiesPage: React.FC = () => {
           </div>
         </section>
       </CrmLayout>
-    </PrivateRoute>
+    </>
   );
 };
 

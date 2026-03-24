@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import PrivateRoute from '../components/PrivateRoute';
+
 import CrmLayout from '../components/crm/CrmLayout';
 import ContactMessagesList from '../components/crm/ContactMessagesList';
 import ContactMessageDetail from '../components/crm/ContactMessageDetail';
@@ -26,7 +26,7 @@ export default function MessagesPage() {
   };
 
   return (
-    <PrivateRoute>
+    <>
       <CrmLayout>
         <SEOHead
           title="Messages | AInspiration CRM"
@@ -69,6 +69,6 @@ export default function MessagesPage() {
           </div>
         </section>
       </CrmLayout>
-    </PrivateRoute>
+    </>
   );
 }

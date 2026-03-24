@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
+import SEOHead from '../components/SEOHead';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
-import PrivateRoute from '../components/PrivateRoute';
+
 import CrmLayout from '../components/crm/CrmLayout';
 import TaskList from '../components/crm/task/TaskList';
 import TaskForm from '../components/crm/task/TaskForm';
 import { fetchTaskById } from '../services/taskService';
 
 const TasksPage: React.FC = () => {
+  const { t } = useTranslation('crm');
   const [isCreatingNew, setIsCreatingNew] = useState(false);
   const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
   const [initialRelatedToType, setInitialRelatedToType] = useState<'opportunity' | 'contact' | 'company' | undefined>(undefined);
@@ -93,24 +95,24 @@ const TasksPage: React.FC = () => {
 
   if (loading) {
     return (
-      <PrivateRoute>
+      <>
         <CrmLayout>
           <div className="flex justify-center items-center h-64">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
           </div>
         </CrmLayout>
-      </PrivateRoute>
+      </>
     );
   }
 
   return (
-    <PrivateRoute>
+    <>
       <CrmLayout>
         <section className="py-10 bg-gray-50 min-h-screen">
-          <Helmet>
-            <title>Gestion des tâches | AInspiration CRM</title>
-            <meta name="description" content="Gérez et organisez vos tâches, suivez leur avancement et ne manquez jamais une échéance." />
-          </Helmet>
+          <SEOHead
+            title={t('pages.tasks.seoTitle')}
+            description={t('pages.tasks.seoDescription')}
+          />
           
           <div className="container mx-auto px-4">
             {isCreatingNew ? (
@@ -129,7 +131,7 @@ const TasksPage: React.FC = () => {
             ) : (
               <>
                 <h1 className="text-3xl font-bold text-gray-900 mb-8">
-                  Gestion des tâches
+                  {t('pages.tasks.heading')}
                 </h1>
                 
                 <TaskList
@@ -141,7 +143,7 @@ const TasksPage: React.FC = () => {
           </div>
         </section>
       </CrmLayout>
-    </PrivateRoute>
+    </>
   );
 };
 

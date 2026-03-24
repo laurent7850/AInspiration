@@ -1233,11 +1233,29 @@ app.get('/api/contact-messages/:id', async (req, res) => {
 app.post('/api/contact-messages', async (req, res) => {
   try {
     const { name, email, phone, company, subject, message, source } = req.body;
+
+    // Input validation
+    if (!name || typeof name !== 'string' || name.trim().length < 2 || name.length > 200) {
+      return res.status(400).json({ error: 'Nom invalide (2-200 caractères)' });
+    }
+    if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
+      return res.status(400).json({ error: 'Email invalide' });
+    }
+    if (!message || typeof message !== 'string' || message.trim().length < 10 || message.length > 5000) {
+      return res.status(400).json({ error: 'Message invalide (10-5000 caractères)' });
+    }
+    if (phone && (typeof phone !== 'string' || phone.length > 30)) {
+      return res.status(400).json({ error: 'Téléphone invalide' });
+    }
+    if (subject && (typeof subject !== 'string' || subject.length > 300)) {
+      return res.status(400).json({ error: 'Sujet invalide' });
+    }
+
     const id = uuidv4();
     const result = await pool.query(
       `INSERT INTO contact_messages (id, name, email, phone, company, subject, message, source)
        VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
-      [id, name, email, phone, company, subject, message, source || 'website']
+      [id, name.trim(), email.toLowerCase().trim(), phone || null, company || null, subject || null, message.trim(), source || 'website']
     );
     res.status(201).json(result.rows[0]);
   } catch (error) {
@@ -1439,6 +1457,21 @@ app.get('/api/newsletter-subscribers/by-token', async (req, res) => {
 app.post('/api/newsletter-subscribers', async (req, res) => {
   try {
     const { email, first_name, last_name, language, source } = req.body;
+
+    // Input validation
+    if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
+      return res.status(400).json({ error: 'Email invalide' });
+    }
+    if (first_name && (typeof first_name !== 'string' || first_name.length > 100)) {
+      return res.status(400).json({ error: 'Prénom invalide' });
+    }
+    if (last_name && (typeof last_name !== 'string' || last_name.length > 100)) {
+      return res.status(400).json({ error: 'Nom invalide' });
+    }
+    if (language && !['fr', 'en', 'nl', 'de'].includes(language)) {
+      return res.status(400).json({ error: 'Langue non supportée' });
+    }
+
     const normalizedEmail = email.toLowerCase().trim();
     const existing = await pool.query('SELECT * FROM newsletter_subscribers WHERE email = $1', [normalizedEmail]);
     if (existing.rows.length > 0) {
