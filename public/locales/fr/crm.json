@@ -149,6 +149,500 @@
     "tasks": "Tâches",
     "reports": "Rapports",
     "messages": "Messages",
-    "newsletter": "Newsletter"
+    "newsletter": "Newsletter",
+    "linkedin": "LinkedIn"
+  },
+  "pages": {
+    "companies": {
+      "seoTitle": "Gestion des entreprises | AInspiration CRM",
+      "seoDescription": "Gérez vos entreprises et clients professionnels et suivez toutes les interactions.",
+      "heading": "Gestion des entreprises"
+    },
+    "contacts": {
+      "seoTitle": "Gestion des contacts | AInspiration CRM",
+      "seoDescription": "Gérez vos contacts professionnels et suivez toutes les interactions.",
+      "heading": "Gestion des contacts"
+    },
+    "opportunities": {
+      "seoTitle": "Gestion des opportunités | AInspiration",
+      "seoDescription": "Gérez vos opportunités de vente et suivez votre pipeline commercial.",
+      "heading": "Pipeline commercial",
+      "viewList": "Liste",
+      "viewKanban": "Kanban"
+    },
+    "products": {
+      "seoTitle": "Gestion des produits | AInspiration CRM",
+      "seoDescription": "Gérez votre catalogue de produits et services dans le CRM.",
+      "heading": "Gestion des produits"
+    },
+    "tasks": {
+      "seoTitle": "Gestion des tâches | AInspiration CRM",
+      "seoDescription": "Gérez et organisez vos tâches, suivez leur avancement et ne manquez jamais une échéance.",
+      "heading": "Gestion des tâches"
+    },
+    "reports": {
+      "seoTitle": "Rapports et Analyses | AInspiration CRM",
+      "seoDescription": "Visualisez et analysez vos performances commerciales avec des rapports détaillés et personnalisables.",
+      "heading": "Rapports et Analyses",
+      "refresh": "Rafraîchir les données",
+      "tabOverview": "Vue d'ensemble",
+      "tabOpportunities": "Opportunités",
+      "tabContacts": "Contacts",
+      "tabTasks": "Tâches",
+      "tabProducts": "Produits"
+    },
+    "messages": {
+      "heading": "Messages de contact",
+      "description": "Gérez les messages reçus via le formulaire de contact",
+      "selectMessage": "Sélectionnez un message pour voir les détails"
+    },
+    "linkedin": {
+      "seoTitle": "LinkedIn Auto-Publishing | AInspiration CRM",
+      "subtitle": "Publication automatique de contenu IA",
+      "generatePost": "Générer un post",
+      "connected": "Connecté : {{name}}",
+      "notConnected": "Non connecté à LinkedIn",
+      "tokenExpires": "Token expire dans {{days}} jours",
+      "connectLinkedin": "Connecter LinkedIn",
+      "settingsTitle": "Configuration",
+      "autoPublish": "Publication automatique",
+      "schedule": "Planning",
+      "totalPosts": "Total posts",
+      "filterAll": "Tous",
+      "noPostsTitle": "Aucun post LinkedIn",
+      "generateFirst": "Générer le premier post",
+      "editModalTitle": "Modifier le post",
+      "charCount": "{{count}} caractères",
+      "cancel": "Annuler",
+      "save": "Enregistrer",
+      "noTitle": "Sans titre",
+      "publishedAt": "Publié le {{date}}",
+      "errorPrefix": "Erreur : ",
+      "titleBtn": {
+        "view": "Voir",
+        "edit": "Modifier",
+        "approve": "Approuver",
+        "publish": "Publier",
+        "viewOnLinkedin": "Voir sur LinkedIn",
+        "delete": "Supprimer"
+      },
+      "status": {
+        "generated": "Généré",
+        "review_pending": "En attente",
+        "approved": "Approuvé",
+        "published": "Publié",
+        "failed": "Échoué",
+        "queued": "En file",
+        "draft": "Brouillon"
+      },
+      "errors": {
+        "loading": "Erreur de chargement",
+        "connection": "Erreur de connexion LinkedIn",
+        "generation": "Erreur de génération",
+        "publishing": "Erreur de publication",
+        "deleteConfirm": "Supprimer ce post ?"
+      },
+      "success": {
+        "generated": "Post généré : \"{{title}}\"",
+        "published": "Publié sur LinkedIn !",
+        "publishedAlt": "Publication réussie",
+        "approved": "Post approuvé",
+        "updated": "Post mis à jour",
+        "autoPublishOn": "Publication automatique activée",
+        "manualApproval": "Approbation manuelle activée"
+      }
+    },
+    "login": {
+      "heading": "Connexion"
+    }
+  },
+  "opportunityList": {
+    "title": "Pipeline des opportunités",
+    "newOpportunity": "Nouvelle opportunité",
+    "searchPlaceholder": "Rechercher...",
+    "allStages": "Toutes les étapes",
+    "noOpportunitiesFound": "Aucune opportunité trouvée.",
+    "createFirst": "Créer votre première opportunité",
+    "errorLoading": "Impossible de charger les opportunités. Veuillez réessayer.",
+    "errorDeleting": "Impossible de supprimer l'opportunité. Veuillez réessayer.",
+    "retry": "Réessayer",
+    "tableHeaders": {
+      "name": "Nom",
+      "stage": "Étape",
+      "company": "Entreprise",
+      "contact": "Contact",
+      "product": "Produit",
+      "value": "Valeur",
+      "closeDate": "Date de clôture",
+      "actions": "Actions"
+    }
+  },
+  "messages": {
+    "title": "Messages de contact",
+    "filterAll": "Tous",
+    "filterNew": "Nouveaux",
+    "filterRead": "Lus",
+    "filterReplied": "Répondus",
+    "filterArchived": "Archivés",
+    "loading": "Chargement...",
+    "noMessages": "Aucun message",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ce message ?",
+    "deleteTitle": "Supprimer",
+    "timeAgoMinutes": "Il y a {{count}} min",
+    "timeAgoHours": "Il y a {{count}}h",
+    "timeAgoDays": "Il y a {{count}}j",
+    "statuses": {
+      "new": "Nouveau",
+      "read": "Lu",
+      "replied": "Répondu",
+      "archived": "Archivé"
+    },
+    "detail": {
+      "backToList": "Retour à la liste",
+      "receivedOn": "Reçu le {{date}}",
+      "updatedOn": "Mis à jour le {{date}}",
+      "messageTitle": "Message",
+      "actionsTitle": "Actions",
+      "markAsRead": "Marquer comme lu",
+      "markAsReplied": "Marquer comme répondu",
+      "archive": "Archiver",
+      "replyByEmail": "Répondre par email"
+    }
+  },
+  "dashboardView": {
+    "title": "Tableau de bord CRM",
+    "subtitle": "Propulsé par l'Intelligence Artificielle",
+    "tabs": {
+      "overview": "Vue d'ensemble",
+      "aiInsights": "Insights IA",
+      "leadScoring": "Lead Scoring",
+      "followUp": "Relances"
+    },
+    "kpi": {
+      "pipelineValue": "Valeur du pipeline",
+      "activeDeals": "{{count}} affaires actives",
+      "wonValue": "Chiffre gagné",
+      "conversionRate": "Taux de conversion: {{rate}}%",
+      "pendingTasks": "Tâches en attente",
+      "overdueTasksCount": "{{count}} tâches en retard",
+      "allUpToDate": "Tout est à jour !",
+      "totalContacts": "Total contacts",
+      "manageContacts": "Gérer les contacts"
+    },
+    "charts": {
+      "salesPipeline": "Pipeline des ventes",
+      "viewAll": "Voir toutes",
+      "salesPerformance": "Performance des ventes",
+      "viewReports": "Voir les rapports"
+    },
+    "tasks": {
+      "title": "Tâches à venir",
+      "viewAll": "Voir toutes",
+      "noTasks": "Aucune tâche à venir",
+      "deadline": "Échéance: {{date}}",
+      "priorityHigh": "Haute",
+      "priorityMedium": "Moyenne",
+      "priorityLow": "Basse"
+    },
+    "activity": {
+      "title": "Activité récente",
+      "noActivity": "Aucune activité récente"
+    },
+    "aiTab": {
+      "statsTitle": "Statistiques clés",
+      "activeOpportunities": "Opportunités actives",
+      "pipelineValue": "Valeur du pipeline",
+      "overdueTasks": "Tâches en retard",
+      "conversionRate": "Taux de conversion",
+      "actionsTitle": "Actions recommandées",
+      "closeNegotiations": "Clôturer les négociations",
+      "negotiationsPending": "{{count}} opportunité(s) en attente",
+      "handleUrgentTasks": "Traiter les tâches urgentes",
+      "urgentTasksCount": "{{count}} tâche(s) haute priorité",
+      "enrichContacts": "Enrichir les contacts",
+      "enrichContactsDesc": "Compléter les informations manquantes des leads"
+    },
+    "errorLoading": "Impossible de charger les données du tableau de bord. Veuillez réessayer."
+  },
+  "auth": {
+    "demoAccess": "Accès démo",
+    "emailLabel": "Email :",
+    "passwordLabel": "Mot de passe :",
+    "autoFill": "Remplir automatiquement",
+    "connecting": "Connexion...",
+    "connect": "Se connecter",
+    "emailPlaceholder": "votre@email.com",
+    "genericError": "Une erreur est survenue"
+  },
+  "page": {
+    "seo": {
+      "title": "Solution CRM Intelligente | AInspiration",
+      "description": "Transformez votre relation client avec notre CRM nouvelle génération. Automatisation intelligente, vision 360° de vos clients et augmentation prouvée des conversions.",
+      "keywords": "CRM, gestion relation client, pipeline vente, automatisation, logiciel CRM"
+    },
+    "hero": {
+      "badge": "Solution CRM",
+      "title": "Transformez chaque interaction en opportunité de croissance",
+      "description": "Notre CRM intelligent unifie vos données, automatise vos processus et révèle les insights qui font la différence.",
+      "ctaDemo": "Démo",
+      "ctaLearnMore": "En savoir plus",
+      "check1": "Déploiement en 14 jours",
+      "check2": "ROI en 3 mois",
+      "check3": "Support 24/7",
+      "imageAlt": "Interface CRM intelligente"
+    },
+    "trustedBy": "Ils nous font confiance pour leur gestion de la relation client",
+    "features": {
+      "badge": "Fonctionnalités",
+      "sectionTitle": "Un CRM complet pour chaque aspect de votre relation client",
+      "sectionDescription": "Découvrez comment notre solution transforme votre approche commerciale et fidélise vos clients",
+      "items": [
+        {
+          "title": "Gestion des contacts",
+          "description": "Centralisez toutes vos données clients en un seul endroit. Suivez l'historique complet, les préférences et les interactions pour une vision à 360°.",
+          "benefits": [
+            "Fiches contacts complètes et personnalisables",
+            "Segmentation avancée",
+            "Import/export facilité",
+            "Historique d'interactions"
+          ]
+        },
+        {
+          "title": "Pipeline de vente",
+          "description": "Visualisez et gérez efficacement votre processus de vente. Suivez vos prospects et opportunités de la prospection à la conclusion.",
+          "benefits": [
+            "Workflows personnalisables",
+            "Prévisions de vente précises",
+            "Suivi des conversions",
+            "Rapports de performance"
+          ]
+        },
+        {
+          "title": "Gestion des tâches et calendrier",
+          "description": "Ne manquez jamais une échéance importante. Planifiez et suivez vos rendez-vous, tâches et rappels en synchronisation avec votre équipe.",
+          "benefits": [
+            "Synchronisation avec Google Calendar",
+            "Alertes et notifications",
+            "Assignation de tâches",
+            "Vue d'équipe consolidée"
+          ]
+        },
+        {
+          "title": "Communication omnicanale",
+          "description": "Gérez tous vos canaux de communication depuis une interface unique : emails, SMS, appels, et réseaux sociaux.",
+          "benefits": [
+            "Historique de conversation unifié",
+            "Modèles de messages",
+            "Suivi des ouvertures et clics",
+            "Intégration avec vos outils préférés"
+          ]
+        },
+        {
+          "title": "Gestion documentaire",
+          "description": "Stockez et partagez facilement tous vos documents commerciaux : devis, contrats, factures et présentations.",
+          "benefits": [
+            "Stockage sécurisé",
+            "Contrôle des versions",
+            "Partage sécurisé",
+            "Signatures électroniques"
+          ]
+        },
+        {
+          "title": "Rapports et tableaux de bord",
+          "description": "Prenez des décisions éclairées grâce à des analyses visuelles de vos activités commerciales et de la performance de votre équipe.",
+          "benefits": [
+            "Tableaux de bord personnalisables",
+            "KPIs en temps réel",
+            "Exportation facile",
+            "Visualisations interactives"
+          ]
+        }
+      ]
+    },
+    "screenshots": {
+      "badge": "Interface intuitive",
+      "sectionTitle": "Une expérience utilisateur optimale",
+      "sectionDescription": "Interface épurée, navigation fluide et personnalisation avancée pour une adoption rapide",
+      "items": [
+        {
+          "title": "Dashboard CRM",
+          "description": "Vue consolidée de toutes vos activités commerciales"
+        },
+        {
+          "title": "Pipeline de vente",
+          "description": "Suivi visuel de vos opportunités commerciales"
+        },
+        {
+          "title": "Gestion des contacts",
+          "description": "Vue complète de vos interactions client"
+        }
+      ]
+    },
+    "keyBenefits": {
+      "badge": "Avantages",
+      "sectionTitle": "Des résultats mesurables pour votre entreprise",
+      "sectionDescription": "Notre CRM offre un retour sur investissement rapide et significatif",
+      "items": [
+        {
+          "title": "Augmentation du taux de conversion",
+          "value": "+35%",
+          "description": "Des prospects qualifiés jusqu'à la conclusion, optimisez chaque étape de votre parcours client."
+        },
+        {
+          "title": "Gain de productivité",
+          "value": "+40%",
+          "description": "Libérez du temps précieux en automatisant vos tâches répétitives et focalisez-vous sur la relation client."
+        },
+        {
+          "title": "Réduction des coûts opérationnels",
+          "value": "-25%",
+          "description": "Optimisez vos processus et réduisez les erreurs manuelles pour un ROI rapide et mesurable."
+        },
+        {
+          "title": "Amélioration de la satisfaction client",
+          "value": "+45%",
+          "description": "Offrez une expérience personnalisée qui fidélise vos clients et génère des recommandations."
+        }
+      ]
+    },
+    "testimonials": {
+      "badge": "Témoignages",
+      "sectionTitle": "Ce que nos clients disent",
+      "sectionDescription": "Découvrez comment notre CRM a transformé l'activité de nos clients",
+      "items": [
+        {
+          "quote": "Le CRM d'AInspiration a révolutionné notre approche commerciale. Nos équipes sont plus réactives et notre taux de conversion a augmenté de 32% en seulement 3 mois.",
+          "name": "Marie Dupont",
+          "position": "Directrice Commerciale",
+          "company": "TechSolutions"
+        },
+        {
+          "quote": "L'implémentation a été rapide et l'accompagnement exceptionnel. Notre retour sur investissement a été atteint en moins de 6 mois grâce à l'augmentation des ventes et l'optimisation de nos processus.",
+          "name": "Thomas Lefebvre",
+          "position": "CEO",
+          "company": "GrowthMarketing"
+        },
+        {
+          "quote": "La vue à 360° de nos clients nous permet enfin d'offrir une expérience véritablement personnalisée à chacun de nos 10 000+ clients. Un outil indispensable pour notre croissance.",
+          "name": "Sophie Moreau",
+          "position": "Responsable Relation Client",
+          "company": "EleganCE"
+        }
+      ]
+    },
+    "pricing": {
+      "badge": "Tarification",
+      "sectionTitle": "Des forfaits adaptés à chaque besoin",
+      "sectionDescription": "Solutions flexibles qui évoluent avec votre entreprise",
+      "popular": "Le plus populaire",
+      "plans": [
+        {
+          "name": "Essentiel",
+          "price": "29€",
+          "period": "utilisateur / mois",
+          "features": [
+            "Gestion des contacts et entreprises",
+            "Pipeline de vente basique",
+            "Email et calendrier",
+            "Applications mobiles (iOS, Android)",
+            "5 Go de stockage / utilisateur",
+            "Support par email"
+          ],
+          "cta": "Commencer l'essai gratuit"
+        },
+        {
+          "name": "Business",
+          "price": "49€",
+          "period": "utilisateur / mois",
+          "features": [
+            "Toutes les fonctionnalités Essentiel",
+            "Automatisations avancées",
+            "Rapports et tableaux de bord personnalisés",
+            "Intégration avec 150+ applications",
+            "20 Go de stockage / utilisateur",
+            "Support prioritaire 24/5"
+          ],
+          "cta": "Commencer l'essai gratuit"
+        },
+        {
+          "name": "Enterprise",
+          "price": "Sur mesure",
+          "period": "",
+          "features": [
+            "Toutes les fonctionnalités Business",
+            "Sécurité renforcée et SSO",
+            "API complète et webhooks",
+            "Environnements de test",
+            "Stockage illimité",
+            "Support dédié 24/7 et SLA"
+          ],
+          "cta": "Contacter l'équipe commerciale"
+        }
+      ]
+    },
+    "faq": {
+      "badge": "FAQ",
+      "sectionTitle": "Questions fréquemment posées",
+      "sectionDescription": "Tout ce que vous devez savoir sur notre solution CRM",
+      "items": [
+        {
+          "question": "Combien de temps faut-il pour implémenter votre solution CRM ?",
+          "answer": "Notre solution CRM peut être mise en place en 2 à 4 semaines selon la complexité de votre organisation. Nous offrons un accompagnement complet incluant la migration de vos données, la configuration selon vos processus, et la formation de vos équipes pour assurer une adoption rapide et efficace."
+        },
+        {
+          "question": "Votre CRM est-il compatible avec nos outils existants ?",
+          "answer": "Absolument ! Notre CRM s'intègre nativement avec plus de 150 outils (Office 365, Gmail, Outlook, Mailchimp, etc.) et dispose d'une API ouverte pour des intégrations personnalisées. Nous avons conçu notre solution pour s'adapter à votre écosystème technologique, pas l'inverse."
+        },
+        {
+          "question": "Comment garantissez-vous la sécurité de nos données ?",
+          "answer": "La sécurité est notre priorité absolue. Nous utilisons un chiffrement de bout en bout, des centres de données conformes aux normes ISO 27001, des sauvegardes quotidiennes, et des contrôles d'accès granulaires. Notre solution est entièrement conforme au RGPD et nos processus sont régulièrement audités par des experts indépendants."
+        },
+        {
+          "question": "Quelle est la tarification de votre solution CRM ?",
+          "answer": "Notre tarification est transparente et modulaire, commençant à 29€/utilisateur/mois pour l'offre Essentielle. Nous proposons également des forfaits Business (49€) et Enterprise (sur mesure) selon vos besoins. Tous nos forfaits incluent le support et les mises à jour, sans frais cachés. Contactez-nous pour un devis personnalisé."
+        },
+        {
+          "question": "Proposez-vous une formation pour notre équipe ?",
+          "answer": "Oui, chaque déploiement inclut un programme de formation adapté à vos besoins. Nous proposons des sessions individuelles ou en groupe, des webinaires, une documentation complète, et un centre de ressources en ligne. Notre équipe de success managers vous accompagne également après le déploiement pour maximiser votre utilisation du CRM."
+        },
+        {
+          "question": "Puis-je essayer votre CRM avant de m'engager ?",
+          "answer": "Absolument ! Nous proposons une démo personnalisée suivie d'un essai gratuit de 14 jours avec accès à toutes les fonctionnalités. Vous pouvez également demander une preuve de concept (POC) pour tester la solution dans votre environnement spécifique avant tout engagement."
+        }
+      ]
+    },
+    "deployProcess": {
+      "badge": "Notre process",
+      "sectionTitle": "Un déploiement rapide et sans stress",
+      "sectionDescription": "Notre méthodologie éprouvée garantit une mise en œuvre réussie",
+      "steps": [
+        {
+          "title": "Audit et analyse",
+          "description": "Compréhension approfondie de vos processus actuels et de vos objectifs commerciaux.",
+          "duration": "1-2 jours"
+        },
+        {
+          "title": "Configuration",
+          "description": "Personnalisation de la solution selon vos processus et intégration à vos outils.",
+          "duration": "3-5 jours"
+        },
+        {
+          "title": "Formation",
+          "description": "Formation complète de vos équipes pour une adoption rapide et efficace.",
+          "duration": "1-3 jours"
+        },
+        {
+          "title": "Accompagnement",
+          "description": "Support continu et optimisations régulières pour maximiser votre ROI.",
+          "duration": "Continu"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Prêt à transformer votre relation client ?",
+      "description": "Rejoignez plus de 1 200 entreprises qui ont déjà révolutionné leur approche commerciale avec notre solution CRM.",
+      "ctaDemo": "Démo",
+      "ctaContact": "Contactez-nous"
+    }
   }
 }

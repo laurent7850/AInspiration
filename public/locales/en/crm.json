@@ -149,6 +149,500 @@
     "tasks": "Tasks",
     "reports": "Reports",
     "messages": "Messages",
-    "newsletter": "Newsletter"
+    "newsletter": "Newsletter",
+    "linkedin": "LinkedIn"
+  },
+  "pages": {
+    "companies": {
+      "seoTitle": "Company Management | AInspiration CRM",
+      "seoDescription": "Manage your companies and professional clients and track all interactions.",
+      "heading": "Company Management"
+    },
+    "contacts": {
+      "seoTitle": "Contact Management | AInspiration CRM",
+      "seoDescription": "Manage your professional contacts and track all interactions.",
+      "heading": "Contact Management"
+    },
+    "opportunities": {
+      "seoTitle": "Opportunity Management | AInspiration",
+      "seoDescription": "Manage your sales opportunities and track your commercial pipeline.",
+      "heading": "Commercial Pipeline",
+      "viewList": "List",
+      "viewKanban": "Kanban"
+    },
+    "products": {
+      "seoTitle": "Product Management | AInspiration CRM",
+      "seoDescription": "Manage your product and service catalogue in the CRM.",
+      "heading": "Product Management"
+    },
+    "tasks": {
+      "seoTitle": "Task Management | AInspiration CRM",
+      "seoDescription": "Manage and organise your tasks, track their progress and never miss a deadline.",
+      "heading": "Task Management"
+    },
+    "reports": {
+      "seoTitle": "Reports and Analysis | AInspiration CRM",
+      "seoDescription": "Visualise and analyse your commercial performance with detailed and customisable reports.",
+      "heading": "Reports and Analysis",
+      "refresh": "Refresh data",
+      "tabOverview": "Overview",
+      "tabOpportunities": "Opportunities",
+      "tabContacts": "Contacts",
+      "tabTasks": "Tasks",
+      "tabProducts": "Products"
+    },
+    "messages": {
+      "heading": "Contact Messages",
+      "description": "Manage messages received via the contact form",
+      "selectMessage": "Select a message to view the details"
+    },
+    "linkedin": {
+      "seoTitle": "LinkedIn Auto-Publishing | AInspiration CRM",
+      "subtitle": "Automatic AI content publishing",
+      "generatePost": "Generate a post",
+      "connected": "Connected: {{name}}",
+      "notConnected": "Not connected to LinkedIn",
+      "tokenExpires": "Token expires in {{days}} days",
+      "connectLinkedin": "Connect LinkedIn",
+      "settingsTitle": "Configuration",
+      "autoPublish": "Auto-publish",
+      "schedule": "Schedule",
+      "totalPosts": "Total posts",
+      "filterAll": "All",
+      "noPostsTitle": "No LinkedIn posts",
+      "generateFirst": "Generate first post",
+      "editModalTitle": "Edit post",
+      "charCount": "{{count}} characters",
+      "cancel": "Cancel",
+      "save": "Save",
+      "noTitle": "Untitled",
+      "publishedAt": "Published on {{date}}",
+      "errorPrefix": "Error: ",
+      "titleBtn": {
+        "view": "View",
+        "edit": "Edit",
+        "approve": "Approve",
+        "publish": "Publish",
+        "viewOnLinkedin": "View on LinkedIn",
+        "delete": "Delete"
+      },
+      "status": {
+        "generated": "Generated",
+        "review_pending": "Pending",
+        "approved": "Approved",
+        "published": "Published",
+        "failed": "Failed",
+        "queued": "Queued",
+        "draft": "Draft"
+      },
+      "errors": {
+        "loading": "Loading error",
+        "connection": "LinkedIn connection error",
+        "generation": "Generation error",
+        "publishing": "Publishing error",
+        "deleteConfirm": "Delete this post?"
+      },
+      "success": {
+        "generated": "Post generated: \"{{title}}\"",
+        "published": "Published on LinkedIn!",
+        "publishedAlt": "Successfully published",
+        "approved": "Post approved",
+        "updated": "Post updated",
+        "autoPublishOn": "Auto-publish enabled",
+        "manualApproval": "Manual approval enabled"
+      }
+    },
+    "login": {
+      "heading": "Sign In"
+    }
+  },
+  "opportunityList": {
+    "title": "Opportunity Pipeline",
+    "newOpportunity": "New Opportunity",
+    "searchPlaceholder": "Search...",
+    "allStages": "All stages",
+    "noOpportunitiesFound": "No opportunities found.",
+    "createFirst": "Create your first opportunity",
+    "errorLoading": "Unable to load opportunities. Please try again.",
+    "errorDeleting": "Unable to delete opportunity. Please try again.",
+    "retry": "Retry",
+    "tableHeaders": {
+      "name": "Name",
+      "stage": "Stage",
+      "company": "Company",
+      "contact": "Contact",
+      "product": "Product",
+      "value": "Value",
+      "closeDate": "Close Date",
+      "actions": "Actions"
+    }
+  },
+  "messages": {
+    "title": "Contact Messages",
+    "filterAll": "All",
+    "filterNew": "New",
+    "filterRead": "Read",
+    "filterReplied": "Replied",
+    "filterArchived": "Archived",
+    "loading": "Loading...",
+    "noMessages": "No messages",
+    "deleteConfirm": "Are you sure you want to delete this message?",
+    "deleteTitle": "Delete",
+    "timeAgoMinutes": "{{count}} min ago",
+    "timeAgoHours": "{{count}}h ago",
+    "timeAgoDays": "{{count}}d ago",
+    "statuses": {
+      "new": "New",
+      "read": "Read",
+      "replied": "Replied",
+      "archived": "Archived"
+    },
+    "detail": {
+      "backToList": "Back to list",
+      "receivedOn": "Received on {{date}}",
+      "updatedOn": "Updated on {{date}}",
+      "messageTitle": "Message",
+      "actionsTitle": "Actions",
+      "markAsRead": "Mark as read",
+      "markAsReplied": "Mark as replied",
+      "archive": "Archive",
+      "replyByEmail": "Reply by email"
+    }
+  },
+  "dashboardView": {
+    "title": "CRM Dashboard",
+    "subtitle": "Powered by Artificial Intelligence",
+    "tabs": {
+      "overview": "Overview",
+      "aiInsights": "AI Insights",
+      "leadScoring": "Lead Scoring",
+      "followUp": "Follow-ups"
+    },
+    "kpi": {
+      "pipelineValue": "Pipeline Value",
+      "activeDeals": "{{count}} active deals",
+      "wonValue": "Won Value",
+      "conversionRate": "Conversion rate: {{rate}}%",
+      "pendingTasks": "Pending Tasks",
+      "overdueTasksCount": "{{count}} overdue tasks",
+      "allUpToDate": "All up to date!",
+      "totalContacts": "Total Contacts",
+      "manageContacts": "Manage contacts"
+    },
+    "charts": {
+      "salesPipeline": "Sales Pipeline",
+      "viewAll": "View all",
+      "salesPerformance": "Sales Performance",
+      "viewReports": "View reports"
+    },
+    "tasks": {
+      "title": "Upcoming Tasks",
+      "viewAll": "View all",
+      "noTasks": "No upcoming tasks",
+      "deadline": "Due: {{date}}",
+      "priorityHigh": "High",
+      "priorityMedium": "Medium",
+      "priorityLow": "Low"
+    },
+    "activity": {
+      "title": "Recent Activity",
+      "noActivity": "No recent activity"
+    },
+    "aiTab": {
+      "statsTitle": "Key Statistics",
+      "activeOpportunities": "Active opportunities",
+      "pipelineValue": "Pipeline value",
+      "overdueTasks": "Overdue tasks",
+      "conversionRate": "Conversion rate",
+      "actionsTitle": "Recommended Actions",
+      "closeNegotiations": "Close negotiations",
+      "negotiationsPending": "{{count}} opportunity(ies) pending",
+      "handleUrgentTasks": "Handle urgent tasks",
+      "urgentTasksCount": "{{count}} high priority task(s)",
+      "enrichContacts": "Enrich contacts",
+      "enrichContactsDesc": "Complete missing information for leads"
+    },
+    "errorLoading": "Unable to load dashboard data. Please try again."
+  },
+  "auth": {
+    "demoAccess": "Demo access",
+    "emailLabel": "Email:",
+    "passwordLabel": "Password:",
+    "autoFill": "Auto-fill",
+    "connecting": "Signing in...",
+    "connect": "Sign in",
+    "emailPlaceholder": "your@email.com",
+    "genericError": "An error occurred"
+  },
+  "page": {
+    "seo": {
+      "title": "Intelligent CRM Solution | AInspiration",
+      "description": "Transform your client relationships with our next-generation CRM. Intelligent automation, 360° view of your clients and proven conversion increases.",
+      "keywords": "CRM, client relationship management, sales pipeline, automation, CRM software"
+    },
+    "hero": {
+      "badge": "CRM Solution",
+      "title": "Transform every interaction into a growth opportunity",
+      "description": "Our intelligent CRM unifies your data, automates your processes and reveals the insights that make the difference.",
+      "ctaDemo": "Demo",
+      "ctaLearnMore": "Learn more",
+      "check1": "Deployment in 14 days",
+      "check2": "ROI in 3 months",
+      "check3": "24/7 support",
+      "imageAlt": "Intelligent CRM interface"
+    },
+    "trustedBy": "They trust us for their client relationship management",
+    "features": {
+      "badge": "Features",
+      "sectionTitle": "A complete CRM for every aspect of your client relationships",
+      "sectionDescription": "Discover how our solution transforms your commercial approach and retains your clients",
+      "items": [
+        {
+          "title": "Contact management",
+          "description": "Centralise all your client data in one place. Track the full history, preferences and interactions for a 360° view.",
+          "benefits": [
+            "Complete and customisable contact profiles",
+            "Advanced segmentation",
+            "Easy import/export",
+            "Interaction history"
+          ]
+        },
+        {
+          "title": "Sales pipeline",
+          "description": "Visualise and effectively manage your sales process. Track your prospects and opportunities from prospecting to close.",
+          "benefits": [
+            "Customisable workflows",
+            "Accurate sales forecasting",
+            "Conversion tracking",
+            "Performance reports"
+          ]
+        },
+        {
+          "title": "Task and calendar management",
+          "description": "Never miss an important deadline. Plan and track your appointments, tasks and reminders in sync with your team.",
+          "benefits": [
+            "Google Calendar synchronisation",
+            "Alerts and notifications",
+            "Task assignment",
+            "Consolidated team view"
+          ]
+        },
+        {
+          "title": "Omnichannel communication",
+          "description": "Manage all your communication channels from a single interface: emails, SMS, calls and social media.",
+          "benefits": [
+            "Unified conversation history",
+            "Message templates",
+            "Open and click tracking",
+            "Integration with your favourite tools"
+          ]
+        },
+        {
+          "title": "Document management",
+          "description": "Store and share all your commercial documents easily: quotes, contracts, invoices and presentations.",
+          "benefits": [
+            "Secure storage",
+            "Version control",
+            "Secure sharing",
+            "Electronic signatures"
+          ]
+        },
+        {
+          "title": "Reports and dashboards",
+          "description": "Make informed decisions with visual analyses of your commercial activities and team performance.",
+          "benefits": [
+            "Customisable dashboards",
+            "Real-time KPIs",
+            "Easy export",
+            "Interactive visualisations"
+          ]
+        }
+      ]
+    },
+    "screenshots": {
+      "badge": "Intuitive interface",
+      "sectionTitle": "An optimal user experience",
+      "sectionDescription": "Clean interface, smooth navigation and advanced customisation for rapid adoption",
+      "items": [
+        {
+          "title": "CRM Dashboard",
+          "description": "Consolidated view of all your commercial activities"
+        },
+        {
+          "title": "Sales pipeline",
+          "description": "Visual tracking of your commercial opportunities"
+        },
+        {
+          "title": "Contact management",
+          "description": "Complete view of your client interactions"
+        }
+      ]
+    },
+    "keyBenefits": {
+      "badge": "Benefits",
+      "sectionTitle": "Measurable results for your business",
+      "sectionDescription": "Our CRM offers a fast and significant return on investment",
+      "items": [
+        {
+          "title": "Conversion rate increase",
+          "value": "+35%",
+          "description": "From qualified prospects to close, optimise every step of your client journey."
+        },
+        {
+          "title": "Productivity gain",
+          "value": "+40%",
+          "description": "Free up precious time by automating your repetitive tasks and focus on client relationships."
+        },
+        {
+          "title": "Reduction in operating costs",
+          "value": "-25%",
+          "description": "Optimise your processes and reduce manual errors for a fast, measurable ROI."
+        },
+        {
+          "title": "Improvement in client satisfaction",
+          "value": "+45%",
+          "description": "Offer a personalised experience that retains your clients and generates recommendations."
+        }
+      ]
+    },
+    "testimonials": {
+      "badge": "Testimonials",
+      "sectionTitle": "What our clients say",
+      "sectionDescription": "Discover how our CRM has transformed our clients' activities",
+      "items": [
+        {
+          "quote": "AInspiration's CRM has revolutionised our commercial approach. Our teams are more responsive and our conversion rate increased by 32% in just 3 months.",
+          "name": "Marie Dupont",
+          "position": "Commercial Director",
+          "company": "TechSolutions"
+        },
+        {
+          "quote": "Implementation was fast and the support was exceptional. Our return on investment was achieved in less than 6 months thanks to increased sales and process optimisation.",
+          "name": "Thomas Lefebvre",
+          "position": "CEO",
+          "company": "GrowthMarketing"
+        },
+        {
+          "quote": "The 360° view of our clients finally allows us to offer a truly personalised experience to each of our 10,000+ clients. An indispensable tool for our growth.",
+          "name": "Sophie Moreau",
+          "position": "Client Relations Manager",
+          "company": "EleganCE"
+        }
+      ]
+    },
+    "pricing": {
+      "badge": "Pricing",
+      "sectionTitle": "Plans tailored to every need",
+      "sectionDescription": "Flexible solutions that grow with your business",
+      "popular": "Most popular",
+      "plans": [
+        {
+          "name": "Essential",
+          "price": "€29",
+          "period": "user / month",
+          "features": [
+            "Contact and company management",
+            "Basic sales pipeline",
+            "Email and calendar",
+            "Mobile apps (iOS, Android)",
+            "5 GB storage / user",
+            "Email support"
+          ],
+          "cta": "Start free trial"
+        },
+        {
+          "name": "Business",
+          "price": "€49",
+          "period": "user / month",
+          "features": [
+            "All Essential features",
+            "Advanced automations",
+            "Custom reports and dashboards",
+            "Integration with 150+ applications",
+            "20 GB storage / user",
+            "Priority 24/5 support"
+          ],
+          "cta": "Start free trial"
+        },
+        {
+          "name": "Enterprise",
+          "price": "Bespoke",
+          "period": "",
+          "features": [
+            "All Business features",
+            "Enhanced security and SSO",
+            "Full API and webhooks",
+            "Test environments",
+            "Unlimited storage",
+            "Dedicated 24/7 support and SLA"
+          ],
+          "cta": "Contact the sales team"
+        }
+      ]
+    },
+    "faq": {
+      "badge": "FAQ",
+      "sectionTitle": "Frequently asked questions",
+      "sectionDescription": "Everything you need to know about our CRM solution",
+      "items": [
+        {
+          "question": "How long does it take to implement your CRM solution?",
+          "answer": "Our CRM solution can be set up in 2 to 4 weeks depending on the complexity of your organisation. We offer complete support including data migration, configuration according to your processes, and team training to ensure rapid and effective adoption."
+        },
+        {
+          "question": "Is your CRM compatible with our existing tools?",
+          "answer": "Absolutely! Our CRM integrates natively with over 150 tools (Office 365, Gmail, Outlook, Mailchimp, etc.) and has an open API for custom integrations. We designed our solution to adapt to your technology ecosystem, not the other way around."
+        },
+        {
+          "question": "How do you guarantee the security of our data?",
+          "answer": "Security is our absolute priority. We use end-to-end encryption, ISO 27001-compliant data centres, daily backups, and granular access controls. Our solution is fully GDPR compliant and our processes are regularly audited by independent experts."
+        },
+        {
+          "question": "What is the pricing for your CRM solution?",
+          "answer": "Our pricing is transparent and modular, starting at €29/user/month for the Essential package. We also offer Business (€49) and Enterprise (bespoke) plans depending on your needs. All our plans include support and updates, with no hidden fees. Contact us for a personalised quote."
+        },
+        {
+          "question": "Do you offer training for our team?",
+          "answer": "Yes, every deployment includes a training programme adapted to your needs. We offer individual or group sessions, webinars, complete documentation, and an online resource centre. Our success managers team also supports you after deployment to maximise your use of the CRM."
+        },
+        {
+          "question": "Can I try your CRM before committing?",
+          "answer": "Absolutely! We offer a personalised demo followed by a 14-day free trial with access to all features. You can also request a proof of concept (POC) to test the solution in your specific environment before any commitment."
+        }
+      ]
+    },
+    "deployProcess": {
+      "badge": "Our process",
+      "sectionTitle": "Fast and stress-free deployment",
+      "sectionDescription": "Our proven methodology guarantees a successful implementation",
+      "steps": [
+        {
+          "title": "Audit and analysis",
+          "description": "In-depth understanding of your current processes and commercial objectives.",
+          "duration": "1-2 days"
+        },
+        {
+          "title": "Configuration",
+          "description": "Personalisation of the solution according to your processes and integration with your tools.",
+          "duration": "3-5 days"
+        },
+        {
+          "title": "Training",
+          "description": "Complete training of your teams for rapid and effective adoption.",
+          "duration": "1-3 days"
+        },
+        {
+          "title": "Support",
+          "description": "Continuous support and regular optimisations to maximise your ROI.",
+          "duration": "Ongoing"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to transform your client relationships?",
+      "description": "Join over 1,200 businesses that have already revolutionised their commercial approach with our CRM solution.",
+      "ctaDemo": "Demo",
+      "ctaContact": "Contact us"
+    }
   }
 }

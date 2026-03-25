@@ -41,6 +41,7 @@
     "requestDemo": "Request Demo",
     "discoverAI": "Discover AI",
     "startFreeAudit": "Start Free Audit",
+    "seeCaseStudies": "See Client Results",
     "signIn": "Sign In",
     "signOut": "Sign Out"
   },
@@ -50,10 +51,13 @@
   "hero": {
     "title": "Save 10 Hours a Week with AI",
     "subtitle": "Join the SMEs automating repetitive tasks and boosting revenue with our AI solutions — no technical skills required.",
+    "ctaSubtext": "Results in 24h — No commitment",
+    "caseStudiesSubtext": "+50 SMEs supported",
+    "imageAlt": "Artificial Intelligence in business",
     "features": {
       "simple": "Up and running in 48h",
       "secure": "100% secure data",
-      "support": "Personalized support"
+      "support": "Personalised support"
     }
   },
   "footer": {
@@ -108,21 +112,18 @@
     "title": "They Simplified Their Daily Lives",
     "subtitle": "Concrete solutions that truly change entrepreneurs' lives",
     "thierry": {
-      "name": "Thierry",
       "role": "Restaurant Owner",
       "city": "Brussels",
       "text": "Before, it was hell: calls at all hours, reservations on Instagram, texts... We wasted so much time and had no-shows every week. Now, 100% of our reservations go through WhatsApp Business. The system automatically asks the right questions (date, time, number of people), sends confirmation and even a little reminder the day before. Result: we cut no-shows in half, I save at least 1 hour per day, and my customers love the simplicity. Honestly, it was super simple to set up and I would never go back. I recommend it to all restaurants tired of juggling reservations!",
       "badge": "-50% no-shows"
     },
     "sophie": {
-      "name": "Sophie M.",
       "role": "Marketing Director",
       "city": "Lyon",
       "text": "We spent hours writing newsletters and LinkedIn posts. With AInspiration's AI, we generate quality content in minutes. Our engagement rate jumped 40% and we publish 3 times more often. The team is thrilled to focus on strategy rather than writing.",
       "badge": "+40% engagement"
     },
     "marc": {
-      "name": "Marc D.",
       "role": "E-commerce Manager",
       "city": "Brussels",
       "text": "Our customer service was overwhelmed. Since we implemented the virtual assistant, 70% of requests are handled automatically. Our customers get instant responses 24/7, and my team can finally focus on complex cases. The ROI was visible from the very first month.",
@@ -161,6 +162,35 @@
     "p3": "Everything starts with a free, no-obligation audit. Within 24 hours, we analyze your processes, identify automation opportunities and deliver a concrete action plan. Then, we deploy the solution within 48 hours maximum. Based in Enghien, Belgium, we support businesses in Belgium and France with multilingual support in French, English and Dutch.",
     "subtitle3": "Security and GDPR compliance",
     "p4": "All your data is hosted in Europe and processed in strict compliance with GDPR. We use cutting-edge technologies — intelligent chatbots, AI data analysis, content generation, smart CRM — while guaranteeing the confidentiality and security of your business information."
+  },
+  "audit": {
+    "badge": "Free Audit — Limited places this month",
+    "title": "Discover Your AI Potential in 24h",
+    "subtitle": "An expert analyses your business and delivers a concrete action plan, free of charge.",
+    "cta": "Request My Free Audit",
+    "badges": {
+      "free": "100% free",
+      "fast": "Results within 24h",
+      "noCommitment": "No commitment"
+    },
+    "steps": {
+      "analysis": {
+        "title": "Initial Analysis",
+        "description": "Complete assessment of your current processes"
+      },
+      "diagnostic": {
+        "title": "In-depth Diagnostic",
+        "description": "Identification of improvement opportunities"
+      },
+      "impact": {
+        "title": "Impact Analysis",
+        "description": "Estimation of potential benefits"
+      },
+      "plan": {
+        "title": "Action Plan",
+        "description": "Detailed recommendations and roadmap"
+      }
+    }
   },
   "faq": {
     "q1": "Do I need technical skills to use your solutions?",
