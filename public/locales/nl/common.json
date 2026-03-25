@@ -41,6 +41,7 @@
     "requestDemo": "Demo Aanvragen",
     "discoverAI": "Ontdek AI",
     "startFreeAudit": "Start Gratis Audit",
+    "seeCaseStudies": "Zie Klantresultaten",
     "signIn": "Inloggen",
     "signOut": "Uitloggen"
   },
@@ -50,6 +51,9 @@
   "hero": {
     "title": "Bespaar 10 uur per week dankzij AI",
     "subtitle": "Sluit u aan bij de KMO's die repetitieve taken automatiseren en hun omzet verhogen met onze AI-oplossingen — geen technische kennis vereist.",
+    "ctaSubtext": "Resultaten in 24u — Geen verplichting",
+    "caseStudiesSubtext": "+50 KMO's begeleid",
+    "imageAlt": "Artificiële Intelligentie in het bedrijfsleven",
     "features": {
       "simple": "Operationeel in 48u",
       "secure": "100% beveiligde gegevens",
@@ -108,21 +112,18 @@
     "title": "Zij vereenvoudigden hun dagelijks leven",
     "subtitle": "Concrete oplossingen die echt het leven van ondernemers veranderen",
     "thierry": {
-      "name": "Thierry",
       "role": "Restaurateur",
       "city": "Brussel",
       "text": "Eerder was het een hel: telefoontjes op alle uren, reserveringen op Instagram, sms'jes... We verspilden zoveel tijd en hadden elke week no-shows. Nu gaan 100% van onze reserveringen via WhatsApp Business. Het systeem stelt automatisch de juiste vragen (datum, tijd, aantal personen), stuurt bevestiging en zelfs een kleine herinnering de dag ervoor. Resultaat: we hebben no-shows gehalveerd, ik bespaar minstens 1 uur per dag, en mijn klanten houden van de eenvoud. Eerlijk gezegd, het was super eenvoudig om in te stellen en ik zou nooit meer teruggaan. Ik beveel het aan alle restaurants die het zat zijn om met reserveringen te jongleren!",
       "badge": "-50% no-shows"
     },
     "sophie": {
-      "name": "Sophie M.",
       "role": "Marketing Directeur",
       "city": "Lyon",
       "text": "We besteedden uren aan het schrijven van newsletters en LinkedIn-posts. Met de AI van AInspiration genereren we kwalitatieve content in enkele minuten. Ons engagementpercentage steeg met 40% en we publiceren 3 keer vaker. Het team is blij zich op strategie te kunnen richten in plaats van op schrijfwerk.",
       "badge": "+40% engagement"
     },
     "marc": {
-      "name": "Marc D.",
       "role": "E-commerce Manager",
       "city": "Brussel",
       "text": "Onze klantenservice was overbelast. Sinds we de virtuele assistent hebben geïmplementeerd, wordt 70% van de verzoeken automatisch afgehandeld. Onze klanten krijgen 24/7 direct antwoord, en mijn team kan zich eindelijk richten op complexe gevallen. De ROI was al zichtbaar vanaf de eerste maand.",
@@ -161,6 +162,35 @@
     "p3": "Alles begint met een gratis en vrijblijvende audit. Binnen 24 uur analyseren we uw processen, identificeren we automatiseringsmogelijkheden en leveren we een concreet actieplan. Vervolgens implementeren we de oplossing binnen maximaal 48 uur. Gevestigd in Edingen, België, begeleiden we bedrijven in België en Frankrijk met meertalige ondersteuning in het Frans, Engels en Nederlands.",
     "subtitle3": "Beveiliging en AVG-conformiteit",
     "p4": "Al uw gegevens worden in Europa gehost en verwerkt in strikte naleving van de AVG. We gebruiken de nieuwste technologieën — intelligente chatbots, AI-data-analyse, contentgeneratie, slim CRM — en garanderen tegelijkertijd de vertrouwelijkheid en veiligheid van uw bedrijfsinformatie."
+  },
+  "audit": {
+    "badge": "Gratis Audit — Beperkte plaatsen deze maand",
+    "title": "Ontdek uw AI-potentieel in 24u",
+    "subtitle": "Een expert analyseert uw activiteit en levert u gratis een concreet actieplan.",
+    "cta": "Mijn gratis audit aanvragen",
+    "badges": {
+      "free": "100% gratis",
+      "fast": "Resultaten binnen 24u",
+      "noCommitment": "Geen verplichting"
+    },
+    "steps": {
+      "analysis": {
+        "title": "Initiële analyse",
+        "description": "Volledige beoordeling van uw huidige processen"
+      },
+      "diagnostic": {
+        "title": "Grondige diagnose",
+        "description": "Identificatie van verbeterkansen"
+      },
+      "impact": {
+        "title": "Impactanalyse",
+        "description": "Schatting van potentiële voordelen"
+      },
+      "plan": {
+        "title": "Actieplan",
+        "description": "Gedetailleerde aanbevelingen en routekaart"
+      }
+    }
   },
   "faq": {
     "q1": "Heb ik technische vaardigheden nodig om uw oplossingen te gebruiken?",

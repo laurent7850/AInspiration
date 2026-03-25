@@ -41,6 +41,7 @@
     "requestDemo": "Demander une démo",
     "discoverAI": "Découvrir l'IA",
     "startFreeAudit": "Démarrer l'audit gratuit",
+    "seeCaseStudies": "Voir les résultats clients",
     "signIn": "Se connecter",
     "signOut": "Déconnexion"
   },
@@ -50,6 +51,9 @@
   "hero": {
     "title": "Gagnez 10h par semaine grâce à l'IA",
     "subtitle": "Rejoignez les PME qui automatisent leurs tâches répétitives et boostent leur chiffre d'affaires avec nos solutions d'Intelligence Artificielle — sans compétence technique requise.",
+    "ctaSubtext": "Résultats en 24h — Sans engagement",
+    "caseStudiesSubtext": "+50 PME accompagnées",
+    "imageAlt": "Intelligence Artificielle en entreprise",
     "features": {
       "simple": "Mise en place en 48h",
       "secure": "Données 100% sécurisées",
@@ -108,21 +112,18 @@
     "title": "Ils ont simplifié leur quotidien",
     "subtitle": "Des solutions concrètes qui changent vraiment la vie des entrepreneurs",
     "thierry": {
-      "name": "Thierry",
       "role": "Restaurateur",
       "city": "Bruxelles",
       "text": "Avant, c'était l'enfer : des appels à toute heure, des réservations sur Instagram, des SMS... On perdait un temps fou et on avait des no-shows toutes les semaines. Maintenant, 100% de nos réservations passent par WhatsApp Business. Le système pose les bonnes questions automatiquement (date, heure, nombre de personnes), envoie la confirmation et même un petit rappel la veille. Résultat : on a divisé par deux les no-shows, je gagne au moins 1h par jour, et mes clients adorent la simplicité. Franchement, c'était super simple à mettre en place et je ne reviendrais jamais en arrière. Je recommande à tous les restos qui en ont marre de jongler avec les réservations !",
       "badge": "-50% de no-shows"
     },
     "sophie": {
-      "name": "Sophie M.",
       "role": "Directrice Marketing",
       "city": "Lyon",
       "text": "On passait des heures à rédiger nos newsletters et posts LinkedIn. Avec l'IA d'AInspiration, on génère du contenu de qualité en quelques minutes. Notre taux d'engagement a bondi de 40% et on publie 3 fois plus souvent. L'équipe est ravie de pouvoir se concentrer sur la stratégie plutôt que la rédaction.",
       "badge": "+40% engagement"
     },
     "marc": {
-      "name": "Marc D.",
       "role": "Gérant e-commerce",
       "city": "Bruxelles",
       "text": "Notre service client était submergé. Depuis qu'on a mis en place l'assistant virtuel, 70% des demandes sont traitées automatiquement. Nos clients ont des réponses instantanées 24h/24, et mon équipe peut enfin se concentrer sur les cas complexes. Le ROI a été visible dès le premier mois.",
@@ -153,7 +154,7 @@
     "text": "Ce n'est pas l'espèce la plus forte qui survit, ni la plus intelligente. C'est celle qui s'adapte le mieux au changement."
   },
   "seoIntro": {
-    "title": "L'Intelligence Artificielle au service des PME belges et françaises",
+    "title": "L'Intelligence Artificielle au service des PME Belges et Françaises",
     "p1": "En 2026, l'Intelligence Artificielle n'est plus réservée aux grandes entreprises. Chez AInspiration, nous rendons l'IA accessible à toutes les PME : restaurants, e-commerces, cabinets de conseil, agences marketing, artisans et indépendants. Notre mission est simple — vous faire gagner du temps et de l'argent grâce à des solutions d'automatisation intelligentes, sans aucune compétence technique requise.",
     "subtitle1": "Des résultats concrets, mesurables dès le premier mois",
     "p2": "Nos clients constatent en moyenne un ROI de 180%, une réduction de 60% du temps consacré aux tâches répétitives et une augmentation de 45% de leur productivité. Que ce soit pour automatiser la gestion des réservations, générer du contenu marketing, mettre en place un assistant virtuel ou optimiser votre service client, nos solutions s'adaptent à votre métier et à vos besoins spécifiques.",
@@ -161,6 +162,35 @@
     "p3": "Tout commence par un audit gratuit et sans engagement. En 24 heures, nous analysons vos processus, identifions les opportunités d'automatisation et vous livrons un plan d'action concret. Ensuite, nous déployons la solution en 48 heures maximum. Basés à Enghien en Belgique, nous accompagnons les entreprises en Belgique et en France avec un support multilingue en français, anglais et néerlandais.",
     "subtitle3": "Sécurité et conformité RGPD",
     "p4": "Toutes vos données sont hébergées en Europe et traitées dans le strict respect du RGPD. Nous utilisons des technologies de pointe — chatbots intelligents, analyse de données par IA, génération de contenu, CRM intelligent — tout en garantissant la confidentialité et la sécurité de vos informations professionnelles."
+  },
+  "audit": {
+    "badge": "Audit offert — Places limitées ce mois-ci",
+    "title": "Découvrez votre potentiel IA en 24h",
+    "subtitle": "Un expert analyse votre activité et vous livre un plan d'action concret, gratuitement.",
+    "cta": "Demander mon audit gratuit",
+    "badges": {
+      "free": "100% gratuit",
+      "fast": "Résultats sous 24h",
+      "noCommitment": "Sans engagement"
+    },
+    "steps": {
+      "analysis": {
+        "title": "Analyse initiale",
+        "description": "Évaluation complète de vos processus actuels"
+      },
+      "diagnostic": {
+        "title": "Diagnostic approfondi",
+        "description": "Identification des opportunités d'amélioration"
+      },
+      "impact": {
+        "title": "Analyse d'impact",
+        "description": "Estimation des bénéfices potentiels"
+      },
+      "plan": {
+        "title": "Plan d'action",
+        "description": "Recommandations détaillées et feuille de route"
+      }
+    }
   },
   "faq": {
     "q1": "Faut-il des compétences techniques pour utiliser vos solutions ?",

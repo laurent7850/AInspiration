@@ -149,6 +149,500 @@
     "tasks": "Taken",
     "reports": "Rapporten",
     "messages": "Berichten",
-    "newsletter": "Nieuwsbrief"
+    "newsletter": "Nieuwsbrief",
+    "linkedin": "LinkedIn"
+  },
+  "pages": {
+    "companies": {
+      "seoTitle": "Bedrijvenbeheer | AInspiration CRM",
+      "seoDescription": "Beheer uw bedrijven en professionele klanten en volg alle interacties op.",
+      "heading": "Bedrijvenbeheer"
+    },
+    "contacts": {
+      "seoTitle": "Contactbeheer | AInspiration CRM",
+      "seoDescription": "Beheer uw professionele contacten en volg alle interacties op.",
+      "heading": "Contactbeheer"
+    },
+    "opportunities": {
+      "seoTitle": "Opportuniteitenbeheer | AInspiration",
+      "seoDescription": "Beheer uw verkoopkansen en volg uw commerciële pijplijn op.",
+      "heading": "Commerciële pijplijn",
+      "viewList": "Lijst",
+      "viewKanban": "Kanban"
+    },
+    "products": {
+      "seoTitle": "Productbeheer | AInspiration CRM",
+      "seoDescription": "Beheer uw product- en dienstencatalogus in de CRM.",
+      "heading": "Productbeheer"
+    },
+    "tasks": {
+      "seoTitle": "Takenbeheer | AInspiration CRM",
+      "seoDescription": "Beheer en organiseer uw taken, volg de voortgang op en mis nooit een deadline.",
+      "heading": "Takenbeheer"
+    },
+    "reports": {
+      "seoTitle": "Rapporten en Analyses | AInspiration CRM",
+      "seoDescription": "Visualiseer en analyseer uw commerciële prestaties met gedetailleerde en aanpasbare rapporten.",
+      "heading": "Rapporten en Analyses",
+      "refresh": "Gegevens vernieuwen",
+      "tabOverview": "Overzicht",
+      "tabOpportunities": "Opportuniteiten",
+      "tabContacts": "Contacten",
+      "tabTasks": "Taken",
+      "tabProducts": "Producten"
+    },
+    "messages": {
+      "heading": "Contactberichten",
+      "description": "Beheer berichten ontvangen via het contactformulier",
+      "selectMessage": "Selecteer een bericht om de details te bekijken"
+    },
+    "linkedin": {
+      "seoTitle": "LinkedIn Auto-Publishing | AInspiration CRM",
+      "subtitle": "Automatische publicatie van AI-inhoud",
+      "generatePost": "Bericht genereren",
+      "connected": "Verbonden: {{name}}",
+      "notConnected": "Niet verbonden met LinkedIn",
+      "tokenExpires": "Token verloopt over {{days}} dagen",
+      "connectLinkedin": "LinkedIn verbinden",
+      "settingsTitle": "Configuratie",
+      "autoPublish": "Automatisch publiceren",
+      "schedule": "Planning",
+      "totalPosts": "Totaal berichten",
+      "filterAll": "Alle",
+      "noPostsTitle": "Geen LinkedIn-berichten",
+      "generateFirst": "Eerste bericht genereren",
+      "editModalTitle": "Bericht bewerken",
+      "charCount": "{{count}} tekens",
+      "cancel": "Annuleren",
+      "save": "Opslaan",
+      "noTitle": "Zonder titel",
+      "publishedAt": "Gepubliceerd op {{date}}",
+      "errorPrefix": "Fout: ",
+      "titleBtn": {
+        "view": "Bekijken",
+        "edit": "Bewerken",
+        "approve": "Goedkeuren",
+        "publish": "Publiceren",
+        "viewOnLinkedin": "Bekijken op LinkedIn",
+        "delete": "Verwijderen"
+      },
+      "status": {
+        "generated": "Gegenereerd",
+        "review_pending": "In afwachting",
+        "approved": "Goedgekeurd",
+        "published": "Gepubliceerd",
+        "failed": "Mislukt",
+        "queued": "In wachtrij",
+        "draft": "Concept"
+      },
+      "errors": {
+        "loading": "Laadifout",
+        "connection": "LinkedIn-verbindingsfout",
+        "generation": "Generatiefout",
+        "publishing": "Publicatiefout",
+        "deleteConfirm": "Dit bericht verwijderen?"
+      },
+      "success": {
+        "generated": "Bericht gegenereerd: \"{{title}}\"",
+        "published": "Gepubliceerd op LinkedIn!",
+        "publishedAlt": "Publicatie geslaagd",
+        "approved": "Bericht goedgekeurd",
+        "updated": "Bericht bijgewerkt",
+        "autoPublishOn": "Automatisch publiceren geactiveerd",
+        "manualApproval": "Handmatige goedkeuring geactiveerd"
+      }
+    },
+    "login": {
+      "heading": "Inloggen"
+    }
+  },
+  "opportunityList": {
+    "title": "Opportuniteitenpijplijn",
+    "newOpportunity": "Nieuwe opportuniteit",
+    "searchPlaceholder": "Zoeken...",
+    "allStages": "Alle fasen",
+    "noOpportunitiesFound": "Geen opportuniteiten gevonden.",
+    "createFirst": "Maak uw eerste opportuniteit aan",
+    "errorLoading": "Kan opportuniteiten niet laden. Probeer het opnieuw.",
+    "errorDeleting": "Kan opportuniteit niet verwijderen. Probeer het opnieuw.",
+    "retry": "Opnieuw proberen",
+    "tableHeaders": {
+      "name": "Naam",
+      "stage": "Fase",
+      "company": "Bedrijf",
+      "contact": "Contact",
+      "product": "Product",
+      "value": "Waarde",
+      "closeDate": "Sluitingsdatum",
+      "actions": "Acties"
+    }
+  },
+  "messages": {
+    "title": "Contactberichten",
+    "filterAll": "Alle",
+    "filterNew": "Nieuw",
+    "filterRead": "Gelezen",
+    "filterReplied": "Beantwoord",
+    "filterArchived": "Gearchiveerd",
+    "loading": "Laden...",
+    "noMessages": "Geen berichten",
+    "deleteConfirm": "Weet u zeker dat u dit bericht wilt verwijderen?",
+    "deleteTitle": "Verwijderen",
+    "timeAgoMinutes": "{{count}} min geleden",
+    "timeAgoHours": "{{count}}u geleden",
+    "timeAgoDays": "{{count}}d geleden",
+    "statuses": {
+      "new": "Nieuw",
+      "read": "Gelezen",
+      "replied": "Beantwoord",
+      "archived": "Gearchiveerd"
+    },
+    "detail": {
+      "backToList": "Terug naar lijst",
+      "receivedOn": "Ontvangen op {{date}}",
+      "updatedOn": "Bijgewerkt op {{date}}",
+      "messageTitle": "Bericht",
+      "actionsTitle": "Acties",
+      "markAsRead": "Markeren als gelezen",
+      "markAsReplied": "Markeren als beantwoord",
+      "archive": "Archiveren",
+      "replyByEmail": "Beantwoorden per e-mail"
+    }
+  },
+  "dashboardView": {
+    "title": "CRM Dashboard",
+    "subtitle": "Aangedreven door Kunstmatige Intelligentie",
+    "tabs": {
+      "overview": "Overzicht",
+      "aiInsights": "AI-inzichten",
+      "leadScoring": "Lead Scoring",
+      "followUp": "Opvolgingen"
+    },
+    "kpi": {
+      "pipelineValue": "Pipelinewaarde",
+      "activeDeals": "{{count}} actieve deals",
+      "wonValue": "Gewonnen bedrag",
+      "conversionRate": "Conversieratio: {{rate}}%",
+      "pendingTasks": "Openstaande taken",
+      "overdueTasksCount": "{{count}} achterstallige taken",
+      "allUpToDate": "Alles is up-to-date!",
+      "totalContacts": "Totaal contacten",
+      "manageContacts": "Contacten beheren"
+    },
+    "charts": {
+      "salesPipeline": "Verkooppijplijn",
+      "viewAll": "Bekijk alle",
+      "salesPerformance": "Verkoopprestaties",
+      "viewReports": "Bekijk rapporten"
+    },
+    "tasks": {
+      "title": "Aankomende taken",
+      "viewAll": "Bekijk alle",
+      "noTasks": "Geen aankomende taken",
+      "deadline": "Deadline: {{date}}",
+      "priorityHigh": "Hoog",
+      "priorityMedium": "Gemiddeld",
+      "priorityLow": "Laag"
+    },
+    "activity": {
+      "title": "Recente activiteit",
+      "noActivity": "Geen recente activiteit"
+    },
+    "aiTab": {
+      "statsTitle": "Belangrijkste statistieken",
+      "activeOpportunities": "Actieve opportuniteiten",
+      "pipelineValue": "Pipelinewaarde",
+      "overdueTasks": "Achterstallige taken",
+      "conversionRate": "Conversieratio",
+      "actionsTitle": "Aanbevolen acties",
+      "closeNegotiations": "Onderhandelingen afsluiten",
+      "negotiationsPending": "{{count}} opportuniteit(en) in afwachting",
+      "handleUrgentTasks": "Urgente taken afhandelen",
+      "urgentTasksCount": "{{count}} taak/taken met hoge prioriteit",
+      "enrichContacts": "Contacten verrijken",
+      "enrichContactsDesc": "Ontbrekende informatie van leads aanvullen"
+    },
+    "errorLoading": "Kan dashboardgegevens niet laden. Probeer het opnieuw."
+  },
+  "auth": {
+    "demoAccess": "Demo-toegang",
+    "emailLabel": "E-mail:",
+    "passwordLabel": "Wachtwoord:",
+    "autoFill": "Automatisch invullen",
+    "connecting": "Bezig met inloggen...",
+    "connect": "Inloggen",
+    "emailPlaceholder": "uw@email.com",
+    "genericError": "Er is een fout opgetreden"
+  },
+  "page": {
+    "seo": {
+      "title": "Intelligente CRM-oplossing | AInspiration",
+      "description": "Transformeer uw klantrelaties met onze CRM van de nieuwe generatie. Intelligente automatisering, 360°-beeld van uw klanten en bewezen conversieverhoging.",
+      "keywords": "CRM, klantrelatiebeheer, verkooppijplijn, automatisering, CRM-software"
+    },
+    "hero": {
+      "badge": "CRM-oplossing",
+      "title": "Transformeer elke interactie in een groeikans",
+      "description": "Onze intelligente CRM verenigt uw gegevens, automatiseert uw processen en onthult de inzichten die het verschil maken.",
+      "ctaDemo": "Demo",
+      "ctaLearnMore": "Meer informatie",
+      "check1": "Implementatie in 14 dagen",
+      "check2": "ROI in 3 maanden",
+      "check3": "Support 24/7",
+      "imageAlt": "Intelligente CRM-interface"
+    },
+    "trustedBy": "Zij vertrouwen ons voor hun klantrelatiebeheer",
+    "features": {
+      "badge": "Functies",
+      "sectionTitle": "Een complete CRM voor elk aspect van uw klantrelaties",
+      "sectionDescription": "Ontdek hoe onze oplossing uw commerciële aanpak transformeert en uw klanten behoudt",
+      "items": [
+        {
+          "title": "Contactbeheer",
+          "description": "Centraliseer al uw klantgegevens op één plek. Volg de volledige geschiedenis, voorkeuren en interacties voor een 360°-beeld.",
+          "benefits": [
+            "Volledige en aanpasbare contactfiches",
+            "Geavanceerde segmentatie",
+            "Eenvoudige import/export",
+            "Interactiegeschiedenis"
+          ]
+        },
+        {
+          "title": "Verkooppijplijn",
+          "description": "Visualiseer en beheer uw verkoopproces effectief. Volg uw prospects en kansen van prospectie tot afsluiting.",
+          "benefits": [
+            "Aanpasbare workflows",
+            "Nauwkeurige verkoopsprognoses",
+            "Conversieopvolging",
+            "Prestatierapporten"
+          ]
+        },
+        {
+          "title": "Taak- en agendabeheer",
+          "description": "Mis nooit een belangrijke deadline. Plan en volg uw afspraken, taken en herinneringen gesynchroniseerd met uw team.",
+          "benefits": [
+            "Synchronisatie met Google Agenda",
+            "Meldingen en notificaties",
+            "Taaktoewijzing",
+            "Geconsolideerd teamoverzicht"
+          ]
+        },
+        {
+          "title": "Omnichannelcommunicatie",
+          "description": "Beheer al uw communicatiekanalen vanuit één interface: e-mails, sms, oproepen en sociale media.",
+          "benefits": [
+            "Uniforme gespreksgeschiedenis",
+            "Berichtsjablonen",
+            "Opvolging van openingen en klikken",
+            "Integratie met uw favoriete tools"
+          ]
+        },
+        {
+          "title": "Documentbeheer",
+          "description": "Sla al uw commerciële documenten eenvoudig op en deel ze: offertes, contracten, facturen en presentaties.",
+          "benefits": [
+            "Veilige opslag",
+            "Versiebeheer",
+            "Veilig delen",
+            "Elektronische handtekeningen"
+          ]
+        },
+        {
+          "title": "Rapporten en dashboards",
+          "description": "Neem weloverwogen beslissingen dankzij visuele analyses van uw commerciële activiteiten en teamprestaties.",
+          "benefits": [
+            "Aanpasbare dashboards",
+            "Realtime KPI's",
+            "Eenvoudige export",
+            "Interactieve visualisaties"
+          ]
+        }
+      ]
+    },
+    "screenshots": {
+      "badge": "Intuïtieve interface",
+      "sectionTitle": "Een optimale gebruikerservaring",
+      "sectionDescription": "Overzichtelijke interface, vlotte navigatie en geavanceerde personalisatie voor snelle adoptie",
+      "items": [
+        {
+          "title": "CRM-dashboard",
+          "description": "Geconsolideerd overzicht van al uw commerciële activiteiten"
+        },
+        {
+          "title": "Verkooppijplijn",
+          "description": "Visuele opvolging van uw commerciële kansen"
+        },
+        {
+          "title": "Contactbeheer",
+          "description": "Volledig overzicht van uw klantinteracties"
+        }
+      ]
+    },
+    "keyBenefits": {
+      "badge": "Voordelen",
+      "sectionTitle": "Meetbare resultaten voor uw bedrijf",
+      "sectionDescription": "Onze CRM biedt een snelle en significante return on investment",
+      "items": [
+        {
+          "title": "Stijging van de conversieratio",
+          "value": "+35%",
+          "description": "Van gekwalificeerde prospects tot afsluiting, optimaliseer elke stap van uw klantenreis."
+        },
+        {
+          "title": "Productiviteitswinst",
+          "value": "+40%",
+          "description": "Vrijmaak kostbare tijd door uw repetitieve taken te automatiseren en focus op klantrelaties."
+        },
+        {
+          "title": "Vermindering van operationele kosten",
+          "value": "-25%",
+          "description": "Optimaliseer uw processen en verminder handmatige fouten voor een snelle, meetbare ROI."
+        },
+        {
+          "title": "Verbetering van klanttevredenheid",
+          "value": "+45%",
+          "description": "Bied een gepersonaliseerde ervaring die uw klanten bindt en aanbevelingen genereert."
+        }
+      ]
+    },
+    "testimonials": {
+      "badge": "Getuigenissen",
+      "sectionTitle": "Wat onze klanten zeggen",
+      "sectionDescription": "Ontdek hoe onze CRM de activiteit van onze klanten heeft getransformeerd",
+      "items": [
+        {
+          "quote": "De CRM van AInspiration heeft onze commerciële aanpak gerevolutioneerd. Onze teams zijn reactiever en onze conversieratio is in slechts 3 maanden met 32% gestegen.",
+          "name": "Marie Dupont",
+          "position": "Commercieel Directeur",
+          "company": "TechSolutions"
+        },
+        {
+          "quote": "De implementatie verliep snel en de begeleiding was uitzonderlijk. Onze return on investment was bereikt in minder dan 6 maanden dankzij hogere verkopen en procesoptimalisatie.",
+          "name": "Thomas Lefebvre",
+          "position": "CEO",
+          "company": "GrowthMarketing"
+        },
+        {
+          "quote": "Het 360°-beeld van onze klanten stelt ons eindelijk in staat om elk van onze 10.000+ klanten een echt gepersonaliseerde ervaring te bieden. Een onmisbaar hulpmiddel voor onze groei.",
+          "name": "Sophie Moreau",
+          "position": "Verantwoordelijke Klantrelaties",
+          "company": "EleganCE"
+        }
+      ]
+    },
+    "pricing": {
+      "badge": "Prijzen",
+      "sectionTitle": "Formules afgestemd op elke behoefte",
+      "sectionDescription": "Flexibele oplossingen die meegroeien met uw bedrijf",
+      "popular": "Meest populair",
+      "plans": [
+        {
+          "name": "Essentieel",
+          "price": "€29",
+          "period": "gebruiker / maand",
+          "features": [
+            "Contacten- en bedrijvenbeheer",
+            "Basisverkooppijplijn",
+            "E-mail en agenda",
+            "Mobiele apps (iOS, Android)",
+            "5 GB opslag / gebruiker",
+            "E-mailsupport"
+          ],
+          "cta": "Gratis proefperiode starten"
+        },
+        {
+          "name": "Business",
+          "price": "€49",
+          "period": "gebruiker / maand",
+          "features": [
+            "Alle Essentieel-functies",
+            "Geavanceerde automatiseringen",
+            "Aangepaste rapporten en dashboards",
+            "Integratie met 150+ applicaties",
+            "20 GB opslag / gebruiker",
+            "Prioriteitssupport 24/5"
+          ],
+          "cta": "Gratis proefperiode starten"
+        },
+        {
+          "name": "Enterprise",
+          "price": "Op maat",
+          "period": "",
+          "features": [
+            "Alle Business-functies",
+            "Versterkte beveiliging en SSO",
+            "Volledige API en webhooks",
+            "Testomgevingen",
+            "Onbeperkte opslag",
+            "Dedicated support 24/7 en SLA"
+          ],
+          "cta": "Contact met het verkoopteam"
+        }
+      ]
+    },
+    "faq": {
+      "badge": "FAQ",
+      "sectionTitle": "Veelgestelde vragen",
+      "sectionDescription": "Alles wat u moet weten over onze CRM-oplossing",
+      "items": [
+        {
+          "question": "Hoe lang duurt het om uw CRM-oplossing te implementeren?",
+          "answer": "Onze CRM-oplossing kan in 2 tot 4 weken worden opgezet, afhankelijk van de complexiteit van uw organisatie. We bieden volledige ondersteuning, inclusief datamigratrie, configuratie volgens uw processen en teamtraining."
+        },
+        {
+          "question": "Is uw CRM compatibel met onze bestaande tools?",
+          "answer": "Absoluut! Onze CRM integreert native met meer dan 150 tools (Office 365, Gmail, Outlook, Mailchimp, enz.) en heeft een open API voor aangepaste integraties."
+        },
+        {
+          "question": "Hoe garandeert u de beveiliging van onze gegevens?",
+          "answer": "Beveiliging is onze absolute prioriteit. We gebruiken end-to-end encryptie, ISO 27001-conforme datacenters, dagelijkse back-ups en granulaire toegangscontroles. Onze oplossing is volledig AVG-conform."
+        },
+        {
+          "question": "Wat zijn de prijzen voor uw CRM-oplossing?",
+          "answer": "Onze prijzen zijn transparant en modulair, vanaf €29/gebruiker/maand voor het Essentieel-pakket. We bieden ook Business (€49) en Enterprise (op maat) plannen. Contacteer ons voor een gepersonaliseerde offerte."
+        },
+        {
+          "question": "Biedt u training aan voor ons team?",
+          "answer": "Ja, elke implementatie omvat een trainingsprogramma afgestemd op uw behoeften, inclusief individuele of groepssessies, webinars, volledige documentatie en een online bronnencentrum."
+        },
+        {
+          "question": "Kan ik uw CRM uitproberen voor ik me engageer?",
+          "answer": "Absoluut! We bieden een gepersonaliseerde demo gevolgd door een gratis proefperiode van 14 dagen met toegang tot alle functies."
+        }
+      ]
+    },
+    "deployProcess": {
+      "badge": "Ons proces",
+      "sectionTitle": "Snelle en stressvrije implementatie",
+      "sectionDescription": "Onze beproefde methodologie garandeert een succesvolle uitvoering",
+      "steps": [
+        {
+          "title": "Audit en analyse",
+          "description": "Grondige kennis van uw huidige processen en commerciële doelstellingen.",
+          "duration": "1-2 dagen"
+        },
+        {
+          "title": "Configuratie",
+          "description": "Personalisatie van de oplossing volgens uw processen en integratie met uw tools.",
+          "duration": "3-5 dagen"
+        },
+        {
+          "title": "Training",
+          "description": "Volledige training van uw teams voor snelle en effectieve adoptie.",
+          "duration": "1-3 dagen"
+        },
+        {
+          "title": "Begeleiding",
+          "description": "Continue ondersteuning en regelmatige optimalisaties om uw ROI te maximaliseren.",
+          "duration": "Continu"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Klaar om uw klantrelaties te transformeren?",
+      "description": "Sluit u aan bij meer dan 1.200 bedrijven die hun commerciële aanpak al hebben gerevolutioneerd met onze CRM-oplossing.",
+      "ctaDemo": "Demo",
+      "ctaContact": "Neem contact op"
+    }
   }
 }
