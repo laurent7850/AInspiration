@@ -49,7 +49,7 @@ app.use(helmet({
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       imgSrc: ["'self'", "data:", "https:", "blob:"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      connectSrc: ["'self'", "https://www.google-analytics.com", "https://n8n.srv767464.hstgr.cloud", "https://openrouter.ai"],
+      connectSrc: ["'self'", "https://www.google-analytics.com", "https://*.google-analytics.com", "https://*.analytics.google.com", "https://n8n.srv767464.hstgr.cloud", "https://openrouter.ai"],
       frameSrc: ["'none'"],
       objectSrc: ["'none'"],
     },
