@@ -27,17 +27,17 @@ export const seoPages: Record<string, SEOPageConfig> = {
   '/': {
     fr: {
       title: 'AInspiration | Solutions IA pour PME - Audit Gratuit',
-      description: 'Automatisez vos tâches répétitives et boostez votre CA grâce à l\'IA. +180% ROI moyen. Audit gratuit en 24h, sans engagement. 50+ PME accompagnées en Belgique et France.',
+      description: 'Automatisez vos tâches répétitives et boostez votre CA grâce à l\'IA. Un premier résultat concret en 5 jours. Audit gratuit en 24h, sans engagement. 50+ PME accompagnées en Belgique et France.',
       keywords: 'intelligence artificielle PME, IA entreprise, automatisation IA, audit IA gratuit, solutions IA Belgique, transformation digitale PME, machine learning, deep learning, outils IA'
     },
     en: {
       title: 'AInspiration | AI Solutions for SMEs - Free Audit',
-      description: 'Automate repetitive tasks and boost revenue with AI. +180% average ROI. Free audit in 24h, no commitment. 50+ SMEs supported in Belgium and France.',
+      description: 'Automate repetitive tasks and boost revenue with AI. First concrete results in 5 days. Free audit in 24h, no commitment. 50+ SMEs supported in Belgium and France.',
       keywords: 'artificial intelligence SME, business AI, AI automation, free AI audit, AI solutions Belgium, digital transformation SME, machine learning, deep learning, AI tools'
     },
     nl: {
       title: 'AInspiration | AI Oplossingen KMO - Gratis Audit',
-      description: 'Automatiseer repetitieve taken en verhoog uw omzet met AI. +180% gemiddelde ROI. Gratis audit in 24u, zonder verplichtingen. 50+ KMO\'s begeleid in België en Frankrijk.',
+      description: 'Automatiseer repetitieve taken en verhoog uw omzet met AI. Eerste concrete resultaten in 5 dagen. Gratis audit in 24u, zonder verplichtingen. 50+ KMO\'s begeleid in België en Frankrijk.',
       keywords: 'kunstmatige intelligentie KMO, AI bedrijf, AI automatisering, gratis AI audit, AI oplossingen België, digitale transformatie KMO, machine learning, deep learning, AI tools'
     }
   },
@@ -56,40 +56,6 @@ export const seoPages: Record<string, SEOPageConfig> = {
       title: 'Inloggen | AInspiration',
       description: 'Log in op uw AInspiration klantenzone om toegang te krijgen tot uw dashboard en uw AI-projecten te beheren.',
       keywords: 'inloggen, klantenzone, AInspiration login'
-    }
-  },
-  '/pourquoi-ia': {
-    fr: {
-      title: 'Pourquoi l\'IA ? Avantages pour PME | AInspiration',
-      description: 'Découvrez pourquoi l\'IA est essentielle pour votre entreprise. Gains de productivité, automatisation et innovation pour rester compétitif sur le marché.',
-      keywords: 'avantages IA, bénéfices intelligence artificielle, productivité IA, ROI IA, pourquoi adopter IA'
-    },
-    en: {
-      title: 'Why AI? Benefits for SMEs | AInspiration',
-      description: 'Discover why AI is essential for your business. Productivity gains, automation and innovation to stay competitive in the market.',
-      keywords: 'AI benefits, artificial intelligence advantages, AI productivity, AI ROI, why adopt AI'
-    },
-    nl: {
-      title: 'Waarom AI? Voordelen voor KMO | AInspiration',
-      description: 'Ontdek waarom AI essentieel is voor uw bedrijf. Productiviteitswinst, automatisering en innovatie om concurrerend te blijven.',
-      keywords: 'AI voordelen, kunstmatige intelligentie voordelen, AI productiviteit, AI ROI, waarom AI adopteren'
-    }
-  },
-  '/pour-qui-ia': {
-    fr: {
-      title: 'Pour Qui l\'IA | Secteurs et Profils Adaptés | AInspiration',
-      description: 'L\'IA est accessible à tous les secteurs : PME, startups, grandes entreprises. Découvrez comment l\'IA peut transformer votre activité selon votre profil.',
-      keywords: 'IA pour PME, IA secteurs, profils IA, entreprises IA, qui peut utiliser IA'
-    },
-    en: {
-      title: 'AI for Who | Suitable Sectors and Profiles | AInspiration',
-      description: 'AI is accessible to all sectors: SMEs, startups, large companies. Discover how AI can transform your business according to your profile.',
-      keywords: 'AI for SMEs, AI sectors, AI profiles, AI businesses, who can use AI'
-    },
-    nl: {
-      title: 'AI voor Wie | Geschikte Sectoren en Profielen | AInspiration',
-      description: 'AI is toegankelijk voor alle sectoren: KMO\'s, startups, grote bedrijven. Ontdek hoe AI uw bedrijf kan transformeren volgens uw profiel.',
-      keywords: 'AI voor KMO, AI sectoren, AI profielen, AI bedrijven, wie kan AI gebruiken'
     }
   },
   '/analyse-ia': {
@@ -126,23 +92,6 @@ export const seoPages: Record<string, SEOPageConfig> = {
       keywords: 'digitale transformatie, bedrijfsdigitalisering, procesmodernisering, digitale innovatie'
     }
   },
-  '/creation-visuelle': {
-    fr: {
-      title: 'Création Visuelle IA | Design Génératif | AInspiration',
-      description: 'Créez des visuels uniques avec l\'IA générative. Logos, images marketing, illustrations personnalisées pour votre communication.',
-      keywords: 'création visuelle IA, images IA, design IA, génération images, IA générative, DALL-E, Midjourney'
-    },
-    en: {
-      title: 'AI Visual Creation | Generative Design | AInspiration',
-      description: 'Create unique visuals with generative AI. Logos, marketing images, custom illustrations for your communication.',
-      keywords: 'AI visual creation, AI images, AI design, image generation, generative AI, DALL-E, Midjourney'
-    },
-    nl: {
-      title: 'AI Visuele Creatie | Generatief Design | AInspiration',
-      description: 'Creëer unieke visuals met generatieve AI. Logo\'s, marketingafbeeldingen, gepersonaliseerde illustraties voor uw communicatie.',
-      keywords: 'AI visuele creatie, AI afbeeldingen, AI design, beeldgeneratie, generatieve AI, DALL-E, Midjourney'
-    }
-  },
   '/recommandations': {
     fr: {
       title: 'Recommandations IA Personnalisées | AInspiration',
@@ -163,7 +112,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
   '/solutions': {
     fr: {
       title: 'Solutions IA PME Belgique | Automatisation & ML | AInspiration',
-      description: 'Solutions IA complètes pour PME : automatisation, CRM intelligent, chatbots, machine learning. +180% ROI moyen. Accompagnement en Belgique et France.',
+      description: 'Solutions IA complètes pour PME : automatisation, CRM intelligent, chatbots, machine learning. Résultats concrets en 5 jours. Accompagnement en Belgique et France.',
       keywords: 'solutions IA PME, services intelligence artificielle Belgique, automatisation IA, CRM IA, chatbot entreprise, machine learning applications, deep learning, NLP, outils IA startups'
     },
     en: {
@@ -226,6 +175,23 @@ export const seoPages: Record<string, SEOPageConfig> = {
       title: 'Over Ons | Ons Team en Missie | AInspiration',
       description: 'Ontdek het AInspiration team. Onze missie: AI democratiseren voor Belgische en Europese bedrijven met menselijke ondersteuning.',
       keywords: 'over AInspiration, AI team, missie, waarden, AI bedrijf België'
+    }
+  },
+  '/audit': {
+    fr: {
+      title: 'Audit IA Gratuit en 24h | Diagnostic Personnalisé | AInspiration',
+      description: 'Demandez votre audit IA gratuit. Un expert analyse votre activité et vous livre un plan d\'action concret en 24h. Sans engagement. PME et indépendants en Belgique et France.',
+      keywords: 'audit IA gratuit, diagnostic IA, audit intelligence artificielle, bilan IA PME, audit automatisation'
+    },
+    en: {
+      title: 'Free AI Audit in 24h | Personalized Diagnosis | AInspiration',
+      description: 'Request your free AI audit. An expert analyzes your business and delivers a concrete action plan in 24h. No commitment. SMEs in Belgium and France.',
+      keywords: 'free AI audit, AI diagnosis, artificial intelligence audit, SME AI assessment, automation audit'
+    },
+    nl: {
+      title: 'Gratis AI Audit in 24u | Gepersonaliseerde Diagnose | AInspiration',
+      description: 'Vraag uw gratis AI-audit aan. Een expert analyseert uw bedrijf en levert een concreet actieplan in 24u. Zonder verplichtingen. KMO\'s in België en Frankrijk.',
+      keywords: 'gratis AI audit, AI diagnose, kunstmatige intelligentie audit, KMO AI beoordeling, automatisering audit'
     }
   },
   '/contact': {
@@ -715,18 +681,27 @@ export const getOrganizationSchema = () => ({
 });
 
 // Génère les données structurées pour une page de service
-export const getServiceSchema = (serviceName: string, description: string) => ({
+export const getServiceSchema = (serviceName: string, description: string, options?: { url?: string; category?: string }) => ({
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: serviceName,
   description: description,
+  ...(options?.url && { url: `${defaultSEO.siteUrl}${options.url}` }),
+  ...(options?.category && { category: options.category }),
   provider: {
     '@type': 'Organization',
-    name: 'AInspiration'
+    '@id': `${defaultSEO.siteUrl}/#organization`,
+    name: 'AInspiration',
+    url: defaultSEO.siteUrl
   },
-  areaServed: {
-    '@type': 'Country',
-    name: 'Belgium'
+  areaServed: [
+    { '@type': 'Country', name: 'Belgium' },
+    { '@type': 'Country', name: 'France' }
+  ],
+  availableChannel: {
+    '@type': 'ServiceChannel',
+    serviceUrl: defaultSEO.siteUrl,
+    availableLanguage: ['French', 'English', 'Dutch']
   }
 });
 

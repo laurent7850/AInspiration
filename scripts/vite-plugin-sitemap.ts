@@ -18,16 +18,14 @@ interface SitemapRoute {
 // All public static routes with their SEO metadata
 const staticRoutes: SitemapRoute[] = [
   { path: '/', changefreq: 'weekly', priority: 1.0 },
-  { path: '/pourquoi-ia', changefreq: 'monthly', priority: 0.9 },
-  { path: '/pour-qui-ia', changefreq: 'monthly', priority: 0.8 },
   { path: '/solutions', changefreq: 'weekly', priority: 0.9 },
   { path: '/analyse-ia', changefreq: 'monthly', priority: 0.8 },
   { path: '/transformation', changefreq: 'monthly', priority: 0.8 },
-  { path: '/creation-visuelle', changefreq: 'monthly', priority: 0.8 },
+  { path: '/creation-ia', changefreq: 'monthly', priority: 0.8 },
   { path: '/automatisation', changefreq: 'monthly', priority: 0.8 },
   { path: '/assistants', changefreq: 'monthly', priority: 0.8 },
   { path: '/prompts', changefreq: 'weekly', priority: 0.8 },
-  { path: '/creativite', changefreq: 'monthly', priority: 0.7 },
+  { path: '/audit', changefreq: 'monthly', priority: 0.9 },
   { path: '/crm', changefreq: 'monthly', priority: 0.8 },
   { path: '/produits', changefreq: 'weekly', priority: 0.8 },
   { path: '/etudes-de-cas', changefreq: 'weekly', priority: 0.8 },
