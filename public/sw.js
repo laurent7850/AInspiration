@@ -1,5 +1,5 @@
 // Service Worker for AInspiration PWA
-const CACHE_NAME = 'ainspiration-v1';
+const CACHE_NAME = 'ainspiration-v2';
 const RUNTIME_CACHE = 'ainspiration-runtime';
 
 // Resources to cache on install
@@ -81,33 +81,29 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // For static assets - Cache first, network fallback
+  // For static assets - Network first (hashed filenames = safe to re-fetch)
   if (event.request.destination === 'image' ||
       event.request.destination === 'style' ||
       event.request.destination === 'script' ||
       event.request.destination === 'font') {
     event.respondWith(
-      caches.match(event.request)
-        .then((cachedResponse) => {
-          if (cachedResponse) {
-            // Update cache in background
-            fetch(event.request).then((response) => {
-              caches.open(RUNTIME_CACHE).then((cache) => {
-                cache.put(event.request, response);
-              });
-            });
-            return cachedResponse;
-          }
-
-          return fetch(event.request).then((response) => {
-            // Cache the new resource
-            const responseClone = response.clone();
-            caches.open(RUNTIME_CACHE).then((cache) => {
-              cache.put(event.request, responseClone);
-            });
+      fetch(event.request)
+        .then((response) => {
+          // Only cache if response has correct MIME type (not SPA fallback HTML)
+          const ct = response.headers.get('content-type') || '';
+          const isScript = event.request.destination === 'script';
+          const isHtml = ct.includes('text/html');
+          if (isScript && isHtml) {
+            // Server returned HTML for a JS request = SPA fallback, don't cache
             return response;
+          }
+          const responseClone = response.clone();
+          caches.open(RUNTIME_CACHE).then((cache) => {
+            cache.put(event.request, responseClone);
           });
+          return response;
         })
+        .catch(() => caches.match(event.request))
     );
     return;
   }
