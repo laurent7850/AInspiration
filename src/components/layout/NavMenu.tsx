@@ -112,6 +112,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
           <span className="ml-2 text-lg md:text-xl font-bold tracking-tight">
             <span className="text-indigo-600">AI</span>
             <span className="text-slate-800">nspiration</span>
+            <sup className="text-[8px] text-slate-500 ml-0.5">®</sup>
           </span>
         </div>
 
@@ -164,6 +165,13 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
               )}
             </div>
           ))}
+
+          <button
+            onClick={onAuditClick}
+            className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors"
+          >
+            Audit gratuit
+          </button>
 
           <div className="relative group">
             <span
@@ -255,6 +263,14 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
       {/* Mobile menu */}
       {isOpen && (
         <div className="md:hidden py-4 border-t border-indigo-100 bg-indigo-50">
+          <div className="px-2 pb-3 mb-2 border-b border-indigo-100">
+            <button
+              onClick={() => { onAuditClick(); setIsOpen(false); }}
+              className="w-full bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors"
+            >
+              Audit gratuit
+            </button>
+          </div>
           <div className="px-2 py-2 mb-2 border-b border-indigo-100">
             <div className="flex items-center gap-2 text-slate-700 mb-2">
               <Languages className="w-4 h-4" />
