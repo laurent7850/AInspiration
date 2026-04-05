@@ -1,54 +1,56 @@
 import React, { useState } from 'react';
-import { 
-  Bot, 
-  MessageSquare, 
-  Brain, 
-  Settings, 
-  ArrowRight, 
+import {
+  Bot,
+  MessageSquare,
+  Brain,
+  Settings,
+  ArrowRight,
   Zap,
   Users,
   Clock,
   Globe,
   Shield
 } from 'lucide-react';
-import StartForm from './StartForm';
+import { useTranslation } from 'react-i18next';
+import AuditForm from './AuditForm';
 
 export default function VirtualAssistants() {
   const [showStartForm, setShowStartForm] = useState(false);
+  const { t } = useTranslation('features');
 
   const assistantTypes = [
     {
-      title: "Assistant Service Client",
-      description: "Réponses instantanées 24/7 à vos clients",
+      title: t('assistants.types.customer.title'),
+      description: t('assistants.types.customer.description'),
       features: [
-        "Réponses en temps réel",
-        "Multi-langues",
-        "Personnalisation des réponses",
-        "Transfert vers un humain si nécessaire"
+        t('assistants.types.customer.features.0'),
+        t('assistants.types.customer.features.1'),
+        t('assistants.types.customer.features.2'),
+        t('assistants.types.customer.features.3')
       ],
       icon: MessageSquare,
       color: "bg-blue-100 text-blue-600"
     },
     {
-      title: "Assistant Analyse",
-      description: "Analyse et interprétation de données en temps réel",
+      title: t('assistants.types.analysis.title'),
+      description: t('assistants.types.analysis.description'),
       features: [
-        "Tableaux de bord en direct",
-        "Alertes intelligentes",
-        "Recommandations d'actions",
-        "Rapports automatisés"
+        t('assistants.types.analysis.features.0'),
+        t('assistants.types.analysis.features.1'),
+        t('assistants.types.analysis.features.2'),
+        t('assistants.types.analysis.features.3')
       ],
       icon: Brain,
       color: "bg-purple-100 text-purple-600"
     },
     {
-      title: "Assistant Process",
-      description: "Automatisation des tâches répétitives",
+      title: t('assistants.types.process.title'),
+      description: t('assistants.types.process.description'),
       features: [
-        "Workflows automatisés",
-        "Intégration avec vos outils",
-        "Suivi des tâches",
-        "Optimisation continue"
+        t('assistants.types.process.features.0'),
+        t('assistants.types.process.features.1'),
+        t('assistants.types.process.features.2'),
+        t('assistants.types.process.features.3')
       ],
       icon: Settings,
       color: "bg-green-100 text-green-600"
@@ -57,18 +59,18 @@ export default function VirtualAssistants() {
 
   const benefits = [
     {
-      title: "Disponibilité 24/7",
-      description: "Service continu sans interruption",
+      title: t('assistants.benefits.availability.title'),
+      description: t('assistants.benefits.availability.description'),
       icon: Clock
     },
     {
-      title: "Multi-langues",
-      description: "Support en plus de 30 langues",
+      title: t('assistants.benefits.multilingual.title'),
+      description: t('assistants.benefits.multilingual.description'),
       icon: Globe
     },
     {
-      title: "Sécurité maximale",
-      description: "Protection des données garantie",
+      title: t('assistants.benefits.security.title'),
+      description: t('assistants.benefits.security.description'),
       icon: Shield
     }
   ];
@@ -76,18 +78,18 @@ export default function VirtualAssistants() {
   const metrics = [
     {
       value: "90%",
-      label: "Taux de résolution",
-      description: "Des demandes résolues automatiquement"
+      label: t('assistants.metrics.resolution.label'),
+      description: t('assistants.metrics.resolution.description')
     },
     {
       value: "-60%",
-      label: "Réduction des coûts",
-      description: "Sur le support client"
+      label: t('assistants.metrics.cost.label'),
+      description: t('assistants.metrics.cost.description')
     },
     {
       value: "24/7",
-      label: "Disponibilité",
-      description: "Service continu"
+      label: t('assistants.metrics.availability.label'),
+      description: t('assistants.metrics.availability.description')
     }
   ];
 
@@ -96,10 +98,10 @@ export default function VirtualAssistants() {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Assistants Virtuels IA
+            {t('assistants.hero.title')}
           </h1>
           <p className="text-xl text-gray-600">
-            Des assistants intelligents qui comprennent vraiment vos besoins
+            {t('assistants.hero.subtitle')}
           </p>
         </div>
 
@@ -135,7 +137,7 @@ export default function VirtualAssistants() {
               <div key={index} className="text-center text-white">
                 <div className="text-4xl font-bold mb-2">{metric.value}</div>
                 <div className="text-xl font-semibold mb-1">{metric.label}</div>
-                <div className="text-indigo-200">{metric.description}</div>
+                <div className="text-indigo-100">{metric.description}</div>
               </div>
             ))}
           </div>
@@ -163,16 +165,16 @@ export default function VirtualAssistants() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-4">
-                Prêt à automatiser votre support ?
+                {t('assistants.cta.title')}
               </h2>
               <p className="text-indigo-100 mb-6">
-                Découvrez la puissance des assistants IA
+                {t('assistants.cta.subtitle')}
               </p>
-              <button 
+              <button
                 onClick={() => setShowStartForm(true)}
                 className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition flex items-center gap-2"
               >
-                Commencer maintenant
+                {t('assistants.cta.button')}
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
@@ -180,21 +182,37 @@ export default function VirtualAssistants() {
               <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                 <Zap className="w-8 h-8 text-white mx-auto mb-2" />
                 <div className="text-3xl font-bold mb-1">5min</div>
-                <div className="text-indigo-100">Configuration</div>
+                <div className="text-indigo-100">{t('assistants.cta.configLabel')}</div>
               </div>
               <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                 <Users className="w-8 h-8 text-white mx-auto mb-2" />
                 <div className="text-3xl font-bold mb-1">24/7</div>
-                <div className="text-indigo-100">Disponibilité</div>
+                <div className="text-indigo-100">{t('assistants.cta.availabilityLabel')}</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <StartForm 
-        isOpen={showStartForm} 
-        onClose={() => setShowStartForm(false)} 
+      {/* FAQ Section */}
+      <div className="max-w-4xl mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">{t('assistants.faq.title')}</h2>
+        <div className="space-y-4">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <details key={i} className="bg-white border border-gray-200 rounded-lg p-4 group">
+              <summary className="font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                {t(`assistants.faq.items.${i}.q`)}
+                <span className="text-indigo-600 group-open:rotate-180 transition-transform">&#9660;</span>
+              </summary>
+              <p className="mt-3 text-gray-600 leading-relaxed">{t(`assistants.faq.items.${i}.a`)}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+
+      <AuditForm
+        isOpen={showStartForm}
+        onClose={() => setShowStartForm(false)}
       />
     </section>
   );

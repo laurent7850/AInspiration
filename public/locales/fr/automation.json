@@ -129,5 +129,30 @@
     "title": "Prêt à automatiser vos processus ?",
     "subtitle": "Découvrez comment l'automatisation IA peut transformer votre entreprise",
     "button": "Démarrer l'automatisation"
+  },
+  "faq": {
+    "title": "Questions fréquentes sur l'automatisation IA",
+    "items": {
+      "0": {
+        "q": "Quels types de tâches peuvent être automatisées avec l'IA dans une PME ?",
+        "a": "Pratiquement toute tâche répétitive et basée sur des règles : traitement de factures et documents entrants, relances clients automatiques, génération de devis à partir de templates, publication de contenus sur les réseaux sociaux, synchronisation de données entre vos outils (CRM, comptabilité, email), qualification de leads entrants, et rapports hebdomadaires automatiques. Lors de notre audit gratuit, nous identifions les 3 tâches les plus chronophages dans votre activité spécifique."
+      },
+      "1": {
+        "q": "Dois-je changer mes outils actuels pour bénéficier de l'automatisation ?",
+        "a": "Non. Notre technologie n8n se connecte à plus de 400 applications existantes : Gmail, Outlook, Google Sheets, Excel, Slack, WhatsApp, WordPress, WooCommerce, Shopify, Exact Online, Teamleader, et bien d'autres. Nous créons des ponts entre vos outils actuels sans rien remplacer. C'est la puissance de l'automatisation par workflow : chaque outil garde son rôle, mais ils communiquent entre eux automatiquement."
+      },
+      "2": {
+        "q": "Combien de temps faut-il pour voir les premiers résultats ?",
+        "a": "Vous recevez votre premier workflow fonctionnel en 5 jours ouvrés après validation du périmètre. Les gains de temps sont immédiats : en moyenne, nos clients économisent 10 heures par semaine dès la première automatisation. Nous commençons toujours par la tâche la plus impactante identifiée dans l'audit gratuit, pour que le ROI soit visible dès le premier mois."
+      },
+      "3": {
+        "q": "Que se passe-t-il si l'automatisation échoue ou produit une erreur ?",
+        "a": "Chaque workflow inclut une gestion d'erreurs intégrée. En cas de problème, le système envoie une alerte email immédiate et conserve les données en attente pour retraitement. Avec l'abonnement managé (290 EUR/mois), notre équipe surveille vos workflows en continu et intervient en moins de 4 heures pour les incidents critiques. Le taux de réussite moyen de nos workflows en production est de 98.5%."
+      },
+      "4": {
+        "q": "L'automatisation IA est-elle accessible pour un indépendant ou une très petite entreprise ?",
+        "a": "Absolument. Notre offre est conçue pour les TPE et indépendants belges. Le Pack Express commence à 1 043 EUR HTVA (avec témoignage) pour une automatisation complète. C'est l'équivalent de 2-3 jours de prestation d'un consultant, mais le workflow tourne ensuite 24 heures sur 24, 7 jours sur 7. Un comptable indépendant, un restaurant, un e-commerce avec 2 employés — tous peuvent bénéficier de l'automatisation sans compétences techniques."
+      }
+    }
   }
 }

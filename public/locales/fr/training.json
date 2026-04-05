@@ -18,5 +18,108 @@
   "stats": {
     "satisfaction": "Satisfaction",
     "certified": "Personnes formées"
+  },
+  "formation": {
+    "hero": {
+      "title": "Maîtrisez les outils IA en 3 jours",
+      "description": "Formations pratiques pour utiliser l'IA au quotidien"
+    },
+    "courses": {
+      "chatgpt": {
+        "title": "ChatGPT Avancé",
+        "level": "Tous niveaux",
+        "duration": "1 jour",
+        "topics": {
+          "0": "Rédaction de prompts efficaces",
+          "1": "Analyse et synthèse de documents",
+          "2": "Création de contenus originaux",
+          "3": "Trucs et astuces pour de meilleurs résultats"
+        }
+      },
+      "imageAI": {
+        "title": "Génération d'Images IA",
+        "level": "Débutant",
+        "duration": "1 jour",
+        "topics": {
+          "0": "Midjourney et DALL-E",
+          "1": "Description d'images précises",
+          "2": "Styles et variations",
+          "3": "Optimisation des résultats"
+        }
+      }
+    },
+    "benefits": {
+      "practical": {
+        "title": "Pratique immédiate",
+        "description": "Exercices concrets sur des cas réels",
+        "examples": {
+          "0": "Rédaction d'emails professionnels",
+          "1": "Création de présentations",
+          "2": "Analyse de documents",
+          "3": "Génération de visuels"
+        }
+      },
+      "results": {
+        "title": "Résultats garantis",
+        "description": "Amélioration visible dès le premier jour",
+        "examples": {
+          "0": "Gain de temps x3",
+          "1": "Qualité améliorée",
+          "2": "Plus de créativité",
+          "3": "Meilleure organisation"
+        }
+      }
+    },
+    "testimonials": {
+      "marie": {
+        "name": "Marie L.",
+        "role": "Responsable Marketing",
+        "text": "J'ai gagné 2h par jour grâce aux techniques apprises !"
+      },
+      "thomas": {
+        "name": "Thomas D.",
+        "role": "Entrepreneur",
+        "text": "Formation très pratique, directement applicable"
+      },
+      "sophie": {
+        "name": "Sophie M.",
+        "role": "Assistante de Direction",
+        "text": "Enfin une formation IA sans jargon technique"
+      }
+    },
+    "cta": {
+      "title": "Prêt à maîtriser l'IA ?",
+      "subtitle": "Rejoignez nos apprenants satisfaits",
+      "button": "Je réserve ma formation",
+      "stats": {
+        "duration": "Pour maîtriser l'IA",
+        "satisfaction": "Satisfaction"
+      }
+    },
+    "faq": {
+      "title": "Questions fréquentes sur nos formations IA",
+      "items": {
+        "0": {
+          "q": "Faut-il des compétences techniques pour suivre la formation ?",
+          "a": "Aucune. Nos formations sont conçues pour des non-techniciens : dirigeants de PME, assistants de direction, responsables marketing, comptables. Nous partons de zéro et construisons vos compétences étape par étape avec des exercices pratiques sur vos cas réels. Le seul prérequis est de savoir utiliser un navigateur web et un email."
+        },
+        "1": {
+          "q": "La formation se déroule-t-elle en présentiel ou à distance ?",
+          "a": "Les deux formats sont disponibles. En présentiel dans vos locaux en Belgique (Bruxelles, Wallonie, Flandre) pour les groupes de 3 à 10 personnes. À distance via Zoom pour les sessions individuelles ou les équipes réparties géographiquement. La durée standard est de 1 à 3 jours selon le programme choisi. Chaque participant reçoit un support de cours et un accès à notre espace ressources pendant 3 mois."
+        },
+        "2": {
+          "q": "Quels outils IA sont couverts dans la formation ?",
+          "a": "Nous couvrons les outils immédiatement utilisables en entreprise : ChatGPT et Claude pour la rédaction et l'analyse, Midjourney et DALL-E pour la création visuelle, n8n pour l'automatisation de workflows, et les intégrations IA dans les outils que vous utilisez déjà (Google Workspace, Microsoft 365, Canva). Le programme est adapté à votre secteur et vos besoins spécifiques."
+        },
+        "3": {
+          "q": "Y a-t-il un suivi après la formation ?",
+          "a": "Oui. Chaque participant bénéficie de 3 mois d'accès à notre espace ressources avec des guides, des modèles de prompts par secteur, et des tutoriels vidéo. Nous proposons aussi une session de suivi d'une heure à J+30 pour répondre aux questions qui émergent avec la pratique. Pour les entreprises, un accompagnement mensuel est disponible via notre abonnement managé."
+        },
+        "4": {
+          "q": "Combien coûte une formation IA pour mon équipe ?",
+          "a": "Le tarif dépend du format et du nombre de participants. Formation individuelle à distance : à partir de 490 EUR HTVA pour une journée. Formation en entreprise (jusqu'à 10 personnes) : à partir de 1 490 EUR HTVA pour une journée. Programme personnalisé sur 3 jours : sur devis. Contactez-nous pour recevoir un devis adapté à vos besoins — l'évaluation initiale est gratuite."
+        }
+      }
+    }
   }
 }

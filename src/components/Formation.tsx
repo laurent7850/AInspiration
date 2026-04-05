@@ -1,88 +1,90 @@
 import React, { useState } from 'react';
-import { 
+import {
   MessageSquare,
   Image,
-  ArrowRight,
   Users,
   Brain,
   CheckCircle,
   Star,
   Target
 } from 'lucide-react';
-import StartForm from './StartForm';
+import { useTranslation } from 'react-i18next';
+import AuditForm from './AuditForm';
+import CallToAction from './ui/CallToAction';
 
 export default function Formation() {
   const [showStartForm, setShowStartForm] = useState(false);
+  const { t } = useTranslation('training');
 
   const courses = [
     {
-      title: "ChatGPT Avancé",
-      level: "Tous niveaux",
-      duration: "1 jour",
+      title: t('formation.courses.chatgpt.title'),
+      level: t('formation.courses.chatgpt.level'),
+      duration: t('formation.courses.chatgpt.duration'),
       icon: MessageSquare,
       topics: [
-        "Rédaction de prompts efficaces",
-        "Analyse et synthèse de documents",
-        "Création de contenus originaux",
-        "Trucs et astuces pour de meilleurs résultats"
+        t('formation.courses.chatgpt.topics.0'),
+        t('formation.courses.chatgpt.topics.1'),
+        t('formation.courses.chatgpt.topics.2'),
+        t('formation.courses.chatgpt.topics.3')
       ]
     },
     {
-      title: "Génération d'Images IA",
-      level: "Débutant",
-      duration: "1 jour",
+      title: t('formation.courses.imageAI.title'),
+      level: t('formation.courses.imageAI.level'),
+      duration: t('formation.courses.imageAI.duration'),
       icon: Image,
       topics: [
-        "Midjourney et DALL-E",
-        "Description d'images précises",
-        "Styles et variations",
-        "Optimisation des résultats"
+        t('formation.courses.imageAI.topics.0'),
+        t('formation.courses.imageAI.topics.1'),
+        t('formation.courses.imageAI.topics.2'),
+        t('formation.courses.imageAI.topics.3')
       ]
     }
   ];
 
   const benefits = [
     {
-      title: "Pratique immédiate",
-      description: "Exercices concrets sur des cas réels",
+      title: t('formation.benefits.practical.title'),
+      description: t('formation.benefits.practical.description'),
       icon: Target,
       examples: [
-        "Rédaction d'emails professionnels",
-        "Création de présentations",
-        "Analyse de documents",
-        "Génération de visuels"
+        t('formation.benefits.practical.examples.0'),
+        t('formation.benefits.practical.examples.1'),
+        t('formation.benefits.practical.examples.2'),
+        t('formation.benefits.practical.examples.3')
       ]
     },
     {
-      title: "Résultats garantis",
-      description: "Amélioration visible dès le premier jour",
+      title: t('formation.benefits.results.title'),
+      description: t('formation.benefits.results.description'),
       icon: Star,
       examples: [
-        "Gain de temps x3",
-        "Qualité améliorée",
-        "Plus de créativité",
-        "Meilleure organisation"
+        t('formation.benefits.results.examples.0'),
+        t('formation.benefits.results.examples.1'),
+        t('formation.benefits.results.examples.2'),
+        t('formation.benefits.results.examples.3')
       ]
     }
   ];
 
   const testimonials = [
     {
-      name: "Marie L.",
-      role: "Responsable Marketing",
-      text: "J'ai gagné 2h par jour grâce aux techniques apprises !",
+      name: t('formation.testimonials.marie.name'),
+      role: t('formation.testimonials.marie.role'),
+      text: t('formation.testimonials.marie.text'),
       rating: 5
     },
     {
-      name: "Thomas D.",
-      role: "Entrepreneur",
-      text: "Formation très pratique, directement applicable",
+      name: t('formation.testimonials.thomas.name'),
+      role: t('formation.testimonials.thomas.role'),
+      text: t('formation.testimonials.thomas.text'),
       rating: 5
     },
     {
-      name: "Sophie M.",
-      role: "Assistante de Direction",
-      text: "Enfin une formation IA sans jargon technique",
+      name: t('formation.testimonials.sophie.name'),
+      role: t('formation.testimonials.sophie.role'),
+      text: t('formation.testimonials.sophie.text'),
       rating: 5
     }
   ];
@@ -92,10 +94,10 @@ export default function Formation() {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Maîtrisez les outils IA en 3 jours
+            {t('formation.hero.title')}
           </h1>
           <p className="text-xl text-gray-600">
-            Formations pratiques pour utiliser l'IA au quotidien
+            {t('formation.hero.description')}
           </p>
         </div>
 
@@ -171,43 +173,38 @@ export default function Formation() {
           ))}
         </div>
 
-        <div className="bg-indigo-600 rounded-2xl p-8 lg:p-12 text-white">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-3xl font-bold mb-4">
-                Prêt à maîtriser l'IA ?
-              </h3>
-              <p className="text-indigo-100 mb-6">
-                Rejoignez nos apprenants satisfaits
-              </p>
-              <button 
-                onClick={() => setShowStartForm(true)}
-                className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition flex items-center gap-2"
-              >
-                Je réserve ma formation
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-            <div className="grid grid-cols-2 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                <Brain className="w-8 h-8 text-white mx-auto mb-2" />
-                <div className="text-3xl font-bold mb-1">3 jours</div>
-                <div className="text-indigo-100">Pour maîtriser l'IA</div>
-              </div>
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                <Users className="w-8 h-8 text-white mx-auto mb-2" />
-                <div className="text-3xl font-bold mb-1">98%</div>
-                <div className="text-indigo-100">Satisfaction</div>
-              </div>
-            </div>
-          </div>
+        <CallToAction
+          title={t('formation.cta.title')}
+          subtitle={t('formation.cta.subtitle')}
+          buttonText={t('formation.cta.button')}
+          buttonAction={() => setShowStartForm(true)}
+          solid
+          stats={[
+            { value: "3 jours", label: t('formation.cta.stats.duration'), icon: Brain },
+            { value: "98%", label: t('formation.cta.stats.satisfaction'), icon: Users },
+          ]}
+        />
+      </div>
+
+      {/* FAQ Section */}
+      <div className="max-w-4xl mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">{t('formation.faq.title')}</h2>
+        <div className="space-y-4">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <details key={i} className="bg-white border border-gray-200 rounded-lg p-4 group">
+              <summary className="font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                {t(`formation.faq.items.${i}.q`)}
+                <span className="text-indigo-600 group-open:rotate-180 transition-transform">&#9660;</span>
+              </summary>
+              <p className="mt-3 text-gray-600 leading-relaxed">{t(`formation.faq.items.${i}.a`)}</p>
+            </details>
+          ))}
         </div>
       </div>
 
-      <StartForm 
-        isOpen={showStartForm} 
-        onClose={() => setShowStartForm(false)} 
-        productId="formation-ia"
+      <AuditForm
+        isOpen={showStartForm}
+        onClose={() => setShowStartForm(false)}
       />
     </section>
   );

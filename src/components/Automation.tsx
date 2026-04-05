@@ -4,7 +4,6 @@ import {
   Repeat,
   Workflow,
   Zap,
-  ArrowRight,
   Clock,
   TrendingUp,
   Shield,
@@ -16,7 +15,8 @@ import {
   Calendar
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import StartForm from './StartForm';
+import AuditForm from './AuditForm';
+import CallToAction from './ui/CallToAction';
 
 export default function Automation() {
   const [showStartForm, setShowStartForm] = useState(false);
@@ -113,7 +113,7 @@ export default function Automation() {
               <div key={index} className="text-center text-white">
                 <div className="text-4xl font-bold mb-2">{metric.value}</div>
                 <div className="text-xl font-semibold mb-1">{metric.label}</div>
-                <div className="text-indigo-200">{metric.description}</div>
+                <div className="text-indigo-100">{metric.description}</div>
               </div>
             ))}
           </div>
@@ -167,42 +167,37 @@ export default function Automation() {
         </div>
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 lg:p-12 text-white">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-4">
-                {t('automation:cta.title')}
-              </h2>
-              <p className="text-indigo-100 mb-6">
-                {t('automation:cta.subtitle')}
-              </p>
-              <button
-                onClick={() => setShowStartForm(true)}
-                className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition flex items-center gap-2"
-              >
-                {t('automation:cta.button')}
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-            <div className="grid grid-cols-2 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                <Clock className="w-8 h-8 text-white mx-auto mb-2" />
-                <div className="text-3xl font-bold mb-1">{t('automation:quickStats.setup.value')}</div>
-                <div className="text-indigo-100">{t('automation:quickStats.setup.label')}</div>
-              </div>
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                <TrendingUp className="w-8 h-8 text-white mx-auto mb-2" />
-                <div className="text-3xl font-bold mb-1">{t('automation:quickStats.roi.value')}</div>
-                <div className="text-indigo-100">{t('automation:quickStats.roi.label')}</div>
-              </div>
-            </div>
-          </div>
+        <CallToAction
+          title={t('automation:cta.title')}
+          subtitle={t('automation:cta.subtitle')}
+          buttonText={t('automation:cta.button')}
+          buttonAction={() => setShowStartForm(true)}
+          stats={[
+            { value: t('automation:quickStats.setup.value'), label: t('automation:quickStats.setup.label'), icon: Clock },
+            { value: t('automation:quickStats.roi.value'), label: t('automation:quickStats.roi.label'), icon: TrendingUp },
+          ]}
+        />
+      </div>
+
+      {/* FAQ Section */}
+      <div className="max-w-4xl mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">{t('automation:faq.title')}</h2>
+        <div className="space-y-4">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <details key={i} className="bg-white border border-gray-200 rounded-lg p-4 group">
+              <summary className="font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                {t(`automation:faq.items.${i}.q`)}
+                <span className="text-indigo-600 group-open:rotate-180 transition-transform">&#9660;</span>
+              </summary>
+              <p className="mt-3 text-gray-600 leading-relaxed">{t(`automation:faq.items.${i}.a`)}</p>
+            </details>
+          ))}
         </div>
       </div>
 
-      <StartForm 
-        isOpen={showStartForm} 
-        onClose={() => setShowStartForm(false)} 
+      <AuditForm
+        isOpen={showStartForm}
+        onClose={() => setShowStartForm(false)}
       />
     </section>
   );

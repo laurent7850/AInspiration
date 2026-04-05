@@ -1,6 +1,88 @@
 {
   "title": "Fonctionnalités",
   "subtitle": "Des outils puissants pour votre entreprise",
+  "consulting": {
+    "hero": {
+      "title": "Conseil en Intelligence Artificielle",
+      "description": "Transformez votre entreprise avec une stratégie IA sur mesure"
+    },
+    "methodology": {
+      "title": "Notre méthodologie"
+    },
+    "expertises": {
+      "strategy": {
+        "title": "Stratégie IA",
+        "description": "Définition de votre feuille de route IA alignée avec vos objectifs business"
+      },
+      "optimization": {
+        "title": "Optimisation des processus",
+        "description": "Identification et implémentation des opportunités d'automatisation"
+      },
+      "performance": {
+        "title": "Performance & ROI",
+        "description": "Maximisation du retour sur investissement de vos solutions IA"
+      },
+      "innovation": {
+        "title": "Innovation guidée",
+        "description": "Exploration des technologies émergentes adaptées à vos besoins"
+      }
+    },
+    "phases": {
+      "diagnostic": {
+        "phase": "Diagnostic",
+        "duration": "2-3 semaines",
+        "activities": {
+          "0": "Audit des processus existants",
+          "1": "Analyse des opportunités",
+          "2": "Évaluation de la maturité IA"
+        }
+      },
+      "strategy": {
+        "phase": "Stratégie",
+        "duration": "3-4 semaines",
+        "activities": {
+          "0": "Définition des objectifs",
+          "1": "Priorisation des initiatives",
+          "2": "Plan d'implémentation"
+        }
+      },
+      "execution": {
+        "phase": "Exécution",
+        "duration": "2-6 mois",
+        "activities": {
+          "0": "Pilotes et POC",
+          "1": "Déploiement progressif",
+          "2": "Mesure des résultats"
+        }
+      }
+    },
+    "benefits": {
+      "vision": {
+        "title": "Vision claire",
+        "description": "Stratégie IA alignée avec vos objectifs business",
+        "stats": "ROI mesurable dès 3 mois"
+      },
+      "efficiency": {
+        "title": "Efficacité prouvée",
+        "description": "Optimisation mesurable des processus",
+        "stats": "-30% coûts opérationnels"
+      },
+      "risk": {
+        "title": "Risques maîtrisés",
+        "description": "Approche sécurisée et conforme",
+        "stats": "100% conformité RGPD"
+      }
+    },
+    "cta": {
+      "title": "Prêt à définir votre stratégie IA ?",
+      "subtitle": "Réservez une session de consultation stratégique gratuite",
+      "button": "Planifier ma consultation",
+      "stats": {
+        "expertise": "Années d'expertise",
+        "projects": "Projets réussis"
+      }
+    }
+  },
   "analysis": {
     "title": "Analyse IA",
     "desc": "Analysez vos données avec précision",
@@ -24,5 +106,279 @@
     "desc": "Optimisez vos interactions IA",
     "management": "Gestion des prompts",
     "managementDesc": "Organisez et optimisez vos prompts"
+  },
+  "whyai": {
+    "hero": {
+      "title": "Pourquoi l'IA ?",
+      "subtitle": "Une Opportunité Accessible pour les PME",
+      "description": "L'intelligence artificielle n'est plus réservée aux grandes entreprises. Aujourd'hui, elle offre aux PME des opportunités concrètes pour gagner en efficacité, en compétitivité et en rentabilité."
+    },
+    "benefits": {
+      "productivity": {
+        "title": "Productivité Accrue",
+        "description": "Automatisation des tâches répétitives, libérant du temps pour des activités à plus forte valeur ajoutée."
+      },
+      "cost": {
+        "title": "Réduction des Coûts",
+        "description": "Optimisation des processus internes, diminuant les dépenses opérationnelles."
+      },
+      "satisfaction": {
+        "title": "Satisfaction Client Améliorée",
+        "description": "Services personnalisés et réactifs grâce à des outils intelligents."
+      },
+      "revenue": {
+        "title": "Augmentation du Chiffre d'Affaires",
+        "description": "Meilleure anticipation des besoins clients et adaptation rapide aux tendances du marché."
+      }
+    },
+    "usecases": {
+      "sectionTitle": "Exemples Concrets d'Utilisation de l'IA dans les PME",
+      "learnMore": "En savoir plus",
+      "admin": {
+        "title": "Automatisation des Tâches Administratives",
+        "description": "Des outils d'IA permettent de générer automatiquement des rapports financiers, d'analyser les performances des campagnes marketing et de suivre les indicateurs clés de performance (KPI), éliminant ainsi le travail manuel et augmentant la précision grâce à l'analyse des données en temps réel.",
+        "examples": {
+          "0": "Génération de rapports",
+          "1": "Analyse des KPIs",
+          "2": "Suivi automatique"
+        },
+        "callToAction": "Intégrez l'IA dans votre Entreprise"
+      },
+      "marketing": {
+        "title": "Génération de Contenu Marketing",
+        "description": "L'IA peut produire des articles, des newsletters et des publications sur les réseaux sociaux, personnalisés en fonction des données comportementales et des préférences des clients, augmentant ainsi l'engagement et la fidélité.",
+        "examples": {
+          "0": "Articles de blog",
+          "1": "Newsletters",
+          "2": "Posts réseaux sociaux"
+        },
+        "callToAction": "Intégrez l'IA dans votre Entreprise"
+      },
+      "service": {
+        "title": "Service Client Intelligent",
+        "description": "Les chatbots et assistants virtuels peuvent répondre aux questions fréquentes, traiter les demandes de renseignements, planifier des réunions et effectuer des tâches simples de service client, offrant une disponibilité 24/7 et améliorant l'expérience client.",
+        "examples": {
+          "0": "Chatbots 24/7",
+          "1": "Réponses automatisées",
+          "2": "Planification intelligente"
+        },
+        "callToAction": "Solutions IA et Formations"
+      },
+      "sales": {
+        "title": "Prévision des Ventes",
+        "description": "L'IA permet d'analyser les données historiques pour anticiper les besoins futurs, ajuster les processus d'approvisionnement et optimiser la gestion des stocks, réduisant ainsi les coûts et améliorant la satisfaction des clients.",
+        "examples": {
+          "0": "Prévisions précises",
+          "1": "Gestion des stocks",
+          "2": "Optimisation de la supply chain"
+        },
+        "callToAction": "ActivDev"
+      }
+    },
+    "cta": {
+      "title": "Pourquoi Attendre ?",
+      "subtitle": "L'IA est une opportunité accessible et rentable pour votre PME.",
+      "button": "Démarrer maintenant",
+      "nextStepsTitle": "Prochaines Étapes :",
+      "nextSteps": {
+        "0": "Identifiez les processus pouvant être automatisés dans votre entreprise.",
+        "1": "Testez des outils IA gratuits adaptés aux PME.",
+        "2": "Formez vos équipes pour une adoption réussie."
+      },
+      "contactTitle": "Contactez-Nous",
+      "contactDesc": "Pour une démonstration personnalisée ou un diagnostic gratuit, n'hésitez pas à nous contacter.",
+      "satisfactionLabel": "Taux de satisfaction",
+      "installLabel": "Installation moyenne"
+    },
+    "finalCta": {
+      "title": "Ne laissez pas vos concurrents prendre l'avantage",
+      "subtitle": "Rejoignez les PME qui ont déjà transformé leur activité grâce à l'IA",
+      "button": "Démarrer mon diagnostic gratuit"
+    }
+  },
+  "assistants": {
+    "hero": {
+      "title": "Assistants Virtuels IA",
+      "subtitle": "Des assistants intelligents qui comprennent vraiment vos besoins"
+    },
+    "types": {
+      "customer": {
+        "title": "Assistant Service Client",
+        "description": "Réponses instantanées 24/7 à vos clients",
+        "features": {
+          "0": "Réponses en temps réel",
+          "1": "Multi-langues",
+          "2": "Personnalisation des réponses",
+          "3": "Transfert vers un humain si nécessaire"
+        }
+      },
+      "analysis": {
+        "title": "Assistant Analyse",
+        "description": "Analyse et interprétation de données en temps réel",
+        "features": {
+          "0": "Tableaux de bord en direct",
+          "1": "Alertes intelligentes",
+          "2": "Recommandations d'actions",
+          "3": "Rapports automatisés"
+        }
+      },
+      "process": {
+        "title": "Assistant Process",
+        "description": "Automatisation des tâches répétitives",
+        "features": {
+          "0": "Workflows automatisés",
+          "1": "Intégration avec vos outils",
+          "2": "Suivi des tâches",
+          "3": "Optimisation continue"
+        }
+      }
+    },
+    "benefits": {
+      "availability": {
+        "title": "Disponibilité 24/7",
+        "description": "Service continu sans interruption"
+      },
+      "multilingual": {
+        "title": "Multi-langues",
+        "description": "Support en plus de 30 langues"
+      },
+      "security": {
+        "title": "Sécurité maximale",
+        "description": "Protection des données garantie"
+      }
+    },
+    "metrics": {
+      "resolution": {
+        "label": "Taux de résolution",
+        "description": "Des demandes résolues automatiquement"
+      },
+      "cost": {
+        "label": "Réduction des coûts",
+        "description": "Sur le support client"
+      },
+      "availability": {
+        "label": "Disponibilité",
+        "description": "Service continu"
+      }
+    },
+    "cta": {
+      "title": "Prêt à automatiser votre support ?",
+      "subtitle": "Découvrez la puissance des assistants IA",
+      "button": "Commencer maintenant",
+      "configLabel": "Configuration",
+      "availabilityLabel": "Disponibilité"
+    },
+    "faq": {
+      "title": "Questions fréquentes sur les assistants virtuels IA",
+      "items": {
+        "0": {
+          "q": "Un chatbot IA peut-il vraiment remplacer un employé au service client ?",
+          "a": "Non, il ne remplace pas — il complète. Un assistant virtuel IA prend en charge les questions répétitives (horaires, prix, statut de commande, FAQ) qui représentent 60 à 80% des demandes. Les cas complexes, émotionnels ou sensibles sont automatiquement transférés à un humain. Résultat : votre équipe se concentre sur les interactions à forte valeur ajoutée pendant que le chatbot gère le volume."
+        },
+        "1": {
+          "q": "Combien de temps faut-il pour mettre en place un assistant virtuel ?",
+          "a": "Un assistant basique est opérationnel en 5 jours ouvrés. Cela inclut la configuration du chatbot, l'intégration sur votre site web, le paramétrage des réponses personnalisées et les tests. Pour un assistant plus avancé avec intégration CRM, base de connaissances ou prise de rendez-vous automatique, comptez 2 à 3 semaines. Nous commençons toujours par un audit gratuit pour définir le périmètre exact."
+        },
+        "2": {
+          "q": "Mon assistant fonctionnera-t-il en néerlandais et en anglais ?",
+          "a": "Oui. Nos assistants virtuels sont multilingues dès le départ. Ils détectent automatiquement la langue du visiteur et répondent en français, néerlandais ou anglais. C'est un avantage clé pour les entreprises belges qui servent des clients dans les trois régions linguistiques du pays."
+        },
+        "3": {
+          "q": "Les données de mes clients sont-elles protégées ?",
+          "a": "Absolument. Toutes les données sont hébergées en Europe (serveurs Hostinger en Lituanie, Union européenne). Nous sommes conformes au RGPD, avec une politique de rétention claire (12 mois pour les données d'audit). Aucune donnée n'est partagée avec des tiers. Un DPA (Accord de traitement des données) est disponible sur demande pour vos obligations contractuelles."
+        },
+        "4": {
+          "q": "Combien coûte un assistant virtuel IA pour une PME ?",
+          "a": "Notre Pack Express démarre à 1 043 EUR HTVA (offre lancement avec témoignage) ou 1 490 EUR HTVA (tarif standard) pour la mise en place. L'hébergement et la maintenance sont inclus dans l'abonnement managé à 290 EUR par mois. Comparé à un employé dédié au support (2 500-3 500 EUR/mois), le retour sur investissement est rapide. Notre audit gratuit vous donne une estimation précise des économies pour votre cas spécifique."
+        }
+      }
+    }
+  },
+  "tools": {
+    "hero": {
+      "title": "Nos Outils IA",
+      "subtitle": "Une suite complète d'outils pour transformer votre entreprise"
+    },
+    "list": {
+      "assistant": {
+        "title": "Assistant IA",
+        "description": "Assistant virtuel personnalisé pour votre entreprise",
+        "features": {
+          "0": "Réponses en temps réel",
+          "1": "Multi-langues",
+          "2": "Apprentissage continu",
+          "3": "Intégration facile"
+        }
+      },
+      "analysis": {
+        "title": "Analyse IA",
+        "description": "Analyse approfondie de vos données",
+        "features": {
+          "0": "Insights automatisés",
+          "1": "Tableaux de bord",
+          "2": "Prédictions avancées",
+          "3": "Rapports personnalisés"
+        }
+      },
+      "promptMaster": {
+        "title": "Prompt Master",
+        "description": "Création et optimisation de prompts",
+        "features": {
+          "0": "Bibliothèque de prompts",
+          "1": "Tests A/B",
+          "2": "Optimisation continue",
+          "3": "Templates sectoriels"
+        }
+      },
+      "content": {
+        "title": "Création de Contenu",
+        "description": "Génération de contenu optimisé",
+        "features": {
+          "0": "Articles & blogs",
+          "1": "Réseaux sociaux",
+          "2": "Emails marketing",
+          "3": "Descriptions produits"
+        }
+      }
+    },
+    "commonFeatures": {
+      "multilingual": {
+        "title": "Multi-langues",
+        "description": "Support de plus de 30 langues"
+      },
+      "documentation": {
+        "title": "Documentation",
+        "description": "Guides détaillés et exemples"
+      },
+      "api": {
+        "title": "API",
+        "description": "Intégration simple via API"
+      },
+      "seo": {
+        "title": "SEO",
+        "description": "Optimisation pour les moteurs"
+      }
+    },
+    "metrics": {
+      "productivity": {
+        "label": "Productivité",
+        "description": "Augmentation moyenne"
+      },
+      "cost": {
+        "label": "Coûts",
+        "description": "Réduction des dépenses"
+      },
+      "availability": {
+        "label": "Disponibilité",
+        "description": "Support continu"
+      }
+    },
+    "cta": {
+      "title": "Prêt à transformer votre entreprise ?",
+      "subtitle": "Découvrez comment nos outils peuvent optimiser vos processus",
+      "button": "Démarrer maintenant",
+      "installLabel": "Installation",
+      "roiLabel": "Immédiat"
+    }
   }
 }
