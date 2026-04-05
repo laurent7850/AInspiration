@@ -37,7 +37,7 @@ const CaseStudiesPage: React.FC = () => {
         quote: t('study1.quote'),
         author: t('study1.author')
       },
-      image: "https://images.unsplash.com/photo-1556155092-490a1ba16284?q=80&w=1600&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1556155092-490a1ba16284?q=75&w=800&auto=format&fit=crop"
     },
     {
       title: t('study2.title'),
@@ -56,7 +56,7 @@ const CaseStudiesPage: React.FC = () => {
         quote: t('study2.quote'),
         author: t('study2.author')
       },
-      image: "https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=1600&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=75&w=800&auto=format&fit=crop"
     },
     {
       title: t('study3.title'),
@@ -75,7 +75,7 @@ const CaseStudiesPage: React.FC = () => {
         quote: t('study3.quote'),
         author: t('study3.author')
       },
-      image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1600&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=75&w=800&auto=format&fit=crop"
     }
   ];
 

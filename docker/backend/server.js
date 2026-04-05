@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression');
 const { Pool } = require('pg');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -9,6 +10,7 @@ const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
 const app = express();
+app.use(compression());
 app.disable('x-powered-by');
 app.set('trust proxy', 1); // Trust first proxy (Traefik)
 

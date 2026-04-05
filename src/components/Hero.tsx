@@ -7,10 +7,10 @@ import AnimatedStats from './AnimatedStats';
 
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&auto=format&fit=crop&q=80';
 
-const VIDEO_SOURCES: Record<string, string> = {
-  fr: '/videos/intro-fr.mp4',
-  en: '/videos/intro-en.mp4',
-  nl: '/videos/intro-nl.mp4',
+const VIDEO_SOURCES: Record<string, { webm: string; mp4: string }> = {
+  fr: { webm: '/videos/intro-fr.webm', mp4: '/videos/intro-fr.mp4' },
+  en: { webm: '/videos/intro-en.webm', mp4: '/videos/intro-en.mp4' },
+  nl: { webm: '/videos/intro-nl.webm', mp4: '/videos/intro-nl.mp4' },
 };
 
 export default function Hero() {
@@ -30,7 +30,7 @@ export default function Hero() {
   }, []);
 
   const lang = i18n.language?.substring(0, 2) || 'fr';
-  const videoSrc = VIDEO_SOURCES[lang] || VIDEO_SOURCES.fr;
+  const videoSource = VIDEO_SOURCES[lang] || VIDEO_SOURCES.fr;
 
   const handlePlayPause = () => {
     const video = videoRef.current;
@@ -116,7 +116,7 @@ export default function Hero() {
                 {videoReady && (
                   <video
                     ref={videoRef}
-                    key={videoSrc}
+                    key={videoSource.mp4}
                     className="w-full rounded-2xl cursor-pointer"
                     poster="/images/hero-ai-business.webp"
                     preload="none"
@@ -128,7 +128,8 @@ export default function Hero() {
                     onPause={() => setIsPlaying(false)}
                     onEnded={() => { setIsPlaying(false); setHasEnded(true); }}
                   >
-                    <source src={videoSrc} type="video/mp4" />
+                    <source src={videoSource.webm} type="video/webm" />
+                    <source src={videoSource.mp4} type="video/mp4" />
                   </video>
                 )}
                 {/* Pause overlay (visible on hover during playback) */}

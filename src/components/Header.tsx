@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import StartForm from './StartForm';
+import { useState, lazy, Suspense } from 'react';
+const AuditForm = lazy(() => import('./AuditForm'));
 import NavMenu from './layout/NavMenu';
 
 export default function Header() {
@@ -9,10 +9,14 @@ export default function Header() {
     <header className="fixed w-full bg-indigo-50 z-50 shadow-sm">
       <NavMenu onAuditClick={() => setShowStartForm(true)} />
       
-      <StartForm 
-        isOpen={showStartForm} 
-        onClose={() => setShowStartForm(false)} 
-      />
+      {showStartForm && (
+        <Suspense fallback={null}>
+          <AuditForm
+            isOpen={showStartForm}
+            onClose={() => setShowStartForm(false)}
+          />
+        </Suspense>
+      )}
     </header>
   );
 }
