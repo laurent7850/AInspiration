@@ -1754,10 +1754,10 @@ app.get('/api/linkedin/callback', async (req, res) => {
   try {
     const { code, error: oauthError } = req.query;
     if (oauthError) {
-      return res.redirect('/?linkedin_error=' + encodeURIComponent(oauthError));
+      return res.redirect('/linkedin?linkedin_error=' + encodeURIComponent(oauthError));
     }
     if (!code) {
-      return res.redirect('/?linkedin_error=no_code');
+      return res.redirect('/linkedin?linkedin_error=no_code');
     }
 
     const tokenData = await linkedin.exchangeCode(code);
@@ -1772,10 +1772,10 @@ app.get('/api/linkedin/callback', async (req, res) => {
     );
 
     console.log(`[LinkedIn] Connected: ${profile.name} (${profile.sub})`);
-    res.redirect('/?linkedin_connected=true');
+    res.redirect('/linkedin?linkedin_connected=true');
   } catch (error) {
     console.error('LinkedIn callback error:', error.message);
-    res.redirect('/?linkedin_error=' + encodeURIComponent(error.message));
+    res.redirect('/linkedin?linkedin_error=' + encodeURIComponent(error.message));
   }
 });
 
