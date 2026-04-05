@@ -210,6 +210,31 @@
       "smeHelped": "PME accompagnées"
     },
     "seoTitle": "Audit IA Gratuit en 24h | Diagnostic Personnalisé | AInspiration",
-    "seoDescription": "Demandez votre audit IA gratuit. Un expert analyse votre activité et vous livre un plan d'action concret en 24h. Sans engagement. PME et indépendants en Belgique et France."
+    "seoDescription": "Demandez votre audit IA gratuit. Un expert analyse votre activité et vous livre un plan d'action concret en 24h. Sans engagement. PME et indépendants en Belgique et France.",
+    "faq": {
+      "title": "Questions fréquentes sur l'audit IA gratuit",
+      "items": {
+        "0": {
+          "q": "Que contient exactement le rapport d'audit IA ?",
+          "a": "Le rapport PDF personnalisé contient 5 sections : le contexte de votre entreprise, un diagnostic de vos processus actuels avec le potentiel d'automatisation de chacun, les 3 principales opportunités identifiées avec le temps estimé que vous pouvez gagner, des recommandations concrètes avec les outils adaptés, et les prochaines étapes proposées. Le tout est généré par notre IA (Claude Sonnet) et adapté à votre secteur d'activité."
+        },
+        "1": {
+          "q": "Comment se passe le processus concrètement ?",
+          "a": "C'est simple : vous remplissez un formulaire en 4 étapes (coordonnées, activité, besoins, contexte) qui prend 2 à 5 minutes. Notre pipeline IA analyse vos réponses en environ 26 secondes et génère un rapport personnalisé. Vous recevez le rapport par email dans les 24 heures ouvrées. Si le rapport vous intéresse, nous vous proposons un call gratuit de 30 minutes pour en discuter. Aucune obligation à aucun moment."
+        },
+        "2": {
+          "q": "Pourquoi c'est gratuit ? Où est le piège ?",
+          "a": "Il n'y a pas de piège. L'audit gratuit est notre produit d'appel — il nous permet de démontrer notre expertise et d'identifier les entreprises pour lesquelles nous pouvons créer de la valeur. Si nos recommandations vous intéressent, vous pouvez choisir de passer à notre Pack Express (à partir de 1 043 EUR HTVA) pour automatiser la tâche prioritaire identifiée. Si non, vous gardez le rapport et les recommandations sans rien devoir. C'est notre façon de construire la confiance."
+        },
+        "3": {
+          "q": "L'audit est-il vraiment personnalisé ou c'est un template générique ?",
+          "a": "Chaque audit est unique. Notre IA analyse spécifiquement vos réponses : votre secteur d'activité, la taille de votre équipe, vos outils actuels, vos défis quotidiens et votre budget. Un comptable indépendant ne recevra pas le même rapport qu'un restaurant ou une agence marketing. Les processus analysés, les opportunités identifiées et les recommandations sont adaptés à votre situation réelle."
+        },
+        "4": {
+          "q": "Mes données sont-elles protégées pendant l'audit ?",
+          "a": "Oui, absolument. Toutes les données que vous communiquez via le formulaire sont traitées conformément au RGPD. Elles sont hébergées en Union européenne (serveurs en Lituanie), utilisées exclusivement pour la réalisation de votre audit, conservées 12 mois maximum, et jamais transmises à des tiers. Notre politique de confidentialité et nos CGV détaillent ces garanties. Un DPA (accord de traitement des données) est disponible sur demande."
+        }
+      }
+    }
   }
 }

@@ -223,6 +223,24 @@ export default function AuditPage() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">{t('page.faq.title')}</h2>
+          <div className="space-y-4">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <details key={i} className="bg-gray-50 border border-gray-200 rounded-lg p-4 group">
+                <summary className="font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                  {t(`page.faq.items.${i}.q`)}
+                  <span className="text-indigo-600 group-open:rotate-180 transition-transform">&#9660;</span>
+                </summary>
+                <p className="mt-3 text-gray-600 leading-relaxed">{t(`page.faq.items.${i}.a`)}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <AuditForm
         isOpen={showAuditForm}
         onClose={() => setShowAuditForm(false)}
