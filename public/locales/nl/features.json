@@ -1,6 +1,88 @@
 {
   "title": "Functies",
   "subtitle": "Krachtige tools voor uw bedrijf",
+  "consulting": {
+    "hero": {
+      "title": "Advies over Kunstmatige Intelligentie",
+      "description": "Transformeer uw bedrijf met een op maat gemaakte AI-strategie"
+    },
+    "methodology": {
+      "title": "Onze methodologie"
+    },
+    "expertises": {
+      "strategy": {
+        "title": "AI-strategie",
+        "description": "Bepaling van uw AI-roadmap afgestemd op uw bedrijfsdoelstellingen"
+      },
+      "optimization": {
+        "title": "Procesoptimalisatie",
+        "description": "Identificatie en implementatie van automatiseringsmogelijkheden"
+      },
+      "performance": {
+        "title": "Prestaties & ROI",
+        "description": "Maximalisatie van het rendement op uw AI-oplossingen"
+      },
+      "innovation": {
+        "title": "Begeleide innovatie",
+        "description": "Verkenning van opkomende technologieën aangepast aan uw behoeften"
+      }
+    },
+    "phases": {
+      "diagnostic": {
+        "phase": "Diagnose",
+        "duration": "2–3 weken",
+        "activities": {
+          "0": "Audit van bestaande processen",
+          "1": "Analyse van opportuniteiten",
+          "2": "Evaluatie van AI-maturiteit"
+        }
+      },
+      "strategy": {
+        "phase": "Strategie",
+        "duration": "3–4 weken",
+        "activities": {
+          "0": "Bepaling van doelstellingen",
+          "1": "Prioritisering van initiatieven",
+          "2": "Implementatieplan"
+        }
+      },
+      "execution": {
+        "phase": "Uitvoering",
+        "duration": "2–6 maanden",
+        "activities": {
+          "0": "Pilots en POC's",
+          "1": "Progressieve uitrol",
+          "2": "Meting van resultaten"
+        }
+      }
+    },
+    "benefits": {
+      "vision": {
+        "title": "Duidelijke visie",
+        "description": "AI-strategie afgestemd op uw bedrijfsdoelstellingen",
+        "stats": "Meetbare ROI vanaf 3 maanden"
+      },
+      "efficiency": {
+        "title": "Bewezen efficiëntie",
+        "description": "Meetbare procesoptimalisatie",
+        "stats": "-30% operationele kosten"
+      },
+      "risk": {
+        "title": "Beheerste risico's",
+        "description": "Veilige en conforme aanpak",
+        "stats": "100% AVG-conformiteit"
+      }
+    },
+    "cta": {
+      "title": "Klaar om uw AI-strategie te bepalen?",
+      "subtitle": "Boek een gratis strategische consultatiesessie",
+      "button": "Mijn consultatie plannen",
+      "stats": {
+        "expertise": "Jaar expertise",
+        "projects": "Succesvolle projecten"
+      }
+    }
+  },
   "analysis": {
     "title": "AI Analyse",
     "desc": "Analyseer uw gegevens met precisie",
@@ -24,5 +106,254 @@
     "desc": "Optimaliseer uw AI-interacties",
     "management": "Promptbeheer",
     "managementDesc": "Organiseer en optimaliseer uw prompts"
+  },
+  "whyai": {
+    "hero": {
+      "title": "Waarom AI?",
+      "subtitle": "Een Toegankelijke Kans voor KMO's",
+      "description": "Kunstmatige intelligentie is niet langer voorbehouden aan grote bedrijven. Vandaag biedt het KMO's concrete kansen om efficiënter, competitiever en winstgevender te worden."
+    },
+    "benefits": {
+      "productivity": {
+        "title": "Verhoogde Productiviteit",
+        "description": "Automatisering van repetitieve taken, waardoor tijd vrijkomt voor activiteiten met hogere toegevoegde waarde."
+      },
+      "cost": {
+        "title": "Kostenreductie",
+        "description": "Optimalisatie van interne processen, waardoor operationele kosten dalen."
+      },
+      "satisfaction": {
+        "title": "Verbeterde Klanttevredenheid",
+        "description": "Gepersonaliseerde en responsieve diensten dankzij intelligente tools."
+      },
+      "revenue": {
+        "title": "Omzetgroei",
+        "description": "Betere anticipatie op klantenbehoeften en snelle aanpassing aan markttrends."
+      }
+    },
+    "usecases": {
+      "sectionTitle": "Concrete Voorbeelden van AI-gebruik in KMO's",
+      "learnMore": "Meer weten",
+      "admin": {
+        "title": "Automatisering van Administratieve Taken",
+        "description": "AI-tools genereren automatisch financiële rapporten, analyseren de prestaties van marketingcampagnes en volgen key performance indicators (KPI's), waardoor handmatig werk wordt geëlimineerd en de nauwkeurigheid toeneemt door realtime data-analyse.",
+        "examples": {
+          "0": "Rapportgeneratie",
+          "1": "KPI-analyse",
+          "2": "Automatische opvolging"
+        },
+        "callToAction": "Integreer AI in uw Bedrijf"
+      },
+      "marketing": {
+        "title": "Generatie van Marketingcontent",
+        "description": "AI kan artikelen, nieuwsbrieven en sociale-mediapublicaties produceren, gepersonaliseerd op basis van gedragsdata en klantvoorkeuren, waardoor betrokkenheid en loyaliteit toenemen.",
+        "examples": {
+          "0": "Blogartikelen",
+          "1": "Nieuwsbrieven",
+          "2": "Social media posts"
+        },
+        "callToAction": "Integreer AI in uw Bedrijf"
+      },
+      "service": {
+        "title": "Intelligente Klantenservice",
+        "description": "Chatbots en virtuele assistenten kunnen veelgestelde vragen beantwoorden, verzoeken behandelen, vergaderingen inplannen en eenvoudige klantenservicetaken uitvoeren, met 24/7 beschikbaarheid en een betere klantervaring.",
+        "examples": {
+          "0": "24/7 Chatbots",
+          "1": "Geautomatiseerde antwoorden",
+          "2": "Intelligente planning"
+        },
+        "callToAction": "AI-oplossingen en Opleidingen"
+      },
+      "sales": {
+        "title": "Verkoopprognoses",
+        "description": "AI analyseert historische data om toekomstige behoeften te anticiperen, inkoopprocessen aan te passen en voorraadbeheer te optimaliseren, waardoor kosten dalen en klanttevredenheid stijgt.",
+        "examples": {
+          "0": "Nauwkeurige prognoses",
+          "1": "Voorraadbeheer",
+          "2": "Optimalisatie van de toeleveringsketen"
+        },
+        "callToAction": "ActivDev"
+      }
+    },
+    "cta": {
+      "title": "Waarom Wachten?",
+      "subtitle": "AI is een toegankelijke en rendabele kans voor uw KMO.",
+      "button": "Nu starten",
+      "nextStepsTitle": "Volgende Stappen:",
+      "nextSteps": {
+        "0": "Identificeer de processen die in uw bedrijf geautomatiseerd kunnen worden.",
+        "1": "Test gratis AI-tools die geschikt zijn voor KMO's.",
+        "2": "Train uw teams voor een succesvolle adoptie."
+      },
+      "contactTitle": "Contacteer Ons",
+      "contactDesc": "Voor een gepersonaliseerde demonstratie of een gratis diagnose kunt u ons vrijblijvend contacteren.",
+      "satisfactionLabel": "Tevredenheidsgraad",
+      "installLabel": "Gemiddelde installatie"
+    },
+    "finalCta": {
+      "title": "Laat uw concurrenten geen voorsprong nemen",
+      "subtitle": "Sluit u aan bij de KMO's die hun activiteit al transformeerden dankzij AI",
+      "button": "Start mijn gratis diagnose"
+    }
+  },
+  "assistants": {
+    "hero": {
+      "title": "AI Virtuele Assistenten",
+      "subtitle": "Intelligente assistenten die uw behoeften echt begrijpen"
+    },
+    "types": {
+      "customer": {
+        "title": "Klantenservice Assistent",
+        "description": "Directe 24/7 antwoorden voor uw klanten",
+        "features": {
+          "0": "Realtime antwoorden",
+          "1": "Meertalig",
+          "2": "Personalisatie van antwoorden",
+          "3": "Doorschakeling naar een medewerker indien nodig"
+        }
+      },
+      "analysis": {
+        "title": "Analyse Assistent",
+        "description": "Realtime data-analyse en -interpretatie",
+        "features": {
+          "0": "Live dashboards",
+          "1": "Intelligente waarschuwingen",
+          "2": "Actie-aanbevelingen",
+          "3": "Geautomatiseerde rapporten"
+        }
+      },
+      "process": {
+        "title": "Proces Assistent",
+        "description": "Automatisering van repetitieve taken",
+        "features": {
+          "0": "Geautomatiseerde workflows",
+          "1": "Integratie met uw tools",
+          "2": "Taakopvolging",
+          "3": "Continue optimalisatie"
+        }
+      }
+    },
+    "benefits": {
+      "availability": {
+        "title": "24/7 Beschikbaarheid",
+        "description": "Continue dienstverlening zonder onderbreking"
+      },
+      "multilingual": {
+        "title": "Meertalig",
+        "description": "Ondersteuning in meer dan 30 talen"
+      },
+      "security": {
+        "title": "Maximale Veiligheid",
+        "description": "Gegarandeerde gegevensbescherming"
+      }
+    },
+    "metrics": {
+      "resolution": {
+        "label": "Oplossingspercentage",
+        "description": "Verzoeken automatisch afgehandeld"
+      },
+      "cost": {
+        "label": "Kostenreductie",
+        "description": "Op klantenondersteuning"
+      },
+      "availability": {
+        "label": "Beschikbaarheid",
+        "description": "Continue dienstverlening"
+      }
+    },
+    "cta": {
+      "title": "Klaar om uw ondersteuning te automatiseren?",
+      "subtitle": "Ontdek de kracht van AI-assistenten",
+      "button": "Nu beginnen",
+      "configLabel": "Configuratie",
+      "availabilityLabel": "Beschikbaarheid"
+    }
+  },
+  "tools": {
+    "hero": {
+      "title": "Onze AI-tools",
+      "subtitle": "Een complete reeks tools om uw bedrijf te transformeren"
+    },
+    "list": {
+      "assistant": {
+        "title": "AI Assistent",
+        "description": "Gepersonaliseerde virtuele assistent voor uw bedrijf",
+        "features": {
+          "0": "Realtime antwoorden",
+          "1": "Meertalig",
+          "2": "Continu leren",
+          "3": "Eenvoudige integratie"
+        }
+      },
+      "analysis": {
+        "title": "AI Analyse",
+        "description": "Diepgaande analyse van uw gegevens",
+        "features": {
+          "0": "Geautomatiseerde inzichten",
+          "1": "Dashboards",
+          "2": "Geavanceerde voorspellingen",
+          "3": "Gepersonaliseerde rapporten"
+        }
+      },
+      "promptMaster": {
+        "title": "Prompt Master",
+        "description": "Aanmaken en optimaliseren van prompts",
+        "features": {
+          "0": "Promptbibliotheek",
+          "1": "A/B-testen",
+          "2": "Continue optimalisatie",
+          "3": "Sectorspecifieke templates"
+        }
+      },
+      "content": {
+        "title": "Contentcreatie",
+        "description": "Geoptimaliseerde contentgeneratie",
+        "features": {
+          "0": "Artikelen & blogs",
+          "1": "Sociale media",
+          "2": "Marketing e-mails",
+          "3": "Productbeschrijvingen"
+        }
+      }
+    },
+    "commonFeatures": {
+      "multilingual": {
+        "title": "Meertalig",
+        "description": "Ondersteuning voor meer dan 30 talen"
+      },
+      "documentation": {
+        "title": "Documentatie",
+        "description": "Gedetailleerde gidsen en voorbeelden"
+      },
+      "api": {
+        "title": "API",
+        "description": "Eenvoudige integratie via API"
+      },
+      "seo": {
+        "title": "SEO",
+        "description": "Optimalisatie voor zoekmachines"
+      }
+    },
+    "metrics": {
+      "productivity": {
+        "label": "Productiviteit",
+        "description": "Gemiddelde stijging"
+      },
+      "cost": {
+        "label": "Kosten",
+        "description": "Besparing op uitgaven"
+      },
+      "availability": {
+        "label": "Beschikbaarheid",
+        "description": "Continue ondersteuning"
+      }
+    },
+    "cta": {
+      "title": "Klaar om uw bedrijf te transformeren?",
+      "subtitle": "Ontdek hoe onze tools uw processen kunnen optimaliseren",
+      "button": "Nu starten",
+      "installLabel": "Installatie",
+      "roiLabel": "Onmiddellijk"
+    }
   }
 }

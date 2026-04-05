@@ -1,7 +1,22 @@
 {
   "title": "Analyse IA Avancée",
   "subtitle": "Découvrez les insights cachés dans vos données",
+  "seo": {
+    "title": "Analyse IA - Solutions analytiques avancées | AInspiration",
+    "description": "Transformez vos données en insights stratégiques avec nos solutions d'analyse IA. Prédictions, détection d'anomalies, segmentation et tableaux de bord personnalisés."
+  },
+  "hero": {
+    "badge": "Solution d'analyse avancée",
+    "title": "Transformez vos données en",
+    "titleHighlight": "décisions stratégiques",
+    "description": "Notre solution d'analyse IA transforme vos données brutes en insights actionnables, révélant les tendances cachées et prédisant les évolutions futures pour vous donner un avantage concurrentiel décisif.",
+    "ctaDemo": "Demander une démo",
+    "ctaDocs": "Consulter la documentation",
+    "imageAlt": "Tableau de bord d'analyse de données"
+  },
   "features": {
+    "sectionTitle": "Des fonctionnalités analytiques puissantes",
+    "sectionDescription": "Notre plateforme combine des algorithmes avancés et une interface intuitive pour rendre l'analyse de données accessible à tous les niveaux de votre organisation.",
     "realtime": {
       "title": "Analyse en temps réel",
       "desc": "Surveillez vos métriques clés en direct"
@@ -19,15 +34,141 @@
       "desc": "Compatible avec vos outils existants"
     }
   },
+  "mainFeatures": [
+    {
+      "title": "Analyse prédictive",
+      "description": "Anticipez les tendances futures grâce à des algorithmes avancés d'apprentissage automatique qui identifient les patterns dans vos données historiques",
+      "benefits": [
+        "Prévisions de ventes précises",
+        "Anticipation des comportements clients",
+        "Identification précoce des opportunités"
+      ]
+    },
+    {
+      "title": "Segmentation intelligente",
+      "description": "Découvrez des segments de clients invisibles à l'œil nu grâce à des algorithmes de clustering qui révèlent des groupes homogènes dans vos données",
+      "benefits": [
+        "Personnalisation ultra-ciblée",
+        "Optimisation des campagnes marketing",
+        "Découverte de niches inexploitées"
+      ]
+    },
+    {
+      "title": "Tableaux de bord dynamiques",
+      "description": "Visualisez vos KPIs en temps réel dans des interfaces interactives qui s'adaptent à vos besoins et vous alertent des changements significatifs",
+      "benefits": [
+        "Vue d'ensemble instantanée",
+        "Alertes intelligentes automatisées",
+        "Personnalisation complète des vues"
+      ]
+    },
+    {
+      "title": "Détection d'anomalies",
+      "description": "Identifiez automatiquement les valeurs aberrantes et événements inhabituels dans vos données qui pourraient signaler des problèmes ou opportunités",
+      "benefits": [
+        "Détection précoce des fraudes",
+        "Identification des dysfonctionnements",
+        "Repérage d'opportunités uniques"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "value": "+67%",
+      "label": "Précision prédictive",
+      "description": "Par rapport aux méthodes conventionnelles"
+    },
+    {
+      "value": "10x",
+      "label": "Plus rapide",
+      "description": "Analyses en temps réel"
+    },
+    {
+      "value": "98%",
+      "label": "Satisfaction client",
+      "description": "Solutions adaptées"
+    },
+    {
+      "value": "ROI rapide",
+      "label": "Retour sur investissement",
+      "description": "Résultats mesurables dès les premiers mois"
+    }
+  ],
+  "useCases": {
+    "sectionTitle": "Applications sectorielles",
+    "sectionDescription": "Découvrez comment notre solution d'analyse IA transforme les industries",
+    "concreteApplications": "Applications concrètes",
+    "imageAlt": "Analyse IA",
+    "items": [
+      {
+        "title": "Commerce & Distribution",
+        "description": "Optimisez vos stocks, prévoyez les ventes et personnalisez l'expérience client grâce à l'analyse prédictive de données.",
+        "examples": [
+          "Prévision de la demande par produit et par magasin",
+          "Optimisation des prix en temps réel",
+          "Personnalisation des recommandations produits",
+          "Analyse du comportement client en magasin et en ligne"
+        ],
+        "testimonialQuote": "Grâce à l'analyse prédictive d'AInspiration, nous avons réduit nos ruptures de stock de 78% tout en diminuant notre stock global de 15%.",
+        "testimonialAuthor": "Marie Deschamps",
+        "testimonialRole": "Directrice Supply Chain, MeubleExpress"
+      },
+      {
+        "title": "Services financiers",
+        "description": "Détectez les fraudes, évaluez les risques et identifiez de nouvelles opportunités d'investissement grâce à l'analyse avancée.",
+        "examples": [
+          "Scoring crédit automatisé et personnalisé",
+          "Détection de fraudes en temps réel",
+          "Analyse des tendances de marché",
+          "Optimisation de portefeuilles d'investissement"
+        ],
+        "testimonialQuote": "L'implémentation du système de détection d'anomalies nous a permis d'identifier 34% plus de transactions frauduleuses, tout en réduisant les faux positifs de 56%.",
+        "testimonialAuthor": "Thomas Lefèvre",
+        "testimonialRole": "RSSI, CréditPro"
+      }
+    ]
+  },
+  "process": {
+    "sectionTitle": "Notre processus d'implémentation",
+    "sectionDescription": "Une approche structurée pour garantir des résultats concrets",
+    "steps": [
+      {
+        "title": "Audit des données",
+        "description": "Évaluation de vos sources de données, identification des lacunes et des opportunités d'enrichissement"
+      },
+      {
+        "title": "Conception de la solution",
+        "description": "Définition des objectifs d'analyse, sélection des algorithmes et création d'une architecture sur mesure"
+      },
+      {
+        "title": "Implémentation & Test",
+        "description": "Développement de la solution, intégration à vos systèmes et validation des résultats"
+      },
+      {
+        "title": "Déploiement & Suivi",
+        "description": "Mise en production, formation des équipes et optimisation continue des performances"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Prêt à exploiter la puissance de vos données ?",
+    "description": "Découvrez comment notre solution d'analyse IA peut transformer votre approche métier et vous donner un avantage concurrentiel décisif.",
+    "bullet1": "Mise en place en moins de 2 semaines",
+    "bullet2": "ROI mesurable dès le premier mois",
+    "bullet3": "Compatible avec toutes vos sources de données",
+    "demoTitle": "Planifiez votre démo gratuite",
+    "check1": "Présentation personnalisée de la solution",
+    "check2": "Analyse de vos besoins spécifiques",
+    "check3": "Exemple concret avec vos données",
+    "check4": "Proposition sur mesure en 48h",
+    "button": "Planifier ma démo",
+    "subtitle": "Commencez votre analyse gratuite dès maintenant",
+    "startButton": "Démarrer l'analyse"
+  },
   "stats": {
     "accuracy": "99.9% de précision",
     "processing": "Traitement en temps réel",
     "improvement": "45% d'amélioration moyenne",
     "satisfaction": "98% de clients satisfaits"
-  },
-  "cta": {
-    "title": "Prêt à découvrir le potentiel de vos données ?",
-    "subtitle": "Commencez votre analyse gratuite dès maintenant",
-    "button": "Démarrer l'analyse"
   }
 }

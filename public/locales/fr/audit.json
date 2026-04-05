@@ -2,69 +2,214 @@
   "title": "Audit IA",
   "subtitle": "Évaluez votre potentiel d'innovation avec l'IA",
   "steps": {
-    "analysis": {
-      "title": "Analyse initiale",
-      "desc": "Évaluation complète de vos processus actuels"
-    },
-    "diagnostic": {
-      "title": "Diagnostic approfondi",
-      "desc": "Identification des opportunités d'amélioration"
-    },
-    "impact": {
-      "title": "Analyse d'impact",
-      "desc": "Estimation des bénéfices potentiels"
-    },
-    "plan": {
-      "title": "Plan d'action",
-      "desc": "Recommandations détaillées et feuille de route"
-    }
+    "analysis": { "title": "Analyse initiale", "desc": "Évaluation complète de vos processus actuels" },
+    "diagnostic": { "title": "Diagnostic approfondi", "desc": "Identification des opportunités d'amélioration" },
+    "impact": { "title": "Analyse d'impact", "desc": "Estimation des bénéfices potentiels" },
+    "plan": { "title": "Plan d'action", "desc": "Recommandations détaillées et feuille de route" }
   },
   "form": {
-    "title": "Commencer votre audit gratuit",
-    "subtitle": "Remplissez le formulaire pour débuter",
-    "company": {
-      "name": "Nom de l'entreprise",
-      "placeholder": "Votre entreprise"
-    },
-    "industry": {
-      "title": "Secteur d'activité",
-      "placeholder": "Sélectionnez votre secteur",
-      "tech": "Technologies",
-      "finance": "Finance",
-      "health": "Santé",
-      "retail": "Commerce",
-      "manufacturing": "Industrie",
-      "services": "Services",
-      "other": "Autre"
-    },
-    "size": {
-      "title": "Taille de l'entreprise",
-      "placeholder": "Sélectionnez la taille",
-      "1-10": "1-10 employés",
-      "11-50": "11-50 employés",
-      "51-200": "51-200 employés",
-      "201-500": "201-500 employés",
-      "500+": "500+ employés"
-    },
-    "email": {
-      "title": "Email professionnel",
-      "placeholder": "votre@email.com"
-    },
-    "phone": {
-      "title": "Téléphone",
-      "placeholder": "+32 XXX XX XX XX"
-    },
-    "privacy": "Vos données sont protégées et ne seront jamais partagées",
-    "submit": "Lancer l'audit gratuit",
-    "next": "Suivant",
+    "title": "Votre audit IA gratuit",
+    "stepOf": "Étape {{step}} sur {{total}}",
+    "continue": "Continuer",
     "back": "Retour",
-    "step1": "Informations entreprise",
-    "step2": "Contact"
+    "submit": "Recevoir mon audit gratuit",
+    "submitting": "Envoi en cours...",
+    "close": "Fermer",
+    "required": "*",
+    "multipleChoice": "(plusieurs choix possibles)",
+    "step1": {
+      "title": "Vos coordonnées",
+      "subtitle": "Pour vous envoyer votre rapport",
+      "name": "Nom complet",
+      "namePlaceholder": "Jean Dupont",
+      "email": "Email professionnel",
+      "emailPlaceholder": "jean@monentreprise.be",
+      "company": "Entreprise",
+      "companyPlaceholder": "Mon Entreprise SA",
+      "phone": "Téléphone",
+      "phonePlaceholder": "+32 477 00 00 00",
+      "role": "Votre fonction",
+      "rolePlaceholder": "Gérant, Directeur, Office Manager..."
+    },
+    "step2": {
+      "title": "Votre activité",
+      "subtitle": "Pour adapter l'audit à votre secteur",
+      "sectorLabel": "Secteur d'activité",
+      "sectorOtherLabel": "Précisez votre secteur",
+      "sectorOtherPlaceholder": "Ex: Transport, Éducation...",
+      "teamSizeLabel": "Taille de l'équipe"
+    },
+    "step3": {
+      "title": "Vos besoins",
+      "subtitle": "Quels processus souhaitez-vous améliorer ?",
+      "processesLabel": "Quels processus souhaitez-vous automatiser ?",
+      "processesOtherLabel": "Précisez",
+      "processesOtherPlaceholder": "Ex: Gestion de projet, Qualité...",
+      "weeklyHoursLabel": "Temps estimé en tâches répétitives par semaine",
+      "currentToolsLabel": "Quels outils utilisez-vous aujourd'hui ?",
+      "currentToolsPlaceholder": "Ex: Excel, Gmail, Sage, WooCommerce, Salesforce..."
+    },
+    "step4": {
+      "title": "Pour aller plus loin",
+      "subtitle": "Optionnel — aide à personnaliser votre rapport",
+      "aiExperienceLabel": "Votre expérience avec l'IA",
+      "budgetLabel": "Budget envisagé",
+      "priorityLabel": "Quelle est votre priorité n°1 ?",
+      "priorityPlaceholder": "Ex: Gagner du temps sur la facturation, automatiser le suivi client...",
+      "additionalInfoLabel": "Informations complémentaires",
+      "additionalInfoPlaceholder": "Contexte spécifique, contraintes, attentes particulières..."
+    },
+    "success": {
+      "title": "Votre demande d'audit est envoyée !",
+      "analyzing": "Notre expert IA analyse votre situation dès maintenant.",
+      "report": "Vous recevrez votre <strong>rapport d'audit personnalisé par email sous 24h</strong>.",
+      "nextTitle": "Que se passe-t-il ensuite ?",
+      "nextStep1": "Analyse IA de votre activité et vos besoins",
+      "nextStep2": "Rapport personnalisé envoyé par email",
+      "nextStep3": "Un expert vous contacte pour en discuter (si souhaité)"
+    },
+    "errors": {
+      "nameRequired": "Votre nom est requis",
+      "emailRequired": "Votre email est requis",
+      "emailInvalid": "Email invalide",
+      "companyRequired": "Le nom de votre entreprise est requis",
+      "sectorRequired": "Sélectionnez votre secteur",
+      "sectorOtherRequired": "Précisez votre secteur",
+      "teamSizeRequired": "Indiquez la taille de votre équipe",
+      "processesRequired": "Sélectionnez au moins un processus",
+      "weeklyHoursRequired": "Estimez le temps perdu",
+      "rateLimit": "Veuillez patienter quelques minutes avant de soumettre un nouveau formulaire.",
+      "generic": "Une erreur est survenue. Réessayez ou contactez-nous directement à info@ainspiration.eu"
+    }
   },
-  "success": {
-    "title": "Merci pour votre demande !",
-    "message": "Nous avons bien reçu votre demande d'audit",
-    "response": "Réponse sous 24h",
-    "close": "Fermer"
+  "sectors": {
+    "comptabilite": "Comptabilité / Fiduciaire",
+    "juridique": "Cabinet juridique / Avocat",
+    "immobilier": "Immobilier / Architecture",
+    "medical": "Médical / Paramédical",
+    "restaurant": "Restaurant / Horeca",
+    "commerce": "Commerce / Retail",
+    "ecommerce": "E-commerce",
+    "agence": "Agence marketing / Communication",
+    "consulting": "Consulting / Services B2B",
+    "artisan": "Artisan / Indépendant",
+    "industrie": "Industrie / Manufacturing",
+    "other": "Autre (précisez)"
+  },
+  "teamSizes": {
+    "1": "Indépendant / Solo",
+    "2-5": "2–5 personnes",
+    "6-20": "6–20 personnes",
+    "21-50": "21–50 personnes",
+    "50+": "Plus de 50 personnes"
+  },
+  "processes": {
+    "facturation": "Facturation & devis",
+    "email": "Gestion des emails / réponses clients",
+    "prospection": "Prospection commerciale",
+    "planning": "Planning & rendez-vous",
+    "reporting": "Reporting & tableaux de bord",
+    "rh": "Ressources humaines / Onboarding",
+    "stock": "Gestion des stocks / Commandes",
+    "social": "Réseaux sociaux / Contenu",
+    "support": "Support client / SAV",
+    "comptabilite": "Saisie comptable / Réconciliation",
+    "other": "Autre"
+  },
+  "weeklyHours": {
+    "1-5": "1–5 heures par semaine",
+    "5-10": "5–10 heures par semaine",
+    "10-20": "10–20 heures par semaine",
+    "20+": "Plus de 20 heures par semaine",
+    "unknown": "Je ne sais pas estimer"
+  },
+  "aiExperience": {
+    "none": "Aucune — Je découvre",
+    "basic": "Basique — J'utilise ChatGPT ou similaire",
+    "moderate": "Modérée — J'ai testé des outils IA",
+    "advanced": "Avancée — J'ai déjà automatisé des processus"
+  },
+  "budgets": {
+    "discovery": "Je veux d'abord comprendre mes options (audit gratuit)",
+    "starter": "Moins de 2 000 € pour un premier projet",
+    "growth": "2 000 € – 5 000 € pour une solution complète",
+    "enterprise": "Plus de 5 000 € pour une transformation en profondeur"
+  },
+  "structuredMessage": {
+    "title": "DEMANDE D'AUDIT IA",
+    "coordinates": "COORDONNÉES",
+    "activity": "ACTIVITÉ",
+    "needs": "BESOINS IDENTIFIÉS",
+    "context": "CONTEXTE",
+    "name": "Nom",
+    "company": "Entreprise",
+    "email": "Email",
+    "phone": "Téléphone",
+    "role": "Fonction",
+    "sector": "Secteur",
+    "teamSize": "Taille équipe",
+    "processes": "Processus à automatiser",
+    "weeklyHours": "Temps estimé perdu en tâches répétitives",
+    "currentTools": "Outils actuellement utilisés",
+    "aiExperience": "Expérience IA",
+    "budget": "Budget envisagé",
+    "priority": "Priorité principale",
+    "additionalInfo": "Informations complémentaires",
+    "notSpecified": "Non précisé"
+  },
+  "page": {
+    "badge": "Places limitées — Audit offert ce mois-ci",
+    "heroTitle": "Découvrez votre potentiel IA",
+    "heroHighlight": "en 24h",
+    "heroDescription": "Un expert analyse votre activité et vous livre un plan d'action concret, gratuitement. Un premier résultat concret en 5 jours, à partir de votre audit gratuit.",
+    "ctaButton": "Demander mon audit gratuit",
+    "guarantees": {
+      "results": "Résultats sous 24h",
+      "free": "100% gratuit, sans engagement",
+      "report": "Rapport PDF personnalisé",
+      "expert": "Analyse par un expert IA"
+    },
+    "howTitle": "Comment se déroule votre audit ?",
+    "howSubtitle": "Un processus simple en 4 étapes pour identifier vos opportunités IA",
+    "stepsDetailed": {
+      "1": { "title": "Analyse initiale", "desc": "Évaluation complète de vos processus actuels et identification des tâches répétitives" },
+      "2": { "title": "Diagnostic approfondi", "desc": "Identification des opportunités d'automatisation et gains potentiels" },
+      "3": { "title": "Analyse d'impact", "desc": "Estimation des bénéfices potentiels en temps et en productivité" },
+      "4": { "title": "Plan d'action", "desc": "Recommandations détaillées et feuille de route personnalisée" }
+    },
+    "receiveTitle": "Ce que vous recevez",
+    "reportTitle": "Votre rapport d'audit personnalisé",
+    "reportItems": [
+      "Cartographie de vos processus actuels",
+      "Identification des tâches automatisables",
+      "Estimation du temps gagné par semaine",
+      "3 recommandations actionnables prioritaires",
+      "Feuille de route d'intégration IA"
+    ],
+    "goFurtherTitle": "Et si vous souhaitez aller plus loin...",
+    "packTitle": "Pack Automatisation Express",
+    "packLaunchBadge": "Offre lancement — 1 043 € au lieu de 1 490 €",
+    "packLaunchNote": "Pour les 10 premiers clients (contre témoignage)",
+    "packPrice": "À partir de 1 043 € HTVA · Setup workflow n8n + 1er mois hébergement inclus",
+    "packPriceStandard": "1 490 € HTVA (tarif standard)",
+    "packDescription": "Issu directement de votre audit, nous automatisons la tâche qui vous fera gagner le plus de temps. Setup + 1er mois inclus, puis 290 €/mois pour l'hébergement et le support de votre workflow IA.",
+    "packSubscriptionNote": "Abonnement mensuel 290 €/mois HTVA obligatoire — vos workflows tournent sur notre infrastructure.",
+    "whoTitle": "Pour qui est cet audit ?",
+    "whoSectors": [
+      "Professions libérales (avocats, comptables, architectes)",
+      "PME tous secteurs (5-50 personnes)",
+      "Restaurants et commerces locaux",
+      "E-commerces et agences marketing",
+      "Artisans et indépendants"
+    ],
+    "finalCtaTitle": "Prêt à découvrir ce que l'IA peut faire pour vous ?",
+    "finalCtaSubtitle": "Remplissez le formulaire en 2 minutes. Recevez votre audit personnalisé sous 24h.",
+    "stats": {
+      "delivery": "Délai de livraison",
+      "noCommitment": "Sans engagement",
+      "smeHelped": "PME accompagnées"
+    },
+    "seoTitle": "Audit IA Gratuit en 24h | Diagnostic Personnalisé | AInspiration",
+    "seoDescription": "Demandez votre audit IA gratuit. Un expert analyse votre activité et vous livre un plan d'action concret en 24h. Sans engagement. PME et indépendants en Belgique et France."
   }
 }

@@ -18,5 +18,83 @@
   "stats": {
     "satisfaction": "Tevredenheid",
     "certified": "Getrainde personen"
+  },
+  "formation": {
+    "hero": {
+      "title": "Beheers AI-tools in 3 dagen",
+      "description": "Praktische trainingen om AI dagelijks te gebruiken"
+    },
+    "courses": {
+      "chatgpt": {
+        "title": "Gevorderd ChatGPT",
+        "level": "Alle niveaus",
+        "duration": "1 dag",
+        "topics": {
+          "0": "Effectieve prompts schrijven",
+          "1": "Documenten analyseren en samenvatten",
+          "2": "Originele inhoud creëren",
+          "3": "Tips en tricks voor betere resultaten"
+        }
+      },
+      "imageAI": {
+        "title": "AI-beeldgeneratie",
+        "level": "Beginner",
+        "duration": "1 dag",
+        "topics": {
+          "0": "Midjourney en DALL-E",
+          "1": "Nauwkeurige beeldbeschrijvingen",
+          "2": "Stijlen en variaties",
+          "3": "Resultaten optimaliseren"
+        }
+      }
+    },
+    "benefits": {
+      "practical": {
+        "title": "Onmiddellijke toepassing",
+        "description": "Concrete oefeningen op echte gevallen",
+        "examples": {
+          "0": "Professionele e-mails schrijven",
+          "1": "Presentaties maken",
+          "2": "Documenten analyseren",
+          "3": "Visuals genereren"
+        }
+      },
+      "results": {
+        "title": "Gegarandeerde resultaten",
+        "description": "Zichtbare verbetering vanaf dag één",
+        "examples": {
+          "0": "3x tijdsbesparing",
+          "1": "Verbeterde kwaliteit",
+          "2": "Meer creativiteit",
+          "3": "Betere organisatie"
+        }
+      }
+    },
+    "testimonials": {
+      "marie": {
+        "name": "Marie L.",
+        "role": "Marketingverantwoordelijke",
+        "text": "Ik bespaar 2 uur per dag dankzij de geleerde technieken!"
+      },
+      "thomas": {
+        "name": "Thomas D.",
+        "role": "Ondernemer",
+        "text": "Zeer praktische training, direct toepasbaar"
+      },
+      "sophie": {
+        "name": "Sophie M.",
+        "role": "Directiesecretaresse",
+        "text": "Eindelijk een AI-training zonder technisch jargon"
+      }
+    },
+    "cta": {
+      "title": "Klaar om AI te beheersen?",
+      "subtitle": "Sluit u aan bij onze tevreden deelnemers",
+      "button": "Mijn training boeken",
+      "stats": {
+        "duration": "Om AI te beheersen",
+        "satisfaction": "Tevredenheid"
+      }
+    }
   }
 }

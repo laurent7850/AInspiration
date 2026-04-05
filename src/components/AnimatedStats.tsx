@@ -34,7 +34,7 @@ function StatItem({ end, suffix, prefix = '', label, icon, delay = 0, color, isD
       <div className={`text-3xl sm:text-4xl font-bold mb-1 tabular-nums ${isDark ? 'text-white' : 'text-gray-900'}`}>
         {formattedValue}
       </div>
-      <div className={`text-sm font-medium ${isDark ? 'text-indigo-200' : 'text-gray-500'}`}>{label}</div>
+      <div className={`text-sm font-medium ${isDark ? 'text-indigo-100' : 'text-gray-500'}`}>{label}</div>
     </div>
   );
 }
@@ -52,11 +52,11 @@ export default function AnimatedStats({ variant = 'light', className = '' }: Ani
 
   const stats: StatItemProps[] = [
     {
-      end: 180,
+      end: 50,
       prefix: '+',
-      suffix: '%',
-      label: t('animatedStats.roi', 'ROI moyen'),
-      icon: <TrendingUp className={`w-6 h-6 ${isDark ? 'text-indigo-200' : 'text-indigo-600'}`} />,
+      suffix: '',
+      label: t('animatedStats.roi', 'PME accompagnées'),
+      icon: <TrendingUp className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
       delay: 0,
       color: isDark ? 'bg-white/10' : 'bg-indigo-100',
       isDark,
@@ -65,7 +65,7 @@ export default function AnimatedStats({ variant = 'light', className = '' }: Ani
       end: 98,
       suffix: '%',
       label: t('animatedStats.satisfaction', 'Satisfaction client'),
-      icon: <ThumbsUp className={`w-6 h-6 ${isDark ? 'text-indigo-200' : 'text-emerald-600'}`} />,
+      icon: <ThumbsUp className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-emerald-600'}`} />,
       delay: 150,
       color: isDark ? 'bg-white/10' : 'bg-emerald-100',
       isDark,
@@ -75,7 +75,7 @@ export default function AnimatedStats({ variant = 'light', className = '' }: Ani
       prefix: '+',
       suffix: '%',
       label: t('animatedStats.productivity', 'Productivité'),
-      icon: <Zap className={`w-6 h-6 ${isDark ? 'text-indigo-200' : 'text-amber-600'}`} />,
+      icon: <Zap className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-amber-600'}`} />,
       delay: 300,
       color: isDark ? 'bg-white/10' : 'bg-amber-100',
       isDark,
@@ -85,7 +85,7 @@ export default function AnimatedStats({ variant = 'light', className = '' }: Ani
       prefix: '-',
       suffix: '%',
       label: t('animatedStats.processing', 'Temps de traitement'),
-      icon: <Clock className={`w-6 h-6 ${isDark ? 'text-indigo-200' : 'text-rose-600'}`} />,
+      icon: <Clock className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-rose-600'}`} />,
       delay: 450,
       color: isDark ? 'bg-white/10' : 'bg-rose-100',
       isDark,

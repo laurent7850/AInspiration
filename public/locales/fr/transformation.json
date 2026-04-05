@@ -1,0 +1,157 @@
+{
+  "seo": {
+    "title": "Transformation Numérique | AInspiration",
+    "description": "Accélérez votre transformation numérique grâce à notre expertise. Accompagnement sur-mesure pour optimiser vos processus et innover efficacement."
+  },
+  "hero": {
+    "badge": "Transformation Numérique",
+    "title": "Accélérez votre",
+    "titleHighlight": "transformation digitale",
+    "description": "Nous accompagnons votre organisation dans sa mutation numérique, avec une approche progressive et pragmatique pour des résultats concrets et mesurables.",
+    "ctaStart": "Démarrer votre transformation",
+    "ctaDiagnostic": "Demander un diagnostic",
+    "imageAlt": "Transformation numérique en entreprise"
+  },
+  "process": {
+    "sectionTitle": "Notre méthodologie de transformation",
+    "sectionDescription": "Une approche structurée en 4 phases pour garantir une transformation maîtrisée et efficace",
+    "phases": [
+      {
+        "title": "Diagnostic digital",
+        "description": "Évaluation complète de votre maturité digitale et identification des opportunités",
+        "activities": [
+          "Audit des outils et systèmes existants",
+          "Analyse des processus métier",
+          "Identification des goulets d'étranglement",
+          "Cartographie des opportunités d'innovation"
+        ]
+      },
+      {
+        "title": "Stratégie & Feuille de route",
+        "description": "Élaboration d'un plan de transformation pragmatique et réaliste",
+        "activities": [
+          "Définition des objectifs et KPIs",
+          "Priorisation des initiatives",
+          "Allocation des ressources",
+          "Planning de déploiement"
+        ]
+      },
+      {
+        "title": "Implémentation agile",
+        "description": "Déploiement progressif des solutions avec une approche itérative",
+        "activities": [
+          "Sélection des technologies adaptées",
+          "Développement et intégration",
+          "Tests et validation",
+          "Formation des équipes"
+        ]
+      },
+      {
+        "title": "Optimisation continue",
+        "description": "Mesure des résultats et amélioration permanente des solutions",
+        "activities": [
+          "Suivi des KPIs en temps réel",
+          "Recueil des retours utilisateurs",
+          "Analyse des performances",
+          "Ajustements et évolutions"
+        ]
+      }
+    ]
+  },
+  "benefits": {
+    "sectionTitle": "Les bénéfices de la transformation numérique",
+    "sectionDescription": "Des améliorations mesurables qui impactent directement votre performance",
+    "items": [
+      {
+        "title": "Efficacité opérationnelle",
+        "value": "+40%",
+        "description": "Automatisation des processus et réduction des tâches manuelles"
+      },
+      {
+        "title": "Satisfaction client",
+        "value": "+35%",
+        "description": "Expériences fluides et personnalisées"
+      },
+      {
+        "title": "Agilité organisationnelle",
+        "value": "3x",
+        "description": "Capacité à s'adapter rapidement aux changements"
+      },
+      {
+        "title": "Réduction des coûts",
+        "value": "-25%",
+        "description": "Optimisation des processus et des ressources"
+      }
+    ]
+  },
+  "solutions": {
+    "sectionTitle": "Nos solutions de transformation",
+    "sectionDescription": "Des outils adaptés pour chaque aspect de votre transformation numérique",
+    "items": [
+      {
+        "title": "Plateforme collaborative",
+        "description": "Espace de travail digital unifié pour fluidifier la communication et centraliser l'information",
+        "features": ["Interface personnalisable", "Intégration avec vos outils", "Gestion documentaire", "Workflows automatisés"]
+      },
+      {
+        "title": "Tableaux de bord intelligents",
+        "description": "Visualisation en temps réel de vos indicateurs clés pour piloter efficacement votre activité",
+        "features": ["KPIs personnalisés", "Alertes automatiques", "Analyses prédictives", "Partage sécurisé"]
+      },
+      {
+        "title": "Automatisation des processus",
+        "description": "Robotisation des tâches répétitives pour libérer vos équipes et réduire les erreurs",
+        "features": ["Workflows intelligents", "Traitement documentaire", "Intégration multi-systèmes", "Validation intelligente"]
+      }
+    ]
+  },
+  "successStories": {
+    "sectionTitle": "Études de cas",
+    "sectionDescription": "Découvrez comment nos clients ont réussi leur transformation numérique",
+    "challenge": "Le défi",
+    "solution": "Notre solution",
+    "results": "Résultats",
+    "imageAlt": "Transformation numérique",
+    "items": [
+      {
+        "company": "MediPharma",
+        "industry": "Santé",
+        "challenge": "Processus administratifs lents et communication fragmentée entre les services",
+        "solution": "Déploiement d'une plateforme collaborative intégrée et automatisation des workflows",
+        "results": [
+          "Réduction de 65% du temps de traitement administratif",
+          "Amélioration de la coordination entre équipes",
+          "Augmentation de 28% de la satisfaction patient"
+        ],
+        "quote": "La transformation numérique a non seulement optimisé nos processus, mais elle a également redonné du temps à nos équipes pour se concentrer sur ce qui compte vraiment : nos patients.",
+        "author": "Dr. Marie Laurent, Directrice"
+      },
+      {
+        "company": "TechnoPlast",
+        "industry": "Industrie manufacturière",
+        "challenge": "Difficultés à suivre la production en temps réel et problèmes de qualité récurrents",
+        "solution": "Implémentation d'un système IoT de suivi en temps réel et analyse prédictive de maintenance",
+        "results": [
+          "Réduction de 42% des temps d'arrêt non planifiés",
+          "Amélioration de 23% de la qualité produit",
+          "Diminution de 18% des coûts de maintenance"
+        ],
+        "quote": "Nous pouvons désormais anticiper les problèmes avant qu'ils n'impactent notre production. Cette visibilité en temps réel a transformé notre façon de travailler.",
+        "author": "Thomas Dubois, Responsable Production"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Prêt à engager votre transformation ?",
+    "description": "Commencez par un diagnostic gratuit de votre maturité digitale et recevez des recommandations personnalisées pour votre organisation.",
+    "bullet1": "Diagnostic complet en 1 semaine",
+    "bullet2": "Accompagnement personnalisé",
+    "bullet3": "Résultats rapides et concrets",
+    "formTitle": "Demander un diagnostic gratuit",
+    "check1": "Évaluation de votre maturité digitale",
+    "check2": "Cartographie de vos opportunités",
+    "check3": "Recommandations prioritaires",
+    "check4": "Estimation des gains potentiels",
+    "button": "Démarrer mon diagnostic"
+  }
+}

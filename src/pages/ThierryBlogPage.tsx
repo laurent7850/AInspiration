@@ -1,48 +1,60 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
+import SEOHead from '../components/SEOHead';
 import { Calendar, Clock, ArrowRight, CheckCircle, FileText, Bot, Zap, TrendingUp, DollarSign, Target } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import StartForm from '../components/StartForm';
+import AuditForm from '../components/AuditForm';
 import BlogCTA from '../components/blog/BlogCTA';
 
 const ThierryBlogPage: React.FC = () => {
+  const { t } = useTranslation('blog');
   const [showStartForm, setShowStartForm] = useState(false);
   const navigate = useNavigate();
 
+  const problems = t('thierry.challenge.problems', { returnObjects: true }) as string[];
+  const successKeys = t('thierry.successKeys.keys', { returnObjects: true }) as Array<{
+    title: string;
+    description: string;
+  }>;
+  const gettingStartedSteps = t('thierry.gettingStarted.steps', { returnObjects: true }) as Array<{
+    title: string;
+    description: string;
+  }>;
+
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-      <Helmet>
-        <title>Comment Thierry a transformé sa facturation grâce à l'IA | AInspiration</title>
-        <meta name="description" content="Découvrez comment Thierry a gagné 15 heures par mois en automatisant sa facturation avec AInspiration. Un cas concret de transformation numérique pour PME." />
-      </Helmet>
+      <SEOHead
+        title={t('thierry.seo.title')}
+        description={t('thierry.seo.description')}
+      />
 
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Breadcrumbs */}
           <nav className="mb-8 text-sm">
             <ol className="flex items-center space-x-1">
-              <li><a href="/" className="text-gray-500 hover:text-indigo-600">Accueil</a></li>
+              <li><a href="/" className="text-gray-500 hover:text-indigo-600">{t('thierry.breadcrumb.home')}</a></li>
               <li><span className="text-gray-500 mx-1">/</span></li>
-              <li><a href="/blog" className="text-gray-500 hover:text-indigo-600">Blog</a></li>
+              <li><a href="/blog" className="text-gray-500 hover:text-indigo-600">{t('thierry.breadcrumb.blog')}</a></li>
               <li><span className="text-gray-500 mx-1">/</span></li>
-              <li className="text-indigo-600 font-medium">Transformation de facturation</li>
+              <li className="text-indigo-600 font-medium">{t('thierry.breadcrumb.current')}</li>
             </ol>
           </nav>
 
           {/* Blog Header */}
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Comment Thierry a transformé sa facturation grâce à l'IA d'AInspiration
+              {t('thierry.header.title')}
             </h1>
 
             <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-6">
               <span className="flex items-center gap-2">
                 <Calendar className="w-5 h-5" />
-                24 mai 2024
+                {t('thierry.header.date')}
               </span>
               <span className="flex items-center gap-2">
                 <Clock className="w-5 h-5" />
-                Temps de lecture : 5 min
+                {t('thierry.header.readTime')}
               </span>
             </div>
           </div>
@@ -51,97 +63,81 @@ const ThierryBlogPage: React.FC = () => {
           <div className="relative h-[400px] rounded-2xl overflow-hidden mb-12 shadow-2xl">
             <img
               src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&auto=format&fit=crop&q=80"
-              alt="Thierry travaillant sur son ordinateur avec des factures"
+              alt={t('thierry.header.imageAlt')}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           </div>
 
-          {/* Blog Content */}
+          {/* Challenge Section */}
           <div className="bg-gradient-to-br from-indigo-50 to-white rounded-2xl p-8 md:p-12 mb-12 border border-indigo-100">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Le défi : une facturation chronophage et source d'erreurs</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('thierry.challenge.title')}</h2>
 
             <div className="prose prose-lg max-w-none text-gray-700">
-              <p>
-                Thierry Martin dirige une entreprise de services informatiques de 15 employés. Comme beaucoup de dirigeants de PME, il se retrouvait régulièrement submergé par les tâches administratives, en particulier la facturation client.
-              </p>
+              <p>{t('thierry.challenge.intro')}</p>
 
               <p className="text-xl italic text-indigo-700 bg-white/50 p-4 rounded-lg">
-                "Je passais près de 15 heures par mois à gérer la facturation", explique Thierry. "Entre la saisie manuelle des données, les vérifications, les corrections d'erreurs et les relances, c'était un vrai cauchemar qui me détournait de mon cœur de métier."
+                "{t('thierry.challenge.quote')}"
               </p>
 
-              <p>
-                Les problèmes étaient multiples :
-              </p>
+              <p>{t('thierry.challenge.problemsIntro')}</p>
 
               <ul className="space-y-2">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-1" />
-                  <span>Saisie manuelle des données dans un tableur, source d'erreurs fréquentes</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-1" />
-                  <span>Difficultés à suivre les échéances de paiement</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-1" />
-                  <span>Retards dans l'émission des factures</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-1" />
-                  <span>Processus de relance client non structuré</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-1" />
-                  <span>Aucune visibilité en temps réel sur les paiements</span>
-                </li>
+                {problems.map((problem, idx) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-1" />
+                    <span>{problem}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
 
+          {/* Solution Section */}
           <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">La solution : une approche d'automatisation intelligente</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('thierry.solution.title')}</h2>
 
             <p className="text-lg text-gray-700 mb-8">
-              Après un audit gratuit de son processus de facturation, l'équipe d'AInspiration a proposé à Thierry une solution d'automatisation sur mesure, intégrant plusieurs technologies d'IA :
+              {t('thierry.solution.intro')}
             </p>
 
             <div className="bg-indigo-50 p-6 rounded-lg my-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">La solution en détail</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">{t('thierry.solution.detailTitle')}</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <Bot className="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1" />
                   <div>
-                    <strong className="text-gray-900">Extraction automatique de données</strong>
-                    <p className="text-gray-700">Un système d'IA analyse les timesheet des collaborateurs, les contrats clients et les prestations effectuées pour préparer automatiquement les factures.</p>
+                    <strong className="text-gray-900">{t('thierry.solution.extraction.title')}</strong>
+                    <p className="text-gray-700">{t('thierry.solution.extraction.description')}</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <FileText className="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1" />
                   <div>
-                    <strong className="text-gray-900">Génération standardisée</strong>
-                    <p className="text-gray-700">Les factures sont générées automatiquement selon un modèle personnalisé, incluant toutes les informations légales et détails des prestations.</p>
+                    <strong className="text-gray-900">{t('thierry.solution.generation.title')}</strong>
+                    <p className="text-gray-700">{t('thierry.solution.generation.description')}</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <Zap className="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1" />
                   <div>
-                    <strong className="text-gray-900">Suivi intelligent</strong>
-                    <p className="text-gray-700">Le système détecte automatiquement les paiements et envoie des relances personnalisées à différentes échéances.</p>
+                    <strong className="text-gray-900">{t('thierry.solution.tracking.title')}</strong>
+                    <p className="text-gray-700">{t('thierry.solution.tracking.description')}</p>
                   </div>
                 </li>
               </ul>
             </div>
 
             <p className="text-lg text-gray-700">
-              L'implémentation s'est déroulée en seulement 3 semaines, avec une formation de l'équipe incluse. Contrairement aux craintes de Thierry, le système s'est parfaitement intégré à ses outils existants, sans nécessiter de changement radical.
+              {t('thierry.solution.outro')}
             </p>
           </div>
 
+          {/* Results Title */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Des résultats concrets et mesurables</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('thierry.results.title')}</h2>
             <p className="text-xl text-gray-600">
-              Après trois mois d'utilisation, les bénéfices de la solution sont devenus évidents :
+              {t('thierry.results.subtitle')}
             </p>
           </div>
 
@@ -152,25 +148,25 @@ const ThierryBlogPage: React.FC = () => {
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Clock className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-5xl font-bold mb-2">-90%</div>
-                <h3 className="text-xl font-semibold mb-2">Temps consacré</h3>
-                <p className="text-indigo-200">De 15h à seulement 1h30 par mois</p>
+                <div className="text-5xl font-bold mb-2">{t('thierry.results.time.value')}</div>
+                <h3 className="text-xl font-semibold mb-2">{t('thierry.results.time.title')}</h3>
+                <p className="text-indigo-100">{t('thierry.results.time.description')}</p>
               </div>
               <div className="text-center text-white">
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <DollarSign className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-5xl font-bold mb-2">+28%</div>
-                <h3 className="text-xl font-semibold mb-2">Trésorerie</h3>
-                <p className="text-indigo-200">Amélioration grâce aux paiements plus rapides</p>
+                <div className="text-5xl font-bold mb-2">{t('thierry.results.treasury.value')}</div>
+                <h3 className="text-xl font-semibold mb-2">{t('thierry.results.treasury.title')}</h3>
+                <p className="text-indigo-100">{t('thierry.results.treasury.description')}</p>
               </div>
               <div className="text-center text-white">
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Target className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-5xl font-bold mb-2">0</div>
-                <h3 className="text-xl font-semibold mb-2">Erreur de facturation</h3>
-                <p className="text-indigo-200">Élimination des erreurs humaines</p>
+                <div className="text-5xl font-bold mb-2">{t('thierry.results.errors.value')}</div>
+                <h3 className="text-xl font-semibold mb-2">{t('thierry.results.errors.title')}</h3>
+                <p className="text-indigo-100">{t('thierry.results.errors.description')}</p>
               </div>
             </div>
           </div>
@@ -178,133 +174,107 @@ const ThierryBlogPage: React.FC = () => {
           {/* Testimonial */}
           <div className="bg-indigo-50 rounded-xl p-8 mb-12">
             <blockquote className="text-xl text-gray-700 italic mb-6">
-              "Cette solution a complètement transformé notre approche de la facturation. Non seulement elle m'a libéré un temps précieux que je peux désormais consacrer au développement de l'entreprise, mais elle a également amélioré notre relation client. Les factures sont émises rapidement, elles sont claires, détaillées et les relais automatiques sont faits avec tact. C'est un investissement qui a été rentabilisé en moins de deux mois."
+              "{t('thierry.testimonial.quote')}"
             </blockquote>
             <div className="flex items-center gap-4">
               <img
                 src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&auto=format&fit=crop&q=80"
-                alt="Thierry Martin"
+                alt={t('thierry.testimonial.imageAlt')}
                 loading="lazy"
                 className="w-12 h-12 rounded-full object-cover"
               />
               <div>
-                <p className="font-semibold text-gray-900">Thierry Martin</p>
-                <p className="text-gray-600">Directeur, TechnoServices</p>
+                <p className="font-semibold text-gray-900">{t('thierry.testimonial.name')}</p>
+                <p className="text-gray-600">{t('thierry.testimonial.role')}</p>
               </div>
             </div>
           </div>
 
           {/* Impact Section */}
           <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">L'impact au-delà du temps gagné</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('thierry.impact.title')}</h2>
 
             <p className="text-lg text-gray-700 mb-8">
-              Au-delà du simple gain de temps, la transformation du processus de facturation a eu des effets en cascade sur l'ensemble de l'entreprise :
+              {t('thierry.impact.intro')}
             </p>
 
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl border border-blue-100">
                 <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
                   <CheckCircle className="w-6 h-6 text-blue-600" />
-                  Meilleure expérience client
+                  {t('thierry.impact.clientExperience.title')}
                 </h3>
-                <p className="text-gray-700">Les factures sont émises immédiatement après la prestation, avec un niveau de détail apprécié par les clients.</p>
+                <p className="text-gray-700">{t('thierry.impact.clientExperience.description')}</p>
               </div>
 
               <div className="bg-gradient-to-br from-green-50 to-white p-6 rounded-xl border border-green-100">
                 <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
                   <TrendingUp className="w-6 h-6 text-green-600" />
-                  Suivi financier amélioré
+                  {t('thierry.impact.financialTracking.title')}
                 </h3>
-                <p className="text-gray-700">La direction dispose maintenant d'un tableau de bord en temps réel sur l'état des paiements et la trésorerie prévisionnelle.</p>
+                <p className="text-gray-700">{t('thierry.impact.financialTracking.description')}</p>
               </div>
 
               <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-xl border border-purple-100">
                 <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
                   <Zap className="w-6 h-6 text-purple-600" />
-                  Stress réduit
+                  {t('thierry.impact.stress.title')}
                 </h3>
-                <p className="text-gray-700">La fin de mois n'est plus une période redoutée par l'équipe administrative.</p>
+                <p className="text-gray-700">{t('thierry.impact.stress.description')}</p>
               </div>
 
               <div className="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-xl border border-indigo-100">
                 <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
                   <Target className="w-6 h-6 text-indigo-600" />
-                  Focus stratégique
+                  {t('thierry.impact.focus.title')}
                 </h3>
-                <p className="text-gray-700">Thierry peut désormais consacrer plus de temps à la stratégie et au développement commercial.</p>
+                <p className="text-gray-700">{t('thierry.impact.focus.description')}</p>
               </div>
             </div>
           </div>
 
           {/* Success Keys */}
           <div className="bg-gradient-to-br from-indigo-50 to-white rounded-2xl p-8 md:p-12 mb-12 border border-indigo-100">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Les clés du succès</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">{t('thierry.successKeys.title')}</h2>
 
             <p className="text-lg text-gray-700 mb-8 text-center">
-              Cette transformation réussie repose sur plusieurs facteurs clés :
+              {t('thierry.successKeys.subtitle')}
             </p>
 
             <div className="space-y-4">
-              <div className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm">
-                <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">1</div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Approche sur mesure</h3>
-                  <p className="text-gray-700">La solution a été conçue spécifiquement pour répondre aux besoins de TechnoServices, sans fonctionnalités superflues.</p>
+              {successKeys.map((key, index) => (
+                <div key={index} className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm">
+                  <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                    {index + 1}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1">{key.title}</h3>
+                    <p className="text-gray-700">{key.description}</p>
+                  </div>
                 </div>
-              </div>
-
-              <div className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm">
-                <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">2</div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Intégration progressive</h3>
-                  <p className="text-gray-700">L'implémentation s'est faite par étapes, permettant à l'équipe de s'adapter graduellement.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm">
-                <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">3</div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Formation adéquate</h3>
-                  <p className="text-gray-700">Toute l'équipe a été formée à l'utilisation du nouveau système.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm">
-                <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">4</div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Support continu</h3>
-                  <p className="text-gray-700">Un accompagnement régulier a permis d'optimiser continuellement la solution.</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           {/* Getting Started */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Comment démarrer votre propre transformation</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('thierry.gettingStarted.title')}</h2>
             <p className="text-xl text-gray-600">
-              Si, comme Thierry, vous passez trop de temps sur des tâches administratives qui pourraient être automatisées, voici comment vous pouvez procéder :
+              {t('thierry.gettingStarted.subtitle')}
             </p>
           </div>
 
           {/* Steps to Start */}
           <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-full flex items-center justify-center text-xl font-bold text-white mb-4">1</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Audit gratuit</h3>
-              <p className="text-gray-600">Identifiez les opportunités d'optimisation dans vos processus actuels.</p>
-            </div>
-            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-full flex items-center justify-center text-xl font-bold text-white mb-4">2</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Solution personnalisée</h3>
-              <p className="text-gray-600">Recevez une proposition adaptée à vos besoins spécifiques.</p>
-            </div>
-            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-full flex items-center justify-center text-xl font-bold text-white mb-4">3</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Implémentation rapide</h3>
-              <p className="text-gray-600">Mise en place en quelques semaines avec formation incluse.</p>
-            </div>
+            {gettingStartedSteps.map((step, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <div className="w-14 h-14 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-full flex items-center justify-center text-xl font-bold text-white mb-4">
+                  {index + 1}
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>
+                <p className="text-gray-600">{step.description}</p>
+              </div>
+            ))}
           </div>
 
           <BlogCTA variant="audit" />
@@ -312,53 +282,53 @@ const ThierryBlogPage: React.FC = () => {
           {/* Related Articles */}
           <div className="mb-12">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
-              Articles similaires
+              {t('thierry.relatedArticles.title')}
             </h3>
-            
+
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-white rounded-xl shadow overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80"
-                  alt="Automatisation des processus administratifs"
+                  alt={t('thierry.relatedArticles.article1.imageAlt')}
                   loading="lazy"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
                   <h4 className="text-xl font-semibold text-gray-900 mb-2">
-                    5 processus administratifs à automatiser en priorité
+                    {t('thierry.relatedArticles.article1.title')}
                   </h4>
                   <p className="text-gray-600 mb-4">
-                    Découvrez les tâches administratives qui vous font perdre le plus de temps et comment les optimiser.
+                    {t('thierry.relatedArticles.article1.description')}
                   </p>
-                  <button 
+                  <button
                     onClick={() => navigate('/blog/processus-administratifs-automatisation')}
                     className="text-indigo-600 font-medium flex items-center gap-1"
                   >
-                    Lire l'article
+                    {t('thierry.relatedArticles.article1.button')}
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
-              
+
               <div className="bg-white rounded-xl shadow overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&auto=format&fit=crop&q=80"
-                  alt="ROI de l'automatisation"
+                  alt={t('thierry.relatedArticles.article2.imageAlt')}
                   loading="lazy"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
                   <h4 className="text-xl font-semibold text-gray-900 mb-2">
-                    Comment calculer le ROI de votre transformation numérique
+                    {t('thierry.relatedArticles.article2.title')}
                   </h4>
                   <p className="text-gray-600 mb-4">
-                    Un guide pratique pour mesurer les bénéfices concrets de vos investissements en automatisation.
+                    {t('thierry.relatedArticles.article2.description')}
                   </p>
-                  <button 
+                  <button
                     onClick={() => navigate('/blog/roi-transformation-numerique')}
                     className="text-indigo-600 font-medium flex items-center gap-1"
                   >
-                    Lire l'article
+                    {t('thierry.relatedArticles.article2.button')}
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -371,16 +341,15 @@ const ThierryBlogPage: React.FC = () => {
             <div className="flex items-start gap-4">
               <img
                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&auto=format&fit=crop&q=80"
-                alt="Sophie Dubois"
+                alt={t('thierry.author.imageAlt')}
                 loading="lazy"
                 className="w-16 h-16 rounded-full object-cover"
               />
               <div>
-                <p className="font-bold text-gray-900 mb-1">Sophie Dubois</p>
-                <p className="text-gray-600 text-sm mb-2">Experte en transformation numérique chez AInspiration</p>
+                <p className="font-bold text-gray-900 mb-1">{t('thierry.author.name')}</p>
+                <p className="text-gray-600 text-sm mb-2">{t('thierry.author.role')}</p>
                 <p className="text-gray-600 text-sm">
-                  Sophie accompagne les PME dans leur transition numérique depuis plus de 10 ans, 
-                  avec une expertise particulière dans l'optimisation des processus financiers.
+                  {t('thierry.author.bio')}
                 </p>
               </div>
             </div>
@@ -389,7 +358,7 @@ const ThierryBlogPage: React.FC = () => {
           {/* Share Buttons */}
           <div className="flex items-center justify-between">
             <div className="text-gray-700 font-medium">
-              Partagez cet article :
+              {t('thierry.share')}
             </div>
             <div className="flex gap-2">
               <button className="p-2 bg-blue-600 text-white rounded-full">
@@ -413,10 +382,9 @@ const ThierryBlogPage: React.FC = () => {
       </div>
 
       {/* Contact Form Modal */}
-      <StartForm 
-        isOpen={showStartForm} 
-        onClose={() => setShowStartForm(false)} 
-        productId="audit-ia"
+      <AuditForm
+        isOpen={showStartForm}
+        onClose={() => setShowStartForm(false)}
       />
     </section>
   );

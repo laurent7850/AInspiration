@@ -1,0 +1,61 @@
+{
+  "seo": {
+    "title": "Casestudy's | AInspiration",
+    "description": "Ontdek hoe KMO's hun activiteiten transformeren met onze AI-oplossingen."
+  },
+  "pageTitle": "Casestudy's",
+  "pageSubtitle": "Ontdek hoe bedrijven zoals het uwe hun activiteiten transformeren met onze AI-oplossingen",
+  "labels": {
+    "employees": "Medewerkers",
+    "challenge": "Uitdaging",
+    "solution": "Oplossing",
+    "results": "Resultaten"
+  },
+  "study1": {
+    "title": "Optimalisatie van de klantenservice met een AI-chatbot",
+    "industry": "E-commerce",
+    "challenge": "Geconfronteerd met snelle groei had CommerceXpress moeite om klantverzoeken effectief te beantwoorden, wat leidde tot lange responstijden en een dalende klanttevredenheid.",
+    "solution": "Implementatie van een AI-chatbot die 80% van de routinematige verzoeken kan afhandelen, geïntegreerd met de website en sociale media, met intelligente doorschakeling naar menselijke medewerkers.",
+    "result1": "75% vermindering van de responstijd",
+    "result2": "30% stijging van de klanttevredenheid",
+    "result3": "Jaarlijkse besparing van € 45.000 aan ondersteuningskosten",
+    "result4": "24/7 beschikbaarheid van ondersteuning",
+    "quote": "Onze AI-chatbot is onmisbaar geworden. Hij beantwoordt veelgestelde vragen onmiddellijk, waardoor onze teams vrijkomen voor complexe verzoeken. De klanttevredenheid is gestegen en onze kosten zijn gedaald.",
+    "author": "Hoofd Klantenservice, CommerceXpress"
+  },
+  "study2": {
+    "title": "Automatisering van factuurverwerking",
+    "industry": "IT-diensten",
+    "challenge": "TechnoServic verwerkte meer dan 500 facturen per maand handmatig, wat leidde tot betalingsvertragingen, dure fouten en het bezighouden van twee voltijdse medewerkers.",
+    "solution": "Implementatie van een AI-oplossing voor automatische extractie van factuurgegevens, geïntegreerd met het bestaande boekhoudssysteem, met intelligente validatie en automatische classificatie.",
+    "result1": "90% vermindering van de verwerkingstijd",
+    "result2": "95% vermindering van invoerfouten",
+    "result3": "Jaarlijkse besparing van € 65.000",
+    "result4": "1,5 VTE herbestemd naar taken met toegevoegde waarde",
+    "quote": "Onze boekhoudafdeling is getransformeerd. De AI extraheert en verwerkt factuurgegevens met opmerkelijke nauwkeurigheid, waardoor onze teams vrijkomen voor meer strategische analyses.",
+    "author": "Financieel Directeur, TechnoServic"
+  },
+  "study3": {
+    "title": "Voorraadoptimalisatie door voorspellende analyse",
+    "industry": "Meubilair",
+    "challenge": "MobiliFrance kampte met frequente stockouts op populaire artikelen terwijl er te veel kapitaal werd vastgelegd in traaglopende producten.",
+    "solution": "Implementatie van een op AI gebaseerd voorspellend analysesysteem dat historische gegevens, seizoensgebonden trends en externe factoren integreert om het voorraadbeheer te optimaliseren.",
+    "result1": "85% vermindering van stockouts",
+    "result2": "25% vermindering van het totale voorraadniveau",
+    "result3": "15% stijging van de voorraadrotatiesnelheid",
+    "result4": "Snelle return on investment al in het eerste jaar",
+    "quote": "Voorspellende AI heeft ons voorraadbeheer gerevolutioneerd. We anticiperen nu nauwkeurig op de vraag, vermijden stockouts en optimaliseren tegelijkertijd onze voorraadniveaus.",
+    "author": "Supply Chain Manager, MobiliFrance"
+  },
+  "stats": {
+    "productivity": "Stijging van de productiviteit",
+    "processing": "Vermindering van de verwerkingstijd",
+    "revenue": "Stijging van de omzet",
+    "clients": "Begeleidde KMO's"
+  },
+  "cta": {
+    "title": "Klaar om uw bedrijf te transformeren?",
+    "subtitle": "Ontdek hoe onze AI-oplossingen uw specifieke uitdagingen kunnen aanpakken",
+    "button": "Laten we uw project bespreken"
+  }
+}

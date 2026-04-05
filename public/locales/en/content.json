@@ -15,5 +15,240 @@
   "stats": {
     "generated": "Generated Articles",
     "languages": "Supported Languages"
+  },
+  "creativity": {
+    "hero": {
+      "badge": "Creative solutions",
+      "title": "AI-Assisted Creativity",
+      "subtitle": "Bring your ideas to life with our creative tools"
+    },
+    "features": {
+      "imageGen": {
+        "title": "Image Generation",
+        "description": "High-resolution images with photorealistic rendering"
+      },
+      "contentWriting": {
+        "title": "Content Writing",
+        "description": "Creation of engaging and optimised texts"
+      },
+      "creativeDialogues": {
+        "title": "Creative Dialogues",
+        "description": "Natural and personalised conversations"
+      },
+      "ideation": {
+        "title": "Assisted Ideation",
+        "description": "Generation of innovative concepts"
+      }
+    },
+    "toolsTitle": "Creative tools",
+    "tools": {
+      "styleAI": {
+        "title": "Style AI",
+        "description": "Advanced personalisation of visual and textual style"
+      },
+      "multiFormat": {
+        "title": "Multi-format",
+        "description": "Support for all types of creative content"
+      },
+      "creativeControl": {
+        "title": "Creative Control",
+        "description": "Precise parameters for perfect results"
+      },
+      "templates": {
+        "title": "Templates",
+        "description": "Customisable templates for all your needs"
+      }
+    },
+    "galleryTitle": "Examples of visual creations",
+    "gallery": {
+      "productDesign": {
+        "title": "Product design",
+        "description": "3D visualisations for e-commerce"
+      },
+      "digitalMarketing": {
+        "title": "Digital marketing",
+        "description": "Visuals for social media"
+      },
+      "advertising": {
+        "title": "Advertising",
+        "description": "Creation of advertising banners"
+      }
+    },
+    "contentTypesTitle": "Content types",
+    "contentTypes": {
+      "blog": {
+        "title": "Articles & Blogs",
+        "description": "SEO-optimised content",
+        "wordCount": "500–2,000 words",
+        "languages": "Multi-language"
+      },
+      "social": {
+        "title": "Social media",
+        "description": "Engaging posts",
+        "wordCount": "50–200 words",
+        "languages": "Platform adapted"
+      },
+      "email": {
+        "title": "Marketing emails",
+        "description": "Converting campaigns",
+        "wordCount": "200–500 words",
+        "languages": "Personalised"
+      }
+    },
+    "cta": {
+      "title": "Unleash your creativity",
+      "subtitle": "Powerful tools for all your creative needs",
+      "button": "Start now",
+      "resolutionLabel": "Resolution",
+      "formatsLabel": "Formats",
+      "aiLabel": "Advanced"
+    }
+  },
+  "page": {
+    "seo": {
+      "title": "AI Creation — Content & Visuals | AInspiration",
+      "description": "Generate professional-quality text content and images with AI: articles, posts, newsletters, marketing visuals and communications."
+    },
+    "hero": {
+      "badge": "AI-assisted creation",
+      "title": "Create",
+      "titleHighlight": "exceptional",
+      "titleSuffix": "content with AI",
+      "description": "Compelling texts, professional visuals, complete campaigns — all in minutes, with no technical skills required.",
+      "ctaTry": "Try for free",
+      "ctaExamples": "See examples"
+    },
+    "tabs": {
+      "text": "Text content",
+      "visual": "Visual creation"
+    },
+    "textTab": {
+      "badge": "Creative solutions",
+      "sectionTitle": "AI-Assisted Creativity",
+      "sectionDescription": "Bring your ideas to life with our creative tools",
+      "creativeToolsTitle": "Creative tools",
+      "galleryTitle": "Examples of visual creations",
+      "contentTypesTitle": "Content types",
+      "cta": {
+        "title": "Unleash your creativity",
+        "description": "Powerful tools for all your creative needs",
+        "button": "Start now",
+        "stat1Label": "Resolution",
+        "stat2Label": "Formats",
+        "stat3Label": "Advanced"
+      }
+    },
+    "visualTab": {
+      "capabilities": {
+        "sectionTitle": "Infinite creative possibilities",
+        "sectionDescription": "Our cutting-edge technology allows you to create without limits",
+        "items": [
+          {
+            "title": "Generation from description",
+            "description": "Create unique visuals simply by describing what you want to achieve"
+          },
+          {
+            "title": "Advanced customisation",
+            "description": "Refine the style, colours and atmosphere to obtain exactly the visual you need"
+          },
+          {
+            "title": "Adapted formats",
+            "description": "Generate visuals for all your media: web, social media, print, packaging…"
+          },
+          {
+            "title": "Infinite variations",
+            "description": "Explore different variations of the same concept to find the perfect image"
+          }
+        ]
+      },
+      "gallery": {
+        "sectionTitle": "Example gallery",
+        "sectionDescription": "Creations generated by our AI from simple text descriptions",
+        "imageAlt": "AI-generated image",
+        "prompts": [
+          "An aerial view of a modern business district with glass and steel buildings, dynamic atmosphere, photorealistic style",
+          "A product image on a blue gradient background with professional studio lighting",
+          "A modern office with computer and design accessories, clean and minimalist style",
+          "Abstract 3D shapes with blue and purple gradients on a black background",
+          "A futuristic urban night atmosphere with neon lights and reflections on a wet floor",
+          "A business scene with diverse people working together in a modern coworking space"
+        ]
+      },
+      "useCases": {
+        "sectionTitle": "Concrete applications",
+        "sectionDescription": "Visual solutions for all your business needs",
+        "examplesLabel": "Application examples",
+        "learnMore": "Learn more",
+        "items": [
+          {
+            "title": "Digital marketing",
+            "description": "Captivating images for your social media and web campaigns",
+            "examples": ["Instagram and Facebook posts", "Advertising banners", "Newsletter visuals", "Blog covers"]
+          },
+          {
+            "title": "E-commerce",
+            "description": "Product lifestyle shots and packaging variations",
+            "examples": ["Professional product photos", "Lifestyle usage shots", "Packaging variations", "Lifestyle images"]
+          },
+          {
+            "title": "Corporate communications",
+            "description": "Illustrations and infographics for your communication materials",
+            "examples": ["Concept illustrations", "Explanatory infographics", "Presentation visuals", "Annual reports"]
+          }
+        ]
+      },
+      "prompts": {
+        "sectionTitle": "Prompt examples",
+        "sectionDescription": "Draw inspiration from these text descriptions to create your own visuals",
+        "items": [
+          "An aerial view of a modern business district with glass and steel buildings, dynamic atmosphere, photorealistic style",
+          "An abstract visual representing digital transformation with blue and purple lines connecting on a white background, minimalist style",
+          "The meeting room of an innovative startup with diverse people working together, warm atmosphere, professional photo style",
+          "A visual concept representing artificial intelligence with a stylised brain and luminous connections, dark background, futuristic style"
+        ]
+      },
+      "pricing": {
+        "sectionTitle": "An affordable, no-commitment solution",
+        "sectionDescription": "Flexible pricing tailored to your needs",
+        "popular": "Most popular",
+        "payg": {
+          "title": "Pay as you go",
+          "description": "Ideal for occasional needs",
+          "price": "€1",
+          "priceUnit": "/ image",
+          "features": ["High resolution (4K)", "Commercial rights", "Email support"],
+          "button": "Start for free"
+        },
+        "pro": {
+          "title": "Pro Subscription",
+          "description": "For regular use",
+          "price": "€49",
+          "priceUnit": "/ month",
+          "features": ["100 images per month", "High resolution (4K)", "Custom styles", "Priority support", "Commercial rights"],
+          "button": "Start free trial"
+        },
+        "business": {
+          "title": "Business",
+          "description": "For teams",
+          "price": "€199",
+          "priceUnit": "/ month",
+          "features": ["500 images per month", "Ultra high definition (8K)", "Multiple users", "API for integration", "Dedicated 24/7 support"],
+          "button": "Contact the sales team"
+        }
+      },
+      "cta": {
+        "title": "Boost your visual communications",
+        "description": "No more need for design skills or budget for professional photographers. Create exceptional visuals right now.",
+        "bullet1": "Save hours of work",
+        "bullet2": "Reduce your production costs",
+        "bullet3": "Create without creative limits",
+        "formTitle": "Start for free",
+        "check1": "5 free images to test",
+        "check2": "Access to all styles and formats",
+        "check3": "High-resolution download",
+        "check4": "Support for your first steps",
+        "button": "Create my first image"
+      }
+    }
   }
 }

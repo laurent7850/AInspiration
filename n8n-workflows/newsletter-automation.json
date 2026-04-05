@@ -146,11 +146,11 @@
           "parameters": [
             {
               "name": "apikey",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+              "value": "YOUR_SUPABASE_SERVICE_ROLE_KEY"
             },
             {
               "name": "Authorization",
-              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+              "value": "Bearer YOUR_SUPABASE_SERVICE_ROLE_KEY"
             },
             {
               "name": "Prefer",
@@ -221,11 +221,11 @@
           "parameters": [
             {
               "name": "apikey",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+              "value": "YOUR_SUPABASE_SERVICE_ROLE_KEY"
             },
             {
               "name": "Authorization",
-              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+              "value": "Bearer YOUR_SUPABASE_SERVICE_ROLE_KEY"
             },
             {
               "name": "Prefer",
@@ -257,11 +257,11 @@
           "parameters": [
             {
               "name": "apikey",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+              "value": "YOUR_SUPABASE_SERVICE_ROLE_KEY"
             },
             {
               "name": "Authorization",
-              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+              "value": "Bearer YOUR_SUPABASE_SERVICE_ROLE_KEY"
             },
             {
               "name": "Prefer",
@@ -403,11 +403,11 @@
           "parameters": [
             {
               "name": "apikey",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+              "value": "YOUR_SUPABASE_SERVICE_ROLE_KEY"
             },
             {
               "name": "Authorization",
-              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+              "value": "Bearer YOUR_SUPABASE_SERVICE_ROLE_KEY"
             },
             {
               "name": "Prefer",
@@ -439,11 +439,11 @@
           "parameters": [
             {
               "name": "apikey",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+              "value": "YOUR_SUPABASE_SERVICE_ROLE_KEY"
             },
             {
               "name": "Authorization",
-              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3N4bmt1bnNmbG9oZ2xiamlkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MjY5ODA1NiwiZXhwIjoyMDU4Mjc0MDU2fQ.gIzZYz8a4zqyut7zI4_BumvKj9aquekWRbIHCvW8l6s"
+              "value": "Bearer YOUR_SUPABASE_SERVICE_ROLE_KEY"
             },
             {
               "name": "Prefer",

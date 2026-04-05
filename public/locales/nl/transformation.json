@@ -1,0 +1,157 @@
+{
+  "seo": {
+    "title": "Digitale Transformatie | AInspiration",
+    "description": "Versnel uw digitale transformatie met onze expertise. Op maat begeleiding om uw processen te optimaliseren en effectief te innoveren."
+  },
+  "hero": {
+    "badge": "Digitale Transformatie",
+    "title": "Versnel uw",
+    "titleHighlight": "digitale transformatie",
+    "description": "Wij begeleiden uw organisatie in haar digitale transitie, met een progressieve en pragmatische aanpak voor concrete, meetbare resultaten.",
+    "ctaStart": "Start uw transformatie",
+    "ctaDiagnostic": "Een diagnose aanvragen",
+    "imageAlt": "Digitale transformatie in bedrijven"
+  },
+  "process": {
+    "sectionTitle": "Onze transformatiemethodologie",
+    "sectionDescription": "Een gestructureerde aanpak in 4 fasen om een beheerste en effectieve transformatie te garanderen",
+    "phases": [
+      {
+        "title": "Digitale Diagnose",
+        "description": "Uitgebreide beoordeling van uw digitale volwassenheid en identificatie van kansen",
+        "activities": [
+          "Audit van bestaande tools en systemen",
+          "Analyse van bedrijfsprocessen",
+          "Identificatie van knelpunten",
+          "Mapping van innovatiekansen"
+        ]
+      },
+      {
+        "title": "Strategie & Roadmap",
+        "description": "Uitwerking van een pragmatisch en realistisch transformatieplan",
+        "activities": [
+          "Definitie van doelstellingen en KPI's",
+          "Prioritering van initiatieven",
+          "Toewijzing van middelen",
+          "Implementatieplanning"
+        ]
+      },
+      {
+        "title": "Agile Implementatie",
+        "description": "Progressieve uitrol van oplossingen met een iteratieve aanpak",
+        "activities": [
+          "Selectie van geschikte technologieën",
+          "Ontwikkeling en integratie",
+          "Testen en validatie",
+          "Teamtraining"
+        ]
+      },
+      {
+        "title": "Continue Optimalisatie",
+        "description": "Meting van resultaten en permanente verbetering van oplossingen",
+        "activities": [
+          "Realtime KPI-monitoring",
+          "Verzamelen van gebruikersfeedback",
+          "Prestatieanalyse",
+          "Aanpassingen en evoluties"
+        ]
+      }
+    ]
+  },
+  "benefits": {
+    "sectionTitle": "De voordelen van digitale transformatie",
+    "sectionDescription": "Meetbare verbeteringen die rechtstreeks impact hebben op uw prestaties",
+    "items": [
+      {
+        "title": "Operationele efficiëntie",
+        "value": "+40%",
+        "description": "Procesautomatisering en vermindering van handmatige taken"
+      },
+      {
+        "title": "Klanttevredenheid",
+        "value": "+35%",
+        "description": "Vlotte en gepersonaliseerde ervaringen"
+      },
+      {
+        "title": "Organisatorische wendbaarheid",
+        "value": "3x",
+        "description": "Vermogen om snel te reageren op veranderingen"
+      },
+      {
+        "title": "Kostenreductie",
+        "value": "-25%",
+        "description": "Optimalisatie van processen en middelen"
+      }
+    ]
+  },
+  "solutions": {
+    "sectionTitle": "Onze transformatieoplossingen",
+    "sectionDescription": "Tools afgestemd op elk aspect van uw digitale transformatie",
+    "items": [
+      {
+        "title": "Collaboratief Platform",
+        "description": "Verenigde digitale werkruimte om communicatie te stroomlijnen en informatie te centraliseren",
+        "features": ["Aanpasbare interface", "Integratie met uw tools", "Documentbeheer", "Geautomatiseerde workflows"]
+      },
+      {
+        "title": "Intelligente Dashboards",
+        "description": "Realtime visualisatie van uw belangrijkste indicatoren om uw activiteit effectief te beheren",
+        "features": ["Aangepaste KPI's", "Automatische waarschuwingen", "Voorspellende analyses", "Veilig delen"]
+      },
+      {
+        "title": "Procesautomatisering",
+        "description": "Robotisering van repetitieve taken om uw teams te bevrijden en fouten te verminderen",
+        "features": ["Intelligente workflows", "Documentverwerking", "Multi-systeemintegratie", "Intelligente validatie"]
+      }
+    ]
+  },
+  "successStories": {
+    "sectionTitle": "Casestudies",
+    "sectionDescription": "Ontdek hoe onze klanten hun digitale transformatie hebben weten te realiseren",
+    "challenge": "De uitdaging",
+    "solution": "Onze oplossing",
+    "results": "Resultaten",
+    "imageAlt": "Digitale transformatie",
+    "items": [
+      {
+        "company": "MediPharma",
+        "industry": "Gezondheidszorg",
+        "challenge": "Trage administratieve processen en gefragmenteerde communicatie tussen de afdelingen",
+        "solution": "Implementatie van een geïntegreerd collaboratief platform en workflowautomatisering",
+        "results": [
+          "65% vermindering van de administratieve verwerkingstijd",
+          "Verbeterde coördinatie tussen teams",
+          "28% toename van patiënttevredenheid"
+        ],
+        "quote": "De digitale transformatie heeft niet alleen onze processen geoptimaliseerd, maar heeft onze teams ook tijd teruggegeven om te focussen op wat echt telt: onze patiënten.",
+        "author": "Dr. Marie Laurent, Directeur"
+      },
+      {
+        "company": "TechnoPlast",
+        "industry": "Productie-industrie",
+        "challenge": "Moeilijkheden bij het realtime volgen van de productie en terugkerende kwaliteitsproblemen",
+        "solution": "Implementatie van een IoT realtime volgingsysteem en voorspellende onderhoudsanalyse",
+        "results": [
+          "42% vermindering van ongeplande stilstandtijden",
+          "23% verbetering van de productkwaliteit",
+          "18% daling van de onderhoudskosten"
+        ],
+        "quote": "We kunnen nu problemen anticiperen voordat ze onze productie beïnvloeden. Deze realtime zichtbaarheid heeft onze manier van werken getransformeerd.",
+        "author": "Thomas Dubois, Productieverantwoordelijke"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Klaar om uw transformatie te starten?",
+    "description": "Begin met een gratis diagnose van uw digitale volwassenheid en ontvang gepersonaliseerde aanbevelingen voor uw organisatie.",
+    "bullet1": "Volledige diagnose in 1 week",
+    "bullet2": "Persoonlijke begeleiding",
+    "bullet3": "Snelle en concrete resultaten",
+    "formTitle": "Een gratis diagnose aanvragen",
+    "check1": "Beoordeling van uw digitale volwassenheid",
+    "check2": "Mapping van uw kansen",
+    "check3": "Prioritaire aanbevelingen",
+    "check4": "Schatting van de potentiële winsten",
+    "button": "Mijn diagnose starten"
+  }
+}

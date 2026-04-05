@@ -1,0 +1,52 @@
+{
+  "seo": {
+    "title": "About AInspiration | AI Solutions for SMEs",
+    "description": "Discover AInspiration, our mission to democratise AI for SMEs, our approach and our history."
+  },
+  "pageTitle": "About AInspiration",
+  "pageSubtitle": "Our mission: making AI accessible and effective for all businesses",
+  "mission": {
+    "title": "Our Mission",
+    "p1": "At AInspiration, we believe that Artificial Intelligence is an essential growth driver for businesses of all sizes. Our mission is to democratise access to AI by offering innovative, accessible and tailored solutions that meet the specific needs of SMEs.",
+    "p2": "We support our clients in their digital transformation by offering not only cutting-edge technological tools, but also the expertise and support needed to integrate them effectively into their daily operations. Our goal is to create a measurable positive impact on their productivity, profitability and competitiveness."
+  },
+  "approach": {
+    "title": "Our Approach",
+    "pillar1_title": "Applied AI Expertise",
+    "pillar1_desc": "Our team combines solid artificial intelligence training with on-the-ground knowledge of the realities faced by SMEs. We don't theorise — we deploy solutions that work.",
+    "pillar2_title": "Results-Oriented",
+    "pillar2_desc": "Every project begins with a precise analysis of your processes. We measure the real impact: time saved, errors avoided, costs reduced. ROI is always at the heart of our approach.",
+    "pillar3_title": "Human-Centred Support",
+    "pillar3_desc": "Technology alone is not enough. We train your teams, adapt solutions to your company culture and remain available in the long term to ensure genuine adoption."
+  },
+  "values": {
+    "title": "Our Values",
+    "val1_title": "Accessible Innovation",
+    "val1_desc": "We believe that AI should be accessible to all businesses, regardless of their size.",
+    "val2_title": "Ethics & Transparency",
+    "val2_desc": "We develop ethical solutions and are transparent about our practices.",
+    "val3_title": "Human at the Centre",
+    "val3_desc": "Our technologies aim to enhance human capabilities, not replace them.",
+    "val4_title": "Excellence",
+    "val4_desc": "We strive for excellence in every solution we offer our clients."
+  },
+  "history": {
+    "title": "Our History",
+    "m2019_title": "AInspiration Founded",
+    "m2019_desc": "The company was established with the mission of democratising AI for SMEs.",
+    "m2020_title": "First Products Launched",
+    "m2020_desc": "Development of automation and data analysis solutions.",
+    "m2021_title": "Expanded Offering",
+    "m2021_desc": "Introduction of virtual assistants and generative AI services.",
+    "m2022_title": "International Expansion",
+    "m2022_desc": "Opening to French-speaking European markets: Belgium, Luxembourg and Switzerland.",
+    "m2023_title": "Generative AI Revolution",
+    "m2023_desc": "Launch of our PromptMaster platform and integration of GPT and Claude models into our solutions.",
+    "m2024_title": "Intelligent CRM & Advanced Automation",
+    "m2024_desc": "Deployment of our AI-powered CRM solution and automation of complex business workflows.",
+    "m2025_title": "AI Agents & Personalisation",
+    "m2025_desc": "Launch of autonomous AI agents and tailor-made predictive analytics solutions for every sector.",
+    "m2026_title": "AInspiration — A New Era",
+    "m2026_desc": "Rebranding as AInspiration. Unified AI platform for SMEs with 360° support and certified training."
+  }
+}

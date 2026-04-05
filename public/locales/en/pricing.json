@@ -1,52 +1,71 @@
 {
   "title": "Transparent Pricing",
-  "subtitle": "Choose the plan that fits your needs",
+  "subtitle": "Start for free. Level up when you're ready.",
   "popular": "Most Popular",
   "monthly": "/month",
+  "launchBadge": "Launch offer",
+  "launchNote": "For the first 10 clients — in exchange for a testimonial",
+  "mandatorySubscription": "The monthly subscription is mandatory. Your workflows run on AInspiration's infrastructure (hosting, monitoring, support included).",
   "plans": {
-    "starter": {
-      "name": "Starter",
-      "description": "Perfect to start with AI",
-      "price": "€49",
+    "audit": {
+      "name": "Free AI Audit",
+      "description": "Personalised report within 24h — no commitment",
+      "price": "€0",
       "features": [
-        "Basic AI Analysis",
-        "5 projects",
-        "Email support",
-        "Monthly updates",
-        "1 user"
+        "Analysis of your current processes",
+        "Identification of automatable tasks",
+        "Estimation of time saved per week",
+        "3 priority recommendations",
+        "Personalised AI roadmap",
+        "PDF report delivered within 24h"
       ]
     },
-    "pro": {
-      "name": "Pro",
-      "description": "For growing teams",
-      "price": "€99",
+    "express_launch": {
+      "name": "Express Pack — Launch Offer",
+      "description": "For the first 10 clients (in exchange for a testimonial)",
+      "price": "€1,043",
+      "priceNote": "excl. VAT · instead of €1,490",
       "features": [
-        "Advanced AI Analysis",
-        "Unlimited projects",
-        "Priority support",
-        "Weekly updates",
-        "API access",
-        "5 users",
-        "Custom reports"
+        "Custom n8n workflow setup",
+        "1st month hosting included",
+        "Full configuration and testing",
+        "Team training (1h)",
+        "Priority support for 30 days",
+        "Then €290/month (mandatory subscription)"
       ]
     },
-    "enterprise": {
-      "name": "Enterprise",
-      "description": "Custom solutions for large enterprises",
-      "price": "Custom",
+    "express": {
+      "name": "Express Pack",
+      "description": "n8n workflow setup + 1st month hosting included",
+      "price": "€1,490",
+      "priceNote": "excl. VAT",
       "features": [
-        "All Pro features",
-        "Dedicated deployment",
-        "24/7 support",
-        "Guaranteed SLA",
-        "On-site training",
-        "Unlimited users",
-        "Custom integration"
+        "Custom n8n workflow setup",
+        "1st month hosting included",
+        "Full configuration and testing",
+        "Team training (1h)",
+        "Priority support for 30 days",
+        "Then €290/month (mandatory subscription)"
+      ]
+    },
+    "managed": {
+      "name": "Managed AI Subscription",
+      "description": "Hosting, monitoring, support and adjustments for your workflows",
+      "price": "€290",
+      "priceNote": "/month excl. VAT",
+      "features": [
+        "Workflow hosting on AInspiration infrastructure",
+        "24/7 monitoring and alerts",
+        "Priority technical support",
+        "Adjustments and optimisations included",
+        "Updates and maintenance",
+        "Mandatory subscription after Express Pack"
       ]
     }
   },
   "cta": {
-    "startTrial": "Start Free Trial",
+    "startFreeAudit": "Request my free audit",
+    "orderExpress": "Order the Express Pack",
     "contactUs": "Contact Us"
   }
 }

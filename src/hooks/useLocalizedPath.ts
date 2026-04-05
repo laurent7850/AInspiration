@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const LANG_PREFIXES = ['en', 'nl'] as const;
 type LangPrefix = (typeof LANG_PREFIXES)[number];
@@ -19,6 +20,7 @@ type LangPrefix = (typeof LANG_PREFIXES)[number];
 export function useLocalizedPath() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
 
   const segments = useMemo(
     () => location.pathname.split('/').filter(Boolean),
@@ -46,6 +48,10 @@ export function useLocalizedPath() {
   /** Navigate to the equivalent page in a different language. */
   const switchLanguageTo = useCallback(
     (lang: string) => {
+      // Change i18n language immediately (don't wait for LanguageSync useEffect)
+      i18n.changeLanguage(lang);
+      document.documentElement.lang = lang;
+
       const basePath = langPrefix
         ? '/' + segments.slice(1).join('/')
         : location.pathname;
@@ -59,7 +65,7 @@ export function useLocalizedPath() {
         );
       }
     },
-    [langPrefix, segments, location.pathname, navigate]
+    [langPrefix, segments, location.pathname, navigate, i18n]
   );
 
   return { localizedPath, switchLanguageTo, currentLang, langPrefix };

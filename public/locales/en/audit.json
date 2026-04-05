@@ -2,69 +2,214 @@
   "title": "AI Audit",
   "subtitle": "Assess your AI innovation potential",
   "steps": {
-    "analysis": {
-      "title": "Initial Analysis",
-      "desc": "Complete assessment of your current processes"
-    },
-    "diagnostic": {
-      "title": "In-depth Diagnostic",
-      "desc": "Identification of improvement opportunities"
-    },
-    "impact": {
-      "title": "Impact Analysis",
-      "desc": "Estimation of potential benefits"
-    },
-    "plan": {
-      "title": "Action Plan",
-      "desc": "Detailed recommendations and roadmap"
-    }
+    "analysis": { "title": "Initial Analysis", "desc": "Complete assessment of your current processes" },
+    "diagnostic": { "title": "In-depth Diagnostic", "desc": "Identification of improvement opportunities" },
+    "impact": { "title": "Impact Analysis", "desc": "Estimation of potential benefits" },
+    "plan": { "title": "Action Plan", "desc": "Detailed recommendations and roadmap" }
   },
   "form": {
-    "title": "Start your free audit",
-    "subtitle": "Fill out the form to begin",
-    "company": {
-      "name": "Company Name",
-      "placeholder": "Your company"
-    },
-    "industry": {
-      "title": "Industry",
-      "placeholder": "Select your industry",
-      "tech": "Technology",
-      "finance": "Finance",
-      "health": "Healthcare",
-      "retail": "Retail",
-      "manufacturing": "Manufacturing",
-      "services": "Services",
-      "other": "Other"
-    },
-    "size": {
-      "title": "Company Size",
-      "placeholder": "Select size",
-      "1-10": "1-10 employees",
-      "11-50": "11-50 employees",
-      "51-200": "51-200 employees",
-      "201-500": "201-500 employees",
-      "500+": "500+ employees"
-    },
-    "email": {
-      "title": "Business Email",
-      "placeholder": "your@email.com"
-    },
-    "phone": {
-      "title": "Phone",
-      "placeholder": "+32 XXX XX XX XX"
-    },
-    "privacy": "Your data is protected and will never be shared",
-    "submit": "Start Free Audit",
-    "next": "Next",
+    "title": "Your free AI audit",
+    "stepOf": "Step {{step}} of {{total}}",
+    "continue": "Continue",
     "back": "Back",
-    "step1": "Company Information",
-    "step2": "Contact"
+    "submit": "Get my free audit",
+    "submitting": "Sending...",
+    "close": "Close",
+    "required": "*",
+    "multipleChoice": "(multiple choices possible)",
+    "step1": {
+      "title": "Your details",
+      "subtitle": "To send you your report",
+      "name": "Full name",
+      "namePlaceholder": "John Smith",
+      "email": "Business email",
+      "emailPlaceholder": "john@mycompany.com",
+      "company": "Company",
+      "companyPlaceholder": "My Company Ltd",
+      "phone": "Phone",
+      "phonePlaceholder": "+32 477 00 00 00",
+      "role": "Your role",
+      "rolePlaceholder": "Manager, Director, Office Manager..."
+    },
+    "step2": {
+      "title": "Your business",
+      "subtitle": "To tailor the audit to your industry",
+      "sectorLabel": "Industry sector",
+      "sectorOtherLabel": "Specify your sector",
+      "sectorOtherPlaceholder": "E.g.: Transport, Education...",
+      "teamSizeLabel": "Team size"
+    },
+    "step3": {
+      "title": "Your needs",
+      "subtitle": "Which processes would you like to improve?",
+      "processesLabel": "Which processes would you like to automate?",
+      "processesOtherLabel": "Please specify",
+      "processesOtherPlaceholder": "E.g.: Project management, Quality...",
+      "weeklyHoursLabel": "Estimated weekly time on repetitive tasks",
+      "currentToolsLabel": "What tools are you currently using?",
+      "currentToolsPlaceholder": "E.g.: Excel, Gmail, Sage, WooCommerce, Salesforce..."
+    },
+    "step4": {
+      "title": "Going further",
+      "subtitle": "Optional — helps personalise your report",
+      "aiExperienceLabel": "Your experience with AI",
+      "budgetLabel": "Expected budget",
+      "priorityLabel": "What is your #1 priority?",
+      "priorityPlaceholder": "E.g.: Save time on invoicing, automate client follow-up...",
+      "additionalInfoLabel": "Additional information",
+      "additionalInfoPlaceholder": "Specific context, constraints, particular expectations..."
+    },
+    "success": {
+      "title": "Your audit request has been sent!",
+      "analyzing": "Our AI expert is analysing your situation right now.",
+      "report": "You will receive your <strong>personalised audit report by email within 24 hours</strong>.",
+      "nextTitle": "What happens next?",
+      "nextStep1": "AI analysis of your business and needs",
+      "nextStep2": "Personalised report sent by email",
+      "nextStep3": "An expert contacts you to discuss (if desired)"
+    },
+    "errors": {
+      "nameRequired": "Your name is required",
+      "emailRequired": "Your email is required",
+      "emailInvalid": "Invalid email",
+      "companyRequired": "Your company name is required",
+      "sectorRequired": "Select your sector",
+      "sectorOtherRequired": "Specify your sector",
+      "teamSizeRequired": "Indicate your team size",
+      "processesRequired": "Select at least one process",
+      "weeklyHoursRequired": "Estimate the time lost",
+      "rateLimit": "Please wait a few minutes before submitting a new form.",
+      "generic": "An error occurred. Please try again or contact us at info@ainspiration.eu"
+    }
   },
-  "success": {
-    "title": "Thank you for your request!",
-    "message": "We have received your audit request",
-    "response": "Response within 24h",
-    "close": "Close"
+  "sectors": {
+    "comptabilite": "Accounting / Fiduciary",
+    "juridique": "Law firm / Lawyer",
+    "immobilier": "Real estate / Architecture",
+    "medical": "Medical / Paramedical",
+    "restaurant": "Restaurant / Hospitality",
+    "commerce": "Retail / Shop",
+    "ecommerce": "E-commerce",
+    "agence": "Marketing / Communication agency",
+    "consulting": "Consulting / B2B Services",
+    "artisan": "Craftsman / Freelancer",
+    "industrie": "Industry / Manufacturing",
+    "other": "Other (please specify)"
+  },
+  "teamSizes": {
+    "1": "Freelancer / Solo",
+    "2-5": "2–5 people",
+    "6-20": "6–20 people",
+    "21-50": "21–50 people",
+    "50+": "More than 50 people"
+  },
+  "processes": {
+    "facturation": "Invoicing & quotes",
+    "email": "Email management / Client replies",
+    "prospection": "Sales prospecting",
+    "planning": "Scheduling & appointments",
+    "reporting": "Reporting & dashboards",
+    "rh": "Human resources / Onboarding",
+    "stock": "Stock management / Orders",
+    "social": "Social media / Content",
+    "support": "Customer support / After-sales",
+    "comptabilite": "Bookkeeping / Reconciliation",
+    "other": "Other"
+  },
+  "weeklyHours": {
+    "1-5": "1–5 hours per week",
+    "5-10": "5–10 hours per week",
+    "10-20": "10–20 hours per week",
+    "20+": "More than 20 hours per week",
+    "unknown": "I can't estimate"
+  },
+  "aiExperience": {
+    "none": "None — I'm just discovering",
+    "basic": "Basic — I use ChatGPT or similar",
+    "moderate": "Moderate — I've tried AI tools",
+    "advanced": "Advanced — I've already automated processes"
+  },
+  "budgets": {
+    "discovery": "I want to understand my options first (free audit)",
+    "starter": "Under €2,000 for a first project",
+    "growth": "€2,000 – €5,000 for a complete solution",
+    "enterprise": "Over €5,000 for a deep transformation"
+  },
+  "structuredMessage": {
+    "title": "AI AUDIT REQUEST",
+    "coordinates": "CONTACT DETAILS",
+    "activity": "BUSINESS",
+    "needs": "IDENTIFIED NEEDS",
+    "context": "CONTEXT",
+    "name": "Name",
+    "company": "Company",
+    "email": "Email",
+    "phone": "Phone",
+    "role": "Role",
+    "sector": "Sector",
+    "teamSize": "Team size",
+    "processes": "Processes to automate",
+    "weeklyHours": "Estimated time lost on repetitive tasks",
+    "currentTools": "Tools currently used",
+    "aiExperience": "AI experience",
+    "budget": "Expected budget",
+    "priority": "Main priority",
+    "additionalInfo": "Additional information",
+    "notSpecified": "Not specified"
+  },
+  "page": {
+    "badge": "Limited spots — Free audit this month",
+    "heroTitle": "Discover your AI potential",
+    "heroHighlight": "in 24h",
+    "heroDescription": "An expert analyses your business and delivers a concrete action plan, for free. A first concrete result in 5 days, from your free audit.",
+    "ctaButton": "Request my free audit",
+    "guarantees": {
+      "results": "Results within 24h",
+      "free": "100% free, no commitment",
+      "report": "Personalised PDF report",
+      "expert": "Analysis by an AI expert"
+    },
+    "howTitle": "How does your audit work?",
+    "howSubtitle": "A simple 4-step process to identify your AI opportunities",
+    "stepsDetailed": {
+      "1": { "title": "Initial Analysis", "desc": "Complete assessment of your current processes and identification of repetitive tasks" },
+      "2": { "title": "In-depth Diagnostic", "desc": "Identification of automation opportunities and potential gains" },
+      "3": { "title": "Impact Analysis", "desc": "Estimation of potential benefits in time and productivity" },
+      "4": { "title": "Action Plan", "desc": "Detailed recommendations and personalised roadmap" }
+    },
+    "receiveTitle": "What you receive",
+    "reportTitle": "Your personalised audit report",
+    "reportItems": [
+      "Mapping of your current processes",
+      "Identification of automatable tasks",
+      "Estimation of time saved per week",
+      "3 priority actionable recommendations",
+      "AI integration roadmap"
+    ],
+    "goFurtherTitle": "Want to go further?",
+    "packTitle": "Express Automation Pack",
+    "packLaunchBadge": "Launch offer — €1,043 instead of €1,490",
+    "packLaunchNote": "For the first 10 clients (in exchange for a testimonial)",
+    "packPrice": "From €1,043 excl. VAT · n8n workflow setup + 1st month hosting included",
+    "packPriceStandard": "€1,490 excl. VAT (standard price)",
+    "packDescription": "Directly from your audit, we automate the task that will save you the most time. Setup + 1st month included, then €290/month for hosting and support of your AI workflow.",
+    "packSubscriptionNote": "Mandatory monthly subscription €290/month excl. VAT — your workflows run on our infrastructure.",
+    "whoTitle": "Who is this audit for?",
+    "whoSectors": [
+      "Liberal professions (lawyers, accountants, architects)",
+      "SMEs all sectors (5-50 people)",
+      "Restaurants and local businesses",
+      "E-commerce and marketing agencies",
+      "Craftsmen and freelancers"
+    ],
+    "finalCtaTitle": "Ready to discover what AI can do for you?",
+    "finalCtaSubtitle": "Fill out the form in 2 minutes. Receive your personalised audit within 24h.",
+    "stats": {
+      "delivery": "Delivery time",
+      "noCommitment": "No commitment",
+      "smeHelped": "SMEs supported"
+    },
+    "seoTitle": "Free AI Audit in 24h | Personalised Diagnostic | AInspiration",
+    "seoDescription": "Request your free AI audit. An expert analyses your business and delivers a concrete action plan within 24h. No commitment. SMEs and freelancers in Belgium and France."
   }
 }

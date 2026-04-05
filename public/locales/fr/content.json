@@ -15,5 +15,240 @@
   "stats": {
     "generated": "Articles générés",
     "languages": "Langues supportées"
+  },
+  "creativity": {
+    "hero": {
+      "badge": "Solutions créatives",
+      "title": "Créativité Assistée par IA",
+      "subtitle": "Donnez vie à vos idées avec nos outils créatifs"
+    },
+    "features": {
+      "imageGen": {
+        "title": "Génération d'images",
+        "description": "Images en haute résolution avec un rendu photoréaliste"
+      },
+      "contentWriting": {
+        "title": "Rédaction de contenu",
+        "description": "Création de textes engageants et optimisés"
+      },
+      "creativeDialogues": {
+        "title": "Dialogues créatifs",
+        "description": "Conversations naturelles et personnalisées"
+      },
+      "ideation": {
+        "title": "Idéation assistée",
+        "description": "Génération de concepts innovants"
+      }
+    },
+    "toolsTitle": "Outils créatifs",
+    "tools": {
+      "styleAI": {
+        "title": "Style AI",
+        "description": "Personnalisation avancée du style visuel et textuel"
+      },
+      "multiFormat": {
+        "title": "Multi-formats",
+        "description": "Support de tous types de contenus créatifs"
+      },
+      "creativeControl": {
+        "title": "Contrôle créatif",
+        "description": "Paramètres précis pour des résultats parfaits"
+      },
+      "templates": {
+        "title": "Templates",
+        "description": "Modèles personnalisables pour tous vos besoins"
+      }
+    },
+    "galleryTitle": "Exemples de créations visuelles",
+    "gallery": {
+      "productDesign": {
+        "title": "Design produit",
+        "description": "Visualisations 3D pour le e-commerce"
+      },
+      "digitalMarketing": {
+        "title": "Marketing digital",
+        "description": "Visuels pour les réseaux sociaux"
+      },
+      "advertising": {
+        "title": "Publicité",
+        "description": "Création de bannières publicitaires"
+      }
+    },
+    "contentTypesTitle": "Types de contenus",
+    "contentTypes": {
+      "blog": {
+        "title": "Articles & Blogs",
+        "description": "Contenus optimisés SEO",
+        "wordCount": "500-2000 mots",
+        "languages": "Multi-langues"
+      },
+      "social": {
+        "title": "Réseaux sociaux",
+        "description": "Posts engageants",
+        "wordCount": "50-200 mots",
+        "languages": "Adapté à la plateforme"
+      },
+      "email": {
+        "title": "Emails marketing",
+        "description": "Campagnes convertissantes",
+        "wordCount": "200-500 mots",
+        "languages": "Personnalisé"
+      }
+    },
+    "cta": {
+      "title": "Libérez votre créativité",
+      "subtitle": "Des outils puissants pour tous vos besoins créatifs",
+      "button": "Commencer maintenant",
+      "resolutionLabel": "Résolution",
+      "formatsLabel": "Formats",
+      "aiLabel": "Avancée"
+    }
+  },
+  "page": {
+    "seo": {
+      "title": "Création IA — Contenu & Visuels | AInspiration",
+      "description": "Générez du contenu textuel et des images de qualité professionnelle grâce à l'IA : articles, posts, newsletters, visuels marketing et communication."
+    },
+    "hero": {
+      "badge": "Création assistée par IA",
+      "title": "Créez du contenu",
+      "titleHighlight": "exceptionnel",
+      "titleSuffix": "avec l'IA",
+      "description": "Textes percutants, visuels professionnels, campagnes complètes — tout ça en quelques minutes, sans compétences techniques.",
+      "ctaTry": "Essayer gratuitement",
+      "ctaExamples": "Voir des exemples"
+    },
+    "tabs": {
+      "text": "Contenu texte",
+      "visual": "Création visuelle"
+    },
+    "textTab": {
+      "badge": "Solutions créatives",
+      "sectionTitle": "Créativité Assistée par IA",
+      "sectionDescription": "Donnez vie à vos idées avec nos outils créatifs",
+      "creativeToolsTitle": "Outils créatifs",
+      "galleryTitle": "Exemples de créations visuelles",
+      "contentTypesTitle": "Types de contenus",
+      "cta": {
+        "title": "Libérez votre créativité",
+        "description": "Des outils puissants pour tous vos besoins créatifs",
+        "button": "Commencer maintenant",
+        "stat1Label": "Résolution",
+        "stat2Label": "Formats",
+        "stat3Label": "Avancée"
+      }
+    },
+    "visualTab": {
+      "capabilities": {
+        "sectionTitle": "Des possibilités créatives infinies",
+        "sectionDescription": "Notre technologie de pointe vous permet de créer sans limites",
+        "items": [
+          {
+            "title": "Génération à partir de description",
+            "description": "Créez des visuels uniques simplement en décrivant ce que vous souhaitez obtenir"
+          },
+          {
+            "title": "Personnalisation avancée",
+            "description": "Affinez le style, les couleurs et l'ambiance pour obtenir exactement le visuel dont vous avez besoin"
+          },
+          {
+            "title": "Formats adaptés",
+            "description": "Générez des visuels pour tous vos supports : web, réseaux sociaux, print, packaging…"
+          },
+          {
+            "title": "Variations infinies",
+            "description": "Explorez différentes variations d'un même concept pour trouver l'image parfaite"
+          }
+        ]
+      },
+      "gallery": {
+        "sectionTitle": "Galerie d'exemples",
+        "sectionDescription": "Des créations générées par notre IA à partir de simples descriptions textuelles",
+        "imageAlt": "Image générée par IA",
+        "prompts": [
+          "Concept d'innovation technologique avec des formes géométriques bleues et violettes",
+          "Image de produit sur fond dégradé bleu avec éclairage studio professionnel",
+          "Bureau moderne avec ordinateur et accessoires design, style épuré et minimaliste",
+          "Formes abstraites 3D avec dégradés bleus et violets sur fond noir",
+          "Ambiance urbaine futuriste de nuit avec néons et reflets sur sol mouillé",
+          "Scène d'entreprise avec personnes en réunion dans un espace de coworking moderne"
+        ]
+      },
+      "useCases": {
+        "sectionTitle": "Applications concrètes",
+        "sectionDescription": "Des solutions visuelles pour tous vos besoins métier",
+        "examplesLabel": "Exemples d'applications",
+        "learnMore": "En savoir plus",
+        "items": [
+          {
+            "title": "Marketing digital",
+            "description": "Images captivantes pour vos campagnes sur les réseaux sociaux et le web",
+            "examples": ["Posts Instagram et Facebook", "Bannières publicitaires", "Visuels pour newsletters", "Couvertures de blogs"]
+          },
+          {
+            "title": "E-commerce",
+            "description": "Mises en situation de produits et variations de packaging",
+            "examples": ["Photos produits professionnelles", "Mises en situation d'utilisation", "Variations de packaging", "Images lifestyle"]
+          },
+          {
+            "title": "Communication d'entreprise",
+            "description": "Illustrations et infographies pour vos supports de communication",
+            "examples": ["Illustrations de concepts", "Infographies explicatives", "Visuels pour présentations", "Rapports annuels"]
+          }
+        ]
+      },
+      "prompts": {
+        "sectionTitle": "Exemples de prompts",
+        "sectionDescription": "Inspirez-vous de ces descriptions textuelles pour créer vos propres visuels",
+        "items": [
+          "Une vue aérienne d'un quartier d'affaires moderne avec des immeubles de verre et d'acier, ambiance dynamique, style photo réaliste",
+          "Un visuel abstrait représentant la transformation numérique avec des lignes bleues et violettes qui se connectent sur fond blanc, style minimaliste",
+          "La salle de réunion d'une startup innovante avec des personnes diverses travaillant ensemble, ambiance chaleureuse, style photo professionnelle",
+          "Un concept visuel représentant l'intelligence artificielle avec un cerveau stylisé et des connexions lumineuses, fond sombre, style futuriste"
+        ]
+      },
+      "pricing": {
+        "sectionTitle": "Une solution abordable et sans engagement",
+        "sectionDescription": "Des tarifs flexibles adaptés à vos besoins",
+        "popular": "Le plus populaire",
+        "payg": {
+          "title": "Pay as you go",
+          "description": "Idéal pour les besoins ponctuels",
+          "price": "1€",
+          "priceUnit": "/ image",
+          "features": ["Haute résolution (4K)", "Droits commerciaux", "Assistance par email"],
+          "button": "Commencer gratuitement"
+        },
+        "pro": {
+          "title": "Abonnement Pro",
+          "description": "Pour un usage régulier",
+          "price": "49€",
+          "priceUnit": "/ mois",
+          "features": ["100 images par mois", "Haute résolution (4K)", "Styles personnalisés", "Support prioritaire", "Droits commerciaux"],
+          "button": "Démarrer l'essai gratuit"
+        },
+        "business": {
+          "title": "Business",
+          "description": "Pour les équipes",
+          "price": "199€",
+          "priceUnit": "/ mois",
+          "features": ["500 images par mois", "Ultra haute définition (8K)", "Utilisateurs multiples", "API pour intégration", "Support dédié 24/7"],
+          "button": "Contacter l'équipe commerciale"
+        }
+      },
+      "cta": {
+        "title": "Propulsez votre communication visuelle",
+        "description": "Plus besoin de compétences en design ou de budget pour des photographes professionnels. Créez des visuels d'exception dès maintenant.",
+        "bullet1": "Économisez des heures de travail",
+        "bullet2": "Réduisez vos coûts de production",
+        "bullet3": "Créez sans limites créatives",
+        "formTitle": "Commencez gratuitement",
+        "check1": "5 images gratuites pour tester",
+        "check2": "Accès à tous les styles et formats",
+        "check3": "Téléchargement haute résolution",
+        "check4": "Assistance pour vos premiers pas",
+        "button": "Créer ma première image"
+      }
+    }
   }
 }

@@ -11,6 +11,161 @@
     "measurableResults": "Measurable Results",
     "improvement": "Improvement"
   },
+  "thierry": {
+    "seo": {
+      "title": "How Thierry transformed his invoicing with AI | AInspiration",
+      "description": "Discover how Thierry saved 15 hours a month by automating his invoicing with AInspiration. A concrete case of digital transformation for SMEs."
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "blog": "Blog",
+      "current": "Invoicing transformation"
+    },
+    "header": {
+      "title": "How Thierry transformed his invoicing with AInspiration's AI",
+      "date": "24 May 2024",
+      "readTime": "Reading time: 5 min",
+      "imageAlt": "Thierry working on his computer with invoices"
+    },
+    "challenge": {
+      "title": "The challenge: time-consuming and error-prone invoicing",
+      "intro": "Thierry Martin runs an IT services company with 15 employees. Like many SME directors, he regularly found himself overwhelmed by administrative tasks, particularly client invoicing.",
+      "quote": "I was spending nearly 15 hours a month managing invoicing, explains Thierry. Between manual data entry, checks, error corrections and follow-ups, it was a real nightmare that distracted me from my core business.",
+      "problemsIntro": "The problems were multiple:",
+      "problems": [
+        "Manual data entry in a spreadsheet, a frequent source of errors",
+        "Difficulties tracking payment deadlines",
+        "Delays in issuing invoices",
+        "Unstructured client follow-up process",
+        "No real-time visibility on payments"
+      ]
+    },
+    "solution": {
+      "title": "The solution: an intelligent automation approach",
+      "intro": "After a free audit of his invoicing process, the AInspiration team proposed a bespoke automation solution to Thierry, integrating several AI technologies:",
+      "detailTitle": "The solution in detail",
+      "extraction": {
+        "title": "Automatic data extraction",
+        "description": "An AI system analyses collaborators' timesheets, client contracts and services rendered to automatically prepare invoices."
+      },
+      "generation": {
+        "title": "Standardised generation",
+        "description": "Invoices are generated automatically according to a personalised template, including all legal information and service details."
+      },
+      "tracking": {
+        "title": "Intelligent tracking",
+        "description": "The system automatically detects payments and sends personalised reminders at different deadlines."
+      },
+      "outro": "The implementation took only 3 weeks, with team training included. Contrary to Thierry's concerns, the system integrated perfectly with his existing tools, without requiring any radical change."
+    },
+    "results": {
+      "title": "Concrete and measurable results",
+      "subtitle": "After three months of use, the benefits of the solution became evident:",
+      "time": {
+        "value": "-90%",
+        "title": "Time spent",
+        "description": "From 15 hours to just 1.5 hours per month"
+      },
+      "treasury": {
+        "value": "+28%",
+        "title": "Cash flow",
+        "description": "Improvement thanks to faster payments"
+      },
+      "errors": {
+        "value": "0",
+        "title": "Invoicing errors",
+        "description": "Elimination of human errors"
+      }
+    },
+    "testimonial": {
+      "quote": "This solution has completely transformed our approach to invoicing. Not only has it freed up precious time that I can now devote to business development, but it has also improved our client relationships. Invoices are issued quickly, they are clear, detailed and automatic follow-ups are handled tactfully. It's an investment that paid for itself in less than two months.",
+      "name": "Thierry Martin",
+      "role": "Director, TechnoServices",
+      "imageAlt": "Thierry Martin"
+    },
+    "impact": {
+      "title": "The impact beyond time saved",
+      "intro": "Beyond the simple time saving, the transformation of the invoicing process had cascading effects across the entire business:",
+      "clientExperience": {
+        "title": "Better client experience",
+        "description": "Invoices are issued immediately after the service, with a level of detail appreciated by clients."
+      },
+      "financialTracking": {
+        "title": "Improved financial tracking",
+        "description": "Management now has a real-time dashboard on the status of payments and projected cash flow."
+      },
+      "stress": {
+        "title": "Reduced stress",
+        "description": "The end of the month is no longer a dreaded period for the administrative team."
+      },
+      "focus": {
+        "title": "Strategic focus",
+        "description": "Thierry can now devote more time to strategy and business development."
+      }
+    },
+    "successKeys": {
+      "title": "The keys to success",
+      "subtitle": "This successful transformation rests on several key factors:",
+      "keys": [
+        {
+          "title": "Bespoke approach",
+          "description": "The solution was designed specifically to meet the needs of TechnoServices, without superfluous features."
+        },
+        {
+          "title": "Progressive integration",
+          "description": "The implementation was done in stages, allowing the team to adapt gradually."
+        },
+        {
+          "title": "Adequate training",
+          "description": "The whole team was trained to use the new system."
+        },
+        {
+          "title": "Ongoing support",
+          "description": "Regular support allowed the solution to be continuously optimised."
+        }
+      ]
+    },
+    "gettingStarted": {
+      "title": "How to start your own transformation",
+      "subtitle": "If, like Thierry, you spend too much time on administrative tasks that could be automated, here is how you can proceed:",
+      "steps": [
+        {
+          "title": "Free audit",
+          "description": "Identify optimisation opportunities in your current processes."
+        },
+        {
+          "title": "Personalised solution",
+          "description": "Receive a proposal tailored to your specific needs."
+        },
+        {
+          "title": "Rapid implementation",
+          "description": "Set up within a few weeks with training included."
+        }
+      ]
+    },
+    "relatedArticles": {
+      "title": "Related articles",
+      "article1": {
+        "title": "5 administrative processes to automate as a priority",
+        "description": "Discover the administrative tasks that waste most of your time and how to optimise them.",
+        "imageAlt": "Automation of administrative processes",
+        "button": "Read article"
+      },
+      "article2": {
+        "title": "How to calculate the ROI of your digital transformation",
+        "description": "A practical guide to measuring the concrete benefits of your automation investments.",
+        "imageAlt": "ROI of automation",
+        "button": "Read article"
+      }
+    },
+    "author": {
+      "name": "Sophie Dubois",
+      "role": "Digital transformation expert at AInspiration",
+      "bio": "Sophie has been supporting SMEs in their digital transition for over 10 years, with particular expertise in financial process optimisation.",
+      "imageAlt": "Sophie Dubois"
+    },
+    "share": "Share this article:"
+  },
   "cta": {
     "audit": {
       "title": "Ready to transform your business with AI?",

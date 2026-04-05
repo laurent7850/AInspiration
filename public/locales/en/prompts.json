@@ -28,5 +28,90 @@
   "stats": {
     "prompts": "Created Prompts",
     "success": "Success Rate"
+  },
+  "optimization": {
+    "hero": {
+      "title": "Optimised Prompts",
+      "subtitle": "Maximise the efficiency of your AI interactions"
+    },
+    "whyTitle": "Why optimise your prompts?",
+    "whyText1": "In a world where AI is becoming indispensable, the quality of your prompts makes all the difference. An optimised prompt is not just a simple question — it is a precise instruction that guides the AI towards exactly what you need.",
+    "whyText2": "Our experts have analysed more than 100,000 interactions to identify the patterns that work. The result? Prompts that generate relevant responses on the first attempt, saving you precious time.",
+    "testimonials": {
+      "sophie": {
+        "name": "Sophie M.",
+        "role": "Digital Marketing Director",
+        "quote": "Before using optimised prompts, I spent hours rephrasing my requests. Now I get exactly what I want in a few minutes. It's an incredible time saver!"
+      },
+      "marc": {
+        "name": "Marc L.",
+        "role": "Innovation Project Manager",
+        "quote": "The difference between a basic prompt and an optimised prompt is astonishing. We reduced by 60% the time spent interacting with AI while obtaining significantly superior results."
+      }
+    },
+    "comparison": {
+      "title": "Performance Comparison",
+      "criterion": "Criterion",
+      "basic": "Basic Prompt",
+      "optimised": "Optimised Prompt",
+      "improvement": "Improvement",
+      "rows": {
+        "accuracy": {
+          "criterion": "Accuracy",
+          "basic": "45%",
+          "optimised": "85%",
+          "improvement": "+40%"
+        },
+        "responseTime": {
+          "criterion": "Response time",
+          "basic": "3–4 iterations",
+          "optimised": "1–2 iterations",
+          "improvement": "-60%"
+        },
+        "relevance": {
+          "criterion": "Relevance",
+          "basic": "50%",
+          "optimised": "90%",
+          "improvement": "+40%"
+        },
+        "userSatisfaction": {
+          "criterion": "User satisfaction",
+          "basic": "60%",
+          "optimised": "95%",
+          "improvement": "+35%"
+        },
+        "reuse": {
+          "criterion": "Reuse rate",
+          "basic": "30%",
+          "optimised": "80%",
+          "improvement": "+50%"
+        }
+      }
+    },
+    "featureCards": {
+      "contextualAI": {
+        "title": "Contextual AI",
+        "description": "Prompts adapted to your sector"
+      },
+      "continuousOpt": {
+        "title": "Continuous Optimisation",
+        "description": "Improvement based on results"
+      },
+      "library": {
+        "title": "Prompt Library",
+        "description": "Access to thousands of tested prompts"
+      },
+      "quality": {
+        "title": "Guaranteed Quality",
+        "description": "Results validated by our experts"
+      }
+    },
+    "cta": {
+      "title": "Optimise your prompts right now",
+      "subtitle": "Discover the power of optimised prompts",
+      "button": "Get started",
+      "timeSavedLabel": "Time saved",
+      "usersLabel": "Users"
+    }
   }
 }

@@ -1,0 +1,157 @@
+{
+  "seo": {
+    "title": "Digital Transformation | AInspiration",
+    "description": "Accelerate your digital transformation with our expertise. Bespoke support to optimise your processes and innovate effectively."
+  },
+  "hero": {
+    "badge": "Digital Transformation",
+    "title": "Accelerate your",
+    "titleHighlight": "digital transformation",
+    "description": "We support your organisation through its digital transition, with a progressive and pragmatic approach for concrete, measurable results.",
+    "ctaStart": "Start your transformation",
+    "ctaDiagnostic": "Request a diagnostic",
+    "imageAlt": "Digital transformation in business"
+  },
+  "process": {
+    "sectionTitle": "Our transformation methodology",
+    "sectionDescription": "A structured 4-phase approach to ensure a controlled and effective transformation",
+    "phases": [
+      {
+        "title": "Digital Diagnostic",
+        "description": "Comprehensive assessment of your digital maturity and identification of opportunities",
+        "activities": [
+          "Audit of existing tools and systems",
+          "Business process analysis",
+          "Identification of bottlenecks",
+          "Mapping of innovation opportunities"
+        ]
+      },
+      {
+        "title": "Strategy & Roadmap",
+        "description": "Development of a pragmatic and realistic transformation plan",
+        "activities": [
+          "Definition of objectives and KPIs",
+          "Prioritisation of initiatives",
+          "Resource allocation",
+          "Deployment planning"
+        ]
+      },
+      {
+        "title": "Agile Implementation",
+        "description": "Progressive deployment of solutions with an iterative approach",
+        "activities": [
+          "Selection of appropriate technologies",
+          "Development and integration",
+          "Testing and validation",
+          "Team training"
+        ]
+      },
+      {
+        "title": "Continuous Optimisation",
+        "description": "Measurement of results and permanent improvement of solutions",
+        "activities": [
+          "Real-time KPI monitoring",
+          "Gathering user feedback",
+          "Performance analysis",
+          "Adjustments and developments"
+        ]
+      }
+    ]
+  },
+  "benefits": {
+    "sectionTitle": "The benefits of digital transformation",
+    "sectionDescription": "Measurable improvements that directly impact your performance",
+    "items": [
+      {
+        "title": "Operational efficiency",
+        "value": "+40%",
+        "description": "Process automation and reduction of manual tasks"
+      },
+      {
+        "title": "Client satisfaction",
+        "value": "+35%",
+        "description": "Smooth and personalised experiences"
+      },
+      {
+        "title": "Organisational agility",
+        "value": "3x",
+        "description": "Ability to adapt quickly to changes"
+      },
+      {
+        "title": "Cost reduction",
+        "value": "-25%",
+        "description": "Optimisation of processes and resources"
+      }
+    ]
+  },
+  "solutions": {
+    "sectionTitle": "Our transformation solutions",
+    "sectionDescription": "Tools tailored to every aspect of your digital transformation",
+    "items": [
+      {
+        "title": "Collaborative Platform",
+        "description": "Unified digital workspace to streamline communication and centralise information",
+        "features": ["Customisable interface", "Integration with your tools", "Document management", "Automated workflows"]
+      },
+      {
+        "title": "Intelligent Dashboards",
+        "description": "Real-time visualisation of your key indicators to effectively manage your business",
+        "features": ["Custom KPIs", "Automatic alerts", "Predictive analyses", "Secure sharing"]
+      },
+      {
+        "title": "Process Automation",
+        "description": "Robotisation of repetitive tasks to free your teams and reduce errors",
+        "features": ["Intelligent workflows", "Document processing", "Multi-system integration", "Intelligent validation"]
+      }
+    ]
+  },
+  "successStories": {
+    "sectionTitle": "Case studies",
+    "sectionDescription": "Discover how our clients have succeeded in their digital transformation",
+    "challenge": "The challenge",
+    "solution": "Our solution",
+    "results": "Results",
+    "imageAlt": "Digital transformation",
+    "items": [
+      {
+        "company": "MediPharma",
+        "industry": "Healthcare",
+        "challenge": "Slow administrative processes and fragmented communication between departments",
+        "solution": "Deployment of an integrated collaborative platform and workflow automation",
+        "results": [
+          "65% reduction in administrative processing time",
+          "Improved coordination between teams",
+          "28% increase in patient satisfaction"
+        ],
+        "quote": "The digital transformation not only optimised our processes, but also gave our teams back time to focus on what truly matters: our patients.",
+        "author": "Dr. Marie Laurent, Director"
+      },
+      {
+        "company": "TechnoPlast",
+        "industry": "Manufacturing",
+        "challenge": "Difficulties tracking production in real time and recurring quality issues",
+        "solution": "Implementation of an IoT real-time tracking system and predictive maintenance analysis",
+        "results": [
+          "42% reduction in unplanned downtime",
+          "23% improvement in product quality",
+          "18% decrease in maintenance costs"
+        ],
+        "quote": "We can now anticipate problems before they impact our production. This real-time visibility has transformed the way we work.",
+        "author": "Thomas Dubois, Production Manager"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to begin your transformation?",
+    "description": "Start with a free diagnostic of your digital maturity and receive personalised recommendations for your organisation.",
+    "bullet1": "Complete diagnostic in 1 week",
+    "bullet2": "Personalised support",
+    "bullet3": "Fast and concrete results",
+    "formTitle": "Request a free diagnostic",
+    "check1": "Assessment of your digital maturity",
+    "check2": "Mapping of your opportunities",
+    "check3": "Priority recommendations",
+    "check4": "Estimation of potential gains",
+    "button": "Start my diagnostic"
+  }
+}

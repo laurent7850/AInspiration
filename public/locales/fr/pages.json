@@ -1,0 +1,37 @@
+{
+  "notFound": {
+    "seo": {
+      "title": "Page non trouvée | AInspiration",
+      "description": "Cette page n'existe pas."
+    },
+    "title": "Page non trouvée",
+    "message": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "home": "Accueil",
+    "back": "Page précédente",
+    "contact": "Contact"
+  },
+  "unsubscribe": {
+    "seo": {
+      "title": "Désabonnement Newsletter - AInspiration",
+      "description": "Gérez votre abonnement à la newsletter AInspiration"
+    },
+    "loading": "Vérification en cours...",
+    "confirm_title": "Confirmer le désabonnement",
+    "confirm_intro": "Vous êtes sur le point de vous désabonner de la newsletter AInspiration.",
+    "confirm_email": "Adresse email :",
+    "confirm_warning": "Vous ne recevrez plus nos actualités sur l'IA et les tendances du secteur.",
+    "confirm_button": "Confirmer le désabonnement",
+    "cancel": "Annuler",
+    "success_title": "Désabonnement réussi",
+    "success_message": "Vous avez été désabonné de notre newsletter avec succès.",
+    "success_note": "Nous sommes désolés de vous voir partir. Vous pouvez vous réabonner à tout moment depuis notre site.",
+    "back_home": "Retour à l'accueil",
+    "error_invalid_title": "Lien invalide",
+    "error_generic_title": "Une erreur est survenue",
+    "contact_us": "Nous contacter",
+    "error_invalid_link": "Lien de désabonnement invalide.",
+    "error_link_used": "Ce lien de désabonnement n'est plus valide ou a déjà été utilisé.",
+    "error_unsubscribe": "Impossible de vous désabonner. Veuillez contacter le support.",
+    "error_generic": "Une erreur est survenue. Veuillez réessayer plus tard."
+  }
+}

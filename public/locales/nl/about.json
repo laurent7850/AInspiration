@@ -1,0 +1,52 @@
+{
+  "seo": {
+    "title": "Over AInspiration | AI-oplossingen voor KMO's",
+    "description": "Ontdek AInspiration, onze missie om AI te democratiseren voor KMO's, onze aanpak en onze geschiedenis."
+  },
+  "pageTitle": "Over AInspiration",
+  "pageSubtitle": "Onze missie: AI toegankelijk en effectief maken voor alle bedrijven",
+  "mission": {
+    "title": "Onze Missie",
+    "p1": "Bij AInspiration zijn we ervan overtuigd dat Kunstmatige Intelligentie een onmisbare groeifactor is voor bedrijven van elke omvang. Onze missie is AI te democratiseren door innovatieve, toegankelijke en op maat gemaakte oplossingen aan te bieden die voldoen aan de specifieke behoeften van KMO's.",
+    "p2": "Wij begeleiden onze klanten bij hun digitale transformatie door hen niet alleen geavanceerde technologische tools te bieden, maar ook de expertise en ondersteuning die nodig zijn om deze effectief te integreren in hun dagelijkse activiteiten. Ons doel is een meetbare positieve impact te creëren op hun productiviteit, rentabiliteit en concurrentievermogen."
+  },
+  "approach": {
+    "title": "Onze Aanpak",
+    "pillar1_title": "Toegepaste AI-expertise",
+    "pillar1_desc": "Ons team combineert een gedegen opleiding in kunstmatige intelligentie met een grondige kennis van de realiteit waarmee KMO's worden geconfronteerd. Wij theoretiseren niet — wij implementeren oplossingen die werken.",
+    "pillar2_title": "Resultaatgericht",
+    "pillar2_desc": "Elk project begint met een nauwkeurige analyse van uw processen. Wij meten de werkelijke impact: gewonnen tijd, vermeden fouten, gereduceerde kosten. ROI staat altijd centraal in onze aanpak.",
+    "pillar3_title": "Mensgerichte begeleiding",
+    "pillar3_desc": "Technologie alleen is niet voldoende. Wij leiden uw teams op, passen oplossingen aan aan uw bedrijfscultuur en blijven op lange termijn beschikbaar zodat de adoptie daadwerkelijk plaatsvindt."
+  },
+  "values": {
+    "title": "Onze Waarden",
+    "val1_title": "Toegankelijke innovatie",
+    "val1_desc": "Wij geloven dat AI toegankelijk moet zijn voor alle bedrijven, ongeacht hun omvang.",
+    "val2_title": "Ethiek & Transparantie",
+    "val2_desc": "Wij ontwikkelen ethische oplossingen en zijn transparant over onze praktijken.",
+    "val3_title": "De mens centraal",
+    "val3_desc": "Onze technologieën zijn erop gericht de mens te versterken, niet te vervangen.",
+    "val4_title": "Uitmuntendheid",
+    "val4_desc": "Wij streven naar uitmuntendheid in elke oplossing die wij onze klanten aanbieden."
+  },
+  "history": {
+    "title": "Onze Geschiedenis",
+    "m2019_title": "Oprichting van AInspiration",
+    "m2019_desc": "Het bedrijf werd opgericht met de missie om AI te democratiseren voor KMO's.",
+    "m2020_title": "Lancering van de eerste producten",
+    "m2020_desc": "Ontwikkeling van automatiserings- en data-analyseoplossingen.",
+    "m2021_title": "Uitbreiding van het aanbod",
+    "m2021_desc": "Introductie van virtuele assistenten en generatieve AI-diensten.",
+    "m2022_title": "Internationale expansie",
+    "m2022_desc": "Opening naar Franstalige Europese markten: België, Luxemburg en Zwitserland.",
+    "m2023_title": "Generatieve AI-revolutie",
+    "m2023_desc": "Lancering van ons PromptMaster-platform en integratie van GPT- en Claude-modellen in onze oplossingen.",
+    "m2024_title": "Intelligent CRM & geavanceerde automatisering",
+    "m2024_desc": "Implementatie van onze door AI aangedreven CRM-oplossing en automatisering van complexe bedrijfsworkflows.",
+    "m2025_title": "AI-agenten & personalisatie",
+    "m2025_desc": "Lancering van autonome AI-agenten en op maat gemaakte voorspellende analyseoplossingen voor elke sector.",
+    "m2026_title": "AInspiration — Een nieuw tijdperk",
+    "m2026_desc": "Rebranding naar AInspiration. Geïntegreerd AI-platform voor KMO's met 360°-begeleiding en gecertificeerde opleiding."
+  }
+}

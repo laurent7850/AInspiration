@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Star, Quote, TrendingDown, TrendingUp, Bot, Clock, CheckCircle, ArrowRight } from 'lucide-react';
+import { Star, Quote, TrendingDown, TrendingUp, Bot, Clock, CheckCircle, ArrowRight, Briefcase } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import StartForm from './StartForm';
+import AuditForm from './AuditForm';
 
 interface TestimonialData {
   id: string;
-  name: string;
   role: string;
   city: string;
   text: string;
@@ -14,7 +13,6 @@ interface TestimonialData {
     text: string;
     color: string;
   };
-  image?: string;
 }
 
 const Testimonials: React.FC = () => {
@@ -24,7 +22,6 @@ const Testimonials: React.FC = () => {
   const testimonials: TestimonialData[] = [
     {
       id: 'thierry-restaurant',
-      name: t('testimonials.thierry.name'),
       role: t('testimonials.thierry.role'),
       city: t('testimonials.thierry.city'),
       text: t('testimonials.thierry.text'),
@@ -36,7 +33,6 @@ const Testimonials: React.FC = () => {
     },
     {
       id: 'sophie-marketing',
-      name: t('testimonials.sophie.name'),
       role: t('testimonials.sophie.role'),
       city: t('testimonials.sophie.city'),
       text: t('testimonials.sophie.text'),
@@ -48,7 +44,6 @@ const Testimonials: React.FC = () => {
     },
     {
       id: 'marc-ecommerce',
-      name: t('testimonials.marc.name'),
       role: t('testimonials.marc.role'),
       city: t('testimonials.marc.city'),
       text: t('testimonials.marc.text'),
@@ -95,18 +90,18 @@ const Testimonials: React.FC = () => {
                   {/* Header */}
                   <div className="flex items-start justify-between mb-6 flex-wrap gap-4">
                     <div className="flex items-center gap-4">
-                      {/* Avatar */}
-                      <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
-                        {testimonial.name.charAt(0)}
+                      {/* Avatar générique */}
+                      <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                        <Briefcase className="w-7 h-7 text-white" />
                       </div>
 
-                      {/* Name & Role */}
+                      {/* Role & City */}
                       <div>
                         <h3 className="text-xl font-bold text-gray-900">
-                          {testimonial.name}
+                          {testimonial.role}
                         </h3>
                         <p className="text-gray-600">
-                          {testimonial.role} • {testimonial.city}
+                          {testimonial.city}
                         </p>
                       </div>
                     </div>
@@ -168,7 +163,7 @@ const Testimonials: React.FC = () => {
             </button>
 
             {/* Trust badges */}
-            <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-indigo-200">
+            <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-indigo-100">
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4" />
                 <span>{t('testimonials.cta.badges.freeAnalysis')}</span>
@@ -185,7 +180,7 @@ const Testimonials: React.FC = () => {
 
             {/* Alternative CTAs */}
             <div className="mt-8 pt-6 border-t border-indigo-500/30">
-              <p className="text-indigo-200 text-sm mb-3">{t('testimonials.cta.alternative.title')}</p>
+              <p className="text-indigo-100 text-sm mb-3">{t('testimonials.cta.alternative.title')}</p>
               <div className="flex flex-wrap justify-center gap-3">
                 {/* Sympa */}
                 <button
@@ -218,10 +213,9 @@ const Testimonials: React.FC = () => {
       </div>
 
       {/* Start Form Modal */}
-      <StartForm
+      <AuditForm
         isOpen={showStartForm}
         onClose={() => setShowStartForm(false)}
-        productId="audit-ia"
       />
     </section>
   );

@@ -11,6 +11,161 @@
     "measurableResults": "Meetbare Resultaten",
     "improvement": "Verbetering"
   },
+  "thierry": {
+    "seo": {
+      "title": "Hoe Thierry zijn facturatie transformeerde met AI | AInspiration",
+      "description": "Ontdek hoe Thierry 15 uur per maand bespaarde door zijn facturatie te automatiseren met AInspiration. Een concreet geval van digitale transformatie voor kmo's."
+    },
+    "breadcrumb": {
+      "home": "Startpagina",
+      "blog": "Blog",
+      "current": "Facturatietransformatie"
+    },
+    "header": {
+      "title": "Hoe Thierry zijn facturatie transformeerde met de AI van AInspiration",
+      "date": "24 mei 2024",
+      "readTime": "Leestijd: 5 min",
+      "imageAlt": "Thierry die werkt op zijn computer met facturen"
+    },
+    "challenge": {
+      "title": "De uitdaging: tijdrovende en foutgevoelige facturatie",
+      "intro": "Thierry Martin leidt een IT-dienstverlener met 15 werknemers. Zoals veel kmo-directeurs werd hij regelmatig overspoeld door administratieve taken, met name de klantenfacturatie.",
+      "quote": "Ik besteedde bijna 15 uur per maand aan het beheren van de facturatie, legt Thierry uit. Tussen de handmatige gegevensinvoer, de controles, de foutcorrecties en de herinneringen was het een ware nachtmerrie die mij afleidde van mijn kernactiviteit.",
+      "problemsIntro": "De problemen waren velerlei:",
+      "problems": [
+        "Handmatige gegevensinvoer in een spreadsheet, een frequente bron van fouten",
+        "Moeilijkheden bij het opvolgen van betalingstermijnen",
+        "Vertragingen bij het uitsturen van facturen",
+        "Ongestructureerd klantopvolgingsproces",
+        "Geen realtime zichtbaarheid op betalingen"
+      ]
+    },
+    "solution": {
+      "title": "De oplossing: een intelligente automatiseringsaanpak",
+      "intro": "Na een gratis audit van zijn facturatieproces stelde het AInspiration-team Thierry een op maat gemaakte automatiseringsoplossing voor, met integratie van meerdere AI-technologieën:",
+      "detailTitle": "De oplossing in detail",
+      "extraction": {
+        "title": "Automatische gegevensextractie",
+        "description": "Een AI-systeem analyseert de timesheets van medewerkers, klantcontracten en uitgevoerde diensten om facturen automatisch voor te bereiden."
+      },
+      "generation": {
+        "title": "Gestandaardiseerde generatie",
+        "description": "Facturen worden automatisch gegenereerd op basis van een gepersonaliseerd sjabloon, inclusief alle wettelijke informatie en dienstdetails."
+      },
+      "tracking": {
+        "title": "Intelligente opvolging",
+        "description": "Het systeem detecteert automatisch betalingen en stuurt gepersonaliseerde herinneringen op verschillende vervaldagen."
+      },
+      "outro": "De implementatie verliep in slechts 3 weken, inclusief teamtraining. Contrary to Thierry's concerns, het systeem integreerde perfect met zijn bestaande tools, zonder radicale wijzigingen te vereisen."
+    },
+    "results": {
+      "title": "Concrete en meetbare resultaten",
+      "subtitle": "Na drie maanden gebruik werden de voordelen van de oplossing duidelijk:",
+      "time": {
+        "value": "-90%",
+        "title": "Bestede tijd",
+        "description": "Van 15u naar slechts 1u30 per maand"
+      },
+      "treasury": {
+        "value": "+28%",
+        "title": "Kassastroom",
+        "description": "Verbetering dankzij snellere betalingen"
+      },
+      "errors": {
+        "value": "0",
+        "title": "Facturatiefouten",
+        "description": "Eliminatie van menselijke fouten"
+      }
+    },
+    "testimonial": {
+      "quote": "Deze oplossing heeft onze aanpak van facturatie volledig getransformeerd. Ze heeft me niet alleen kostbare tijd vrijgemaakt die ik nu kan besteden aan bedrijfsontwikkeling, maar heeft ook onze klantrelaties verbeterd. Facturen worden snel uitgestuurd, ze zijn duidelijk, gedetailleerd en de automatische opvolgingen worden tactvol afgehandeld. Het is een investering die zich in minder dan twee maanden heeft terugbetaald.",
+      "name": "Thierry Martin",
+      "role": "Directeur, TechnoServices",
+      "imageAlt": "Thierry Martin"
+    },
+    "impact": {
+      "title": "De impact voorbij de tijdsbesparing",
+      "intro": "Voorbij de eenvoudige tijdsbesparing had de transformatie van het facturatieproces een sneeuwbaleffect op het hele bedrijf:",
+      "clientExperience": {
+        "title": "Betere klantervaring",
+        "description": "Facturen worden onmiddellijk na de dienstverlening uitgestuurd, met een detailniveau dat door klanten wordt gewaardeerd."
+      },
+      "financialTracking": {
+        "title": "Verbeterde financiële opvolging",
+        "description": "Het management beschikt nu over een realtime dashboard over de betalingsstatus en de verwachte kassastroom."
+      },
+      "stress": {
+        "title": "Minder stress",
+        "description": "Het einde van de maand is niet langer een gevreesde periode voor het administratief team."
+      },
+      "focus": {
+        "title": "Strategische focus",
+        "description": "Thierry kan nu meer tijd besteden aan strategie en bedrijfsontwikkeling."
+      }
+    },
+    "successKeys": {
+      "title": "De sleutels tot succes",
+      "subtitle": "Deze succesvolle transformatie berust op verschillende sleutelfactoren:",
+      "keys": [
+        {
+          "title": "Op maat gemaakte aanpak",
+          "description": "De oplossing werd specifiek ontworpen om te voldoen aan de behoeften van TechnoServices, zonder overbodige functies."
+        },
+        {
+          "title": "Progressieve integratie",
+          "description": "De implementatie verliep in fasen, waardoor het team zich geleidelijk kon aanpassen."
+        },
+        {
+          "title": "Adequate training",
+          "description": "Het volledige team werd getraind in het gebruik van het nieuwe systeem."
+        },
+        {
+          "title": "Continue ondersteuning",
+          "description": "Regelmatige begeleiding zorgde voor continue optimalisatie van de oplossing."
+        }
+      ]
+    },
+    "gettingStarted": {
+      "title": "Hoe uw eigen transformatie te starten",
+      "subtitle": "Als u, net als Thierry, te veel tijd besteedt aan administratieve taken die geautomatiseerd kunnen worden, kunt u als volgt te werk gaan:",
+      "steps": [
+        {
+          "title": "Gratis audit",
+          "description": "Identificeer optimalisatiekansen in uw huidige processen."
+        },
+        {
+          "title": "Gepersonaliseerde oplossing",
+          "description": "Ontvang een voorstel afgestemd op uw specifieke behoeften."
+        },
+        {
+          "title": "Snelle implementatie",
+          "description": "Opzet binnen enkele weken inclusief training."
+        }
+      ]
+    },
+    "relatedArticles": {
+      "title": "Gerelateerde artikelen",
+      "article1": {
+        "title": "5 administratieve processen om als prioriteit te automatiseren",
+        "description": "Ontdek de administratieve taken die de meeste tijd kosten en hoe u ze kunt optimaliseren.",
+        "imageAlt": "Automatisering van administratieve processen",
+        "button": "Artikel lezen"
+      },
+      "article2": {
+        "title": "Hoe de ROI van uw digitale transformatie te berekenen",
+        "description": "Een praktische gids voor het meten van de concrete voordelen van uw automatiseringsinvesteringen.",
+        "imageAlt": "ROI van automatisering",
+        "button": "Artikel lezen"
+      }
+    },
+    "author": {
+      "name": "Sophie Dubois",
+      "role": "Expert digitale transformatie bij AInspiration",
+      "bio": "Sophie begeleidt kmo's in hun digitale transitie al meer dan 10 jaar, met bijzondere expertise in de optimalisatie van financiële processen.",
+      "imageAlt": "Sophie Dubois"
+    },
+    "share": "Deel dit artikel:"
+  },
   "cta": {
     "audit": {
       "title": "Klaar om uw bedrijf te transformeren met AI?",

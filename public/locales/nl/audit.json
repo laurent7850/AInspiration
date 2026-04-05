@@ -2,69 +2,214 @@
   "title": "AI Audit",
   "subtitle": "Beoordeel uw innovatiepotentieel met AI",
   "steps": {
-    "analysis": {
-      "title": "Initiële analyse",
-      "desc": "Volledige beoordeling van uw huidige processen"
-    },
-    "diagnostic": {
-      "title": "Grondige diagnose",
-      "desc": "Identificatie van verbeterkansen"
-    },
-    "impact": {
-      "title": "Impactanalyse",
-      "desc": "Schatting van potentiële voordelen"
-    },
-    "plan": {
-      "title": "Actieplan",
-      "desc": "Gedetailleerde aanbevelingen en routekaart"
-    }
+    "analysis": { "title": "Initiële analyse", "desc": "Volledige beoordeling van uw huidige processen" },
+    "diagnostic": { "title": "Grondige diagnose", "desc": "Identificatie van verbeterkansen" },
+    "impact": { "title": "Impactanalyse", "desc": "Schatting van potentiële voordelen" },
+    "plan": { "title": "Actieplan", "desc": "Gedetailleerde aanbevelingen en routekaart" }
   },
   "form": {
-    "title": "Start uw gratis audit",
-    "subtitle": "Vul het formulier in om te beginnen",
-    "company": {
-      "name": "Bedrijfsnaam",
-      "placeholder": "Uw bedrijf"
-    },
-    "industry": {
-      "title": "Sector",
-      "placeholder": "Selecteer uw sector",
-      "tech": "Technologie",
-      "finance": "Financiën",
-      "health": "Gezondheidszorg",
-      "retail": "Detailhandel",
-      "manufacturing": "Industrie",
-      "services": "Diensten",
-      "other": "Andere"
-    },
-    "size": {
-      "title": "Bedrijfsgrootte",
-      "placeholder": "Selecteer grootte",
-      "1-10": "1-10 medewerkers",
-      "11-50": "11-50 medewerkers",
-      "51-200": "51-200 medewerkers",
-      "201-500": "201-500 medewerkers",
-      "500+": "500+ medewerkers"
-    },
-    "email": {
-      "title": "Zakelijk e-mailadres",
-      "placeholder": "uw@email.com"
-    },
-    "phone": {
-      "title": "Telefoon",
-      "placeholder": "+32 XXX XX XX XX"
-    },
-    "privacy": "Uw gegevens zijn beschermd en worden nooit gedeeld",
-    "submit": "Start gratis audit",
-    "next": "Volgende",
+    "title": "Uw gratis AI-audit",
+    "stepOf": "Stap {{step}} van {{total}}",
+    "continue": "Doorgaan",
     "back": "Terug",
-    "step1": "Bedrijfsinformatie",
-    "step2": "Contact"
+    "submit": "Mijn gratis audit ontvangen",
+    "submitting": "Verzenden...",
+    "close": "Sluiten",
+    "required": "*",
+    "multipleChoice": "(meerdere keuzes mogelijk)",
+    "step1": {
+      "title": "Uw gegevens",
+      "subtitle": "Om u uw rapport te sturen",
+      "name": "Volledige naam",
+      "namePlaceholder": "Jan Janssen",
+      "email": "Professioneel e-mailadres",
+      "emailPlaceholder": "jan@mijnbedrijf.be",
+      "company": "Bedrijf",
+      "companyPlaceholder": "Mijn Bedrijf NV",
+      "phone": "Telefoon",
+      "phonePlaceholder": "+32 477 00 00 00",
+      "role": "Uw functie",
+      "rolePlaceholder": "Zaakvoerder, Directeur, Office Manager..."
+    },
+    "step2": {
+      "title": "Uw activiteit",
+      "subtitle": "Om de audit aan te passen aan uw sector",
+      "sectorLabel": "Bedrijfssector",
+      "sectorOtherLabel": "Specificeer uw sector",
+      "sectorOtherPlaceholder": "Bv.: Transport, Onderwijs...",
+      "teamSizeLabel": "Teamgrootte"
+    },
+    "step3": {
+      "title": "Uw behoeften",
+      "subtitle": "Welke processen wilt u verbeteren?",
+      "processesLabel": "Welke processen wilt u automatiseren?",
+      "processesOtherLabel": "Specificeer",
+      "processesOtherPlaceholder": "Bv.: Projectbeheer, Kwaliteit...",
+      "weeklyHoursLabel": "Geschatte wekelijkse tijd aan repetitieve taken",
+      "currentToolsLabel": "Welke tools gebruikt u momenteel?",
+      "currentToolsPlaceholder": "Bv.: Excel, Gmail, Sage, WooCommerce, Salesforce..."
+    },
+    "step4": {
+      "title": "Om verder te gaan",
+      "subtitle": "Optioneel — helpt bij het personaliseren van uw rapport",
+      "aiExperienceLabel": "Uw ervaring met AI",
+      "budgetLabel": "Verwacht budget",
+      "priorityLabel": "Wat is uw prioriteit nr. 1?",
+      "priorityPlaceholder": "Bv.: Tijd besparen op facturatie, klantopvolging automatiseren...",
+      "additionalInfoLabel": "Aanvullende informatie",
+      "additionalInfoPlaceholder": "Specifieke context, beperkingen, bijzondere verwachtingen..."
+    },
+    "success": {
+      "title": "Uw auditaanvraag is verzonden!",
+      "analyzing": "Onze AI-expert analyseert uw situatie nu.",
+      "report": "U ontvangt uw <strong>gepersonaliseerd auditrapport per e-mail binnen 24 uur</strong>.",
+      "nextTitle": "Wat gebeurt er nu?",
+      "nextStep1": "AI-analyse van uw bedrijf en behoeften",
+      "nextStep2": "Gepersonaliseerd rapport per e-mail verzonden",
+      "nextStep3": "Een expert neemt contact met u op om te bespreken (indien gewenst)"
+    },
+    "errors": {
+      "nameRequired": "Uw naam is vereist",
+      "emailRequired": "Uw e-mailadres is vereist",
+      "emailInvalid": "Ongeldig e-mailadres",
+      "companyRequired": "Uw bedrijfsnaam is vereist",
+      "sectorRequired": "Selecteer uw sector",
+      "sectorOtherRequired": "Specificeer uw sector",
+      "teamSizeRequired": "Geef de grootte van uw team aan",
+      "processesRequired": "Selecteer minstens één proces",
+      "weeklyHoursRequired": "Schat de verloren tijd",
+      "rateLimit": "Wacht enkele minuten voordat u een nieuw formulier indient.",
+      "generic": "Er is een fout opgetreden. Probeer opnieuw of neem contact met ons op via info@ainspiration.eu"
+    }
   },
-  "success": {
-    "title": "Bedankt voor uw aanvraag!",
-    "message": "We hebben uw auditaanvraag ontvangen",
-    "response": "Antwoord binnen 24 uur",
-    "close": "Sluiten"
+  "sectors": {
+    "comptabilite": "Boekhouding / Fiduciaire",
+    "juridique": "Advocatenkantoor / Jurist",
+    "immobilier": "Vastgoed / Architectuur",
+    "medical": "Medisch / Paramedisch",
+    "restaurant": "Restaurant / Horeca",
+    "commerce": "Handel / Detailhandel",
+    "ecommerce": "E-commerce",
+    "agence": "Marketing- / Communicatiebureau",
+    "consulting": "Consulting / B2B-diensten",
+    "artisan": "Ambachtsman / Zelfstandige",
+    "industrie": "Industrie / Productie",
+    "other": "Andere (specificeer)"
+  },
+  "teamSizes": {
+    "1": "Zelfstandige / Solo",
+    "2-5": "2–5 personen",
+    "6-20": "6–20 personen",
+    "21-50": "21–50 personen",
+    "50+": "Meer dan 50 personen"
+  },
+  "processes": {
+    "facturation": "Facturatie & offertes",
+    "email": "E-mailbeheer / Klantantwoorden",
+    "prospection": "Commerciële prospectie",
+    "planning": "Planning & afspraken",
+    "reporting": "Rapportage & dashboards",
+    "rh": "Human resources / Onboarding",
+    "stock": "Voorraadbeheer / Bestellingen",
+    "social": "Sociale media / Content",
+    "support": "Klantenservice / Naverkoop",
+    "comptabilite": "Boekhouding / Afstemming",
+    "other": "Andere"
+  },
+  "weeklyHours": {
+    "1-5": "1–5 uur per week",
+    "5-10": "5–10 uur per week",
+    "10-20": "10–20 uur per week",
+    "20+": "Meer dan 20 uur per week",
+    "unknown": "Ik kan het niet inschatten"
+  },
+  "aiExperience": {
+    "none": "Geen — Ik ontdek het",
+    "basic": "Basis — Ik gebruik ChatGPT of vergelijkbaar",
+    "moderate": "Gemiddeld — Ik heb AI-tools uitgeprobeerd",
+    "advanced": "Gevorderd — Ik heb al processen geautomatiseerd"
+  },
+  "budgets": {
+    "discovery": "Ik wil eerst mijn opties begrijpen (gratis audit)",
+    "starter": "Minder dan € 2.000 voor een eerste project",
+    "growth": "€ 2.000 – € 5.000 voor een complete oplossing",
+    "enterprise": "Meer dan € 5.000 voor een diepgaande transformatie"
+  },
+  "structuredMessage": {
+    "title": "AI AUDIT AANVRAAG",
+    "coordinates": "CONTACTGEGEVENS",
+    "activity": "ACTIVITEIT",
+    "needs": "GEÏDENTIFICEERDE BEHOEFTEN",
+    "context": "CONTEXT",
+    "name": "Naam",
+    "company": "Bedrijf",
+    "email": "E-mail",
+    "phone": "Telefoon",
+    "role": "Functie",
+    "sector": "Sector",
+    "teamSize": "Teamgrootte",
+    "processes": "Te automatiseren processen",
+    "weeklyHours": "Geschatte verloren tijd aan repetitieve taken",
+    "currentTools": "Momenteel gebruikte tools",
+    "aiExperience": "AI-ervaring",
+    "budget": "Verwacht budget",
+    "priority": "Hoofdprioriteit",
+    "additionalInfo": "Aanvullende informatie",
+    "notSpecified": "Niet gespecificeerd"
+  },
+  "page": {
+    "badge": "Beperkte plaatsen — Gratis audit deze maand",
+    "heroTitle": "Ontdek uw AI-potentieel",
+    "heroHighlight": "in 24u",
+    "heroDescription": "Een expert analyseert uw bedrijf en levert een concreet actieplan, gratis. Een eerste concreet resultaat in 5 dagen, vanuit uw gratis audit.",
+    "ctaButton": "Mijn gratis audit aanvragen",
+    "guarantees": {
+      "results": "Resultaten binnen 24u",
+      "free": "100% gratis, zonder verplichting",
+      "report": "Gepersonaliseerd PDF-rapport",
+      "expert": "Analyse door een AI-expert"
+    },
+    "howTitle": "Hoe verloopt uw audit?",
+    "howSubtitle": "Een eenvoudig 4-stappenproces om uw AI-kansen te identificeren",
+    "stepsDetailed": {
+      "1": { "title": "Initiële analyse", "desc": "Volledige beoordeling van uw huidige processen en identificatie van repetitieve taken" },
+      "2": { "title": "Grondige diagnose", "desc": "Identificatie van automatiseringsmogelijkheden en potentiële winsten" },
+      "3": { "title": "Impactanalyse", "desc": "Schatting van potentiële voordelen in tijd en productiviteit" },
+      "4": { "title": "Actieplan", "desc": "Gedetailleerde aanbevelingen en gepersonaliseerde routekaart" }
+    },
+    "receiveTitle": "Wat u ontvangt",
+    "reportTitle": "Uw gepersonaliseerd auditrapport",
+    "reportItems": [
+      "Overzicht van uw huidige processen",
+      "Identificatie van automatiseerbare taken",
+      "Schatting van gewonnen tijd per week",
+      "3 prioritaire actiegerichte aanbevelingen",
+      "Routekaart voor AI-integratie"
+    ],
+    "goFurtherTitle": "Wilt u verder gaan?",
+    "packTitle": "Express Automatiseringspakket",
+    "packLaunchBadge": "Lanceringsaanbieding — € 1.043 i.p.v. € 1.490",
+    "packLaunchNote": "Voor de eerste 10 klanten (in ruil voor een getuigenis)",
+    "packPrice": "Vanaf € 1.043 excl. BTW · n8n workflow setup + 1e maand hosting inbegrepen",
+    "packPriceStandard": "€ 1.490 excl. BTW (standaardtarief)",
+    "packDescription": "Rechtstreeks vanuit uw audit automatiseren wij de taak die u de meeste tijd bespaart. Setup + 1e maand inbegrepen, daarna € 290/maand voor hosting en support van uw AI-workflow.",
+    "packSubscriptionNote": "Verplicht maandabonnement € 290/maand excl. BTW — uw workflows draaien op onze infrastructuur.",
+    "whoTitle": "Voor wie is deze audit?",
+    "whoSectors": [
+      "Vrije beroepen (advocaten, accountants, architecten)",
+      "KMO's alle sectoren (5-50 personen)",
+      "Restaurants en lokale handelszaken",
+      "E-commerce en marketingbureaus",
+      "Ambachtslieden en zelfstandigen"
+    ],
+    "finalCtaTitle": "Klaar om te ontdekken wat AI voor u kan doen?",
+    "finalCtaSubtitle": "Vul het formulier in binnen 2 minuten. Ontvang uw gepersonaliseerde audit binnen 24u.",
+    "stats": {
+      "delivery": "Levertijd",
+      "noCommitment": "Zonder verplichting",
+      "smeHelped": "KMO's begeleid"
+    },
+    "seoTitle": "Gratis AI Audit in 24u | Gepersonaliseerde Diagnose | AInspiration",
+    "seoDescription": "Vraag uw gratis AI-audit aan. Een expert analyseert uw bedrijf en levert een concreet actieplan binnen 24u. Zonder verplichting. KMO's en zelfstandigen in België en Frankrijk."
   }
 }

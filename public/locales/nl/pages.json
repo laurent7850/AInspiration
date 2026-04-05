@@ -1,0 +1,37 @@
+{
+  "notFound": {
+    "seo": {
+      "title": "Pagina niet gevonden | AInspiration",
+      "description": "Deze pagina bestaat niet."
+    },
+    "title": "Pagina niet gevonden",
+    "message": "De pagina die u zoekt bestaat niet of is verplaatst.",
+    "home": "Startpagina",
+    "back": "Vorige pagina",
+    "contact": "Contact"
+  },
+  "unsubscribe": {
+    "seo": {
+      "title": "Uitschrijven Nieuwsbrief - AInspiration",
+      "description": "Beheer uw abonnement op de AInspiration-nieuwsbrief"
+    },
+    "loading": "Bezig met verifiëren...",
+    "confirm_title": "Uitschrijving bevestigen",
+    "confirm_intro": "U staat op het punt zich uit te schrijven voor de AInspiration-nieuwsbrief.",
+    "confirm_email": "E-mailadres:",
+    "confirm_warning": "U ontvangt onze AI-nieuws en sectortrends niet meer.",
+    "confirm_button": "Uitschrijving bevestigen",
+    "cancel": "Annuleren",
+    "success_title": "Uitschrijving geslaagd",
+    "success_message": "U bent succesvol uitgeschreven van onze nieuwsbrief.",
+    "success_note": "Het spijt ons dat u vertrekt. U kunt zich op elk moment opnieuw inschrijven via onze website.",
+    "back_home": "Terug naar de startpagina",
+    "error_invalid_title": "Ongeldige link",
+    "error_generic_title": "Er is een fout opgetreden",
+    "contact_us": "Neem contact op",
+    "error_invalid_link": "Ongeldige uitschrijflink.",
+    "error_link_used": "Deze uitschrijflink is niet meer geldig of is al gebruikt.",
+    "error_unsubscribe": "U kunt niet worden uitgeschreven. Neem contact op met de ondersteuning.",
+    "error_generic": "Er is een fout opgetreden. Probeer het later opnieuw."
+  }
+}

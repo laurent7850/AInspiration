@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEOHead from '../components/SEOHead';
 import { 
   Image, 
   Palette, 
@@ -13,7 +13,7 @@ import {
   CircleDollarSign,
   Clock
 } from 'lucide-react';
-import StartForm from '../components/StartForm';
+import AuditForm from '../components/AuditForm';
 import OptimizedImage from '../components/ui/OptimizedImage';
 
 const CreationVisuellePage: React.FC = () => {
@@ -115,10 +115,10 @@ const CreationVisuellePage: React.FC = () => {
 
   return (
     <section className="pt-20 bg-gradient-to-b from-gray-50 to-white">
-      <Helmet>
-        <title>Création Visuelle IA | AInspiration</title>
-        <meta name="description" content="Générez des images de qualité professionnelle pour tous vos besoins marketing et communication grâce à notre solution de création visuelle propulsée par l'IA." />
-      </Helmet>
+      <SEOHead
+        title="Création Visuelle IA | AInspiration"
+        description="Générez des images de qualité professionnelle pour tous vos besoins marketing et communication grâce à notre solution de création visuelle propulsée par l'IA."
+      />
 
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16">
@@ -504,9 +504,9 @@ const CreationVisuellePage: React.FC = () => {
       </div>
 
       {/* Contact Form Modal */}
-      <StartForm 
-        isOpen={showStartForm} 
-        onClose={() => setShowStartForm(false)} 
+      <AuditForm
+        isOpen={showStartForm}
+        onClose={() => setShowStartForm(false)}
       />
     </section>
   );

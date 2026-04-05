@@ -1,0 +1,121 @@
+{
+  "seo": {
+    "title": "Pour qui l'IA ? | AInspiration",
+    "description": "Découvrez comment l'IA peut transformer votre entreprise, quelle que soit sa taille ou son secteur d'activité."
+  },
+  "hero": {
+    "title": "Pour qui l'IA ?",
+    "introBold": "En tant que partenaire privilégié des indépendants, TPE et PME",
+    "introText": ", nous adaptons l'ensemble de nos services pour répondre spécifiquement aux besoins et enjeux des petites structures.",
+    "introSub": "Chaque solution présentée sur ce site est conçue et optimisée pour accompagner votre développement, que vous soyez entrepreneur individuel ou dirigeant d'une PME, avec des offres flexibles et accessibles qui s'ajustent à votre réalité entrepreneuriale."
+  },
+  "sizes": {
+    "sectionTitle": "Une solution adaptée à chaque taille d'entreprise",
+    "freelance": {
+      "title": "Indépendants & Freelances",
+      "description": "Multipliez votre productivité et proposez des services à plus forte valeur ajoutée sans augmenter votre charge de travail. L'IA vous permet de vous concentrer sur votre expertise tout en automatisant les tâches chronophages.",
+      "benefits": [
+        "Automatisation des tâches administratives",
+        "Création de contenu de qualité",
+        "Support client 24/7"
+      ]
+    },
+    "tpe": {
+      "title": "TPE (moins de 10 employés)",
+      "description": "Concurrencez efficacement les plus grandes structures en optimisant vos processus et en augmentant votre réactivité. L'IA vous donne accès à des outils auparavant réservés aux grandes entreprises.",
+      "benefits": [
+        "Analyse de données clients",
+        "Marketing personnalisé",
+        "Optimisation des stocks"
+      ]
+    },
+    "pme": {
+      "title": "PME (jusqu'à 250 employés)",
+      "description": "Transformez en profondeur votre organisation pour gagner en efficacité et en rentabilité. L'IA vous permet de libérer le potentiel de vos équipes et d'optimiser l'ensemble de vos processus.",
+      "benefits": [
+        "Automatisation des workflows",
+        "Prédiction des tendances",
+        "Assistance à la décision"
+      ]
+    }
+  },
+  "adaptation": {
+    "sectionTitle": "Comment nous adaptons nos services à votre réalité",
+    "scalable": {
+      "title": "Solutions dimensionnées à votre échelle",
+      "description": "Nous n'imposons pas de solutions surdimensionnées et coûteuses. Nos offres sont modulaires et s'adaptent précisément à la taille de votre structure.",
+      "benefits": [
+        "Démarrage avec un périmètre ciblé à fort impact",
+        "Évolution progressive selon vos résultats"
+      ]
+    },
+    "riskFree": {
+      "title": "Modèle économique sans risque",
+      "description": "Notre approche est conçue pour minimiser les risques financiers des petites structures, avec des investissements progressifs et un ROI rapide.",
+      "benefits": [
+        "Audit gratuit et plan d'action personnalisé",
+        "Mesure concrète des résultats obtenus"
+      ]
+    }
+  },
+  "sectors": {
+    "sectionTitle": "Des applications concrètes pour chaque secteur",
+    "commerce": {
+      "title": "Commerce",
+      "description": "Optimisation des stocks, personnalisation des recommandations produits, prévision des ventes et amélioration de l'expérience client par chatbot 24/7."
+    },
+    "services": {
+      "title": "Services",
+      "description": "Automatisation des tâches administratives, génération de devis personnalisés, gestion intelligente des rendez-vous et analyse prédictive de la demande."
+    },
+    "craft": {
+      "title": "Artisanat",
+      "description": "Gestion optimisée des approvisionnements, création de designs assistée par IA, estimation précise des délais et coûts, valorisation du savoir-faire par le digital."
+    },
+    "industry": {
+      "title": "Industrie",
+      "description": "Maintenance prédictive, contrôle qualité automatisé, optimisation des lignes de production et réduction des déchets grâce à l'analyse en temps réel."
+    },
+    "liberal": {
+      "title": "Professions libérales",
+      "description": "Analyse documentaire intelligente, automatisation de la prise de notes, recherche juridique ou médicale assistée, et rédaction de rapports et synthèses."
+    }
+  },
+  "keyBenefits": {
+    "sectionTitle": "Les avantages clés de l'IA pour votre entreprise",
+    "accessibility": {
+      "title": "Accessibilité",
+      "description": "Des solutions IA abordables et faciles à mettre en place, quelle que soit la taille de votre structure."
+    },
+    "timeSaving": {
+      "title": "Gain de temps",
+      "description": "Automatisation des tâches répétitives pour vous concentrer sur ce qui compte vraiment pour votre business."
+    },
+    "roi": {
+      "title": "ROI rapide",
+      "description": "Un retour sur investissement mesurable dès les premiers mois d'utilisation de nos solutions."
+    },
+    "adaptability": {
+      "title": "Adaptabilité",
+      "description": "Des solutions sur mesure qui évoluent avec vos besoins et s'adaptent à votre croissance."
+    }
+  },
+  "testimonials": {
+    "sectionTitle": "Ils ont transformé leur activité avec nos solutions",
+    "thomas": {
+      "quote": "En tant que consultant indépendant, l'IA m'a permis d'offrir des services d'analyse que seuls les grands cabinets proposaient jusqu'ici. Mon chiffre d'affaires a augmenté de 40% la première année.",
+      "name": "Thomas D.",
+      "role": "Consultant en stratégie"
+    },
+    "marie": {
+      "quote": "Avec 8 salariés, notre boutique en ligne faisait face à des géants. L'IA nous a permis d'offrir une expérience personnalisée à nos clients et d'optimiser nos stocks. Nous avons réduit nos coûts de 30% tout en augmentant nos ventes.",
+      "name": "Marie L.",
+      "role": "Propriétaire d'une boutique de vêtements"
+    }
+  },
+  "cta": {
+    "title": "Prêt à transformer votre entreprise avec l'IA ?",
+    "description": "En tant que partenaire privilégié des indépendants, TPE et PME, nous vous proposons un audit gratuit pour identifier les opportunités d'optimisation spécifiques à votre activité.",
+    "button": "Démarrer votre audit gratuit"
+  }
+}

@@ -45,8 +45,8 @@ export interface BlogComment {
 
 const API_BASE = '/api/blog-posts';
 
-export async function fetchPublishedPosts(): Promise<BlogPost[]> {
-  const res = await fetch(`${API_BASE}?language=fr`);
+export async function fetchPublishedPosts(language = 'fr'): Promise<BlogPost[]> {
+  const res = await fetch(`${API_BASE}?language=${language}`);
   if (!res.ok) throw new Error('Failed to fetch posts');
   return res.json();
 }
@@ -65,8 +65,8 @@ export async function fetchFeaturedPosts(limit = 1): Promise<BlogPost[]> {
   return posts.filter(p => p.featured).slice(0, limit);
 }
 
-export async function fetchPostsByCategory(category: string): Promise<BlogPost[]> {
-  const res = await fetch(`${API_BASE}?language=fr&category=${encodeURIComponent(category)}`);
+export async function fetchPostsByCategory(category: string, language = 'fr'): Promise<BlogPost[]> {
+  const res = await fetch(`${API_BASE}?language=${language}&category=${encodeURIComponent(category)}`);
   if (!res.ok) throw new Error('Failed to fetch posts by category');
   return res.json();
 }

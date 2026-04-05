@@ -1,0 +1,121 @@
+{
+  "seo": {
+    "title": "Who is AI for? | AInspiration",
+    "description": "Discover how AI can transform your business, regardless of its size or sector."
+  },
+  "hero": {
+    "title": "Who is AI for?",
+    "introBold": "As a preferred partner for freelancers, micro-businesses and SMEs",
+    "introText": ", we tailor all our services to meet the specific needs and challenges of smaller structures.",
+    "introSub": "Every solution presented on this site is designed and optimised to support your development, whether you are a sole trader or the director of an SME, with flexible and accessible offers that adjust to your entrepreneurial reality."
+  },
+  "sizes": {
+    "sectionTitle": "A solution tailored to every business size",
+    "freelance": {
+      "title": "Freelancers & Sole Traders",
+      "description": "Multiply your productivity and offer higher value-added services without increasing your workload. AI lets you focus on your expertise whilst automating time-consuming tasks.",
+      "benefits": [
+        "Automation of administrative tasks",
+        "Quality content creation",
+        "24/7 customer support"
+      ]
+    },
+    "tpe": {
+      "title": "Micro-businesses (fewer than 10 employees)",
+      "description": "Compete effectively with larger structures by optimising your processes and increasing your responsiveness. AI gives you access to tools previously reserved for large enterprises.",
+      "benefits": [
+        "Client data analysis",
+        "Personalised marketing",
+        "Stock optimisation"
+      ]
+    },
+    "pme": {
+      "title": "SMEs (up to 250 employees)",
+      "description": "Profoundly transform your organisation to gain in efficiency and profitability. AI allows you to unlock your teams' potential and optimise all your processes.",
+      "benefits": [
+        "Workflow automation",
+        "Trend prediction",
+        "Decision support"
+      ]
+    }
+  },
+  "adaptation": {
+    "sectionTitle": "How we adapt our services to your reality",
+    "scalable": {
+      "title": "Solutions scaled to your size",
+      "description": "We do not impose oversized and costly solutions. Our offerings are modular and adapt precisely to the size of your structure.",
+      "benefits": [
+        "Start with a targeted, high-impact scope",
+        "Progressive evolution based on your results"
+      ]
+    },
+    "riskFree": {
+      "title": "Risk-free business model",
+      "description": "Our approach is designed to minimise the financial risks of small structures, with progressive investments and a quick ROI.",
+      "benefits": [
+        "Free audit and personalised action plan",
+        "Concrete measurement of results achieved"
+      ]
+    }
+  },
+  "sectors": {
+    "sectionTitle": "Concrete applications for every sector",
+    "commerce": {
+      "title": "Retail",
+      "description": "Stock optimisation, personalisation of product recommendations, sales forecasting and improvement of the customer experience via 24/7 chatbot."
+    },
+    "services": {
+      "title": "Services",
+      "description": "Automation of administrative tasks, generation of personalised quotes, intelligent appointment management and predictive demand analysis."
+    },
+    "craft": {
+      "title": "Crafts",
+      "description": "Optimised supply management, AI-assisted design creation, accurate estimation of deadlines and costs, digital promotion of expertise."
+    },
+    "industry": {
+      "title": "Industry",
+      "description": "Predictive maintenance, automated quality control, optimisation of production lines and waste reduction through real-time analysis."
+    },
+    "liberal": {
+      "title": "Liberal professions",
+      "description": "Intelligent document analysis, automated note-taking, assisted legal or medical research, and drafting of reports and summaries."
+    }
+  },
+  "keyBenefits": {
+    "sectionTitle": "Key AI benefits for your business",
+    "accessibility": {
+      "title": "Accessibility",
+      "description": "Affordable and easy-to-implement AI solutions, regardless of the size of your structure."
+    },
+    "timeSaving": {
+      "title": "Time saving",
+      "description": "Automation of repetitive tasks to focus on what truly matters for your business."
+    },
+    "roi": {
+      "title": "Fast ROI",
+      "description": "A measurable return on investment from the first months of using our solutions."
+    },
+    "adaptability": {
+      "title": "Adaptability",
+      "description": "Bespoke solutions that evolve with your needs and adapt to your growth."
+    }
+  },
+  "testimonials": {
+    "sectionTitle": "They have transformed their business with our solutions",
+    "thomas": {
+      "quote": "As an independent consultant, AI allowed me to offer analytical services that only large firms previously provided. My turnover increased by 40% in the first year.",
+      "name": "Thomas D.",
+      "role": "Strategy consultant"
+    },
+    "marie": {
+      "quote": "With 8 employees, our online shop faced giants. AI allowed us to offer a personalised experience to our clients and optimise our stock. We reduced costs by 30% whilst increasing sales.",
+      "name": "Marie L.",
+      "role": "Owner of a clothing boutique"
+    }
+  },
+  "cta": {
+    "title": "Ready to transform your business with AI?",
+    "description": "As a preferred partner for freelancers, micro-businesses and SMEs, we offer you a free audit to identify optimisation opportunities specific to your activity.",
+    "button": "Start your free audit"
+  }
+}

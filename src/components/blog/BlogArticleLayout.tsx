@@ -113,7 +113,7 @@ export default function BlogArticleLayout({
               <div key={index} className="text-center text-white">
                 <div className="text-4xl md:text-5xl font-bold mb-2">{metric.value}</div>
                 <div className="text-xl font-semibold mb-1">{metric.label}</div>
-                <div className="text-indigo-200">{metric.description}</div>
+                <div className="text-indigo-100">{metric.description}</div>
               </div>
             ))}
           </div>

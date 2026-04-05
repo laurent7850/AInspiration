@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Calendar, User, Tag, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
+import SEOHead from './SEOHead';
 import { fetchPublishedPosts } from '../services/blogService';
 import type { BlogPost } from '../services/blogService';
 
@@ -17,10 +17,9 @@ export default function Blog() {
     const loadArticles = async () => {
       try {
         setLoading(true);
-        const posts = await fetchPublishedPosts();
         const currentLang = (i18n.language || 'fr').split('-')[0];
-        const filteredPosts = posts.filter(post => post.language === currentLang);
-        setArticles(filteredPosts);
+        const posts = await fetchPublishedPosts(currentLang);
+        setArticles(posts);
       } catch (err) {
         console.error('Error loading blog posts:', err);
         setError(t('loadError'));
@@ -37,10 +36,10 @@ export default function Blog() {
 
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-      <Helmet>
-        <title>{t('pageTitle')}</title>
-        <meta name="description" content={t('pageDescription')} />
-      </Helmet>
+      <SEOHead
+        title={t('pageTitle')}
+        description={t('pageDescription')}
+      />
 
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">

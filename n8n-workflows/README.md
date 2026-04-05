@@ -77,7 +77,7 @@ Le prompt varie automatiquement les thèmes chaque semaine et mentionne les serv
 - Header avec logo AInspiration
 - Conversion automatique markdown vers HTML (titres, listes, gras)
 - CTA avec gradient vers l'audit gratuit
-- Footer avec coordonnées (Grand Place 50, 7850 Enghien)
+- Footer avec coordonnées (Chaussée Brunehault 27, 7041 Givry)
 - Lien de désinscription personnalisé par abonné (`{{UNSUBSCRIBE_URL}}`)
 
 ### Credentials nécessaires

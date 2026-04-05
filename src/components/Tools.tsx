@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  Bot, 
-  Brain, 
-  Sparkles, 
-  MessageSquare, 
+import {
+  Bot,
+  Brain,
+  Sparkles,
+  MessageSquare,
   ArrowRight,
   Zap,
   Globe,
@@ -13,54 +13,56 @@ import {
   Code,
   Search
 } from 'lucide-react';
-import StartForm from './StartForm';
+import { useTranslation } from 'react-i18next';
+import AuditForm from './AuditForm';
 
 export default function Tools() {
   const [showStartForm, setShowStartForm] = useState(false);
+  const { t } = useTranslation('features');
 
   const tools = [
     {
       icon: Bot,
-      title: "Assistant IA",
-      description: "Assistant virtuel personnalisé pour votre entreprise",
+      title: t('tools.list.assistant.title'),
+      description: t('tools.list.assistant.description'),
       features: [
-        "Réponses en temps réel",
-        "Multi-langues",
-        "Apprentissage continu",
-        "Intégration facile"
+        t('tools.list.assistant.features.0'),
+        t('tools.list.assistant.features.1'),
+        t('tools.list.assistant.features.2'),
+        t('tools.list.assistant.features.3')
       ]
     },
     {
       icon: Brain,
-      title: "Analyse IA",
-      description: "Analyse approfondie de vos données",
+      title: t('tools.list.analysis.title'),
+      description: t('tools.list.analysis.description'),
       features: [
-        "Insights automatisés",
-        "Tableaux de bord",
-        "Prédictions avancées",
-        "Rapports personnalisés"
+        t('tools.list.analysis.features.0'),
+        t('tools.list.analysis.features.1'),
+        t('tools.list.analysis.features.2'),
+        t('tools.list.analysis.features.3')
       ]
     },
     {
       icon: Sparkles,
-      title: "Prompt Master",
-      description: "Création et optimisation de prompts",
+      title: t('tools.list.promptMaster.title'),
+      description: t('tools.list.promptMaster.description'),
       features: [
-        "Bibliothèque de prompts",
-        "Tests A/B",
-        "Optimisation continue",
-        "Templates sectoriels"
+        t('tools.list.promptMaster.features.0'),
+        t('tools.list.promptMaster.features.1'),
+        t('tools.list.promptMaster.features.2'),
+        t('tools.list.promptMaster.features.3')
       ]
     },
     {
       icon: PenTool,
-      title: "Création de Contenu",
-      description: "Génération de contenu optimisé",
+      title: t('tools.list.content.title'),
+      description: t('tools.list.content.description'),
       features: [
-        "Articles & blogs",
-        "Réseaux sociaux",
-        "Emails marketing",
-        "Descriptions produits"
+        t('tools.list.content.features.0'),
+        t('tools.list.content.features.1'),
+        t('tools.list.content.features.2'),
+        t('tools.list.content.features.3')
       ]
     }
   ];
@@ -68,41 +70,41 @@ export default function Tools() {
   const features = [
     {
       icon: Globe,
-      title: "Multi-langues",
-      description: "Support de plus de 30 langues"
+      title: t('tools.commonFeatures.multilingual.title'),
+      description: t('tools.commonFeatures.multilingual.description')
     },
     {
       icon: FileText,
-      title: "Documentation",
-      description: "Guides détaillés et exemples"
+      title: t('tools.commonFeatures.documentation.title'),
+      description: t('tools.commonFeatures.documentation.description')
     },
     {
       icon: Code,
-      title: "API",
-      description: "Intégration simple via API"
+      title: t('tools.commonFeatures.api.title'),
+      description: t('tools.commonFeatures.api.description')
     },
     {
       icon: Search,
-      title: "SEO",
-      description: "Optimisation pour les moteurs"
+      title: t('tools.commonFeatures.seo.title'),
+      description: t('tools.commonFeatures.seo.description')
     }
   ];
 
   const metrics = [
     {
       value: "+200%",
-      label: "Productivité",
-      description: "Augmentation moyenne"
+      label: t('tools.metrics.productivity.label'),
+      description: t('tools.metrics.productivity.description')
     },
     {
       value: "-40%",
-      label: "Coûts",
-      description: "Réduction des dépenses"
+      label: t('tools.metrics.cost.label'),
+      description: t('tools.metrics.cost.description')
     },
     {
       value: "24/7",
-      label: "Disponibilité",
-      description: "Support continu"
+      label: t('tools.metrics.availability.label'),
+      description: t('tools.metrics.availability.description')
     }
   ];
 
@@ -111,10 +113,10 @@ export default function Tools() {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Nos Outils IA
+            {t('tools.hero.title')}
           </h1>
           <p className="text-xl text-gray-600">
-            Une suite complète d'outils pour transformer votre entreprise
+            {t('tools.hero.subtitle')}
           </p>
         </div>
 
@@ -167,7 +169,7 @@ export default function Tools() {
               <div key={index} className="text-center text-white">
                 <div className="text-4xl font-bold mb-2">{metric.value}</div>
                 <div className="text-xl font-semibold mb-1">{metric.label}</div>
-                <div className="text-indigo-200">{metric.description}</div>
+                <div className="text-indigo-100">{metric.description}</div>
               </div>
             ))}
           </div>
@@ -178,16 +180,16 @@ export default function Tools() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-4">
-                Prêt à transformer votre entreprise ?
+                {t('tools.cta.title')}
               </h2>
               <p className="text-indigo-100 mb-6">
-                Découvrez comment nos outils peuvent optimiser vos processus
+                {t('tools.cta.subtitle')}
               </p>
-              <button 
+              <button
                 onClick={() => setShowStartForm(true)}
                 className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition flex items-center gap-2"
               >
-                Démarrer maintenant
+                {t('tools.cta.button')}
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
@@ -195,21 +197,21 @@ export default function Tools() {
               <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                 <Zap className="w-8 h-8 text-white mx-auto mb-2" />
                 <div className="text-3xl font-bold mb-1">5min</div>
-                <div className="text-indigo-100">Installation</div>
+                <div className="text-indigo-100">{t('tools.cta.installLabel')}</div>
               </div>
               <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                 <BarChart className="w-8 h-8 text-white mx-auto mb-2" />
                 <div className="text-3xl font-bold mb-1">ROI</div>
-                <div className="text-indigo-100">Immédiat</div>
+                <div className="text-indigo-100">{t('tools.cta.roiLabel')}</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <StartForm 
-        isOpen={showStartForm} 
-        onClose={() => setShowStartForm(false)} 
+      <AuditForm
+        isOpen={showStartForm}
+        onClose={() => setShowStartForm(false)}
       />
     </section>
   );

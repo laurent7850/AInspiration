@@ -11,6 +11,161 @@
     "measurableResults": "Résultats Mesurables",
     "improvement": "Amélioration"
   },
+  "thierry": {
+    "seo": {
+      "title": "Comment Thierry a transformé sa facturation grâce à l'IA | AInspiration",
+      "description": "Découvrez comment Thierry a gagné 15 heures par mois en automatisant sa facturation avec AInspiration. Un cas concret de transformation numérique pour PME."
+    },
+    "breadcrumb": {
+      "home": "Accueil",
+      "blog": "Blog",
+      "current": "Transformation de facturation"
+    },
+    "header": {
+      "title": "Comment Thierry a transformé sa facturation grâce à l'IA d'AInspiration",
+      "date": "24 mai 2024",
+      "readTime": "Temps de lecture : 5 min",
+      "imageAlt": "Thierry travaillant sur son ordinateur avec des factures"
+    },
+    "challenge": {
+      "title": "Le défi : une facturation chronophage et source d'erreurs",
+      "intro": "Thierry Martin dirige une entreprise de services informatiques de 15 employés. Comme beaucoup de dirigeants de PME, il se retrouvait régulièrement submergé par les tâches administratives, en particulier la facturation client.",
+      "quote": "Je passais près de 15 heures par mois à gérer la facturation, explique Thierry. Entre la saisie manuelle des données, les vérifications, les corrections d'erreurs et les relances, c'était un vrai cauchemar qui me détournait de mon cœur de métier.",
+      "problemsIntro": "Les problèmes étaient multiples :",
+      "problems": [
+        "Saisie manuelle des données dans un tableur, source d'erreurs fréquentes",
+        "Difficultés à suivre les échéances de paiement",
+        "Retards dans l'émission des factures",
+        "Processus de relance client non structuré",
+        "Aucune visibilité en temps réel sur les paiements"
+      ]
+    },
+    "solution": {
+      "title": "La solution : une approche d'automatisation intelligente",
+      "intro": "Après un audit gratuit de son processus de facturation, l'équipe d'AInspiration a proposé à Thierry une solution d'automatisation sur mesure, intégrant plusieurs technologies d'IA :",
+      "detailTitle": "La solution en détail",
+      "extraction": {
+        "title": "Extraction automatique de données",
+        "description": "Un système d'IA analyse les timesheet des collaborateurs, les contrats clients et les prestations effectuées pour préparer automatiquement les factures."
+      },
+      "generation": {
+        "title": "Génération standardisée",
+        "description": "Les factures sont générées automatiquement selon un modèle personnalisé, incluant toutes les informations légales et détails des prestations."
+      },
+      "tracking": {
+        "title": "Suivi intelligent",
+        "description": "Le système détecte automatiquement les paiements et envoie des relances personnalisées à différentes échéances."
+      },
+      "outro": "L'implémentation s'est déroulée en seulement 3 semaines, avec une formation de l'équipe incluse. Contrairement aux craintes de Thierry, le système s'est parfaitement intégré à ses outils existants, sans nécessiter de changement radical."
+    },
+    "results": {
+      "title": "Des résultats concrets et mesurables",
+      "subtitle": "Après trois mois d'utilisation, les bénéfices de la solution sont devenus évidents :",
+      "time": {
+        "value": "-90%",
+        "title": "Temps consacré",
+        "description": "De 15h à seulement 1h30 par mois"
+      },
+      "treasury": {
+        "value": "+28%",
+        "title": "Trésorerie",
+        "description": "Amélioration grâce aux paiements plus rapides"
+      },
+      "errors": {
+        "value": "0",
+        "title": "Erreur de facturation",
+        "description": "Élimination des erreurs humaines"
+      }
+    },
+    "testimonial": {
+      "quote": "Cette solution a complètement transformé notre approche de la facturation. Non seulement elle m'a libéré un temps précieux que je peux désormais consacrer au développement de l'entreprise, mais elle a également amélioré notre relation client. Les factures sont émises rapidement, elles sont claires, détaillées et les relais automatiques sont faits avec tact. C'est un investissement qui a été rentabilisé en moins de deux mois.",
+      "name": "Thierry Martin",
+      "role": "Directeur, TechnoServices",
+      "imageAlt": "Thierry Martin"
+    },
+    "impact": {
+      "title": "L'impact au-delà du temps gagné",
+      "intro": "Au-delà du simple gain de temps, la transformation du processus de facturation a eu des effets en cascade sur l'ensemble de l'entreprise :",
+      "clientExperience": {
+        "title": "Meilleure expérience client",
+        "description": "Les factures sont émises immédiatement après la prestation, avec un niveau de détail apprécié par les clients."
+      },
+      "financialTracking": {
+        "title": "Suivi financier amélioré",
+        "description": "La direction dispose maintenant d'un tableau de bord en temps réel sur l'état des paiements et la trésorerie prévisionnelle."
+      },
+      "stress": {
+        "title": "Stress réduit",
+        "description": "La fin de mois n'est plus une période redoutée par l'équipe administrative."
+      },
+      "focus": {
+        "title": "Focus stratégique",
+        "description": "Thierry peut désormais consacrer plus de temps à la stratégie et au développement commercial."
+      }
+    },
+    "successKeys": {
+      "title": "Les clés du succès",
+      "subtitle": "Cette transformation réussie repose sur plusieurs facteurs clés :",
+      "keys": [
+        {
+          "title": "Approche sur mesure",
+          "description": "La solution a été conçue spécifiquement pour répondre aux besoins de TechnoServices, sans fonctionnalités superflues."
+        },
+        {
+          "title": "Intégration progressive",
+          "description": "L'implémentation s'est faite par étapes, permettant à l'équipe de s'adapter graduellement."
+        },
+        {
+          "title": "Formation adéquate",
+          "description": "Toute l'équipe a été formée à l'utilisation du nouveau système."
+        },
+        {
+          "title": "Support continu",
+          "description": "Un accompagnement régulier a permis d'optimiser continuellement la solution."
+        }
+      ]
+    },
+    "gettingStarted": {
+      "title": "Comment démarrer votre propre transformation",
+      "subtitle": "Si, comme Thierry, vous passez trop de temps sur des tâches administratives qui pourraient être automatisées, voici comment vous pouvez procéder :",
+      "steps": [
+        {
+          "title": "Audit gratuit",
+          "description": "Identifiez les opportunités d'optimisation dans vos processus actuels."
+        },
+        {
+          "title": "Solution personnalisée",
+          "description": "Recevez une proposition adaptée à vos besoins spécifiques."
+        },
+        {
+          "title": "Implémentation rapide",
+          "description": "Mise en place en quelques semaines avec formation incluse."
+        }
+      ]
+    },
+    "relatedArticles": {
+      "title": "Articles similaires",
+      "article1": {
+        "title": "5 processus administratifs à automatiser en priorité",
+        "description": "Découvrez les tâches administratives qui vous font perdre le plus de temps et comment les optimiser.",
+        "imageAlt": "Automatisation des processus administratifs",
+        "button": "Lire l'article"
+      },
+      "article2": {
+        "title": "Comment calculer le ROI de votre transformation numérique",
+        "description": "Un guide pratique pour mesurer les bénéfices concrets de vos investissements en automatisation.",
+        "imageAlt": "ROI de l'automatisation",
+        "button": "Lire l'article"
+      }
+    },
+    "author": {
+      "name": "Sophie Dubois",
+      "role": "Experte en transformation numérique chez AInspiration",
+      "bio": "Sophie accompagne les PME dans leur transition numérique depuis plus de 10 ans, avec une expertise particulière dans l'optimisation des processus financiers.",
+      "imageAlt": "Sophie Dubois"
+    },
+    "share": "Partagez cet article :"
+  },
   "cta": {
     "audit": {
       "title": "Prêt à transformer votre entreprise avec l'IA ?",

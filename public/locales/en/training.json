@@ -18,5 +18,83 @@
   "stats": {
     "satisfaction": "Satisfaction",
     "certified": "Trained People"
+  },
+  "formation": {
+    "hero": {
+      "title": "Master AI tools in 3 days",
+      "description": "Practical training to use AI every day"
+    },
+    "courses": {
+      "chatgpt": {
+        "title": "Advanced ChatGPT",
+        "level": "All levels",
+        "duration": "1 day",
+        "topics": {
+          "0": "Writing effective prompts",
+          "1": "Analysing and summarising documents",
+          "2": "Creating original content",
+          "3": "Tips and tricks for better results"
+        }
+      },
+      "imageAI": {
+        "title": "AI Image Generation",
+        "level": "Beginner",
+        "duration": "1 day",
+        "topics": {
+          "0": "Midjourney and DALL-E",
+          "1": "Precise image descriptions",
+          "2": "Styles and variations",
+          "3": "Optimising results"
+        }
+      }
+    },
+    "benefits": {
+      "practical": {
+        "title": "Immediate practice",
+        "description": "Concrete exercises on real cases",
+        "examples": {
+          "0": "Writing professional emails",
+          "1": "Creating presentations",
+          "2": "Analysing documents",
+          "3": "Generating visuals"
+        }
+      },
+      "results": {
+        "title": "Guaranteed results",
+        "description": "Visible improvement from day one",
+        "examples": {
+          "0": "3x time saving",
+          "1": "Improved quality",
+          "2": "More creativity",
+          "3": "Better organisation"
+        }
+      }
+    },
+    "testimonials": {
+      "marie": {
+        "name": "Marie L.",
+        "role": "Marketing Manager",
+        "text": "I saved 2 hours a day thanks to the techniques I learnt!"
+      },
+      "thomas": {
+        "name": "Thomas D.",
+        "role": "Entrepreneur",
+        "text": "Very practical training, immediately applicable"
+      },
+      "sophie": {
+        "name": "Sophie M.",
+        "role": "Executive Assistant",
+        "text": "Finally an AI training course without technical jargon"
+      }
+    },
+    "cta": {
+      "title": "Ready to master AI?",
+      "subtitle": "Join our satisfied learners",
+      "button": "Book my training",
+      "stats": {
+        "duration": "To master AI",
+        "satisfaction": "Satisfaction"
+      }
+    }
   }
 }

@@ -15,5 +15,240 @@
   "stats": {
     "generated": "Gegenereerde artikelen",
     "languages": "Ondersteunde talen"
+  },
+  "creativity": {
+    "hero": {
+      "badge": "Creatieve oplossingen",
+      "title": "AI-ondersteunde Creativiteit",
+      "subtitle": "Breng uw ideeën tot leven met onze creatieve tools"
+    },
+    "features": {
+      "imageGen": {
+        "title": "Beeldgeneratie",
+        "description": "Afbeeldingen in hoge resolutie met fotorealistisch beeld"
+      },
+      "contentWriting": {
+        "title": "Contentredactie",
+        "description": "Aanmaak van boeiende en geoptimaliseerde teksten"
+      },
+      "creativeDialogues": {
+        "title": "Creatieve dialogen",
+        "description": "Natuurlijke en gepersonaliseerde gesprekken"
+      },
+      "ideation": {
+        "title": "Begeleide ideevorming",
+        "description": "Generatie van innovatieve concepten"
+      }
+    },
+    "toolsTitle": "Creatieve tools",
+    "tools": {
+      "styleAI": {
+        "title": "Style AI",
+        "description": "Geavanceerde personalisatie van visuele en tekstuele stijl"
+      },
+      "multiFormat": {
+        "title": "Multi-formaat",
+        "description": "Ondersteuning voor alle soorten creatieve content"
+      },
+      "creativeControl": {
+        "title": "Creatieve controle",
+        "description": "Precieze parameters voor perfecte resultaten"
+      },
+      "templates": {
+        "title": "Templates",
+        "description": "Aanpasbare modellen voor al uw behoeften"
+      }
+    },
+    "galleryTitle": "Voorbeelden van visuele creaties",
+    "gallery": {
+      "productDesign": {
+        "title": "Productdesign",
+        "description": "3D-visualisaties voor e-commerce"
+      },
+      "digitalMarketing": {
+        "title": "Digitale marketing",
+        "description": "Visuals voor sociale media"
+      },
+      "advertising": {
+        "title": "Reclame",
+        "description": "Aanmaak van reclamebanniers"
+      }
+    },
+    "contentTypesTitle": "Soorten content",
+    "contentTypes": {
+      "blog": {
+        "title": "Artikelen & Blogs",
+        "description": "SEO-geoptimaliseerde content",
+        "wordCount": "500-2000 woorden",
+        "languages": "Meertalig"
+      },
+      "social": {
+        "title": "Sociale media",
+        "description": "Boeiende posts",
+        "wordCount": "50-200 woorden",
+        "languages": "Platformaangepast"
+      },
+      "email": {
+        "title": "Marketing e-mails",
+        "description": "Converterende campagnes",
+        "wordCount": "200-500 woorden",
+        "languages": "Gepersonaliseerd"
+      }
+    },
+    "cta": {
+      "title": "Ontgrendel uw creativiteit",
+      "subtitle": "Krachtige tools voor al uw creatieve behoeften",
+      "button": "Nu beginnen",
+      "resolutionLabel": "Resolutie",
+      "formatsLabel": "Formaten",
+      "aiLabel": "Geavanceerd"
+    }
+  },
+  "page": {
+    "seo": {
+      "title": "AI Creatie — Content & Visuals | AInspiration",
+      "description": "Genereer professionele tekstcontent en afbeeldingen met AI: artikelen, posts, nieuwsbrieven, marketingvisuals en communicatie."
+    },
+    "hero": {
+      "badge": "AI-ondersteunde creatie",
+      "title": "Creëer",
+      "titleHighlight": "uitzonderlijke",
+      "titleSuffix": "content met AI",
+      "description": "Krachtige teksten, professionele visuals, complete campagnes — alles in enkele minuten, zonder technische vaardigheden.",
+      "ctaTry": "Gratis uitproberen",
+      "ctaExamples": "Voorbeelden bekijken"
+    },
+    "tabs": {
+      "text": "Tekstcontent",
+      "visual": "Visuele creatie"
+    },
+    "textTab": {
+      "badge": "Creatieve oplossingen",
+      "sectionTitle": "AI-ondersteunde Creativiteit",
+      "sectionDescription": "Breng uw ideeën tot leven met onze creatieve tools",
+      "creativeToolsTitle": "Creatieve tools",
+      "galleryTitle": "Voorbeelden van visuele creaties",
+      "contentTypesTitle": "Soorten content",
+      "cta": {
+        "title": "Ontgrendel uw creativiteit",
+        "description": "Krachtige tools voor al uw creatieve behoeften",
+        "button": "Nu beginnen",
+        "stat1Label": "Resolutie",
+        "stat2Label": "Formaten",
+        "stat3Label": "Geavanceerd"
+      }
+    },
+    "visualTab": {
+      "capabilities": {
+        "sectionTitle": "Oneindige creatieve mogelijkheden",
+        "sectionDescription": "Onze geavanceerde technologie laat u toe zonder grenzen te creëren",
+        "items": [
+          {
+            "title": "Generatie vanuit beschrijving",
+            "description": "Maak unieke visuals door eenvoudigweg te beschrijven wat u wilt bereiken"
+          },
+          {
+            "title": "Geavanceerde personalisatie",
+            "description": "Verfijn de stijl, kleuren en sfeer om precies de visual te krijgen die u nodig heeft"
+          },
+          {
+            "title": "Aangepaste formaten",
+            "description": "Genereer visuals voor al uw dragers: web, sociale media, print, verpakking…"
+          },
+          {
+            "title": "Oneindige variaties",
+            "description": "Verken verschillende variaties van hetzelfde concept om het perfecte beeld te vinden"
+          }
+        ]
+      },
+      "gallery": {
+        "sectionTitle": "Voorbeeldgalerij",
+        "sectionDescription": "Creaties gegenereerd door onze AI vanuit eenvoudige tekstbeschrijvingen",
+        "imageAlt": "AI-gegenereerde afbeelding",
+        "prompts": [
+          "Een luchtfoto van een modern zakendistrict met glazen en stalen gebouwen, dynamische sfeer, fotorealistische stijl",
+          "Een productafbeelding op een blauw verloopalternatief met professionele studioverlichting",
+          "Een modern kantoor met computer en designaccessoires, strakke en minimalistische stijl",
+          "Abstracte 3D-vormen met blauwe en paarse verlopen op een zwarte achtergrond",
+          "Een futuristische stedelijke nachtsfeer met neonlichten en reflecties op een nat plein",
+          "Een bedrijfsscène met diverse mensen die samenwerken in een moderne coworkingspace"
+        ]
+      },
+      "useCases": {
+        "sectionTitle": "Concrete toepassingen",
+        "sectionDescription": "Visuele oplossingen voor al uw zakelijke behoeften",
+        "examplesLabel": "Toepassingsvoorbeelden",
+        "learnMore": "Meer informatie",
+        "items": [
+          {
+            "title": "Digitale marketing",
+            "description": "Boeiende afbeeldingen voor uw campagnes op sociale media en het web",
+            "examples": ["Instagram- en Facebookposts", "Reclamebanniers", "Visuals voor nieuwsbrieven", "Blogcovers"]
+          },
+          {
+            "title": "E-commerce",
+            "description": "Productplaatsingen en verpakkingsvariaties",
+            "examples": ["Professionele productfoto's", "Gebruiksplaatsingen", "Verpakkingsvariaties", "Lifestyle-afbeeldingen"]
+          },
+          {
+            "title": "Bedrijfscommunicatie",
+            "description": "Illustraties en infografieken voor uw communicatiematerialen",
+            "examples": ["Conceptillustraties", "Verklarende infografieken", "Presentatievisuals", "Jaarverslagen"]
+          }
+        ]
+      },
+      "prompts": {
+        "sectionTitle": "Promptvoorbeelden",
+        "sectionDescription": "Laat u inspireren door deze tekstbeschrijvingen om uw eigen visuals te maken",
+        "items": [
+          "Een luchtfoto van een modern zakendistrict met glazen en stalen gebouwen, dynamische sfeer, fotorealistische stijl",
+          "Een abstracte visual die digitale transformatie vertegenwoordigt met blauwe en paarse lijnen die verbinding maken op een witte achtergrond, minimalistische stijl",
+          "De vergaderzaal van een innovatieve startup met diverse mensen die samenwerken, warme sfeer, professionele fotostijl",
+          "Een visueel concept dat kunstmatige intelligentie vertegenwoordigt met een gestileerd brein en lichtgevende verbindingen, donkere achtergrond, futuristische stijl"
+        ]
+      },
+      "pricing": {
+        "sectionTitle": "Een betaalbare oplossing zonder engagement",
+        "sectionDescription": "Flexibele tarieven afgestemd op uw behoeften",
+        "popular": "Meest populair",
+        "payg": {
+          "title": "Pay as you go",
+          "description": "Ideaal voor occasionele behoeften",
+          "price": "€1",
+          "priceUnit": "/ afbeelding",
+          "features": ["Hoge resolutie (4K)", "Commerciële rechten", "E-mailondersteuning"],
+          "button": "Gratis beginnen"
+        },
+        "pro": {
+          "title": "Pro Abonnement",
+          "description": "Voor regelmatig gebruik",
+          "price": "€49",
+          "priceUnit": "/ maand",
+          "features": ["100 afbeeldingen per maand", "Hoge resolutie (4K)", "Aangepaste stijlen", "Prioriteitsondersteuning", "Commerciële rechten"],
+          "button": "Gratis proefperiode starten"
+        },
+        "business": {
+          "title": "Business",
+          "description": "Voor teams",
+          "price": "€199",
+          "priceUnit": "/ maand",
+          "features": ["500 afbeeldingen per maand", "Ultra hoge definitie (8K)", "Meerdere gebruikers", "API voor integratie", "Dedicated support 24/7"],
+          "button": "Contact met het verkoopteam"
+        }
+      },
+      "cta": {
+        "title": "Versterk uw visuele communicatie",
+        "description": "Geen designvaardigheden of budget voor professionele fotografen meer nodig. Maak uitzonderlijke visuals vanaf nu.",
+        "bullet1": "Bespaar uren werk",
+        "bullet2": "Verlaag uw productiekosten",
+        "bullet3": "Creëer zonder creatieve grenzen",
+        "formTitle": "Begin gratis",
+        "check1": "5 gratis afbeeldingen om te testen",
+        "check2": "Toegang tot alle stijlen en formaten",
+        "check3": "Download in hoge resolutie",
+        "check4": "Ondersteuning voor uw eerste stappen",
+        "button": "Mijn eerste afbeelding maken"
+      }
+    }
   }
 }

@@ -22,5 +22,83 @@
   "stats": {
     "response": "Response Time",
     "satisfaction": "Customer Satisfaction"
+  },
+  "custom": {
+    "hero": {
+      "title": "Personalised Support",
+      "subtitle": "A bespoke approach for your AI transformation"
+    },
+    "approaches": {
+      "diagnostic": {
+        "title": "Initial Diagnostic",
+        "description": "In-depth analysis of your specific needs and objectives"
+      },
+      "plan": {
+        "title": "Tailored Plan",
+        "description": "Personalised strategy adapted to your sector"
+      },
+      "expert": {
+        "title": "Dedicated Expert",
+        "description": "An experienced AI consultant by your side"
+      },
+      "followup": {
+        "title": "Continuous Follow-up",
+        "description": "Real-time optimisation and adjustments"
+      }
+    },
+    "benefits": {
+      "support": {
+        "title": "Priority Support",
+        "description": "Fast and personalised assistance 24/7"
+      },
+      "sessions": {
+        "title": "Monthly Sessions",
+        "description": "Regular check-ins to track your progress"
+      },
+      "protection": {
+        "title": "Maximum Protection",
+        "description": "Guaranteed security and confidentiality"
+      }
+    },
+    "journey": {
+      "title": "Your path to excellence",
+      "phase1": {
+        "phase": "Phase 1",
+        "title": "Immersion",
+        "duration": "2 weeks",
+        "activities": {
+          "0": "Analysis of the current state",
+          "1": "Identification of opportunities",
+          "2": "Definition of objectives"
+        }
+      },
+      "phase2": {
+        "phase": "Phase 2",
+        "title": "Implementation",
+        "duration": "4–6 weeks",
+        "activities": {
+          "0": "Deployment of solutions",
+          "1": "Team training",
+          "2": "Testing and adjustments"
+        }
+      },
+      "phase3": {
+        "phase": "Phase 3",
+        "title": "Optimisation",
+        "duration": "Ongoing",
+        "activities": {
+          "0": "Performance monitoring",
+          "1": "Regular optimisations",
+          "2": "Evolution of solutions"
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to transform your business?",
+      "subtitle": "Book your free consultation session",
+      "button": "Start the support",
+      "firstResultLabel": "First result",
+      "satisfactionLabel": "Satisfaction"
+    }
   }
 }

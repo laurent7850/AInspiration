@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { 
+import {
   Lightbulb,
   Target,
   TrendingUp,
   Shield,
-  ArrowRight,
   Users,
   Zap,
   CheckCircle,
@@ -12,82 +11,85 @@ import {
   LineChart,
   Compass
 } from 'lucide-react';
-import StartForm from './StartForm';
+import { useTranslation } from 'react-i18next';
+import AuditForm from './AuditForm';
+import CallToAction from './ui/CallToAction';
 
 export default function Consulting() {
   const [showStartForm, setShowStartForm] = useState(false);
+  const { t } = useTranslation('features');
 
   const expertises = [
     {
       icon: Brain,
-      title: "Stratégie IA",
-      description: "Définition de votre feuille de route IA alignée avec vos objectifs business"
+      title: t('consulting.expertises.strategy.title'),
+      description: t('consulting.expertises.strategy.description')
     },
     {
       icon: Target,
-      title: "Optimisation des processus",
-      description: "Identification et implémentation des opportunités d'automatisation"
+      title: t('consulting.expertises.optimization.title'),
+      description: t('consulting.expertises.optimization.description')
     },
     {
       icon: LineChart,
-      title: "Performance & ROI",
-      description: "Maximisation du retour sur investissement de vos solutions IA"
+      title: t('consulting.expertises.performance.title'),
+      description: t('consulting.expertises.performance.description')
     },
     {
       icon: Compass,
-      title: "Innovation guidée",
-      description: "Exploration des technologies émergentes adaptées à vos besoins"
+      title: t('consulting.expertises.innovation.title'),
+      description: t('consulting.expertises.innovation.description')
     }
   ];
 
   const methodology = [
     {
-      phase: "Diagnostic",
+      phase: t('consulting.phases.diagnostic.phase'),
       activities: [
-        "Audit des processus existants",
-        "Analyse des opportunités",
-        "Évaluation de la maturité IA"
+        t('consulting.phases.diagnostic.activities.0'),
+        t('consulting.phases.diagnostic.activities.1'),
+        t('consulting.phases.diagnostic.activities.2')
       ],
-      duration: "2-3 semaines"
+      duration: t('consulting.phases.diagnostic.duration')
     },
     {
-      phase: "Stratégie",
+      phase: t('consulting.phases.strategy.phase'),
       activities: [
-        "Définition des objectifs",
-        "Priorisation des initiatives",
-        "Plan d'implémentation"
+        t('consulting.phases.strategy.activities.0'),
+        t('consulting.phases.strategy.activities.1'),
+        t('consulting.phases.strategy.activities.2')
       ],
-      duration: "3-4 semaines"
+      duration: t('consulting.phases.strategy.duration')
     },
     {
-      phase: "Exécution",
+      phase: t('consulting.phases.execution.phase'),
       activities: [
-        "Pilotes et POC",
-        "Déploiement progressif",
-        "Mesure des résultats"
+        t('consulting.phases.execution.activities.0'),
+        t('consulting.phases.execution.activities.1'),
+        t('consulting.phases.execution.activities.2')
       ],
-      duration: "2-6 mois"
+      duration: t('consulting.phases.execution.duration')
     }
   ];
 
   const benefits = [
     {
-      title: "Vision claire",
-      description: "Stratégie IA alignée avec vos objectifs business",
+      title: t('consulting.benefits.vision.title'),
+      description: t('consulting.benefits.vision.description'),
       icon: Lightbulb,
-      stats: "+180% ROI moyen"
+      stats: t('consulting.benefits.vision.stats')
     },
     {
-      title: "Efficacité prouvée",
-      description: "Optimisation mesurable des processus",
+      title: t('consulting.benefits.efficiency.title'),
+      description: t('consulting.benefits.efficiency.description'),
       icon: TrendingUp,
-      stats: "-30% coûts opérationnels"
+      stats: t('consulting.benefits.efficiency.stats')
     },
     {
-      title: "Risques maîtrisés",
-      description: "Approche sécurisée et conforme",
+      title: t('consulting.benefits.risk.title'),
+      description: t('consulting.benefits.risk.description'),
       icon: Shield,
-      stats: "100% conformité RGPD"
+      stats: t('consulting.benefits.risk.stats')
     }
   ];
 
@@ -96,10 +98,10 @@ export default function Consulting() {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Conseil en Intelligence Artificielle
+            {t('consulting.hero.title')}
           </h1>
           <p className="text-xl text-gray-600">
-            Transformez votre entreprise avec une stratégie IA sur mesure
+            {t('consulting.hero.description')}
           </p>
         </div>
 
@@ -123,7 +125,7 @@ export default function Consulting() {
         {/* Méthodologie */}
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
-            Notre méthodologie
+            {t('consulting.methodology.title')}
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {methodology.map((phase, index) => (
@@ -171,42 +173,22 @@ export default function Consulting() {
         </div>
 
         {/* CTA */}
-        <div className="bg-indigo-600 rounded-2xl p-8 lg:p-12 text-white">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-3xl font-bold mb-4">
-                Prêt à définir votre stratégie IA ?
-              </h3>
-              <p className="text-indigo-100 mb-6">
-                Réservez une session de consultation stratégique gratuite
-              </p>
-              <button 
-                onClick={() => setShowStartForm(true)}
-                className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition flex items-center gap-2"
-              >
-                Planifier ma consultation
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-            <div className="grid grid-cols-2 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                <Zap className="w-8 h-8 text-white mx-auto mb-2" />
-                <div className="text-3xl font-bold mb-1">15+</div>
-                <div className="text-indigo-100">Années d'expertise</div>
-              </div>
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                <Users className="w-8 h-8 text-white mx-auto mb-2" />
-                <div className="text-3xl font-bold mb-1">500+</div>
-                <div className="text-indigo-100">Projets réussis</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <CallToAction
+          title={t('consulting.cta.title')}
+          subtitle={t('consulting.cta.subtitle')}
+          buttonText={t('consulting.cta.button')}
+          buttonAction={() => setShowStartForm(true)}
+          solid
+          stats={[
+            { value: "15+", label: t('consulting.cta.stats.expertise'), icon: Zap },
+            { value: "500+", label: t('consulting.cta.stats.projects'), icon: Users },
+          ]}
+        />
       </div>
 
-      <StartForm 
-        isOpen={showStartForm} 
-        onClose={() => setShowStartForm(false)} 
+      <AuditForm
+        isOpen={showStartForm}
+        onClose={() => setShowStartForm(false)}
       />
     </section>
   );

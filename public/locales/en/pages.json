@@ -1,0 +1,37 @@
+{
+  "notFound": {
+    "seo": {
+      "title": "Page Not Found | AInspiration",
+      "description": "This page does not exist."
+    },
+    "title": "Page Not Found",
+    "message": "The page you are looking for does not exist or has been moved.",
+    "home": "Home",
+    "back": "Previous Page",
+    "contact": "Contact"
+  },
+  "unsubscribe": {
+    "seo": {
+      "title": "Newsletter Unsubscribe - AInspiration",
+      "description": "Manage your AInspiration newsletter subscription"
+    },
+    "loading": "Verifying...",
+    "confirm_title": "Confirm Unsubscription",
+    "confirm_intro": "You are about to unsubscribe from the AInspiration newsletter.",
+    "confirm_email": "Email address:",
+    "confirm_warning": "You will no longer receive our AI news and industry trends.",
+    "confirm_button": "Confirm Unsubscription",
+    "cancel": "Cancel",
+    "success_title": "Successfully Unsubscribed",
+    "success_message": "You have been successfully unsubscribed from our newsletter.",
+    "success_note": "We are sorry to see you go. You can re-subscribe at any time from our website.",
+    "back_home": "Back to Home",
+    "error_invalid_title": "Invalid Link",
+    "error_generic_title": "An Error Occurred",
+    "contact_us": "Contact Us",
+    "error_invalid_link": "Invalid unsubscribe link.",
+    "error_link_used": "This unsubscribe link is no longer valid or has already been used.",
+    "error_unsubscribe": "Unable to unsubscribe you. Please contact support.",
+    "error_generic": "An error occurred. Please try again later."
+  }
+}

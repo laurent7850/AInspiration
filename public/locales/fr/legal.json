@@ -68,7 +68,11 @@
     "s9_title": "9. Confidentialité",
     "s9_body": "Les parties s'engagent à maintenir confidentielles toutes les informations échangées dans le cadre de la prestation. Cette obligation survit à la fin du contrat.",
     "s10_title": "10. Droit applicable",
-    "s10_body": "Les présentes CGV sont soumises au droit belge. Tout litige relève de la compétence des tribunaux de l'arrondissement du siège social de Distr'Action SPRL."
+    "s10_body": "Les présentes CGV sont soumises au droit belge. Tout litige relève de la compétence des tribunaux de l'arrondissement du siège social de Distr'Action SPRL.",
+    "s11_title": "11. Accord de Niveau de Service (SLA)",
+    "s11_body": "Les prestations d'AInspiration sont soumises à un Accord de Niveau de Service (SLA) définissant les engagements de disponibilité (99% pour les abonnements managés), les délais de livraison (24h pour les audits, 5 jours ouvrés pour les Packs Express), les niveaux de support (4h pour les incidents critiques) et les compensations en cas de non-respect. Le document SLA complet est disponible sur demande à contact@ainspiration.eu.",
+    "s12_title": "12. Traitement des données pour le compte du client",
+    "s12_body": "Lorsqu'AInspiration traite des données personnelles pour le compte du client dans le cadre des workflows hébergés, un Accord de Traitement des Données (DPA) conforme à l'article 28 du RGPD est conclu entre les parties. Ce DPA détaille les types de données traitées, les mesures de sécurité, les sous-traitants ultérieurs et les conditions de suppression. Le DPA est disponible sur demande à contact@ainspiration.eu."
   },
   "mentions": {
     "seo": {

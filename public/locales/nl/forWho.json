@@ -1,0 +1,121 @@
+{
+  "seo": {
+    "title": "Voor wie is AI? | AInspiration",
+    "description": "Ontdek hoe AI uw bedrijf kan transformeren, ongeacht de grootte of sector."
+  },
+  "hero": {
+    "title": "Voor wie is AI?",
+    "introBold": "Als bevoorrechte partner van zelfstandigen, micro-ondernemingen en kmo's",
+    "introText": " passen wij al onze diensten aan om specifiek te voldoen aan de behoeften en uitdagingen van kleine structuren.",
+    "introSub": "Elke oplossing op deze site is ontworpen en geoptimaliseerd om uw ontwikkeling te ondersteunen, of u nu zelfstandige ondernemer bent of directeur van een kmo, met flexibele en toegankelijke aanbiedingen die zich aanpassen aan uw ondernemersrealiteit."
+  },
+  "sizes": {
+    "sectionTitle": "Een oplossing op maat voor elke bedrijfsgrootte",
+    "freelance": {
+      "title": "Zelfstandigen & Freelancers",
+      "description": "Vermenigvuldig uw productiviteit en bied diensten met hogere toegevoegde waarde aan zonder uw werklast te verhogen. AI laat u toe te focussen op uw expertise terwijl tijdrovende taken worden geautomatiseerd.",
+      "benefits": [
+        "Automatisering van administratieve taken",
+        "Kwaliteitsvolle contentcreatie",
+        "Klantenservice 24/7"
+      ]
+    },
+    "tpe": {
+      "title": "Micro-ondernemingen (minder dan 10 werknemers)",
+      "description": "Concurreer effectief met grotere structuren door uw processen te optimaliseren en uw reactievermogen te verhogen. AI geeft u toegang tot tools die vroeger voorbehouden waren aan grote ondernemingen.",
+      "benefits": [
+        "Analyse van klantgegevens",
+        "Gepersonaliseerde marketing",
+        "Voorraadoptimalisatie"
+      ]
+    },
+    "pme": {
+      "title": "Kmo's (tot 250 werknemers)",
+      "description": "Transformeer uw organisatie diepgaand om efficiënter en winstgevender te worden. AI laat u toe het potentieel van uw teams vrij te maken en al uw processen te optimaliseren.",
+      "benefits": [
+        "Workflowautomatisering",
+        "Trendvoorspelling",
+        "Beslissingsondersteuning"
+      ]
+    }
+  },
+  "adaptation": {
+    "sectionTitle": "Hoe wij onze diensten aanpassen aan uw realiteit",
+    "scalable": {
+      "title": "Oplossingen op maat van uw schaal",
+      "description": "Wij leggen geen overdreven dure oplossingen op. Onze aanbiedingen zijn modulair en passen zich precies aan de grootte van uw structuur aan.",
+      "benefits": [
+        "Start met een gericht, hoog-impact domein",
+        "Progressieve evolutie op basis van uw resultaten"
+      ]
+    },
+    "riskFree": {
+      "title": "Risicovrij bedrijfsmodel",
+      "description": "Onze aanpak is ontworpen om de financiële risico's van kleine structuren te minimaliseren, met progressieve investeringen en een snelle ROI.",
+      "benefits": [
+        "Gratis audit en gepersonaliseerd actieplan",
+        "Concrete meting van de behaalde resultaten"
+      ]
+    }
+  },
+  "sectors": {
+    "sectionTitle": "Concrete toepassingen voor elke sector",
+    "commerce": {
+      "title": "Handel",
+      "description": "Voorraadoptimalisatie, personalisatie van productaanbevelingen, verkoopsprognoses en verbetering van de klantervaring via 24/7 chatbot."
+    },
+    "services": {
+      "title": "Diensten",
+      "description": "Automatisering van administratieve taken, generatie van gepersonaliseerde offertes, intelligent afsprakenbeheer en voorspellende vraaganalyse."
+    },
+    "craft": {
+      "title": "Ambacht",
+      "description": "Geoptimaliseerd voorraadbeheer, AI-ondersteunde designcreatie, nauwkeurige schatting van doorlooptijden en kosten, digitale valorisatie van vakmanschap."
+    },
+    "industry": {
+      "title": "Industrie",
+      "description": "Voorspellend onderhoud, geautomatiseerde kwaliteitscontrole, optimalisatie van productielijnen en afvalvermindering dankzij realtime analyse."
+    },
+    "liberal": {
+      "title": "Vrije beroepen",
+      "description": "Intelligente documentanalyse, geautomatiseerde notulen, geassisteerd juridisch of medisch onderzoek, en het opstellen van rapporten en samenvattingen."
+    }
+  },
+  "keyBenefits": {
+    "sectionTitle": "Belangrijkste AI-voordelen voor uw bedrijf",
+    "accessibility": {
+      "title": "Toegankelijkheid",
+      "description": "Betaalbare en eenvoudig te implementeren AI-oplossingen, ongeacht de grootte van uw structuur."
+    },
+    "timeSaving": {
+      "title": "Tijdsbesparing",
+      "description": "Automatisering van repetitieve taken om u te concentreren op wat echt telt voor uw bedrijf."
+    },
+    "roi": {
+      "title": "Snelle ROI",
+      "description": "Een meetbare return on investment vanaf de eerste maanden van gebruik van onze oplossingen."
+    },
+    "adaptability": {
+      "title": "Aanpasbaarheid",
+      "description": "Op maat gemaakte oplossingen die evolueren met uw behoeften en zich aanpassen aan uw groei."
+    }
+  },
+  "testimonials": {
+    "sectionTitle": "Zij transformeerden hun activiteit met onze oplossingen",
+    "thomas": {
+      "quote": "Als zelfstandig consultant heeft AI mij in staat gesteld analytische diensten aan te bieden die vroeger alleen grote kantoren aanboden. Mijn omzet steeg met 40% in het eerste jaar.",
+      "name": "Thomas D.",
+      "role": "Strategieconsultant"
+    },
+    "marie": {
+      "quote": "Met 8 werknemers stond onze webshop voor reuzen. AI stelde ons in staat een gepersonaliseerde ervaring aan onze klanten te bieden en onze voorraad te optimaliseren. We verminderden onze kosten met 30% terwijl we onze verkopen verhoogden.",
+      "name": "Marie L.",
+      "role": "Eigenaar van een kledingboetiek"
+    }
+  },
+  "cta": {
+    "title": "Klaar om uw bedrijf te transformeren met AI?",
+    "description": "Als bevoorrechte partner van zelfstandigen, micro-ondernemingen en kmo's bieden wij u een gratis audit aan om optimalisatiekansen specifiek voor uw activiteit te identificeren.",
+    "button": "Start uw gratis audit"
+  }
+}

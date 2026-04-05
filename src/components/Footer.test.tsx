@@ -21,8 +21,8 @@ describe('Footer', () => {
 
   it('should render address', () => {
     renderWithProviders(<Footer />);
-    expect(screen.getByText('Grand place 50')).toBeInTheDocument();
-    expect(screen.getByText('7850 Enghien')).toBeInTheDocument();
+    expect(screen.getByText('Chaussée Brunehault 27')).toBeInTheDocument();
+    expect(screen.getByText('7041 Givry')).toBeInTheDocument();
     expect(screen.getByText('Belgique')).toBeInTheDocument();
   });
 

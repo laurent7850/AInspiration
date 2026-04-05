@@ -1,0 +1,61 @@
+{
+  "seo": {
+    "title": "Études de cas | AInspiration",
+    "description": "Découvrez comment des PME transforment leur activité grâce à nos solutions IA."
+  },
+  "pageTitle": "Études de cas",
+  "pageSubtitle": "Découvrez comment des entreprises comme la vôtre transforment leur activité grâce à nos solutions IA",
+  "labels": {
+    "employees": "Employés",
+    "challenge": "Défi",
+    "solution": "Solution",
+    "results": "Résultats"
+  },
+  "study1": {
+    "title": "Optimisation du service client avec un chatbot IA",
+    "industry": "E-commerce",
+    "challenge": "Face à une croissance rapide, CommerceXpress peinait à répondre efficacement aux demandes clients, entraînant des délais de réponse longs et une satisfaction client en baisse.",
+    "solution": "Mise en place d'un chatbot IA capable de traiter 80% des demandes courantes, intégré au site web et aux réseaux sociaux, avec transfert intelligent vers les agents humains.",
+    "result1": "Réduction de 75% du temps de réponse",
+    "result2": "Augmentation de 30% de la satisfaction client",
+    "result3": "Économie de 45k€ annuels en coûts de support",
+    "result4": "Disponibilité du support 24/7",
+    "quote": "Notre chatbot IA est devenu indispensable. Il répond instantanément aux questions fréquentes, libérant nos équipes pour les demandes complexes. La satisfaction client a bondi et nos coûts ont diminué.",
+    "author": "Directrice Service Client, CommerceXpress"
+  },
+  "study2": {
+    "title": "Automatisation de la gestion des factures",
+    "industry": "Services IT",
+    "challenge": "TechnoServic traitait manuellement plus de 500 factures par mois, entraînant des retards de paiement, des erreurs coûteuses et mobilisant deux employés à temps plein.",
+    "solution": "Déploiement d'une solution IA d'extraction automatique des données de factures, intégrée au système comptable existant, avec validation intelligente et classification automatique.",
+    "result1": "Réduction de 90% du temps de traitement",
+    "result2": "Diminution de 95% des erreurs de saisie",
+    "result3": "Économie de 65k€ annuels",
+    "result4": "Redéploiement de 1,5 ETP vers des tâches à valeur ajoutée",
+    "quote": "Notre département comptable a été transformé. L'IA extrait et traite les données des factures avec une précision remarquable, libérant nos équipes pour des analyses plus stratégiques.",
+    "author": "Directeur Administratif et Financier, TechnoServic"
+  },
+  "study3": {
+    "title": "Optimisation des stocks grâce à l'analyse prédictive",
+    "industry": "Mobilier",
+    "challenge": "MobiliFrance souffrait de ruptures de stock fréquentes sur les articles populaires tout en immobilisant trop de capital dans des produits à faible rotation.",
+    "solution": "Implémentation d'un système d'analyse prédictive basé sur l'IA intégrant les données historiques, les tendances saisonnières, et les facteurs externes pour optimiser la gestion des stocks.",
+    "result1": "Réduction de 85% des ruptures de stock",
+    "result2": "Diminution de 25% du stock global",
+    "result3": "Augmentation de 15% du taux de rotation des stocks",
+    "result4": "Retour sur investissement rapide dès la première année",
+    "quote": "L'IA prédictive a révolutionné notre gestion des stocks. Nous anticipons maintenant précisément la demande, évitant les ruptures tout en optimisant nos niveaux d'inventaire.",
+    "author": "Responsable Supply Chain, MobiliFrance"
+  },
+  "stats": {
+    "productivity": "Augmentation de la productivité",
+    "processing": "Réduction du temps de traitement",
+    "revenue": "Augmentation du CA",
+    "clients": "PME accompagnées"
+  },
+  "cta": {
+    "title": "Prêt à transformer votre entreprise ?",
+    "subtitle": "Découvrez comment nos solutions IA peuvent résoudre vos défis spécifiques",
+    "button": "Discutons de votre projet"
+  }
+}

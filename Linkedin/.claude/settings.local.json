@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -r \"linkedinContent\\\\|LinkedInSector\\\\|LinkedInPost\" '/c/Users/laure/OneDrive/Documents/Claude code/AInspiration/src' --include=*.ts --include=*.tsx)",
+      "Bash(node -c server.js)",
+      "Bash(node -c crypto.js)",
+      "Bash(node -c linkedin.js)",
+      "Bash(node -c content-generator.js)",
+      "Bash(node -e \"console.log\\(require\\(''crypto''\\).randomBytes\\(32\\).toString\\(''hex''\\).slice\\(0,32\\)\\)\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://ainspiration.eu/api/linkedin/status)",
+      "Bash(curl -s https://ainspiration.eu/api/health)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://ainspiration.eu/)",
+      "Bash(curl -s https://ainspiration.eu/api/linkedin/status)",
+      "Bash(node -e \"const bcrypt = require\\(''bcryptjs''\\); bcrypt.hash\\(''AInspiration2026!'', 10\\).then\\(h => console.log\\(h\\)\\)\")",
+      "Bash(npm install:*)",
+      "Bash(node -e \"const bcrypt = require\\(''''bcryptjs''''\\); bcrypt.hash\\(''''AInspiration2026!'''', 10\\).then\\(h => console.log\\(h\\)\\)\")",
+      "Bash(curl -s -X POST https://ainspiration.eu/api/auth/login -H \"Content-Type: application/json\" -d '{\"\"email\"\":\"\"admin@ainspiration.eu\"\",\"\"password\"\":\"\"AInspiration2026!\"\"}')",
+      "Bash(curl -s -X POST https://ainspiration.eu/api/auth/register -H \"Content-Type: application/json\" -d '{\"\"email\"\":\"\"admin@ainspiration.eu\"\",\"\"password\"\":\"\"AInspiration2026!\"\",\"\"name\"\":\"\"Laurent Marechal\"\"}')",
+      "Bash(curl -v -X POST \"https://ainspiration.eu/api/auth/register\" -H \"Content-Type: application/json\" -d \"{\"\"email\"\":\"\"laurent@ainspiration.eu\"\",\"\"password\"\":\"\"AInspiration2026!\"\",\"\"name\"\":\"\"Laurent Marechal\"\"}\")",
+      "Bash(curl -s -X POST \"https://ainspiration.eu/api/auth/login\" -H \"Content-Type: application/json\" -d \"{\"\"email\"\":\"\"laurent@ainspiration.eu\"\",\"\"password\"\":\"\"AInspiration2026!\"\"}\")",
+      "Bash(TOKEN=\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUzOGZkZThlLTk0NmQtNDEzMC1hMGUwLWMzNzBmZTNiY2I0MiIsImVtYWlsIjoibGF1cmVudEBhaW5zcGlyYXRpb24uZXUiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3Mzg1MDg2OSwiZXhwIjoxNzc0NDU1NjY5fQ.kgs7mi6aEYv8rfBKvIzU24MOtdrfe6qhWIZhpmBufbs\")",
+      "Bash(curl -s \"https://ainspiration.eu/api/linkedin/status\" -H \"Authorization: Bearer $TOKEN\")",
+      "Bash(npx tsc:*)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(npm run:*)",
+      "Bash(npx netlify:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://ainspiration.eu/linkedin)",
+      "Bash(curl -s -X POST \"https://ainspiration.eu/api/auth/register\" -H \"Content-Type: application/json\" -d \"{\"\"email\"\":\"\"laurent@ainspiration.eu\"\",\"\"password\"\":\"\"AInspiration2026!\"\",\"\"name\"\":\"\"Laurent Marechal\"\"}\")",
+      "Bash(curl -s \"https://ainspiration.eu/api/linkedin/status\" -H \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI2OGYxNDJhLWE1ODgtNGVmNS1iYTJmLTYzZjUzOTRlOTIyOSIsImVtYWlsIjoibGF1cmVudEBhaW5zcGlyYXRpb24uZXUiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3Mzg1MTkxNCwiZXhwIjoxNzc0NDU2NzE0fQ._DRIgICwFHSCEdDix1ihMaUZwFpEbznd8bRdcUFolj4\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://ainspiration.eu/assets/LinkedinPage-4DHdiNYf.js\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://ainspiration2026.netlify.app/assets/LinkedinPage-4DHdiNYf.js\")",
+      "Bash(curl -s https://ainspiration.eu/linkedin)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{redirect_url}\" \"https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78kcbcs6pe3b46&redirect_uri=https%3A%2F%2Fainspiration.eu%2Fapi%2Flinkedin%2Fcallback&scope=openid+profile+w_member_social&state=test123\")"
+    ]
+  }
+}

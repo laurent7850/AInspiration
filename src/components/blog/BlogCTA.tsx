@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, CheckCircle, Zap, TrendingUp, Target } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import StartForm from '../StartForm';
+import AuditForm from '../AuditForm';
 
 interface BlogCTAProps {
   variant?: 'audit' | 'consultation' | 'formation' | 'default';
@@ -18,15 +18,7 @@ const BlogCTA: React.FC<BlogCTAProps> = ({ variant = 'default' }) => {
     default: Zap
   };
 
-  const productIdMap = {
-    audit: 'audit-ia',
-    consultation: 'conseil-ia',
-    formation: 'formation-ia',
-    default: 'audit-ia'
-  };
-
   const Icon = iconMap[variant];
-  const productId = productIdMap[variant];
 
   return (
     <>
@@ -65,16 +57,15 @@ const BlogCTA: React.FC<BlogCTAProps> = ({ variant = 'default' }) => {
             </button>
           </div>
 
-          <p className="text-center text-indigo-200 text-sm mt-6">
+          <p className="text-center text-indigo-100 text-sm mt-6">
             {t('cta.footer')}
           </p>
         </div>
       </div>
 
-      <StartForm
+      <AuditForm
         isOpen={showStartForm}
         onClose={() => setShowStartForm(false)}
-        productId={productId}
       />
     </>
   );

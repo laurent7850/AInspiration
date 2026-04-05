@@ -9,7 +9,7 @@ services:
     environment:
       POSTGRES_DB: ainspiration
       POSTGRES_USER: ainspiration
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-ainspiration_secret_2026}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD must be set in .env}
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
@@ -34,8 +34,8 @@ services:
       DB_PORT: 5432
       DB_NAME: ainspiration
       DB_USER: ainspiration
-      DB_PASSWORD: ${DB_PASSWORD:-ainspiration_secret_2026}
-      JWT_SECRET: ${JWT_SECRET:-ainspiration_jwt_secret_change_me}
+      DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD must be set in .env}
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET must be set in .env}
     depends_on:
       postgres:
         condition: service_healthy

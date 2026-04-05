@@ -22,5 +22,83 @@
   "stats": {
     "response": "Temps de réponse",
     "satisfaction": "Satisfaction client"
+  },
+  "custom": {
+    "hero": {
+      "title": "Accompagnement personnalisé",
+      "subtitle": "Une approche sur-mesure pour votre transformation IA"
+    },
+    "approaches": {
+      "diagnostic": {
+        "title": "Diagnostic initial",
+        "description": "Analyse approfondie de vos besoins et objectifs spécifiques"
+      },
+      "plan": {
+        "title": "Plan sur mesure",
+        "description": "Stratégie personnalisée adaptée à votre secteur d'activité"
+      },
+      "expert": {
+        "title": "Expert dédié",
+        "description": "Un consultant IA expérimenté à vos côtés"
+      },
+      "followup": {
+        "title": "Suivi continu",
+        "description": "Optimisation et ajustements en temps réel"
+      }
+    },
+    "benefits": {
+      "support": {
+        "title": "Support prioritaire",
+        "description": "Assistance rapide et personnalisée 24/7"
+      },
+      "sessions": {
+        "title": "Sessions mensuelles",
+        "description": "Points réguliers pour suivre vos progrès"
+      },
+      "protection": {
+        "title": "Protection maximale",
+        "description": "Sécurité et confidentialité garanties"
+      }
+    },
+    "journey": {
+      "title": "Votre parcours vers l'excellence",
+      "phase1": {
+        "phase": "Phase 1",
+        "title": "Immersion",
+        "duration": "2 semaines",
+        "activities": {
+          "0": "Analyse de l'existant",
+          "1": "Identification des opportunités",
+          "2": "Définition des objectifs"
+        }
+      },
+      "phase2": {
+        "phase": "Phase 2",
+        "title": "Implémentation",
+        "duration": "4-6 semaines",
+        "activities": {
+          "0": "Mise en place des solutions",
+          "1": "Formation des équipes",
+          "2": "Tests et ajustements"
+        }
+      },
+      "phase3": {
+        "phase": "Phase 3",
+        "title": "Optimisation",
+        "duration": "Continue",
+        "activities": {
+          "0": "Suivi des performances",
+          "1": "Optimisations régulières",
+          "2": "Évolution des solutions"
+        }
+      }
+    },
+    "cta": {
+      "title": "Prêt à transformer votre entreprise ?",
+      "subtitle": "Réservez votre session de consultation gratuite",
+      "button": "Démarrer l'accompagnement",
+      "firstResultLabel": "Premier résultat",
+      "satisfactionLabel": "Satisfaction"
+    }
   }
 }

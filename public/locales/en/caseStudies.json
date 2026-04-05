@@ -1,0 +1,61 @@
+{
+  "seo": {
+    "title": "Case Studies | AInspiration",
+    "description": "Discover how SMEs are transforming their businesses with our AI solutions."
+  },
+  "pageTitle": "Case Studies",
+  "pageSubtitle": "Discover how companies like yours are transforming their business with our AI solutions",
+  "labels": {
+    "employees": "Employees",
+    "challenge": "Challenge",
+    "solution": "Solution",
+    "results": "Results"
+  },
+  "study1": {
+    "title": "Customer Service Optimisation with an AI Chatbot",
+    "industry": "E-commerce",
+    "challenge": "Faced with rapid growth, CommerceXpress struggled to respond effectively to customer enquiries, resulting in long response times and declining customer satisfaction.",
+    "solution": "Implementation of an AI chatbot capable of handling 80% of routine enquiries, integrated with the website and social media, with intelligent escalation to human agents.",
+    "result1": "75% reduction in response time",
+    "result2": "30% increase in customer satisfaction",
+    "result3": "Annual saving of €45k in support costs",
+    "result4": "24/7 support availability",
+    "quote": "Our AI chatbot has become indispensable. It instantly answers frequently asked questions, freeing our teams for complex enquiries. Customer satisfaction has soared and our costs have fallen.",
+    "author": "Head of Customer Service, CommerceXpress"
+  },
+  "study2": {
+    "title": "Invoice Management Automation",
+    "industry": "IT Services",
+    "challenge": "TechnoServic was manually processing over 500 invoices per month, causing payment delays, costly errors and tying up two full-time employees.",
+    "solution": "Deployment of an AI solution for automatic invoice data extraction, integrated with the existing accounting system, with intelligent validation and automatic classification.",
+    "result1": "90% reduction in processing time",
+    "result2": "95% reduction in data entry errors",
+    "result3": "Annual saving of €65k",
+    "result4": "1.5 FTEs redeployed to value-added tasks",
+    "quote": "Our accounts department has been transformed. The AI extracts and processes invoice data with remarkable accuracy, freeing our teams for more strategic analysis.",
+    "author": "Chief Financial Officer, TechnoServic"
+  },
+  "study3": {
+    "title": "Stock Optimisation Through Predictive Analytics",
+    "industry": "Furniture",
+    "challenge": "MobiliFrance suffered from frequent stockouts on popular items whilst tying up too much capital in slow-moving products.",
+    "solution": "Implementation of an AI-based predictive analytics system integrating historical data, seasonal trends and external factors to optimise stock management.",
+    "result1": "85% reduction in stockouts",
+    "result2": "25% reduction in overall stock levels",
+    "result3": "15% increase in stock turnover rate",
+    "result4": "Fast return on investment from the first year",
+    "quote": "Predictive AI has revolutionised our stock management. We now accurately anticipate demand, avoiding stockouts whilst optimising our inventory levels.",
+    "author": "Supply Chain Manager, MobiliFrance"
+  },
+  "stats": {
+    "productivity": "Increase in productivity",
+    "processing": "Reduction in processing time",
+    "revenue": "Increase in turnover",
+    "clients": "SMEs supported"
+  },
+  "cta": {
+    "title": "Ready to transform your business?",
+    "subtitle": "Discover how our AI solutions can address your specific challenges",
+    "button": "Let's discuss your project"
+  }
+}

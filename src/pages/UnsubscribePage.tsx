@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Mail, CheckCircle, XCircle, RefreshCw, ArrowLeft } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { unsubscribe, getSubscriberByToken } from '../services/newsletterService';
 import SEOHead from '../components/SEOHead';
 
@@ -12,11 +13,12 @@ export default function UnsubscribePage() {
   const [status, setStatus] = useState<Status>('loading');
   const [email, setEmail] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const { t } = useTranslation('pages');
 
   useEffect(() => {
     if (!token) {
       setStatus('not_found');
-      setErrorMessage('Lien de désabonnement invalide.');
+      setErrorMessage(t('unsubscribe.error_invalid_link'));
       return;
     }
 
@@ -33,16 +35,16 @@ export default function UnsubscribePage() {
           }
         } else {
           setStatus('not_found');
-          setErrorMessage('Ce lien de désabonnement n\'est plus valide ou a déjà été utilisé.');
+          setErrorMessage(t('unsubscribe.error_link_used'));
         }
       } catch (error) {
         setStatus('error');
-        setErrorMessage('Une erreur est survenue. Veuillez réessayer plus tard.');
+        setErrorMessage(t('unsubscribe.error_generic'));
       }
     };
 
     verifyToken();
-  }, [token]);
+  }, [token, t]);
 
   const handleUnsubscribe = async () => {
     if (!token) return;
@@ -54,11 +56,11 @@ export default function UnsubscribePage() {
         setStatus('success');
       } else {
         setStatus('error');
-        setErrorMessage('Impossible de vous désabonner. Veuillez contacter le support.');
+        setErrorMessage(t('unsubscribe.error_unsubscribe'));
       }
     } catch (error) {
       setStatus('error');
-      setErrorMessage('Une erreur est survenue. Veuillez réessayer plus tard.');
+      setErrorMessage(t('unsubscribe.error_generic'));
     }
   };
 
@@ -68,7 +70,7 @@ export default function UnsubscribePage() {
         return (
           <div className="text-center">
             <RefreshCw className="w-16 h-16 text-indigo-600 animate-spin mx-auto mb-4" />
-            <p className="text-gray-600">Vérification en cours...</p>
+            <p className="text-gray-600">{t('unsubscribe.loading')}</p>
           </div>
         );
 
@@ -79,31 +81,31 @@ export default function UnsubscribePage() {
               <Mail className="w-10 h-10 text-indigo-600" />
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-4">
-              Confirmer le désabonnement
+              {t('unsubscribe.confirm_title')}
             </h1>
             <p className="text-gray-600 mb-2">
-              Vous êtes sur le point de vous désabonner de la newsletter AInspiration.
+              {t('unsubscribe.confirm_intro')}
             </p>
             {email && (
               <p className="text-gray-500 mb-6">
-                Adresse email : <strong>{email}</strong>
+                {t('unsubscribe.confirm_email')} <strong>{email}</strong>
               </p>
             )}
             <p className="text-sm text-gray-500 mb-8">
-              Vous ne recevrez plus nos actualités sur l'IA et les tendances du secteur.
+              {t('unsubscribe.confirm_warning')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={handleUnsubscribe}
                 className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
               >
-                Confirmer le désabonnement
+                {t('unsubscribe.confirm_button')}
               </button>
               <Link
                 to="/"
                 className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
               >
-                Annuler
+                {t('unsubscribe.cancel')}
               </Link>
             </div>
           </div>
@@ -116,20 +118,20 @@ export default function UnsubscribePage() {
               <CheckCircle className="w-10 h-10 text-green-600" />
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-4">
-              Désabonnement réussi
+              {t('unsubscribe.success_title')}
             </h1>
             <p className="text-gray-600 mb-6">
-              Vous avez été désabonné de notre newsletter avec succès.
+              {t('unsubscribe.success_message')}
             </p>
             <p className="text-sm text-gray-500 mb-8">
-              Nous sommes désolés de vous voir partir. Vous pouvez vous réabonner à tout moment depuis notre site.
+              {t('unsubscribe.success_note')}
             </p>
             <Link
               to="/"
               className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
-              Retour à l'accueil
+              {t('unsubscribe.back_home')}
             </Link>
           </div>
         );
@@ -142,7 +144,7 @@ export default function UnsubscribePage() {
               <XCircle className="w-10 h-10 text-red-600" />
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-4">
-              {status === 'not_found' ? 'Lien invalide' : 'Une erreur est survenue'}
+              {status === 'not_found' ? t('unsubscribe.error_invalid_title') : t('unsubscribe.error_generic_title')}
             </h1>
             <p className="text-gray-600 mb-8">
               {errorMessage}
@@ -153,13 +155,13 @@ export default function UnsubscribePage() {
                 className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Retour à l'accueil
+                {t('unsubscribe.back_home')}
               </Link>
               <Link
                 to="/contact"
                 className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
               >
-                Nous contacter
+                {t('unsubscribe.contact_us')}
               </Link>
             </div>
           </div>
@@ -170,8 +172,8 @@ export default function UnsubscribePage() {
   return (
     <>
       <SEOHead
-        title="Désabonnement Newsletter - AInspiration"
-        description="Gérez votre abonnement à la newsletter AInspiration"
+        title={t('unsubscribe.seo.title')}
+        description={t('unsubscribe.seo.description')}
         noindex={true}
       />
       <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-20">

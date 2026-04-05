@@ -28,5 +28,90 @@
   "stats": {
     "prompts": "Aangemaakte prompts",
     "success": "Succespercentage"
+  },
+  "optimization": {
+    "hero": {
+      "title": "Geoptimaliseerde Prompts",
+      "subtitle": "Maximaliseer de efficiëntie van uw AI-interacties"
+    },
+    "whyTitle": "Waarom uw prompts optimaliseren?",
+    "whyText1": "In een wereld waarin AI onmisbaar wordt, maakt de kwaliteit van uw prompts alle verschil. Een geoptimaliseerde prompt is niet zomaar een eenvoudige vraag — het is een precieze instructie die de AI begeleidt naar precies wat u nodig heeft.",
+    "whyText2": "Onze experts hebben meer dan 100.000 interacties geanalyseerd om de patronen te identificeren die werken. Het resultaat? Prompts die bij de eerste poging relevante antwoorden genereren, waardoor u kostbare tijd bespaart.",
+    "testimonials": {
+      "sophie": {
+        "name": "Sophie M.",
+        "role": "Directeur Digitale Marketing",
+        "quote": "Voor ik geoptimaliseerde prompts gebruikte, besteedde ik uren aan het herformuleren van mijn vragen. Nu krijg ik in enkele minuten precies wat ik wil. Een ongelooflijke tijdsbesparing!"
+      },
+      "marc": {
+        "name": "Marc L.",
+        "role": "Innovatieprojectmanager",
+        "quote": "Het verschil tussen een basisprompten een geoptimaliseerde prompt is verbluffend. We hebben de tijd die we met AI interageren met 60% verminderd en tegelijk aanzienlijk betere resultaten behaald."
+      }
+    },
+    "comparison": {
+      "title": "Prestatievergelijking",
+      "criterion": "Criterium",
+      "basic": "Basis Prompt",
+      "optimised": "Geoptimaliseerde Prompt",
+      "improvement": "Verbetering",
+      "rows": {
+        "accuracy": {
+          "criterion": "Nauwkeurigheid",
+          "basic": "45%",
+          "optimised": "85%",
+          "improvement": "+40%"
+        },
+        "responseTime": {
+          "criterion": "Reactietijd",
+          "basic": "3-4 iteraties",
+          "optimised": "1-2 iteraties",
+          "improvement": "-60%"
+        },
+        "relevance": {
+          "criterion": "Relevantie",
+          "basic": "50%",
+          "optimised": "90%",
+          "improvement": "+40%"
+        },
+        "userSatisfaction": {
+          "criterion": "Gebruikerstevredenheid",
+          "basic": "60%",
+          "optimised": "95%",
+          "improvement": "+35%"
+        },
+        "reuse": {
+          "criterion": "Hergebruikpercentage",
+          "basic": "30%",
+          "optimised": "80%",
+          "improvement": "+50%"
+        }
+      }
+    },
+    "featureCards": {
+      "contextualAI": {
+        "title": "Contextuele AI",
+        "description": "Prompts aangepast aan uw sector"
+      },
+      "continuousOpt": {
+        "title": "Continue Optimalisatie",
+        "description": "Verbetering op basis van resultaten"
+      },
+      "library": {
+        "title": "Promptbibliotheek",
+        "description": "Toegang tot duizenden geteste prompts"
+      },
+      "quality": {
+        "title": "Gegarandeerde Kwaliteit",
+        "description": "Resultaten gevalideerd door onze experts"
+      }
+    },
+    "cta": {
+      "title": "Optimaliseer uw prompts nu",
+      "subtitle": "Ontdek de kracht van geoptimaliseerde prompts",
+      "button": "Beginnen",
+      "timeSavedLabel": "Gewonnen tijd",
+      "usersLabel": "Gebruikers"
+    }
   }
 }

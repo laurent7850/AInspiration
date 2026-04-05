@@ -22,5 +22,83 @@
   "stats": {
     "response": "Reactietijd",
     "satisfaction": "Klanttevredenheid"
+  },
+  "custom": {
+    "hero": {
+      "title": "Gepersonaliseerde Begeleiding",
+      "subtitle": "Een op maat gemaakte aanpak voor uw AI-transformatie"
+    },
+    "approaches": {
+      "diagnostic": {
+        "title": "Initiële Diagnose",
+        "description": "Diepgaande analyse van uw specifieke behoeften en doelstellingen"
+      },
+      "plan": {
+        "title": "Op Maat Plan",
+        "description": "Gepersonaliseerde strategie aangepast aan uw sector"
+      },
+      "expert": {
+        "title": "Toegewijd Expert",
+        "description": "Een ervaren AI-consultant aan uw zijde"
+      },
+      "followup": {
+        "title": "Continue Opvolging",
+        "description": "Optimalisatie en aanpassingen in realtime"
+      }
+    },
+    "benefits": {
+      "support": {
+        "title": "Prioriteitsondersteuning",
+        "description": "Snelle en gepersonaliseerde hulp 24/7"
+      },
+      "sessions": {
+        "title": "Maandelijkse Sessies",
+        "description": "Regelmatige afspraken om uw vooruitgang op te volgen"
+      },
+      "protection": {
+        "title": "Maximale Bescherming",
+        "description": "Gegarandeerde veiligheid en vertrouwelijkheid"
+      }
+    },
+    "journey": {
+      "title": "Uw traject naar excellentie",
+      "phase1": {
+        "phase": "Fase 1",
+        "title": "Onderdompeling",
+        "duration": "2 weken",
+        "activities": {
+          "0": "Analyse van de huidige situatie",
+          "1": "Identificatie van kansen",
+          "2": "Bepaling van doelstellingen"
+        }
+      },
+      "phase2": {
+        "phase": "Fase 2",
+        "title": "Implementatie",
+        "duration": "4-6 weken",
+        "activities": {
+          "0": "Uitrol van oplossingen",
+          "1": "Teamtraining",
+          "2": "Testen en aanpassingen"
+        }
+      },
+      "phase3": {
+        "phase": "Fase 3",
+        "title": "Optimalisatie",
+        "duration": "Doorlopend",
+        "activities": {
+          "0": "Prestatieoverzicht",
+          "1": "Regelmatige optimalisaties",
+          "2": "Evolutie van de oplossingen"
+        }
+      }
+    },
+    "cta": {
+      "title": "Klaar om uw bedrijf te transformeren?",
+      "subtitle": "Reserveer uw gratis consultatiesessie",
+      "button": "Begeleiding starten",
+      "firstResultLabel": "Eerste resultaat",
+      "satisfactionLabel": "Tevredenheid"
+    }
   }
 }

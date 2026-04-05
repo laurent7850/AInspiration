@@ -1,52 +1,71 @@
 {
   "title": "Transparante prijzen",
-  "subtitle": "Kies het plan dat bij u past",
+  "subtitle": "Start gratis. Ga sneller wanneer u er klaar voor bent.",
   "popular": "Meest populair",
   "monthly": "/maand",
+  "launchBadge": "Lanceringsaanbieding",
+  "launchNote": "Voor de eerste 10 klanten — in ruil voor een getuigenis",
+  "mandatorySubscription": "Het maandabonnement is verplicht. Uw workflows draaien op de infrastructuur van AInspiration (hosting, monitoring, support inbegrepen).",
   "plans": {
-    "starter": {
-      "name": "Starter",
-      "description": "Perfect om te starten met AI",
-      "price": "€49",
+    "audit": {
+      "name": "Gratis AI Audit",
+      "description": "Gepersonaliseerd rapport binnen 24u — zonder verplichting",
+      "price": "€ 0",
       "features": [
-        "Basis AI-analyse",
-        "5 projecten",
-        "E-mail support",
-        "Maandelijkse updates",
-        "1 gebruiker"
+        "Analyse van uw huidige processen",
+        "Identificatie van automatiseerbare taken",
+        "Schatting van gewonnen tijd per week",
+        "3 prioritaire aanbevelingen",
+        "Gepersonaliseerde AI-routekaart",
+        "PDF-rapport bezorgd binnen 24u"
       ]
     },
-    "pro": {
-      "name": "Pro",
-      "description": "Voor groeiende teams",
-      "price": "€99",
+    "express_launch": {
+      "name": "Express Pakket — Lanceringsaanbieding",
+      "description": "Voor de eerste 10 klanten (in ruil voor een getuigenis)",
+      "price": "€ 1.043",
+      "priceNote": "excl. BTW · in plaats van € 1.490",
       "features": [
-        "Geavanceerde AI-analyse",
-        "Onbeperkte projecten",
-        "Prioriteit support",
-        "Wekelijkse updates",
-        "API-toegang",
-        "5 gebruikers",
-        "Aangepaste rapporten"
+        "Maatwerk n8n workflow setup",
+        "1e maand hosting inbegrepen",
+        "Volledige configuratie en tests",
+        "Training van uw team (1u)",
+        "Prioriteit support gedurende 30 dagen",
+        "Daarna € 290/maand (verplicht abonnement)"
       ]
     },
-    "enterprise": {
-      "name": "Enterprise",
-      "description": "Oplossingen op maat voor grote bedrijven",
-      "price": "Op maat",
+    "express": {
+      "name": "Express Pakket",
+      "description": "n8n workflow setup + 1e maand hosting inbegrepen",
+      "price": "€ 1.490",
+      "priceNote": "excl. BTW",
       "features": [
-        "Alle Pro-functies",
-        "Dedicated deployment",
-        "24/7 support",
-        "Gegarandeerde SLA",
-        "Training op locatie",
-        "Onbeperkte gebruikers",
-        "Aangepaste integratie"
+        "Maatwerk n8n workflow setup",
+        "1e maand hosting inbegrepen",
+        "Volledige configuratie en tests",
+        "Training van uw team (1u)",
+        "Prioriteit support gedurende 30 dagen",
+        "Daarna € 290/maand (verplicht abonnement)"
+      ]
+    },
+    "managed": {
+      "name": "Beheerd AI Abonnement",
+      "description": "Hosting, monitoring, support en aanpassingen van uw workflows",
+      "price": "€ 290",
+      "priceNote": "/maand excl. BTW",
+      "features": [
+        "Workflow hosting op AInspiration infrastructuur",
+        "24/7 monitoring en meldingen",
+        "Prioriteit technische support",
+        "Aanpassingen en optimalisaties inbegrepen",
+        "Updates en onderhoud",
+        "Verplicht abonnement na Express Pakket"
       ]
     }
   },
   "cta": {
-    "startTrial": "Start gratis proef",
+    "startFreeAudit": "Mijn gratis audit aanvragen",
+    "orderExpress": "Bestel het Express Pakket",
     "contactUs": "Neem contact op"
   }
 }

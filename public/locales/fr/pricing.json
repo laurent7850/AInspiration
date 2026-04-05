@@ -1,52 +1,71 @@
 {
   "title": "Tarifs transparents",
-  "subtitle": "Choisissez le plan qui correspond à vos besoins",
+  "subtitle": "Démarrez gratuitement. Passez à la vitesse supérieure quand vous êtes prêt.",
   "popular": "Plus populaire",
   "monthly": "/mois",
+  "launchBadge": "Offre lancement",
+  "launchNote": "Pour les 10 premiers clients — contre témoignage",
+  "mandatorySubscription": "L'abonnement mensuel est obligatoire. Vos workflows tournent sur l'infrastructure AInspiration (hébergement, monitoring, support inclus).",
   "plans": {
-    "starter": {
-      "name": "Starter",
-      "description": "Parfait pour démarrer avec l'IA",
-      "price": "49€",
+    "audit": {
+      "name": "Audit IA Gratuit",
+      "description": "Rapport personnalisé sous 24h — sans engagement",
+      "price": "0 €",
       "features": [
-        "Analyse IA de base",
-        "5 projets",
-        "Support par email",
-        "Mises à jour mensuelles",
-        "1 utilisateur"
+        "Analyse de vos processus actuels",
+        "Identification des tâches automatisables",
+        "Estimation du temps gagné par semaine",
+        "3 recommandations prioritaires",
+        "Feuille de route IA personnalisée",
+        "Rapport PDF envoyé sous 24h"
       ]
     },
-    "pro": {
-      "name": "Pro",
-      "description": "Pour les équipes en croissance",
-      "price": "99€",
+    "express_launch": {
+      "name": "Pack Express — Offre lancement",
+      "description": "Pour les 10 premiers clients (contre témoignage)",
+      "price": "1 043 €",
+      "priceNote": "HTVA · au lieu de 1 490 €",
       "features": [
-        "Analyse IA avancée",
-        "Projets illimités",
-        "Support prioritaire",
-        "Mises à jour hebdomadaires",
-        "API access",
-        "5 utilisateurs",
-        "Rapports personnalisés"
+        "Setup workflow n8n sur mesure",
+        "1er mois d'hébergement inclus",
+        "Configuration et tests complets",
+        "Formation de votre équipe (1h)",
+        "Support prioritaire 30 jours",
+        "Puis 290 €/mois (abonnement obligatoire)"
       ]
     },
-    "enterprise": {
-      "name": "Enterprise",
-      "description": "Solutions sur mesure pour grandes entreprises",
-      "price": "Sur mesure",
+    "express": {
+      "name": "Pack Express",
+      "description": "Setup workflow n8n + 1er mois hébergement inclus",
+      "price": "1 490 €",
+      "priceNote": "HTVA",
       "features": [
-        "Toutes les fonctionnalités Pro",
-        "Déploiement dédié",
-        "Support 24/7",
-        "SLA garanti",
-        "Formation sur site",
-        "Utilisateurs illimités",
-        "Intégration personnalisée"
+        "Setup workflow n8n sur mesure",
+        "1er mois d'hébergement inclus",
+        "Configuration et tests complets",
+        "Formation de votre équipe (1h)",
+        "Support prioritaire 30 jours",
+        "Puis 290 €/mois (abonnement obligatoire)"
+      ]
+    },
+    "managed": {
+      "name": "Abonnement IA Managé",
+      "description": "Hébergement, monitoring, support et ajustements de vos workflows",
+      "price": "290 €",
+      "priceNote": "/mois HTVA",
+      "features": [
+        "Hébergement workflow sur infra AInspiration",
+        "Monitoring 24/7 et alertes",
+        "Support technique prioritaire",
+        "Ajustements et optimisations inclus",
+        "Mises à jour et maintenance",
+        "Abonnement obligatoire après le Pack Express"
       ]
     }
   },
   "cta": {
-    "startTrial": "Commencer l'essai gratuit",
+    "startFreeAudit": "Demander mon audit gratuit",
+    "orderExpress": "Commander le Pack Express",
     "contactUs": "Nous contacter"
   }
 }

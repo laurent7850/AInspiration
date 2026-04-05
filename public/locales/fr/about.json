@@ -1,0 +1,52 @@
+{
+  "seo": {
+    "title": "À propos d'AInspiration | Solutions IA pour PME",
+    "description": "Découvrez AInspiration, notre mission de démocratiser l'IA pour les PME, notre approche et notre histoire."
+  },
+  "pageTitle": "À propos d'AInspiration",
+  "pageSubtitle": "Notre mission : rendre l'IA accessible et efficace pour toutes les entreprises",
+  "mission": {
+    "title": "Notre Mission",
+    "p1": "Chez AInspiration, nous sommes convaincus que l'Intelligence Artificielle est un levier de croissance incontournable pour les entreprises de toutes tailles. Notre mission est de démocratiser l'accès à l'IA en proposant des solutions innovantes, accessibles et sur mesure qui répondent aux besoins spécifiques des PME.",
+    "p2": "Nous accompagnons nos clients dans leur transformation digitale en leur offrant non seulement des outils technologiques de pointe, mais aussi l'expertise et le support nécessaires pour les intégrer efficacement dans leur activité quotidienne. Notre objectif est de créer un impact positif mesurable sur leur productivité, leur rentabilité et leur compétitivité."
+  },
+  "approach": {
+    "title": "Notre Approche",
+    "pillar1_title": "Expertise IA appliquée",
+    "pillar1_desc": "Notre équipe combine une solide formation en intelligence artificielle avec une connaissance terrain des réalités des PME. Nous ne théorisons pas — nous déployons des solutions qui fonctionnent.",
+    "pillar2_title": "Orientation résultats",
+    "pillar2_desc": "Chaque projet démarre par une analyse précise de vos processus. Nous mesurons l'impact réel : temps gagné, erreurs évitées, coûts réduits. Le ROI est toujours au cœur de notre démarche.",
+    "pillar3_title": "Accompagnement humain",
+    "pillar3_desc": "La technologie ne suffit pas. Nous formons vos équipes, adaptons les solutions à votre culture d'entreprise et restons disponibles sur le long terme pour que l'adoption soit réelle."
+  },
+  "values": {
+    "title": "Nos Valeurs",
+    "val1_title": "Innovation accessible",
+    "val1_desc": "Nous croyons que l'IA doit être accessible à toutes les entreprises, quelle que soit leur taille.",
+    "val2_title": "Éthique & Transparence",
+    "val2_desc": "Nous développons des solutions éthiques et nous sommes transparents sur nos pratiques.",
+    "val3_title": "Humain au centre",
+    "val3_desc": "Nos technologies visent à améliorer l'humain, pas à le remplacer.",
+    "val4_title": "Excellence",
+    "val4_desc": "Nous visons l'excellence dans chaque solution que nous proposons à nos clients."
+  },
+  "history": {
+    "title": "Notre Histoire",
+    "m2019_title": "Création d'AInspiration",
+    "m2019_desc": "Fondation de l'entreprise avec pour mission de démocratiser l'IA pour les PME.",
+    "m2020_title": "Lancement des premiers produits",
+    "m2020_desc": "Développement de solutions d'automatisation et d'analyse de données.",
+    "m2021_title": "Élargissement de l'offre",
+    "m2021_desc": "Introduction des assistants virtuels et des services d'IA générative.",
+    "m2022_title": "Expansion internationale",
+    "m2022_desc": "Ouverture aux marchés francophones européens : Belgique, Luxembourg et Suisse.",
+    "m2023_title": "Révolution IA générative",
+    "m2023_desc": "Lancement de notre plateforme PromptMaster et intégration des modèles GPT et Claude dans nos solutions.",
+    "m2024_title": "CRM Intelligent & Automatisation avancée",
+    "m2024_desc": "Déploiement de notre solution CRM propulsée par l'IA et automatisation des workflows métier complexes.",
+    "m2025_title": "IA Agents & Personnalisation",
+    "m2025_desc": "Lancement des agents IA autonomes et solutions d'analyse prédictive sur mesure pour chaque secteur.",
+    "m2026_title": "AInspiration - Nouvelle ère",
+    "m2026_desc": "Rebranding en AInspiration. Plateforme unifiée d'IA pour PME avec accompagnement 360° et formation certifiante."
+  }
+}

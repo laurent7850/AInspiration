@@ -28,7 +28,7 @@ export default class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white flex items-center justify-center px-4">
           <div className="text-center max-w-md">
-            <div className="text-6xl font-bold text-indigo-200 mb-4">Oups</div>
+            <div className="text-6xl font-bold text-indigo-100 mb-4">Oups</div>
             <h1 className="text-xl font-bold text-gray-900 mb-3">Une erreur est survenue</h1>
             <p className="text-gray-600 mb-6">
               Nous nous excusons pour la gêne. Veuillez rafraîchir la page ou revenir à l'accueil.

@@ -1,6 +1,88 @@
 {
   "title": "Features",
   "subtitle": "Powerful tools for your business",
+  "consulting": {
+    "hero": {
+      "title": "Artificial Intelligence Consulting",
+      "description": "Transform your business with a tailored AI strategy"
+    },
+    "methodology": {
+      "title": "Our methodology"
+    },
+    "expertises": {
+      "strategy": {
+        "title": "AI Strategy",
+        "description": "Defining your AI roadmap aligned with your business objectives"
+      },
+      "optimization": {
+        "title": "Process Optimisation",
+        "description": "Identifying and implementing automation opportunities"
+      },
+      "performance": {
+        "title": "Performance & ROI",
+        "description": "Maximising the return on investment of your AI solutions"
+      },
+      "innovation": {
+        "title": "Guided Innovation",
+        "description": "Exploring emerging technologies adapted to your needs"
+      }
+    },
+    "phases": {
+      "diagnostic": {
+        "phase": "Diagnostic",
+        "duration": "2–3 weeks",
+        "activities": {
+          "0": "Audit of existing processes",
+          "1": "Opportunity analysis",
+          "2": "AI maturity assessment"
+        }
+      },
+      "strategy": {
+        "phase": "Strategy",
+        "duration": "3–4 weeks",
+        "activities": {
+          "0": "Defining objectives",
+          "1": "Prioritising initiatives",
+          "2": "Implementation plan"
+        }
+      },
+      "execution": {
+        "phase": "Execution",
+        "duration": "2–6 months",
+        "activities": {
+          "0": "Pilots and POCs",
+          "1": "Progressive deployment",
+          "2": "Results measurement"
+        }
+      }
+    },
+    "benefits": {
+      "vision": {
+        "title": "Clear vision",
+        "description": "AI strategy aligned with your business objectives",
+        "stats": "Measurable ROI from 3 months"
+      },
+      "efficiency": {
+        "title": "Proven efficiency",
+        "description": "Measurable process optimisation",
+        "stats": "-30% operational costs"
+      },
+      "risk": {
+        "title": "Managed risks",
+        "description": "Secure and compliant approach",
+        "stats": "100% GDPR compliance"
+      }
+    },
+    "cta": {
+      "title": "Ready to define your AI strategy?",
+      "subtitle": "Book a free strategic consultation session",
+      "button": "Schedule my consultation",
+      "stats": {
+        "expertise": "Years of expertise",
+        "projects": "Successful projects"
+      }
+    }
+  },
   "analysis": {
     "title": "AI Analysis",
     "desc": "Analyze your data with precision",
@@ -24,5 +106,254 @@
     "desc": "Optimize your AI interactions",
     "management": "Prompt Management",
     "managementDesc": "Organize and optimize your prompts"
+  },
+  "whyai": {
+    "hero": {
+      "title": "Why AI?",
+      "subtitle": "An Accessible Opportunity for SMEs",
+      "description": "Artificial intelligence is no longer reserved for large corporations. Today, it offers SMEs concrete opportunities to gain efficiency, competitiveness, and profitability."
+    },
+    "benefits": {
+      "productivity": {
+        "title": "Increased Productivity",
+        "description": "Automation of repetitive tasks, freeing up time for higher-value activities."
+      },
+      "cost": {
+        "title": "Cost Reduction",
+        "description": "Optimisation of internal processes, reducing operational expenditure."
+      },
+      "satisfaction": {
+        "title": "Improved Customer Satisfaction",
+        "description": "Personalised and responsive services thanks to intelligent tools."
+      },
+      "revenue": {
+        "title": "Revenue Growth",
+        "description": "Better anticipation of customer needs and rapid adaptation to market trends."
+      }
+    },
+    "usecases": {
+      "sectionTitle": "Concrete Examples of AI Use in SMEs",
+      "learnMore": "Learn more",
+      "admin": {
+        "title": "Administrative Task Automation",
+        "description": "AI tools automatically generate financial reports, analyse marketing campaign performance and track key performance indicators (KPIs), eliminating manual work and increasing accuracy through real-time data analysis.",
+        "examples": {
+          "0": "Report generation",
+          "1": "KPI analysis",
+          "2": "Automated tracking"
+        },
+        "callToAction": "Integrate AI into Your Business"
+      },
+      "marketing": {
+        "title": "Marketing Content Generation",
+        "description": "AI can produce articles, newsletters and social media posts, personalised based on behavioural data and customer preferences, thereby increasing engagement and loyalty.",
+        "examples": {
+          "0": "Blog articles",
+          "1": "Newsletters",
+          "2": "Social media posts"
+        },
+        "callToAction": "Integrate AI into Your Business"
+      },
+      "service": {
+        "title": "Intelligent Customer Service",
+        "description": "Chatbots and virtual assistants can answer frequently asked questions, handle enquiries, schedule meetings and perform simple customer service tasks, offering 24/7 availability and improving the customer experience.",
+        "examples": {
+          "0": "24/7 Chatbots",
+          "1": "Automated responses",
+          "2": "Intelligent scheduling"
+        },
+        "callToAction": "AI Solutions and Training"
+      },
+      "sales": {
+        "title": "Sales Forecasting",
+        "description": "AI analyses historical data to anticipate future needs, adjust procurement processes and optimise stock management, thereby reducing costs and improving customer satisfaction.",
+        "examples": {
+          "0": "Accurate forecasts",
+          "1": "Stock management",
+          "2": "Supply chain optimisation"
+        },
+        "callToAction": "ActivDev"
+      }
+    },
+    "cta": {
+      "title": "Why Wait?",
+      "subtitle": "AI is an accessible and profitable opportunity for your SME.",
+      "button": "Start now",
+      "nextStepsTitle": "Next Steps:",
+      "nextSteps": {
+        "0": "Identify the processes that can be automated in your business.",
+        "1": "Test free AI tools suited to SMEs.",
+        "2": "Train your teams for a successful adoption."
+      },
+      "contactTitle": "Contact Us",
+      "contactDesc": "For a personalised demonstration or a free diagnostic, do not hesitate to contact us.",
+      "satisfactionLabel": "Satisfaction rate",
+      "installLabel": "Average installation"
+    },
+    "finalCta": {
+      "title": "Don't let your competitors gain the upper hand",
+      "subtitle": "Join the SMEs that have already transformed their business with AI",
+      "button": "Start my free diagnostic"
+    }
+  },
+  "assistants": {
+    "hero": {
+      "title": "AI Virtual Assistants",
+      "subtitle": "Intelligent assistants that truly understand your needs"
+    },
+    "types": {
+      "customer": {
+        "title": "Customer Service Assistant",
+        "description": "Instant 24/7 responses to your customers",
+        "features": {
+          "0": "Real-time responses",
+          "1": "Multi-language",
+          "2": "Response personalisation",
+          "3": "Transfer to a human when needed"
+        }
+      },
+      "analysis": {
+        "title": "Analysis Assistant",
+        "description": "Real-time data analysis and interpretation",
+        "features": {
+          "0": "Live dashboards",
+          "1": "Intelligent alerts",
+          "2": "Action recommendations",
+          "3": "Automated reports"
+        }
+      },
+      "process": {
+        "title": "Process Assistant",
+        "description": "Automation of repetitive tasks",
+        "features": {
+          "0": "Automated workflows",
+          "1": "Integration with your tools",
+          "2": "Task tracking",
+          "3": "Continuous optimisation"
+        }
+      }
+    },
+    "benefits": {
+      "availability": {
+        "title": "24/7 Availability",
+        "description": "Continuous service without interruption"
+      },
+      "multilingual": {
+        "title": "Multi-language",
+        "description": "Support in more than 30 languages"
+      },
+      "security": {
+        "title": "Maximum Security",
+        "description": "Guaranteed data protection"
+      }
+    },
+    "metrics": {
+      "resolution": {
+        "label": "Resolution Rate",
+        "description": "Requests resolved automatically"
+      },
+      "cost": {
+        "label": "Cost Reduction",
+        "description": "On customer support"
+      },
+      "availability": {
+        "label": "Availability",
+        "description": "Continuous service"
+      }
+    },
+    "cta": {
+      "title": "Ready to automate your support?",
+      "subtitle": "Discover the power of AI assistants",
+      "button": "Start now",
+      "configLabel": "Configuration",
+      "availabilityLabel": "Availability"
+    }
+  },
+  "tools": {
+    "hero": {
+      "title": "Our AI Tools",
+      "subtitle": "A complete suite of tools to transform your business"
+    },
+    "list": {
+      "assistant": {
+        "title": "AI Assistant",
+        "description": "Personalised virtual assistant for your business",
+        "features": {
+          "0": "Real-time responses",
+          "1": "Multi-language",
+          "2": "Continuous learning",
+          "3": "Easy integration"
+        }
+      },
+      "analysis": {
+        "title": "AI Analysis",
+        "description": "In-depth analysis of your data",
+        "features": {
+          "0": "Automated insights",
+          "1": "Dashboards",
+          "2": "Advanced predictions",
+          "3": "Personalised reports"
+        }
+      },
+      "promptMaster": {
+        "title": "Prompt Master",
+        "description": "Prompt creation and optimisation",
+        "features": {
+          "0": "Prompt library",
+          "1": "A/B testing",
+          "2": "Continuous optimisation",
+          "3": "Sector templates"
+        }
+      },
+      "content": {
+        "title": "Content Creation",
+        "description": "Optimised content generation",
+        "features": {
+          "0": "Articles & blogs",
+          "1": "Social media",
+          "2": "Marketing emails",
+          "3": "Product descriptions"
+        }
+      }
+    },
+    "commonFeatures": {
+      "multilingual": {
+        "title": "Multi-language",
+        "description": "Support for more than 30 languages"
+      },
+      "documentation": {
+        "title": "Documentation",
+        "description": "Detailed guides and examples"
+      },
+      "api": {
+        "title": "API",
+        "description": "Simple integration via API"
+      },
+      "seo": {
+        "title": "SEO",
+        "description": "Optimisation for search engines"
+      }
+    },
+    "metrics": {
+      "productivity": {
+        "label": "Productivity",
+        "description": "Average increase"
+      },
+      "cost": {
+        "label": "Costs",
+        "description": "Reduction in expenditure"
+      },
+      "availability": {
+        "label": "Availability",
+        "description": "Continuous support"
+      }
+    },
+    "cta": {
+      "title": "Ready to transform your business?",
+      "subtitle": "Discover how our tools can optimise your processes",
+      "button": "Start now",
+      "installLabel": "Installation",
+      "roiLabel": "Immediate"
+    }
   }
 }

@@ -119,7 +119,7 @@ const ContactPage: React.FC = () => {
     {
       icon: MapPin,
       title: t('contact.info.address'),
-      value: "Grand place 50, 7850 Enghien, Belgique",
+      value: "Chauss\u00e9e Brunehault 27, 7041 Givry, Belgique",
       link: "https://maps.google.com/?q=Grand+place+50,+7850+Enghien,+Belgique"
     }
   ];
@@ -306,7 +306,7 @@ const ContactPage: React.FC = () => {
 
             <div className="relative h-full min-h-[400px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2532.058093133317!2d3.9830214!3d50.6931661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3a7b9ee0baf3d%3A0x70d731af6746a8f5!2sGrand%20Place%2050%2C%207850%20Enghien%2C%20Belgium!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2534!2d3.9453!3d50.6178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3a8!2sChaussee%20Brunehault%2027%2C%207041%20Givry%2C%20Belgium!5e0!3m2!1sfr!2sbe!4v1700000000000!5m2!1sfr!2sbe"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -318,7 +318,7 @@ const ContactPage: React.FC = () => {
               ></iframe>
               <div className="absolute bottom-0 left-0 right-0 bg-blue-600 text-white p-4">
                 <p className="font-semibold">Distr'Action SPRL</p>
-                <p className="text-sm">Grand place 50, 7850 Enghien, Belgique</p>
+                <p className="text-sm">Chauss\u00e9e Brunehault 27, 7041 Givry, Belgique</p>
               </div>
             </div>
           </div>

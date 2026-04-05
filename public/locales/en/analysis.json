@@ -1,7 +1,22 @@
 {
   "title": "Advanced AI Analysis",
   "subtitle": "Discover hidden insights in your data",
+  "seo": {
+    "title": "AI Analysis - Advanced analytical solutions | AInspiration",
+    "description": "Transform your data into strategic insights with our AI analysis solutions. Predictions, anomaly detection, segmentation and personalised dashboards."
+  },
+  "hero": {
+    "badge": "Advanced analytical solution",
+    "title": "Transform your data into",
+    "titleHighlight": "strategic decisions",
+    "description": "Our AI analysis solution transforms your raw data into actionable insights, revealing hidden trends and predicting future developments to give you a decisive competitive advantage.",
+    "ctaDemo": "Request a demo",
+    "ctaDocs": "View documentation",
+    "imageAlt": "Data analysis dashboard"
+  },
   "features": {
+    "sectionTitle": "Powerful analytical features",
+    "sectionDescription": "Our platform combines advanced algorithms with an intuitive interface to make data analysis accessible at every level of your organisation.",
     "realtime": {
       "title": "Real-time Analysis",
       "desc": "Monitor your key metrics live"
@@ -11,7 +26,7 @@
       "desc": "Anticipate trends and opportunities"
     },
     "optimization": {
-      "title": "Continuous Optimization",
+      "title": "Continuous Optimisation",
       "desc": "Automatically improve your processes"
     },
     "integration": {
@@ -19,15 +34,141 @@
       "desc": "Compatible with your existing tools"
     }
   },
+  "mainFeatures": [
+    {
+      "title": "Predictive Analysis",
+      "description": "Anticipate future trends using advanced machine learning algorithms that identify patterns in your historical data",
+      "benefits": [
+        "Accurate sales forecasting",
+        "Anticipating customer behaviour",
+        "Early identification of opportunities"
+      ]
+    },
+    {
+      "title": "Intelligent Segmentation",
+      "description": "Discover customer segments invisible to the naked eye using clustering algorithms that reveal homogeneous groups in your data",
+      "benefits": [
+        "Ultra-targeted personalisation",
+        "Marketing campaign optimisation",
+        "Discovery of unexploited niches"
+      ]
+    },
+    {
+      "title": "Dynamic Dashboards",
+      "description": "Visualise your KPIs in real time in interactive interfaces that adapt to your needs and alert you to significant changes",
+      "benefits": [
+        "Instant overview",
+        "Automated intelligent alerts",
+        "Complete view personalisation"
+      ]
+    },
+    {
+      "title": "Anomaly Detection",
+      "description": "Automatically identify outliers and unusual events in your data that could signal problems or opportunities",
+      "benefits": [
+        "Early fraud detection",
+        "Identification of malfunctions",
+        "Spotting unique opportunities"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "value": "+67%",
+      "label": "Predictive accuracy",
+      "description": "Compared to conventional methods"
+    },
+    {
+      "value": "10x",
+      "label": "Faster",
+      "description": "Real-time analyses"
+    },
+    {
+      "value": "98%",
+      "label": "Client satisfaction",
+      "description": "Tailored solutions"
+    },
+    {
+      "value": "Fast ROI",
+      "label": "Return on investment",
+      "description": "Measurable results from the first months"
+    }
+  ],
+  "useCases": {
+    "sectionTitle": "Sector applications",
+    "sectionDescription": "Discover how our AI analysis solution transforms industries",
+    "concreteApplications": "Concrete applications",
+    "imageAlt": "AI Analysis",
+    "items": [
+      {
+        "title": "Retail & Distribution",
+        "description": "Optimise your stock, forecast sales and personalise the customer experience with predictive data analysis.",
+        "examples": [
+          "Demand forecasting by product and store",
+          "Real-time price optimisation",
+          "Personalisation of product recommendations",
+          "Analysis of customer behaviour in-store and online"
+        ],
+        "testimonialQuote": "Thanks to AInspiration's predictive analysis, we reduced our stock-outs by 78% whilst reducing our overall stock by 15%.",
+        "testimonialAuthor": "Marie Deschamps",
+        "testimonialRole": "Supply Chain Director, MeubleExpress"
+      },
+      {
+        "title": "Financial services",
+        "description": "Detect fraud, assess risks and identify new investment opportunities with advanced analysis.",
+        "examples": [
+          "Automated and personalised credit scoring",
+          "Real-time fraud detection",
+          "Market trend analysis",
+          "Investment portfolio optimisation"
+        ],
+        "testimonialQuote": "The implementation of the anomaly detection system allowed us to identify 34% more fraudulent transactions, whilst reducing false positives by 56%.",
+        "testimonialAuthor": "Thomas Lefèvre",
+        "testimonialRole": "CISO, CréditPro"
+      }
+    ]
+  },
+  "process": {
+    "sectionTitle": "Our implementation process",
+    "sectionDescription": "A structured approach to guarantee concrete results",
+    "steps": [
+      {
+        "title": "Data Audit",
+        "description": "Assessment of your data sources, identification of gaps and enrichment opportunities"
+      },
+      {
+        "title": "Solution Design",
+        "description": "Definition of analysis objectives, algorithm selection and creation of a bespoke architecture"
+      },
+      {
+        "title": "Implementation & Testing",
+        "description": "Solution development, integration with your systems and validation of results"
+      },
+      {
+        "title": "Deployment & Monitoring",
+        "description": "Going live, team training and continuous performance optimisation"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to harness the power of your data?",
+    "description": "Discover how our AI analysis solution can transform your business approach and give you a decisive competitive advantage.",
+    "bullet1": "Set up in less than 2 weeks",
+    "bullet2": "Measurable ROI from the first month",
+    "bullet3": "Compatible with all your data sources",
+    "demoTitle": "Schedule your free demo",
+    "check1": "Personalised presentation of the solution",
+    "check2": "Analysis of your specific needs",
+    "check3": "Concrete example with your data",
+    "check4": "Bespoke proposal within 48 hours",
+    "button": "Schedule my demo",
+    "subtitle": "Start your free analysis now",
+    "startButton": "Start Analysis"
+  },
   "stats": {
     "accuracy": "99.9% accuracy",
     "processing": "Real-time processing",
     "improvement": "45% average improvement",
     "satisfaction": "98% satisfied clients"
-  },
-  "cta": {
-    "title": "Ready to unlock your data's potential?",
-    "subtitle": "Start your free analysis now",
-    "button": "Start Analysis"
   }
 }

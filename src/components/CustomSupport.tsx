@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  Users, 
-  Target, 
-  Compass, 
-  ArrowRight, 
+import {
+  Users,
+  Target,
+  Compass,
+  ArrowRight,
   Zap,
   CheckCircle,
   Calendar,
@@ -11,81 +11,83 @@ import {
   LineChart,
   Shield
 } from 'lucide-react';
-import StartForm from './StartForm';
+import { useTranslation } from 'react-i18next';
+import AuditForm from './AuditForm';
 
 export default function CustomSupport() {
   const [showStartForm, setShowStartForm] = useState(false);
+  const { t } = useTranslation('support');
 
   const approaches = [
     {
       icon: Target,
-      title: "Diagnostic initial",
-      description: "Analyse approfondie de vos besoins et objectifs spécifiques"
+      title: t('custom.approaches.diagnostic.title'),
+      description: t('custom.approaches.diagnostic.description')
     },
     {
       icon: Compass,
-      title: "Plan sur mesure",
-      description: "Stratégie personnalisée adaptée à votre secteur d'activité"
+      title: t('custom.approaches.plan.title'),
+      description: t('custom.approaches.plan.description')
     },
     {
       icon: Users,
-      title: "Expert dédié",
-      description: "Un consultant IA expérimenté à vos côtés"
+      title: t('custom.approaches.expert.title'),
+      description: t('custom.approaches.expert.description')
     },
     {
       icon: LineChart,
-      title: "Suivi continu",
-      description: "Optimisation et ajustements en temps réel"
+      title: t('custom.approaches.followup.title'),
+      description: t('custom.approaches.followup.description')
     }
   ];
 
   const benefits = [
     {
-      title: "Support prioritaire",
-      description: "Assistance rapide et personnalisée 24/7",
+      title: t('custom.benefits.support.title'),
+      description: t('custom.benefits.support.description'),
       icon: MessageSquare
     },
     {
-      title: "Sessions mensuelles",
-      description: "Points réguliers pour suivre vos progrès",
+      title: t('custom.benefits.sessions.title'),
+      description: t('custom.benefits.sessions.description'),
       icon: Calendar
     },
     {
-      title: "Protection maximale",
-      description: "Sécurité et confidentialité garanties",
+      title: t('custom.benefits.protection.title'),
+      description: t('custom.benefits.protection.description'),
       icon: Shield
     }
   ];
 
   const milestones = [
     {
-      phase: "Phase 1",
-      title: "Immersion",
-      duration: "2 semaines",
+      phase: t('custom.journey.phase1.phase'),
+      title: t('custom.journey.phase1.title'),
+      duration: t('custom.journey.phase1.duration'),
       activities: [
-        "Analyse de l'existant",
-        "Identification des opportunités",
-        "Définition des objectifs"
+        t('custom.journey.phase1.activities.0'),
+        t('custom.journey.phase1.activities.1'),
+        t('custom.journey.phase1.activities.2')
       ]
     },
     {
-      phase: "Phase 2",
-      title: "Implémentation",
-      duration: "4-6 semaines",
+      phase: t('custom.journey.phase2.phase'),
+      title: t('custom.journey.phase2.title'),
+      duration: t('custom.journey.phase2.duration'),
       activities: [
-        "Mise en place des solutions",
-        "Formation des équipes",
-        "Tests et ajustements"
+        t('custom.journey.phase2.activities.0'),
+        t('custom.journey.phase2.activities.1'),
+        t('custom.journey.phase2.activities.2')
       ]
     },
     {
-      phase: "Phase 3",
-      title: "Optimisation",
-      duration: "Continue",
+      phase: t('custom.journey.phase3.phase'),
+      title: t('custom.journey.phase3.title'),
+      duration: t('custom.journey.phase3.duration'),
       activities: [
-        "Suivi des performances",
-        "Optimisations régulières",
-        "Évolution des solutions"
+        t('custom.journey.phase3.activities.0'),
+        t('custom.journey.phase3.activities.1'),
+        t('custom.journey.phase3.activities.2')
       ]
     }
   ];
@@ -95,10 +97,10 @@ export default function CustomSupport() {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Accompagnement personnalisé
+            {t('custom.hero.title')}
           </h1>
           <p className="text-xl text-gray-600">
-            Une approche sur-mesure pour votre transformation IA
+            {t('custom.hero.subtitle')}
           </p>
         </div>
 
@@ -122,7 +124,7 @@ export default function CustomSupport() {
         {/* Phases du projet */}
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
-            Votre parcours vers l'excellence
+            {t('custom.journey.title')}
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {milestones.map((milestone, index) => (
@@ -176,38 +178,38 @@ export default function CustomSupport() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-3xl font-bold mb-4">
-                Prêt à transformer votre entreprise ?
+                {t('custom.cta.title')}
               </h3>
               <p className="text-indigo-100 mb-6">
-                Réservez votre session de consultation gratuite
+                {t('custom.cta.subtitle')}
               </p>
-              <button 
+              <button
                 onClick={() => setShowStartForm(true)}
                 className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition flex items-center gap-2"
               >
-                Démarrer l'accompagnement
+                {t('custom.cta.button')}
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
             <div className="grid grid-cols-2 gap-4 text-center">
               <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                 <Zap className="w-8 h-8 text-white mx-auto mb-2" />
-                <div className="text-3xl font-bold mb-1">+180%</div>
-                <div className="text-indigo-100">ROI moyen</div>
+                <div className="text-3xl font-bold mb-1">5j</div>
+                <div className="text-indigo-100">{t('custom.cta.firstResultLabel')}</div>
               </div>
               <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                 <Users className="w-8 h-8 text-white mx-auto mb-2" />
                 <div className="text-3xl font-bold mb-1">98%</div>
-                <div className="text-indigo-100">Satisfaction</div>
+                <div className="text-indigo-100">{t('custom.cta.satisfactionLabel')}</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <StartForm 
-        isOpen={showStartForm} 
-        onClose={() => setShowStartForm(false)} 
+      <AuditForm
+        isOpen={showStartForm}
+        onClose={() => setShowStartForm(false)}
       />
     </section>
   );

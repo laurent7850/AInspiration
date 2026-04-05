@@ -30,8 +30,13 @@ dist-ssr
 tmpclaude-*
 _ul
 
-# Archives (keep locally but don't commit)
+# Archives and deployment zips
 *.tar.gz
+*.zip
+dist_*.zip
+
+# Isolated sub-projects
+pdf-reader/
 
 # Supabase temp
 supabase/.temp/

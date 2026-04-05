@@ -1,7 +1,22 @@
 {
   "title": "Geavanceerde AI-analyse",
   "subtitle": "Ontdek verborgen inzichten in uw gegevens",
+  "seo": {
+    "title": "AI-analyse - Geavanceerde analytische oplossingen | AInspiration",
+    "description": "Transformeer uw gegevens in strategische inzichten met onze AI-analyseoplossingen. Voorspellingen, anomaliedetectie, segmentatie en gepersonaliseerde dashboards."
+  },
+  "hero": {
+    "badge": "Geavanceerde analyseoplossing",
+    "title": "Transformeer uw gegevens in",
+    "titleHighlight": "strategische beslissingen",
+    "description": "Onze AI-analyseoplossing transformeert uw ruwe gegevens in bruikbare inzichten, onthult verborgen trends en voorspelt toekomstige ontwikkelingen om u een beslissend concurrentievoordeel te geven.",
+    "ctaDemo": "Een demo aanvragen",
+    "ctaDocs": "Documentatie raadplegen",
+    "imageAlt": "Dashboard voor gegevensanalyse"
+  },
   "features": {
+    "sectionTitle": "Krachtige analytische functies",
+    "sectionDescription": "Ons platform combineert geavanceerde algoritmen met een intuïtieve interface om gegevensanalyse toegankelijk te maken op elk niveau van uw organisatie.",
     "realtime": {
       "title": "Realtime analyse",
       "desc": "Monitor uw belangrijkste metrics live"
@@ -19,15 +34,141 @@
       "desc": "Compatibel met uw bestaande tools"
     }
   },
+  "mainFeatures": [
+    {
+      "title": "Voorspellende analyse",
+      "description": "Anticipeer op toekomstige trends met geavanceerde machine learning-algoritmen die patronen identificeren in uw historische gegevens",
+      "benefits": [
+        "Nauwkeurige verkoopsprognoses",
+        "Anticipatie op klantgedrag",
+        "Vroege identificatie van kansen"
+      ]
+    },
+    {
+      "title": "Intelligente segmentatie",
+      "description": "Ontdek klantsegmenten die met het blote oog niet zichtbaar zijn via clustering-algoritmen die homogene groepen in uw gegevens onthullen",
+      "benefits": [
+        "Ultra-gerichte personalisatie",
+        "Optimalisatie van marketingcampagnes",
+        "Ontdekking van onbenutte niches"
+      ]
+    },
+    {
+      "title": "Dynamische dashboards",
+      "description": "Visualiseer uw KPI's in realtime in interactieve interfaces die zich aanpassen aan uw behoeften en u waarschuwen voor significante wijzigingen",
+      "benefits": [
+        "Onmiddellijk overzicht",
+        "Geautomatiseerde intelligente waarschuwingen",
+        "Volledige personalisatie van weergaven"
+      ]
+    },
+    {
+      "title": "Anomaliedetectie",
+      "description": "Identificeer automatisch uitschieters en ongebruikelijke gebeurtenissen in uw gegevens die problemen of kansen kunnen signaleren",
+      "benefits": [
+        "Vroege fraudedetectie",
+        "Identificatie van storingen",
+        "Opsporing van unieke kansen"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "value": "+67%",
+      "label": "Voorspellende nauwkeurigheid",
+      "description": "Vergeleken met conventionele methoden"
+    },
+    {
+      "value": "10x",
+      "label": "Sneller",
+      "description": "Realtime analyses"
+    },
+    {
+      "value": "98%",
+      "label": "Klanttevredenheid",
+      "description": "Op maat gemaakte oplossingen"
+    },
+    {
+      "value": "Snelle ROI",
+      "label": "Return on investment",
+      "description": "Meetbare resultaten vanaf de eerste maanden"
+    }
+  ],
+  "useCases": {
+    "sectionTitle": "Sectorale toepassingen",
+    "sectionDescription": "Ontdek hoe onze AI-analyseoplossing industrieën transformeert",
+    "concreteApplications": "Concrete toepassingen",
+    "imageAlt": "AI-analyse",
+    "items": [
+      {
+        "title": "Handel & Distributie",
+        "description": "Optimaliseer uw voorraad, voorspel verkopen en personaliseer de klantervaring met voorspellende gegevensanalyse.",
+        "examples": [
+          "Vraagprognoses per product en winkel",
+          "Realtime prijsoptimalisatie",
+          "Personalisatie van productaanbevelingen",
+          "Analyse van klantgedrag in winkel en online"
+        ],
+        "testimonialQuote": "Dankzij de voorspellende analyse van AInspiration hebben we onze stockouts met 78% verminderd terwijl we onze totale voorraad met 15% hebben verlaagd.",
+        "testimonialAuthor": "Marie Deschamps",
+        "testimonialRole": "Supply Chain Directeur, MeubleExpress"
+      },
+      {
+        "title": "Financiële diensten",
+        "description": "Detecteer fraude, beoordeel risico's en identificeer nieuwe investeringskansen met geavanceerde analyse.",
+        "examples": [
+          "Geautomatiseerde en gepersonaliseerde kredietscore",
+          "Realtime fraudedetectie",
+          "Analyse van markttrends",
+          "Optimalisatie van beleggingsportefeuilles"
+        ],
+        "testimonialQuote": "De implementatie van het anomaliedetectiesysteem stelde ons in staat om 34% meer frauduleuze transacties te identificeren, terwijl we de vals-positieven met 56% verminderden.",
+        "testimonialAuthor": "Thomas Lefèvre",
+        "testimonialRole": "CISO, CréditPro"
+      }
+    ]
+  },
+  "process": {
+    "sectionTitle": "Ons implementatieproces",
+    "sectionDescription": "Een gestructureerde aanpak om concrete resultaten te garanderen",
+    "steps": [
+      {
+        "title": "Gegevensaudit",
+        "description": "Beoordeling van uw gegevensbronnen, identificatie van lacunes en verrijkingsmogelijkheden"
+      },
+      {
+        "title": "Oplossingsontwerp",
+        "description": "Definitie van analysedoelstellingen, selectie van algoritmen en creatie van een op maat gemaakte architectuur"
+      },
+      {
+        "title": "Implementatie & Test",
+        "description": "Ontwikkeling van de oplossing, integratie in uw systemen en validatie van de resultaten"
+      },
+      {
+        "title": "Implementatie & Opvolging",
+        "description": "Productie, teamtraining en continue prestatieoptimalisatie"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Klaar om de kracht van uw gegevens te benutten?",
+    "description": "Ontdek hoe onze AI-analyseoplossing uw bedrijfsaanpak kan transformeren en u een beslissend concurrentievoordeel kan geven.",
+    "bullet1": "Installatie in minder dan 2 weken",
+    "bullet2": "Meetbare ROI vanaf de eerste maand",
+    "bullet3": "Compatibel met al uw gegevensbronnen",
+    "demoTitle": "Plan uw gratis demo",
+    "check1": "Gepersonaliseerde presentatie van de oplossing",
+    "check2": "Analyse van uw specifieke behoeften",
+    "check3": "Concreet voorbeeld met uw gegevens",
+    "check4": "Op maat gemaakt voorstel binnen 48 uur",
+    "button": "Mijn demo plannen",
+    "subtitle": "Start nu uw gratis analyse",
+    "startButton": "Start analyse"
+  },
   "stats": {
     "accuracy": "99,9% nauwkeurigheid",
     "processing": "Realtime verwerking",
     "improvement": "45% gemiddelde verbetering",
     "satisfaction": "98% tevreden klanten"
-  },
-  "cta": {
-    "title": "Klaar om het potentieel van uw data te ontdekken?",
-    "subtitle": "Start nu uw gratis analyse",
-    "button": "Start analyse"
   }
 }

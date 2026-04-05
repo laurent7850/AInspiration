@@ -21,9 +21,9 @@ export const organizationSchema = {
   },
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Grand place 50",
-    "addressLocality": "Enghien",
-    "postalCode": "7850",
+    "streetAddress": "Chaussee Brunehault 27",
+    "addressLocality": "Givry",
+    "postalCode": "7041",
     "addressRegion": "Hainaut",
     "addressCountry": "BE"
   },
@@ -82,9 +82,9 @@ export const localBusinessSchema = {
   "description": "Conseil et accompagnement en Intelligence Artificielle pour PME. Audit gratuit, formation, automatisation.",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Grand place 50",
-    "addressLocality": "Enghien",
-    "postalCode": "7850",
+    "streetAddress": "Chaussee Brunehault 27",
+    "addressLocality": "Givry",
+    "postalCode": "7041",
     "addressRegion": "Hainaut",
     "addressCountry": "BE"
   },
