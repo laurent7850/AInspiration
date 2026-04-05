@@ -1992,10 +1992,48 @@ app.all('/api/*', (req, res) => {
   res.status(404).json({ error: 'Not found' });
 });
 
-// SPA fallback: any non-API route serves index.html
+// SPA fallback: serve index.html with per-route SEO meta injection
+const fs = require('fs');
+let indexHtml = '';
+try { indexHtml = fs.readFileSync(path.join(distPath, 'index.html'), 'utf8'); } catch (e) { /* dist not ready yet */ }
+
+const routeSEO = {
+  '/audit': { title: 'Audit IA Gratuit en 24h | Diagnostic Personnalis\u00e9 | AInspiration', description: 'Demandez votre audit IA gratuit. Un expert analyse votre activit\u00e9 et vous livre un plan d\'action concret en 24h. Sans engagement. PME et ind\u00e9pendants en Belgique.' },
+  '/assistants': { title: 'Assistants Virtuels IA | Chatbots Intelligents | AInspiration', description: 'D\u00e9ployez des assistants virtuels IA pour votre service client. Chatbots intelligents disponibles 24/7 pour r\u00e9pondre \u00e0 vos clients.' },
+  '/automatisation': { title: 'Automatisation IA pour PME | Workflows Intelligents | AInspiration', description: 'Automatisez 60% de vos t\u00e2ches r\u00e9p\u00e9titives gr\u00e2ce \u00e0 l\'IA. Workflows n8n sur mesure, livr\u00e9s en 5 jours.' },
+  '/formation': { title: 'Formation IA pour Entreprises | ChatGPT, Claude, Outils IA | AInspiration', description: 'Formations pratiques IA pour PME et ind\u00e9pendants. Apprenez \u00e0 utiliser ChatGPT, Claude et les outils IA pour votre m\u00e9tier.' },
+  '/contact': { title: 'Contactez AInspiration | Solutions IA pour PME', description: 'Contactez notre \u00e9quipe pour discuter de vos besoins en intelligence artificielle. R\u00e9ponse sous 24h. Givry, Belgique.' },
+  '/prompts': { title: 'Biblioth\u00e8que de Prompts IA | Optimisez vos Interactions | AInspiration', description: 'Acc\u00e9dez \u00e0 notre biblioth\u00e8que de prompts IA optimis\u00e9s pour PME. Gagnez du temps avec des prompts test\u00e9s par secteur.' },
+  '/blog': { title: 'Blog IA pour PME | Actualit\u00e9s et Guides | AInspiration', description: 'Articles, guides et actualit\u00e9s sur l\'intelligence artificielle pour PME et ind\u00e9pendants belges.' },
+  '/solutions': { title: 'Solutions IA pour PME | AInspiration', description: 'D\u00e9couvrez nos solutions IA compl\u00e8tes pour PME : audit, automatisation, chatbots, CRM intelligent, formation.' },
+  '/a-propos': { title: '\u00c0 Propos d\'AInspiration | \u00c9quipe et Mission', description: 'AInspiration accompagne les PME belges dans leur transition IA. D\u00e9couvrez notre \u00e9quipe, notre mission et nos valeurs.' },
+  '/etudes-de-cas': { title: '\u00c9tudes de Cas IA | R\u00e9sultats Clients | AInspiration', description: 'D\u00e9couvrez comment nos clients PME ont transform\u00e9 leur activit\u00e9 gr\u00e2ce \u00e0 l\'intelligence artificielle.' },
+  '/creation-ia': { title: 'Cr\u00e9ation de Contenu IA | AInspiration', description: 'G\u00e9n\u00e9rez du contenu professionnel avec l\'IA : articles, visuels, newsletters, posts r\u00e9seaux sociaux.' },
+  '/analyse-ia': { title: 'Analyse de Donn\u00e9es IA | Tableaux de Bord Intelligents | AInspiration', description: 'Exploitez vos donn\u00e9es avec l\'IA. Tableaux de bord intelligents, pr\u00e9dictions de ventes, segmentation clients.' },
+  '/cgv': { title: 'Conditions G\u00e9n\u00e9rales de Vente | AInspiration', description: 'CGV des services AInspiration par Distr\'Action SRL.' },
+  '/cgu': { title: 'Conditions G\u00e9n\u00e9rales d\'Utilisation | AInspiration', description: 'CGU du site ainspiration.eu.' },
+  '/privacy': { title: 'Politique de Confidentialit\u00e9 | AInspiration', description: 'Politique de confidentialit\u00e9 et protection des donn\u00e9es personnelles d\'AInspiration.' },
+  '/mentions-legales': { title: 'Mentions L\u00e9gales | AInspiration', description: 'Mentions l\u00e9gales du site ainspiration.eu - Distr\'Action SRL.' },
+  '/login': { title: 'Connexion | AInspiration', description: 'Connectez-vous \u00e0 votre espace AInspiration.' },
+};
+
 app.get('*', (req, res) => {
   res.setHeader('Cache-Control', 'no-cache');
-  res.sendFile(path.join(distPath, 'index.html'));
+  if (!indexHtml) {
+    try { indexHtml = fs.readFileSync(path.join(distPath, 'index.html'), 'utf8'); } catch (e) {}
+  }
+  if (!indexHtml) return res.sendFile(path.join(distPath, 'index.html'));
+
+  const routePath = req.path.replace(/\/$/, '') || '/';
+  const seo = routeSEO[routePath];
+  if (seo) {
+    let html = indexHtml;
+    html = html.replace(/<title>[^<]*<\/title>/, `<title>${seo.title}</title>`);
+    html = html.replace(/<meta name="description" content="[^"]*"/, `<meta name="description" content="${seo.description}"`);
+    res.send(html);
+  } else {
+    res.send(indexHtml);
+  }
 });
 
 // ==================== START SERVER ====================
