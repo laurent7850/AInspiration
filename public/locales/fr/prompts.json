@@ -28,5 +28,115 @@
   "stats": {
     "prompts": "Prompts créés",
     "success": "Taux de réussite"
+  },
+  "optimization": {
+    "hero": {
+      "title": "Prompts Optimisés",
+      "subtitle": "Maximisez l'efficacité de vos interactions avec l'IA"
+    },
+    "whyTitle": "Pourquoi optimiser vos prompts ?",
+    "whyText1": "Dans un monde où l'IA devient incontournable, la qualité de vos prompts fait toute la différence. Un prompt optimisé n'est pas qu'une simple question, c'est une instruction précise qui guide l'IA vers exactement ce dont vous avez besoin.",
+    "whyText2": "Nos experts ont analysé plus de 100 000 interactions pour identifier les patterns qui fonctionnent. Le résultat ? Des prompts qui génèrent des réponses pertinentes dès la première tentative, vous faisant gagner un temps précieux.",
+    "testimonials": {
+      "sophie": {
+        "name": "Sophie M.",
+        "role": "Directrice Marketing Digital",
+        "quote": "Avant d'utiliser les prompts optimisés, je passais des heures à reformuler mes demandes. Maintenant, j'obtiens exactement ce que je veux en quelques minutes. C'est un gain de temps incroyable !"
+      },
+      "marc": {
+        "name": "Marc L.",
+        "role": "Chef de Projet Innovation",
+        "quote": "La différence entre un prompt basique et un prompt optimisé est stupéfiante. Nous avons réduit de 60% le temps passé à interagir avec l'IA tout en obtenant des résultats nettement supérieurs."
+      }
+    },
+    "comparison": {
+      "title": "Comparaison des Performances",
+      "criterion": "Critère",
+      "basic": "Prompt Basique",
+      "optimised": "Prompt Optimisé",
+      "improvement": "Amélioration",
+      "rows": {
+        "accuracy": {
+          "criterion": "Précision",
+          "basic": "45%",
+          "optimised": "85%",
+          "improvement": "+40%"
+        },
+        "responseTime": {
+          "criterion": "Temps de réponse",
+          "basic": "3-4 itérations",
+          "optimised": "1-2 itérations",
+          "improvement": "-60%"
+        },
+        "relevance": {
+          "criterion": "Pertinence",
+          "basic": "50%",
+          "optimised": "90%",
+          "improvement": "+40%"
+        },
+        "userSatisfaction": {
+          "criterion": "Satisfaction utilisateur",
+          "basic": "60%",
+          "optimised": "95%",
+          "improvement": "+35%"
+        },
+        "reuse": {
+          "criterion": "Taux de réutilisation",
+          "basic": "30%",
+          "optimised": "80%",
+          "improvement": "+50%"
+        }
+      }
+    },
+    "featureCards": {
+      "contextualAI": {
+        "title": "IA Contextuelle",
+        "description": "Prompts adaptés à votre secteur d'activité"
+      },
+      "continuousOpt": {
+        "title": "Optimisation Continue",
+        "description": "Amélioration basée sur les résultats"
+      },
+      "library": {
+        "title": "Bibliothèque de Prompts",
+        "description": "Accès à des milliers de prompts testés"
+      },
+      "quality": {
+        "title": "Qualité Garantie",
+        "description": "Résultats validés par nos experts"
+      }
+    },
+    "cta": {
+      "title": "Optimisez vos prompts dès maintenant",
+      "subtitle": "Découvrez la puissance des prompts optimisés",
+      "button": "Commencer",
+      "timeSavedLabel": "Temps gagné",
+      "usersLabel": "Utilisateurs"
+    },
+    "faq": {
+      "title": "Questions fréquentes sur les prompts IA",
+      "items": {
+        "0": {
+          "q": "Qu'est-ce qu'un prompt et pourquoi est-ce important pour mon entreprise ?",
+          "a": "Un prompt est l'instruction que vous donnez à une IA (ChatGPT, Claude, Gemini) pour obtenir un résultat. La qualité du prompt détermine directement la qualité de la réponse. Un prompt bien structuré peut transformer une réponse générique en un contenu professionnel parfaitement adapté à votre métier. Pour une PME, maîtriser les prompts signifie gagner du temps sur la rédaction, l'analyse de données, le service client et la création de contenu."
+        },
+        "1": {
+          "q": "Comment un prompt optimisé peut-il me faire gagner du temps ?",
+          "a": "Un prompt générique comme 'écris-moi un email' donne un résultat moyen qui nécessite 15 minutes de retouche. Un prompt optimisé avec le contexte, le ton, la structure et les contraintes produit un résultat utilisable en l'état. Nos clients gagnent en moyenne 30 minutes par jour grâce à des prompts adaptés à leurs tâches récurrentes : emails clients, rapports, posts LinkedIn, descriptions produits, réponses FAQ."
+        },
+        "2": {
+          "q": "Vos prompts fonctionnent-ils avec tous les outils IA ?",
+          "a": "Oui. Nos prompts sont conçus pour être compatibles avec ChatGPT (OpenAI), Claude (Anthropic), Gemini (Google) et la plupart des outils IA génératives du marché. Nous les optimisons principalement pour ChatGPT et Claude, les deux modèles les plus utilisés en entreprise. Chaque prompt est testé sur plusieurs plateformes pour garantir des résultats cohérents."
+        },
+        "3": {
+          "q": "Avez-vous des prompts spécifiques pour mon secteur d'activité ?",
+          "a": "Oui. Notre bibliothèque inclut des prompts spécialisés par secteur : comptabilité (lettres de relance, analyses financières), juridique (synthèse de contrats, veille réglementaire), horeca (menus, réponses avis clients), e-commerce (descriptions produits, emails marketing), et services professionnels (propositions commerciales, rapports). Lors de notre formation, nous personnalisons les prompts pour votre activité spécifique."
+        },
+        "4": {
+          "q": "Comment puis-je apprendre à créer mes propres prompts efficaces ?",
+          "a": "Notre formation IA inclut un module complet sur la rédaction de prompts. Vous apprenez la structure CRISP (Contexte, Rôle, Instruction, Sortie, Paramètres), les techniques de chain-of-thought, et les bonnes pratiques par type de tâche. Après la formation, vous recevez un accès à notre bibliothèque de prompts et un guide de référence rapide. Commencez par notre audit gratuit pour identifier les tâches où les prompts IA auront le plus d'impact dans votre quotidien."
+        }
+      }
+    }
   }
 }

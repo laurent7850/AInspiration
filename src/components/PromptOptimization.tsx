@@ -1,72 +1,74 @@
 import React, { useState } from 'react';
-import { 
-  Brain, 
-  MessageSquare, 
-  Zap, 
-  ArrowRight, 
+import {
+  Brain,
+  MessageSquare,
+  Zap,
+  ArrowRight,
   Users,
   Star,
   Target,
   Clock
 } from 'lucide-react';
-import StartForm from './StartForm';
+import { useTranslation } from 'react-i18next';
+import AuditForm from './AuditForm';
 
 export default function PromptOptimization() {
   const [showStartForm, setShowStartForm] = useState(false);
+  const { t } = useTranslation('prompts');
 
   const promptComparison = [
     {
-      critere: "Précision",
-      basique: "45%",
-      optimise: "85%",
-      amelioration: "+40%"
+      critere: t('optimization.comparison.rows.accuracy.criterion'),
+      basique: t('optimization.comparison.rows.accuracy.basic'),
+      optimise: t('optimization.comparison.rows.accuracy.optimised'),
+      amelioration: t('optimization.comparison.rows.accuracy.improvement')
     },
     {
-      critere: "Temps de réponse",
-      basique: "3-4 itérations",
-      optimise: "1-2 itérations",
-      amelioration: "-60%"
+      critere: t('optimization.comparison.rows.responseTime.criterion'),
+      basique: t('optimization.comparison.rows.responseTime.basic'),
+      optimise: t('optimization.comparison.rows.responseTime.optimised'),
+      amelioration: t('optimization.comparison.rows.responseTime.improvement')
     },
     {
-      critere: "Pertinence",
-      basique: "50%",
-      optimise: "90%",
-      amelioration: "+40%"
+      critere: t('optimization.comparison.rows.relevance.criterion'),
+      basique: t('optimization.comparison.rows.relevance.basic'),
+      optimise: t('optimization.comparison.rows.relevance.optimised'),
+      amelioration: t('optimization.comparison.rows.relevance.improvement')
     },
     {
-      critere: "Satisfaction utilisateur",
-      basique: "60%",
-      optimise: "95%",
-      amelioration: "+35%"
+      critere: t('optimization.comparison.rows.userSatisfaction.criterion'),
+      basique: t('optimization.comparison.rows.userSatisfaction.basic'),
+      optimise: t('optimization.comparison.rows.userSatisfaction.optimised'),
+      amelioration: t('optimization.comparison.rows.userSatisfaction.improvement')
     },
     {
-      critere: "Taux de réutilisation",
-      basique: "30%",
-      optimise: "80%",
-      amelioration: "+50%"
+      critere: t('optimization.comparison.rows.reuse.criterion'),
+      basique: t('optimization.comparison.rows.reuse.basic'),
+      optimise: t('optimization.comparison.rows.reuse.optimised'),
+      amelioration: t('optimization.comparison.rows.reuse.improvement')
     }
   ];
 
   const features = [
     {
       icon: Brain,
-      title: "IA Contextuelle",
-      description: "Prompts adaptés à votre secteur d'activité"
+      title: t('optimization.featureCards.contextualAI.title'),
+      description: t('optimization.featureCards.contextualAI.description')
     },
     {
       icon: Target,
-      title: "Optimisation Continue",
-      description: "Amélioration basée sur les résultats"
+      title: t('optimization.featureCards.continuousOpt.title'),
+      description: t('optimization.featureCards.continuousOpt.description')
     },
     {
       icon: MessageSquare,
-      title: "Bibliothèque de Prompts",
-      description: "Accès à des milliers de prompts testés"
+      title: t('optimization.featureCards.library.title'),
+      description: t('optimization.featureCards.library.description')
     },
     {
       icon: Star,
-      title: "Qualité Garantie",
-      description: "Résultats validés par nos experts"
+      title: t('optimization.featureCards.quality.title'),
+      description: t('optimization.featureCards.quality.description')
     }
   ];
 
@@ -75,10 +77,10 @@ export default function PromptOptimization() {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Prompts Optimisés
+            {t('optimization.hero.title')}
           </h1>
           <p className="text-xl text-gray-600">
-            Maximisez l'efficacité de vos interactions avec l'IA
+            {t('optimization.hero.subtitle')}
           </p>
         </div>
 
@@ -86,14 +88,14 @@ export default function PromptOptimization() {
         <div className="bg-indigo-50 rounded-2xl p-8 mb-16">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              Pourquoi optimiser vos prompts ?
+              {t('optimization.whyTitle')}
             </h2>
             <div className="space-y-4 text-gray-700 mb-8">
               <p>
-                Dans un monde où l'IA devient incontournable, la qualité de vos prompts fait toute la différence. Un prompt optimisé n'est pas qu'une simple question, c'est une instruction précise qui guide l'IA vers exactement ce dont vous avez besoin.
+                {t('optimization.whyText1')}
               </p>
               <p>
-                Nos experts ont analysé plus de 100 000 interactions pour identifier les patterns qui fonctionnent. Le résultat ? Des prompts qui génèrent des réponses pertinentes dès la première tentative, vous faisant gagner un temps précieux.
+                {t('optimization.whyText2')}
               </p>
             </div>
 
@@ -103,17 +105,17 @@ export default function PromptOptimization() {
                 <div className="flex items-center gap-2 mb-2">
                   <img
                     src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop"
-                    alt="Sophie M."
+                    alt={t('optimization.testimonials.sophie.name')}
                     loading="lazy"
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>
-                    <p className="font-semibold text-gray-900">Sophie M.</p>
-                    <p className="text-sm text-gray-600">Directrice Marketing Digital</p>
+                    <p className="font-semibold text-gray-900">{t('optimization.testimonials.sophie.name')}</p>
+                    <p className="text-sm text-gray-600">{t('optimization.testimonials.sophie.role')}</p>
                   </div>
                 </div>
                 <p className="text-gray-600 italic">
-                  "Avant d'utiliser les prompts optimisés, je passais des heures à reformuler mes demandes. Maintenant, j'obtiens exactement ce que je veux en quelques minutes. C'est un gain de temps incroyable !"
+                  "{t('optimization.testimonials.sophie.quote')}"
                 </p>
               </div>
 
@@ -121,17 +123,17 @@ export default function PromptOptimization() {
                 <div className="flex items-center gap-2 mb-2">
                   <img
                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop"
-                    alt="Marc L."
+                    alt={t('optimization.testimonials.marc.name')}
                     loading="lazy"
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>
-                    <p className="font-semibold text-gray-900">Marc L.</p>
-                    <p className="text-sm text-gray-600">Chef de Projet Innovation</p>
+                    <p className="font-semibold text-gray-900">{t('optimization.testimonials.marc.name')}</p>
+                    <p className="text-sm text-gray-600">{t('optimization.testimonials.marc.role')}</p>
                   </div>
                 </div>
                 <p className="text-gray-600 italic">
-                  "La différence entre un prompt basique et un prompt optimisé est stupéfiante. Nous avons réduit de 60% le temps passé à interagir avec l'IA tout en obtenant des résultats nettement supérieurs."
+                  "{t('optimization.testimonials.marc.quote')}"
                 </p>
               </div>
             </div>
@@ -141,16 +143,16 @@ export default function PromptOptimization() {
         {/* Tableau comparatif */}
         <div className="bg-white rounded-xl shadow-lg p-6 mb-16">
           <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
-            Comparaison des Performances
+            {t('optimization.comparison.title')}
           </h3>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="bg-gray-50">
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Critère</th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Prompt Basique</th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Prompt Optimisé</th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Amélioration</th>
+                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">{t('optimization.comparison.criterion')}</th>
+                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">{t('optimization.comparison.basic')}</th>
+                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">{t('optimization.comparison.optimised')}</th>
+                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">{t('optimization.comparison.improvement')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
@@ -189,16 +191,16 @@ export default function PromptOptimization() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-4">
-                Optimisez vos prompts dès maintenant
+                {t('optimization.cta.title')}
               </h2>
               <p className="text-indigo-100 mb-6">
-                Découvrez la puissance des prompts optimisés
+                {t('optimization.cta.subtitle')}
               </p>
-              <button 
+              <button
                 onClick={() => setShowStartForm(true)}
                 className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition flex items-center gap-2"
               >
-                Commencer
+                {t('optimization.cta.button')}
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
@@ -206,21 +208,37 @@ export default function PromptOptimization() {
               <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                 <Clock className="w-8 h-8 text-white mx-auto mb-2" />
                 <div className="text-3xl font-bold mb-1">-60%</div>
-                <div className="text-indigo-100">Temps gagné</div>
+                <div className="text-indigo-100">{t('optimization.cta.timeSavedLabel')}</div>
               </div>
               <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                 <Users className="w-8 h-8 text-white mx-auto mb-2" />
                 <div className="text-3xl font-bold mb-1">10k+</div>
-                <div className="text-indigo-100">Utilisateurs</div>
+                <div className="text-indigo-100">{t('optimization.cta.usersLabel')}</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <StartForm 
-        isOpen={showStartForm} 
-        onClose={() => setShowStartForm(false)} 
+      {/* FAQ Section */}
+      <div className="max-w-4xl mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">{t('optimization.faq.title')}</h2>
+        <div className="space-y-4">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <details key={i} className="bg-white border border-gray-200 rounded-lg p-4 group">
+              <summary className="font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                {t(`optimization.faq.items.${i}.q`)}
+                <span className="text-indigo-600 group-open:rotate-180 transition-transform">&#9660;</span>
+              </summary>
+              <p className="mt-3 text-gray-600 leading-relaxed">{t(`optimization.faq.items.${i}.a`)}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+
+      <AuditForm
+        isOpen={showStartForm}
+        onClose={() => setShowStartForm(false)}
       />
     </section>
   );

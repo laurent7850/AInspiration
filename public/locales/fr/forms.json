@@ -62,6 +62,31 @@
       "message": "Une erreur est survenue lors de l'envoi du formulaire. Veuillez réessayer ou nous contacter directement par email.",
       "general": "Une erreur est survenue lors de l'envoi du formulaire. Veuillez réessayer.",
       "rateLimit": "Trop de demandes. Veuillez patienter une minute avant de réessayer."
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "items": {
+        "0": {
+          "q": "En combien de temps recevrai-je une réponse à ma demande ?",
+          "a": "Nous nous engageons à répondre sous 24 heures ouvrées (lundi-vendredi, 9h-18h). Pour les demandes d'audit IA gratuit, le rapport personnalisé est généré automatiquement et envoyé par email dans les 24 heures suivant la soumission de votre formulaire. Pour les questions commerciales ou techniques, notre équipe vous contacte par email ou téléphone selon votre préférence."
+        },
+        "1": {
+          "q": "L'audit IA gratuit est-il vraiment sans engagement ?",
+          "a": "Oui, totalement. L'audit IA est un service gratuit et sans aucune obligation d'achat. Vous recevez un rapport PDF personnalisé avec 3 recommandations concrètes d'automatisation pour votre activité. Si les recommandations vous intéressent, nous pouvons en discuter lors d'un call de 30 minutes, également gratuit. Aucune carte bancaire n'est demandée, aucun engagement n'est pris."
+        },
+        "2": {
+          "q": "Où êtes-vous situés et intervenez-vous dans toute la Belgique ?",
+          "a": "Notre siège est à Enghien (7850), en Belgique. Nous intervenons dans toute la Belgique — Bruxelles, Wallonie et Flandre — ainsi qu'en France francophone et au Luxembourg. La majorité de nos services (audit, automatisation, support) sont délivrés à distance. Les formations en présentiel sont disponibles dans vos locaux partout en Belgique."
+        },
+        "3": {
+          "q": "Puis-je vous contacter par téléphone ?",
+          "a": "Oui, vous pouvez nous joindre au +32 477 94 28 65 pendant les heures ouvrées (lundi-vendredi, 9h-18h). Pour les demandes non urgentes, nous recommandons le formulaire de contact ou l'email à contact@ainspiration.eu, ce qui nous permet de vous fournir une réponse plus détaillée et documentée."
+        },
+        "4": {
+          "q": "Quels types de projets pouvez-vous accompagner ?",
+          "a": "Nous accompagnons les PME et indépendants dans tous les aspects de leur transition IA : automatisation de tâches répétitives (facturation, relances, rapports), déploiement de chatbots pour le service client, mise en place de CRM intelligent avec scoring de leads, création de contenu assistée par IA, et formation de vos équipes aux outils IA. Chaque projet commence par un audit gratuit qui identifie les opportunités les plus impactantes pour votre activité spécifique."
+        }
+      }
     }
   },
   "products": {
