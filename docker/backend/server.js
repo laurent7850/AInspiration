@@ -2012,10 +2012,25 @@ app.all('/api/*', (req, res) => {
   res.status(404).json({ error: 'Not found' });
 });
 
-// SPA fallback: serve index.html with per-route SEO meta injection
+// SPA fallback: serve index.html with per-route SEO meta injection.
+// The file is re-read when its mtime changes so deploys that swap dist/ (via
+// docker cp) are picked up without needing a container restart.
 const fs = require('fs');
 let indexHtml = '';
-try { indexHtml = fs.readFileSync(path.join(distPath, 'index.html'), 'utf8'); } catch (e) { /* dist not ready yet */ }
+let indexHtmlMtime = 0;
+
+function readIndexHtml() {
+  try {
+    const indexPath = path.join(distPath, 'index.html');
+    const stat = fs.statSync(indexPath);
+    if (stat.mtimeMs !== indexHtmlMtime) {
+      indexHtml = fs.readFileSync(indexPath, 'utf8');
+      indexHtmlMtime = stat.mtimeMs;
+    }
+  } catch (e) { /* dist not ready yet */ }
+  return indexHtml;
+}
+readIndexHtml();
 
 const routeSEO = {
   '/audit': { title: 'Audit IA Gratuit en 24h | Diagnostic Personnalis\u00e9 | AInspiration', description: 'Demandez votre audit IA gratuit. Un expert analyse votre activit\u00e9 et vous livre un plan d\'action concret en 24h. Sans engagement. PME et ind\u00e9pendants en Belgique.' },
@@ -2039,20 +2054,18 @@ const routeSEO = {
 
 app.get('*', (req, res) => {
   res.setHeader('Cache-Control', 'no-cache');
-  if (!indexHtml) {
-    try { indexHtml = fs.readFileSync(path.join(distPath, 'index.html'), 'utf8'); } catch (e) {}
-  }
-  if (!indexHtml) return res.sendFile(path.join(distPath, 'index.html'));
+  const html = readIndexHtml();
+  if (!html) return res.sendFile(path.join(distPath, 'index.html'));
 
   const routePath = req.path.replace(/\/$/, '') || '/';
   const seo = routeSEO[routePath];
   if (seo) {
-    let html = indexHtml;
-    html = html.replace(/<title>[^<]*<\/title>/, `<title>${seo.title}</title>`);
-    html = html.replace(/<meta name="description" content="[^"]*"/, `<meta name="description" content="${seo.description}"`);
-    res.send(html);
+    let out = html;
+    out = out.replace(/<title>[^<]*<\/title>/, `<title>${seo.title}</title>`);
+    out = out.replace(/<meta name="description" content="[^"]*"/, `<meta name="description" content="${seo.description}"`);
+    res.send(out);
   } else {
-    res.send(indexHtml);
+    res.send(html);
   }
 });
 
