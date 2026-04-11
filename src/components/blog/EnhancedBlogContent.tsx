@@ -21,21 +21,52 @@ interface EnhancedBlogContentProps {
   title: string;
 }
 
+/**
+ * Auto-enhance HTML content for blog readability:
+ * - Tags paragraphs starting with 👉 as .blog-callout (highlighted)
+ * - Removes the duplicated H1 if present (the page already shows the title)
+ * - Adds rel="noopener" to external links
+ */
+const enhanceBlogHtml = (html: string): string => {
+  if (!html) return '';
+  if (typeof window === 'undefined') return html;
+
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+
+  // Strip leading H1 (avoid duplicating the article title shown above the content)
+  const firstH1 = doc.querySelector('h1');
+  if (firstH1) firstH1.remove();
+
+  // Tag 👉 paragraphs as callouts
+  doc.querySelectorAll('p').forEach((p) => {
+    const text = (p.textContent || '').trim();
+    if (text.startsWith('👉') || text.startsWith('💡') || text.startsWith('⚠️') || text.startsWith('✅')) {
+      p.classList.add('blog-callout');
+    }
+  });
+
+  // Secure external links
+  doc.querySelectorAll('a[href^="http"]').forEach((a) => {
+    const href = a.getAttribute('href') || '';
+    if (!href.includes('ainspiration.eu')) {
+      a.setAttribute('rel', 'noopener noreferrer');
+      if (!a.hasAttribute('target')) a.setAttribute('target', '_blank');
+    }
+  });
+
+  return doc.body.innerHTML;
+};
+
 interface StepSection {
   title: string;
   subsections: Array<{ title: string; content: string }>;
 }
 
-interface FlatSection {
-  title: string;
-  content: string;
-  isHighlight?: boolean;
-}
-
-export default function EnhancedBlogContent({ content, title }: EnhancedBlogContentProps) {
+export default function EnhancedBlogContent({ content }: EnhancedBlogContentProps) {
   const { t } = useTranslation('blog');
 
   const sanitizedContent = useMemo(() => sanitizeHtml(content), [content]);
+  const enhancedContent = useMemo(() => enhanceBlogHtml(sanitizedContent), [sanitizedContent]);
 
   const isStepByStepGuide = useMemo(() => {
     const lower = sanitizedContent.toLowerCase();
@@ -111,36 +142,6 @@ export default function EnhancedBlogContent({ content, title }: EnhancedBlogCont
     return { intro, steps, conclusion };
   };
 
-  const extractFlatSections = (htmlContent: string) => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(htmlContent, 'text/html');
-    const sections: FlatSection[] = [];
-
-    const headings = doc.querySelectorAll('h2, h3');
-
-    headings.forEach((heading) => {
-      const title = heading.textContent || '';
-      let content = '';
-      let currentElement = heading.nextElementSibling;
-
-      while (currentElement && !currentElement.matches('h2, h3')) {
-        content += currentElement.outerHTML;
-        currentElement = currentElement.nextElementSibling;
-      }
-
-      const isHighlight =
-        title.toLowerCase().includes('avantage') ||
-        title.toLowerCase().includes('bénéfice') ||
-        title.toLowerCase().includes('solution') ||
-        title.toLowerCase().includes('comment') ||
-        title.toLowerCase().includes('pourquoi');
-
-      sections.push({ title, content, isHighlight });
-    });
-
-    return sections;
-  };
-
   const extractMetrics = (htmlContent: string) => {
     const metrics: Array<{ value: string; label: string }> = [];
     const percentageRegex = /(\d+\s*%)/g;
@@ -185,20 +186,6 @@ export default function EnhancedBlogContent({ content, title }: EnhancedBlogCont
     { bg: 'bg-pink-600', light: 'bg-pink-50', border: 'border-pink-200', text: 'text-pink-600', ring: 'ring-pink-100' },
   ];
 
-  const getColorForSection = (index: number) => {
-    const colors = [
-      'bg-blue-100 text-blue-600',
-      'bg-indigo-100 text-indigo-600',
-      'bg-purple-100 text-purple-600',
-      'bg-green-100 text-green-600',
-      'bg-orange-100 text-orange-600',
-      'bg-pink-100 text-pink-600'
-    ];
-    return colors[index % colors.length];
-  };
-
-  const introduction = sanitizedContent.split('<h2')[0] || sanitizedContent.split('<h3')[0];
-
   // ── Step-by-step guide layout ──
   if (isStepByStepGuide) {
     const { intro, steps, conclusion } = extractStepSections(sanitizedContent);
@@ -210,7 +197,7 @@ export default function EnhancedBlogContent({ content, title }: EnhancedBlogCont
         {intro && (
           <div className="bg-gradient-to-br from-primary-50 to-white rounded-2xl p-8 md:p-12 border border-primary-100">
             <div
-              className="prose prose-lg max-w-none text-gray-700"
+              className="blog-prose"
               dangerouslySetInnerHTML={{ __html: intro }}
             />
           </div>
@@ -273,7 +260,7 @@ export default function EnhancedBlogContent({ content, title }: EnhancedBlogCont
                             </h3>
                           )}
                           <div
-                            className="prose prose-gray max-w-none"
+                            className="blog-prose"
                             dangerouslySetInnerHTML={{ __html: sub.content }}
                           />
                         </div>
@@ -291,7 +278,7 @@ export default function EnhancedBlogContent({ content, title }: EnhancedBlogCont
           <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 md:p-12 text-white">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Conclusion</h2>
             <div
-              className="prose prose-lg prose-invert max-w-none"
+              className="blog-prose blog-prose-invert"
               dangerouslySetInnerHTML={{ __html: conclusion }}
             />
           </div>
@@ -300,74 +287,33 @@ export default function EnhancedBlogContent({ content, title }: EnhancedBlogCont
     );
   }
 
-  // ── Grid layout for non-sequential articles ──
-  const sections = extractFlatSections(sanitizedContent);
+  // ── Single-column readable layout (default for all non step-by-step articles) ──
   const metrics = extractMetrics(sanitizedContent);
 
   return (
-    <div className="space-y-12">
-      {introduction && (
-        <div className="bg-gradient-to-br from-primary-50 to-white rounded-2xl p-8 md:p-12 border border-primary-100">
-          <div
-            className="prose prose-lg max-w-none text-gray-700"
-            dangerouslySetInnerHTML={{ __html: introduction }}
-          />
-        </div>
-      )}
-
+    <div className="space-y-10">
+      {/* Optional metrics banner — only if the article surfaces percentages worth highlighting */}
       {metrics.length > 0 && (
-        <div className="bg-gradient-to-br from-primary-700 to-primary-900 rounded-2xl p-8 md:p-12">
-          <h2 className="text-2xl font-bold text-white text-center mb-8">
+        <div className="bg-gradient-to-br from-primary-700 to-primary-900 rounded-2xl p-8 md:p-10 max-w-3xl mx-auto">
+          <h2 className="text-xl font-bold text-white text-center mb-6">
             {t('enhancedContent.measurableResults')}
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {metrics.map((metric, index) => (
               <div key={index} className="text-center text-white">
-                <div className="text-5xl font-bold mb-2">{metric.value}</div>
-                <div className="text-xl text-primary-200">{metric.label}</div>
+                <div className="text-4xl md:text-5xl font-bold mb-1">{metric.value}</div>
+                <div className="text-sm text-primary-200">{metric.label}</div>
               </div>
             ))}
           </div>
         </div>
       )}
 
-      {sections.length > 0 ? (
-        <div className="grid lg:grid-cols-2 gap-8">
-          {sections.map((section, index) => {
-            const Icon = getIconForSection(section.title, index);
-            const colorClass = getColorForSection(index);
-
-            return (
-              <div
-                key={index}
-                className={`bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 ${
-                  section.isHighlight ? 'lg:col-span-2' : ''
-                }`}
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className={`w-12 h-12 ${colorClass} rounded-lg flex items-center justify-center flex-shrink-0`}>
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <h2 className="text-2xl font-bold text-gray-900 mt-1">
-                    {section.title}
-                  </h2>
-                </div>
-                <div
-                  className="prose prose-gray max-w-none"
-                  dangerouslySetInnerHTML={{ __html: section.content }}
-                />
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
-          <div
-            className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-          />
-        </div>
-      )}
+      {/* Article body — single column, optimal reading width, clear typography */}
+      <article
+        className="blog-prose"
+        dangerouslySetInnerHTML={{ __html: enhancedContent }}
+      />
     </div>
   );
 }

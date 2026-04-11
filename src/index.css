@@ -3,32 +3,26 @@
 @tailwind utilities;
 
 :root {
-  /* Palette de couleurs */
-  --color-primary: #4F46E5; /* indigo-600 */
-  --color-primary-light: #6366F1; /* indigo-500 */
-  --color-primary-dark: #4338CA; /* indigo-700 */
-  --color-accent: #8B5CF6; /* violet-500 */
-  --color-accent-light: #A78BFA; /* violet-400 */
-  
-  /* Couleurs neutres */
-  --color-neutral-dark: #1F2937; /* gray-800 */
-  --color-neutral-medium: #6B7280; /* gray-500 */
-  --color-neutral-light: #F3F4F6; /* gray-100 */
-  --color-white: #FFFFFF;
-  
-  /* Couleurs sémantiques */
-  --color-success: #10B981; /* green-500 */
-  --color-error: #EF4444; /* red-500 */
-  --color-warning: #F59E0B; /* amber-500 */
-  --color-info: #0EA5E9; /* sky-500 */
-  
-  /* Espacements */
-  --space-1: 0.25rem; /* 4px */
-  --space-2: 0.5rem; /* 8px */
-  --space-3: 0.75rem; /* 12px */
-  --space-4: 1rem; /* 16px */
-  --space-6: 1.5rem; /* 24px */
-  --space-8: 2rem; /* 32px */
+  /* Design tokens — Premium Minimaliste */
+  --color-canvas: #F9FAFB;
+  --color-surface: #FFFFFF;
+  --color-ink: #18181B;
+  --color-secondary: #71717A;
+  --color-muted: #94A3B8;
+  --color-accent: #4F46E5;
+  --color-accent-light: #6366F1;
+  --color-accent-dark: #4338CA;
+  --color-whisper: rgba(226,232,240,0.5);
+
+  /* Semantic */
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
+  --color-info: #0EA5E9;
+
+  /* Shadows */
+  --shadow-diffuse: 0 20px 40px -15px rgba(0,0,0,0.05);
+  --shadow-lift: 0 2px 8px rgba(0,0,0,0.04);
 
   /* Viewport height fix pour iOS */
   --vh: 1vh;
@@ -36,13 +30,12 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  /* Fix for iOS height issues */
+  color: var(--color-ink);
+  background-color: var(--color-canvas);
   height: -webkit-fill-available;
   width: 100%;
 }
@@ -50,9 +43,324 @@ body {
 #root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  /* Fix for iOS height issues */
+  min-height: 100dvh;
   min-height: -webkit-fill-available;
+}
+
+/* Premium typography defaults */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+  letter-spacing: -0.025em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ==========================================================================
+   Blog article typography (.blog-prose)
+   Fluent reading layout with clear hierarchy, visible bullets, and callouts.
+   ========================================================================== */
+
+.blog-prose {
+  color: #1f2937;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-prose > * + * {
+  margin-top: 1.25em;
+}
+
+/* Headings */
+.blog-prose h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 0;
+  margin-bottom: 0.75em;
+  letter-spacing: -0.03em;
+}
+
+.blog-prose h2 {
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+  padding-bottom: 0.4em;
+  border-bottom: 2px solid #e0e7ff;
+  letter-spacing: -0.025em;
+}
+
+.blog-prose h3 {
+  font-size: 1.375rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #1e293b;
+  margin-top: 1.75em;
+  margin-bottom: 0.6em;
+  letter-spacing: -0.02em;
+}
+
+.blog-prose h4 {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #1e293b;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Paragraphs */
+.blog-prose p {
+  margin: 0;
+  color: #374151;
+}
+
+.blog-prose strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.blog-prose em {
+  font-style: italic;
+}
+
+/* Links */
+.blog-prose a {
+  color: #4f46e5;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.blog-prose a:hover {
+  color: #4338ca;
+  text-decoration-thickness: 2px;
+}
+
+/* Lists — visible bullets, comfortable spacing */
+.blog-prose ul,
+.blog-prose ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-left: 1.5rem;
+}
+
+.blog-prose ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.blog-prose ul > li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.blog-prose ul > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.blog-prose ol {
+  list-style: decimal;
+  padding-left: 1.75rem;
+}
+
+.blog-prose ol > li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-left: 0.5rem;
+}
+
+.blog-prose ol > li::marker {
+  color: #4f46e5;
+  font-weight: 700;
+}
+
+.blog-prose li > p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Nested lists */
+.blog-prose li > ul,
+.blog-prose li > ol {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Blockquotes */
+.blog-prose blockquote {
+  margin: 1.75em 0;
+  padding: 1.25em 1.5em;
+  border-left: 4px solid #6366f1;
+  background: linear-gradient(to right, #f5f3ff, transparent);
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: italic;
+  color: #4c1d95;
+}
+
+.blog-prose blockquote p {
+  margin: 0;
+}
+
+/* Inline code */
+.blog-prose code:not(pre code) {
+  background: #f1f5f9;
+  color: #4f46e5;
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  font-weight: 500;
+  font-family: 'JetBrains Mono', 'Geist Mono', monospace;
+}
+
+/* Code blocks */
+.blog-prose pre {
+  background: #1e293b;
+  color: #f1f5f9;
+  padding: 1.25em;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+.blog-prose pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+/* Images */
+.blog-prose img {
+  border-radius: 0.75rem;
+  margin: 1.75em auto;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+}
+
+/* Tables */
+.blog-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+}
+
+.blog-prose th,
+.blog-prose td {
+  padding: 0.75em 1em;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.blog-prose th {
+  background: #f8fafc;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.blog-prose tr:last-child td {
+  border-bottom: none;
+}
+
+/* Horizontal rule */
+.blog-prose hr {
+  border: none;
+  border-top: 2px dashed #e5e7eb;
+  margin: 2.5em 0;
+}
+
+/* Highlight callouts: paragraphs starting with 👉 (auto-detected via JS class)
+   or paragraphs explicitly tagged with .blog-callout */
+.blog-prose p.blog-callout,
+.blog-prose .blog-callout {
+  background: linear-gradient(135deg, #fef3c7 0%, #fef9e7 100%);
+  border-left: 4px solid #f59e0b;
+  padding: 1em 1.25em;
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin: 1.5em 0;
+  color: #78350f;
+  font-weight: 500;
+}
+
+.blog-prose p.blog-callout strong,
+.blog-prose .blog-callout strong {
+  color: #451a03;
+}
+
+/* Inverted variant for dark backgrounds (e.g. conclusion banner) */
+.blog-prose-invert {
+  color: #e5e7eb;
+}
+
+.blog-prose-invert h1,
+.blog-prose-invert h2,
+.blog-prose-invert h3,
+.blog-prose-invert h4,
+.blog-prose-invert strong {
+  color: #ffffff;
+}
+
+.blog-prose-invert h2 {
+  border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+.blog-prose-invert p,
+.blog-prose-invert li {
+  color: #e5e7eb;
+}
+
+.blog-prose-invert a {
+  color: #a5b4fc;
+}
+
+.blog-prose-invert a:hover {
+  color: #c7d2fe;
+}
+
+.blog-prose-invert ul > li::before {
+  background: linear-gradient(135deg, #a5b4fc, #c7d2fe);
+  box-shadow: 0 0 0 3px rgba(165, 180, 252, 0.2);
+}
+
+/* Responsive — slightly tighter on mobile */
+@media (max-width: 640px) {
+  .blog-prose {
+    font-size: 1rem;
+  }
+
+  .blog-prose h1 {
+    font-size: 1.875rem;
+  }
+
+  .blog-prose h2 {
+    font-size: 1.5rem;
+    margin-top: 2em;
+  }
+
+  .blog-prose h3 {
+    font-size: 1.25rem;
+  }
 }
 
 /* Animation pour les modales */
@@ -132,7 +440,7 @@ a {
 
 /* Optimisation de la lisibilité des formulaires */
 input, select, textarea {
-  @apply focus:ring-2 focus:ring-indigo-300 focus:border-indigo-500 focus:outline-none;
+  @apply focus:ring-2 focus:ring-zinc-300 focus:border-zinc-400 focus:outline-none;
 }
 
 /* Fix for iOS Safari's 100vh issue */
@@ -161,9 +469,9 @@ input, select, textarea {
 }
 
 .breadcrumb-link {
-  @apply text-gray-500 hover:text-indigo-600 transition-colors;
+  @apply text-zinc-500 hover:text-zinc-900 transition-colors;
 }
 
 .breadcrumb-current {
-  @apply font-medium text-indigo-600;
+  @apply font-medium text-zinc-900;
 }
