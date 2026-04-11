@@ -649,16 +649,36 @@ app.get('/api/blog-posts/:id', async (req, res) => {
 app.post('/api/blog-posts', async (req, res) => {
   try {
     const { title, slug, excerpt, content, featured_image, category_id, status, language, author_name } = req.body;
-    const id = uuidv4();
-    const published_at = status === 'published' ? new Date() : null;
+    if (!slug) return res.status(400).json({ error: 'slug is required' });
+    const newId = uuidv4();
+    const finalStatus = status || 'draft';
+    // Upsert by slug: republishing the same article (e.g. via webhook) updates the existing
+    // row instead of crashing on the unique constraint. published_at is set to NOW() the first
+    // time the row transitions to 'published' and preserved on subsequent updates.
     const result = await pool.query(
       `INSERT INTO blog_posts (id, title, slug, excerpt, content, featured_image, category_id, status, published_at, language, author_name)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`,
-      [id, title, slug, excerpt, content, featured_image, category_id, status || 'draft', published_at, language || 'en', author_name]
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8, CASE WHEN $8 = 'published' THEN NOW() ELSE NULL END, $9, $10)
+       ON CONFLICT (slug) DO UPDATE SET
+         title = EXCLUDED.title,
+         excerpt = EXCLUDED.excerpt,
+         content = EXCLUDED.content,
+         featured_image = EXCLUDED.featured_image,
+         category_id = EXCLUDED.category_id,
+         status = EXCLUDED.status,
+         language = EXCLUDED.language,
+         author_name = EXCLUDED.author_name,
+         updated_at = NOW(),
+         published_at = CASE
+           WHEN blog_posts.published_at IS NULL AND EXCLUDED.status = 'published' THEN NOW()
+           ELSE blog_posts.published_at
+         END
+       RETURNING *`,
+      [newId, title, slug, excerpt, content, featured_image, category_id, finalStatus, language || 'en', author_name]
     );
-    res.status(201).json(result.rows[0]);
+    const created = result.rows[0].id === newId;
+    res.status(created ? 201 : 200).json(result.rows[0]);
   } catch (error) {
-    console.error('Error creating blog post:', error);
+    console.error('Error creating/updating blog post:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
