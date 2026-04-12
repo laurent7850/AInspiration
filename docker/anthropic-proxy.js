@@ -2,6 +2,23 @@ const http = require('http');
 const https = require('https');
 const K = process.env.OPENROUTER_KEY;
 
+// Remove all null values and null bytes recursively from any object
+function stripNulls(obj) {
+  if (obj === null || obj === undefined) return undefined;
+  if (typeof obj === 'string') return obj.replace(/\0/g, '');
+  if (Array.isArray(obj)) return obj.map(stripNulls).filter(v => v !== undefined);
+  if (typeof obj === 'object') {
+    const clean = {};
+    for (const [k, v] of Object.entries(obj)) {
+      if (v === null || v === undefined) continue;
+      const cleaned = stripNulls(v);
+      if (cleaned !== undefined) clean[k] = cleaned;
+    }
+    return clean;
+  }
+  return obj;
+}
+
 function cleanUsage(u) {
   if (!u) return { input_tokens: 0, output_tokens: 0 };
   return {
@@ -22,21 +39,13 @@ function transformSSELine(line) {
   const jsonStr = line.slice(6);
   if (jsonStr === '[DONE]') return null;
   try {
-    const obj = JSON.parse(jsonStr);
+    let obj = JSON.parse(jsonStr);
+    obj = stripNulls(obj);
     if (obj.type === 'message_start' && obj.message) {
       obj.message.usage = cleanUsage(obj.message.usage);
       obj.message.model = fixModel(obj.message.model);
-      delete obj.message.container;
-      delete obj.message.stop_details;
-      delete obj.message.provider;
     } else if (obj.type === 'message_delta') {
       if (obj.usage) obj.usage = cleanUsage(obj.usage);
-      if (obj.delta) {
-        delete obj.delta.container;
-        delete obj.delta.stop_details;
-      }
-    } else if (obj.type === 'content_block_start' && obj.content_block) {
-      delete obj.content_block.citations;
     }
     return 'data: ' + JSON.stringify(obj);
   } catch (e) {
@@ -80,12 +89,10 @@ http.createServer((req, res) => {
         upstream.on('data', c => rb += c);
         upstream.on('end', () => {
           try {
-            const obj = JSON.parse(rb);
+            let obj = JSON.parse(rb);
+            obj = stripNulls(obj);
             if (obj.usage) obj.usage = cleanUsage(obj.usage);
             if (obj.model) obj.model = fixModel(obj.model);
-            delete obj.container;
-            delete obj.stop_details;
-            delete obj.provider;
             rb = JSON.stringify(obj);
           } catch (e) {}
           res.writeHead(upstream.statusCode, {
