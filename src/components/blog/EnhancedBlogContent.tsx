@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
 import { sanitizeHtml } from '../../utils/validation';
 import {
   CheckCircle,
@@ -63,8 +62,6 @@ interface StepSection {
 }
 
 export default function EnhancedBlogContent({ content }: EnhancedBlogContentProps) {
-  const { t } = useTranslation('blog');
-
   const sanitizedContent = useMemo(() => sanitizeHtml(content), [content]);
   const enhancedContent = useMemo(() => enhanceBlogHtml(sanitizedContent), [sanitizedContent]);
 
@@ -142,20 +139,11 @@ export default function EnhancedBlogContent({ content }: EnhancedBlogContentProp
     return { intro, steps, conclusion };
   };
 
-  const extractMetrics = (htmlContent: string) => {
-    const metrics: Array<{ value: string; label: string }> = [];
-    const percentageRegex = /(\d+\s*%)/g;
-    const matches = htmlContent.match(percentageRegex);
-
-    if (matches && matches.length > 0) {
-      const unique = [...new Set(matches.map(m => m.trim()))];
-      unique.slice(0, 3).forEach((match) => {
-        metrics.push({ value: match, label: t('enhancedContent.improvement') });
-      });
-    }
-
-    return metrics;
-  };
+  // Removed: extractMetrics. It used to scrape any "%" from the article and
+  // labelled them all as "Amélioration" without any context, producing
+  // misleading banners like "30 % Amélioration / 4 % Amélioration / 35 % Amélioration"
+  // that didn't reflect the actual article content.
+  // Percentages stay in the prose where they have their proper context.
 
   const getIconForSection = (title: string, index: number) => {
     const lowerTitle = title.toLowerCase();
@@ -189,7 +177,6 @@ export default function EnhancedBlogContent({ content }: EnhancedBlogContentProp
   // ── Step-by-step guide layout ──
   if (isStepByStepGuide) {
     const { intro, steps, conclusion } = extractStepSections(sanitizedContent);
-    const metrics = extractMetrics(sanitizedContent);
 
     return (
       <div className="space-y-10">
@@ -200,20 +187,6 @@ export default function EnhancedBlogContent({ content }: EnhancedBlogContentProp
               className="blog-prose"
               dangerouslySetInnerHTML={{ __html: intro }}
             />
-          </div>
-        )}
-
-        {/* Metrics banner */}
-        {metrics.length > 0 && (
-          <div className="bg-gradient-to-br from-primary-700 to-primary-900 rounded-2xl p-8 md:p-10">
-            <div className="grid md:grid-cols-3 gap-8">
-              {metrics.map((metric, index) => (
-                <div key={index} className="text-center text-white">
-                  <div className="text-4xl md:text-5xl font-bold mb-2">{metric.value}</div>
-                  <div className="text-lg text-primary-200">{metric.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
         )}
 
@@ -288,27 +261,8 @@ export default function EnhancedBlogContent({ content }: EnhancedBlogContentProp
   }
 
   // ── Single-column readable layout (default for all non step-by-step articles) ──
-  const metrics = extractMetrics(sanitizedContent);
-
   return (
     <div className="space-y-10">
-      {/* Optional metrics banner — only if the article surfaces percentages worth highlighting */}
-      {metrics.length > 0 && (
-        <div className="bg-gradient-to-br from-primary-700 to-primary-900 rounded-2xl p-8 md:p-10 max-w-3xl mx-auto">
-          <h2 className="text-xl font-bold text-white text-center mb-6">
-            {t('enhancedContent.measurableResults')}
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {metrics.map((metric, index) => (
-              <div key={index} className="text-center text-white">
-                <div className="text-4xl md:text-5xl font-bold mb-1">{metric.value}</div>
-                <div className="text-sm text-primary-200">{metric.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* Article body — single column, optimal reading width, clear typography */}
       <article
         className="blog-prose"
