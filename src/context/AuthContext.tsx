@@ -72,6 +72,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signOut = async () => {
     await logLogout();
+    await api.post('/auth/logout').catch(() => {});
     clearToken();
     setUser(null);
   };

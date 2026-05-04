@@ -434,23 +434,56 @@ app.get('/api/status', (req, res) => res.json({ status: 'running' }));
 
 // ==================== AUTH MIDDLEWARE ====================
 
-function optionalAuth(req, res, next) {
+// Reads JWT from httpOnly cookie (preferred) or Authorization header (legacy/transition).
+function getTokenFromRequest(req) {
+  const cookieHeader = req.headers.cookie;
+  if (cookieHeader) {
+    const match = cookieHeader.match(/(?:^|;\s*)auth_token=([^;]+)/);
+    if (match) return decodeURIComponent(match[1]);
+  }
   const header = req.headers.authorization;
-  if (header && header.startsWith('Bearer ')) {
+  if (header && header.startsWith('Bearer ')) return header.slice(7);
+  return null;
+}
+
+const AUTH_COOKIE_MAX_AGE = 7 * 24 * 60 * 60; // 7 days, seconds
+const COOKIE_SECURE = process.env.NODE_ENV === 'production';
+
+function setAuthCookie(res, token) {
+  const parts = [
+    `auth_token=${token}`,
+    'Path=/',
+    'HttpOnly',
+    'SameSite=Strict',
+    `Max-Age=${AUTH_COOKIE_MAX_AGE}`,
+  ];
+  if (COOKIE_SECURE) parts.push('Secure');
+  res.setHeader('Set-Cookie', parts.join('; '));
+}
+
+function clearAuthCookie(res) {
+  const parts = ['auth_token=', 'Path=/', 'HttpOnly', 'SameSite=Strict', 'Max-Age=0'];
+  if (COOKIE_SECURE) parts.push('Secure');
+  res.setHeader('Set-Cookie', parts.join('; '));
+}
+
+function optionalAuth(req, res, next) {
+  const token = getTokenFromRequest(req);
+  if (token) {
     try {
-      req.user = jwt.verify(header.slice(7), JWT_SECRET);
+      req.user = jwt.verify(token, JWT_SECRET);
     } catch (e) { /* invalid token — continue without auth */ }
   }
   next();
 }
 
 function requireAuth(req, res, next) {
-  const header = req.headers.authorization;
-  if (!header || !header.startsWith('Bearer ')) {
+  const token = getTokenFromRequest(req);
+  if (!token) {
     return res.status(401).json({ error: 'Authentication required' });
   }
   try {
-    req.user = jwt.verify(header.slice(7), JWT_SECRET);
+    req.user = jwt.verify(token, JWT_SECRET);
     next();
   } catch (e) {
     return res.status(401).json({ error: 'Invalid or expired token' });
@@ -509,6 +542,7 @@ app.post('/api/auth/register', authLimiter, async (req, res) => {
       [uuidv4(), user.id, 'user_registered', `Nouvel utilisateur: ${user.email}`, 'user', user.id]
     ).catch(() => {});
 
+    setAuthCookie(res, token);
     res.status(201).json({ user, token });
   } catch (error) {
     console.error('Error registering user:', error);
@@ -545,11 +579,17 @@ app.post('/api/auth/login', authLimiter, async (req, res) => {
     const { password_hash, ...userData } = user;
     const token = jwt.sign({ id: user.id, email: user.email, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
 
+    setAuthCookie(res, token);
     res.json({ user: userData, token });
   } catch (error) {
     console.error('Error logging in:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
+});
+
+app.post('/api/auth/logout', (req, res) => {
+  clearAuthCookie(res);
+  res.json({ success: true });
 });
 
 app.get('/api/auth/me', requireAuth, async (req, res) => {
