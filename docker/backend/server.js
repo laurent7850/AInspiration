@@ -1063,13 +1063,19 @@ app.get('/api/contacts', requireAuth, async (req, res) => {
   try {
     const { company_id, limit = 100, offset = 0 } = req.query;
     const owner = ownerScope(req);
-    let query = 'SELECT c.*, co.name AS company_name FROM contacts c LEFT JOIN companies co ON c.company_id = co.id WHERE ($1::uuid IS NULL OR c.owner_id = $1)';
+    let baseWhere = ' FROM contacts c WHERE ($1::uuid IS NULL OR c.owner_id = $1)';
     const params = [owner];
     let pi = 2;
-    if (company_id) { query += ` AND c.company_id = $${pi++}`; params.push(company_id); }
-    query += ` ORDER BY c.created_at DESC LIMIT $${pi++} OFFSET $${pi}`;
-    params.push(parseInt(limit), parseInt(offset));
-    const result = await pool.query(query, params);
+    if (company_id) { baseWhere += ` AND c.company_id = $${pi++}`; params.push(company_id); }
+
+    // Total count for pagination
+    const countResult = await pool.query(`SELECT COUNT(*)::int AS total ${baseWhere}`, params);
+    res.set('X-Total-Count', String(countResult.rows[0].total));
+    res.set('Access-Control-Expose-Headers', 'X-Total-Count');
+
+    const dataParams = [...params, parseInt(limit), parseInt(offset)];
+    const dataQuery = `SELECT c.*, co.name AS company_name${baseWhere.replace(' FROM contacts c', ' FROM contacts c LEFT JOIN companies co ON c.company_id = co.id')} ORDER BY c.created_at DESC LIMIT $${pi++} OFFSET $${pi}`;
+    const result = await pool.query(dataQuery, dataParams);
     res.json(result.rows);
   } catch (error) {
     console.error('Error fetching contacts:', error);
