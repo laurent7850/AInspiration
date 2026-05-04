@@ -53,3 +53,7 @@ supabase/.temp/
 !.env.development
 !.env.production
 !.env.example
+
+# Claude Code transient artifacts
+.claude/worktrees/
+.claude/scheduled_tasks.lock

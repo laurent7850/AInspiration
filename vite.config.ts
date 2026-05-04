@@ -71,7 +71,8 @@ export default defineConfig(({ mode }): UserConfig => {
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src')
-      }
+      },
+      dedupe: ['react', 'react-dom']
     },
     server: {
       port: 5173,
@@ -101,7 +102,8 @@ export default defineConfig(({ mode }): UserConfig => {
         'react-dom',
         'react-router-dom',
         'i18next',
-        'react-i18next'
+        'react-i18next',
+        '@tanstack/react-query'
       ]
     },
     clearScreen: false

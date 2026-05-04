@@ -69,6 +69,7 @@ async function request<T>(
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined,
+    credentials: 'include',
   });
 
   if (!res.ok) {
@@ -87,9 +88,40 @@ async function request<T>(
 
 // ==================== PUBLIC API ====================
 
+// Variant that exposes response headers (used by paginated endpoints
+// that return X-Total-Count). Body and headers come from the same response.
+async function requestWithMeta<T>(
+  path: string,
+  params?: QueryParams
+): Promise<{ data: T; total: number | null }> {
+  let url = `${API_BASE}${path}`;
+  if (params) {
+    const sp = new URLSearchParams();
+    for (const [k, v] of Object.entries(params)) {
+      if (v !== undefined && v !== null && v !== '') sp.append(k, String(v));
+    }
+    const qs = sp.toString();
+    if (qs) url += `?${qs}`;
+  }
+  const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+  if (token) headers['Authorization'] = `Bearer ${token}`;
+  const res = await fetch(url, { method: 'GET', headers, credentials: 'include' });
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => ({ error: res.statusText }));
+    throw new ApiError(errorData.error || errorData.message || res.statusText, res.status);
+  }
+  const totalHeader = res.headers.get('X-Total-Count');
+  const total = totalHeader ? parseInt(totalHeader, 10) : null;
+  const data = (await res.json()) as T;
+  return { data, total };
+}
+
 export const api = {
   get: <T>(path: string, params?: QueryParams) =>
     request<T>('GET', path, undefined, params),
+
+  getWithMeta: <T>(path: string, params?: QueryParams) =>
+    requestWithMeta<T>(path, params),
 
   post: <T>(path: string, body?: unknown) =>
     request<T>('POST', path, body),
