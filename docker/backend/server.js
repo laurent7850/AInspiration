@@ -189,6 +189,9 @@ async function resetDemoData() {
       ON CONFLICT (id) DO UPDATE SET company_id=EXCLUDED.company_id, first_name=EXCLUDED.first_name, last_name=EXCLUDED.last_name, email=EXCLUDED.email, phone=EXCLUDED.phone, job_title=EXCLUDED.job_title, notes=EXCLUDED.notes, status=EXCLUDED.status;
     `);
 
+    // Assign demo contacts to demo user (multi-tenant scoping)
+    await pool.query(`UPDATE contacts SET owner_id = $1 WHERE id LIKE 'd0000000-%'`, [DEMO_USER_ID]);
+
     // Re-seed products
     await pool.query(`
       INSERT INTO products (id, name, description, price, currency, category, status) VALUES
@@ -452,6 +455,12 @@ function requireAuth(req, res, next) {
   } catch (e) {
     return res.status(401).json({ error: 'Invalid or expired token' });
   }
+}
+
+// Returns null for admin (sees all rows), req.user.id otherwise.
+// Use in WHERE clauses as: ($N::uuid IS NULL OR owner_col = $N)
+function ownerScope(req) {
+  return req.user && req.user.role === 'admin' ? null : (req.user ? req.user.id : null);
 }
 
 app.use(optionalAuth);
@@ -829,10 +838,11 @@ app.delete('/api/companies/:id', requireAuth, async (req, res) => {
 app.get('/api/contacts', requireAuth, async (req, res) => {
   try {
     const { company_id, limit = 100, offset = 0 } = req.query;
-    let query = 'SELECT c.*, co.name AS company_name FROM contacts c LEFT JOIN companies co ON c.company_id = co.id';
-    const params = [];
-    let pi = 1;
-    if (company_id) { query += ` WHERE c.company_id = $${pi++}`; params.push(company_id); }
+    const owner = ownerScope(req);
+    let query = 'SELECT c.*, co.name AS company_name FROM contacts c LEFT JOIN companies co ON c.company_id = co.id WHERE ($1::uuid IS NULL OR c.owner_id = $1)';
+    const params = [owner];
+    let pi = 2;
+    if (company_id) { query += ` AND c.company_id = $${pi++}`; params.push(company_id); }
     query += ` ORDER BY c.created_at DESC LIMIT $${pi++} OFFSET $${pi}`;
     params.push(parseInt(limit), parseInt(offset));
     const result = await pool.query(query, params);
@@ -845,9 +855,10 @@ app.get('/api/contacts', requireAuth, async (req, res) => {
 
 app.get('/api/contacts/:id', requireAuth, async (req, res) => {
   try {
+    const owner = ownerScope(req);
     const result = await pool.query(
-      'SELECT c.*, co.name AS company_name FROM contacts c LEFT JOIN companies co ON c.company_id = co.id WHERE c.id = $1',
-      [req.params.id]
+      'SELECT c.*, co.name AS company_name FROM contacts c LEFT JOIN companies co ON c.company_id = co.id WHERE c.id = $1 AND ($2::uuid IS NULL OR c.owner_id = $2)',
+      [req.params.id, owner]
     );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Contact not found' });
     res.json(result.rows[0]);
@@ -862,9 +873,9 @@ app.post('/api/contacts', requireAuth, async (req, res) => {
     const { first_name, last_name, email, phone, job_title, company_id, notes, status } = req.body;
     const id = uuidv4();
     const result = await pool.query(
-      `INSERT INTO contacts (id, first_name, last_name, email, phone, job_title, company_id, notes, status)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`,
-      [id, first_name, last_name, email, phone, job_title, company_id, notes, status || 'active']
+      `INSERT INTO contacts (id, first_name, last_name, email, phone, job_title, company_id, notes, status, owner_id)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
+      [id, first_name, last_name, email, phone, job_title, company_id, notes, status || 'active', req.user.id]
     );
     res.status(201).json(result.rows[0]);
   } catch (error) {
@@ -877,10 +888,12 @@ app.put('/api/contacts/:id', requireAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const { first_name, last_name, email, phone, job_title, company_id, notes, status } = req.body;
+    const owner = ownerScope(req);
     const result = await pool.query(
       `UPDATE contacts SET first_name=$1, last_name=$2, email=$3, phone=$4, job_title=$5,
-       company_id=$6, notes=$7, status=$8, updated_at=NOW() WHERE id=$9 RETURNING *`,
-      [first_name, last_name, email, phone, job_title, company_id, notes, status, id]
+       company_id=$6, notes=$7, status=$8, updated_at=NOW()
+       WHERE id=$9 AND ($10::uuid IS NULL OR owner_id = $10) RETURNING *`,
+      [first_name, last_name, email, phone, job_title, company_id, notes, status, id, owner]
     );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Contact not found' });
     res.json(result.rows[0]);
@@ -892,7 +905,11 @@ app.put('/api/contacts/:id', requireAuth, async (req, res) => {
 
 app.delete('/api/contacts/:id', requireAuth, async (req, res) => {
   try {
-    const result = await pool.query('DELETE FROM contacts WHERE id=$1 RETURNING *', [req.params.id]);
+    const owner = ownerScope(req);
+    const result = await pool.query(
+      'DELETE FROM contacts WHERE id=$1 AND ($2::uuid IS NULL OR owner_id = $2) RETURNING *',
+      [req.params.id, owner]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Contact not found' });
     res.json({ message: 'Contact deleted successfully' });
   } catch (error) {
@@ -1012,9 +1029,10 @@ const OPP_JOIN_QUERY = `
 app.get('/api/opportunities', requireAuth, async (req, res) => {
   try {
     const { company_id, status, limit = 100, offset = 0 } = req.query;
-    let query = OPP_JOIN_QUERY + ' WHERE 1=1';
-    const params = [];
-    let pi = 1;
+    const owner = ownerScope(req);
+    let query = OPP_JOIN_QUERY + ' WHERE ($1::uuid IS NULL OR o.owner_id = $1)';
+    const params = [owner];
+    let pi = 2;
     if (company_id) { query += ` AND o.company_id = $${pi++}`; params.push(company_id); }
     if (status) { query += ` AND o.status = $${pi++}`; params.push(status); }
     query += ` ORDER BY o.created_at DESC LIMIT $${pi++} OFFSET $${pi}`;
@@ -1029,7 +1047,11 @@ app.get('/api/opportunities', requireAuth, async (req, res) => {
 
 app.get('/api/opportunities/:id', requireAuth, async (req, res) => {
   try {
-    const result = await pool.query(OPP_JOIN_QUERY + ' WHERE o.id = $1', [req.params.id]);
+    const owner = ownerScope(req);
+    const result = await pool.query(
+      OPP_JOIN_QUERY + ' WHERE o.id = $1 AND ($2::uuid IS NULL OR o.owner_id = $2)',
+      [req.params.id, owner]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Opportunity not found' });
     res.json(mapOpportunity(result.rows[0]));
   } catch (error) {
@@ -1049,7 +1071,8 @@ app.post('/api/opportunities', requireAuth, async (req, res) => {
     const dbStatus = stage || status || 'new';
     const dbValue = estimated_value ?? value ?? null;
     const dbCloseDate = close_date || expected_close_date || null;
-    const dbOwnerId = user_id || owner_id || (req.user ? req.user.id : null);
+    // Only admin can assign ownership to another user; non-admin always owns their inserts.
+    const dbOwnerId = (req.user.role === 'admin' && (user_id || owner_id)) ? (user_id || owner_id) : req.user.id;
 
     const result = await pool.query(
       `INSERT INTO opportunities (id, name, company_id, contact_id, product_id, value, currency, status, probability, expected_close_date, notes, owner_id)
@@ -1074,6 +1097,7 @@ app.put('/api/opportunities/:id', requireAuth, async (req, res) => {
     const dbStatus = stage || status;
     const dbValue = estimated_value ?? value;
     const dbCloseDate = close_date || expected_close_date;
+    const owner = ownerScope(req);
 
     const result = await pool.query(
       `UPDATE opportunities SET
@@ -1081,8 +1105,8 @@ app.put('/api/opportunities/:id', requireAuth, async (req, res) => {
         value=COALESCE($5,value), currency=COALESCE($6,currency),
         status=COALESCE($7,status), probability=COALESCE($8,probability),
         expected_close_date=$9, notes=$10, updated_at=NOW()
-       WHERE id=$11 RETURNING *`,
-      [name, company_id, contact_id, product_id, dbValue, currency, dbStatus, probability, dbCloseDate, notes, id]
+       WHERE id=$11 AND ($12::uuid IS NULL OR owner_id = $12) RETURNING *`,
+      [name, company_id, contact_id, product_id, dbValue, currency, dbStatus, probability, dbCloseDate, notes, id, owner]
     );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Opportunity not found' });
     res.json(mapOpportunity(result.rows[0]));
@@ -1094,7 +1118,11 @@ app.put('/api/opportunities/:id', requireAuth, async (req, res) => {
 
 app.delete('/api/opportunities/:id', requireAuth, async (req, res) => {
   try {
-    const result = await pool.query('DELETE FROM opportunities WHERE id=$1 RETURNING *', [req.params.id]);
+    const owner = ownerScope(req);
+    const result = await pool.query(
+      'DELETE FROM opportunities WHERE id=$1 AND ($2::uuid IS NULL OR owner_id = $2) RETURNING *',
+      [req.params.id, owner]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Opportunity not found' });
     res.json({ message: 'Opportunity deleted successfully' });
   } catch (error) {
@@ -1127,9 +1155,10 @@ function enrichTask(row) {
 app.get('/api/tasks', requireAuth, async (req, res) => {
   try {
     const { status, priority, opportunity_id, contact_id, company_id, limit = 100, offset = 0 } = req.query;
-    let query = TASK_JOIN_QUERY + ' WHERE 1=1';
-    const params = [];
-    let pi = 1;
+    const owner = ownerScope(req);
+    let query = TASK_JOIN_QUERY + ' WHERE ($1::uuid IS NULL OR t.assigned_to = $1)';
+    const params = [owner];
+    let pi = 2;
     if (status) { query += ` AND t.status = $${pi++}`; params.push(status); }
     if (priority) { query += ` AND t.priority = $${pi++}`; params.push(priority); }
     if (opportunity_id) { query += ` AND t.opportunity_id = $${pi++}`; params.push(opportunity_id); }
@@ -1147,7 +1176,11 @@ app.get('/api/tasks', requireAuth, async (req, res) => {
 
 app.get('/api/tasks/:id', requireAuth, async (req, res) => {
   try {
-    const result = await pool.query(TASK_JOIN_QUERY + ' WHERE t.id = $1', [req.params.id]);
+    const owner = ownerScope(req);
+    const result = await pool.query(
+      TASK_JOIN_QUERY + ' WHERE t.id = $1 AND ($2::uuid IS NULL OR t.assigned_to = $2)',
+      [req.params.id, owner]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Task not found' });
     res.json(enrichTask(result.rows[0]));
   } catch (error) {
@@ -1160,7 +1193,8 @@ app.post('/api/tasks', requireAuth, async (req, res) => {
   try {
     const { title, description, status, priority, due_date, company_id, contact_id, opportunity_id, user_id, assigned_to } = req.body;
     const id = uuidv4();
-    const dbAssignedTo = assigned_to || user_id || (req.user ? req.user.id : null);
+    // Only admin can assign tasks to another user; non-admin always assigns to self.
+    const dbAssignedTo = (req.user.role === 'admin' && (assigned_to || user_id)) ? (assigned_to || user_id) : req.user.id;
     const result = await pool.query(
       `INSERT INTO tasks (id, title, description, status, priority, due_date, company_id, contact_id, opportunity_id, assigned_to)
        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
@@ -1181,12 +1215,13 @@ app.put('/api/tasks/:id', requireAuth, async (req, res) => {
     let finalCompletedAt = completed_at;
     if (completed === true && finalStatus !== 'completed') { finalStatus = 'completed'; finalCompletedAt = finalCompletedAt || new Date().toISOString(); }
     else if (completed === false && status === 'completed') { finalStatus = 'not_started'; finalCompletedAt = null; }
+    const owner = ownerScope(req);
     const result = await pool.query(
       `UPDATE tasks SET title=COALESCE($1,title), description=$2, status=COALESCE($3,status),
        priority=COALESCE($4,priority), due_date=$5, completed_at=$6,
        company_id=$7, contact_id=$8, opportunity_id=$9, updated_at=NOW()
-       WHERE id=$10 RETURNING *`,
-      [title, description, finalStatus, priority, due_date, finalCompletedAt, company_id, contact_id, opportunity_id, id]
+       WHERE id=$10 AND ($11::uuid IS NULL OR assigned_to = $11) RETURNING *`,
+      [title, description, finalStatus, priority, due_date, finalCompletedAt, company_id, contact_id, opportunity_id, id, owner]
     );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Task not found' });
     res.json(mapTask(result.rows[0]));
@@ -1198,7 +1233,11 @@ app.put('/api/tasks/:id', requireAuth, async (req, res) => {
 
 app.delete('/api/tasks/:id', requireAuth, async (req, res) => {
   try {
-    const result = await pool.query('DELETE FROM tasks WHERE id=$1 RETURNING *', [req.params.id]);
+    const owner = ownerScope(req);
+    const result = await pool.query(
+      'DELETE FROM tasks WHERE id=$1 AND ($2::uuid IS NULL OR assigned_to = $2) RETURNING *',
+      [req.params.id, owner]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Task not found' });
     res.json({ message: 'Task deleted successfully' });
   } catch (error) {
@@ -1370,9 +1409,10 @@ app.post('/api/access-logs', async (req, res) => {
 app.get('/api/activities', requireAuth, async (req, res) => {
   try {
     const { entity_type, entity_id, enriched, limit = 50, offset = 0 } = req.query;
-    let query = 'SELECT * FROM activities WHERE 1=1';
-    const params = [];
-    let pi = 1;
+    const owner = ownerScope(req);
+    let query = 'SELECT * FROM activities WHERE ($1::uuid IS NULL OR user_id = $1)';
+    const params = [owner];
+    let pi = 2;
     if (entity_type) { query += ` AND entity_type = $${pi++}`; params.push(entity_type); }
     if (entity_id) { query += ` AND entity_id = $${pi++}`; params.push(entity_id); }
     query += ` ORDER BY created_at DESC LIMIT $${pi++} OFFSET $${pi}`;
@@ -1415,7 +1455,8 @@ app.post('/api/activities', requireAuth, async (req, res) => {
     const dbType = type || activity_type;
     const dbEntityType = entity_type || related_to_type;
     const dbEntityId = entity_id || related_to;
-    const dbUserId = user_id || (req.user ? req.user.id : null);
+    // Only admin can attribute activities to another user; non-admin always attributes to self.
+    const dbUserId = (req.user.role === 'admin' && user_id) ? user_id : req.user.id;
     const result = await pool.query(
       'INSERT INTO activities (id, user_id, type, description, entity_type, entity_id, metadata) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *',
       [id, dbUserId, dbType, description, dbEntityType, dbEntityId, metadata ? JSON.stringify(metadata) : null]
