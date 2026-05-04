@@ -646,7 +646,7 @@ app.get('/api/blog-posts/:id', async (req, res) => {
   }
 });
 
-app.post('/api/blog-posts', async (req, res) => {
+app.post('/api/blog-posts', requireAuth, async (req, res) => {
   try {
     const { title, slug, excerpt, content, featured_image, category_id, status, language, author_name } = req.body;
     if (!slug) return res.status(400).json({ error: 'slug is required' });
@@ -683,7 +683,7 @@ app.post('/api/blog-posts', async (req, res) => {
   }
 });
 
-app.put('/api/blog-posts/:id', async (req, res) => {
+app.put('/api/blog-posts/:id', requireAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const { title, slug, excerpt, content, featured_image, category_id, status, language, author_name } = req.body;
@@ -701,7 +701,7 @@ app.put('/api/blog-posts/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/blog-posts/:id', async (req, res) => {
+app.delete('/api/blog-posts/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM blog_posts WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Post not found' });
@@ -724,7 +724,7 @@ app.get('/api/blog-categories', async (req, res) => {
 
 // ==================== COMPANIES ====================
 
-app.get('/api/companies', async (req, res) => {
+app.get('/api/companies', requireAuth, async (req, res) => {
   try {
     const { limit = 100, offset = 0 } = req.query;
     const result = await pool.query(
@@ -738,7 +738,7 @@ app.get('/api/companies', async (req, res) => {
   }
 });
 
-app.get('/api/companies/search', async (req, res) => {
+app.get('/api/companies/search', requireAuth, async (req, res) => {
   try {
     const { q = '' } = req.query;
     const result = await pool.query(
@@ -752,7 +752,7 @@ app.get('/api/companies/search', async (req, res) => {
   }
 });
 
-app.get('/api/companies/stats', async (req, res) => {
+app.get('/api/companies/stats', requireAuth, async (req, res) => {
   try {
     const total = await pool.query('SELECT COUNT(*) FROM companies');
     const active = await pool.query("SELECT COUNT(*) FROM companies WHERE status = 'active'");
@@ -768,7 +768,7 @@ app.get('/api/companies/stats', async (req, res) => {
   }
 });
 
-app.get('/api/companies/:id', async (req, res) => {
+app.get('/api/companies/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM companies WHERE id = $1', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Company not found' });
@@ -779,7 +779,7 @@ app.get('/api/companies/:id', async (req, res) => {
   }
 });
 
-app.post('/api/companies', async (req, res) => {
+app.post('/api/companies', requireAuth, async (req, res) => {
   try {
     const { name, industry, website, address, city, country, phone, email, notes, status } = req.body;
     const id = uuidv4();
@@ -795,7 +795,7 @@ app.post('/api/companies', async (req, res) => {
   }
 });
 
-app.put('/api/companies/:id', async (req, res) => {
+app.put('/api/companies/:id', requireAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const { name, industry, website, address, city, country, phone, email, notes, status } = req.body;
@@ -813,7 +813,7 @@ app.put('/api/companies/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/companies/:id', async (req, res) => {
+app.delete('/api/companies/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM companies WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Company not found' });
@@ -826,7 +826,7 @@ app.delete('/api/companies/:id', async (req, res) => {
 
 // ==================== CONTACTS (with company JOIN) ====================
 
-app.get('/api/contacts', async (req, res) => {
+app.get('/api/contacts', requireAuth, async (req, res) => {
   try {
     const { company_id, limit = 100, offset = 0 } = req.query;
     let query = 'SELECT c.*, co.name AS company_name FROM contacts c LEFT JOIN companies co ON c.company_id = co.id';
@@ -843,7 +843,7 @@ app.get('/api/contacts', async (req, res) => {
   }
 });
 
-app.get('/api/contacts/:id', async (req, res) => {
+app.get('/api/contacts/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query(
       'SELECT c.*, co.name AS company_name FROM contacts c LEFT JOIN companies co ON c.company_id = co.id WHERE c.id = $1',
@@ -857,7 +857,7 @@ app.get('/api/contacts/:id', async (req, res) => {
   }
 });
 
-app.post('/api/contacts', async (req, res) => {
+app.post('/api/contacts', requireAuth, async (req, res) => {
   try {
     const { first_name, last_name, email, phone, job_title, company_id, notes, status } = req.body;
     const id = uuidv4();
@@ -873,7 +873,7 @@ app.post('/api/contacts', async (req, res) => {
   }
 });
 
-app.put('/api/contacts/:id', async (req, res) => {
+app.put('/api/contacts/:id', requireAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const { first_name, last_name, email, phone, job_title, company_id, notes, status } = req.body;
@@ -890,7 +890,7 @@ app.put('/api/contacts/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/contacts/:id', async (req, res) => {
+app.delete('/api/contacts/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM contacts WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Contact not found' });
@@ -903,7 +903,7 @@ app.delete('/api/contacts/:id', async (req, res) => {
 
 // ==================== PRODUCTS (with is_active mapping) ====================
 
-app.get('/api/products', async (req, res) => {
+app.get('/api/products', requireAuth, async (req, res) => {
   try {
     const { active_only, category, limit = 100, offset = 0 } = req.query;
     let query = 'SELECT * FROM products WHERE 1=1';
@@ -921,7 +921,7 @@ app.get('/api/products', async (req, res) => {
   }
 });
 
-app.get('/api/products/stats', async (req, res) => {
+app.get('/api/products/stats', requireAuth, async (req, res) => {
   try {
     const active = await pool.query("SELECT COUNT(*) FROM products WHERE status = 'active'");
     const total = await pool.query('SELECT COUNT(*) FROM products');
@@ -938,7 +938,7 @@ app.get('/api/products/stats', async (req, res) => {
   }
 });
 
-app.get('/api/products/:id', async (req, res) => {
+app.get('/api/products/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM products WHERE id = $1', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Product not found' });
@@ -949,7 +949,7 @@ app.get('/api/products/:id', async (req, res) => {
   }
 });
 
-app.post('/api/products', async (req, res) => {
+app.post('/api/products', requireAuth, async (req, res) => {
   try {
     const { name, description, category, price, currency, is_active, status: rawStatus } = req.body;
     const id = uuidv4();
@@ -966,7 +966,7 @@ app.post('/api/products', async (req, res) => {
   }
 });
 
-app.put('/api/products/:id', async (req, res) => {
+app.put('/api/products/:id', requireAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const { name, description, category, price, currency, is_active, status: rawStatus } = req.body;
@@ -985,7 +985,7 @@ app.put('/api/products/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/products/:id', async (req, res) => {
+app.delete('/api/products/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM products WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Product not found' });
@@ -1009,7 +1009,7 @@ const OPP_JOIN_QUERY = `
   LEFT JOIN products p ON o.product_id = p.id
 `;
 
-app.get('/api/opportunities', async (req, res) => {
+app.get('/api/opportunities', requireAuth, async (req, res) => {
   try {
     const { company_id, status, limit = 100, offset = 0 } = req.query;
     let query = OPP_JOIN_QUERY + ' WHERE 1=1';
@@ -1027,7 +1027,7 @@ app.get('/api/opportunities', async (req, res) => {
   }
 });
 
-app.get('/api/opportunities/:id', async (req, res) => {
+app.get('/api/opportunities/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query(OPP_JOIN_QUERY + ' WHERE o.id = $1', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Opportunity not found' });
@@ -1038,7 +1038,7 @@ app.get('/api/opportunities/:id', async (req, res) => {
   }
 });
 
-app.post('/api/opportunities', async (req, res) => {
+app.post('/api/opportunities', requireAuth, async (req, res) => {
   try {
     const {
       name, company_id, contact_id, product_id,
@@ -1063,7 +1063,7 @@ app.post('/api/opportunities', async (req, res) => {
   }
 });
 
-app.put('/api/opportunities/:id', async (req, res) => {
+app.put('/api/opportunities/:id', requireAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const {
@@ -1092,7 +1092,7 @@ app.put('/api/opportunities/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/opportunities/:id', async (req, res) => {
+app.delete('/api/opportunities/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM opportunities WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Opportunity not found' });
@@ -1124,7 +1124,7 @@ function enrichTask(row) {
   return t;
 }
 
-app.get('/api/tasks', async (req, res) => {
+app.get('/api/tasks', requireAuth, async (req, res) => {
   try {
     const { status, priority, opportunity_id, contact_id, company_id, limit = 100, offset = 0 } = req.query;
     let query = TASK_JOIN_QUERY + ' WHERE 1=1';
@@ -1145,7 +1145,7 @@ app.get('/api/tasks', async (req, res) => {
   }
 });
 
-app.get('/api/tasks/:id', async (req, res) => {
+app.get('/api/tasks/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query(TASK_JOIN_QUERY + ' WHERE t.id = $1', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Task not found' });
@@ -1156,7 +1156,7 @@ app.get('/api/tasks/:id', async (req, res) => {
   }
 });
 
-app.post('/api/tasks', async (req, res) => {
+app.post('/api/tasks', requireAuth, async (req, res) => {
   try {
     const { title, description, status, priority, due_date, company_id, contact_id, opportunity_id, user_id, assigned_to } = req.body;
     const id = uuidv4();
@@ -1173,7 +1173,7 @@ app.post('/api/tasks', async (req, res) => {
   }
 });
 
-app.put('/api/tasks/:id', async (req, res) => {
+app.put('/api/tasks/:id', requireAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const { title, description, status, priority, due_date, completed_at, completed, company_id, contact_id, opportunity_id } = req.body;
@@ -1196,7 +1196,7 @@ app.put('/api/tasks/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/tasks/:id', async (req, res) => {
+app.delete('/api/tasks/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM tasks WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Task not found' });
@@ -1209,7 +1209,7 @@ app.delete('/api/tasks/:id', async (req, res) => {
 
 // ==================== CONTACT MESSAGES ====================
 
-app.get('/api/contact-messages', async (req, res) => {
+app.get('/api/contact-messages', requireAuth, async (req, res) => {
   try {
     const { status, search, limit = 100, offset = 0 } = req.query;
     let query = 'SELECT * FROM contact_messages WHERE 1=1';
@@ -1230,7 +1230,7 @@ app.get('/api/contact-messages', async (req, res) => {
   }
 });
 
-app.get('/api/contact-messages/stats', async (req, res) => {
+app.get('/api/contact-messages/stats', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT status, COUNT(*) as count FROM contact_messages GROUP BY status');
     const stats = { total: 0, new: 0, read: 0, replied: 0, archived: 0 };
@@ -1242,7 +1242,7 @@ app.get('/api/contact-messages/stats', async (req, res) => {
   }
 });
 
-app.get('/api/contact-messages/:id', async (req, res) => {
+app.get('/api/contact-messages/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM contact_messages WHERE id = $1', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Message not found' });
@@ -1287,7 +1287,7 @@ app.post('/api/contact-messages', async (req, res) => {
   }
 });
 
-app.put('/api/contact-messages/:id', async (req, res) => {
+app.put('/api/contact-messages/:id', requireAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const { status, notes } = req.body;
@@ -1303,7 +1303,7 @@ app.put('/api/contact-messages/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/contact-messages/:id', async (req, res) => {
+app.delete('/api/contact-messages/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM contact_messages WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Message not found' });
@@ -1316,7 +1316,7 @@ app.delete('/api/contact-messages/:id', async (req, res) => {
 
 // ==================== ACCESS LOGS ====================
 
-app.get('/api/access-logs', async (req, res) => {
+app.get('/api/access-logs', requireAuth, async (req, res) => {
   try {
     const { user_id, action, limit = 100, offset = 0 } = req.query;
     let query = 'SELECT * FROM access_logs WHERE 1=1';
@@ -1334,7 +1334,7 @@ app.get('/api/access-logs', async (req, res) => {
   }
 });
 
-app.get('/api/access-logs/stats', async (req, res) => {
+app.get('/api/access-logs/stats', requireAuth, async (req, res) => {
   try {
     const { user_id } = req.query;
     const where = user_id ? 'WHERE user_id = $1' : '';
@@ -1367,7 +1367,7 @@ app.post('/api/access-logs', async (req, res) => {
 
 // ==================== ACTIVITIES ====================
 
-app.get('/api/activities', async (req, res) => {
+app.get('/api/activities', requireAuth, async (req, res) => {
   try {
     const { entity_type, entity_id, enriched, limit = 50, offset = 0 } = req.query;
     let query = 'SELECT * FROM activities WHERE 1=1';
@@ -1408,7 +1408,7 @@ app.get('/api/activities', async (req, res) => {
   }
 });
 
-app.post('/api/activities', async (req, res) => {
+app.post('/api/activities', requireAuth, async (req, res) => {
   try {
     const { type, activity_type, description, entity_type, related_to_type, entity_id, related_to, metadata, user_id } = req.body;
     const id = uuidv4();
@@ -1429,7 +1429,7 @@ app.post('/api/activities', async (req, res) => {
 
 // ==================== NEWSLETTER SUBSCRIBERS ====================
 
-app.get('/api/newsletter-subscribers', async (req, res) => {
+app.get('/api/newsletter-subscribers', requireAuth, async (req, res) => {
   try {
     const { status, limit = 100, offset = 0 } = req.query;
     let query = 'SELECT * FROM newsletter_subscribers';
@@ -1539,7 +1539,7 @@ app.post('/api/newsletter-subscribers/unsubscribe', async (req, res) => {
   }
 });
 
-app.delete('/api/newsletter-subscribers/:id', async (req, res) => {
+app.delete('/api/newsletter-subscribers/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM newsletter_subscribers WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Subscriber not found' });
@@ -1552,7 +1552,7 @@ app.delete('/api/newsletter-subscribers/:id', async (req, res) => {
 
 // ==================== NEWSLETTERS ====================
 
-app.get('/api/newsletters', async (req, res) => {
+app.get('/api/newsletters', requireAuth, async (req, res) => {
   try {
     const { status, limit = 50, offset = 0 } = req.query;
     let query = 'SELECT * FROM newsletters';
@@ -1568,7 +1568,7 @@ app.get('/api/newsletters', async (req, res) => {
   }
 });
 
-app.get('/api/newsletters/:id', async (req, res) => {
+app.get('/api/newsletters/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM newsletters WHERE id = $1', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Newsletter not found' });
@@ -1579,7 +1579,7 @@ app.get('/api/newsletters/:id', async (req, res) => {
   }
 });
 
-app.post('/api/newsletters', async (req, res) => {
+app.post('/api/newsletters', requireAuth, async (req, res) => {
   try {
     const { subject, content, html_content, language, status, scheduled_at } = req.body;
     const id = uuidv4();
@@ -1595,7 +1595,7 @@ app.post('/api/newsletters', async (req, res) => {
   }
 });
 
-app.put('/api/newsletters/:id', async (req, res) => {
+app.put('/api/newsletters/:id', requireAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const { subject, content, html_content, status, scheduled_at, sent_at, recipients_count } = req.body;
@@ -1613,7 +1613,7 @@ app.put('/api/newsletters/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/newsletters/:id', async (req, res) => {
+app.delete('/api/newsletters/:id', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM newsletters WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Newsletter not found' });
@@ -1626,7 +1626,7 @@ app.delete('/api/newsletters/:id', async (req, res) => {
 
 // ==================== NEWSLETTER SEND LOGS ====================
 
-app.get('/api/newsletter-send-logs', async (req, res) => {
+app.get('/api/newsletter-send-logs', requireAuth, async (req, res) => {
   try {
     const { newsletter_id } = req.query;
     let query = 'SELECT l.*, s.email AS subscriber_email FROM newsletter_send_logs l LEFT JOIN newsletter_subscribers s ON l.subscriber_id = s.id';
@@ -1641,7 +1641,7 @@ app.get('/api/newsletter-send-logs', async (req, res) => {
   }
 });
 
-app.post('/api/newsletter-send-logs', async (req, res) => {
+app.post('/api/newsletter-send-logs', requireAuth, async (req, res) => {
   try {
     const { newsletter_id, subscriber_id, status, error_message } = req.body;
     const id = uuidv4();
@@ -1656,7 +1656,7 @@ app.post('/api/newsletter-send-logs', async (req, res) => {
   }
 });
 
-app.put('/api/newsletter-send-logs', async (req, res) => {
+app.put('/api/newsletter-send-logs', requireAuth, async (req, res) => {
   try {
     const { newsletter_id, subscriber_id, ...updates } = req.body;
     const sets = []; const params = []; let pi = 1;
@@ -1675,7 +1675,7 @@ app.put('/api/newsletter-send-logs', async (req, res) => {
 
 // ==================== NEWSLETTER STATS ====================
 
-app.get('/api/newsletter-stats', async (req, res) => {
+app.get('/api/newsletter-stats', requireAuth, async (req, res) => {
   try {
     const subs = await pool.query(`SELECT COUNT(*) as total, COUNT(*) FILTER (WHERE status='subscribed') as active, COUNT(*) FILTER (WHERE status='unsubscribed') as unsubscribed FROM newsletter_subscribers`);
     const nl = await pool.query(`SELECT COUNT(*) as total, COUNT(*) FILTER (WHERE status='sent') as sent FROM newsletters`);
