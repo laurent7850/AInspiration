@@ -7,6 +7,7 @@ const rateLimit = require('express-rate-limit');
 const { v4: uuidv4 } = require('uuid');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const { z } = require('zod');
 require('dotenv').config();
 
 const app = express();
@@ -188,6 +189,9 @@ async function resetDemoData() {
         ('d0000000-0000-0000-0000-000000000020', NULL, 'Céline', 'Rousseau', 'celine.rousseau@hotmail.fr', '+33 6 78 90 12 34', 'Freelance marketing', 'Rencontrée à un meetup IA Lille.', 'active')
       ON CONFLICT (id) DO UPDATE SET company_id=EXCLUDED.company_id, first_name=EXCLUDED.first_name, last_name=EXCLUDED.last_name, email=EXCLUDED.email, phone=EXCLUDED.phone, job_title=EXCLUDED.job_title, notes=EXCLUDED.notes, status=EXCLUDED.status;
     `);
+
+    // Assign demo contacts to demo user (multi-tenant scoping)
+    await pool.query(`UPDATE contacts SET owner_id = $1 WHERE id LIKE 'd0000000-%'`, [DEMO_USER_ID]);
 
     // Re-seed products
     await pool.query(`
@@ -431,34 +435,265 @@ app.get('/api/status', (req, res) => res.json({ status: 'running' }));
 
 // ==================== AUTH MIDDLEWARE ====================
 
-function optionalAuth(req, res, next) {
+// Reads JWT from httpOnly cookie (preferred) or Authorization header (legacy/transition).
+function getTokenFromRequest(req) {
+  const cookieHeader = req.headers.cookie;
+  if (cookieHeader) {
+    const match = cookieHeader.match(/(?:^|;\s*)auth_token=([^;]+)/);
+    if (match) return decodeURIComponent(match[1]);
+  }
   const header = req.headers.authorization;
-  if (header && header.startsWith('Bearer ')) {
+  if (header && header.startsWith('Bearer ')) return header.slice(7);
+  return null;
+}
+
+const AUTH_COOKIE_MAX_AGE = 7 * 24 * 60 * 60; // 7 days, seconds
+const COOKIE_SECURE = process.env.NODE_ENV === 'production';
+
+function setAuthCookie(res, token) {
+  const parts = [
+    `auth_token=${token}`,
+    'Path=/',
+    'HttpOnly',
+    'SameSite=Strict',
+    `Max-Age=${AUTH_COOKIE_MAX_AGE}`,
+  ];
+  if (COOKIE_SECURE) parts.push('Secure');
+  res.setHeader('Set-Cookie', parts.join('; '));
+}
+
+function clearAuthCookie(res) {
+  const parts = ['auth_token=', 'Path=/', 'HttpOnly', 'SameSite=Strict', 'Max-Age=0'];
+  if (COOKIE_SECURE) parts.push('Secure');
+  res.setHeader('Set-Cookie', parts.join('; '));
+}
+
+function optionalAuth(req, res, next) {
+  const token = getTokenFromRequest(req);
+  if (token) {
     try {
-      req.user = jwt.verify(header.slice(7), JWT_SECRET);
+      req.user = jwt.verify(token, JWT_SECRET);
     } catch (e) { /* invalid token — continue without auth */ }
   }
   next();
 }
 
 function requireAuth(req, res, next) {
-  const header = req.headers.authorization;
-  if (!header || !header.startsWith('Bearer ')) {
+  const token = getTokenFromRequest(req);
+  if (!token) {
     return res.status(401).json({ error: 'Authentication required' });
   }
   try {
-    req.user = jwt.verify(header.slice(7), JWT_SECRET);
+    req.user = jwt.verify(token, JWT_SECRET);
     next();
   } catch (e) {
     return res.status(401).json({ error: 'Invalid or expired token' });
   }
 }
 
+// Returns null for admin (sees all rows), req.user.id otherwise.
+// Use in WHERE clauses as: ($N::uuid IS NULL OR owner_col = $N)
+function ownerScope(req) {
+  return req.user && req.user.role === 'admin' ? null : (req.user ? req.user.id : null);
+}
+
+// ==================== INPUT VALIDATION (zod) ====================
+
+// Body validation middleware. On failure: 400 with { error, details: [...] }.
+// On success: req.body is replaced with the parsed (coerced/trimmed) value.
+function validateBody(schema) {
+  return (req, res, next) => {
+    const result = schema.safeParse(req.body);
+    if (!result.success) {
+      return res.status(400).json({
+        error: 'Validation failed',
+        details: result.error.issues.map(i => `${i.path.join('.') || 'body'}: ${i.message}`),
+      });
+    }
+    req.body = result.data;
+    next();
+  };
+}
+
+// UUID param check — apply on routes with :id (or :slug for blog).
+function validateUuidParam(name = 'id') {
+  return (req, res, next) => {
+    const v = req.params[name];
+    if (!z.string().uuid().safeParse(v).success) {
+      return res.status(400).json({ error: `Invalid ${name} format (UUID expected)` });
+    }
+    next();
+  };
+}
+
+// Reusable building blocks
+const zEmail = z.string().email().max(254).transform(s => s.toLowerCase().trim());
+const zUuid = z.string().uuid();
+const zUuidNullable = z.union([zUuid, z.literal(''), z.null()]).transform(v => v || null).optional().nullable();
+const zShortText = (max) => z.string().max(max).transform(s => s.trim());
+const zOptText = (max) => z.union([z.string().max(max), z.null(), z.literal('')]).transform(v => (v == null || v === '') ? null : v.trim()).optional().nullable();
+const zPositiveNumber = z.union([z.number(), z.string()]).pipe(z.coerce.number().nonnegative());
+
+const schemas = {
+  authRegister: z.object({
+    email: zEmail,
+    password: z.string().min(8).max(200),
+    name: zOptText(200),
+    company: zOptText(200),
+  }),
+  authLogin: z.object({
+    email: zEmail,
+    password: z.string().min(1).max(200),
+  }),
+  contact: z.object({
+    first_name: zShortText(100).refine(s => s.length >= 1, { message: 'first_name is required' }),
+    last_name: zShortText(100).refine(s => s.length >= 1, { message: 'last_name is required' }),
+    email: z.union([zEmail, z.literal(''), z.null()]).transform(v => v || null).optional().nullable(),
+    phone: zOptText(30),
+    job_title: zOptText(150),
+    company_id: zUuidNullable,
+    notes: zOptText(5000),
+    status: z.enum(['active', 'inactive', 'archived']).optional(),
+  }),
+  company: z.object({
+    name: zShortText(200).refine(s => s.length >= 1, { message: 'name is required' }),
+    industry: zOptText(150),
+    website: zOptText(500),
+    address: zOptText(500),
+    city: zOptText(150),
+    country: zOptText(100),
+    phone: zOptText(30),
+    email: z.union([zEmail, z.literal(''), z.null()]).transform(v => v || null).optional().nullable(),
+    notes: zOptText(5000),
+    status: z.enum(['active', 'inactive', 'lead', 'archived']).optional(),
+  }),
+  product: z.object({
+    name: zShortText(200).refine(s => s.length >= 1, { message: 'name is required' }),
+    description: zOptText(5000),
+    category: zOptText(150),
+    price: zPositiveNumber.optional().nullable(),
+    currency: z.string().length(3).optional(),
+    status: z.enum(['active', 'inactive']).optional(),
+    is_active: z.boolean().optional(),
+  }),
+  opportunity: z.object({
+    name: zShortText(300).refine(s => s.length >= 1, { message: 'name is required' }),
+    company_id: zUuidNullable,
+    contact_id: zUuidNullable,
+    product_id: zUuidNullable,
+    stage: zOptText(50),
+    status: zOptText(50),
+    estimated_value: zPositiveNumber.optional().nullable(),
+    value: zPositiveNumber.optional().nullable(),
+    close_date: z.union([z.string(), z.null(), z.literal('')]).transform(v => v || null).optional().nullable(),
+    expected_close_date: z.union([z.string(), z.null(), z.literal('')]).transform(v => v || null).optional().nullable(),
+    currency: z.string().length(3).optional(),
+    probability: z.coerce.number().min(0).max(100).optional(),
+    notes: zOptText(5000),
+    user_id: zUuidNullable,
+    owner_id: zUuidNullable,
+  }),
+  task: z.object({
+    title: zShortText(300).refine(s => s.length >= 1, { message: 'title is required' }),
+    description: zOptText(5000),
+    status: z.enum(['pending', 'in_progress', 'completed', 'cancelled', 'not_started']).optional(),
+    priority: z.enum(['low', 'medium', 'high']).optional(),
+    due_date: z.union([z.string(), z.null(), z.literal('')]).transform(v => v || null).optional().nullable(),
+    completed_at: z.union([z.string(), z.null(), z.literal('')]).transform(v => v || null).optional().nullable(),
+    completed: z.boolean().optional(),
+    company_id: zUuidNullable,
+    contact_id: zUuidNullable,
+    opportunity_id: zUuidNullable,
+    user_id: zUuidNullable,
+    assigned_to: zUuidNullable,
+  }),
+  activity: z.object({
+    type: zOptText(100),
+    activity_type: zOptText(100),
+    description: zOptText(2000),
+    entity_type: zOptText(50),
+    related_to_type: zOptText(50),
+    entity_id: zUuidNullable,
+    related_to: zUuidNullable,
+    metadata: z.unknown().optional(),
+    user_id: zUuidNullable,
+  }),
+  contactMessage: z.object({
+    name: zShortText(200).refine(s => s.length >= 2, { message: 'Nom invalide (2-200 caractères)' }),
+    email: zEmail,
+    message: zShortText(5000).refine(s => s.length >= 10, { message: 'Message invalide (10-5000 caractères)' }),
+    phone: zOptText(30),
+    company: zOptText(200),
+    subject: zOptText(300),
+    source: zOptText(50),
+  }),
+  contactMessageUpdate: z.object({
+    status: z.enum(['new', 'read', 'replied', 'archived']).optional(),
+    notes: zOptText(5000),
+  }),
+  newsletterSubscriber: z.object({
+    email: zEmail,
+    first_name: zOptText(100),
+    last_name: zOptText(100),
+    language: z.enum(['fr', 'en', 'nl', 'de']).optional(),
+    source: zOptText(50),
+  }),
+  newsletterUnsubscribe: z.object({
+    email: zEmail.optional(),
+    token: zOptText(200),
+  }).refine(d => d.email || d.token, { message: 'Email or token required' }),
+  newsletter: z.object({
+    subject: zOptText(300),
+    content: zOptText(100000),
+    html_content: zOptText(200000),
+    language: z.enum(['fr', 'en', 'nl', 'de']).optional(),
+    status: z.enum(['draft', 'scheduled', 'sent', 'archived']).optional(),
+    scheduled_at: z.union([z.string(), z.null(), z.literal('')]).transform(v => v || null).optional().nullable(),
+    sent_at: z.union([z.string(), z.null(), z.literal('')]).transform(v => v || null).optional().nullable(),
+    recipients_count: z.coerce.number().int().nonnegative().optional(),
+  }),
+  newsletterSendLog: z.object({
+    newsletter_id: zUuid,
+    subscriber_id: zUuid,
+    status: zOptText(50),
+    error_message: zOptText(2000),
+    opened_at: z.union([z.string(), z.null(), z.literal('')]).transform(v => v || null).optional().nullable(),
+    clicked_at: z.union([z.string(), z.null(), z.literal('')]).transform(v => v || null).optional().nullable(),
+  }),
+  accessLog: z.object({
+    action: zShortText(100).refine(s => s.length >= 1, { message: 'action is required' }),
+    ip_address: zOptText(45),
+    user_agent: zOptText(500),
+  }),
+  blogPost: z.object({
+    title: zOptText(500),
+    slug: zShortText(300).refine(s => s.length >= 1, { message: 'slug is required' }),
+    excerpt: zOptText(2000),
+    content: zOptText(500000),
+    featured_image: zOptText(1000),
+    category_id: zUuidNullable,
+    status: z.enum(['draft', 'published', 'archived']).optional(),
+    language: z.enum(['fr', 'en', 'nl', 'de']).optional(),
+    author_name: zOptText(200),
+  }),
+};
+
+// Convenience: PUT schemas accept any subset of fields
+const updateSchemas = {
+  contact: schemas.contact.partial(),
+  company: schemas.company.partial(),
+  product: schemas.product.partial(),
+  opportunity: schemas.opportunity.partial(),
+  task: schemas.task.partial(),
+  newsletter: schemas.newsletter.partial(),
+  blogPost: schemas.blogPost.partial(),
+};
+
 app.use(optionalAuth);
 
 // ==================== AUTH ROUTES ====================
 
-app.post('/api/auth/register', authLimiter, async (req, res) => {
+app.post('/api/auth/register', authLimiter, validateBody(schemas.authRegister), async (req, res) => {
   try {
     // Registration is disabled by default — set ALLOW_REGISTRATION=true to enable
     if (process.env.ALLOW_REGISTRATION !== 'true') {
@@ -466,14 +701,8 @@ app.post('/api/auth/register', authLimiter, async (req, res) => {
     }
 
     const { email, password, name, company } = req.body;
-    if (!email || !password) {
-      return res.status(400).json({ error: 'Email and password are required' });
-    }
 
-    // Password strength validation
-    if (password.length < 8) {
-      return res.status(400).json({ error: 'Password must be at least 8 characters' });
-    }
+    // Additional password complexity (not just length)
     if (!/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
       return res.status(400).json({ error: 'Password must contain uppercase, lowercase and a number' });
     }
@@ -500,6 +729,7 @@ app.post('/api/auth/register', authLimiter, async (req, res) => {
       [uuidv4(), user.id, 'user_registered', `Nouvel utilisateur: ${user.email}`, 'user', user.id]
     ).catch(() => {});
 
+    setAuthCookie(res, token);
     res.status(201).json({ user, token });
   } catch (error) {
     console.error('Error registering user:', error);
@@ -507,12 +737,9 @@ app.post('/api/auth/register', authLimiter, async (req, res) => {
   }
 });
 
-app.post('/api/auth/login', authLimiter, async (req, res) => {
+app.post('/api/auth/login', authLimiter, validateBody(schemas.authLogin), async (req, res) => {
   try {
     const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(400).json({ error: 'Email and password are required' });
-    }
 
     const result = await pool.query(
       'SELECT id, email, password_hash, full_name, role, created_at FROM users WHERE email = $1',
@@ -536,11 +763,17 @@ app.post('/api/auth/login', authLimiter, async (req, res) => {
     const { password_hash, ...userData } = user;
     const token = jwt.sign({ id: user.id, email: user.email, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
 
+    setAuthCookie(res, token);
     res.json({ user: userData, token });
   } catch (error) {
     console.error('Error logging in:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
+});
+
+app.post('/api/auth/logout', (req, res) => {
+  clearAuthCookie(res);
+  res.json({ success: true });
 });
 
 app.get('/api/auth/me', requireAuth, async (req, res) => {
@@ -635,7 +868,7 @@ app.get('/api/blog-posts/slug/:slug', async (req, res) => {
   }
 });
 
-app.get('/api/blog-posts/:id', async (req, res) => {
+app.get('/api/blog-posts/:id', validateUuidParam(), async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM blog_posts WHERE id = $1', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Post not found' });
@@ -646,7 +879,7 @@ app.get('/api/blog-posts/:id', async (req, res) => {
   }
 });
 
-app.post('/api/blog-posts', async (req, res) => {
+app.post('/api/blog-posts', requireAuth, validateBody(schemas.blogPost), async (req, res) => {
   try {
     const { title, slug, excerpt, content, featured_image, category_id, status, language, author_name } = req.body;
     if (!slug) return res.status(400).json({ error: 'slug is required' });
@@ -683,7 +916,7 @@ app.post('/api/blog-posts', async (req, res) => {
   }
 });
 
-app.put('/api/blog-posts/:id', async (req, res) => {
+app.put('/api/blog-posts/:id', requireAuth, validateUuidParam(), validateBody(updateSchemas.blogPost), async (req, res) => {
   try {
     const { id } = req.params;
     const { title, slug, excerpt, content, featured_image, category_id, status, language, author_name } = req.body;
@@ -701,7 +934,7 @@ app.put('/api/blog-posts/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/blog-posts/:id', async (req, res) => {
+app.delete('/api/blog-posts/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM blog_posts WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Post not found' });
@@ -724,7 +957,7 @@ app.get('/api/blog-categories', async (req, res) => {
 
 // ==================== COMPANIES ====================
 
-app.get('/api/companies', async (req, res) => {
+app.get('/api/companies', requireAuth, async (req, res) => {
   try {
     const { limit = 100, offset = 0 } = req.query;
     const result = await pool.query(
@@ -738,7 +971,7 @@ app.get('/api/companies', async (req, res) => {
   }
 });
 
-app.get('/api/companies/search', async (req, res) => {
+app.get('/api/companies/search', requireAuth, async (req, res) => {
   try {
     const { q = '' } = req.query;
     const result = await pool.query(
@@ -752,7 +985,7 @@ app.get('/api/companies/search', async (req, res) => {
   }
 });
 
-app.get('/api/companies/stats', async (req, res) => {
+app.get('/api/companies/stats', requireAuth, async (req, res) => {
   try {
     const total = await pool.query('SELECT COUNT(*) FROM companies');
     const active = await pool.query("SELECT COUNT(*) FROM companies WHERE status = 'active'");
@@ -768,7 +1001,7 @@ app.get('/api/companies/stats', async (req, res) => {
   }
 });
 
-app.get('/api/companies/:id', async (req, res) => {
+app.get('/api/companies/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM companies WHERE id = $1', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Company not found' });
@@ -779,7 +1012,7 @@ app.get('/api/companies/:id', async (req, res) => {
   }
 });
 
-app.post('/api/companies', async (req, res) => {
+app.post('/api/companies', requireAuth, validateBody(schemas.company), async (req, res) => {
   try {
     const { name, industry, website, address, city, country, phone, email, notes, status } = req.body;
     const id = uuidv4();
@@ -795,7 +1028,7 @@ app.post('/api/companies', async (req, res) => {
   }
 });
 
-app.put('/api/companies/:id', async (req, res) => {
+app.put('/api/companies/:id', requireAuth, validateUuidParam(), validateBody(updateSchemas.company), async (req, res) => {
   try {
     const { id } = req.params;
     const { name, industry, website, address, city, country, phone, email, notes, status } = req.body;
@@ -813,7 +1046,7 @@ app.put('/api/companies/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/companies/:id', async (req, res) => {
+app.delete('/api/companies/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM companies WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Company not found' });
@@ -826,16 +1059,23 @@ app.delete('/api/companies/:id', async (req, res) => {
 
 // ==================== CONTACTS (with company JOIN) ====================
 
-app.get('/api/contacts', async (req, res) => {
+app.get('/api/contacts', requireAuth, async (req, res) => {
   try {
     const { company_id, limit = 100, offset = 0 } = req.query;
-    let query = 'SELECT c.*, co.name AS company_name FROM contacts c LEFT JOIN companies co ON c.company_id = co.id';
-    const params = [];
-    let pi = 1;
-    if (company_id) { query += ` WHERE c.company_id = $${pi++}`; params.push(company_id); }
-    query += ` ORDER BY c.created_at DESC LIMIT $${pi++} OFFSET $${pi}`;
-    params.push(parseInt(limit), parseInt(offset));
-    const result = await pool.query(query, params);
+    const owner = ownerScope(req);
+    let baseWhere = ' FROM contacts c WHERE ($1::uuid IS NULL OR c.owner_id = $1)';
+    const params = [owner];
+    let pi = 2;
+    if (company_id) { baseWhere += ` AND c.company_id = $${pi++}`; params.push(company_id); }
+
+    // Total count for pagination
+    const countResult = await pool.query(`SELECT COUNT(*)::int AS total ${baseWhere}`, params);
+    res.set('X-Total-Count', String(countResult.rows[0].total));
+    res.set('Access-Control-Expose-Headers', 'X-Total-Count');
+
+    const dataParams = [...params, parseInt(limit), parseInt(offset)];
+    const dataQuery = `SELECT c.*, co.name AS company_name${baseWhere.replace(' FROM contacts c', ' FROM contacts c LEFT JOIN companies co ON c.company_id = co.id')} ORDER BY c.created_at DESC LIMIT $${pi++} OFFSET $${pi}`;
+    const result = await pool.query(dataQuery, dataParams);
     res.json(result.rows);
   } catch (error) {
     console.error('Error fetching contacts:', error);
@@ -843,11 +1083,12 @@ app.get('/api/contacts', async (req, res) => {
   }
 });
 
-app.get('/api/contacts/:id', async (req, res) => {
+app.get('/api/contacts/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
+    const owner = ownerScope(req);
     const result = await pool.query(
-      'SELECT c.*, co.name AS company_name FROM contacts c LEFT JOIN companies co ON c.company_id = co.id WHERE c.id = $1',
-      [req.params.id]
+      'SELECT c.*, co.name AS company_name FROM contacts c LEFT JOIN companies co ON c.company_id = co.id WHERE c.id = $1 AND ($2::uuid IS NULL OR c.owner_id = $2)',
+      [req.params.id, owner]
     );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Contact not found' });
     res.json(result.rows[0]);
@@ -857,14 +1098,14 @@ app.get('/api/contacts/:id', async (req, res) => {
   }
 });
 
-app.post('/api/contacts', async (req, res) => {
+app.post('/api/contacts', requireAuth, validateBody(schemas.contact), async (req, res) => {
   try {
     const { first_name, last_name, email, phone, job_title, company_id, notes, status } = req.body;
     const id = uuidv4();
     const result = await pool.query(
-      `INSERT INTO contacts (id, first_name, last_name, email, phone, job_title, company_id, notes, status)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`,
-      [id, first_name, last_name, email, phone, job_title, company_id, notes, status || 'active']
+      `INSERT INTO contacts (id, first_name, last_name, email, phone, job_title, company_id, notes, status, owner_id)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
+      [id, first_name, last_name, email, phone, job_title, company_id, notes, status || 'active', req.user.id]
     );
     res.status(201).json(result.rows[0]);
   } catch (error) {
@@ -873,14 +1114,16 @@ app.post('/api/contacts', async (req, res) => {
   }
 });
 
-app.put('/api/contacts/:id', async (req, res) => {
+app.put('/api/contacts/:id', requireAuth, validateUuidParam(), validateBody(updateSchemas.contact), async (req, res) => {
   try {
     const { id } = req.params;
     const { first_name, last_name, email, phone, job_title, company_id, notes, status } = req.body;
+    const owner = ownerScope(req);
     const result = await pool.query(
       `UPDATE contacts SET first_name=$1, last_name=$2, email=$3, phone=$4, job_title=$5,
-       company_id=$6, notes=$7, status=$8, updated_at=NOW() WHERE id=$9 RETURNING *`,
-      [first_name, last_name, email, phone, job_title, company_id, notes, status, id]
+       company_id=$6, notes=$7, status=$8, updated_at=NOW()
+       WHERE id=$9 AND ($10::uuid IS NULL OR owner_id = $10) RETURNING *`,
+      [first_name, last_name, email, phone, job_title, company_id, notes, status, id, owner]
     );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Contact not found' });
     res.json(result.rows[0]);
@@ -890,9 +1133,13 @@ app.put('/api/contacts/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/contacts/:id', async (req, res) => {
+app.delete('/api/contacts/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
-    const result = await pool.query('DELETE FROM contacts WHERE id=$1 RETURNING *', [req.params.id]);
+    const owner = ownerScope(req);
+    const result = await pool.query(
+      'DELETE FROM contacts WHERE id=$1 AND ($2::uuid IS NULL OR owner_id = $2) RETURNING *',
+      [req.params.id, owner]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Contact not found' });
     res.json({ message: 'Contact deleted successfully' });
   } catch (error) {
@@ -903,7 +1150,7 @@ app.delete('/api/contacts/:id', async (req, res) => {
 
 // ==================== PRODUCTS (with is_active mapping) ====================
 
-app.get('/api/products', async (req, res) => {
+app.get('/api/products', requireAuth, async (req, res) => {
   try {
     const { active_only, category, limit = 100, offset = 0 } = req.query;
     let query = 'SELECT * FROM products WHERE 1=1';
@@ -921,7 +1168,7 @@ app.get('/api/products', async (req, res) => {
   }
 });
 
-app.get('/api/products/stats', async (req, res) => {
+app.get('/api/products/stats', requireAuth, async (req, res) => {
   try {
     const active = await pool.query("SELECT COUNT(*) FROM products WHERE status = 'active'");
     const total = await pool.query('SELECT COUNT(*) FROM products');
@@ -938,7 +1185,7 @@ app.get('/api/products/stats', async (req, res) => {
   }
 });
 
-app.get('/api/products/:id', async (req, res) => {
+app.get('/api/products/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM products WHERE id = $1', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Product not found' });
@@ -949,7 +1196,7 @@ app.get('/api/products/:id', async (req, res) => {
   }
 });
 
-app.post('/api/products', async (req, res) => {
+app.post('/api/products', requireAuth, validateBody(schemas.product), async (req, res) => {
   try {
     const { name, description, category, price, currency, is_active, status: rawStatus } = req.body;
     const id = uuidv4();
@@ -966,7 +1213,7 @@ app.post('/api/products', async (req, res) => {
   }
 });
 
-app.put('/api/products/:id', async (req, res) => {
+app.put('/api/products/:id', requireAuth, validateUuidParam(), validateBody(updateSchemas.product), async (req, res) => {
   try {
     const { id } = req.params;
     const { name, description, category, price, currency, is_active, status: rawStatus } = req.body;
@@ -985,7 +1232,7 @@ app.put('/api/products/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/products/:id', async (req, res) => {
+app.delete('/api/products/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM products WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Product not found' });
@@ -1009,12 +1256,13 @@ const OPP_JOIN_QUERY = `
   LEFT JOIN products p ON o.product_id = p.id
 `;
 
-app.get('/api/opportunities', async (req, res) => {
+app.get('/api/opportunities', requireAuth, async (req, res) => {
   try {
     const { company_id, status, limit = 100, offset = 0 } = req.query;
-    let query = OPP_JOIN_QUERY + ' WHERE 1=1';
-    const params = [];
-    let pi = 1;
+    const owner = ownerScope(req);
+    let query = OPP_JOIN_QUERY + ' WHERE ($1::uuid IS NULL OR o.owner_id = $1)';
+    const params = [owner];
+    let pi = 2;
     if (company_id) { query += ` AND o.company_id = $${pi++}`; params.push(company_id); }
     if (status) { query += ` AND o.status = $${pi++}`; params.push(status); }
     query += ` ORDER BY o.created_at DESC LIMIT $${pi++} OFFSET $${pi}`;
@@ -1027,9 +1275,13 @@ app.get('/api/opportunities', async (req, res) => {
   }
 });
 
-app.get('/api/opportunities/:id', async (req, res) => {
+app.get('/api/opportunities/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
-    const result = await pool.query(OPP_JOIN_QUERY + ' WHERE o.id = $1', [req.params.id]);
+    const owner = ownerScope(req);
+    const result = await pool.query(
+      OPP_JOIN_QUERY + ' WHERE o.id = $1 AND ($2::uuid IS NULL OR o.owner_id = $2)',
+      [req.params.id, owner]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Opportunity not found' });
     res.json(mapOpportunity(result.rows[0]));
   } catch (error) {
@@ -1038,7 +1290,7 @@ app.get('/api/opportunities/:id', async (req, res) => {
   }
 });
 
-app.post('/api/opportunities', async (req, res) => {
+app.post('/api/opportunities', requireAuth, validateBody(schemas.opportunity), async (req, res) => {
   try {
     const {
       name, company_id, contact_id, product_id,
@@ -1049,7 +1301,8 @@ app.post('/api/opportunities', async (req, res) => {
     const dbStatus = stage || status || 'new';
     const dbValue = estimated_value ?? value ?? null;
     const dbCloseDate = close_date || expected_close_date || null;
-    const dbOwnerId = user_id || owner_id || (req.user ? req.user.id : null);
+    // Only admin can assign ownership to another user; non-admin always owns their inserts.
+    const dbOwnerId = (req.user.role === 'admin' && (user_id || owner_id)) ? (user_id || owner_id) : req.user.id;
 
     const result = await pool.query(
       `INSERT INTO opportunities (id, name, company_id, contact_id, product_id, value, currency, status, probability, expected_close_date, notes, owner_id)
@@ -1063,7 +1316,7 @@ app.post('/api/opportunities', async (req, res) => {
   }
 });
 
-app.put('/api/opportunities/:id', async (req, res) => {
+app.put('/api/opportunities/:id', requireAuth, validateUuidParam(), validateBody(updateSchemas.opportunity), async (req, res) => {
   try {
     const { id } = req.params;
     const {
@@ -1074,6 +1327,7 @@ app.put('/api/opportunities/:id', async (req, res) => {
     const dbStatus = stage || status;
     const dbValue = estimated_value ?? value;
     const dbCloseDate = close_date || expected_close_date;
+    const owner = ownerScope(req);
 
     const result = await pool.query(
       `UPDATE opportunities SET
@@ -1081,8 +1335,8 @@ app.put('/api/opportunities/:id', async (req, res) => {
         value=COALESCE($5,value), currency=COALESCE($6,currency),
         status=COALESCE($7,status), probability=COALESCE($8,probability),
         expected_close_date=$9, notes=$10, updated_at=NOW()
-       WHERE id=$11 RETURNING *`,
-      [name, company_id, contact_id, product_id, dbValue, currency, dbStatus, probability, dbCloseDate, notes, id]
+       WHERE id=$11 AND ($12::uuid IS NULL OR owner_id = $12) RETURNING *`,
+      [name, company_id, contact_id, product_id, dbValue, currency, dbStatus, probability, dbCloseDate, notes, id, owner]
     );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Opportunity not found' });
     res.json(mapOpportunity(result.rows[0]));
@@ -1092,9 +1346,13 @@ app.put('/api/opportunities/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/opportunities/:id', async (req, res) => {
+app.delete('/api/opportunities/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
-    const result = await pool.query('DELETE FROM opportunities WHERE id=$1 RETURNING *', [req.params.id]);
+    const owner = ownerScope(req);
+    const result = await pool.query(
+      'DELETE FROM opportunities WHERE id=$1 AND ($2::uuid IS NULL OR owner_id = $2) RETURNING *',
+      [req.params.id, owner]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Opportunity not found' });
     res.json({ message: 'Opportunity deleted successfully' });
   } catch (error) {
@@ -1124,12 +1382,13 @@ function enrichTask(row) {
   return t;
 }
 
-app.get('/api/tasks', async (req, res) => {
+app.get('/api/tasks', requireAuth, async (req, res) => {
   try {
     const { status, priority, opportunity_id, contact_id, company_id, limit = 100, offset = 0 } = req.query;
-    let query = TASK_JOIN_QUERY + ' WHERE 1=1';
-    const params = [];
-    let pi = 1;
+    const owner = ownerScope(req);
+    let query = TASK_JOIN_QUERY + ' WHERE ($1::uuid IS NULL OR t.assigned_to = $1)';
+    const params = [owner];
+    let pi = 2;
     if (status) { query += ` AND t.status = $${pi++}`; params.push(status); }
     if (priority) { query += ` AND t.priority = $${pi++}`; params.push(priority); }
     if (opportunity_id) { query += ` AND t.opportunity_id = $${pi++}`; params.push(opportunity_id); }
@@ -1145,9 +1404,13 @@ app.get('/api/tasks', async (req, res) => {
   }
 });
 
-app.get('/api/tasks/:id', async (req, res) => {
+app.get('/api/tasks/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
-    const result = await pool.query(TASK_JOIN_QUERY + ' WHERE t.id = $1', [req.params.id]);
+    const owner = ownerScope(req);
+    const result = await pool.query(
+      TASK_JOIN_QUERY + ' WHERE t.id = $1 AND ($2::uuid IS NULL OR t.assigned_to = $2)',
+      [req.params.id, owner]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Task not found' });
     res.json(enrichTask(result.rows[0]));
   } catch (error) {
@@ -1156,11 +1419,12 @@ app.get('/api/tasks/:id', async (req, res) => {
   }
 });
 
-app.post('/api/tasks', async (req, res) => {
+app.post('/api/tasks', requireAuth, validateBody(schemas.task), async (req, res) => {
   try {
     const { title, description, status, priority, due_date, company_id, contact_id, opportunity_id, user_id, assigned_to } = req.body;
     const id = uuidv4();
-    const dbAssignedTo = assigned_to || user_id || (req.user ? req.user.id : null);
+    // Only admin can assign tasks to another user; non-admin always assigns to self.
+    const dbAssignedTo = (req.user.role === 'admin' && (assigned_to || user_id)) ? (assigned_to || user_id) : req.user.id;
     const result = await pool.query(
       `INSERT INTO tasks (id, title, description, status, priority, due_date, company_id, contact_id, opportunity_id, assigned_to)
        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
@@ -1173,7 +1437,7 @@ app.post('/api/tasks', async (req, res) => {
   }
 });
 
-app.put('/api/tasks/:id', async (req, res) => {
+app.put('/api/tasks/:id', requireAuth, validateUuidParam(), validateBody(updateSchemas.task), async (req, res) => {
   try {
     const { id } = req.params;
     const { title, description, status, priority, due_date, completed_at, completed, company_id, contact_id, opportunity_id } = req.body;
@@ -1181,12 +1445,13 @@ app.put('/api/tasks/:id', async (req, res) => {
     let finalCompletedAt = completed_at;
     if (completed === true && finalStatus !== 'completed') { finalStatus = 'completed'; finalCompletedAt = finalCompletedAt || new Date().toISOString(); }
     else if (completed === false && status === 'completed') { finalStatus = 'not_started'; finalCompletedAt = null; }
+    const owner = ownerScope(req);
     const result = await pool.query(
       `UPDATE tasks SET title=COALESCE($1,title), description=$2, status=COALESCE($3,status),
        priority=COALESCE($4,priority), due_date=$5, completed_at=$6,
        company_id=$7, contact_id=$8, opportunity_id=$9, updated_at=NOW()
-       WHERE id=$10 RETURNING *`,
-      [title, description, finalStatus, priority, due_date, finalCompletedAt, company_id, contact_id, opportunity_id, id]
+       WHERE id=$10 AND ($11::uuid IS NULL OR assigned_to = $11) RETURNING *`,
+      [title, description, finalStatus, priority, due_date, finalCompletedAt, company_id, contact_id, opportunity_id, id, owner]
     );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Task not found' });
     res.json(mapTask(result.rows[0]));
@@ -1196,9 +1461,13 @@ app.put('/api/tasks/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/tasks/:id', async (req, res) => {
+app.delete('/api/tasks/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
-    const result = await pool.query('DELETE FROM tasks WHERE id=$1 RETURNING *', [req.params.id]);
+    const owner = ownerScope(req);
+    const result = await pool.query(
+      'DELETE FROM tasks WHERE id=$1 AND ($2::uuid IS NULL OR assigned_to = $2) RETURNING *',
+      [req.params.id, owner]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Task not found' });
     res.json({ message: 'Task deleted successfully' });
   } catch (error) {
@@ -1209,7 +1478,7 @@ app.delete('/api/tasks/:id', async (req, res) => {
 
 // ==================== CONTACT MESSAGES ====================
 
-app.get('/api/contact-messages', async (req, res) => {
+app.get('/api/contact-messages', requireAuth, async (req, res) => {
   try {
     const { status, search, limit = 100, offset = 0 } = req.query;
     let query = 'SELECT * FROM contact_messages WHERE 1=1';
@@ -1230,7 +1499,7 @@ app.get('/api/contact-messages', async (req, res) => {
   }
 });
 
-app.get('/api/contact-messages/stats', async (req, res) => {
+app.get('/api/contact-messages/stats', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT status, COUNT(*) as count FROM contact_messages GROUP BY status');
     const stats = { total: 0, new: 0, read: 0, replied: 0, archived: 0 };
@@ -1242,7 +1511,7 @@ app.get('/api/contact-messages/stats', async (req, res) => {
   }
 });
 
-app.get('/api/contact-messages/:id', async (req, res) => {
+app.get('/api/contact-messages/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM contact_messages WHERE id = $1', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Message not found' });
@@ -1253,32 +1522,14 @@ app.get('/api/contact-messages/:id', async (req, res) => {
   }
 });
 
-app.post('/api/contact-messages', async (req, res) => {
+app.post('/api/contact-messages', validateBody(schemas.contactMessage), async (req, res) => {
   try {
     const { name, email, phone, company, subject, message, source } = req.body;
-
-    // Input validation
-    if (!name || typeof name !== 'string' || name.trim().length < 2 || name.length > 200) {
-      return res.status(400).json({ error: 'Nom invalide (2-200 caractères)' });
-    }
-    if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
-      return res.status(400).json({ error: 'Email invalide' });
-    }
-    if (!message || typeof message !== 'string' || message.trim().length < 10 || message.length > 5000) {
-      return res.status(400).json({ error: 'Message invalide (10-5000 caractères)' });
-    }
-    if (phone && (typeof phone !== 'string' || phone.length > 30)) {
-      return res.status(400).json({ error: 'Téléphone invalide' });
-    }
-    if (subject && (typeof subject !== 'string' || subject.length > 300)) {
-      return res.status(400).json({ error: 'Sujet invalide' });
-    }
-
     const id = uuidv4();
     const result = await pool.query(
       `INSERT INTO contact_messages (id, name, email, phone, company, subject, message, source)
        VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
-      [id, name.trim(), email.toLowerCase().trim(), phone || null, company || null, subject || null, message.trim(), source || 'website']
+      [id, name, email, phone || null, company || null, subject || null, message, source || 'website']
     );
     res.status(201).json(result.rows[0]);
   } catch (error) {
@@ -1287,7 +1538,7 @@ app.post('/api/contact-messages', async (req, res) => {
   }
 });
 
-app.put('/api/contact-messages/:id', async (req, res) => {
+app.put('/api/contact-messages/:id', requireAuth, validateUuidParam(), validateBody(schemas.contactMessageUpdate), async (req, res) => {
   try {
     const { id } = req.params;
     const { status, notes } = req.body;
@@ -1303,7 +1554,7 @@ app.put('/api/contact-messages/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/contact-messages/:id', async (req, res) => {
+app.delete('/api/contact-messages/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM contact_messages WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Message not found' });
@@ -1316,7 +1567,7 @@ app.delete('/api/contact-messages/:id', async (req, res) => {
 
 // ==================== ACCESS LOGS ====================
 
-app.get('/api/access-logs', async (req, res) => {
+app.get('/api/access-logs', requireAuth, async (req, res) => {
   try {
     const { user_id, action, limit = 100, offset = 0 } = req.query;
     let query = 'SELECT * FROM access_logs WHERE 1=1';
@@ -1334,7 +1585,7 @@ app.get('/api/access-logs', async (req, res) => {
   }
 });
 
-app.get('/api/access-logs/stats', async (req, res) => {
+app.get('/api/access-logs/stats', requireAuth, async (req, res) => {
   try {
     const { user_id } = req.query;
     const where = user_id ? 'WHERE user_id = $1' : '';
@@ -1349,7 +1600,7 @@ app.get('/api/access-logs/stats', async (req, res) => {
   }
 });
 
-app.post('/api/access-logs', async (req, res) => {
+app.post('/api/access-logs', validateBody(schemas.accessLog), async (req, res) => {
   try {
     const { action, ip_address, user_agent } = req.body;
     const id = uuidv4();
@@ -1367,12 +1618,13 @@ app.post('/api/access-logs', async (req, res) => {
 
 // ==================== ACTIVITIES ====================
 
-app.get('/api/activities', async (req, res) => {
+app.get('/api/activities', requireAuth, async (req, res) => {
   try {
     const { entity_type, entity_id, enriched, limit = 50, offset = 0 } = req.query;
-    let query = 'SELECT * FROM activities WHERE 1=1';
-    const params = [];
-    let pi = 1;
+    const owner = ownerScope(req);
+    let query = 'SELECT * FROM activities WHERE ($1::uuid IS NULL OR user_id = $1)';
+    const params = [owner];
+    let pi = 2;
     if (entity_type) { query += ` AND entity_type = $${pi++}`; params.push(entity_type); }
     if (entity_id) { query += ` AND entity_id = $${pi++}`; params.push(entity_id); }
     query += ` ORDER BY created_at DESC LIMIT $${pi++} OFFSET $${pi}`;
@@ -1408,14 +1660,15 @@ app.get('/api/activities', async (req, res) => {
   }
 });
 
-app.post('/api/activities', async (req, res) => {
+app.post('/api/activities', requireAuth, validateBody(schemas.activity), async (req, res) => {
   try {
     const { type, activity_type, description, entity_type, related_to_type, entity_id, related_to, metadata, user_id } = req.body;
     const id = uuidv4();
     const dbType = type || activity_type;
     const dbEntityType = entity_type || related_to_type;
     const dbEntityId = entity_id || related_to;
-    const dbUserId = user_id || (req.user ? req.user.id : null);
+    // Only admin can attribute activities to another user; non-admin always attributes to self.
+    const dbUserId = (req.user.role === 'admin' && user_id) ? user_id : req.user.id;
     const result = await pool.query(
       'INSERT INTO activities (id, user_id, type, description, entity_type, entity_id, metadata) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *',
       [id, dbUserId, dbType, description, dbEntityType, dbEntityId, metadata ? JSON.stringify(metadata) : null]
@@ -1429,7 +1682,7 @@ app.post('/api/activities', async (req, res) => {
 
 // ==================== NEWSLETTER SUBSCRIBERS ====================
 
-app.get('/api/newsletter-subscribers', async (req, res) => {
+app.get('/api/newsletter-subscribers', requireAuth, async (req, res) => {
   try {
     const { status, limit = 100, offset = 0 } = req.query;
     let query = 'SELECT * FROM newsletter_subscribers';
@@ -1477,25 +1730,10 @@ app.get('/api/newsletter-subscribers/by-token', async (req, res) => {
   }
 });
 
-app.post('/api/newsletter-subscribers', async (req, res) => {
+app.post('/api/newsletter-subscribers', validateBody(schemas.newsletterSubscriber), async (req, res) => {
   try {
     const { email, first_name, last_name, language, source } = req.body;
-
-    // Input validation
-    if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
-      return res.status(400).json({ error: 'Email invalide' });
-    }
-    if (first_name && (typeof first_name !== 'string' || first_name.length > 100)) {
-      return res.status(400).json({ error: 'Prénom invalide' });
-    }
-    if (last_name && (typeof last_name !== 'string' || last_name.length > 100)) {
-      return res.status(400).json({ error: 'Nom invalide' });
-    }
-    if (language && !['fr', 'en', 'nl', 'de'].includes(language)) {
-      return res.status(400).json({ error: 'Langue non supportée' });
-    }
-
-    const normalizedEmail = email.toLowerCase().trim();
+    const normalizedEmail = email; // already lowercased+trimmed by zod
     const existing = await pool.query('SELECT * FROM newsletter_subscribers WHERE email = $1', [normalizedEmail]);
     if (existing.rows.length > 0) {
       if (existing.rows[0].status === 'unsubscribed') {
@@ -1521,14 +1759,13 @@ app.post('/api/newsletter-subscribers', async (req, res) => {
   }
 });
 
-app.post('/api/newsletter-subscribers/unsubscribe', async (req, res) => {
+app.post('/api/newsletter-subscribers/unsubscribe', validateBody(schemas.newsletterUnsubscribe), async (req, res) => {
   try {
     const { email, token } = req.body;
     let query = `UPDATE newsletter_subscribers SET status='unsubscribed', unsubscribed_at=NOW() WHERE `;
     const params = [];
     if (token) { query += 'unsubscribe_token = $1'; params.push(token); }
-    else if (email) { query += 'email = $1'; params.push(email.toLowerCase()); }
-    else { return res.status(400).json({ error: 'Email or token required' }); }
+    else { query += 'email = $1'; params.push(email); }
     query += ' RETURNING *';
     const result = await pool.query(query, params);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Subscriber not found' });
@@ -1539,7 +1776,7 @@ app.post('/api/newsletter-subscribers/unsubscribe', async (req, res) => {
   }
 });
 
-app.delete('/api/newsletter-subscribers/:id', async (req, res) => {
+app.delete('/api/newsletter-subscribers/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM newsletter_subscribers WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Subscriber not found' });
@@ -1552,7 +1789,7 @@ app.delete('/api/newsletter-subscribers/:id', async (req, res) => {
 
 // ==================== NEWSLETTERS ====================
 
-app.get('/api/newsletters', async (req, res) => {
+app.get('/api/newsletters', requireAuth, async (req, res) => {
   try {
     const { status, limit = 50, offset = 0 } = req.query;
     let query = 'SELECT * FROM newsletters';
@@ -1568,7 +1805,7 @@ app.get('/api/newsletters', async (req, res) => {
   }
 });
 
-app.get('/api/newsletters/:id', async (req, res) => {
+app.get('/api/newsletters/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM newsletters WHERE id = $1', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Newsletter not found' });
@@ -1579,7 +1816,7 @@ app.get('/api/newsletters/:id', async (req, res) => {
   }
 });
 
-app.post('/api/newsletters', async (req, res) => {
+app.post('/api/newsletters', requireAuth, validateBody(schemas.newsletter), async (req, res) => {
   try {
     const { subject, content, html_content, language, status, scheduled_at } = req.body;
     const id = uuidv4();
@@ -1595,7 +1832,7 @@ app.post('/api/newsletters', async (req, res) => {
   }
 });
 
-app.put('/api/newsletters/:id', async (req, res) => {
+app.put('/api/newsletters/:id', requireAuth, validateUuidParam(), validateBody(updateSchemas.newsletter), async (req, res) => {
   try {
     const { id } = req.params;
     const { subject, content, html_content, status, scheduled_at, sent_at, recipients_count } = req.body;
@@ -1613,7 +1850,7 @@ app.put('/api/newsletters/:id', async (req, res) => {
   }
 });
 
-app.delete('/api/newsletters/:id', async (req, res) => {
+app.delete('/api/newsletters/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM newsletters WHERE id=$1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'Newsletter not found' });
@@ -1626,7 +1863,7 @@ app.delete('/api/newsletters/:id', async (req, res) => {
 
 // ==================== NEWSLETTER SEND LOGS ====================
 
-app.get('/api/newsletter-send-logs', async (req, res) => {
+app.get('/api/newsletter-send-logs', requireAuth, async (req, res) => {
   try {
     const { newsletter_id } = req.query;
     let query = 'SELECT l.*, s.email AS subscriber_email FROM newsletter_send_logs l LEFT JOIN newsletter_subscribers s ON l.subscriber_id = s.id';
@@ -1641,7 +1878,7 @@ app.get('/api/newsletter-send-logs', async (req, res) => {
   }
 });
 
-app.post('/api/newsletter-send-logs', async (req, res) => {
+app.post('/api/newsletter-send-logs', requireAuth, validateBody(schemas.newsletterSendLog), async (req, res) => {
   try {
     const { newsletter_id, subscriber_id, status, error_message } = req.body;
     const id = uuidv4();
@@ -1656,7 +1893,7 @@ app.post('/api/newsletter-send-logs', async (req, res) => {
   }
 });
 
-app.put('/api/newsletter-send-logs', async (req, res) => {
+app.put('/api/newsletter-send-logs', requireAuth, async (req, res) => {
   try {
     const { newsletter_id, subscriber_id, ...updates } = req.body;
     const sets = []; const params = []; let pi = 1;
@@ -1675,7 +1912,7 @@ app.put('/api/newsletter-send-logs', async (req, res) => {
 
 // ==================== NEWSLETTER STATS ====================
 
-app.get('/api/newsletter-stats', async (req, res) => {
+app.get('/api/newsletter-stats', requireAuth, async (req, res) => {
   try {
     const subs = await pool.query(`SELECT COUNT(*) as total, COUNT(*) FILTER (WHERE status='subscribed') as active, COUNT(*) FILTER (WHERE status='unsubscribed') as unsubscribed FROM newsletter_subscribers`);
     const nl = await pool.query(`SELECT COUNT(*) as total, COUNT(*) FILTER (WHERE status='sent') as sent FROM newsletters`);
