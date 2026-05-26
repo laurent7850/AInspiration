@@ -91,6 +91,17 @@
     }
     </script>
 
+    <!-- Google Fonts — Outfit (premium sans-serif) — chargement non-bloquant via preload + onload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    >
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"></noscript>
+
     <!-- Preconnect pour les API critiques -->
     <link rel="preconnect" href="https://ainspiration.eu" crossorigin>
     <link rel="dns-prefetch" href="https://n8n.srv767464.hstgr.cloud">
@@ -113,6 +124,7 @@
   <body>
     <div id="root">
       <!-- Contenu initial pour crawlers SEO (remplacé par React au chargement) -->
+      <div id="seo-fallback" style="display:none" aria-hidden="true">
       <header>
         <nav aria-label="Navigation principale">
           <a href="/">AInspiration</a> |
@@ -179,17 +191,24 @@
         <p>AInspiration — Solutions d'Intelligence Artificielle pour PME | Chauss\u00e9e Brunehault 27, 7041 Givry, Belgique | info@ainspiration.eu | +32 477 94 28 65</p>
         <p><a href="/privacy">Politique de confidentialité</a> | <a href="/mentions-legales">Mentions légales</a> | <a href="/cgv">CGV</a></p>
       </footer>
+      </div>
     </div>
+    <noscript><style>#seo-fallback{display:block!important}</style></noscript>
 
     <script type="module" src="/src/main.tsx"></script>
 
-    <!-- Google tag (gtag.js) — déféré après le rendu pour optimiser LCP/FCP -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E3ZE8FSYN1"></script>
+    <!-- Google tag (gtag.js) — chargé après l'event load pour ne pas impacter LCP/FCP -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-E3ZE8FSYN1');
+      window.addEventListener('load', function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-E3ZE8FSYN1';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-E3ZE8FSYN1');
+      });
     </script>
   </body>
 </html>
