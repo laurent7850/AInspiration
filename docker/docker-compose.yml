@@ -126,9 +126,9 @@ services:
 
         echo "Frontend: $$(find /app/dist -type f | wc -l) files"
 
-        # 7. Inject GA4 tag
-        sed -i 's|</head>|<!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-FMCN24CNYW"></script><script>window.dataLayer=window.dataLayer\|\|[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FMCN24CNYW");</script></head>|' /app/dist/index.html
-        echo "GA4 tag injected"
+        # GA4 tag (G-FMCN24CNYW) is now baked into index.html at build time
+        # (loaded on window.load, see index.html). No boot-time injection — that
+        # would duplicate the tag and double-count every page view.
 
         echo "Starting server..."
         exec node /app/server.js
