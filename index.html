@@ -91,16 +91,9 @@
     }
     </script>
 
-    <!-- Google Fonts — Outfit (premium sans-serif) — chargement non-bloquant via preload + onload -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
-    >
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"></noscript>
+    <!-- Outfit self-hosted (variable font) — preloaded from our own origin so the
+         LCP text paints with the brand font near FCP. @font-face is in index.css. -->
+    <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Preconnect pour les API critiques -->
     <link rel="preconnect" href="https://ainspiration.eu" crossorigin>
@@ -109,8 +102,8 @@
     <!-- Preconnect pour images Unsplash -->
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
 
-    <!-- Preload poster Hero LCP critique -->
-    <link rel="preload" href="/images/hero-ai-business.webp" as="image" type="image/webp" fetchpriority="high">
+    <!-- Preload Hero LCP image (responsive — mobile gets the 480w variant) -->
+    <link rel="preload" as="image" href="/images/hero-ai-business.webp" imagesrcset="/images/hero-ai-business-480.webp 480w, /images/hero-ai-business.webp 1000w" imagesizes="(max-width: 1024px) 90vw, 40vw" fetchpriority="high">
 
     <!-- Theme color -->
     <meta name="theme-color" content="#4f46e5">

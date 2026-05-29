@@ -1,4 +1,8 @@
 import { ComponentType, lazy } from 'react';
+// HomePage is eager-imported (not lazy) to remove a network round-trip on the
+// LCP critical path: the hero image cannot paint until its <img> is in the DOM,
+// and lazy-loading the homepage chunk delayed that behind a second JS waterfall.
+import HomePage from '../pages/HomePage';
 
 // Interfaces
 export interface RouteConfig {
@@ -25,7 +29,7 @@ export interface MenuItem {
 const routes: RouteConfig[] = [
   {
     path: "/",
-    component: lazy(() => import('../pages/HomePage')),
+    component: HomePage,
     exact: true
   },
   {
