@@ -37,15 +37,22 @@ declare global {
 export default function Analytics() {
   const location = useLocation();
 
-  // Load GA only if consent given, analytics enabled, and in production
+  // Load GA only if consent given, analytics enabled, and in production.
+  // Re-check on 'consent-updated' so accepting cookies starts GA immediately,
+  // without waiting for a page reload (loadGA is idempotent).
   useEffect(() => {
     if (!isProd || !env.analyticsEnabled) return;
     if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') return;
 
-    const analyticsConsent = Cookies.get('analytics-enabled');
-    if (analyticsConsent === 'true') {
-      loadGA();
-    }
+    const loadIfConsented = () => {
+      if (Cookies.get('analytics-enabled') === 'true') {
+        loadGA();
+      }
+    };
+
+    loadIfConsented();
+    window.addEventListener('consent-updated', loadIfConsented);
+    return () => window.removeEventListener('consent-updated', loadIfConsented);
   }, []);
 
   // Track page views

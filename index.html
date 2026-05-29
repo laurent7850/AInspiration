@@ -190,18 +190,8 @@
 
     <script type="module" src="/src/main.tsx"></script>
 
-    <!-- Google tag (gtag.js) — chargé après l'event load pour ne pas impacter LCP/FCP -->
-    <script>
-      window.addEventListener('load', function () {
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-FMCN24CNYW';
-        document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){window.dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-FMCN24CNYW');
-      });
-    </script>
+    <!-- Google Analytics (G-FMCN24CNYW) is loaded by src/components/Analytics.tsx
+         only AFTER the visitor accepts analytics cookies (GDPR). Do not hardcode
+         a gtag snippet here — it would fire without consent. -->
   </body>
 </html>
