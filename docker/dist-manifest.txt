@@ -208,6 +208,7 @@ assets/ui-vendor-ApQAj8N3.js
 assets/ui-vendor-BzWVQK04.js
 assets/ui-vendor-CsCHk3Yd.js
 brain-icon.png
+brain-icon.webp
 browser.png
 favicon-16x16.png
 favicon-32x32.png
