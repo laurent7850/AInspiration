@@ -10,7 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AInspiration | Solutions IA pour PME - Audit Gratuit</title>
     <meta name="description" content="Automatisez vos tâches répétitives et boostez votre CA grâce à l'IA. +180% ROI moyen. Audit gratuit en 24h, sans engagement. 50+ PME accompagnées." />
-    <!-- canonical et og:url gérés dynamiquement par SEOHead (react-helmet) -->
+    <!-- Canonical par défaut (homepage). Express (server.js) réécrit le href
+         par route dans le HTML brut, et react-helmet (SEOHead) le remplace
+         côté client après hydratation grâce à l'attribut data-rh. -->
+    <link rel="canonical" href="https://ainspiration.eu/" data-rh="true" />
+    <meta property="og:url" content="https://ainspiration.eu/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
