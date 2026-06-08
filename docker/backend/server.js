@@ -2249,6 +2249,30 @@ app.all('/api/*', (req, res) => {
   res.status(404).json({ error: 'Not found' });
 });
 
+// Hard 404 for missing static assets — never let them fall through to the SPA
+// fallback below. If a request for /assets/* or any hashed file with an
+// extension (.js/.css/.woff2/...) reaches this point, express.static did not
+// find it on disk, which means the deploy is incomplete (e.g. a lazy chunk
+// that never propagated to Netlify, or a stale dist-manifest.txt). Serving
+// index.html here returns "200 OK + text/html" for a .js URL, which the browser
+// rejects with "Failed to load module script: ... MIME type text/html" — a
+// silent, site-wide outage. Returning 404 makes a partial deploy fail loudly.
+// The SPA fallback must only handle navigation routes (Accept: text/html).
+const ASSET_EXT = /\.(js|mjs|cjs|css|map|json|woff2?|ttf|otf|eot|png|jpe?g|gif|svg|webp|avif|ico|bmp|mp4|webm|mp3|wav|wasm|txt|xml|webmanifest|pdf)$/i;
+app.get('*', (req, res, next) => {
+  // A hashed asset path (/assets/* or any *.js/.css/.woff2/...) that reaches
+  // here is missing from disk — 404 instead of masking it with index.html.
+  // Extension-less paths (/, /audit, /blog/slug) are navigation routes and fall
+  // through to the SPA fallback so server-side SEO injection still applies, even
+  // for crawlers that don't send Accept: text/html.
+  const wantsHtml = (req.headers.accept || '').includes('text/html');
+  const looksLikeAsset = req.path.startsWith('/assets/') || (ASSET_EXT.test(req.path) && !wantsHtml);
+  if (looksLikeAsset) {
+    return res.status(404).type('text/plain').send('Not Found');
+  }
+  next();
+});
+
 // SPA fallback: serve index.html with per-route SEO meta injection.
 // The file is re-read when its mtime changes so deploys that swap dist/ (via
 // docker cp) are picked up without needing a container restart.
@@ -2287,21 +2311,108 @@ const routeSEO = {
   '/privacy': { title: 'Politique de Confidentialit\u00e9 | AInspiration', description: 'Politique de confidentialit\u00e9 et protection des donn\u00e9es personnelles d\'AInspiration.' },
   '/mentions-legales': { title: 'Mentions L\u00e9gales | AInspiration', description: 'Mentions l\u00e9gales du site ainspiration.eu - Distr\'Action SRL.' },
   '/login': { title: 'Connexion | AInspiration', description: 'Connectez-vous \u00e0 votre espace AInspiration.' },
+  '/transformation': { title: 'Transformation Digitale IA | PME Belgique | AInspiration', description: 'Acc\u00e9l\u00e9rez votre transformation digitale gr\u00e2ce \u00e0 l\'IA. Modernisez vos processus, optimisez vos op\u00e9rations et pr\u00e9parez l\'avenir de votre entreprise.' },
+  '/produits': { title: 'Offres IA pour PME | Audit Gratuit | AInspiration', description: 'Consultez nos offres IA pour PME : audit gratuit, formation IA, accompagnement premium. Solutions adapt\u00e9es \u00e0 chaque budget en Belgique et France.' },
+  '/conseil': { title: 'Conseil Strat\u00e9gique IA | Consulting IA | AInspiration', description: 'B\u00e9n\u00e9ficiez de notre expertise en conseil strat\u00e9gique IA : audit, roadmap et accompagnement pour une int\u00e9gration r\u00e9ussie de l\'IA.' },
+  '/accompagnement': { title: 'Accompagnement IA Personnalis\u00e9 | Support Expert | AInspiration', description: 'B\u00e9n\u00e9ficiez d\'un accompagnement IA sur mesure : support d\u00e9di\u00e9, suivi de projet et expertise continue pour r\u00e9ussir votre transformation.' },
+  '/crm': { title: 'CRM IA | Gestion Client Intelligente | AInspiration', description: 'Optimisez votre relation client avec notre CRM propuls\u00e9 par l\'IA : automatisation, insights et suivi intelligent de vos opportunit\u00e9s.' },
 };
 
-app.get('*', (req, res) => {
+// HTML-escape helper for any value injected into the served markup.
+const escHtml = (s) => String(s == null ? '' : s)
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+// Short-lived cache for dynamic blog-post SEO (slug -> { title, description, h1 } | null).
+const blogSeoCache = new Map();
+const BLOG_SEO_TTL = 10 * 60 * 1000; // 10 minutes
+
+async function getBlogSeo(slug) {
+  const cached = blogSeoCache.get(slug);
+  if (cached && cached.exp > Date.now()) return cached.data;
+  let data = null;
+  try {
+    const r = await pool.query(
+      "SELECT title, excerpt, content FROM blog_posts WHERE slug = $1 AND status = 'published'",
+      [slug]
+    );
+    if (r.rows[0]) {
+      const p = r.rows[0];
+      const desc = (p.excerpt && p.excerpt.trim())
+        ? p.excerpt.trim()
+        : (p.content || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 155);
+      data = { title: `${p.title} | Blog AInspiration`, description: desc, h1: p.title };
+    }
+  } catch (e) { /* DB not ready — fall back to the default index.html */ }
+  blogSeoCache.set(slug, { data, exp: Date.now() + BLOG_SEO_TTL });
+  return data;
+}
+
+const SITE_URL = 'https://ainspiration.eu';
+
+// SPA fallback with per-route SEO injected into the RAW HTML. SEO crawlers that
+// do not execute JS (e.g. SEOPilot) only see this server response, so we inject
+// here: a per-route canonical, the title/description/OG tags, and a unique
+// <main> block (otherwise every route would serve the identical homepage
+// fallback → duplicate content). Real users get the React app, which re-manages
+// these tags via react-helmet (data-rh) on hydration.
+app.get('*', async (req, res) => {
   res.setHeader('Cache-Control', 'no-cache');
   const html = readIndexHtml();
   if (!html) return res.sendFile(path.join(distPath, 'index.html'));
 
-  const routePath = req.path.replace(/\/$/, '') || '/';
-  const seo = routeSEO[routePath];
-  if (seo) {
+  try {
+    const routePath = req.path.replace(/\/+$/, '') || '/';
+    const canonical = SITE_URL + (routePath === '/' ? '/' : routePath);
+
+    // Resolve SEO: static route map first, then a dynamic blog-post lookup.
+    let seo = routeSEO[routePath] ? { ...routeSEO[routePath] } : null;
+    const blogMatch = routePath.match(/^\/blog\/([a-z0-9-]+)$/i);
+    if (!seo && blogMatch) seo = await getBlogSeo(blogMatch[1]);
+
     let out = html;
-    out = out.replace(/<title>[^<]*<\/title>/, `<title>${seo.title}</title>`);
-    out = out.replace(/<meta name="description" content="[^"]*"/, `<meta name="description" content="${seo.description}"`);
+
+    // Canonical + og:url for every route (data-rh so react-helmet replaces, not
+    // duplicates). Insert the tags if the built index.html doesn't already carry
+    // them, so the backend fix works even before a frontend redeploy.
+    const canonicalTag = `<link rel="canonical" href="${canonical}" data-rh="true" />`;
+    if (/<link rel="canonical"[^>]*>/.test(out)) {
+      out = out.replace(/<link rel="canonical"[^>]*>/, canonicalTag);
+    } else {
+      out = out.replace(/<\/title>/, `</title>\n    ${canonicalTag}`);
+    }
+    const ogUrlTag = `<meta property="og:url" content="${canonical}" />`;
+    if (/<meta property="og:url" content="[^"]*"\s*\/?>/.test(out)) {
+      out = out.replace(/<meta property="og:url" content="[^"]*"\s*\/?>/, ogUrlTag);
+    } else {
+      out = out.replace(canonicalTag, `${canonicalTag}\n    ${ogUrlTag}`);
+    }
+
+    if (seo) {
+      const title = escHtml(seo.title);
+      const description = escHtml(seo.description);
+      out = out.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`);
+      out = out.replace(/<meta name="description" content="[^"]*"/, `<meta name="description" content="${description}"`);
+      out = out.replace(/<meta property="og:title" content="[^"]*"/, `<meta property="og:title" content="${title}"`);
+      out = out.replace(/<meta property="og:description" content="[^"]*"/, `<meta property="og:description" content="${description}"`);
+
+      // Unique fallback body per route → kills the duplicate-content grouping.
+      if (routePath !== '/') {
+        const h1 = escHtml(seo.h1 || seo.title.split(' | ')[0]);
+        const intro = escHtml(seo.description);
+        const fallbackMain =
+          `<main><h1>${h1}</h1><p>${intro}</p>`
+          + `<p>AInspiration accompagne les PME et indépendants en Belgique et en France `
+          + `dans l'adoption de l'intelligence artificielle : `
+          + `<a href="/audit">audit IA gratuit</a>, <a href="/automatisation">automatisation</a>, `
+          + `<a href="/solutions">solutions IA</a>, <a href="/formation">formation</a> et `
+          + `<a href="/contact">accompagnement sur mesure</a>. Résultats concrets en 5 jours, sans engagement.</p>`
+          + `</main>`;
+        out = out.replace(/<main>[\s\S]*?<\/main>/, fallbackMain);
+      }
+    }
+
     res.send(out);
-  } else {
+  } catch (e) {
     res.send(html);
   }
 });

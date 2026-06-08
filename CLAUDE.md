@@ -250,13 +250,21 @@ products (pas de FK — catalogue indépendant)
 
 ### Ordre de déploiement frontend
 
-1. `npm run build` (dans AInspiration/)
+1. `npm run build` (dans AInspiration/) — régénère **automatiquement** `docker/dist-manifest.txt` via le hook `postbuild` (`scripts/generate-dist-manifest.mjs`). Ne jamais éditer le manifeste à la main.
 2. `npx netlify deploy --prod --dir=dist`
-3. `docker cp` le dist dans le container (PAS docker restart!)
+3. `git add docker/dist-manifest.txt && git commit` — le manifeste doit refléter EXACTEMENT le dernier build, sinon le container télécharge une liste de chunks obsolète.
+4. Recréer le container : `docker cp` le dist complet dans le container, OU `docker compose up -d --force-recreate web` (PAS un simple `docker restart`).
+
+⚠️ **Ne jamais déployer si le `git diff` du manifeste après build est non vide et non committé** — c'est le signe d'un build dont les chunks n'ont pas été propagés (cause de l'incident du 2026-06-08, site entièrement HS).
 
 ### Pourquoi pas docker restart ?
 
-Le container télécharge le frontend depuis Netlify au démarrage. Le CDN Netlify peut servir un index.html qui référence des chunks JS pas encore propagés → **erreur 404 sur les assets**. `docker cp` évite ce problème.
+Le container télécharge le frontend depuis Netlify au démarrage selon `docker/dist-manifest.txt`. Le CDN Netlify peut servir un index.html qui référence des chunks JS pas encore propagés → **erreur 404 sur les assets**. `docker cp` évite ce problème.
+
+### Garde-fou : un déploiement partiel échoue bruyamment (depuis 2026-06-08)
+
+- **Express ne sert plus jamais le SPA-fallback `index.html` pour un asset manquant.** Toute requête `/assets/*` ou tout fichier hashé avec extension (`.js`/`.css`/`.woff2`/…) absent du disque renvoie un **404** au lieu d'un `200 + text/html`. Avant ce fix, un chunk manquant renvoyait `index.html` avec le mauvais MIME type → `Failed to load module script` et tout le site HS en silence (seul l'accueil eager fonctionnait). Voir la section "STATIC FILES + SPA FALLBACK" dans `docker/backend/server.js`. Le SPA-fallback ne s'applique qu'aux routes de navigation (extension-less).
+- **Le manifeste est régénéré automatiquement** après chaque build (hook `postbuild`), il ne peut plus diverger silencieusement du contenu de `dist/`.
 
 ### Fichiers critiques à ne jamais casser
 
