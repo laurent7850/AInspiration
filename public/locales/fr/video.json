@@ -1,0 +1,85 @@
+{
+  "seo": {
+    "title": "Production Vidéo IA | Avatars, Montage & Sous-titres | AInspiration",
+    "description": "Produisez des vidéos marketing, des avatars présentateurs et du montage automatique grâce à l'IA. Vidéo professionnelle, rapide et abordable pour votre PME."
+  },
+  "hero": {
+    "badge": "Production vidéo par IA",
+    "title": "Des vidéos qui captivent, créées par",
+    "titleHighlight": "l'IA",
+    "description": "Vidéos marketing, avatars présentateurs, montage automatique et sous-titres multilingues : produisez des vidéos professionnelles à grande échelle, sans tournage ni studio.",
+    "ctaPrimary": "Démarrer mon projet vidéo",
+    "ctaSecondary": "Voir des exemples",
+    "imageAlt": "Caméra de production vidéo professionnelle"
+  },
+  "features": {
+    "title": "Tout ce que l'IA vidéo peut faire pour vous",
+    "subtitle": "De la pub réseaux sociaux à la vidéo de formation, une production vidéo complète et scalable.",
+    "items": [
+      {
+        "title": "Vidéos marketing & réseaux sociaux",
+        "description": "Spots publicitaires, reels, shorts et vidéos produit générés et montés par IA, optimisés pour chaque plateforme."
+      },
+      {
+        "title": "Avatars & présentateurs IA",
+        "description": "Des présentateurs virtuels réalistes qui portent votre message dans plusieurs langues, sans tournage."
+      },
+      {
+        "title": "Montage & post-production",
+        "description": "Découpage intelligent, sous-titres dynamiques, transitions et habillage de marque générés automatiquement."
+      },
+      {
+        "title": "Sous-titres & traduction vidéo",
+        "description": "Sous-titrez et traduisez vos vidéos dans des dizaines de langues pour toucher une audience internationale."
+      }
+    ]
+  },
+  "metrics": [
+    { "value": "10x", "label": "Plus rapide", "description": "qu'une production vidéo traditionnelle" },
+    { "value": "-80%", "label": "Coûts de tournage", "description": "sans équipe ni studio" },
+    { "value": "40+", "label": "Langues", "description": "pour vos sous-titres et voix" }
+  ],
+  "useCases": {
+    "title": "Des cas d'usage concrets pour votre PME",
+    "subtitle": "Quelques exemples de ce que nos clients produisent au quotidien.",
+    "examplesLabel": "Ce que nous produisons pour vous",
+    "items": [
+      {
+        "title": "Publicités & réseaux sociaux",
+        "description": "Alimentez vos campagnes avec un flux constant de vidéos courtes et percutantes.",
+        "examples": [
+          "Reels, shorts et formats verticaux",
+          "Déclinaisons multiples par campagne",
+          "Sous-titres dynamiques intégrés"
+        ]
+      },
+      {
+        "title": "Vidéos produit & démos",
+        "description": "Présentez vos produits et services avec des vidéos claires et professionnelles.",
+        "examples": [
+          "Démonstrations et tutoriels",
+          "Avatars présentateurs multilingues",
+          "Habillage et branding cohérents"
+        ]
+      },
+      {
+        "title": "Formation & communication interne",
+        "description": "Créez des vidéos de formation et de communication pour vos équipes à grande échelle.",
+        "examples": [
+          "Modules e-learning vidéo",
+          "Onboarding et procédures",
+          "Mises à jour rapides sans retournage"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "title": "Prêt à passer à la vidéo, sans la complexité ?",
+    "subtitle": "Parlons de votre stratégie vidéo lors d'un audit gratuit. Nous définissons les formats, le volume et le workflow IA adaptés à votre PME.",
+    "button": "Demander mon audit gratuit",
+    "stat1Value": "48h",
+    "stat1Label": "Première vidéo",
+    "stat2Value": "-80%",
+    "stat2Label": "Coûts vs tournage"
+  }
+}

@@ -53,6 +53,16 @@ const routes: RouteConfig[] = [
     component: lazy(() => import('../pages/CreationIAPage')),
     exact: true
   },
+  {
+    path: "/audio",
+    component: lazy(() => import('../pages/AudioPage')),
+    exact: true
+  },
+  {
+    path: "/video",
+    component: lazy(() => import('../pages/VideoPage')),
+    exact: true
+  },
   // NOTE: /creation-visuelle → /creation-ia redirect is in App.tsx
   {
     path: "/recommandations",
@@ -289,6 +299,8 @@ export const menuItems: MenuSection[] = [
       { label: 'Assistants virtuels', path: '/assistants' },
       { label: 'Bibliothèque de prompts', path: '/prompts' },
       { label: 'Création IA', path: '/creation-ia' },
+      { label: 'Audio IA', path: '/audio' },
+      { label: 'Vidéo IA', path: '/video' },
       { label: 'Solution CRM', path: '/crm' }
     ]
   },

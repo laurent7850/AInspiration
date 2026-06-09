@@ -1,0 +1,85 @@
+{
+  "seo": {
+    "title": "AI Video Production | Avatars, Editing & Subtitles | AInspiration",
+    "description": "Produce marketing videos, AI presenters and automatic editing with AI. Professional, fast and affordable video for your SME."
+  },
+  "hero": {
+    "badge": "AI-powered video production",
+    "title": "Videos that captivate, created by",
+    "titleHighlight": "AI",
+    "description": "Marketing videos, presenter avatars, automatic editing and multilingual subtitles: produce professional videos at scale, with no shoot and no studio.",
+    "ctaPrimary": "Start my video project",
+    "ctaSecondary": "See examples",
+    "imageAlt": "Professional video production camera"
+  },
+  "features": {
+    "title": "Everything AI video can do for you",
+    "subtitle": "From social-media ads to training videos, a complete and scalable video production pipeline.",
+    "items": [
+      {
+        "title": "Marketing & social media videos",
+        "description": "Ad spots, reels, shorts and product videos generated and edited by AI, optimized for every platform."
+      },
+      {
+        "title": "AI avatars & presenters",
+        "description": "Realistic virtual presenters that deliver your message in multiple languages, with no filming required."
+      },
+      {
+        "title": "Editing & post-production",
+        "description": "Smart cutting, dynamic subtitles, transitions and brand styling generated automatically."
+      },
+      {
+        "title": "Subtitles & video translation",
+        "description": "Subtitle and translate your videos into dozens of languages to reach an international audience."
+      }
+    ]
+  },
+  "metrics": [
+    { "value": "10x", "label": "Faster", "description": "than traditional video production" },
+    { "value": "-80%", "label": "Filming costs", "description": "with no crew and no studio" },
+    { "value": "40+", "label": "Languages", "description": "for your subtitles and voices" }
+  ],
+  "useCases": {
+    "title": "Concrete use cases for your business",
+    "subtitle": "A few examples of what our clients produce every day.",
+    "examplesLabel": "What we produce for you",
+    "items": [
+      {
+        "title": "Ads & social media",
+        "description": "Feed your campaigns with a steady stream of short, punchy videos.",
+        "examples": [
+          "Reels, shorts and vertical formats",
+          "Multiple variations per campaign",
+          "Built-in dynamic subtitles"
+        ]
+      },
+      {
+        "title": "Product videos & demos",
+        "description": "Showcase your products and services with clear, professional videos.",
+        "examples": [
+          "Demos and tutorials",
+          "Multilingual presenter avatars",
+          "Consistent styling and branding"
+        ]
+      },
+      {
+        "title": "Training & internal communication",
+        "description": "Create training and communication videos for your teams at scale.",
+        "examples": [
+          "Video e-learning modules",
+          "Onboarding and procedures",
+          "Quick updates with no re-shoot"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to go video, without the complexity?",
+    "subtitle": "Let's talk about your video strategy during a free audit. We'll define the formats, volume and AI workflow that fit your business.",
+    "button": "Request my free audit",
+    "stat1Value": "48h",
+    "stat1Label": "First video",
+    "stat2Value": "-80%",
+    "stat2Label": "Costs vs filming"
+  }
+}
