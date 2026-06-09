@@ -105,14 +105,17 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
           onClick={() => navigate(localizedPath('/'))}
         >
           <img
-            src="/brain-icon.png"
+            src="/brain-icon.webp"
             alt="AInspiration"
             className="h-8 md:h-10 w-auto"
+            width={80}
+            height={80}
+            decoding="async"
           />
-          <span className="ml-2 text-lg md:text-xl font-bold tracking-tight">
+          <span className="ml-2 text-lg md:text-xl font-extrabold tracking-tighter">
             <span className="text-indigo-600">AI</span>
-            <span className="text-slate-800">nspiration</span>
-            <sup className="text-[8px] text-slate-500 ml-0.5">®</sup>
+            <span className="text-zinc-900">nspiration</span>
+            <sup className="text-[8px] text-zinc-400 ml-0.5">®</sup>
           </span>
         </div>
 
@@ -126,22 +129,22 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
               {item.isDropdown ? (
                 <>
                   <span
-                    className="flex items-center gap-1 text-slate-700 hover:text-indigo-600 transition-colors py-2 cursor-pointer"
+                    className="flex items-center gap-1 text-zinc-600 hover:text-indigo-600 transition-colors py-2 cursor-pointer text-sm font-medium"
                     role="button"
                     tabIndex={0}
                   >
                     {t(item.labelKey)}
                     <ChevronDown className="w-4 h-4" />
                   </span>
-                  <div className="absolute top-full left-0 w-64 py-3 mt-1 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                  <div className="absolute top-full left-0 w-64 py-3 mt-1 bg-white rounded-xl shadow-diffuse border border-zinc-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
                     {item.items?.map((category, catIndex) => (
                       <div key={catIndex} className="px-4 py-2">
-                        <h3 className="font-semibold text-indigo-600 mb-2">{t(category.labelKey)}</h3>
+                        <h3 className="font-semibold text-zinc-400 text-xs uppercase tracking-wider mb-2">{t(category.labelKey)}</h3>
                         <div className="space-y-1">
                           {category.items?.map((subItem, subIndex) => (
                             <button
                               key={subIndex}
-                              className="w-full px-2 py-1.5 text-left text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 transition-colors rounded-md"
+                              className="w-full px-2 py-1.5 text-left text-zinc-600 hover:bg-zinc-50 hover:text-indigo-600 transition-colors rounded-lg text-sm"
                               onClick={() => handleMenuItemClick(subItem.path, subItem.action)}
                             >
                               {t(subItem.labelKey)}
@@ -157,7 +160,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
                 </>
               ) : (
                 <button
-                  className="text-slate-700 hover:text-indigo-600 transition-colors py-2"
+                  className="text-zinc-600 hover:text-indigo-600 transition-colors py-2 text-sm font-medium"
                   onClick={() => item.path && handleMenuItemClick(item.path)}
                 >
                   {t(item.labelKey)}
@@ -168,36 +171,36 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
 
           <button
             onClick={onAuditClick}
-            className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors"
+            className="bg-indigo-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-indigo-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
           >
             Audit gratuit
           </button>
 
           <div className="relative group">
             <span
-              className="flex items-center gap-1 text-slate-700 hover:text-indigo-600 transition-colors py-2 cursor-pointer"
+              className="flex items-center gap-1 text-zinc-500 hover:text-indigo-600 transition-colors py-2 cursor-pointer text-sm"
               role="button"
               tabIndex={0}
             >
-              <span className="uppercase font-semibold">{currentLang}</span>
-              <ChevronDown className="w-4 h-4" />
+              <span className="uppercase font-medium tracking-wide">{currentLang}</span>
+              <ChevronDown className="w-3.5 h-3.5" />
             </span>
-            <div className="absolute top-full right-0 w-20 py-2 mt-1 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+            <div className="absolute top-full right-0 w-20 py-2 mt-1 bg-white rounded-xl shadow-diffuse border border-zinc-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
               <button
                 onClick={() => switchLanguageTo('fr')}
-                className={`w-full px-4 py-2 text-center hover:bg-indigo-50 transition-colors ${currentLang === 'fr' ? 'bg-indigo-50 text-indigo-600 font-semibold' : 'text-gray-700'}`}
+                className={`w-full px-4 py-1.5 text-center text-sm hover:bg-zinc-50 transition-colors ${currentLang === 'fr' ? 'bg-zinc-50 text-zinc-900 font-semibold' : 'text-zinc-500'}`}
               >
                 FR
               </button>
               <button
                 onClick={() => switchLanguageTo('en')}
-                className={`w-full px-4 py-2 text-center hover:bg-indigo-50 transition-colors ${currentLang === 'en' ? 'bg-indigo-50 text-indigo-600 font-semibold' : 'text-gray-700'}`}
+                className={`w-full px-4 py-1.5 text-center text-sm hover:bg-zinc-50 transition-colors ${currentLang === 'en' ? 'bg-zinc-50 text-zinc-900 font-semibold' : 'text-zinc-500'}`}
               >
                 EN
               </button>
               <button
                 onClick={() => switchLanguageTo('nl')}
-                className={`w-full px-4 py-2 text-center hover:bg-indigo-50 transition-colors ${currentLang === 'nl' ? 'bg-indigo-50 text-indigo-600 font-semibold' : 'text-gray-700'}`}
+                className={`w-full px-4 py-1.5 text-center text-sm hover:bg-zinc-50 transition-colors ${currentLang === 'nl' ? 'bg-zinc-50 text-zinc-900 font-semibold' : 'text-zinc-500'}`}
               >
                 NL
               </button>
@@ -209,30 +212,30 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
               <NotificationCenter />
 
               <div className="group relative">
-                <div className="flex items-center gap-2 text-slate-700 hover:text-indigo-600 cursor-pointer">
+                <div className="flex items-center gap-2 text-zinc-600 hover:text-indigo-600 cursor-pointer text-sm">
                   <span className="truncate max-w-[140px]">{user.email}</span>
                   <ChevronDown className="w-4 h-4" />
                 </div>
 
                 {/* Dropdown menu */}
-                <div className="absolute right-0 w-48 mt-2 bg-white rounded-lg shadow-lg overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                <div className="absolute right-0 w-48 mt-2 bg-white rounded-xl shadow-diffuse border border-zinc-100 overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
                   <button
                     onClick={() => navigate(localizedPath('/crm-dashboard'))}
-                    className="w-full px-4 py-2 text-left text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 flex items-center gap-2"
+                    className="w-full px-4 py-2 text-left text-zinc-600 hover:bg-zinc-50 hover:text-indigo-600 flex items-center gap-2"
                   >
                     <Database className="w-4 h-4" />
                     <span>{t('nav.crmDashboard')}</span>
                   </button>
                   <button
                     onClick={() => navigate(localizedPath('/newsletter-admin'))}
-                    className="w-full px-4 py-2 text-left text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 flex items-center gap-2"
+                    className="w-full px-4 py-2 text-left text-zinc-600 hover:bg-zinc-50 hover:text-indigo-600 flex items-center gap-2"
                   >
                     <Mail className="w-4 h-4" />
                     <span>Newsletter</span>
                   </button>
                   <button
                     onClick={handleSignOut}
-                    className="w-full px-4 py-2 text-left text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 flex items-center gap-2"
+                    className="w-full px-4 py-2 text-left text-zinc-600 hover:bg-zinc-50 hover:text-indigo-600 flex items-center gap-2"
                   >
                     <LogOut className="w-4 h-4" />
                     <span>{t('button.signOut')}</span>
@@ -243,7 +246,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
           ) : (
             <button
               onClick={() => navigate(localizedPath('/login'))}
-              className="text-slate-600 hover:text-indigo-600 transition-colors text-sm"
+              className="text-zinc-500 hover:text-indigo-600 transition-colors text-sm"
             >
               {t('button.signIn')}
             </button>
@@ -252,7 +255,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden p-2 text-slate-700"
+          className="md:hidden p-2 text-zinc-700"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
         >
@@ -262,17 +265,17 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden py-4 border-t border-indigo-100 bg-indigo-50">
-          <div className="px-2 pb-3 mb-2 border-b border-indigo-100">
+        <div className="md:hidden py-4 border-t border-zinc-100 bg-white/95 backdrop-blur-xl">
+          <div className="px-2 pb-3 mb-2 border-b border-zinc-100">
             <button
               onClick={() => { onAuditClick(); setIsOpen(false); }}
-              className="w-full bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors"
+              className="w-full bg-indigo-600 text-white px-4 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-700 transition-colors"
             >
               Audit gratuit
             </button>
           </div>
-          <div className="px-2 py-2 mb-2 border-b border-indigo-100">
-            <div className="flex items-center gap-2 text-slate-700 mb-2">
+          <div className="px-2 py-2 mb-2 border-b border-zinc-100">
+            <div className="flex items-center gap-2 text-zinc-700 mb-2">
               <Languages className="w-4 h-4" />
               <span className="text-sm font-semibold">Language</span>
             </div>
@@ -303,7 +306,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
               {item.isDropdown ? (
                 <div>
                   <button
-                    className="flex items-center justify-between w-full font-medium text-slate-800 px-2 py-1.5"
+                    className="flex items-center justify-between w-full font-medium text-zinc-800 px-2 py-1.5"
                     onClick={() => toggleSubmenu(index)}
                   >
                     {t(item.labelKey)}
@@ -312,7 +315,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
 
                   {openSubmenuIndex === index && item.items?.map((category, catIndex) => (
                     <div key={catIndex} className="mt-1 mb-3 pl-4">
-                      <h3 className="font-semibold text-indigo-600 text-sm px-2 py-1">{t(category.labelKey)}</h3>
+                      <h3 className="font-semibold text-zinc-900 text-sm px-2 py-1">{t(category.labelKey)}</h3>
                       <div className="space-y-1 pl-2">
                         {category.items?.map((subItem, subIndex) => (
                           <button
@@ -329,7 +332,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
                 </div>
               ) : (
                 <button
-                  className="w-full text-left font-medium text-slate-700 hover:text-indigo-600 px-2 py-1.5"
+                  className="w-full text-left font-medium text-zinc-700 hover:text-indigo-600 px-2 py-1.5"
                   onClick={() => item.path && handleMenuItemClick(item.path)}
                 >
                   {t(item.labelKey)}
@@ -343,21 +346,21 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
               <div className="text-gray-700">{user.email}</div>
               <button
                 onClick={() => navigate(localizedPath('/crm-dashboard'))}
-                className="flex items-center gap-2 text-slate-600 hover:text-indigo-600 transition-colors w-full text-left py-1.5"
+                className="flex items-center gap-2 text-zinc-500 hover:text-indigo-600 transition-colors w-full text-left py-1.5"
               >
                 <Database className="w-5 h-5" />
                 <span>{t('nav.crmDashboard')}</span>
               </button>
               <button
                 onClick={() => navigate(localizedPath('/newsletter-admin'))}
-                className="flex items-center gap-2 text-slate-600 hover:text-indigo-600 transition-colors w-full text-left py-1.5"
+                className="flex items-center gap-2 text-zinc-500 hover:text-indigo-600 transition-colors w-full text-left py-1.5"
               >
                 <Mail className="w-5 h-5" />
                 <span>Newsletter</span>
               </button>
               <button
                 onClick={handleSignOut}
-                className="flex items-center gap-2 text-slate-600 hover:text-indigo-600 transition-colors w-full text-left py-1.5"
+                className="flex items-center gap-2 text-zinc-500 hover:text-indigo-600 transition-colors w-full text-left py-1.5"
               >
                 <LogOut className="w-5 h-5" />
                 <span>{t('button.signOut')}</span>
@@ -369,7 +372,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
                 navigate(localizedPath('/login'));
                 setIsOpen(false);
               }}
-              className="mt-4 w-full text-slate-700 hover:text-indigo-600 transition-colors text-sm text-left px-2"
+              className="mt-4 w-full text-zinc-700 hover:text-indigo-600 transition-colors text-sm text-left px-2"
             >
               {t('button.signIn')}
             </button>

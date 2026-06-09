@@ -1,0 +1,85 @@
+{
+  "seo": {
+    "title": "AI Audioproductie | Podcasts, Voice-over & Nasynchronisatie | AInspiration",
+    "description": "Maak podcasts, voice-overs, meertalige nasynchronisatie en transcripties met AI. Professionele, snelle en betaalbare audioproductie voor uw kmo."
+  },
+  "hero": {
+    "badge": "Audioproductie met AI",
+    "title": "Audioproductie van de nieuwe generatie, aangedreven door",
+    "titleHighlight": "AI",
+    "description": "Podcasts, voice-overs, meertalige nasynchronisatie, transcriptie: produceer professionele audio in een fractie van de tijd en het budget van een klassieke studio.",
+    "ctaPrimary": "Mijn audioproject starten",
+    "ctaSecondary": "Voorbeelden bekijken",
+    "imageAlt": "Audioproductiestudio met een professionele microfoon"
+  },
+  "features": {
+    "title": "Alles wat AI-audio voor u kan doen",
+    "subtitle": "Van voice-over tot podcast: een complete, snelle en betaalbare audioproductieketen.",
+    "items": [
+      {
+        "title": "Voice-over & spraaksynthese",
+        "description": "Natuurlijke, expressieve synthetische stemmen in meer dan 30 talen, binnen enkele minuten klaar voor uw video's, e-learning en telefonie."
+      },
+      {
+        "title": "Podcasts & sounddesign",
+        "description": "Volledige podcastproductie: automatische montage, ruisverwijdering, jingles en rechtenvrije muzikale branding."
+      },
+      {
+        "title": "Nasynchronisatie & audiovertaling",
+        "description": "Vertaal en synchroniseer uw content in de taal van uw klanten met behoud van de oorspronkelijke toon en het ritme."
+      },
+      {
+        "title": "Transcriptie & ondertitels",
+        "description": "Nauwkeurige automatische transcriptie van uw vergaderingen, interviews en podcasts, met tijdcodes en export naar ondertitels."
+      }
+    ]
+  },
+  "metrics": [
+    { "value": "30+", "label": "Talen", "description": "Natuurlijke synthetische stemmen beschikbaar" },
+    { "value": "-70%", "label": "Productiekosten", "description": "t.o.v. een klassieke opnamestudio" },
+    { "value": "24u", "label": "Doorlooptijd", "description": "Van briefing tot finaal audiobestand" }
+  ],
+  "useCases": {
+    "title": "Concrete toepassingen voor uw kmo",
+    "subtitle": "Enkele voorbeelden van wat onze klanten dagelijks produceren.",
+    "examplesLabel": "Wat wij voor u produceren",
+    "items": [
+      {
+        "title": "Bedrijfspodcasts",
+        "description": "Lanceer en produceer een merkpodcast zonder studio of technische kennis.",
+        "examples": [
+          "Automatische montage en audiozuivering",
+          "Generatie van intro's, jingles en branding",
+          "SEO-klare transcripties en afleveringsnotities"
+        ]
+      },
+      {
+        "title": "Voice-overs voor marketing & reclame",
+        "description": "Voorzie uw advertenties, social media en radiospots van professionele stemmen.",
+        "examples": [
+          "Meertalige voice-overs in enkele minuten",
+          "Keuze uit meerdere tonen en stijlen",
+          "Formaten afgestemd op social media"
+        ]
+      },
+      {
+        "title": "Toegankelijkheid & opleiding",
+        "description": "Maak uw content toegankelijk en bouw audiomodules voor uw teams.",
+        "examples": [
+          "Audiodescriptie en tekst-naar-spraak",
+          "Audio-e-learningmodules",
+          "Conforme ondertitels en transcripties"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "title": "Klaar om uw merk een stem te geven?",
+    "subtitle": "Laten we uw audioproject bespreken tijdens een gratis audit. We bepalen welke content u nodig hebt en de beste AI-workflow voor uw kmo.",
+    "button": "Mijn gratis audit aanvragen",
+    "stat1Value": "24u",
+    "stat1Label": "Eerste oplevering",
+    "stat2Value": "-70%",
+    "stat2Label": "Kosten t.o.v. studio"
+  }
+}

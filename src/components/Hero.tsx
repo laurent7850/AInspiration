@@ -1,11 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Brain, ShieldCheck, Users, Play, Pause } from 'lucide-react';
+import { ArrowRight, Play, Pause } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import AuditForm from './AuditForm';
 import AnimatedStats from './AnimatedStats';
-
-const HERO_IMAGE = 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&auto=format&fit=crop&q=80';
 
 const VIDEO_SOURCES: Record<string, { webm: string; mp4: string }> = {
   fr: { webm: '/videos/intro-fr.webm', mp4: '/videos/intro-fr.mp4' },
@@ -21,13 +18,29 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { t, i18n } = useTranslation('common');
 
-  // Defer video loading after LCP — start loading after 2s
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setVideoReady(true);
-    }, 2000);
+    const timer = setTimeout(() => setVideoReady(true), 2000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Force autoplay once video element is mounted
+  useEffect(() => {
+    if (!videoReady) return;
+    const video = videoRef.current;
+    if (!video) return;
+    const tryPlay = () => {
+      video.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {
+        // Autoplay blocked by browser policy — show play button
+        setIsPlaying(false);
+      });
+    };
+    // Try immediately and also on canplay
+    video.addEventListener('canplay', tryPlay, { once: true });
+    if (video.readyState >= 3) tryPlay();
+    return () => video.removeEventListener('canplay', tryPlay);
+  }, [videoReady]);
 
   const lang = i18n.language?.substring(0, 2) || 'fr';
   const videoSource = VIDEO_SOURCES[lang] || VIDEO_SOURCES.fr;
@@ -50,76 +63,75 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-indigo-50 to-white pt-20 lg:pt-32 pb-12 lg:pb-20">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div className="text-center lg:text-left">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4">
+    <section className="relative bg-canvas pt-24 lg:pt-32 pb-16 lg:pb-20">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Asymmetric grid — text 7 cols, visual 5 cols */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+
+          {/* Left — Text content */}
+          <div className="lg:col-span-7">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-ink tracking-tighter leading-[1.05] mb-6">
               {t('hero.title')}
             </h1>
-            <p className="text-lg sm:text-xl text-gray-600 mb-8">
+            <p className="text-lg sm:text-xl text-secondary max-w-[50ch] leading-relaxed mb-10">
               {t('hero.subtitle')}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button
-                onClick={() => setShowStartForm(true)}
-                className="bg-indigo-600 text-white px-8 py-4 rounded-lg hover:bg-indigo-700 transition-all font-semibold shadow-lg shadow-indigo-500/25 text-lg transform hover:-translate-y-0.5"
-              >
+            <button
+              onClick={() => setShowStartForm(true)}
+              className="group inline-flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-indigo-500/25"
+            >
+              <span>
                 {t('button.startFreeAudit')}
-                <span className="block text-sm font-normal opacity-80 mt-0.5">{t('hero.ctaSubtext')}</span>
-              </button>
-              <Link
-                to="/etudes-de-cas"
-                className="group relative px-8 py-4 rounded-lg font-semibold text-center text-indigo-600 border-2 border-indigo-300 hover:border-indigo-500 bg-white/80 backdrop-blur-sm hover:bg-indigo-50 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-500/10"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  {t('button.seeCaseStudies')}
-                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                </span>
-                <span className="block text-sm font-normal opacity-60 mt-0.5">{t('hero.caseStudiesSubtext')}</span>
-              </Link>
-            </div>
+                <span className="block text-sm font-normal text-zinc-400 mt-0.5">{t('hero.ctaSubtext')}</span>
+              </span>
+              <span className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors">
+                <ArrowRight className="w-5 h-5" />
+              </span>
+            </button>
 
-            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="flex items-center justify-center lg:justify-start gap-2">
-                <Brain className="text-indigo-600 w-5 h-5 flex-shrink-0" aria-hidden="true" />
-                <span className="text-sm text-gray-600">{t('hero.features.simple')}</span>
+            {/* Trust indicators — horizontal, minimal */}
+            <div className="mt-12 flex flex-wrap gap-8">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-sm text-secondary">{t('hero.features.simple')}</span>
               </div>
-              <div className="flex items-center justify-center lg:justify-start gap-2">
-                <ShieldCheck className="text-indigo-600 w-5 h-5 flex-shrink-0" aria-hidden="true" />
-                <span className="text-sm text-gray-600">{t('hero.features.secure')}</span>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" style={{ animationDelay: '200ms' }} />
+                <span className="text-sm text-secondary">{t('hero.features.secure')}</span>
               </div>
-              <div className="flex items-center justify-center lg:justify-start gap-2">
-                <Users className="text-indigo-600 w-5 h-5 flex-shrink-0" aria-hidden="true" />
-                <span className="text-sm text-gray-600">{t('hero.features.support')}</span>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" style={{ animationDelay: '400ms' }} />
+                <span className="text-sm text-secondary">{t('hero.features.support')}</span>
               </div>
             </div>
           </div>
 
-          <div className="relative mt-8 lg:mt-0">
-            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-3xl blur-xl" aria-hidden="true"></div>
-            <div className="relative rounded-2xl shadow-2xl overflow-hidden">
-              {/* Video layer — deferred loading for LCP optimization */}
-              <div className={`transition-opacity duration-700 ${hasEnded ? 'opacity-0' : 'opacity-100'}`}>
-                {/* Poster image as LCP element — loads immediately */}
-                {!videoReady && (
-                  <img
-                    src="/images/hero-ai-business.webp"
-                    alt={t('hero.imageAlt')}
-                    className="w-full rounded-2xl"
-                    fetchPriority="high"
-                    width={600}
-                    height={400}
-                  />
-                )}
+          {/* Right — Video/Image */}
+          <div className="lg:col-span-5 mt-8 lg:mt-0">
+            <div className="relative rounded-[2rem] overflow-hidden shadow-diffuse-lg">
+              <div className={`relative transition-opacity duration-700 ${hasEnded ? 'opacity-0' : 'opacity-100'}`}>
+                {/* Stable LCP element — stays mounted so the largest paint is never
+                    invalidated by a DOM swap. The video (loaded after 2s) overlays it. */}
+                <img
+                  src="/images/hero-ai-business.webp"
+                  srcSet="/images/hero-ai-business-480.webp 480w, /images/hero-ai-business.webp 1000w"
+                  sizes="(max-width: 1024px) 90vw, 40vw"
+                  alt={t('hero.imageAlt')}
+                  className="w-full rounded-[2rem]"
+                  // @ts-expect-error -- fetchpriority is valid HTML but not yet in React types
+                  fetchpriority="high"
+                  decoding="async"
+                  width={600}
+                  height={400}
+                />
                 {videoReady && (
                   <video
                     ref={videoRef}
                     key={videoSource.mp4}
-                    className="w-full rounded-2xl cursor-pointer"
+                    className="absolute inset-0 w-full h-full object-cover rounded-[2rem] cursor-pointer"
                     poster="/images/hero-ai-business.webp"
-                    preload="none"
+                    preload="metadata"
                     playsInline
                     autoPlay
                     muted
@@ -128,42 +140,43 @@ export default function Hero() {
                     onPause={() => setIsPlaying(false)}
                     onEnded={() => { setIsPlaying(false); setHasEnded(true); }}
                   >
-                    <source src={videoSource.webm} type="video/webm" />
                     <source src={videoSource.mp4} type="video/mp4" />
+                    <source src={videoSource.webm} type="video/webm" />
                   </video>
                 )}
-                {/* Pause overlay (visible on hover during playback) */}
                 {videoReady && !hasEnded && (
                   <div
                     className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 cursor-pointer ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}
                     onClick={handlePlayPause}
                   >
-                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-lg transition-transform duration-200 hover:scale-110">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-diffuse transition-transform duration-200 hover:scale-110 active:scale-95">
                       {isPlaying ? (
-                        <Pause className="w-8 h-8 text-indigo-600" />
+                        <Pause className="w-6 h-6 text-indigo-600" />
                       ) : (
-                        <Play className="w-8 h-8 text-indigo-600 ml-1" />
+                        <Play className="w-6 h-6 text-indigo-600 ml-0.5" />
                       )}
                     </div>
                   </div>
                 )}
               </div>
-              {/* Image layer - fades in when video ends */}
-              <div className={`absolute inset-0 transition-opacity duration-700 ${hasEnded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                <img
-                  src={HERO_IMAGE}
-                  alt={t('hero.imageAlt')}
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
+              {hasEnded && (
+                <div className="absolute inset-0 transition-opacity duration-700 opacity-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&auto=format&fit=crop&q=80"
+                    alt={t('hero.imageAlt')}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Animated Stats Bar */}
-      <div className="container mx-auto px-4 mt-16">
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 sm:p-10">
+      {/* Stats bar — clean dividers, no card */}
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+        <div className="border-t border-zinc-200/60 pt-10">
           <AnimatedStats />
         </div>
       </div>

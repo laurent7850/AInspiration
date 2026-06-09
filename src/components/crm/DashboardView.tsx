@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   BarChart2,
   DollarSign,
@@ -13,10 +13,6 @@ import {
   Brain
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { fetchOpportunities } from '../../services/opportunityService';
-import { fetchTasks } from '../../services/taskService';
-import { fetchContacts } from '../../services/contactService';
-import { fetchActivities } from '../../services/activityService';
 import { Opportunity, Task, Contact, Activity } from '../../utils/types';
 import PipelineChart from './charts/PipelineChart';
 import SalesPerformanceChart from './charts/SalesPerformanceChart';
@@ -26,59 +22,73 @@ import AIInsights from './AIInsights';
 import LeadScoring from './LeadScoring';
 import FollowUpSuggestions from './FollowUpSuggestions';
 import { FollowUpSuggestion } from '../../services/n8nService';
+import Skeleton, { CardSkeleton } from '../ui/Skeleton';
+import {
+  useOpportunitiesQuery,
+  useTasksQuery,
+  useContactsQuery,
+  useActivitiesQuery,
+} from '../../hooks/queries/useDashboard';
 
 type DashboardTab = 'overview' | 'ai-insights' | 'lead-scoring' | 'follow-up';
 
 const DashboardView: React.FC = () => {
-  const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const [contacts, setContacts] = useState<Contact[]>([]);
-  const [activities, setActivities] = useState<Activity[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<DashboardTab>('overview');
-
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        setLoading(true);
-        const [opportunitiesData, tasksData, contactsData, activitiesData] = await Promise.all([
-          fetchOpportunities(),
-          fetchTasks(),
-          fetchContacts(),
-          fetchActivities(10)
-        ]);
+  const oppQuery = useOpportunitiesQuery();
+  const tasksQuery = useTasksQuery();
+  const contactsQuery = useContactsQuery();
+  const activitiesQuery = useActivitiesQuery(10);
 
-        setOpportunities(opportunitiesData);
-        setTasks(tasksData);
-        setContacts(contactsData);
-        setActivities(activitiesData);
-      } catch (err) {
-        console.error('Failed to load dashboard data', err);
-        setError('Impossible de charger les données du tableau de bord. Veuillez réessayer.');
-      } finally {
-        setLoading(false);
-      }
-    };
+  const opportunities: Opportunity[] = oppQuery.data ?? [];
+  const tasks: Task[] = tasksQuery.data ?? [];
+  const contacts: Contact[] = contactsQuery.data ?? [];
+  const activities: Activity[] = activitiesQuery.data ?? [];
 
-    loadData();
-  }, []);
+  const isLoading = oppQuery.isLoading || tasksQuery.isLoading || contactsQuery.isLoading || activitiesQuery.isLoading;
+  const error = oppQuery.error || tasksQuery.error || contactsQuery.error || activitiesQuery.error;
 
-  if (loading) {
+  if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+      <div className="space-y-6">
+        <div className="flex items-center space-x-3">
+          <Skeleton variant="rounded" width={44} height={44} />
+          <div>
+            <Skeleton variant="text" width={220} height={24} className="mb-2" />
+            <Skeleton variant="text" width={180} height={14} />
+          </div>
+        </div>
+        <Skeleton variant="rounded" height={48} />
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[1, 2, 3, 4].map((i) => <CardSkeleton key={i} className="!p-5" />)}
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          <Skeleton variant="rounded" height={320} />
+          <Skeleton variant="rounded" height={320} />
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="bg-red-50 text-red-600 p-4 rounded-lg flex items-center">
-        <AlertCircle className="w-5 h-5 mr-2" />
-        <p>{error}</p>
+      <div className="bg-red-50 text-red-600 p-4 rounded-lg flex items-start gap-3">
+        <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+        <div className="flex-1">
+          <p>Impossible de charger les données du tableau de bord.</p>
+          <button
+            onClick={() => {
+              oppQuery.refetch();
+              tasksQuery.refetch();
+              contactsQuery.refetch();
+              activitiesQuery.refetch();
+            }}
+            className="mt-2 text-white bg-red-600 px-4 py-2 rounded hover:bg-red-700"
+          >
+            Réessayer
+          </button>
+        </div>
       </div>
     );
   }

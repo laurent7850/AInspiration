@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, Quote, TrendingDown, TrendingUp, Bot, Clock, CheckCircle, ArrowRight, Briefcase } from 'lucide-react';
+import { Star, TrendingDown, TrendingUp, Bot, ArrowRight, Briefcase } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import AuditForm from './AuditForm';
 
@@ -11,7 +11,8 @@ interface TestimonialData {
   badge: {
     icon: typeof TrendingDown;
     text: string;
-    color: string;
+    bgColor: string;
+    textColor: string;
   };
 }
 
@@ -28,7 +29,8 @@ const Testimonials: React.FC = () => {
       badge: {
         icon: TrendingDown,
         text: t('testimonials.thierry.badge'),
-        color: 'from-green-500 to-emerald-600'
+        bgColor: 'bg-emerald-50',
+        textColor: 'text-emerald-700',
       }
     },
     {
@@ -39,7 +41,8 @@ const Testimonials: React.FC = () => {
       badge: {
         icon: TrendingUp,
         text: t('testimonials.sophie.badge'),
-        color: 'from-blue-500 to-indigo-600'
+        bgColor: 'bg-sky-50',
+        textColor: 'text-sky-700',
       }
     },
     {
@@ -50,169 +53,104 @@ const Testimonials: React.FC = () => {
       badge: {
         icon: Bot,
         text: t('testimonials.marc.badge'),
-        color: 'from-purple-500 to-violet-600'
+        bgColor: 'bg-violet-50',
+        textColor: 'text-violet-700',
       }
     }
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-      <div className="container mx-auto px-4">
+    <section className="py-16 lg:py-24 bg-white">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+        {/* Header — left-aligned */}
+        <div className="max-w-2xl mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink tracking-tight mb-4">
             {t('testimonials.title')}
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-lg text-secondary leading-relaxed">
             {t('testimonials.subtitle')}
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="max-w-6xl mx-auto mb-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial) => {
+        {/* Masonry-style grid — featured card larger */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 mb-16">
+          {testimonials.map((testimonial, index) => {
             const BadgeIcon = testimonial.badge.icon;
+            const isFeatured = index === 0;
 
             return (
               <div
                 key={testimonial.id}
-                className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 p-8 md:p-10 relative overflow-hidden"
+                className={`
+                  bg-canvas rounded-[2rem] p-8 lg:p-10
+                  transition-all duration-300 hover:shadow-diffuse
+                  ${isFeatured ? 'lg:col-span-5 lg:row-span-1' : 'lg:col-span-7'}
+                  ${index === 2 ? 'lg:col-span-12' : ''}
+                `}
               >
-                {/* Quote decoration */}
-                <div className="absolute top-6 right-6 opacity-5">
-                  <Quote className="w-32 h-32 text-indigo-600" />
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10">
-
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-6 flex-wrap gap-4">
-                    <div className="flex items-center gap-4">
-                      {/* Avatar générique */}
-                      <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
-                        <Briefcase className="w-7 h-7 text-white" />
-                      </div>
-
-                      {/* Role & City */}
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-900">
-                          {testimonial.role}
-                        </h3>
-                        <p className="text-gray-600">
-                          {testimonial.city}
-                        </p>
-                      </div>
+                {/* Header */}
+                <div className="flex items-start justify-between mb-6 flex-wrap gap-3">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center">
+                      <Briefcase className="w-5 h-5 text-indigo-600" />
                     </div>
-
-                    {/* Badge */}
-                    <div className={`bg-gradient-to-r ${testimonial.badge.color} text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg`}>
-                      <BadgeIcon className="w-5 h-5" />
-                      <span className="font-semibold text-sm">
-                        {testimonial.badge.text}
-                      </span>
+                    <div>
+                      <h3 className="text-lg font-semibold text-ink tracking-tight">
+                        {testimonial.role}
+                      </h3>
+                      <p className="text-sm text-secondary">
+                        {testimonial.city}
+                      </p>
                     </div>
                   </div>
 
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-
-                  {/* Testimonial Text */}
-                  <blockquote className="text-gray-700 text-lg leading-relaxed italic">
-                    "{testimonial.text}"
-                  </blockquote>
-
-                  {/* Trust indicators */}
-                  <div className="mt-6 flex flex-wrap gap-4 text-sm text-gray-500">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span>{t('testimonials.indicators.easySetup')}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-blue-500" />
-                      <span>{t('testimonials.indicators.timeSaving')}</span>
-                    </div>
+                  {/* Badge — pastel, no gradient */}
+                  <div className={`${testimonial.badge.bgColor} ${testimonial.badge.textColor} px-3 py-1.5 rounded-lg flex items-center gap-1.5`}>
+                    <BadgeIcon className="w-4 h-4" />
+                    <span className="font-medium text-xs">
+                      {testimonial.badge.text}
+                    </span>
                   </div>
                 </div>
+
+                {/* Stars — subtle */}
+                <div className="flex gap-0.5 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <blockquote className="text-ink leading-relaxed">
+                  "{testimonial.text}"
+                </blockquote>
               </div>
             );
           })}
         </div>
 
-        {/* CTA Section */}
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-700 rounded-2xl p-8 md:p-10 text-center shadow-xl">
-            <h3 className="text-3xl font-bold text-white mb-3">
+        {/* CTA — dark, clean */}
+        <div className="bg-indigo-600 rounded-[2rem] p-10 lg:p-14 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div>
+            <h3 className="text-2xl lg:text-3xl font-bold text-white tracking-tight mb-2">
               {t('testimonials.cta.title')}
             </h3>
-            <p className="text-indigo-100 text-lg mb-6">
+            <p className="text-indigo-100 text-lg max-w-[50ch]">
               {t('testimonials.cta.subtitle')}
             </p>
-
-            <button
-              onClick={() => setShowStartForm(true)}
-              className="bg-white text-indigo-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center gap-3"
-            >
-              {t('testimonials.cta.button')}
-              <ArrowRight className="w-5 h-5" />
-            </button>
-
-            {/* Trust badges */}
-            <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-indigo-100">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4" />
-                <span>{t('testimonials.cta.badges.freeAnalysis')}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4" />
-                <span>{t('testimonials.cta.badges.customRecommendations')}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4" />
-                <span>{t('testimonials.cta.badges.noCommitment')}</span>
-              </div>
-            </div>
-
-            {/* Alternative CTAs */}
-            <div className="mt-8 pt-6 border-t border-indigo-500/30">
-              <p className="text-indigo-100 text-sm mb-3">{t('testimonials.cta.alternative.title')}</p>
-              <div className="flex flex-wrap justify-center gap-3">
-                {/* Sympa */}
-                <button
-                  onClick={() => setShowStartForm(true)}
-                  className="bg-indigo-500/30 hover:bg-indigo-500/50 text-white px-4 py-2 rounded-lg text-sm transition-all"
-                >
-                  {t('testimonials.cta.alternative.discuss')}
-                </button>
-
-                {/* Direct */}
-                <button
-                  onClick={() => setShowStartForm(true)}
-                  className="bg-indigo-500/30 hover:bg-indigo-500/50 text-white px-4 py-2 rounded-lg text-sm transition-all"
-                >
-                  {t('testimonials.cta.alternative.direct')}
-                </button>
-
-                {/* Premium */}
-                <button
-                  onClick={() => setShowStartForm(true)}
-                  className="bg-indigo-500/30 hover:bg-indigo-500/50 text-white px-4 py-2 rounded-lg text-sm transition-all"
-                >
-                  {t('testimonials.cta.alternative.premium')}
-                </button>
-              </div>
-            </div>
           </div>
-        </div>
 
+          <button
+            onClick={() => setShowStartForm(true)}
+            className="group inline-flex items-center gap-3 bg-white text-indigo-700 px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] flex-shrink-0"
+          >
+            {t('testimonials.cta.button')}
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+          </button>
+        </div>
       </div>
 
-      {/* Start Form Modal */}
       <AuditForm
         isOpen={showStartForm}
         onClose={() => setShowStartForm(false)}

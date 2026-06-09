@@ -1,0 +1,85 @@
+{
+  "seo": {
+    "title": "AI Videoproductie | Avatars, Montage & Ondertitels | AInspiration",
+    "description": "Produceer marketingvideo's, AI-presentatoren en automatische montage met AI. Professionele, snelle en betaalbare video voor uw kmo."
+  },
+  "hero": {
+    "badge": "Videoproductie met AI",
+    "title": "Video's die boeien, gemaakt door",
+    "titleHighlight": "AI",
+    "description": "Marketingvideo's, presentator-avatars, automatische montage en meertalige ondertitels: produceer professionele video's op schaal, zonder opname of studio.",
+    "ctaPrimary": "Mijn videoproject starten",
+    "ctaSecondary": "Voorbeelden bekijken",
+    "imageAlt": "Professionele videoproductiecamera"
+  },
+  "features": {
+    "title": "Alles wat AI-video voor u kan doen",
+    "subtitle": "Van social-media-advertenties tot opleidingsvideo's: een complete en schaalbare videoproductieketen.",
+    "items": [
+      {
+        "title": "Marketing- & social-mediavideo's",
+        "description": "Reclamespots, reels, shorts en productvideo's gegenereerd en gemonteerd door AI, geoptimaliseerd voor elk platform."
+      },
+      {
+        "title": "AI-avatars & presentatoren",
+        "description": "Realistische virtuele presentatoren die uw boodschap in meerdere talen brengen, zonder filmopnames."
+      },
+      {
+        "title": "Montage & postproductie",
+        "description": "Slim knippen, dynamische ondertitels, overgangen en merkstyling automatisch gegenereerd."
+      },
+      {
+        "title": "Ondertitels & videovertaling",
+        "description": "Ondertitel en vertaal uw video's in tientallen talen om een internationaal publiek te bereiken."
+      }
+    ]
+  },
+  "metrics": [
+    { "value": "10x", "label": "Sneller", "description": "dan traditionele videoproductie" },
+    { "value": "-80%", "label": "Opnamekosten", "description": "zonder crew en zonder studio" },
+    { "value": "40+", "label": "Talen", "description": "voor uw ondertitels en stemmen" }
+  ],
+  "useCases": {
+    "title": "Concrete toepassingen voor uw kmo",
+    "subtitle": "Enkele voorbeelden van wat onze klanten dagelijks produceren.",
+    "examplesLabel": "Wat wij voor u produceren",
+    "items": [
+      {
+        "title": "Advertenties & social media",
+        "description": "Voed uw campagnes met een constante stroom korte, krachtige video's.",
+        "examples": [
+          "Reels, shorts en verticale formaten",
+          "Meerdere varianten per campagne",
+          "Geïntegreerde dynamische ondertitels"
+        ]
+      },
+      {
+        "title": "Productvideo's & demo's",
+        "description": "Presenteer uw producten en diensten met heldere, professionele video's.",
+        "examples": [
+          "Demo's en tutorials",
+          "Meertalige presentator-avatars",
+          "Consistente styling en branding"
+        ]
+      },
+      {
+        "title": "Opleiding & interne communicatie",
+        "description": "Maak opleidings- en communicatievideo's voor uw teams op schaal.",
+        "examples": [
+          "Video-e-learningmodules",
+          "Onboarding en procedures",
+          "Snelle updates zonder heropname"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "title": "Klaar voor video, zonder de complexiteit?",
+    "subtitle": "Laten we uw videostrategie bespreken tijdens een gratis audit. We bepalen de formaten, het volume en de AI-workflow die bij uw kmo passen.",
+    "button": "Mijn gratis audit aanvragen",
+    "stat1Value": "48u",
+    "stat1Label": "Eerste video",
+    "stat2Value": "-80%",
+    "stat2Label": "Kosten t.o.v. opname"
+  }
+}
