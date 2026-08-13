@@ -2495,6 +2495,99 @@ function isKnownRoute(rest) {
   return KNOWN_ROUTES.has(rest) || KNOWN_ROUTE_PREFIXES.some((p) => rest.startsWith(p));
 }
 
+// ---------------------------------------------------------------------------
+// Service pages: real copy in the served HTML.
+//
+// These pages render their text from the i18n bundles, so a crawler that does
+// not execute JavaScript saw only an h1 and one boilerplate sentence — the
+// "thin content" a SEO audit keeps reporting. The copy is not thin, it just
+// never reached the HTML. dist/locales/<lang>/<ns>.json ships with the
+// frontend, so we read it here instead of duplicating the text server-side:
+// one source of truth, and translations stay in step automatically.
+//
+// Routes absent from this map keep the generic block on purpose: /solutions
+// and /produits hold their copy inline in the React components or in the CRM
+// namespace, which would spill application labels onto a public page.
+// KEEP IN SYNC with the namespace a page actually calls useTranslation() with.
+const SERVICE_NS = {
+  '/audit': 'audit',
+  '/formation': 'training',
+  '/automatisation': 'automation',
+  '/conseil': 'features',
+  '/assistants': 'features',
+  '/accompagnement': 'support',
+  '/prompts': 'prompts',
+  '/a-propos': 'about',
+  '/etudes-de-cas': 'caseStudies',
+  '/analyse-ia': 'analysis',
+  '/transformation': 'transformation',
+  '/creation-ia': 'content',
+  '/recommandations': 'recommendations',
+  '/audio': 'audio',
+  '/video': 'video',
+};
+
+// Interface chrome (buttons, placeholders, form steps) and meta already emitted
+// in <title>/<meta description> — neither belongs in the page body.
+const SKIP_LOCALE_KEY = /(placeholder|button|submit|cancel|close|back|continue|next|prev|loading|error|success|required|step\d|stepOf|\bform\b|\bnav\b|menu|aria|alt$|badge|tag$|unit$|currency|^seo\.|\.seo\.|^meta\.|\.meta\.)/i;
+const LOCALE_HEADING_KEY = /(^|\.)(title|heading|name|q)$/i;
+const MAX_LOCALE_BLOCKS = 120;
+
+function flattenLocale(node, prefix, out) {
+  for (const [k, v] of Object.entries(node)) {
+    const key = prefix ? `${prefix}.${k}` : k;
+    if (SKIP_LOCALE_KEY.test(key)) continue;
+    if (typeof v === 'string') out.push([key, v]);
+    else if (Array.isArray(v)) v.forEach((x, i) => {
+      if (typeof x === 'string') out.push([`${key}.${i}`, x]);
+      else if (x && typeof x === 'object') flattenLocale(x, `${key}.${i}`, out);
+    });
+    else if (v && typeof v === 'object') flattenLocale(v, key, out);
+  }
+}
+
+const localeBlockCache = new Map();
+
+function getLocaleBlocks(lang, ns) {
+  const key = `${lang}:${ns}`;
+  if (localeBlockCache.has(key)) return localeBlockCache.get(key);
+
+  let json = null;
+  for (const candidate of [lang, 'fr']) {          // fall back to French
+    try {
+      json = JSON.parse(fs.readFileSync(path.join(distPath, 'locales', candidate, `${ns}.json`), 'utf8'));
+      break;
+    } catch (e) { /* try the next candidate */ }
+  }
+  if (!json) {
+    localeBlockCache.set(key, []);
+    return [];
+  }
+
+  const flat = [];
+  flattenLocale(json, '', flat);
+
+  const blocks = [];
+  const seen = new Set();
+  for (const [k, raw] of flat) {
+    const text = String(raw).replace(/\{\{[^}]*\}\}/g, '').replace(/\s+/g, ' ').trim();
+    if (!text || seen.has(text)) continue;
+    const isHeading = LOCALE_HEADING_KEY.test(k);
+    if (isHeading && text.length >= 8 && text.length <= 120) blocks.push({ tag: 'h2', text });
+    else if (!isHeading && text.length >= 40) blocks.push({ tag: 'p', text });
+    else continue;
+    seen.add(text);
+    if (blocks.length >= MAX_LOCALE_BLOCKS) break;
+  }
+  localeBlockCache.set(key, blocks);
+  return blocks;
+}
+
+const SERVICE_LINKS =
+  `<p><a href="/audit">Audit IA gratuit</a> · <a href="/automatisation">Automatisation</a> · `
+  + `<a href="/solutions">Solutions IA</a> · <a href="/formation">Formation</a> · `
+  + `<a href="/blog">Blog</a> · <a href="/contact">Contact</a></p>`;
+
 // SPA fallback with per-route SEO injected into the RAW HTML. SEO crawlers that
 // do not execute JS (e.g. SEOPilot) only see this server response, so we inject
 // here: a per-route canonical, the title/description/OG tags, hreflang for
@@ -2624,14 +2717,20 @@ app.get('*', async (req, res) => {
     } else if (seo) {
       const h1 = escHtml(seo.h1 || seo.title.split(' | ')[0]);
       const intro = escHtml(seo.description);
+
+      // Service pages pull their real copy from the i18n bundle; everything
+      // else keeps the short generic block.
+      const ns = SERVICE_NS[rest];
+      const body = ns
+        ? getLocaleBlocks(lang, ns).map((b) => `<${b.tag}>${escHtml(b.text)}</${b.tag}>`).join('')
+        : `<p>AInspiration accompagne les PME et indépendants en Belgique et en France `
+          + `dans l'adoption de l'intelligence artificielle : `
+          + `<a href="/audit">audit IA gratuit</a>, <a href="/automatisation">automatisation</a>, `
+          + `<a href="/solutions">solutions IA</a>, <a href="/formation">formation</a> et `
+          + `<a href="/contact">accompagnement sur mesure</a>. Résultats concrets en 5 jours, sans engagement.</p>`;
+
       out = out.replace(/<main>[\s\S]*?<\/main>/,
-        `<main><h1>${h1}</h1><p>${intro}</p>`
-        + `<p>AInspiration accompagne les PME et indépendants en Belgique et en France `
-        + `dans l'adoption de l'intelligence artificielle : `
-        + `<a href="/audit">audit IA gratuit</a>, <a href="/automatisation">automatisation</a>, `
-        + `<a href="/solutions">solutions IA</a>, <a href="/formation">formation</a> et `
-        + `<a href="/contact">accompagnement sur mesure</a>. Résultats concrets en 5 jours, sans engagement.</p>`
-        + `</main>`
+        `<main><h1>${h1}</h1><p>${intro}</p>${body}${ns ? SERVICE_LINKS : ''}</main>`
       );
     }
 
