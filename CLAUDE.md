@@ -266,6 +266,46 @@ if (!isProd || isLocalHost || !env.analyticsEnabled) return;
 Sans cela, les statistiques mélangent visiteurs réels et sessions de test — sur de petits
 volumes, la distorsion est majeure. Distr'Action a exactement le même problème.
 
+## SEO serveur — le blog invisible (13/08/2026)
+
+Cinquante articles publiés entre mai et août, aucun indexé. Le site répondait 200 partout
+et paraissait sain : le défaut n'était visible qu'en récupérant le HTML **sans exécuter de
+JavaScript**. C'est le seul test qui compte pour cette classe de bug.
+
+```bash
+curl -s https://ainspiration.eu/blog/<slug> | grep -c "<h2>"
+```
+
+Un crawler qui n'exécute pas JS voit exactement ça. Google sait rendre du JS, mais met les
+domaines sans autorité dans une file d'attente de rendu — en pratique, du contenu absent du
+HTML brut n'existe pas.
+
+### Les quatre pièges, tous dans `docker/backend/server.js`
+
+- **`express.static` sert `/` depuis le disque.** Son option `index` vaut `index.html` par
+  défaut : la homepage n'atteignait **jamais** le handler SEO en fin de fichier. Elle gardait
+  donc la liste d'articles écrite à la main dans `index.html`, dont les slugs ne
+  correspondaient plus à rien. `index: false` est indispensable — et invisible à la lecture
+  du code, seul un test le révèle.
+- **Le `<main>` servi ne contenait pas les articles.** Le corps vivait dans le bundle React.
+  Toute donnée qui doit être indexée doit être injectée dans le HTML par le serveur.
+- **Le SPA-fallback répondait 200 à toute URL inconnue**, y compris aux liens morts, ce qui
+  fabrique une duplication illimitée de la homepage. La liste blanche des routes vient de
+  `src/config/routes.ts` : **la tenir à jour quand une route est ajoutée**, sinon la nouvelle
+  page renverra 404.
+- **Aucun lien interne dans le HTML brut.** Une liste rendue côté client ne maille rien.
+
+### Contraintes à respecter en modifiant ce handler
+
+- **Assainir le contenu injecté.** Les corps d'articles sont du HTML stocké et la CSP autorise
+  `'unsafe-inline'` pour les scripts : injecter `content` brut serait un XSS stocké. La liste
+  blanche est dans `sanitizeArticleHtml`.
+- **Distinguer « slug absent » de « base injoignable ».** `getBlogPost` renvoie `null` pour
+  le premier cas et `undefined` pour le second. Seul `null` autorise un 404 — sinon une
+  coupure de base délisterait tous les articles d'un coup.
+- **Ne jamais remettre un `catch` muet** sur le chemin de rendu. C'est ce silence qui a laissé
+  le problème durer trois mois.
+
 ## Déploiement - Ne pas casser
 
 ### Ordre de déploiement frontend
