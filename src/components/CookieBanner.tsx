@@ -19,6 +19,8 @@ export default function CookieBanner() {
     Cookies.set('analytics-enabled', 'true', { expires: 365 });
     Cookies.set('marketing-enabled', 'true', { expires: 365 });
     setIsVisible(false);
+    // Notify Analytics so GA loads immediately, without waiting for a reload.
+    window.dispatchEvent(new Event('consent-updated'));
   };
 
   const acceptEssential = () => {
@@ -26,6 +28,7 @@ export default function CookieBanner() {
     Cookies.set('analytics-enabled', 'false', { expires: 365 });
     Cookies.set('marketing-enabled', 'false', { expires: 365 });
     setIsVisible(false);
+    window.dispatchEvent(new Event('consent-updated'));
   };
 
   if (!isVisible) return null;

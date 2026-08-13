@@ -1,0 +1,85 @@
+{
+  "seo": {
+    "title": "AI Audio Production | Podcasts, Voice-over & Dubbing | AInspiration",
+    "description": "Create podcasts, voice-overs, multilingual dubbing and transcriptions with AI. Professional, fast and affordable audio production for your SME."
+  },
+  "hero": {
+    "badge": "AI-powered audio production",
+    "title": "Next-generation audio production, powered by",
+    "titleHighlight": "AI",
+    "description": "Podcasts, voice-overs, multilingual dubbing, transcription: produce professional audio content in a fraction of the time and budget of a traditional studio.",
+    "ctaPrimary": "Start my audio project",
+    "ctaSecondary": "See examples",
+    "imageAlt": "Audio production studio with a professional microphone"
+  },
+  "features": {
+    "title": "Everything AI audio can do for you",
+    "subtitle": "From voice-over to podcast, a complete audio production pipeline that's fast and affordable.",
+    "items": [
+      {
+        "title": "Voice-over & speech synthesis",
+        "description": "Natural, expressive synthetic voices in 30+ languages, ready in minutes for your videos, e-learning modules and phone systems."
+      },
+      {
+        "title": "Podcasts & sound design",
+        "description": "End-to-end podcast production: automatic editing, noise removal, jingle generation and royalty-free musical branding."
+      },
+      {
+        "title": "Dubbing & audio translation",
+        "description": "Translate and dub your content into your customers' language while preserving the original tone and rhythm."
+      },
+      {
+        "title": "Transcription & subtitles",
+        "description": "Accurate automatic transcription of your meetings, interviews and podcasts, with timestamps and subtitle export."
+      }
+    ]
+  },
+  "metrics": [
+    { "value": "30+", "label": "Languages", "description": "Natural synthetic voices available" },
+    { "value": "-70%", "label": "Production costs", "description": "vs a traditional recording studio" },
+    { "value": "24h", "label": "Turnaround", "description": "From brief to final audio file" }
+  ],
+  "useCases": {
+    "title": "Concrete use cases for your business",
+    "subtitle": "A few examples of what our clients produce every day.",
+    "examplesLabel": "What we produce for you",
+    "items": [
+      {
+        "title": "Corporate podcasts",
+        "description": "Launch and produce a branded podcast with no studio and no technical skills.",
+        "examples": [
+          "Automatic editing and audio clean-up",
+          "Intros, jingles and branding generation",
+          "SEO-ready transcripts and show notes"
+        ]
+      },
+      {
+        "title": "Marketing & ad voice-overs",
+        "description": "Add professional voices to your ads, social media and radio spots.",
+        "examples": [
+          "Multilingual voice-overs in minutes",
+          "Multiple tones and styles to choose from",
+          "Formats tailored for social media"
+        ]
+      },
+      {
+        "title": "Accessibility & training",
+        "description": "Make your content accessible and build audio modules for your teams.",
+        "examples": [
+          "Audio description and text-to-speech",
+          "Audio e-learning modules",
+          "Compliant subtitles and transcripts"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to give your brand a voice?",
+    "subtitle": "Let's discuss your audio project during a free audit. We'll identify the content to produce and the best AI workflow for your business.",
+    "button": "Request my free audit",
+    "stat1Value": "24h",
+    "stat1Label": "First deliverable",
+    "stat2Value": "-70%",
+    "stat2Label": "Costs vs studio"
+  }
+}

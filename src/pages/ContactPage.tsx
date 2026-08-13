@@ -119,8 +119,8 @@ const ContactPage: React.FC = () => {
     {
       icon: MapPin,
       title: t('contact.info.address'),
-      value: "Chauss\u00e9e Brunehault 27, 7041 Givry, Belgique",
-      link: "https://maps.google.com/?q=Grand+place+50,+7850+Enghien,+Belgique"
+      value: "Chauss\u00e9e Brunehault 7041 Givry",
+      link: null
     }
   ];
 
@@ -139,42 +139,61 @@ const ContactPage: React.FC = () => {
         description={seoConfig.description}
         keywords={seoConfig.keywords}
       />
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title={t('contact.pageTitle')}
-            subtitle={t('contact.pageSubtitle')}
-            centered
-            as="h1"
-          />
+      <section className="py-24 lg:py-32 bg-canvas">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Page Header */}
+          <div className="max-w-2xl mb-16">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-ink tracking-tighter leading-[1.05] mb-4">
+              {t('contact.pageTitle')}
+            </h1>
+            <p className="text-xl text-secondary leading-relaxed">
+              {t('contact.pageSubtitle')}
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {contactInfo.map((info, index) => (
-            <a
-              key={index}
-              href={info.link}
-              target={info.icon === MapPin ? "_blank" : undefined}
-              rel={info.icon === MapPin ? "noopener noreferrer" : undefined}
-              className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow"
-            >
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <info.icon className="w-6 h-6 text-blue-600" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                {info.title}
-              </h3>
-              <p className="text-blue-600">
-                {info.value}
-              </p>
-            </a>
-          ))}
+        <div className="grid md:grid-cols-3 gap-4 mb-16">
+          {contactInfo.map((info, index) => {
+            const cardContent = (
+              <>
+                <div className="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center mb-4">
+                  <info.icon className="w-5 h-5 text-indigo-600" />
+                </div>
+                <h3 className="text-sm font-medium text-ink mb-1">
+                  {info.title}
+                </h3>
+                <p className="text-secondary text-sm">
+                  {info.value}
+                </p>
+              </>
+            );
+
+            if (!info.link) {
+              return (
+                <div
+                  key={index}
+                  className="bg-white rounded-card p-6 shadow-lift"
+                >
+                  {cardContent}
+                </div>
+              );
+            }
+
+            return (
+              <a
+                key={index}
+                href={info.link}
+                className="bg-white rounded-card p-6 shadow-lift hover:shadow-diffuse transition-all duration-300 hover:-translate-y-1"
+              >
+                {cardContent}
+              </a>
+            );
+          })}
         </div>
 
-        <div className="bg-white rounded-xl shadow-xl overflow-hidden">
-          <div className="grid md:grid-cols-2">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                <MessageSquare className="w-6 h-6 text-blue-600" />
+        <div className="bg-white rounded-[2rem] shadow-diffuse overflow-hidden">
+          <div>
+            <div className="p-8 lg:p-12">
+              <h2 className="text-2xl font-bold text-ink tracking-tight mb-6">
                 {t('contact.sendMessage')}
               </h2>
 
@@ -206,7 +225,7 @@ const ContactPage: React.FC = () => {
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="name" className="block text-sm font-medium text-ink mb-1.5">
                         {t('contact.fullName')}
                       </label>
                       <input
@@ -216,13 +235,13 @@ const ContactPage: React.FC = () => {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${fieldErrors.name ? 'border-red-500' : 'border-gray-300'}`}
+                        className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-zinc-300 focus:border-zinc-400 ${fieldErrors.name ? 'border-red-500' : 'border-gray-300'}`}
                       />
                       {fieldErrors.name && <p className="text-red-500 text-xs mt-1">{fieldErrors.name}</p>}
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="email" className="block text-sm font-medium text-ink mb-1.5">
                         {t('contact.email')}
                       </label>
                       <input
@@ -232,14 +251,14 @@ const ContactPage: React.FC = () => {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${fieldErrors.email ? 'border-red-500' : 'border-gray-300'}`}
+                        className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-zinc-300 focus:border-zinc-400 ${fieldErrors.email ? 'border-red-500' : 'border-gray-300'}`}
                       />
                       {fieldErrors.email && <p className="text-red-500 text-xs mt-1">{fieldErrors.email}</p>}
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="company" className="block text-sm font-medium text-ink mb-1.5">
                       {t('contact.company')}
                     </label>
                     <input
@@ -249,12 +268,12 @@ const ContactPage: React.FC = () => {
                       required
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zinc-300 focus:border-zinc-400"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="subject" className="block text-sm font-medium text-ink mb-1.5">
                       {t('contact.subject')}
                     </label>
                     <select
@@ -263,7 +282,7 @@ const ContactPage: React.FC = () => {
                       required
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zinc-300 focus:border-zinc-400"
                     >
                       <option value="">{t('contact.selectSubject')}</option>
                       {subjects.map((subject) => (
@@ -273,7 +292,7 @@ const ContactPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="message" className="block text-sm font-medium text-ink mb-1.5">
                       {t('contact.message')}
                     </label>
                     <textarea
@@ -283,7 +302,7 @@ const ContactPage: React.FC = () => {
                       rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${fieldErrors.message ? 'border-red-500' : 'border-gray-300'}`}
+                      className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-zinc-300 focus:border-zinc-400 ${fieldErrors.message ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {fieldErrors.message && <p className="text-red-500 text-xs mt-1">{fieldErrors.message}</p>}
                   </div>
@@ -295,7 +314,7 @@ const ContactPage: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center gap-2"
+                    className="bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 flex items-center gap-2 font-medium"
                   >
                     {isSubmitting ? t('common.sending') : t('common.send')}
                     <Send className="w-4 h-4" />
@@ -303,39 +322,21 @@ const ContactPage: React.FC = () => {
                 </form>
               )}
             </div>
-
-            <div className="relative h-full min-h-[400px]">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2534!2d3.9453!3d50.6178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3a8!2sChaussee%20Brunehault%2027%2C%207041%20Givry%2C%20Belgium!5e0!3m2!1sfr!2sbe!4v1700000000000!5m2!1sfr!2sbe"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0"
-                title={t('contact.info.mapTitle')}
-              ></iframe>
-              <div className="absolute bottom-0 left-0 right-0 bg-blue-600 text-white p-4">
-                <p className="font-semibold">Distr'Action SPRL</p>
-                <p className="text-sm">Chauss\u00e9e Brunehault 27, 7041 Givry, Belgique</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
 
       {/* FAQ Section */}
-      <div className="max-w-4xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">{t('contact.faq.title')}</h2>
-        <div className="space-y-4">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <h2 className="text-3xl font-bold text-ink tracking-tight mb-10">{t('contact.faq.title')}</h2>
+        <div className="divide-y divide-zinc-200">
           {[0, 1, 2, 3, 4].map((i) => (
-            <details key={i} className="bg-white border border-gray-200 rounded-lg p-4 group">
-              <summary className="font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+            <details key={i} className="group py-5">
+              <summary className="font-medium text-ink cursor-pointer list-none flex justify-between items-center">
                 {t(`contact.faq.items.${i}.q`)}
-                <span className="text-indigo-600 group-open:rotate-180 transition-transform">&#9660;</span>
+                <span className="text-zinc-400 group-open:rotate-180 transition-transform duration-300">&#9660;</span>
               </summary>
-              <p className="mt-3 text-gray-600 leading-relaxed">{t(`contact.faq.items.${i}.a`)}</p>
+              <p className="mt-3 text-secondary text-sm leading-relaxed">{t(`contact.faq.items.${i}.a`)}</p>
             </details>
           ))}
         </div>

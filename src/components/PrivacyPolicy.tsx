@@ -1,12 +1,14 @@
 import React from 'react';
 import { Shield, Lock, FileCheck, Users } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import SEOHead from './SEOHead';
 
 export default function PrivacyPolicy() {
   const { t } = useTranslation('legal');
 
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <SEOHead />
       <div className="container mx-auto px-4 max-w-4xl">
         <h1 className="text-4xl font-bold text-gray-900 mb-8">
           {t('privacy.pageTitle')}

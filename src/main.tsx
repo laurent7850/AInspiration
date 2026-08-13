@@ -34,9 +34,10 @@ const registerServiceWorker = async () => {
   }
 };
 
-// Initialize app
+// Initialize app — clear SEO fallback HTML before React mount
 const container = document.getElementById('root');
 if (!container) throw new Error('Root element not found');
+container.innerHTML = '';
 
 const root = createRoot(container);
 root.render(

@@ -246,17 +246,85 @@ products (pas de FK — catalogue indépendant)
 
 ---
 
+## Analytics — trafic local envoyé en production (13/08/2026)
+
+La propriété GA4 de production reçoit des vues depuis `localhost` : **7 vues sur 30 jours**,
+constatées via l'API GA4 depuis le projet AutoSEO.
+
+La garde `isProd` de `src/components/Analytics.tsx` ne suffit pas : `import.meta.env.PROD`
+vaut `true` dès qu'il s'agit d'un **build** de production, y compris servi localement
+(`vite preview`, ou un `dist/` ouvert en local). Elle distingue le mode de build, pas la
+machine.
+
+Correctif : exclure aussi l'hôte local, en plus de `isProd`.
+
+```ts
+const isLocalHost = ['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname);
+if (!isProd || isLocalHost || !env.analyticsEnabled) return;
+```
+
+Sans cela, les statistiques mélangent visiteurs réels et sessions de test — sur de petits
+volumes, la distorsion est majeure. Distr'Action a exactement le même problème.
+
+## SEO serveur — le blog invisible (13/08/2026)
+
+Cinquante articles publiés entre mai et août, aucun indexé. Le site répondait 200 partout
+et paraissait sain : le défaut n'était visible qu'en récupérant le HTML **sans exécuter de
+JavaScript**. C'est le seul test qui compte pour cette classe de bug.
+
+```bash
+curl -s https://ainspiration.eu/blog/<slug> | grep -c "<h2>"
+```
+
+Un crawler qui n'exécute pas JS voit exactement ça. Google sait rendre du JS, mais met les
+domaines sans autorité dans une file d'attente de rendu — en pratique, du contenu absent du
+HTML brut n'existe pas.
+
+### Les quatre pièges, tous dans `docker/backend/server.js`
+
+- **`express.static` sert `/` depuis le disque.** Son option `index` vaut `index.html` par
+  défaut : la homepage n'atteignait **jamais** le handler SEO en fin de fichier. Elle gardait
+  donc la liste d'articles écrite à la main dans `index.html`, dont les slugs ne
+  correspondaient plus à rien. `index: false` est indispensable — et invisible à la lecture
+  du code, seul un test le révèle.
+- **Le `<main>` servi ne contenait pas les articles.** Le corps vivait dans le bundle React.
+  Toute donnée qui doit être indexée doit être injectée dans le HTML par le serveur.
+- **Le SPA-fallback répondait 200 à toute URL inconnue**, y compris aux liens morts, ce qui
+  fabrique une duplication illimitée de la homepage. La liste blanche des routes vient de
+  `src/config/routes.ts` : **la tenir à jour quand une route est ajoutée**, sinon la nouvelle
+  page renverra 404.
+- **Aucun lien interne dans le HTML brut.** Une liste rendue côté client ne maille rien.
+
+### Contraintes à respecter en modifiant ce handler
+
+- **Assainir le contenu injecté.** Les corps d'articles sont du HTML stocké et la CSP autorise
+  `'unsafe-inline'` pour les scripts : injecter `content` brut serait un XSS stocké. La liste
+  blanche est dans `sanitizeArticleHtml`.
+- **Distinguer « slug absent » de « base injoignable ».** `getBlogPost` renvoie `null` pour
+  le premier cas et `undefined` pour le second. Seul `null` autorise un 404 — sinon une
+  coupure de base délisterait tous les articles d'un coup.
+- **Ne jamais remettre un `catch` muet** sur le chemin de rendu. C'est ce silence qui a laissé
+  le problème durer trois mois.
+
 ## Déploiement - Ne pas casser
 
 ### Ordre de déploiement frontend
 
-1. `npm run build` (dans AInspiration/)
+1. `npm run build` (dans AInspiration/) — régénère **automatiquement** `docker/dist-manifest.txt` via le hook `postbuild` (`scripts/generate-dist-manifest.mjs`). Ne jamais éditer le manifeste à la main.
 2. `npx netlify deploy --prod --dir=dist`
-3. `docker cp` le dist dans le container (PAS docker restart!)
+3. `git add docker/dist-manifest.txt && git commit` — le manifeste doit refléter EXACTEMENT le dernier build, sinon le container télécharge une liste de chunks obsolète.
+4. Recréer le container : `docker cp` le dist complet dans le container, OU `docker compose up -d --force-recreate web` (PAS un simple `docker restart`).
+
+⚠️ **Ne jamais déployer si le `git diff` du manifeste après build est non vide et non committé** — c'est le signe d'un build dont les chunks n'ont pas été propagés (cause de l'incident du 2026-06-08, site entièrement HS).
 
 ### Pourquoi pas docker restart ?
 
-Le container télécharge le frontend depuis Netlify au démarrage. Le CDN Netlify peut servir un index.html qui référence des chunks JS pas encore propagés → **erreur 404 sur les assets**. `docker cp` évite ce problème.
+Le container télécharge le frontend depuis Netlify au démarrage selon `docker/dist-manifest.txt`. Le CDN Netlify peut servir un index.html qui référence des chunks JS pas encore propagés → **erreur 404 sur les assets**. `docker cp` évite ce problème.
+
+### Garde-fou : un déploiement partiel échoue bruyamment (depuis 2026-06-08)
+
+- **Express ne sert plus jamais le SPA-fallback `index.html` pour un asset manquant.** Toute requête `/assets/*` ou tout fichier hashé avec extension (`.js`/`.css`/`.woff2`/…) absent du disque renvoie un **404** au lieu d'un `200 + text/html`. Avant ce fix, un chunk manquant renvoyait `index.html` avec le mauvais MIME type → `Failed to load module script` et tout le site HS en silence (seul l'accueil eager fonctionnait). Voir la section "STATIC FILES + SPA FALLBACK" dans `docker/backend/server.js`. Le SPA-fallback ne s'applique qu'aux routes de navigation (extension-less).
+- **Le manifeste est régénéré automatiquement** après chaque build (hook `postbuild`), il ne peut plus diverger silencieusement du contenu de `dist/`.
 
 ### Fichiers critiques à ne jamais casser
 

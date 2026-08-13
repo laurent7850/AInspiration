@@ -69,81 +69,89 @@ const AboutPage: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-24 lg:py-32 bg-canvas">
       <SEOHead canonical="/a-propos" />
-      <div className="container mx-auto px-4">
-        <SectionHeader
-          title={t('pageTitle')}
-          subtitle={t('pageSubtitle')}
-          centered
-        />
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Page Header */}
+        <div className="max-w-2xl mb-20">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-ink tracking-tighter leading-[1.05] mb-4">
+            {t('pageTitle')}
+          </h1>
+          <p className="text-xl text-secondary leading-relaxed">
+            {t('pageSubtitle')}
+          </p>
+        </div>
 
         {/* Mission */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('mission.title')}</h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
+        <div className="max-w-3xl mb-24">
+          <h2 className="text-2xl font-bold text-ink tracking-tight mb-4">{t('mission.title')}</h2>
+          <p className="text-lg text-secondary leading-relaxed">
             {t('mission.p1')}
           </p>
-          <p className="text-lg text-gray-600 leading-relaxed mt-4">
+          <p className="text-lg text-secondary leading-relaxed mt-4">
             {t('mission.p2')}
           </p>
         </div>
 
         {/* Approche */}
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('approach.title')}</h2>
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {approachPillars.map((pillar, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-8">
-              <div className="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mb-5">
-                <pillar.icon className="w-7 h-7 text-indigo-600" />
+        <div className="mb-24">
+          <h2 className="text-3xl font-bold text-ink tracking-tight mb-10">{t('approach.title')}</h2>
+          <div className="grid md:grid-cols-3 gap-4">
+            {approachPillars.map((pillar, index) => (
+              <div key={index} className="bg-white rounded-card p-8 lg:p-10 shadow-lift hover:shadow-diffuse transition-all duration-300">
+                <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-5">
+                  <pillar.icon className="w-6 h-6 text-indigo-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-ink tracking-tight mb-3">{pillar.title}</h3>
+                <p className="text-secondary leading-relaxed">{pillar.description}</p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{pillar.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{pillar.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Valeurs */}
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('values.title')}</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {values.map((value, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                <value.icon className="w-6 h-6 text-indigo-600" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                {value.title}
-              </h3>
-              <p className="text-gray-600">
-                {value.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Histoire */}
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('history.title')}</h2>
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-indigo-100"></div>
-
-          <div className="space-y-12 relative">
-            {milestones.map((milestone, index) => (
-              <div key={index} className="flex justify-center">
-                <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'order-last text-left pl-8'}`}>
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{milestone.title}</h3>
-                  <p className="text-gray-600">{milestone.description}</p>
+        <div className="mb-24">
+          <h2 className="text-3xl font-bold text-ink tracking-tight mb-10">{t('values.title')}</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {values.map((value, index) => (
+              <div key={index} className="bg-white rounded-card p-8 shadow-lift hover:shadow-diffuse transition-all duration-300">
+                <div className="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center mb-4">
+                  <value.icon className="w-5 h-5 text-indigo-600" />
                 </div>
-
-                <div className="w-2/12 flex justify-center">
-                  <div className="bg-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg z-10">
-                    {milestone.year}
-                  </div>
-                </div>
-
-                <div className={`w-5/12 ${index % 2 === 0 ? 'order-last text-left pl-8' : 'text-right pr-8'}`}></div>
+                <h3 className="text-lg font-semibold text-ink tracking-tight mb-2">
+                  {value.title}
+                </h3>
+                <p className="text-sm text-secondary leading-relaxed">
+                  {value.description}
+                </p>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Histoire — timeline alternee */}
+        <div className="mb-24">
+          <h2 className="text-3xl font-bold text-ink tracking-tight mb-10">{t('history.title')}</h2>
+          <div className="relative">
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-zinc-200 hidden md:block"></div>
+            <div className="space-y-8 relative">
+              {milestones.map((milestone, index) => (
+                <div key={index} className="flex flex-col md:flex-row justify-center">
+                  <div className={`md:w-5/12 ${index % 2 === 0 ? 'md:text-right md:pr-10' : 'md:order-last md:text-left md:pl-10'}`}>
+                    <h3 className="text-lg font-semibold text-ink tracking-tight mb-1">{milestone.title}</h3>
+                    <p className="text-sm text-secondary leading-relaxed">{milestone.description}</p>
+                  </div>
+
+                  <div className="md:w-2/12 flex justify-center my-2 md:my-0">
+                    <div className="bg-indigo-600 text-white rounded-full w-11 h-11 flex items-center justify-center text-xs font-mono font-medium z-10">
+                      {milestone.year}
+                    </div>
+                  </div>
+
+                  <div className={`md:w-5/12 ${index % 2 === 0 ? 'md:order-last md:text-left md:pl-10' : 'md:text-right md:pr-10'}`}></div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

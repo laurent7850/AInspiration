@@ -37,11 +37,24 @@ export default function BlogPost() {
     loadPost();
   }, [slug]);
 
+  const titleFromSlug = slug
+    ? slug
+        .split('-')
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(' ')
+    : 'Article';
+
   if (loading) {
     return (
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <SEOHead
+          title={`${titleFromSlug} | Blog AInspiration`}
+          description={`Article du blog AInspiration sur ${titleFromSlug.toLowerCase()}. Conseils, retours d'expérience et bonnes pratiques IA pour PME.`}
+          article={true}
+        />
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
+            <h1 className="sr-only">{titleFromSlug}</h1>
             <div className="animate-pulse">
               <div className="h-8 bg-gray-200 rounded w-3/4 mx-auto mb-4"></div>
               <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto mb-8"></div>
@@ -56,6 +69,11 @@ export default function BlogPost() {
   if (error || !post) {
     return (
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <SEOHead
+          title={`${titleFromSlug} | Blog AInspiration`}
+          description="Article non trouvé. Découvrez nos autres articles sur l'intelligence artificielle pour PME."
+          noindex={true}
+        />
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-3xl font-bold text-gray-900 mb-4">Article non trouvé</h1>

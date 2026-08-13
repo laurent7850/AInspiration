@@ -1,0 +1,85 @@
+{
+  "seo": {
+    "title": "Production Audio IA | Podcasts, Voix Off & Doublage | AInspiration",
+    "description": "Créez podcasts, voix off, doublages multilingues et transcriptions grâce à l'IA. Production audio professionnelle, rapide et abordable pour votre PME."
+  },
+  "hero": {
+    "badge": "Production audio par IA",
+    "title": "La production audio nouvelle génération, par",
+    "titleHighlight": "l'IA",
+    "description": "Podcasts, voix off, doublage multilingue, transcription : produisez des contenus audio professionnels en une fraction du temps et du budget d'un studio classique.",
+    "ctaPrimary": "Démarrer mon projet audio",
+    "ctaSecondary": "Voir des exemples",
+    "imageAlt": "Studio de production audio et microphone professionnel"
+  },
+  "features": {
+    "title": "Tout ce que l'IA audio peut faire pour vous",
+    "subtitle": "De la voix off au podcast, une chaîne de production audio complète, rapide et abordable.",
+    "items": [
+      {
+        "title": "Voix off & synthèse vocale",
+        "description": "Des voix de synthèse naturelles et expressives dans plus de 30 langues, prêtes en quelques minutes pour vos vidéos, modules e-learning et messageries."
+      },
+      {
+        "title": "Podcasts & habillage sonore",
+        "description": "Production complète de podcasts : montage automatique, suppression des bruits, génération de jingles et d'habillages musicaux libres de droits."
+      },
+      {
+        "title": "Doublage & traduction audio",
+        "description": "Traduisez et doublez vos contenus dans la langue de vos clients en conservant le ton et le rythme d'origine."
+      },
+      {
+        "title": "Transcription & sous-titres",
+        "description": "Transcription automatique précise de vos réunions, interviews et podcasts, avec horodatage et export en sous-titres."
+      }
+    ]
+  },
+  "metrics": [
+    { "value": "30+", "label": "Langues", "description": "Voix de synthèse naturelles disponibles" },
+    { "value": "-70%", "label": "Coûts de production", "description": "vs un studio d'enregistrement classique" },
+    { "value": "24h", "label": "Délai de livraison", "description": "Du brief au fichier audio final" }
+  ],
+  "useCases": {
+    "title": "Des cas d'usage concrets pour votre PME",
+    "subtitle": "Quelques exemples de ce que nos clients produisent au quotidien.",
+    "examplesLabel": "Ce que nous produisons pour vous",
+    "items": [
+      {
+        "title": "Podcasts d'entreprise",
+        "description": "Lancez et produisez un podcast de marque sans studio ni compétences techniques.",
+        "examples": [
+          "Montage et nettoyage audio automatiques",
+          "Génération d'intros, jingles et habillages",
+          "Transcription et notes d'épisode optimisées SEO"
+        ]
+      },
+      {
+        "title": "Voix off marketing & publicité",
+        "description": "Sonorisez vos publicités, vos réseaux sociaux et vos spots radio avec des voix professionnelles.",
+        "examples": [
+          "Voix off multilingues en quelques minutes",
+          "Plusieurs tonalités et styles au choix",
+          "Formats adaptés aux réseaux sociaux"
+        ]
+      },
+      {
+        "title": "Accessibilité & formation",
+        "description": "Rendez vos contenus accessibles et créez des modules audio pour vos équipes.",
+        "examples": [
+          "Audiodescription et lecture vocale",
+          "Modules e-learning audio",
+          "Sous-titres et transcriptions conformes"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "title": "Prêt à donner de la voix à votre marque ?",
+    "subtitle": "Discutons de votre projet audio lors d'un audit gratuit. Nous identifions les contenus à produire et le meilleur workflow IA pour votre PME.",
+    "button": "Demander mon audit gratuit",
+    "stat1Value": "24h",
+    "stat1Label": "Premier livrable",
+    "stat2Value": "-70%",
+    "stat2Label": "Coûts vs studio"
+  }
+}

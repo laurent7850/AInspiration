@@ -7,6 +7,7 @@ import ScrollToTop from '../ScrollToTop';
 import CookieBanner from '../CookieBanner';
 import Breadcrumbs from './Breadcrumbs';
 import NotificationToast from '../ui/NotificationToast';
+import WhatsAppButton from '../WhatsAppButton';
 
 // Deferred: not needed for initial render
 const ChatbotN8n = lazy(() => import('../ChatbotN8n'));
@@ -57,6 +58,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <Suspense fallback={null}>
         <PopupNewsletter />
       </Suspense>
+      <WhatsAppButton />
       <NotificationToast />
     </div>
   );

@@ -784,6 +784,8 @@ export const getBreadcrumbSchema = (path: string, lang: SupportedLanguage = 'fr'
     'analyse-ia': { fr: 'Analyse IA', en: 'AI Analysis', nl: 'AI Analyse' },
     'transformation': { fr: 'Transformation', en: 'Transformation', nl: 'Transformatie' },
     'creation-visuelle': { fr: 'Création visuelle', en: 'Visual Creation', nl: 'Visuele Creatie' },
+    'audio': { fr: 'Audio IA', en: 'AI Audio', nl: 'AI Audio' },
+    'video': { fr: 'Vidéo IA', en: 'AI Video', nl: 'AI Video' },
     'automatisation': { fr: 'Automatisation', en: 'Automation', nl: 'Automatisering' },
     'assistants': { fr: 'Assistants', en: 'Assistants', nl: 'Assistenten' },
     'prompts': { fr: 'Prompts', en: 'Prompts', nl: 'Prompts' },
