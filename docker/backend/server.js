@@ -2233,8 +2233,12 @@ app.post('/api/webhook/linkedin-post', webhookLimiter, async (req, res) => {
 const path = require('path');
 const distPath = path.join(__dirname, 'dist');
 
-// Serve static frontend files (if dist/ exists alongside server.js)
+// Serve static frontend files (if dist/ exists alongside server.js).
+// index: false is load-bearing — with the default, express.static answers "/"
+// straight from disk and the request never reaches the SEO fallback below, so
+// the homepage alone kept whatever was baked into the built index.html.
 app.use(express.static(distPath, {
+  index: false,
   setHeaders: (res, filePath) => {
     if (filePath.match(/\.(js|css|woff2?|png|jpg|jpeg|svg|webp|avif|ico|gif)$/)) {
       res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
@@ -2316,45 +2320,187 @@ const routeSEO = {
   '/conseil': { title: 'Conseil Strat\u00e9gique IA | Consulting IA | AInspiration', description: 'B\u00e9n\u00e9ficiez de notre expertise en conseil strat\u00e9gique IA : audit, roadmap et accompagnement pour une int\u00e9gration r\u00e9ussie de l\'IA.' },
   '/accompagnement': { title: 'Accompagnement IA Personnalis\u00e9 | Support Expert | AInspiration', description: 'B\u00e9n\u00e9ficiez d\'un accompagnement IA sur mesure : support d\u00e9di\u00e9, suivi de projet et expertise continue pour r\u00e9ussir votre transformation.' },
   '/crm': { title: 'CRM IA | Gestion Client Intelligente | AInspiration', description: 'Optimisez votre relation client avec notre CRM propuls\u00e9 par l\'IA : automatisation, insights et suivi intelligent de vos opportunit\u00e9s.' },
+  '/audio': { title: 'Audio IA | Voix de Synth\u00e8se et Podcasts | AInspiration', description: 'Produisez voix off, podcasts et contenus audio gr\u00e2ce \u00e0 l\'IA. Solutions audio pour PME en Belgique et en France.' },
+  '/video': { title: 'Vid\u00e9o IA | G\u00e9n\u00e9ration et Montage Automatis\u00e9s | AInspiration', description: 'Cr\u00e9ez et montez vos vid\u00e9os avec l\'IA : g\u00e9n\u00e9ration, sous-titrage et d\u00e9clinaisons automatiques pour vos canaux.' },
+  '/recommandations': { title: 'Recommandations IA Personnalis\u00e9es | AInspiration', description: 'Recevez des recommandations IA adapt\u00e9es \u00e0 votre activit\u00e9 : outils, cas d\'usage et priorit\u00e9s de mise en \u0153uvre.' },
 };
+
+// Navigation routes the SPA actually serves (src/config/routes.ts + the
+// client-side redirects declared in App.tsx). Anything outside this set is a
+// real 404: without it, Express answered "200 + homepage" for every unknown
+// URL, which Google reads as an unbounded supply of duplicate homepages.
+const KNOWN_ROUTES = new Set([
+  '/', '/login', '/audit', '/analyse-ia', '/transformation', '/creation-ia', '/audio', '/video',
+  '/recommandations', '/dashboard', '/solutions', '/produits', '/etudes-de-cas', '/a-propos',
+  '/contact', '/prompts', '/automatisation', '/assistants', '/conseil', '/formation',
+  '/accompagnement', '/blog', '/crm', '/crm-dashboard', '/privacy', '/mentions-legales',
+  '/cgv', '/cgu', '/unsubscribe', '/linkedin', '/newsletter-admin',
+  '/opportunities', '/contacts', '/companies', '/products', '/tasks', '/reports', '/messages',
+  // Client-side redirects (App.tsx) \u2014 must stay 200 so the redirect can run.
+  '/pourquoi-ia', '/pour-qui-ia', '/creation-visuelle', '/creativite',
+  // Hand-built article page, not a blog_posts row.
+  '/blog/thierry-facturation-ia',
+]);
+
+// CRM detail routes (/contacts/:id \u2026) \u2014 known, but with a variable segment.
+const KNOWN_ROUTE_PREFIXES = ['/contacts/', '/companies/', '/opportunities/', '/products/', '/tasks/'];
 
 // HTML-escape helper for any value injected into the served markup.
 const escHtml = (s) => String(s == null ? '' : s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-// Short-lived cache for dynamic blog-post SEO (slug -> { title, description, h1 } | null).
-const blogSeoCache = new Map();
-const BLOG_SEO_TTL = 10 * 60 * 1000; // 10 minutes
+// Short-lived cache for everything we read from blog_posts on the render path.
+const blogCache = new Map();
+const BLOG_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
 
-async function getBlogSeo(slug) {
-  const cached = blogSeoCache.get(slug);
-  if (cached && cached.exp > Date.now()) return cached.data;
-  let data = null;
+function cacheGet(key) {
+  const hit = blogCache.get(key);
+  return hit && hit.exp > Date.now() ? hit.data : undefined;
+}
+function cacheSet(key, data) {
+  blogCache.set(key, { data, exp: Date.now() + BLOG_CACHE_TTL });
+  return data;
+}
+
+// SECURITY: article bodies are stored HTML (authenticated /api/blog-posts writes
+// and the AI generator) and are now injected verbatim into the served markup.
+// The CSP allows 'unsafe-inline' for scripts, so a stored <script> or an
+// onerror= attribute would execute. Everything outside this allowlist is
+// dropped before it can reach the page.
+const ALLOWED_TAGS = new Set([
+  'p', 'br', 'hr', 'strong', 'b', 'em', 'i', 'u', 's', 'span',
+  'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'a',
+  'blockquote', 'code', 'pre', 'figure', 'figcaption', 'img',
+  'table', 'thead', 'tbody', 'tfoot', 'tr', 'th', 'td',
+]);
+const ALLOWED_ATTRS = {
+  a: ['href', 'title'],
+  img: ['src', 'alt', 'width', 'height', 'loading'],
+  th: ['colspan', 'rowspan'],
+  td: ['colspan', 'rowspan'],
+};
+const URL_ATTRS = new Set(['href', 'src']);
+const SAFE_URL = /^(https?:\/\/|\/|#|mailto:|tel:)/i;
+
+function sanitizeArticleHtml(raw) {
+  let html = String(raw || '');
+  // Executable / embedding elements: drop the element *and* its content.
+  html = html.replace(/<(script|style|iframe|object|embed|noscript|template|svg|math)\b[\s\S]*?<\/\1\s*>/gi, '');
+  // …and any unbalanced opening tag of the same kind left behind.
+  html = html.replace(/<(script|style|iframe|object|embed|noscript|template|svg|math)\b[^>]*>/gi, '');
+  return html.replace(/<(\/?)([a-z0-9]+)([^>]*)>/gi, (_match, closing, rawTag, rawAttrs) => {
+    const tag = rawTag.toLowerCase();
+    if (!ALLOWED_TAGS.has(tag)) return '';
+    if (closing) return `</${tag}>`;
+
+    const allowed = ALLOWED_ATTRS[tag] || [];
+    const kept = [];
+    const attrRe = /([a-z_:][a-z0-9_.:-]*)\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi;
+    let attr;
+    while ((attr = attrRe.exec(rawAttrs)) !== null) {
+      const name = attr[1].toLowerCase();
+      const value = attr[2].replace(/^["']|["']$/g, '');
+      if (!allowed.includes(name)) continue;            // also drops every on* handler
+      if (URL_ATTRS.has(name) && !SAFE_URL.test(value)) continue;
+      kept.push(`${name}="${escHtml(value)}"`);
+    }
+    if (tag === 'a') kept.push('rel="noopener"');
+    return `<${tag}${kept.length ? ' ' + kept.join(' ') : ''}>`;
+  });
+}
+
+// Returns the post, null when the slug does not exist, and undefined when the
+// database is unreachable. The three cases differ: only `null` may 404, or a
+// database blip would delist every article at once.
+async function getBlogPost(slug) {
+  const key = `post:${slug}`;
+  const cached = cacheGet(key);
+  if (cached !== undefined) return cached;
   try {
     const r = await pool.query(
-      "SELECT title, excerpt, content FROM blog_posts WHERE slug = $1 AND status = 'published'",
+      "SELECT title, excerpt, content, language, published_at FROM blog_posts WHERE slug = $1 AND status = 'published'",
       [slug]
     );
-    if (r.rows[0]) {
-      const p = r.rows[0];
-      const desc = (p.excerpt && p.excerpt.trim())
-        ? p.excerpt.trim()
-        : (p.content || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 155);
-      data = { title: `${p.title} | Blog AInspiration`, description: desc, h1: p.title };
-    }
-  } catch (e) { /* DB not ready — fall back to the default index.html */ }
-  blogSeoCache.set(slug, { data, exp: Date.now() + BLOG_SEO_TTL });
-  return data;
+    if (!r.rows[0]) return cacheSet(key, null);
+    const p = r.rows[0];
+    const plain = (p.content || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    return cacheSet(key, {
+      title: `${p.title} | Blog AInspiration`,
+      description: (p.excerpt && p.excerpt.trim()) ? p.excerpt.trim() : plain.slice(0, 155),
+      h1: p.title,
+      body: sanitizeArticleHtml(p.content),
+      language: p.language || 'fr',
+      publishedAt: p.published_at,
+    });
+  } catch (e) {
+    return undefined; // DB not ready — serve the plain shell, never a 404
+  }
+}
+
+async function getRecentPosts(language, limit) {
+  const key = `recent:${language}:${limit}`;
+  const cached = cacheGet(key);
+  if (cached !== undefined) return cached;
+  try {
+    const r = await pool.query(
+      `SELECT title, slug, excerpt FROM blog_posts
+       WHERE status = 'published' AND language = $1
+       ORDER BY published_at DESC NULLS LAST LIMIT $2`,
+      [language, limit]
+    );
+    return cacheSet(key, r.rows);
+  } catch (e) {
+    return [];
+  }
+}
+
+// Translated articles share a base slug with a `-en` / `-nl` suffix. Without
+// hreflang the three versions compete with each other instead of pooling.
+async function getBlogAlternates(slug) {
+  const base = slug.replace(/-(en|nl)$/i, '');
+  const key = `alt:${base}`;
+  const cached = cacheGet(key);
+  if (cached !== undefined) return cached;
+  try {
+    const r = await pool.query(
+      `SELECT slug, language FROM blog_posts
+       WHERE slug = ANY($1) AND status = 'published'`,
+      [[base, `${base}-en`, `${base}-nl`]]
+    );
+    return cacheSet(key, r.rows);
+  } catch (e) {
+    return [];
+  }
+}
+
+function renderPostList(posts) {
+  if (!posts.length) return '';
+  return '<ul>' + posts.map((p) =>
+    `<li><a href="/blog/${escHtml(p.slug)}">${escHtml(p.title)}</a>`
+    + (p.excerpt ? ` — ${escHtml(String(p.excerpt).trim().slice(0, 160))}` : '')
+    + '</li>'
+  ).join('') + '</ul>';
 }
 
 const SITE_URL = 'https://ainspiration.eu';
 
+// `/en/...` and `/nl/...` are language prefixes, not distinct routes.
+function splitLang(routePath) {
+  const m = routePath.match(/^\/(en|nl)(\/.*)?$/i);
+  if (!m) return { lang: 'fr', rest: routePath };
+  return { lang: m[1].toLowerCase(), rest: m[2] || '/' };
+}
+
+function isKnownRoute(rest) {
+  return KNOWN_ROUTES.has(rest) || KNOWN_ROUTE_PREFIXES.some((p) => rest.startsWith(p));
+}
+
 // SPA fallback with per-route SEO injected into the RAW HTML. SEO crawlers that
 // do not execute JS (e.g. SEOPilot) only see this server response, so we inject
-// here: a per-route canonical, the title/description/OG tags, and a unique
-// <main> block (otherwise every route would serve the identical homepage
-// fallback → duplicate content). Real users get the React app, which re-manages
-// these tags via react-helmet (data-rh) on hydration.
+// here: a per-route canonical, the title/description/OG tags, hreflang for
+// translated posts, and a real <main> — including the full article body for
+// blog routes. Real users get the React app, which re-manages the meta tags via
+// react-helmet (data-rh) on hydration.
 app.get('*', async (req, res) => {
   res.setHeader('Cache-Control', 'no-cache');
   const html = readIndexHtml();
@@ -2362,12 +2508,29 @@ app.get('*', async (req, res) => {
 
   try {
     const routePath = req.path.replace(/\/+$/, '') || '/';
+    const { lang, rest } = splitLang(routePath);
     const canonical = SITE_URL + (routePath === '/' ? '/' : routePath);
 
     // Resolve SEO: static route map first, then a dynamic blog-post lookup.
-    let seo = routeSEO[routePath] ? { ...routeSEO[routePath] } : null;
-    const blogMatch = routePath.match(/^\/blog\/([a-z0-9-]+)$/i);
-    if (!seo && blogMatch) seo = await getBlogSeo(blogMatch[1]);
+    let seo = routeSEO[rest] ? { ...routeSEO[rest] } : null;
+    let post = null;
+    let notFound = false;
+
+    // /blog/thierry-facturation-ia is a hand-built page, not a blog_posts row.
+    const blogMatch = rest === '/blog/thierry-facturation-ia'
+      ? null
+      : rest.match(/^\/blog\/([a-z0-9-]+)$/i);
+
+    if (blogMatch) {
+      const found = await getBlogPost(blogMatch[1]);
+      if (found === null) notFound = true;          // slug does not exist
+      else if (found) {                              // undefined = DB down → plain shell
+        post = found;
+        seo = { title: post.title, description: post.description, h1: post.h1 };
+      }
+    } else if (!isKnownRoute(rest)) {
+      notFound = true;
+    }
 
     let out = html;
 
@@ -2387,6 +2550,21 @@ app.get('*', async (req, res) => {
       out = out.replace(canonicalTag, `${canonicalTag}\n    ${ogUrlTag}`);
     }
 
+    // Unknown URL → a real 404. Serving the homepage with 200 (the previous
+    // behaviour) turned every typo and every stale link into another copy of the
+    // homepage in the index.
+    if (notFound) {
+      const main =
+        `<main><h1>Page introuvable</h1>`
+        + `<p>Cette page n'existe pas ou a été déplacée.</p>`
+        + `<p><a href="/">Accueil</a> · <a href="/blog">Blog</a> · `
+        + `<a href="/solutions">Solutions IA</a> · <a href="/contact">Contact</a></p></main>`;
+      out = out.replace(/<title>[^<]*<\/title>/, '<title>Page introuvable | AInspiration</title>');
+      out = out.replace(/<\/title>/, '</title>\n    <meta name="robots" content="noindex,follow" />');
+      out = out.replace(/<main>[\s\S]*?<\/main>/, main);
+      return res.status(404).send(out);
+    }
+
     if (seo) {
       const title = escHtml(seo.title);
       const description = escHtml(seo.description);
@@ -2394,25 +2572,74 @@ app.get('*', async (req, res) => {
       out = out.replace(/<meta name="description" content="[^"]*"/, `<meta name="description" content="${description}"`);
       out = out.replace(/<meta property="og:title" content="[^"]*"/, `<meta property="og:title" content="${title}"`);
       out = out.replace(/<meta property="og:description" content="[^"]*"/, `<meta property="og:description" content="${description}"`);
+    }
 
-      // Unique fallback body per route → kills the duplicate-content grouping.
-      if (routePath !== '/') {
-        const h1 = escHtml(seo.h1 || seo.title.split(' | ')[0]);
-        const intro = escHtml(seo.description);
-        const fallbackMain =
-          `<main><h1>${h1}</h1><p>${intro}</p>`
-          + `<p>AInspiration accompagne les PME et indépendants en Belgique et en France `
-          + `dans l'adoption de l'intelligence artificielle : `
-          + `<a href="/audit">audit IA gratuit</a>, <a href="/automatisation">automatisation</a>, `
-          + `<a href="/solutions">solutions IA</a>, <a href="/formation">formation</a> et `
-          + `<a href="/contact">accompagnement sur mesure</a>. Résultats concrets en 5 jours, sans engagement.</p>`
-          + `</main>`;
-        out = out.replace(/<main>[\s\S]*?<\/main>/, fallbackMain);
+    // hreflang for translated articles, so the FR/EN/NL versions reinforce one
+    // another instead of competing as near-duplicates.
+    if (post && blogMatch) {
+      const alternates = await getBlogAlternates(blogMatch[1]);
+      if (alternates.length > 1) {
+        const links = alternates.map((a) =>
+          `<link rel="alternate" hreflang="${escHtml(a.language)}" href="${SITE_URL}/blog/${escHtml(a.slug)}" />`
+        );
+        const fr = alternates.find((a) => a.language === 'fr');
+        if (fr) links.push(`<link rel="alternate" hreflang="x-default" href="${SITE_URL}/blog/${escHtml(fr.slug)}" />`);
+        out = out.replace(canonicalTag, `${canonicalTag}\n    ${links.join('\n    ')}`);
       }
+    }
+
+    // The <main> served without JavaScript. Until now it held only an h1 and a
+    // boilerplate paragraph: the article text lived in the React bundle, so a
+    // crawler that does not run JS saw an empty page — which is what kept the
+    // whole blog out of the index.
+    if (post) {
+      const related = await getRecentPosts(post.language, 6);
+      const others = related.filter((p) => p.slug !== blogMatch[1]).slice(0, 5);
+      out = out.replace(/<main>[\s\S]*?<\/main>/,
+        `<main><article><h1>${escHtml(post.h1)}</h1>`
+        + `<p>${escHtml(post.description)}</p>`
+        + post.body
+        + `</article>`
+        + (others.length ? `<aside><h2>À lire aussi</h2>${renderPostList(others)}</aside>` : '')
+        + `<p><a href="/blog">Tous les articles</a> · <a href="/audit">Audit IA gratuit</a></p></main>`
+      );
+    } else if (rest === '/blog') {
+      // The article list was rendered client-side, so the raw HTML carried no
+      // link at all to any post: 50 published articles reachable only through
+      // the sitemap, with zero internal linking.
+      const posts = await getRecentPosts(lang, 30);
+      out = out.replace(/<main>[\s\S]*?<\/main>/,
+        `<main><h1>${escHtml(seo.h1 || 'Blog IA pour PME')}</h1>`
+        + `<p>${escHtml(seo.description)}</p>`
+        + renderPostList(posts)
+        + `</main>`
+      );
+    } else if (routePath === '/') {
+      // The homepage carried a hand-written list of four article links whose
+      // slugs matched nothing in the database. Generate it instead.
+      const posts = await getRecentPosts(lang, 8);
+      if (posts.length) {
+        out = out.replace(/(<h2>Blog[^<]*<\/h2>\s*)<ul>[\s\S]*?<\/ul>/, `$1${renderPostList(posts)}`);
+      }
+    } else if (seo) {
+      const h1 = escHtml(seo.h1 || seo.title.split(' | ')[0]);
+      const intro = escHtml(seo.description);
+      out = out.replace(/<main>[\s\S]*?<\/main>/,
+        `<main><h1>${h1}</h1><p>${intro}</p>`
+        + `<p>AInspiration accompagne les PME et indépendants en Belgique et en France `
+        + `dans l'adoption de l'intelligence artificielle : `
+        + `<a href="/audit">audit IA gratuit</a>, <a href="/automatisation">automatisation</a>, `
+        + `<a href="/solutions">solutions IA</a>, <a href="/formation">formation</a> et `
+        + `<a href="/contact">accompagnement sur mesure</a>. Résultats concrets en 5 jours, sans engagement.</p>`
+        + `</main>`
+      );
     }
 
     res.send(out);
   } catch (e) {
+    // Never fail the page over SEO injection — but say so, loudly. A silent
+    // catch here is how a whole blog can stay unrendered for months.
+    console.error('[SEO] injection failed for', req.path, '—', e && e.stack ? e.stack : e);
     res.send(html);
   }
 });
