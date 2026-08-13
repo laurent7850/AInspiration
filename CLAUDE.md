@@ -246,6 +246,26 @@ products (pas de FK — catalogue indépendant)
 
 ---
 
+## Analytics — trafic local envoyé en production (13/08/2026)
+
+La propriété GA4 de production reçoit des vues depuis `localhost` : **7 vues sur 30 jours**,
+constatées via l'API GA4 depuis le projet AutoSEO.
+
+La garde `isProd` de `src/components/Analytics.tsx` ne suffit pas : `import.meta.env.PROD`
+vaut `true` dès qu'il s'agit d'un **build** de production, y compris servi localement
+(`vite preview`, ou un `dist/` ouvert en local). Elle distingue le mode de build, pas la
+machine.
+
+Correctif : exclure aussi l'hôte local, en plus de `isProd`.
+
+```ts
+const isLocalHost = ['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname);
+if (!isProd || isLocalHost || !env.analyticsEnabled) return;
+```
+
+Sans cela, les statistiques mélangent visiteurs réels et sessions de test — sur de petits
+volumes, la distorsion est majeure. Distr'Action a exactement le même problème.
+
 ## Déploiement - Ne pas casser
 
 ### Ordre de déploiement frontend
