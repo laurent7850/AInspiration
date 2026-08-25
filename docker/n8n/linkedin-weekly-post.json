@@ -31,7 +31,7 @@
             },
             {
               "name": "X-Webhook-Secret",
-              "value": "seopilot-ainspiration-secret-2026"
+              "value": "REPLACE_WITH_WEBHOOK_SECRET"
             }
           ]
         },

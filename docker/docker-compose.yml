@@ -54,7 +54,7 @@ services:
       JWT_SECRET: ${JWT_SECRET}
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
       N8N_BASE: https://n8n.srv767464.hstgr.cloud/webhook
-      WEBHOOK_SECRET: seopilot-ainspiration-secret-2026
+      WEBHOOK_SECRET: ${WEBHOOK_SECRET}
       LINKEDIN_CLIENT_ID: ${LINKEDIN_CLIENT_ID:-78kcbcs6pe3b46}
       LINKEDIN_CLIENT_SECRET: ${LINKEDIN_CLIENT_SECRET}
       LINKEDIN_REDIRECT_URI: https://ainspiration.eu/api/linkedin/callback

@@ -52,7 +52,7 @@ services:
       JWT_SECRET: ${JWT_SECRET}
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
       N8N_BASE: https://n8n.srv767464.hstgr.cloud/webhook
-      WEBHOOK_SECRET: seopilot-ainspiration-secret-2026
+      WEBHOOK_SECRET: ${WEBHOOK_SECRET}
       PORT: "3000"
     command:
       - sh
