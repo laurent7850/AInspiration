@@ -5,7 +5,8 @@ import { validateContactForm, checkRateLimit, isValidEmail, isValidPhone } from 
 
 // Webhooks n8n directs
 const CONTACT_WEBHOOK_URL = "https://n8n.srv767464.hstgr.cloud/webhook/Aimaginationcontact";
-const AUDIT_WEBHOOK_URL = "https://n8n.srv767464.hstgr.cloud/webhook/audit-ia";
+// Proxy backend — le webhook n8n est appelé via le serveur Express
+const AUDIT_WEBHOOK_URL = "/api/webhook/audit";
 
 export const CONTACT_EMAIL = 'info@ainspiration.eu';
 const CONTACT_PHONE = '+32 477 94 28 65';

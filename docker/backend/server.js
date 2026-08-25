@@ -1950,6 +1950,24 @@ app.post('/api/webhook/chat', webhookLimiter, async (req, res) => {
   }
 });
 
+app.post('/api/webhook/audit', webhookLimiter, async (req, res) => {
+  try {
+    const n8nUrl = `${N8N_BASE}/audit-ia`;
+    const response = await fetch(n8nUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body)
+    });
+    // n8n answers 400 with a validation payload; forward it so the form can
+    // tell a rejected submission apart from an outage.
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    console.error('Error forwarding to n8n audit:', error.message);
+    res.status(502).json({ success: false, error: "Le formulaire d'audit est temporairement indisponible. Veuillez réessayer." });
+  }
+});
+
 app.post('/api/webhook/newsletter-send', webhookLimiter, requireAuth, async (req, res) => {
   try {
     const n8nUrl = `${N8N_BASE}/newsletter-send`;
