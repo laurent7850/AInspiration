@@ -20,7 +20,7 @@ import { useTranslation } from 'react-i18next';
 import { isValidEmail, isValidPhone, checkRateLimit } from '../utils/validation';
 
 // Webhook n8n direct pour le pipeline audit
-const AUDIT_WEBHOOK_URL = "https://n8n.srv767464.hstgr.cloud/webhook/C8SIVfn0ELbrXDzy/webhook/audit-ia";
+const AUDIT_WEBHOOK_URL = "https://n8n.srv767464.hstgr.cloud/webhook/audit-ia";
 
 interface AuditFormProps {
   isOpen: boolean;
