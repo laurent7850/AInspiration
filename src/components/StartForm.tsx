@@ -3,9 +3,8 @@ import { X, ArrowRight, Mail, Building2, Phone, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { validateContactForm, checkRateLimit, isValidEmail, isValidPhone } from '../utils/validation';
 
-// Webhooks n8n directs
-const CONTACT_WEBHOOK_URL = "https://n8n.srv767464.hstgr.cloud/webhook/Aimaginationcontact";
-// Proxy backend — le webhook n8n est appelé via le serveur Express
+// Proxy backend — les webhooks n8n sont appelés via le serveur Express
+const CONTACT_WEBHOOK_URL = "/api/webhook/contact";
 const AUDIT_WEBHOOK_URL = "/api/webhook/audit";
 
 export const CONTACT_EMAIL = 'info@ainspiration.eu';
