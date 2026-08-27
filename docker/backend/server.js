@@ -926,6 +926,52 @@ app.post('/api/blog-posts', requireAuth, validateBody(schemas.blogPost), async (
     if (!slug) return res.status(400).json({ error: 'slug is required' });
     const newId = uuidv4();
     const finalStatus = status || 'draft';
+
+    // Garde anti-redondance sur le chemin d'ecriture.
+    //
+    // Elle vit ici plutot que chez l'appelant pour une raison simple : tous les
+    // producteurs passent par cette route (workflow n8n Auto Blog, AutoSEO,
+    // saisie manuelle). Un controle place en amont, chez chacun, finit toujours
+    // par etre oublie par le suivant.
+    //
+    // Le upsert par slug ci-dessous reste autorise : republier LE MEME article
+    // le met a jour, ce n'est pas une redondance. Seul un slug NOUVEAU portant
+    // un sujet deja couvert est refuse.
+    //
+    // `?allow_duplicate=true` laisse la main a un humain qui sait ce qu'il fait.
+    // En query et non dans le corps : validateBody(zod) retire les cles inconnues,
+    // un drapeau place dans le corps serait silencieusement ignore.
+    const allowDuplicate = req.query.allow_duplicate === 'true';
+    if (finalStatus === 'published' && !allowDuplicate) {
+      const existing = await pool.query('SELECT 1 FROM blog_posts WHERE slug = $1', [slug]);
+      if (existing.rowCount === 0) {
+        const similar = await pool.query(
+          `SELECT title, url, slug, published_at, jaccard, verdict
+             FROM publication_find_similar($1, 'ainspiration', $2, 'blog', NULL, 1)`,
+          [title, language || 'fr']
+        );
+        const match = similar.rows[0];
+        if (match && match.verdict === 'duplicate') {
+          console.warn(
+            `[blog-posts] Refus 409 — sujet deja couvert : "${title}" recoupe ` +
+            `"${match.title}" (${match.published_at}, jaccard ${match.jaccard})`
+          );
+          return res.status(409).json({
+            error: 'Subject already covered',
+            message:
+              'Un article couvrant ce sujet existe deja. Renouveler la liste de ' +
+              'sujets, ou forcer avec allow_duplicate=true si la republication est voulue.',
+            conflicts_with: {
+              title: match.title,
+              url: match.url,
+              slug: match.slug,
+              published_at: match.published_at,
+              jaccard: match.jaccard,
+            },
+          });
+        }
+      }
+    }
     // Upsert by slug: republishing the same article (e.g. via webhook) updates the existing
     // row instead of crashing on the unique constraint. published_at is set to NOW() the first
     // time the row transitions to 'published' and preserved on subsequent updates.
