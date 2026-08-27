@@ -879,6 +879,47 @@ app.get('/api/blog-posts/:id', validateUuidParam(), async (req, res) => {
   }
 });
 
+// Registre des parutions : "ce sujet a-t-il deja ete traite ?"
+// A interroger AVANT de generer un article (workflow n8n Auto Blog).
+//
+// GET /api/publications/check?subject=...&language=fr&channel=blog
+//   -> { verdict: 'duplicate' | 'near' | 'free', matches: [...] }
+//
+// Authentifie comme l'ecriture : l'endpoint expose la ligne editoriale du site
+// (sujets couverts, dates), ce qui n'a pas a etre public. n8n reutilise le meme
+// jeton admin longue duree que POST /api/blog-posts.
+app.get('/api/publications/check', requireAuth, async (req, res) => {
+  try {
+    const subject = String(req.query.subject || '').trim();
+    if (!subject) {
+      return res.status(400).json({ error: 'Query parameter "subject" is required' });
+    }
+    if (subject.length > 300) {
+      return res.status(400).json({ error: 'Query parameter "subject" too long (max 300)' });
+    }
+
+    const language = String(req.query.language || 'fr').slice(0, 5);
+    const channel = String(req.query.channel || 'blog').slice(0, 20);
+    const limit = Math.min(parseInt(req.query.limit, 10) || 5, 20);
+
+    const result = await pool.query(
+      `SELECT title, url, slug, published_at, jaccard, title_similarity, verdict
+         FROM publication_find_similar($1, 'ainspiration', $2, $3, NULL, $4)`,
+      [subject, language, channel, limit]
+    );
+
+    const matches = result.rows;
+    // Verdict global = celui du plus proche ; la fonction trie deja par
+    // ressemblance decroissante.
+    const verdict = matches.length > 0 ? matches[0].verdict : 'free';
+
+    res.json({ subject, language, channel, verdict, matches });
+  } catch (error) {
+    console.error('Error checking publications:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.post('/api/blog-posts', requireAuth, validateBody(schemas.blogPost), async (req, res) => {
   try {
     const { title, slug, excerpt, content, featured_image, category_id, status, language, author_name } = req.body;
