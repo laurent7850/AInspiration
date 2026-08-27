@@ -2558,6 +2558,22 @@ async function getBlogPost(slug) {
   }
 }
 
+// Slug d'un article retire (doublon) -> slug de l'article conserve.
+// null = pas de redirection connue ; undefined = base injoignable.
+// La distinction compte : sur une coupure de base, on ne doit ni rediriger a
+// tort, ni transformer l'incident en 404 — on sert la page normalement.
+async function getBlogRedirect(slug) {
+  const key = `redirect:${slug}`;
+  const cached = cacheGet(key);
+  if (cached !== undefined) return cached;
+  try {
+    const r = await pool.query('SELECT to_slug FROM blog_redirects WHERE from_slug = $1', [slug]);
+    return cacheSet(key, r.rows[0] ? r.rows[0].to_slug : null);
+  } catch (e) {
+    return undefined;
+  }
+}
+
 async function getRecentPosts(language, limit) {
   const key = `recent:${language}:${limit}`;
   const cached = cacheGet(key);
@@ -2736,6 +2752,18 @@ app.get('*', async (req, res) => {
       : rest.match(/^\/blog\/([a-z0-9-]+)$/i);
 
     if (blogMatch) {
+      // Un article retire comme doublon redirige en 301 vers celui qu'on a
+      // garde, dans la meme langue. A faire avant toute resolution SEO : une
+      // URL indexee ne doit ni rendre une page morte, ni tomber en 404 —
+      // l'autorite acquise se transfere, elle ne se recree pas.
+      const redirectTo = await getBlogRedirect(blogMatch[1]);
+      if (redirectTo) {
+        // splitLang renvoie 'fr' en l'absence de prefixe : le francais n'en a
+        // pas, seuls /en et /nl en portent un.
+        const prefix = lang === 'fr' ? '' : `/${lang}`;
+        return res.redirect(301, `${prefix}/blog/${redirectTo}`);
+      }
+
       const found = await getBlogPost(blogMatch[1]);
       if (found === null) notFound = true;          // slug does not exist
       else if (found) {                              // undefined = DB down → plain shell
