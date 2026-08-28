@@ -25,9 +25,6 @@ export default function AuditSection() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-2xl mb-16">
-          <span className="inline-block text-xs font-medium text-secondary uppercase tracking-[0.15em] mb-3">
-            {t('audit.badge')}
-          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink tracking-tight mb-4">
             {t('audit.title')}
           </h2>

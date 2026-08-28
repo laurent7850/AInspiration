@@ -57,6 +57,57 @@ body {
   background-color: var(--color-canvas);
   height: -webkit-fill-available;
   width: 100%;
+  accent-color: var(--color-accent);
+  caret-color: var(--color-accent);
+}
+
+/* Browser surfaces — selection, focus, scrollbar carry the palette too */
+::selection {
+  background: rgba(79, 70, 229, 0.18);
+  color: var(--color-accent-dark);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+html {
+  scrollbar-color: rgba(79, 70, 229, 0.28) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(79, 70, 229, 0.28);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 70, 229, 0.45);
+  background-clip: content-box;
+  border: 2px solid transparent;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 #root {
@@ -457,9 +508,9 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Optimisation de la lisibilité des formulaires */
+/* Optimisation de la lisibilité des formulaires — focus dans l'accent, pas gris */
 input, select, textarea {
-  @apply focus:ring-2 focus:ring-zinc-300 focus:border-zinc-400 focus:outline-none;
+  @apply focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 focus:outline-none;
 }
 
 /* Fix for iOS Safari's 100vh issue */

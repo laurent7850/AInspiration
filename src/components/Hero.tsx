@@ -70,7 +70,7 @@ export default function Hero() {
 
           {/* Left — Text content */}
           <div className="lg:col-span-7">
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-ink tracking-tighter leading-[1.05] mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-ink tracking-[-0.035em] leading-[1.05] mb-6">
               {t('hero.title')}
             </h1>
             <p className="text-lg sm:text-xl text-secondary max-w-[50ch] leading-relaxed mb-10">
@@ -79,11 +79,11 @@ export default function Hero() {
 
             <button
               onClick={() => setShowStartForm(true)}
-              className="group inline-flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-indigo-500/25"
+              className="group inline-flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-indigo-500/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-600"
             >
               <span>
                 {t('button.startFreeAudit')}
-                <span className="block text-sm font-normal text-zinc-400 mt-0.5">{t('hero.ctaSubtext')}</span>
+                <span className="block text-sm font-normal text-indigo-200 mt-0.5">{t('hero.ctaSubtext')}</span>
               </span>
               <span className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors">
                 <ArrowRight className="w-5 h-5" />
@@ -93,15 +93,15 @@ export default function Hero() {
             {/* Trust indicators — horizontal, minimal */}
             <div className="mt-12 flex flex-wrap gap-8">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
                 <span className="text-sm text-secondary">{t('hero.features.simple')}</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" style={{ animationDelay: '200ms' }} />
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
                 <span className="text-sm text-secondary">{t('hero.features.secure')}</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" style={{ animationDelay: '400ms' }} />
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
                 <span className="text-sm text-secondary">{t('hero.features.support')}</span>
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function Hero() {
               {hasEnded && (
                 <div className="absolute inset-0 transition-opacity duration-700 opacity-100">
                   <img
-                    src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&auto=format&fit=crop&q=80"
+                    src="/images/hero-ai-business.webp"
                     alt={t('hero.imageAlt')}
                     className="w-full h-full object-cover"
                     loading="lazy"

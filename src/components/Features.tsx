@@ -1,10 +1,9 @@
 import React, { memo } from 'react';
-import { Brain, BarChart3, Users, Pencil, MessageSquare, LineChart, BookOpen, Award } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Brain, BarChart3, Users, Pencil, MessageSquare, LineChart, BookOpen, Award, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const Features = () => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
 
   const features = [
@@ -73,33 +72,33 @@ const Features = () => {
 
         {/* Bento grid — asymmetric layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {features.map((feature, index) => {
-            // First 2 items span wider on large screens
-            const isLarge = index < 2;
-
-            return (
-              <div
-                key={index}
-                onClick={() => feature.path && navigate(feature.path)}
-                className={`
-                  group cursor-pointer bg-white rounded-card p-8 lg:p-10
-                  shadow-lift hover:shadow-diffuse
-                  transition-all duration-300 hover:-translate-y-1
-                  ${isLarge ? 'lg:col-span-1 lg:first:col-span-2' : ''}
-                `}
-              >
-                <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center mb-5 group-hover:bg-indigo-100 transition-colors">
-                  <feature.icon className="h-6 w-6 text-indigo-600" />
-                </div>
-                <h3 className="text-lg font-semibold text-ink mb-2 tracking-tight">
-                  {t(feature.titleKey)}
-                </h3>
-                <p className="text-secondary text-sm leading-relaxed">
-                  {t(feature.descKey)}
-                </p>
+          {features.map((feature, index) => (
+            <Link
+              key={feature.path}
+              to={feature.path}
+              className={`
+                group relative bg-white rounded-card p-8 lg:p-10
+                shadow-lift hover:shadow-diffuse
+                transition-all duration-300 hover:-translate-y-1
+                focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600
+                ${index === 0 ? 'lg:col-span-2' : ''}
+              `}
+            >
+              <ArrowUpRight
+                aria-hidden="true"
+                className="absolute top-8 right-8 w-5 h-5 text-muted opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 group-focus-visible:opacity-100 transition-all duration-300"
+              />
+              <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center mb-5 group-hover:bg-indigo-100 transition-colors">
+                <feature.icon className="h-6 w-6 text-indigo-600" />
               </div>
-            );
-          })}
+              <h3 className="text-lg font-semibold text-ink mb-2 tracking-tight">
+                {t(feature.titleKey)}
+              </h3>
+              <p className="text-secondary text-sm leading-relaxed">
+                {t(feature.descKey)}
+              </p>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

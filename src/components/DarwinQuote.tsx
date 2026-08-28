@@ -22,7 +22,7 @@ export default function DarwinQuote() {
       ref={ref}
       className="relative bg-gradient-to-br from-gray-900 via-indigo-950 to-gray-900 py-20 sm:py-28"
     >
-      <div className={`max-w-3xl mx-auto px-6 sm:px-8 relative z-10 transition-all duration-1000 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+      <div className={`max-w-3xl mx-auto px-6 sm:px-8 relative z-10 transition-transform duration-1000 ease-out ${visible ? 'translate-y-0' : 'translate-y-6'}`}>
         <div className="w-10 h-px bg-indigo-400 mx-auto mb-10" />
 
         <blockquote className="text-center">

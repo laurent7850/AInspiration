@@ -99,10 +99,7 @@ export default function Creativity() {
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="text-indigo-600 font-semibold text-sm uppercase tracking-wide">
-            {t('creativity.hero.badge')}
-          </span>
-          <h1 className="text-4xl font-bold text-gray-900 mt-2 mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
             {t('creativity.hero.title')}
           </h1>
           <p className="text-xl text-gray-600">

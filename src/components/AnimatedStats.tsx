@@ -26,15 +26,15 @@ function StatItem({ end, suffix, prefix = '', label, icon, delay = 0, color, isD
   return (
     <div
       ref={ref}
-      className={`text-center transition-all duration-700 ${hasAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+      className={`text-center transition-transform duration-700 ease-out ${hasAnimated ? 'translate-y-0' : 'translate-y-2'}`}
     >
       <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full ${color} mb-3`}>
         {icon}
       </div>
-      <div className={`text-3xl sm:text-4xl font-bold mb-1 tabular-nums ${isDark ? 'text-white' : 'text-gray-900'}`}>
+      <div className={`text-3xl sm:text-4xl font-bold mb-1 tabular-nums ${isDark ? 'text-white' : 'text-ink'}`}>
         {formattedValue}
       </div>
-      <div className={`text-sm font-medium ${isDark ? 'text-indigo-100' : 'text-gray-500'}`}>{label}</div>
+      <div className={`text-sm font-medium ${isDark ? 'text-indigo-100' : 'text-secondary'}`}>{label}</div>
     </div>
   );
 }
@@ -58,16 +58,16 @@ export default function AnimatedStats({ variant = 'light', className = '' }: Ani
       label: t('animatedStats.roi', 'PME accompagnées'),
       icon: <TrendingUp className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
       delay: 0,
-      color: isDark ? 'bg-white/10' : 'bg-indigo-100',
+      color: isDark ? 'bg-white/10' : 'bg-indigo-50',
       isDark,
     },
     {
       end: 98,
       suffix: '%',
       label: t('animatedStats.satisfaction', 'Satisfaction client'),
-      icon: <ThumbsUp className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-emerald-600'}`} />,
+      icon: <ThumbsUp className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
       delay: 150,
-      color: isDark ? 'bg-white/10' : 'bg-emerald-100',
+      color: isDark ? 'bg-white/10' : 'bg-indigo-50',
       isDark,
     },
     {
@@ -75,9 +75,9 @@ export default function AnimatedStats({ variant = 'light', className = '' }: Ani
       prefix: '+',
       suffix: '%',
       label: t('animatedStats.productivity', 'Productivité'),
-      icon: <Zap className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-amber-600'}`} />,
+      icon: <Zap className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
       delay: 300,
-      color: isDark ? 'bg-white/10' : 'bg-amber-100',
+      color: isDark ? 'bg-white/10' : 'bg-indigo-50',
       isDark,
     },
     {
@@ -85,9 +85,9 @@ export default function AnimatedStats({ variant = 'light', className = '' }: Ani
       prefix: '-',
       suffix: '%',
       label: t('animatedStats.processing', 'Temps de traitement'),
-      icon: <Clock className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-rose-600'}`} />,
+      icon: <Clock className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
       delay: 450,
-      color: isDark ? 'bg-white/10' : 'bg-rose-100',
+      color: isDark ? 'bg-white/10' : 'bg-indigo-50',
       isDark,
     },
   ];
