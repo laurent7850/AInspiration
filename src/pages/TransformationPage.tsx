@@ -45,19 +45,17 @@ const TransformationPage: React.FC = () => {
   }>).map((solution, index) => ({ ...solution, icon: solutionIcons[index] }));
 
   const successStories = t('successStories.items', { returnObjects: true }) as Array<{
-    company: string;
+    title: string;
     industry: string;
     challenge: string;
     solution: string;
     results: string[];
-    quote: string;
-    author: string;
   }>;
 
   const transformationFAQs = [
     { question: "Qu'est-ce que la transformation digitale par l'IA ?", answer: "La transformation digitale par l'IA consiste à intégrer l'intelligence artificielle dans vos processus métier pour automatiser les tâches répétitives, améliorer la prise de décision et augmenter votre productivité." },
     { question: "Combien de temps prend une transformation IA ?", answer: "Les premiers résultats sont visibles en 5 jours. La transformation complète se fait de manière progressive, avec un accompagnement personnalisé à chaque étape." },
-    { question: "Quel est le ROI d'une transformation IA pour PME ?", answer: "Nos clients constatent en moyenne un ROI de 180%, une réduction de 60% du temps sur les tâches répétitives et une augmentation de 45% de la productivité." }
+    { question: "Quel est le ROI d'une transformation IA pour PME ?", answer: "Cela dépend de vos processus. Les automatisations que nous déployons visent jusqu'à 60% de temps en moins sur les tâches répétitives ; l'audit gratuit chiffre le potentiel concret de votre cas avant tout engagement." }
   ];
 
   const transformationSchema = [
@@ -109,7 +107,6 @@ const TransformationPage: React.FC = () => {
           </div>
 
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
             <img
               src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=1200&auto=format&fit=crop&q=80"
               alt={t('hero.imageAlt')}
@@ -242,12 +239,15 @@ const TransformationPage: React.FC = () => {
             <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="grid md:grid-cols-2">
                 <div className="p-8">
-                  <div className="inline-flex gap-2 items-center bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium mb-4">
-                    {story.industry}
+                  <div className="flex items-center gap-3 mb-4 flex-wrap">
+                    <span className="inline-flex items-center bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide">
+                      {t('successStories.scenarioLabel')}
+                    </span>
+                    <span className="text-gray-600 text-sm">{story.industry}</span>
                   </div>
 
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    {story.company}
+                    {story.title}
                   </h3>
 
                   <div className="space-y-4 mb-6">
@@ -274,18 +274,12 @@ const TransformationPage: React.FC = () => {
                     </div>
                   </div>
 
-                  <blockquote className="italic text-gray-700 border-l-4 border-indigo-500 pl-4 py-1">
-                    "{story.quote}"
-                    <footer className="mt-2 text-gray-600 not-italic">
-                      <strong>{story.author}</strong>
-                    </footer>
-                  </blockquote>
                 </div>
 
                 <div className="bg-indigo-100 flex items-center justify-center p-8">
                   <img
                     src={`https://images.unsplash.com/photo-${index === 0 ? '1576091160550-2173dba999ef' : '1581291518857-4e27b48ff24e'}?w=600&auto=format&fit=crop&q=80`}
-                    alt={`${story.company} - ${t('successStories.imageAlt')}`}
+                    alt={`${story.title} - ${t('successStories.imageAlt')}`}
                     loading="lazy"
                     className="rounded-lg shadow-lg max-h-80 object-contain"
                   />

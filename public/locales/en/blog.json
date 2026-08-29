@@ -13,8 +13,8 @@
   },
   "thierry": {
     "seo": {
-      "title": "How Thierry transformed his invoicing with AI | AInspiration",
-      "description": "Discover how Thierry saved 15 hours a month by automating his invoicing with AInspiration. A concrete case of digital transformation for SMEs."
+      "title": "Automating invoicing with AI: a concrete scenario | AInspiration",
+      "description": "Illustrative scenario: how a services SME can save around 15 hours a month by automating invoicing with AI. Typical figures, concrete steps."
     },
     "breadcrumb": {
       "home": "Home",
@@ -22,14 +22,15 @@
       "current": "Invoicing transformation"
     },
     "header": {
-      "title": "How Thierry transformed his invoicing with AInspiration's AI",
+      "title": "Automating invoicing with AI: the \"Thierry\" scenario",
       "date": "24 May 2024",
       "readTime": "Reading time: 5 min",
-      "imageAlt": "Thierry working on his computer with invoices"
+      "imageAlt": "Thierry working on his computer with invoices",
+      "disclaimer": "Illustrative scenario — \"Thierry\" is a typical persona built from common SME situations. The figures are realistic orders of magnitude, not measured client results."
     },
     "challenge": {
       "title": "The challenge: time-consuming and error-prone invoicing",
-      "intro": "Thierry Martin runs an IT services company with 15 employees. Like many SME directors, he regularly found himself overwhelmed by administrative tasks, particularly client invoicing.",
+      "intro": "Thierry — the typical persona of this scenario — runs an IT services company with 15 employees. Like many SME directors, he regularly found himself overwhelmed by administrative tasks, particularly client invoicing.",
       "quote": "I was spending nearly 15 hours a month managing invoicing, explains Thierry. Between manual data entry, checks, error corrections and follow-ups, it was a real nightmare that distracted me from my core business.",
       "problemsIntro": "The problems were multiple:",
       "problems": [

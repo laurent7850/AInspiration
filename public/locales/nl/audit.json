@@ -2,10 +2,22 @@
   "title": "AI Audit",
   "subtitle": "Beoordeel uw innovatiepotentieel met AI",
   "steps": {
-    "analysis": { "title": "Initiële analyse", "desc": "Volledige beoordeling van uw huidige processen" },
-    "diagnostic": { "title": "Grondige diagnose", "desc": "Identificatie van verbeterkansen" },
-    "impact": { "title": "Impactanalyse", "desc": "Schatting van potentiële voordelen" },
-    "plan": { "title": "Actieplan", "desc": "Gedetailleerde aanbevelingen en routekaart" }
+    "analysis": {
+      "title": "Initiële analyse",
+      "desc": "Volledige beoordeling van uw huidige processen"
+    },
+    "diagnostic": {
+      "title": "Grondige diagnose",
+      "desc": "Identificatie van verbeterkansen"
+    },
+    "impact": {
+      "title": "Impactanalyse",
+      "desc": "Schatting van potentiële voordelen"
+    },
+    "plan": {
+      "title": "Actieplan",
+      "desc": "Gedetailleerde aanbevelingen en routekaart"
+    }
   },
   "form": {
     "title": "Uw gratis AI-audit",
@@ -79,7 +91,8 @@
       "processesRequired": "Selecteer minstens één proces",
       "weeklyHoursRequired": "Schat de verloren tijd",
       "rateLimit": "Wacht enkele minuten voordat u een nieuw formulier indient.",
-      "generic": "Er is een fout opgetreden. Probeer opnieuw of neem contact met ons op via info@ainspiration.eu"
+      "generic": "Er is een fout opgetreden. Probeer opnieuw of neem contact met ons op via info@ainspiration.eu",
+      "phoneInvalid": "Ongeldig telefoonnummer"
     }
   },
   "sectors": {
@@ -172,10 +185,22 @@
     "howTitle": "Hoe verloopt uw audit?",
     "howSubtitle": "Een eenvoudig 4-stappenproces om uw AI-kansen te identificeren",
     "stepsDetailed": {
-      "1": { "title": "Initiële analyse", "desc": "Volledige beoordeling van uw huidige processen en identificatie van repetitieve taken" },
-      "2": { "title": "Grondige diagnose", "desc": "Identificatie van automatiseringsmogelijkheden en potentiële winsten" },
-      "3": { "title": "Impactanalyse", "desc": "Schatting van potentiële voordelen in tijd en productiviteit" },
-      "4": { "title": "Actieplan", "desc": "Gedetailleerde aanbevelingen en gepersonaliseerde routekaart" }
+      "1": {
+        "title": "Initiële analyse",
+        "desc": "Volledige beoordeling van uw huidige processen en identificatie van repetitieve taken"
+      },
+      "2": {
+        "title": "Grondige diagnose",
+        "desc": "Identificatie van automatiseringsmogelijkheden en potentiële winsten"
+      },
+      "3": {
+        "title": "Impactanalyse",
+        "desc": "Schatting van potentiële voordelen in tijd en productiviteit"
+      },
+      "4": {
+        "title": "Actieplan",
+        "desc": "Gedetailleerde aanbevelingen en gepersonaliseerde routekaart"
+      }
     },
     "receiveTitle": "Wat u ontvangt",
     "reportTitle": "Uw gepersonaliseerd auditrapport",

@@ -2,10 +2,22 @@
   "title": "Audit IA",
   "subtitle": "Évaluez votre potentiel d'innovation avec l'IA",
   "steps": {
-    "analysis": { "title": "Analyse initiale", "desc": "Évaluation complète de vos processus actuels" },
-    "diagnostic": { "title": "Diagnostic approfondi", "desc": "Identification des opportunités d'amélioration" },
-    "impact": { "title": "Analyse d'impact", "desc": "Estimation des bénéfices potentiels" },
-    "plan": { "title": "Plan d'action", "desc": "Recommandations détaillées et feuille de route" }
+    "analysis": {
+      "title": "Analyse initiale",
+      "desc": "Évaluation complète de vos processus actuels"
+    },
+    "diagnostic": {
+      "title": "Diagnostic approfondi",
+      "desc": "Identification des opportunités d'amélioration"
+    },
+    "impact": {
+      "title": "Analyse d'impact",
+      "desc": "Estimation des bénéfices potentiels"
+    },
+    "plan": {
+      "title": "Plan d'action",
+      "desc": "Recommandations détaillées et feuille de route"
+    }
   },
   "form": {
     "title": "Votre audit IA gratuit",
@@ -79,7 +91,8 @@
       "processesRequired": "Sélectionnez au moins un processus",
       "weeklyHoursRequired": "Estimez le temps perdu",
       "rateLimit": "Veuillez patienter quelques minutes avant de soumettre un nouveau formulaire.",
-      "generic": "Une erreur est survenue. Réessayez ou contactez-nous directement à info@ainspiration.eu"
+      "generic": "Une erreur est survenue. Réessayez ou contactez-nous directement à info@ainspiration.eu",
+      "phoneInvalid": "Numéro de téléphone invalide"
     }
   },
   "sectors": {
@@ -172,10 +185,22 @@
     "howTitle": "Comment se déroule votre audit ?",
     "howSubtitle": "Un processus simple en 4 étapes pour identifier vos opportunités IA",
     "stepsDetailed": {
-      "1": { "title": "Analyse initiale", "desc": "Évaluation complète de vos processus actuels et identification des tâches répétitives" },
-      "2": { "title": "Diagnostic approfondi", "desc": "Identification des opportunités d'automatisation et gains potentiels" },
-      "3": { "title": "Analyse d'impact", "desc": "Estimation des bénéfices potentiels en temps et en productivité" },
-      "4": { "title": "Plan d'action", "desc": "Recommandations détaillées et feuille de route personnalisée" }
+      "1": {
+        "title": "Analyse initiale",
+        "desc": "Évaluation complète de vos processus actuels et identification des tâches répétitives"
+      },
+      "2": {
+        "title": "Diagnostic approfondi",
+        "desc": "Identification des opportunités d'automatisation et gains potentiels"
+      },
+      "3": {
+        "title": "Analyse d'impact",
+        "desc": "Estimation des bénéfices potentiels en temps et en productivité"
+      },
+      "4": {
+        "title": "Plan d'action",
+        "desc": "Recommandations détaillées et feuille de route personnalisée"
+      }
     },
     "receiveTitle": "Ce que vous recevez",
     "reportTitle": "Votre rapport d'audit personnalisé",

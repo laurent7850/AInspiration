@@ -13,8 +13,8 @@
   },
   "thierry": {
     "seo": {
-      "title": "Comment Thierry a transformé sa facturation grâce à l'IA | AInspiration",
-      "description": "Découvrez comment Thierry a gagné 15 heures par mois en automatisant sa facturation avec AInspiration. Un cas concret de transformation numérique pour PME."
+      "title": "Automatiser sa facturation grâce à l'IA : un scénario concret | AInspiration",
+      "description": "Scénario illustratif : comment une PME de services peut gagner environ 15 heures par mois en automatisant sa facturation avec l'IA. Chiffres types, étapes concrètes."
     },
     "breadcrumb": {
       "home": "Accueil",
@@ -22,14 +22,15 @@
       "current": "Transformation de facturation"
     },
     "header": {
-      "title": "Comment Thierry a transformé sa facturation grâce à l'IA d'AInspiration",
+      "title": "Automatiser sa facturation grâce à l'IA : le scénario de « Thierry »",
       "date": "24 mai 2024",
       "readTime": "Temps de lecture : 5 min",
-      "imageAlt": "Thierry travaillant sur son ordinateur avec des factures"
+      "imageAlt": "Thierry travaillant sur son ordinateur avec des factures",
+      "disclaimer": "Scénario illustratif — « Thierry » est un personnage type construit à partir de situations courantes en PME. Les chiffres sont des ordres de grandeur réalistes, pas des résultats clients mesurés."
     },
     "challenge": {
       "title": "Le défi : une facturation chronophage et source d'erreurs",
-      "intro": "Thierry Martin dirige une entreprise de services informatiques de 15 employés. Comme beaucoup de dirigeants de PME, il se retrouvait régulièrement submergé par les tâches administratives, en particulier la facturation client.",
+      "intro": "Thierry — le personnage type de ce scénario — dirige une entreprise de services informatiques de 15 employés. Comme beaucoup de dirigeants de PME, il se retrouvait régulièrement submergé par les tâches administratives, en particulier la facturation client.",
       "quote": "Je passais près de 15 heures par mois à gérer la facturation, explique Thierry. Entre la saisie manuelle des données, les vérifications, les corrections d'erreurs et les relances, c'était un vrai cauchemar qui me détournait de mon cœur de métier.",
       "problemsIntro": "Les problèmes étaient multiples :",
       "problems": [

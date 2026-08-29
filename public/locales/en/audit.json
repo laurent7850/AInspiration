@@ -2,10 +2,22 @@
   "title": "AI Audit",
   "subtitle": "Assess your AI innovation potential",
   "steps": {
-    "analysis": { "title": "Initial Analysis", "desc": "Complete assessment of your current processes" },
-    "diagnostic": { "title": "In-depth Diagnostic", "desc": "Identification of improvement opportunities" },
-    "impact": { "title": "Impact Analysis", "desc": "Estimation of potential benefits" },
-    "plan": { "title": "Action Plan", "desc": "Detailed recommendations and roadmap" }
+    "analysis": {
+      "title": "Initial Analysis",
+      "desc": "Complete assessment of your current processes"
+    },
+    "diagnostic": {
+      "title": "In-depth Diagnostic",
+      "desc": "Identification of improvement opportunities"
+    },
+    "impact": {
+      "title": "Impact Analysis",
+      "desc": "Estimation of potential benefits"
+    },
+    "plan": {
+      "title": "Action Plan",
+      "desc": "Detailed recommendations and roadmap"
+    }
   },
   "form": {
     "title": "Your free AI audit",
@@ -79,7 +91,8 @@
       "processesRequired": "Select at least one process",
       "weeklyHoursRequired": "Estimate the time lost",
       "rateLimit": "Please wait a few minutes before submitting a new form.",
-      "generic": "An error occurred. Please try again or contact us at info@ainspiration.eu"
+      "generic": "An error occurred. Please try again or contact us at info@ainspiration.eu",
+      "phoneInvalid": "Invalid phone number"
     }
   },
   "sectors": {
@@ -172,10 +185,22 @@
     "howTitle": "How does your audit work?",
     "howSubtitle": "A simple 4-step process to identify your AI opportunities",
     "stepsDetailed": {
-      "1": { "title": "Initial Analysis", "desc": "Complete assessment of your current processes and identification of repetitive tasks" },
-      "2": { "title": "In-depth Diagnostic", "desc": "Identification of automation opportunities and potential gains" },
-      "3": { "title": "Impact Analysis", "desc": "Estimation of potential benefits in time and productivity" },
-      "4": { "title": "Action Plan", "desc": "Detailed recommendations and personalised roadmap" }
+      "1": {
+        "title": "Initial Analysis",
+        "desc": "Complete assessment of your current processes and identification of repetitive tasks"
+      },
+      "2": {
+        "title": "In-depth Diagnostic",
+        "desc": "Identification of automation opportunities and potential gains"
+      },
+      "3": {
+        "title": "Impact Analysis",
+        "desc": "Estimation of potential benefits in time and productivity"
+      },
+      "4": {
+        "title": "Action Plan",
+        "desc": "Detailed recommendations and personalised roadmap"
+      }
     },
     "receiveTitle": "What you receive",
     "reportTitle": "Your personalised audit report",

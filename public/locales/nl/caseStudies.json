@@ -1,57 +1,57 @@
 {
   "seo": {
-    "title": "Casestudy's | AInspiration",
-    "description": "Ontdek hoe KMO's hun activiteiten transformeren met onze AI-oplossingen."
+    "title": "AI-gebruiksscenario's | AInspiration",
+    "description": "Drie typische AI-automatiseringsscenario's voor KMO's — plus het echte geval van AInspiration: deze site draait op onze eigen tools."
   },
-  "pageTitle": "Casestudy's",
-  "pageSubtitle": "Ontdek hoe bedrijven zoals het uwe hun activiteiten transformeren met onze AI-oplossingen",
+  "pageTitle": "Wat AI verandert, vak per vak",
+  "pageSubtitle": "Drie typische scenario's, opgebouwd vanuit onze expertisedomeinen. De cijfers zijn realistische grootteordes — uw gratis audit bepaalt de uwe.",
   "labels": {
-    "employees": "Medewerkers",
-    "challenge": "Uitdaging",
-    "solution": "Oplossing",
-    "results": "Resultaten"
+    "scenario": "Illustratief scenario",
+    "challenge": "Vertreksituatie",
+    "solution": "Wat we opzetten",
+    "results": "Beoogde resultaten"
   },
   "study1": {
-    "title": "Optimalisatie van de klantenservice met een AI-chatbot",
+    "title": "Klantenservice automatiseren met een AI-chatbot",
     "industry": "E-commerce",
-    "challenge": "Geconfronteerd met snelle groei had CommerceXpress moeite om klantverzoeken effectief te beantwoorden, wat leidde tot lange responstijden en een dalende klanttevredenheid.",
-    "solution": "Implementatie van een AI-chatbot die 80% van de routinematige verzoeken kan afhandelen, geïntegreerd met de website en sociale media, met intelligente doorschakeling naar menselijke medewerkers.",
-    "result1": "75% vermindering van de responstijd",
-    "result2": "30% stijging van de klanttevredenheid",
-    "result3": "Jaarlijkse besparing van € 45.000 aan ondersteuningskosten",
-    "result4": "24/7 beschikbaarheid van ondersteuning",
-    "quote": "Onze AI-chatbot is onmisbaar geworden. Hij beantwoordt veelgestelde vragen onmiddellijk, waardoor onze teams vrijkomen voor complexe verzoeken. De klanttevredenheid is gestegen en onze kosten zijn gedaald.",
-    "author": "Hoofd Klantenservice, CommerceXpress"
+    "challenge": "Een groeiende webshop wordt bedolven onder repetitieve vragen: orderopvolging, retours, productvragen. De responstijden lopen op en de tevredenheid daalt.",
+    "solution": "Een AI-chatbot getraind op veelgestelde vragen, geïntegreerd met de website en sociale media, met automatische doorschakeling naar een mens zodra een geval buiten het kader valt.",
+    "result1": "Tot 75% snellere responstijden",
+    "result2": "Ondersteuning beschikbaar 24/7",
+    "result3": "Het team focust op complexe gevallen",
+    "result4": "Ondersteuningskosten onder controle ondanks groei"
   },
   "study2": {
-    "title": "Automatisering van factuurverwerking",
-    "industry": "IT-diensten",
-    "challenge": "TechnoServic verwerkte meer dan 500 facturen per maand handmatig, wat leidde tot betalingsvertragingen, dure fouten en het bezighouden van twee voltijdse medewerkers.",
-    "solution": "Implementatie van een AI-oplossing voor automatische extractie van factuurgegevens, geïntegreerd met het bestaande boekhoudssysteem, met intelligente validatie en automatische classificatie.",
-    "result1": "90% vermindering van de verwerkingstijd",
-    "result2": "95% vermindering van invoerfouten",
-    "result3": "Jaarlijkse besparing van € 65.000",
-    "result4": "1,5 VTE herbestemd naar taken met toegevoegde waarde",
-    "quote": "Onze boekhoudafdeling is getransformeerd. De AI extraheert en verwerkt factuurgegevens met opmerkelijke nauwkeurigheid, waardoor onze teams vrijkomen voor meer strategische analyses.",
-    "author": "Financieel Directeur, TechnoServic"
+    "title": "Factuurverwerking automatiseren",
+    "industry": "Diensten",
+    "challenge": "Honderden facturen die elke maand handmatig worden verwerkt: betalingsachterstanden, invoerfouten, en één tot twee voltijdse krachten bezig met invoerwerk.",
+    "solution": "Automatische extractie van factuurgegevens door AI, geïntegreerd met de bestaande boekhoudsoftware, met menselijke validatie bij twijfelgevallen.",
+    "result1": "Tot 90% minder verwerkingstijd",
+    "result2": "Invoerfouten vrijwel geëlimineerd",
+    "result3": "Betalingen op tijd, herinneringen geautomatiseerd",
+    "result4": "De vrijgekomen tijd gaat naar analyse, niet naar invoer"
   },
   "study3": {
-    "title": "Voorraadoptimalisatie door voorspellende analyse",
-    "industry": "Meubilair",
-    "challenge": "MobiliFrance kampte met frequente stockouts op populaire artikelen terwijl er te veel kapitaal werd vastgelegd in traaglopende producten.",
-    "solution": "Implementatie van een op AI gebaseerd voorspellend analysesysteem dat historische gegevens, seizoensgebonden trends en externe factoren integreert om het voorraadbeheer te optimaliseren.",
-    "result1": "85% vermindering van stockouts",
-    "result2": "25% vermindering van het totale voorraadniveau",
-    "result3": "15% stijging van de voorraadrotatiesnelheid",
-    "result4": "Snelle return on investment al in het eerste jaar",
-    "quote": "Voorspellende AI heeft ons voorraadbeheer gerevolutioneerd. We anticiperen nu nauwkeurig op de vraag, vermijden stockouts en optimaliseren tegelijkertijd onze voorraadniveaus.",
-    "author": "Supply Chain Manager, MobiliFrance"
+    "title": "Voorraad anticiperen met voorspellende analyse",
+    "industry": "Handel & distributie",
+    "challenge": "Frequente stockbreuken bij populaire artikelen, terwijl kapitaal vastzit in traag roterende producten.",
+    "solution": "Een voorspellend model gevoed met verkoophistoriek, seizoenspatronen en trends, dat aanvullingen op het juiste moment aanbeveelt.",
+    "result1": "Stockbreuken sterk verminderd",
+    "result2": "Slankere totale voorraad",
+    "result3": "Betere rotatie van de referenties",
+    "result4": "Aankoopbeslissingen onderbouwd met data"
   },
-  "stats": {
-    "productivity": "Stijging van de productiviteit",
-    "processing": "Vermindering van de verwerkingstijd",
-    "revenue": "Stijging van de omzet",
-    "clients": "Begeleidde KMO's"
+  "ownCase": {
+    "title": "Ons eigen geval: deze site draait op onze tools",
+    "subtitle": "We passen op AInspiration toe wat we onze klanten aanbieden. Verifieerbare feiten, geen beloftes:",
+    "fact1value": "50+",
+    "fact1label": "blogartikelen automatisch gegenereerd en gepubliceerd (n8n + AI)",
+    "fact2value": "3",
+    "fact2label": "talen parallel onderhouden (FR, EN, NL)",
+    "fact3value": "24u",
+    "fact3label": "om een audit te leveren — de analysepijplijn is geautomatiseerd",
+    "fact4value": "1",
+    "fact4label": "volledig CRM in eigen huis gebouwd om onze activiteit te sturen"
   },
   "cta": {
     "title": "Klaar om uw bedrijf te transformeren?",

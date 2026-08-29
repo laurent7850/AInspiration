@@ -64,22 +64,22 @@
     "items": [
       {
         "title": "Operationele efficiëntie",
-        "value": "+40%",
+        "value": "Tot +40%",
         "description": "Procesautomatisering en vermindering van handmatige taken"
       },
       {
         "title": "Klanttevredenheid",
-        "value": "+35%",
+        "value": "Tot +35%",
         "description": "Vlotte en gepersonaliseerde ervaringen"
       },
       {
         "title": "Organisatorische wendbaarheid",
-        "value": "3x",
+        "value": "Tot 3x",
         "description": "Vermogen om snel te reageren op veranderingen"
       },
       {
         "title": "Kostenreductie",
-        "value": "-25%",
+        "value": "Tot -25%",
         "description": "Optimalisatie van processen en middelen"
       }
     ]
@@ -91,53 +91,65 @@
       {
         "title": "Collaboratief Platform",
         "description": "Verenigde digitale werkruimte om communicatie te stroomlijnen en informatie te centraliseren",
-        "features": ["Aanpasbare interface", "Integratie met uw tools", "Documentbeheer", "Geautomatiseerde workflows"]
+        "features": [
+          "Aanpasbare interface",
+          "Integratie met uw tools",
+          "Documentbeheer",
+          "Geautomatiseerde workflows"
+        ]
       },
       {
         "title": "Intelligente Dashboards",
         "description": "Realtime visualisatie van uw belangrijkste indicatoren om uw activiteit effectief te beheren",
-        "features": ["Aangepaste KPI's", "Automatische waarschuwingen", "Voorspellende analyses", "Veilig delen"]
+        "features": [
+          "Aangepaste KPI's",
+          "Automatische waarschuwingen",
+          "Voorspellende analyses",
+          "Veilig delen"
+        ]
       },
       {
         "title": "Procesautomatisering",
         "description": "Robotisering van repetitieve taken om uw teams te bevrijden en fouten te verminderen",
-        "features": ["Intelligente workflows", "Documentverwerking", "Multi-systeemintegratie", "Intelligente validatie"]
+        "features": [
+          "Intelligente workflows",
+          "Documentverwerking",
+          "Multi-systeemintegratie",
+          "Intelligente validatie"
+        ]
       }
     ]
   },
   "successStories": {
-    "sectionTitle": "Casestudies",
-    "sectionDescription": "Ontdek hoe onze klanten hun digitale transformatie hebben weten te realiseren",
+    "sectionTitle": "Transformatiescenario's",
+    "sectionDescription": "Twee typische scenario's van digitale transformatie. De cijfers zijn realistische grootteordes — uw doelen worden na de audit bepaald.",
+    "scenarioLabel": "Illustratief scenario",
     "challenge": "De uitdaging",
     "solution": "Onze oplossing",
     "results": "Resultaten",
     "imageAlt": "Digitale transformatie",
     "items": [
       {
-        "company": "MediPharma",
+        "title": "Administratie stroomlijnen in een zorgorganisatie",
         "industry": "Gezondheidszorg",
-        "challenge": "Trage administratieve processen en gefragmenteerde communicatie tussen de afdelingen",
-        "solution": "Implementatie van een geïntegreerd collaboratief platform en workflowautomatisering",
+        "challenge": "Trage administratieve processen en gefragmenteerde communicatie tussen diensten.",
+        "solution": "Een geïntegreerd samenwerkingsplatform en automatisering van terugkerende workflows.",
         "results": [
-          "65% vermindering van de administratieve verwerkingstijd",
-          "Verbeterde coördinatie tussen teams",
-          "28% toename van patiënttevredenheid"
-        ],
-        "quote": "De digitale transformatie heeft niet alleen onze processen geoptimaliseerd, maar heeft onze teams ook tijd teruggegeven om te focussen op wat echt telt: onze patiënten.",
-        "author": "Dr. Marie Laurent, Directeur"
+          "Tot 65% minder administratieve tijd",
+          "Betere coördinatie tussen teams",
+          "Meer tijd voor de patiënten"
+        ]
       },
       {
-        "company": "TechnoPlast",
-        "industry": "Productie-industrie",
-        "challenge": "Moeilijkheden bij het realtime volgen van de productie en terugkerende kwaliteitsproblemen",
-        "solution": "Implementatie van een IoT realtime volgingsysteem en voorspellende onderhoudsanalyse",
+        "title": "Productie in realtime volgen in de industrie",
+        "industry": "Maakindustrie",
+        "challenge": "Moeilijk om de productie in realtime te volgen; terugkerende kwaliteitsproblemen.",
+        "solution": "Realtime IoT-monitoring en AI-gestuurd voorspellend onderhoud.",
         "results": [
-          "42% vermindering van ongeplande stilstandtijden",
-          "23% verbetering van de productkwaliteit",
-          "18% daling van de onderhoudskosten"
-        ],
-        "quote": "We kunnen nu problemen anticiperen voordat ze onze productie beïnvloeden. Deze realtime zichtbaarheid heeft onze manier van werken getransformeerd.",
-        "author": "Thomas Dubois, Productieverantwoordelijke"
+          "Ongeplande stilstand sterk verminderd",
+          "Productkwaliteit omhoog",
+          "Onderhoudskosten omlaag"
+        ]
       }
     ]
   },

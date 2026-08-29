@@ -28,7 +28,8 @@
     "caseStudies": "Casestudy's",
     "crmSolution": "Smart CRM",
     "visualCreation": "AI Visuele Creatie",
-    "crmDashboard": "CRM Dashboard"
+    "crmDashboard": "CRM Dashboard",
+    "language": "Taal"
   },
   "button": {
     "backHome": "Terug naar Home",
@@ -77,7 +78,7 @@
       "terms": "Gebruiksvoorwaarden"
     },
     "address": {
-      "street": "Chauss\u00e9e Brunehault 27",
+      "street": "Chaussée Brunehault 27",
       "city": "7041 Givry",
       "country": "België"
     },
@@ -89,16 +90,15 @@
   },
   "stats": {
     "uptime": "24/7 Beschikbaarheid",
-    "accuracy": "99.9% Nauwkeurigheid",
-    "clients": "Tevreden klanten",
-    "trained": "5K+ Getrainde Modellen",
-    "acceleration": "2-4x Procesversnelling"
+    "accuracy": "AVG-conform",
+    "clients": "Zonder verbintenis",
+    "acceleration": "Gratis audit in 24u"
   },
   "animatedStats": {
-    "roi": "Gemiddelde ROI",
-    "satisfaction": "Klanttevredenheid",
-    "productivity": "Productiviteit",
-    "processing": "Verwerkingstijd"
+    "audit": "Om de gratis audit te ontvangen",
+    "setup": "Typische opzettijd",
+    "eu": "Gegevens gehost in Europa",
+    "target": "Typisch doel voor repetitieve taken"
   },
   "cookies": {
     "title": "We respecteren uw privacy",
@@ -109,25 +109,25 @@
     "close": "Sluiten"
   },
   "testimonials": {
-    "title": "Zij vereenvoudigden hun dagelijks leven",
-    "subtitle": "Concrete oplossingen die echt het leven van ondernemers veranderen",
-    "thierry": {
-      "role": "Restaurateur",
-      "city": "Brussel",
-      "text": "Eerder was het een hel: telefoontjes op alle uren, reserveringen op Instagram, sms'jes... We verspilden zoveel tijd en hadden elke week no-shows. Nu gaan 100% van onze reserveringen via WhatsApp Business. Het systeem stelt automatisch de juiste vragen (datum, tijd, aantal personen), stuurt bevestiging en zelfs een kleine herinnering de dag ervoor. Resultaat: we hebben no-shows gehalveerd, ik bespaar minstens 1 uur per dag, en mijn klanten houden van de eenvoud. Eerlijk gezegd, het was super eenvoudig om in te stellen en ik zou nooit meer teruggaan. Ik beveel het aan alle restaurants die het zat zijn om met reserveringen te jongleren!",
-      "badge": "-50% no-shows"
+    "title": "Wat het concreet verandert",
+    "subtitle": "Drie typische scenario’s uit onze expertisedomeinen. De cijfers zijn realistische doelstellingen — de gratis audit bepaalt de uwe.",
+    "restaurant": {
+      "sector": "Horeca",
+      "scenario": "Typisch scenario — reservaties via WhatsApp",
+      "text": "Telefoons op elk uur, reservaties via Instagram, vergeten sms’en. Een WhatsApp Business-assistent stelt de juiste vragen (datum, uur, aantal personen), bevestigt en stuurt daags voordien een herinnering. Doel: no-shows halveren en een uur per dag terugwinnen.",
+      "badge": "Tot -50% no-shows"
     },
-    "sophie": {
-      "role": "Marketing Directeur",
-      "city": "Lyon",
-      "text": "We besteedden uren aan het schrijven van newsletters en LinkedIn-posts. Met de AI van AInspiration genereren we kwalitatieve content in enkele minuten. Ons engagementpercentage steeg met 40% en we publiceren 3 keer vaker. Het team is blij zich op strategie te kunnen richten in plaats van op schrijfwerk.",
-      "badge": "+40% engagement"
+    "marketing": {
+      "sector": "Marketing",
+      "scenario": "Typisch scenario — AI-ondersteunde content",
+      "text": "Uren besteed aan nieuwsbrieven en LinkedIn-posts. Een begeleide generatieketen levert kwaliteitsvolle ontwerpen in enkele minuten; het team houdt de regie over strategie en toon. Doel: drie keer vaker publiceren, zonder aanwervingen.",
+      "badge": "3x meer publicaties"
     },
-    "marc": {
-      "role": "E-commerce Manager",
-      "city": "Brussel",
-      "text": "Onze klantenservice was overbelast. Sinds we de virtuele assistent hebben geïmplementeerd, wordt 70% van de verzoeken automatisch afgehandeld. Onze klanten krijgen 24/7 direct antwoord, en mijn team kan zich eindelijk richten op complexe gevallen. De ROI was al zichtbaar vanaf de eerste maand.",
-      "badge": "70% geautomatiseerd"
+    "ecommerce": {
+      "sector": "E-commerce",
+      "scenario": "Typisch scenario — geautomatiseerde klantenservice",
+      "text": "Een klantendienst bedolven onder repetitieve vragen. Een virtuele assistent behandelt courante vragen 24/7 en geeft complexe gevallen door aan het team. Doel: ongeveer 70% van de binnenkomende vragen automatiseren.",
+      "badge": "~70% automatiseerbaar"
     },
     "indicators": {
       "easySetup": "Eenvoudig in te stellen",
@@ -157,7 +157,7 @@
     "title": "Artificiële Intelligentie voor Belgische en Franse KMO's",
     "p1": "In 2026 is Artificiële Intelligentie niet langer voorbehouden aan grote bedrijven. Bij AInspiration maken we AI toegankelijk voor alle KMO's: restaurants, e-commercebedrijven, adviesbureaus, marketingbureaus, ambachtslieden en zelfstandigen. Onze missie is eenvoudig — u tijd en geld besparen dankzij intelligente automatiseringsoplossingen, zonder technische kennis vereist.",
     "subtitle1": "Concrete, meetbare resultaten vanaf de eerste maand",
-    "p2": "Onze klanten zien gemiddeld een ROI van 180%, een vermindering van 60% van de tijd besteed aan repetitieve taken en een productiviteitsstijging van 45%. Of het nu gaat om het automatiseren van reserveringsbeheer, het genereren van marketingcontent, het inzetten van een virtuele assistent of het optimaliseren van uw klantenservice — onze oplossingen passen zich aan uw sector en specifieke behoeften aan.",
+    "p2": "De automatiseringen die we uitrollen mikken op concrete grootteordes: tot 60% minder tijd aan repetitieve taken en meetbare productiviteitswinst vanaf de eerste maanden. Of het nu gaat om het automatiseren van reserveringsbeheer, het genereren van marketingcontent, het inzetten van een virtuele assistent of het optimaliseren van uw klantenservice — onze oplossingen passen zich aan uw sector en specifieke behoeften aan, en de gratis audit becijfert het potentieel van uw geval vóór enige verbintenis.",
     "subtitle2": "Persoonlijke begeleiding van A tot Z",
     "p3": "Alles begint met een gratis en vrijblijvende audit. Binnen 24 uur analyseren we uw processen, identificeren we automatiseringsmogelijkheden en leveren we een concreet actieplan. Vervolgens implementeren we de oplossing binnen maximaal 48 uur. Gevestigd in Edingen, België, begeleiden we bedrijven in België en Frankrijk met meertalige ondersteuning in het Frans, Engels en Nederlands.",
     "subtitle3": "Beveiliging en AVG-conformiteit",

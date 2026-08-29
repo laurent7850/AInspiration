@@ -64,22 +64,22 @@
     "items": [
       {
         "title": "Efficacité opérationnelle",
-        "value": "+40%",
+        "value": "Jusqu'à +40%",
         "description": "Automatisation des processus et réduction des tâches manuelles"
       },
       {
         "title": "Satisfaction client",
-        "value": "+35%",
+        "value": "Jusqu'à +35%",
         "description": "Expériences fluides et personnalisées"
       },
       {
         "title": "Agilité organisationnelle",
-        "value": "3x",
+        "value": "Jusqu'à 3x",
         "description": "Capacité à s'adapter rapidement aux changements"
       },
       {
         "title": "Réduction des coûts",
-        "value": "-25%",
+        "value": "Jusqu'à -25%",
         "description": "Optimisation des processus et des ressources"
       }
     ]
@@ -91,53 +91,65 @@
       {
         "title": "Plateforme collaborative",
         "description": "Espace de travail digital unifié pour fluidifier la communication et centraliser l'information",
-        "features": ["Interface personnalisable", "Intégration avec vos outils", "Gestion documentaire", "Workflows automatisés"]
+        "features": [
+          "Interface personnalisable",
+          "Intégration avec vos outils",
+          "Gestion documentaire",
+          "Workflows automatisés"
+        ]
       },
       {
         "title": "Tableaux de bord intelligents",
         "description": "Visualisation en temps réel de vos indicateurs clés pour piloter efficacement votre activité",
-        "features": ["KPIs personnalisés", "Alertes automatiques", "Analyses prédictives", "Partage sécurisé"]
+        "features": [
+          "KPIs personnalisés",
+          "Alertes automatiques",
+          "Analyses prédictives",
+          "Partage sécurisé"
+        ]
       },
       {
         "title": "Automatisation des processus",
         "description": "Robotisation des tâches répétitives pour libérer vos équipes et réduire les erreurs",
-        "features": ["Workflows intelligents", "Traitement documentaire", "Intégration multi-systèmes", "Validation intelligente"]
+        "features": [
+          "Workflows intelligents",
+          "Traitement documentaire",
+          "Intégration multi-systèmes",
+          "Validation intelligente"
+        ]
       }
     ]
   },
   "successStories": {
-    "sectionTitle": "Études de cas",
-    "sectionDescription": "Découvrez comment nos clients ont réussi leur transformation numérique",
+    "sectionTitle": "Scénarios de transformation",
+    "sectionDescription": "Deux scénarios types de transformation numérique. Les chiffres sont des ordres de grandeur réalistes — vos objectifs sont fixés après l'audit.",
+    "scenarioLabel": "Scénario illustratif",
     "challenge": "Le défi",
     "solution": "Notre solution",
     "results": "Résultats",
     "imageAlt": "Transformation numérique",
     "items": [
       {
-        "company": "MediPharma",
+        "title": "Fluidifier l'administratif d'une structure de santé",
         "industry": "Santé",
-        "challenge": "Processus administratifs lents et communication fragmentée entre les services",
-        "solution": "Déploiement d'une plateforme collaborative intégrée et automatisation des workflows",
+        "challenge": "Des processus administratifs lents et une communication fragmentée entre les services.",
+        "solution": "Une plateforme collaborative intégrée et l'automatisation des workflows récurrents.",
         "results": [
-          "Réduction de 65% du temps de traitement administratif",
-          "Amélioration de la coordination entre équipes",
-          "Augmentation de 28% de la satisfaction patient"
-        ],
-        "quote": "La transformation numérique a non seulement optimisé nos processus, mais elle a également redonné du temps à nos équipes pour se concentrer sur ce qui compte vraiment : nos patients.",
-        "author": "Dr. Marie Laurent, Directrice"
+          "Jusqu'à 65 % de temps administratif en moins",
+          "Meilleure coordination entre équipes",
+          "Plus de temps consacré aux patients"
+        ]
       },
       {
-        "company": "TechnoPlast",
+        "title": "Suivre la production en temps réel dans l'industrie",
         "industry": "Industrie manufacturière",
-        "challenge": "Difficultés à suivre la production en temps réel et problèmes de qualité récurrents",
-        "solution": "Implémentation d'un système IoT de suivi en temps réel et analyse prédictive de maintenance",
+        "challenge": "Difficile de suivre la production en temps réel ; des problèmes de qualité récurrents.",
+        "solution": "Un suivi IoT en temps réel et une maintenance prédictive pilotée par l'IA.",
         "results": [
-          "Réduction de 42% des temps d'arrêt non planifiés",
-          "Amélioration de 23% de la qualité produit",
-          "Diminution de 18% des coûts de maintenance"
-        ],
-        "quote": "Nous pouvons désormais anticiper les problèmes avant qu'ils n'impactent notre production. Cette visibilité en temps réel a transformé notre façon de travailler.",
-        "author": "Thomas Dubois, Responsable Production"
+          "Temps d'arrêt non planifiés fortement réduits",
+          "Qualité produit en hausse",
+          "Coûts de maintenance en baisse"
+        ]
       }
     ]
   },

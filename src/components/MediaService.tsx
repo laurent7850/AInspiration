@@ -108,7 +108,6 @@ const MediaService: React.FC<MediaServiceProps> = ({
             </div>
           </div>
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-2xl blur-2xl" />
             <OptimizedImage
               src={heroImage}
               alt={t('hero.imageAlt')}
@@ -188,7 +187,6 @@ const MediaService: React.FC<MediaServiceProps> = ({
               </div>
               <div className={index % 2 === 0 ? 'order-2' : 'order-2 md:order-1'}>
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl" />
                   <OptimizedImage
                     src={useCase.image}
                     alt={useCase.title}

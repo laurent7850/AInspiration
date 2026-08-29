@@ -11,7 +11,7 @@
     "titleHighlight": "décisions stratégiques",
     "description": "Notre solution d'analyse IA transforme vos données brutes en insights actionnables, révélant les tendances cachées et prédisant les évolutions futures pour vous donner un avantage concurrentiel décisif.",
     "ctaDemo": "Demander une démo",
-    "ctaDocs": "Consulter la documentation",
+    "ctaDocs": "Poser une question",
     "imageAlt": "Tableau de bord d'analyse de données"
   },
   "features": {
@@ -74,24 +74,24 @@
   ],
   "metrics": [
     {
-      "value": "+67%",
-      "label": "Précision prédictive",
-      "description": "Par rapport aux méthodes conventionnelles"
+      "value": "24h",
+      "label": "Audit livré",
+      "description": "Analyse complète de votre activité"
     },
     {
-      "value": "10x",
-      "label": "Plus rapide",
-      "description": "Analyses en temps réel"
+      "value": "48h",
+      "label": "Mise en place type",
+      "description": "Pour une première solution opérationnelle"
     },
     {
-      "value": "98%",
-      "label": "Satisfaction client",
-      "description": "Solutions adaptées"
+      "value": "100%",
+      "label": "Données en Europe",
+      "description": "Hébergement conforme RGPD"
     },
     {
-      "value": "ROI rapide",
-      "label": "Retour sur investissement",
-      "description": "Résultats mesurables dès les premiers mois"
+      "value": "24/7",
+      "label": "Disponibilité",
+      "description": "Vos analyses tournent en continu"
     }
   ],
   "useCases": {
@@ -108,10 +108,7 @@
           "Optimisation des prix en temps réel",
           "Personnalisation des recommandations produits",
           "Analyse du comportement client en magasin et en ligne"
-        ],
-        "testimonialQuote": "Grâce à l'analyse prédictive d'AInspiration, nous avons réduit nos ruptures de stock de 78% tout en diminuant notre stock global de 15%.",
-        "testimonialAuthor": "Marie Deschamps",
-        "testimonialRole": "Directrice Supply Chain, MeubleExpress"
+        ]
       },
       {
         "title": "Services financiers",
@@ -121,10 +118,7 @@
           "Détection de fraudes en temps réel",
           "Analyse des tendances de marché",
           "Optimisation de portefeuilles d'investissement"
-        ],
-        "testimonialQuote": "L'implémentation du système de détection d'anomalies nous a permis d'identifier 34% plus de transactions frauduleuses, tout en réduisant les faux positifs de 56%.",
-        "testimonialAuthor": "Thomas Lefèvre",
-        "testimonialRole": "RSSI, CréditPro"
+        ]
       }
     ]
   },

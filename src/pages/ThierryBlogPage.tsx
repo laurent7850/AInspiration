@@ -57,6 +57,10 @@ const ThierryBlogPage: React.FC = () => {
                 {t('thierry.header.readTime')}
               </span>
             </div>
+
+            <p className="text-sm text-indigo-900 bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-3">
+              {t('thierry.header.disclaimer')}
+            </p>
           </div>
 
           {/* Featured Image */}

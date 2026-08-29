@@ -27,17 +27,17 @@ export const seoPages: Record<string, SEOPageConfig> = {
   '/': {
     fr: {
       title: 'AInspiration | Solutions IA pour PME - Audit Gratuit',
-      description: 'Automatisez vos tâches répétitives et boostez votre CA grâce à l\'IA. Un premier résultat concret en 5 jours. Audit gratuit en 24h, sans engagement. 50+ PME accompagnées en Belgique et France.',
+      description: 'Automatisez vos tâches répétitives et boostez votre CA grâce à l\'IA. Un premier résultat concret en 5 jours. Audit gratuit en 24h, sans engagement. Pour les PME de Belgique et de France.',
       keywords: 'intelligence artificielle PME, IA entreprise, automatisation IA, audit IA gratuit, solutions IA Belgique, transformation digitale PME, machine learning, deep learning, outils IA'
     },
     en: {
       title: 'AInspiration | AI Solutions for SMEs - Free Audit',
-      description: 'Automate repetitive tasks and boost revenue with AI. First concrete results in 5 days. Free audit in 24h, no commitment. 50+ SMEs supported in Belgium and France.',
+      description: 'Automate repetitive tasks and boost revenue with AI. First concrete results in 5 days. Free audit in 24h, no commitment. For SMEs in Belgium and France.',
       keywords: 'artificial intelligence SME, business AI, AI automation, free AI audit, AI solutions Belgium, digital transformation SME, machine learning, deep learning, AI tools'
     },
     nl: {
       title: 'AInspiration | AI Oplossingen KMO - Gratis Audit',
-      description: 'Automatiseer repetitieve taken en verhoog uw omzet met AI. Eerste concrete resultaten in 5 dagen. Gratis audit in 24u, zonder verplichtingen. 50+ KMO\'s begeleid in België en Frankrijk.',
+      description: 'Automatiseer repetitieve taken en verhoog uw omzet met AI. Eerste concrete resultaten in 5 dagen. Gratis audit in 24u, zonder verplichtingen. Voor KMO\'s in België en Frankrijk.',
       keywords: 'kunstmatige intelligentie KMO, AI bedrijf, AI automatisering, gratis AI audit, AI oplossingen België, digitale transformatie KMO, machine learning, deep learning, AI tools'
     }
   },
@@ -827,27 +827,3 @@ export const getBreadcrumbSchema = (path: string, lang: SupportedLanguage = 'fr'
     itemListElement: items
   };
 };
-
-// Génère les données structurées pour les avis/témoignages
-export const getReviewSchema = (reviews: Array<{ author: string; rating: number; text: string }>) => ({
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'AInspiration',
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: (reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length).toFixed(1),
-    reviewCount: reviews.length
-  },
-  review: reviews.map(review => ({
-    '@type': 'Review',
-    author: {
-      '@type': 'Person',
-      name: review.author
-    },
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: review.rating
-    },
-    reviewBody: review.text
-  }))
-});

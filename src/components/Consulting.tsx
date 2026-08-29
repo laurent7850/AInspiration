@@ -180,8 +180,8 @@ export default function Consulting() {
           buttonAction={() => setShowStartForm(true)}
           solid
           stats={[
-            { value: "15+", label: t('consulting.cta.stats.expertise'), icon: Zap },
-            { value: "500+", label: t('consulting.cta.stats.projects'), icon: Users },
+            { value: "24h", label: t('animatedStats.audit'), icon: Zap },
+            { value: "48h", label: t('animatedStats.setup'), icon: Users },
           ]}
         />
       </div>

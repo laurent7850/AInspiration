@@ -61,7 +61,6 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
             </div>
 
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-2xl blur-3xl" />
               <OptimizedImage
                 src={image!}
                 alt={imageAlt || title}

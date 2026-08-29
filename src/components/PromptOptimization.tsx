@@ -99,44 +99,6 @@ export default function PromptOptimization() {
               </p>
             </div>
 
-            {/* Témoignages intégrés */}
-            <div className="grid md:grid-cols-2 gap-6 mt-8">
-              <div className="bg-white rounded-lg p-6 shadow-sm">
-                <div className="flex items-center gap-2 mb-2">
-                  <img
-                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop"
-                    alt={t('optimization.testimonials.sophie.name')}
-                    loading="lazy"
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <p className="font-semibold text-gray-900">{t('optimization.testimonials.sophie.name')}</p>
-                    <p className="text-sm text-gray-600">{t('optimization.testimonials.sophie.role')}</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 italic">
-                  "{t('optimization.testimonials.sophie.quote')}"
-                </p>
-              </div>
-
-              <div className="bg-white rounded-lg p-6 shadow-sm">
-                <div className="flex items-center gap-2 mb-2">
-                  <img
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop"
-                    alt={t('optimization.testimonials.marc.name')}
-                    loading="lazy"
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <p className="font-semibold text-gray-900">{t('optimization.testimonials.marc.name')}</p>
-                    <p className="text-sm text-gray-600">{t('optimization.testimonials.marc.role')}</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 italic">
-                  "{t('optimization.testimonials.marc.quote')}"
-                </p>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -212,8 +174,8 @@ export default function PromptOptimization() {
               </div>
               <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                 <Users className="w-8 h-8 text-white mx-auto mb-2" />
-                <div className="text-3xl font-bold mb-1">10k+</div>
-                <div className="text-indigo-100">{t('optimization.cta.usersLabel')}</div>
+                <div className="text-3xl font-bold mb-1">100%</div>
+                <div className="text-indigo-100">{t('animatedStats.eu')}</div>
               </div>
             </div>
           </div>

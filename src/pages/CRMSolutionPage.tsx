@@ -15,8 +15,7 @@ import {
   Mail,
   Phone,
   Clock,
-  ArrowRight,
-  Star
+  ArrowRight
 } from 'lucide-react';
 import AuditForm from '../components/AuditForm';
 import { useNavigate } from 'react-router-dom';
@@ -45,19 +44,6 @@ const CRMSolutionPage: React.FC = () => {
     value: string;
     description: string;
   }>;
-
-  const testimonials = t('page.testimonials.items', { returnObjects: true }) as Array<{
-    quote: string;
-    name: string;
-    position: string;
-    company: string;
-  }>;
-
-  const testimonialImages = [
-    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&auto=format&fit=crop"
-  ];
 
   const screenshots = t('page.screenshots.items', { returnObjects: true }) as Array<{
     title: string;
@@ -141,7 +127,6 @@ const CRMSolutionPage: React.FC = () => {
               </div>
             </div>
             <div className="relative hidden md:block">
-              <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 to-purple-500/30 rounded-3xl blur-3xl"></div>
               <OptimizedImage
                 src="https://images.unsplash.com/photo-1551434678-e076c223a692"
                 alt={t('page.hero.imageAlt')}
@@ -151,24 +136,6 @@ const CRMSolutionPage: React.FC = () => {
                 className="relative rounded-2xl shadow-2xl w-full"
               />
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Trusted By Section */}
-      <div className="bg-white py-12 border-t border-b border-gray-100">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-lg font-medium text-gray-600">
-              {t('page.trustedBy')}
-            </h2>
-          </div>
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-70">
-            <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=60&fit=crop&auto=format" alt="Logo client 1" loading="lazy" className="h-8 object-contain grayscale" />
-            <img src="https://images.unsplash.com/photo-1603731125990-2c0aec2261f8?w=200&h=60&fit=crop&auto=format" alt="Logo client 2" loading="lazy" className="h-8 object-contain grayscale" />
-            <img src="https://images.unsplash.com/photo-1622042349683-caa882b50724?w=200&h=60&fit=crop&auto=format" alt="Logo client 3" loading="lazy" className="h-8 object-contain grayscale" />
-            <img src="https://images.unsplash.com/photo-1559130614-8fa487e2d0c0?w=200&h=60&fit=crop&auto=format" alt="Logo client 4" loading="lazy" className="h-8 object-contain grayscale" />
-            <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=60&fit=crop&auto=format" alt="Logo client 5" loading="lazy" className="h-8 object-contain grayscale" />
           </div>
         </div>
       </div>
@@ -293,54 +260,6 @@ const CRMSolutionPage: React.FC = () => {
               </p>
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* Testimonials Section */}
-      <div className="bg-gradient-to-br from-indigo-900 to-indigo-700 text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="text-indigo-300 font-semibold text-sm uppercase tracking-wide">
-              {t('page.testimonials.badge')}
-            </span>
-            <h2 className="text-3xl font-bold text-white mt-2 mb-4">
-              {t('page.testimonials.sectionTitle')}
-            </h2>
-            <p className="text-xl text-indigo-100">
-              {t('page.testimonials.sectionDescription')}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/15 transition-all duration-300"
-                data-aos="fade-up"
-                data-aos-delay={index * 150}
-              >
-                <div className="flex mb-6">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-white mb-6 italic">
-                  "{testimonial.quote}"
-                </p>
-                <div className="flex items-center gap-4">
-                  <img
-                    src={testimonialImages[index]}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-white"
-                  />
-                  <div>
-                    <p className="font-semibold text-white">{testimonial.name}</p>
-                    <p className="text-indigo-100 text-sm">{testimonial.position}, {testimonial.company}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 

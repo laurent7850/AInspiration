@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
   Brain,
@@ -20,6 +21,7 @@ import { getServiceSchema, getFAQSchema } from '../config/seoConfig';
 
 const AnalyseIAPage: React.FC = () => {
   const { t } = useTranslation('analysis');
+  const navigate = useNavigate();
   const [showStartForm, setShowStartForm] = useState(false);
 
   const featureIcons = [LineChart, PieChart, BarChart2, Eye];
@@ -43,9 +45,6 @@ const AnalyseIAPage: React.FC = () => {
     title: string;
     description: string;
     examples: string[];
-    testimonialQuote: string;
-    testimonialAuthor: string;
-    testimonialRole: string;
   }>);
 
   const processSteps = (t('process.steps', { returnObjects: true }) as Array<{
@@ -99,7 +98,7 @@ const AnalyseIAPage: React.FC = () => {
               </button>
 
               <button
-                onClick={() => setShowStartForm(true)}
+                onClick={() => navigate('/contact')}
                 className="bg-white border border-indigo-200 text-indigo-600 px-6 py-3 rounded-lg hover:bg-indigo-50 transition-colors"
               >
                 {t('hero.ctaDocs')}
@@ -108,7 +107,6 @@ const AnalyseIAPage: React.FC = () => {
           </div>
 
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
             <img
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80"
               alt={t('hero.imageAlt')}
@@ -213,18 +211,11 @@ const AnalyseIAPage: React.FC = () => {
                   </ul>
                 </div>
 
-                <blockquote className="bg-indigo-50 p-5 rounded-lg border-l-4 border-indigo-600">
-                  <p className="text-gray-700 italic mb-4">"{useCase.testimonialQuote}"</p>
-                  <footer className="font-medium">
-                    <span className="text-indigo-600">{useCase.testimonialAuthor}</span>, {useCase.testimonialRole}
-                  </footer>
-                </blockquote>
               </div>
 
               <div className={`order-1 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
-                  <img
+                        <img
                     src={`https://images.unsplash.com/photo-${index === 0 ? '1551288049-bebda4e38f71' : '1460925895917-afdab827c52f'}?w=800&auto=format&fit=crop&q=80`}
                     alt={`${useCase.title} - ${t('useCases.imageAlt')}`}
                     loading="lazy"

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Star, TrendingDown, TrendingUp, Bot, ArrowRight, Briefcase } from 'lucide-react';
+import { TrendingDown, TrendingUp, Bot, ArrowRight, Briefcase } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import AuditForm from './AuditForm';
 
-interface TestimonialData {
+interface ScenarioData {
   id: string;
-  role: string;
-  city: string;
+  sector: string;
+  scenario: string;
   text: string;
   badge: {
     icon: typeof TrendingDown;
@@ -20,41 +20,41 @@ const Testimonials: React.FC = () => {
   const { t } = useTranslation();
   const [showStartForm, setShowStartForm] = useState(false);
 
-  const testimonials: TestimonialData[] = [
+  const scenarios: ScenarioData[] = [
     {
-      id: 'thierry-restaurant',
-      role: t('testimonials.thierry.role'),
-      city: t('testimonials.thierry.city'),
-      text: t('testimonials.thierry.text'),
+      id: 'restaurant',
+      sector: t('testimonials.restaurant.sector'),
+      scenario: t('testimonials.restaurant.scenario'),
+      text: t('testimonials.restaurant.text'),
       badge: {
         icon: TrendingDown,
-        text: t('testimonials.thierry.badge'),
+        text: t('testimonials.restaurant.badge'),
         bgColor: 'bg-emerald-50',
         textColor: 'text-emerald-700',
       }
     },
     {
-      id: 'sophie-marketing',
-      role: t('testimonials.sophie.role'),
-      city: t('testimonials.sophie.city'),
-      text: t('testimonials.sophie.text'),
+      id: 'marketing',
+      sector: t('testimonials.marketing.sector'),
+      scenario: t('testimonials.marketing.scenario'),
+      text: t('testimonials.marketing.text'),
       badge: {
         icon: TrendingUp,
-        text: t('testimonials.sophie.badge'),
+        text: t('testimonials.marketing.badge'),
         bgColor: 'bg-sky-50',
         textColor: 'text-sky-700',
       }
     },
     {
-      id: 'marc-ecommerce',
-      role: t('testimonials.marc.role'),
-      city: t('testimonials.marc.city'),
-      text: t('testimonials.marc.text'),
+      id: 'ecommerce',
+      sector: t('testimonials.ecommerce.sector'),
+      scenario: t('testimonials.ecommerce.scenario'),
+      text: t('testimonials.ecommerce.text'),
       badge: {
         icon: Bot,
-        text: t('testimonials.marc.badge'),
-        bgColor: 'bg-violet-50',
-        textColor: 'text-violet-700',
+        text: t('testimonials.ecommerce.badge'),
+        bgColor: 'bg-indigo-50',
+        textColor: 'text-indigo-700',
       }
     }
   ];
@@ -75,13 +75,13 @@ const Testimonials: React.FC = () => {
 
         {/* Masonry-style grid — featured card larger */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 mb-16">
-          {testimonials.map((testimonial, index) => {
-            const BadgeIcon = testimonial.badge.icon;
+          {scenarios.map((item, index) => {
+            const BadgeIcon = item.badge.icon;
             const isFeatured = index === 0;
 
             return (
               <div
-                key={testimonial.id}
+                key={item.id}
                 className={`
                   bg-canvas rounded-[2rem] p-8 lg:p-10
                   transition-all duration-300 hover:shadow-diffuse
@@ -97,34 +97,26 @@ const Testimonials: React.FC = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-ink tracking-tight">
-                        {testimonial.role}
+                        {item.sector}
                       </h3>
                       <p className="text-sm text-secondary">
-                        {testimonial.city}
+                        {item.scenario}
                       </p>
                     </div>
                   </div>
 
                   {/* Badge — pastel, no gradient */}
-                  <div className={`${testimonial.badge.bgColor} ${testimonial.badge.textColor} px-3 py-1.5 rounded-lg flex items-center gap-1.5`}>
+                  <div className={`${item.badge.bgColor} ${item.badge.textColor} px-3 py-1.5 rounded-lg flex items-center gap-1.5`}>
                     <BadgeIcon className="w-4 h-4" />
                     <span className="font-medium text-xs">
-                      {testimonial.badge.text}
+                      {item.badge.text}
                     </span>
                   </div>
                 </div>
 
-                {/* Stars — subtle */}
-                <div className="flex gap-0.5 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-
-                {/* Quote */}
-                <blockquote className="text-ink leading-relaxed">
-                  "{testimonial.text}"
-                </blockquote>
+                <p className="text-ink leading-relaxed">
+                  {item.text}
+                </p>
               </div>
             );
           })}

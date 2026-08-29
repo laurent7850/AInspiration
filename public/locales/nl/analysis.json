@@ -11,7 +11,7 @@
     "titleHighlight": "strategische beslissingen",
     "description": "Onze AI-analyseoplossing transformeert uw ruwe gegevens in bruikbare inzichten, onthult verborgen trends en voorspelt toekomstige ontwikkelingen om u een beslissend concurrentievoordeel te geven.",
     "ctaDemo": "Een demo aanvragen",
-    "ctaDocs": "Documentatie raadplegen",
+    "ctaDocs": "Een vraag stellen",
     "imageAlt": "Dashboard voor gegevensanalyse"
   },
   "features": {
@@ -74,24 +74,24 @@
   ],
   "metrics": [
     {
-      "value": "+67%",
-      "label": "Voorspellende nauwkeurigheid",
-      "description": "Vergeleken met conventionele methoden"
+      "value": "24u",
+      "label": "Audit geleverd",
+      "description": "Volledige analyse van uw activiteit"
     },
     {
-      "value": "10x",
-      "label": "Sneller",
-      "description": "Realtime analyses"
+      "value": "48u",
+      "label": "Typische opzet",
+      "description": "Voor een eerste operationele oplossing"
     },
     {
-      "value": "98%",
-      "label": "Klanttevredenheid",
-      "description": "Op maat gemaakte oplossingen"
+      "value": "100%",
+      "label": "Gegevens in Europa",
+      "description": "AVG-conforme hosting"
     },
     {
-      "value": "Snelle ROI",
-      "label": "Return on investment",
-      "description": "Meetbare resultaten vanaf de eerste maanden"
+      "value": "24/7",
+      "label": "Beschikbaarheid",
+      "description": "Uw analyses draaien continu"
     }
   ],
   "useCases": {
@@ -108,10 +108,7 @@
           "Realtime prijsoptimalisatie",
           "Personalisatie van productaanbevelingen",
           "Analyse van klantgedrag in winkel en online"
-        ],
-        "testimonialQuote": "Dankzij de voorspellende analyse van AInspiration hebben we onze stockouts met 78% verminderd terwijl we onze totale voorraad met 15% hebben verlaagd.",
-        "testimonialAuthor": "Marie Deschamps",
-        "testimonialRole": "Supply Chain Directeur, MeubleExpress"
+        ]
       },
       {
         "title": "Financiële diensten",
@@ -121,10 +118,7 @@
           "Realtime fraudedetectie",
           "Analyse van markttrends",
           "Optimalisatie van beleggingsportefeuilles"
-        ],
-        "testimonialQuote": "De implementatie van het anomaliedetectiesysteem stelde ons in staat om 34% meer frauduleuze transacties te identificeren, terwijl we de vals-positieven met 56% verminderden.",
-        "testimonialAuthor": "Thomas Lefèvre",
-        "testimonialRole": "CISO, CréditPro"
+        ]
       }
     ]
   },

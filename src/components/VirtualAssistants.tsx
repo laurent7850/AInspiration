@@ -161,7 +161,7 @@ export default function VirtualAssistants() {
         </div>
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 lg:p-12 text-white">
+        <div className="bg-gradient-to-r from-indigo-600 to-indigo-800 rounded-2xl p-8 lg:p-12 text-white">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-4">

@@ -64,22 +64,22 @@
     "items": [
       {
         "title": "Operational efficiency",
-        "value": "+40%",
+        "value": "Up to +40%",
         "description": "Process automation and reduction of manual tasks"
       },
       {
         "title": "Client satisfaction",
-        "value": "+35%",
+        "value": "Up to +35%",
         "description": "Smooth and personalised experiences"
       },
       {
         "title": "Organisational agility",
-        "value": "3x",
+        "value": "Up to 3x",
         "description": "Ability to adapt quickly to changes"
       },
       {
         "title": "Cost reduction",
-        "value": "-25%",
+        "value": "Up to -25%",
         "description": "Optimisation of processes and resources"
       }
     ]
@@ -91,53 +91,65 @@
       {
         "title": "Collaborative Platform",
         "description": "Unified digital workspace to streamline communication and centralise information",
-        "features": ["Customisable interface", "Integration with your tools", "Document management", "Automated workflows"]
+        "features": [
+          "Customisable interface",
+          "Integration with your tools",
+          "Document management",
+          "Automated workflows"
+        ]
       },
       {
         "title": "Intelligent Dashboards",
         "description": "Real-time visualisation of your key indicators to effectively manage your business",
-        "features": ["Custom KPIs", "Automatic alerts", "Predictive analyses", "Secure sharing"]
+        "features": [
+          "Custom KPIs",
+          "Automatic alerts",
+          "Predictive analyses",
+          "Secure sharing"
+        ]
       },
       {
         "title": "Process Automation",
         "description": "Robotisation of repetitive tasks to free your teams and reduce errors",
-        "features": ["Intelligent workflows", "Document processing", "Multi-system integration", "Intelligent validation"]
+        "features": [
+          "Intelligent workflows",
+          "Document processing",
+          "Multi-system integration",
+          "Intelligent validation"
+        ]
       }
     ]
   },
   "successStories": {
-    "sectionTitle": "Case studies",
-    "sectionDescription": "Discover how our clients have succeeded in their digital transformation",
+    "sectionTitle": "Transformation scenarios",
+    "sectionDescription": "Two typical digital transformation scenarios. The figures are realistic orders of magnitude — your targets are set after the audit.",
+    "scenarioLabel": "Illustrative scenario",
     "challenge": "The challenge",
     "solution": "Our solution",
     "results": "Results",
     "imageAlt": "Digital transformation",
     "items": [
       {
-        "company": "MediPharma",
+        "title": "Streamlining admin in a healthcare organisation",
         "industry": "Healthcare",
-        "challenge": "Slow administrative processes and fragmented communication between departments",
-        "solution": "Deployment of an integrated collaborative platform and workflow automation",
+        "challenge": "Slow administrative processes and fragmented communication between departments.",
+        "solution": "An integrated collaborative platform and automation of recurring workflows.",
         "results": [
-          "65% reduction in administrative processing time",
-          "Improved coordination between teams",
-          "28% increase in patient satisfaction"
-        ],
-        "quote": "The digital transformation not only optimised our processes, but also gave our teams back time to focus on what truly matters: our patients.",
-        "author": "Dr. Marie Laurent, Director"
+          "Up to 65% less administrative time",
+          "Better coordination between teams",
+          "More time devoted to patients"
+        ]
       },
       {
-        "company": "TechnoPlast",
+        "title": "Real-time production tracking in manufacturing",
         "industry": "Manufacturing",
-        "challenge": "Difficulties tracking production in real time and recurring quality issues",
-        "solution": "Implementation of an IoT real-time tracking system and predictive maintenance analysis",
+        "challenge": "Hard to track production in real time; recurring quality issues.",
+        "solution": "Real-time IoT monitoring and AI-driven predictive maintenance.",
         "results": [
-          "42% reduction in unplanned downtime",
-          "23% improvement in product quality",
-          "18% decrease in maintenance costs"
-        ],
-        "quote": "We can now anticipate problems before they impact our production. This real-time visibility has transformed the way we work.",
-        "author": "Thomas Dubois, Production Manager"
+          "Unplanned downtime sharply reduced",
+          "Product quality up",
+          "Maintenance costs down"
+        ]
       }
     ]
   },

@@ -68,27 +68,6 @@ export default function Formation() {
     }
   ];
 
-  const testimonials = [
-    {
-      name: t('formation.testimonials.marie.name'),
-      role: t('formation.testimonials.marie.role'),
-      text: t('formation.testimonials.marie.text'),
-      rating: 5
-    },
-    {
-      name: t('formation.testimonials.thomas.name'),
-      role: t('formation.testimonials.thomas.role'),
-      text: t('formation.testimonials.thomas.text'),
-      rating: 5
-    },
-    {
-      name: t('formation.testimonials.sophie.name'),
-      role: t('formation.testimonials.sophie.role'),
-      text: t('formation.testimonials.sophie.text'),
-      rating: 5
-    }
-  ];
-
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4">
@@ -154,25 +133,6 @@ export default function Formation() {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6">
-              <div className="flex gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-4 italic">
-                "{testimonial.text}"
-              </p>
-              <div>
-                <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                <p className="text-sm text-gray-500">{testimonial.role}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
         <CallToAction
           title={t('formation.cta.title')}
           subtitle={t('formation.cta.subtitle')}
@@ -181,7 +141,7 @@ export default function Formation() {
           solid
           stats={[
             { value: "3 jours", label: t('formation.cta.stats.duration'), icon: Brain },
-            { value: "98%", label: t('formation.cta.stats.satisfaction'), icon: Users },
+            { value: "24h", label: t('animatedStats.audit'), icon: Users },
           ]}
         />
       </div>

@@ -199,8 +199,8 @@ export default function CustomSupport() {
               </div>
               <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                 <Users className="w-8 h-8 text-white mx-auto mb-2" />
-                <div className="text-3xl font-bold mb-1">98%</div>
-                <div className="text-indigo-100">{t('custom.cta.satisfactionLabel')}</div>
+                <div className="text-3xl font-bold mb-1">100%</div>
+                <div className="text-indigo-100">{t('animatedStats.eu')}</div>
               </div>
             </div>
           </div>

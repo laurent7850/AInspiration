@@ -28,7 +28,8 @@
     "caseStudies": "Études de cas",
     "crmSolution": "CRM intelligent",
     "visualCreation": "Création visuelle IA",
-    "crmDashboard": "Tableau de bord CRM"
+    "crmDashboard": "Tableau de bord CRM",
+    "language": "Langue"
   },
   "button": {
     "backHome": "Retour à l'accueil",
@@ -77,7 +78,7 @@
       "terms": "Conditions d'utilisation"
     },
     "address": {
-      "street": "Chauss\u00e9e Brunehault 27",
+      "street": "Chaussée Brunehault 27",
       "city": "7041 Givry",
       "country": "Belgique"
     },
@@ -89,16 +90,15 @@
   },
   "stats": {
     "uptime": "Disponibilité 24/7",
-    "accuracy": "Précision 99.9%",
-    "clients": "Clients satisfaits",
-    "trained": "5K+ modèles entraînés",
-    "acceleration": "2-4x accélération processus"
+    "accuracy": "Conforme RGPD",
+    "clients": "Sans engagement",
+    "acceleration": "Audit gratuit en 24h"
   },
   "animatedStats": {
-    "roi": "ROI moyen",
-    "satisfaction": "Satisfaction client",
-    "productivity": "Productivité",
-    "processing": "Temps de traitement"
+    "audit": "Pour recevoir l'audit gratuit",
+    "setup": "Mise en place type",
+    "eu": "Données hébergées en Europe",
+    "target": "Objectif type sur les tâches répétitives"
   },
   "cookies": {
     "title": "Nous respectons votre vie privée",
@@ -109,25 +109,25 @@
     "close": "Fermer"
   },
   "testimonials": {
-    "title": "Ils ont simplifié leur quotidien",
-    "subtitle": "Des solutions concrètes qui changent vraiment la vie des entrepreneurs",
-    "thierry": {
-      "role": "Restaurateur",
-      "city": "Bruxelles",
-      "text": "Avant, c'était l'enfer : des appels à toute heure, des réservations sur Instagram, des SMS... On perdait un temps fou et on avait des no-shows toutes les semaines. Maintenant, 100% de nos réservations passent par WhatsApp Business. Le système pose les bonnes questions automatiquement (date, heure, nombre de personnes), envoie la confirmation et même un petit rappel la veille. Résultat : on a divisé par deux les no-shows, je gagne au moins 1h par jour, et mes clients adorent la simplicité. Franchement, c'était super simple à mettre en place et je ne reviendrais jamais en arrière. Je recommande à tous les restos qui en ont marre de jongler avec les réservations !",
-      "badge": "-50% de no-shows"
+    "title": "Ce que ça change, concrètement",
+    "subtitle": "Trois scénarios types tirés de nos domaines d'intervention. Les chiffres sont des objectifs réalistes — l'audit gratuit établit les vôtres.",
+    "restaurant": {
+      "sector": "Restauration",
+      "scenario": "Scénario type — réservations par WhatsApp",
+      "text": "Des appels à toute heure, des réservations sur Instagram, des SMS oubliés. Un assistant WhatsApp Business pose les bonnes questions (date, heure, couverts), confirme et envoie un rappel la veille. Objectif : diviser les no-shows par deux et récupérer une heure par jour.",
+      "badge": "Jusqu'à -50% de no-shows"
     },
-    "sophie": {
-      "role": "Directrice Marketing",
-      "city": "Lyon",
-      "text": "On passait des heures à rédiger nos newsletters et posts LinkedIn. Avec l'IA d'AInspiration, on génère du contenu de qualité en quelques minutes. Notre taux d'engagement a bondi de 40% et on publie 3 fois plus souvent. L'équipe est ravie de pouvoir se concentrer sur la stratégie plutôt que la rédaction.",
-      "badge": "+40% engagement"
+    "marketing": {
+      "sector": "Marketing",
+      "scenario": "Scénario type — contenu assisté par IA",
+      "text": "Des heures passées sur les newsletters et les posts LinkedIn. Une chaîne de génération encadrée produit des brouillons de qualité en quelques minutes ; l'équipe garde la main sur la stratégie et le ton. Objectif : publier trois fois plus souvent, sans embaucher.",
+      "badge": "3x plus de publications"
     },
-    "marc": {
-      "role": "Gérant e-commerce",
-      "city": "Bruxelles",
-      "text": "Notre service client était submergé. Depuis qu'on a mis en place l'assistant virtuel, 70% des demandes sont traitées automatiquement. Nos clients ont des réponses instantanées 24h/24, et mon équipe peut enfin se concentrer sur les cas complexes. Le ROI a été visible dès le premier mois.",
-      "badge": "70% automatisé"
+    "ecommerce": {
+      "sector": "E-commerce",
+      "scenario": "Scénario type — support client automatisé",
+      "text": "Un service client submergé par les questions répétitives. Un assistant virtuel traite les demandes courantes 24h/24 et transmet les cas complexes à l'équipe. Objectif : automatiser environ 70% des demandes entrantes.",
+      "badge": "~70% automatisable"
     },
     "indicators": {
       "easySetup": "Simple à mettre en place",
@@ -157,7 +157,7 @@
     "title": "L'Intelligence Artificielle au service des PME Belges et Françaises",
     "p1": "En 2026, l'Intelligence Artificielle n'est plus réservée aux grandes entreprises. Chez AInspiration, nous rendons l'IA accessible à toutes les PME : restaurants, e-commerces, cabinets de conseil, agences marketing, artisans et indépendants. Notre mission est simple — vous faire gagner du temps et de l'argent grâce à des solutions d'automatisation intelligentes, sans aucune compétence technique requise.",
     "subtitle1": "Des résultats concrets, mesurables dès le premier mois",
-    "p2": "Nos clients constatent en moyenne un ROI de 180%, une réduction de 60% du temps consacré aux tâches répétitives et une augmentation de 45% de leur productivité. Que ce soit pour automatiser la gestion des réservations, générer du contenu marketing, mettre en place un assistant virtuel ou optimiser votre service client, nos solutions s'adaptent à votre métier et à vos besoins spécifiques.",
+    "p2": "Les automatisations que nous déployons visent des ordres de grandeur concrets : jusqu'à 60% de temps en moins sur les tâches répétitives et des gains de productivité mesurables dès les premiers mois. Que ce soit pour automatiser la gestion des réservations, générer du contenu marketing, mettre en place un assistant virtuel ou optimiser votre service client, nos solutions s'adaptent à votre métier et à vos besoins spécifiques — et l'audit gratuit chiffre le potentiel de votre cas avant tout engagement.",
     "subtitle2": "Un accompagnement personnalisé de A à Z",
     "p3": "Tout commence par un audit gratuit et sans engagement. En 24 heures, nous analysons vos processus, identifions les opportunités d'automatisation et vous livrons un plan d'action concret. Ensuite, nous déployons la solution en 48 heures maximum. Basés à Enghien en Belgique, nous accompagnons les entreprises en Belgique et en France avec un support multilingue en français, anglais et néerlandais.",
     "subtitle3": "Sécurité et conformité RGPD",

@@ -6,7 +6,7 @@ import {
   TestimonialsSkeleton,
   CardSkeleton
 } from '../components/ui/Skeleton';
-import { getOrganizationSchema, getFAQSchema, getReviewSchema } from '../config/seoConfig';
+import { getOrganizationSchema, getFAQSchema } from '../config/seoConfig';
 
 const SocialProof = lazy(() => import('../components/SocialProof'));
 const DarwinQuote = lazy(() => import('../components/DarwinQuote'));
@@ -40,16 +40,9 @@ const faqData = [
   { question: "Quel type d'entreprise peut bénéficier de vos services ?", answer: "Toute PME peut en bénéficier ! Restaurants, e-commerces, agences marketing, cabinets de conseil, artisans..." }
 ];
 
-const reviewData = [
-  { author: "Thierry", rating: 5, text: "On a divisé par deux les no-shows, je gagne au moins 1h par jour." },
-  { author: "Sophie M.", rating: 5, text: "Notre taux d'engagement a bondi de 40% et on publie 3 fois plus souvent." },
-  { author: "Marc D.", rating: 5, text: "70% des demandes sont traitées automatiquement. Le ROI a été visible dès le premier mois." }
-];
-
 const combinedSchema = [
   getOrganizationSchema(),
-  getFAQSchema(faqData),
-  getReviewSchema(reviewData)
+  getFAQSchema(faqData)
 ];
 
 export default function HomePage() {

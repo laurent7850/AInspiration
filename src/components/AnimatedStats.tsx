@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingUp, ThumbsUp, Zap, Clock } from 'lucide-react';
+import { TrendingDown, ShieldCheck, Zap, Clock } from 'lucide-react';
 import { useCountUp } from '../hooks/useCountUp';
 import { useTranslation } from 'react-i18next';
 
@@ -52,30 +52,28 @@ export default function AnimatedStats({ variant = 'light', className = '' }: Ani
 
   const stats: StatItemProps[] = [
     {
-      end: 50,
-      prefix: '+',
-      suffix: '',
-      label: t('animatedStats.roi', 'PME accompagnées'),
-      icon: <TrendingUp className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
+      end: 24,
+      suffix: 'h',
+      label: t('animatedStats.audit', "Pour recevoir l'audit gratuit"),
+      icon: <Clock className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
       delay: 0,
       color: isDark ? 'bg-white/10' : 'bg-indigo-50',
       isDark,
     },
     {
-      end: 98,
-      suffix: '%',
-      label: t('animatedStats.satisfaction', 'Satisfaction client'),
-      icon: <ThumbsUp className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
+      end: 48,
+      suffix: 'h',
+      label: t('animatedStats.setup', 'Mise en place type'),
+      icon: <Zap className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
       delay: 150,
       color: isDark ? 'bg-white/10' : 'bg-indigo-50',
       isDark,
     },
     {
-      end: 45,
-      prefix: '+',
+      end: 100,
       suffix: '%',
-      label: t('animatedStats.productivity', 'Productivité'),
-      icon: <Zap className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
+      label: t('animatedStats.eu', 'Données hébergées en Europe'),
+      icon: <ShieldCheck className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
       delay: 300,
       color: isDark ? 'bg-white/10' : 'bg-indigo-50',
       isDark,
@@ -84,8 +82,8 @@ export default function AnimatedStats({ variant = 'light', className = '' }: Ani
       end: 60,
       prefix: '-',
       suffix: '%',
-      label: t('animatedStats.processing', 'Temps de traitement'),
-      icon: <Clock className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
+      label: t('animatedStats.target', 'Objectif type sur les tâches répétitives'),
+      icon: <TrendingDown className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
       delay: 450,
       color: isDark ? 'bg-white/10' : 'bg-indigo-50',
       isDark,

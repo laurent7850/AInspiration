@@ -1,57 +1,57 @@
 {
   "seo": {
-    "title": "Études de cas | AInspiration",
-    "description": "Découvrez comment des PME transforment leur activité grâce à nos solutions IA."
+    "title": "Scénarios d'usage IA | AInspiration",
+    "description": "Trois scénarios types d'automatisation IA pour PME — et le cas réel d'AInspiration, dont le site tourne sur ses propres outils."
   },
-  "pageTitle": "Études de cas",
-  "pageSubtitle": "Découvrez comment des entreprises comme la vôtre transforment leur activité grâce à nos solutions IA",
+  "pageTitle": "Ce que l'IA change, métier par métier",
+  "pageSubtitle": "Trois scénarios types construits à partir de nos domaines d'intervention. Les chiffres sont des ordres de grandeur réalistes — votre audit gratuit établit les vôtres.",
   "labels": {
-    "employees": "Employés",
-    "challenge": "Défi",
-    "solution": "Solution",
-    "results": "Résultats"
+    "scenario": "Scénario illustratif",
+    "challenge": "Situation de départ",
+    "solution": "Ce que l'on met en place",
+    "results": "Résultats visés"
   },
   "study1": {
-    "title": "Optimisation du service client avec un chatbot IA",
+    "title": "Automatiser le service client avec un chatbot IA",
     "industry": "E-commerce",
-    "challenge": "Face à une croissance rapide, CommerceXpress peinait à répondre efficacement aux demandes clients, entraînant des délais de réponse longs et une satisfaction client en baisse.",
-    "solution": "Mise en place d'un chatbot IA capable de traiter 80% des demandes courantes, intégré au site web et aux réseaux sociaux, avec transfert intelligent vers les agents humains.",
-    "result1": "Réduction de 75% du temps de réponse",
-    "result2": "Augmentation de 30% de la satisfaction client",
-    "result3": "Économie de 45k€ annuels en coûts de support",
-    "result4": "Disponibilité du support 24/7",
-    "quote": "Notre chatbot IA est devenu indispensable. Il répond instantanément aux questions fréquentes, libérant nos équipes pour les demandes complexes. La satisfaction client a bondi et nos coûts ont diminué.",
-    "author": "Directrice Service Client, CommerceXpress"
+    "challenge": "Une boutique en ligne en croissance croule sous les demandes répétitives : suivi de commande, retours, questions produits. Les délais de réponse s'allongent et la satisfaction baisse.",
+    "solution": "Un chatbot IA entraîné sur les questions fréquentes, intégré au site et aux réseaux sociaux, avec transfert automatique vers un humain dès que le cas sort du cadre.",
+    "result1": "Jusqu'à 75 % de temps de réponse en moins",
+    "result2": "Support disponible 24h/24, 7j/7",
+    "result3": "L'équipe se concentre sur les cas complexes",
+    "result4": "Coûts de support maîtrisés malgré la croissance"
   },
   "study2": {
-    "title": "Automatisation de la gestion des factures",
-    "industry": "Services IT",
-    "challenge": "TechnoServic traitait manuellement plus de 500 factures par mois, entraînant des retards de paiement, des erreurs coûteuses et mobilisant deux employés à temps plein.",
-    "solution": "Déploiement d'une solution IA d'extraction automatique des données de factures, intégrée au système comptable existant, avec validation intelligente et classification automatique.",
-    "result1": "Réduction de 90% du temps de traitement",
-    "result2": "Diminution de 95% des erreurs de saisie",
-    "result3": "Économie de 65k€ annuels",
-    "result4": "Redéploiement de 1,5 ETP vers des tâches à valeur ajoutée",
-    "quote": "Notre département comptable a été transformé. L'IA extrait et traite les données des factures avec une précision remarquable, libérant nos équipes pour des analyses plus stratégiques.",
-    "author": "Directeur Administratif et Financier, TechnoServic"
+    "title": "Automatiser le traitement des factures",
+    "industry": "Services",
+    "challenge": "Des centaines de factures traitées à la main chaque mois : retards de paiement, erreurs de saisie, et un à deux temps pleins mobilisés sur de la saisie.",
+    "solution": "Extraction automatique des données de facture par IA, intégrée au logiciel comptable existant, avec validation humaine sur les cas ambigus.",
+    "result1": "Jusqu'à 90 % de temps de traitement en moins",
+    "result2": "Erreurs de saisie quasi éliminées",
+    "result3": "Paiements à l'heure, relances automatisées",
+    "result4": "Le temps libéré va à l'analyse, pas à la saisie"
   },
   "study3": {
-    "title": "Optimisation des stocks grâce à l'analyse prédictive",
-    "industry": "Mobilier",
-    "challenge": "MobiliFrance souffrait de ruptures de stock fréquentes sur les articles populaires tout en immobilisant trop de capital dans des produits à faible rotation.",
-    "solution": "Implémentation d'un système d'analyse prédictive basé sur l'IA intégrant les données historiques, les tendances saisonnières, et les facteurs externes pour optimiser la gestion des stocks.",
-    "result1": "Réduction de 85% des ruptures de stock",
-    "result2": "Diminution de 25% du stock global",
-    "result3": "Augmentation de 15% du taux de rotation des stocks",
-    "result4": "Retour sur investissement rapide dès la première année",
-    "quote": "L'IA prédictive a révolutionné notre gestion des stocks. Nous anticipons maintenant précisément la demande, évitant les ruptures tout en optimisant nos niveaux d'inventaire.",
-    "author": "Responsable Supply Chain, MobiliFrance"
+    "title": "Anticiper les stocks grâce à l'analyse prédictive",
+    "industry": "Commerce & distribution",
+    "challenge": "Des ruptures fréquentes sur les articles populaires, pendant que du capital dort dans des produits à faible rotation.",
+    "solution": "Un modèle prédictif nourri de l'historique de ventes, de la saisonnalité et des tendances, qui recommande les réassorts au bon moment.",
+    "result1": "Ruptures de stock fortement réduites",
+    "result2": "Stock global allégé",
+    "result3": "Meilleure rotation des références",
+    "result4": "Décisions d'achat appuyées sur des données"
   },
-  "stats": {
-    "productivity": "Augmentation de la productivité",
-    "processing": "Réduction du temps de traitement",
-    "revenue": "Augmentation du CA",
-    "clients": "PME accompagnées"
+  "ownCase": {
+    "title": "Notre propre cas : ce site tourne sur nos outils",
+    "subtitle": "Nous appliquons à AInspiration ce que nous proposons à nos clients. Des faits vérifiables, pas des promesses :",
+    "fact1value": "50+",
+    "fact1label": "articles de blog générés et publiés automatiquement (n8n + IA)",
+    "fact2value": "3",
+    "fact2label": "langues maintenues en parallèle (FR, EN, NL)",
+    "fact3value": "24h",
+    "fact3label": "pour livrer un audit — le pipeline d'analyse est automatisé",
+    "fact4value": "1",
+    "fact4label": "CRM complet développé en interne pour piloter notre activité"
   },
   "cta": {
     "title": "Prêt à transformer votre entreprise ?",

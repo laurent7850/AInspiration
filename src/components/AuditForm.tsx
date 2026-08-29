@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   X,
   ArrowRight,
@@ -85,6 +85,32 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
     aiExperience: '', budget: '', priority: '', additionalInfo: ''
   });
 
+  const handleClose = () => {
+    onClose();
+    setTimeout(() => {
+      setStep(1);
+      setIsSubmitted(false);
+      setError(null);
+      setFieldErrors({});
+      setFormData({
+        name: '', email: '', phone: '', company: '',
+        sector: '', sectorOther: '', teamSize: '', role: '',
+        processes: [], processesOther: '', currentTools: '', weeklyHoursWasted: '',
+        aiExperience: '', budget: '', priority: '', additionalInfo: ''
+      });
+    }, 300);
+  };
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') handleClose();
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const updateField = (field: keyof AuditFormData, value: string | string[]) => {
@@ -113,6 +139,7 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
       if (!formData.email.trim()) errors.email = t('form.errors.emailRequired');
       else if (!isValidEmail(formData.email)) errors.email = t('form.errors.emailInvalid');
       if (!formData.company.trim()) errors.company = t('form.errors.companyRequired');
+      if (formData.phone.trim() && !isValidPhone(formData.phone)) errors.phone = t('form.errors.phoneInvalid');
     }
 
     if (s === 2) {
@@ -230,22 +257,6 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
     }
   };
 
-  const handleClose = () => {
-    onClose();
-    setTimeout(() => {
-      setStep(1);
-      setIsSubmitted(false);
-      setError(null);
-      setFieldErrors({});
-      setFormData({
-        name: '', email: '', phone: '', company: '',
-        sector: '', sectorOther: '', teamSize: '', role: '',
-        processes: [], processesOther: '', currentTools: '', weeklyHoursWasted: '',
-        aiExperience: '', budget: '', priority: '', additionalInfo: ''
-      });
-    }, 300);
-  };
-
   const FieldError = ({ field }: { field: string }) => (
     fieldErrors[field] ? <p className="text-red-500 text-sm mt-1">{fieldErrors[field]}</p> : null
   );
@@ -256,28 +267,32 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
     }`;
 
   const radioClass = (selected: boolean) =>
-    `flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all ${
+    `flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-1 ${
       selected
         ? 'border-indigo-500 bg-indigo-50 text-indigo-900'
         : 'border-gray-200 hover:border-indigo-200 hover:bg-gray-50'
     }`;
 
-  const checkboxClass = (selected: boolean) =>
-    `flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all ${
-      selected
-        ? 'border-indigo-500 bg-indigo-50 text-indigo-900'
-        : 'border-gray-200 hover:border-indigo-200 hover:bg-gray-50'
-    }`;
+  const checkboxClass = radioClass;
 
   // Écran de succès
   if (isSubmitted) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-        <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8 text-center">
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+        onClick={handleClose}
+      >
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="audit-form-success-title"
+          className="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8 text-center"
+          onClick={e => e.stopPropagation()}
+        >
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-10 h-10 text-green-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">
+          <h2 id="audit-form-success-title" className="text-2xl font-bold text-gray-900 mb-3">
             {t('form.success.title')}
           </h2>
           <p className="text-gray-600 mb-2">
@@ -306,18 +321,28 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      onClick={handleClose}
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="audit-form-title"
+        className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        onClick={e => e.stopPropagation()}
+      >
         {/* Header */}
         <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 rounded-t-2xl z-10">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-xl font-bold text-gray-900">{t('form.title')}</h2>
+              <h2 id="audit-form-title" className="text-xl font-bold text-gray-900">{t('form.title')}</h2>
               <p className="text-sm text-gray-500">{t('form.stepOf', { step, total: totalSteps })}</p>
             </div>
             <button
               onClick={handleClose}
-              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+              aria-label={t('form.close')}
+              className="p-2 rounded-full hover:bg-gray-100 transition-colors focus-visible:outline-2 focus-visible:outline-indigo-600"
             >
               <X className="w-5 h-5 text-gray-500" />
             </button>
@@ -352,31 +377,32 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.name')} {t('form.required')}</label>
-                <input type="text" className={inputClass('name')} placeholder={t('form.step1.namePlaceholder')} value={formData.name} onChange={e => updateField('name', e.target.value)} />
+                <label htmlFor="audit-name" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.name')} {t('form.required')}</label>
+                <input id="audit-name" name="name" autoComplete="name" type="text" className={inputClass('name')} placeholder={t('form.step1.namePlaceholder')} value={formData.name} onChange={e => updateField('name', e.target.value)} />
                 <FieldError field="name" />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.email')} {t('form.required')}</label>
-                <input type="email" className={inputClass('email')} placeholder={t('form.step1.emailPlaceholder')} value={formData.email} onChange={e => updateField('email', e.target.value)} />
+                <label htmlFor="audit-email" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.email')} {t('form.required')}</label>
+                <input id="audit-email" name="email" autoComplete="email" type="email" className={inputClass('email')} placeholder={t('form.step1.emailPlaceholder')} value={formData.email} onChange={e => updateField('email', e.target.value)} />
                 <FieldError field="email" />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.company')} {t('form.required')}</label>
-                <input type="text" className={inputClass('company')} placeholder={t('form.step1.companyPlaceholder')} value={formData.company} onChange={e => updateField('company', e.target.value)} />
+                <label htmlFor="audit-company" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.company')} {t('form.required')}</label>
+                <input id="audit-company" name="company" autoComplete="organization" type="text" className={inputClass('company')} placeholder={t('form.step1.companyPlaceholder')} value={formData.company} onChange={e => updateField('company', e.target.value)} />
                 <FieldError field="company" />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.phone')}</label>
-                <input type="tel" className={inputClass('phone')} placeholder={t('form.step1.phonePlaceholder')} value={formData.phone} onChange={e => updateField('phone', e.target.value)} />
+                <label htmlFor="audit-phone" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.phone')}</label>
+                <input id="audit-phone" name="phone" autoComplete="tel" type="tel" className={inputClass('phone')} placeholder={t('form.step1.phonePlaceholder')} value={formData.phone} onChange={e => updateField('phone', e.target.value)} />
+                <FieldError field="phone" />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.role')}</label>
-                <input type="text" className={inputClass('role')} placeholder={t('form.step1.rolePlaceholder')} value={formData.role} onChange={e => updateField('role', e.target.value)} />
+                <label htmlFor="audit-role" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.role')}</label>
+                <input id="audit-role" name="role" autoComplete="organization-title" type="text" className={inputClass('role')} placeholder={t('form.step1.rolePlaceholder')} value={formData.role} onChange={e => updateField('role', e.target.value)} />
               </div>
             </div>
           )}
@@ -398,12 +424,13 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
                 <label className="block text-sm font-medium text-gray-700 mb-2">{t('form.step2.sectorLabel')} {t('form.required')}</label>
                 <div className="grid grid-cols-2 gap-2">
                   {SECTOR_KEYS.map(key => (
-                    <div key={key} className={radioClass(formData.sector === key)} onClick={() => updateField('sector', key)}>
+                    <label key={key} className={radioClass(formData.sector === key)}>
+                      <input type="radio" name="sector" value={key} checked={formData.sector === key} onChange={() => updateField('sector', key)} className="sr-only" />
                       <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${formData.sector === key ? 'border-indigo-500' : 'border-gray-300'}`}>
                         {formData.sector === key && <div className="w-2 h-2 rounded-full bg-indigo-500" />}
                       </div>
                       <span className="text-sm">{t(`sectors.${key}`)}</span>
-                    </div>
+                    </label>
                   ))}
                 </div>
                 <FieldError field="sector" />
@@ -411,8 +438,8 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
 
               {formData.sector === 'other' && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">{t('form.step2.sectorOtherLabel')} {t('form.required')}</label>
-                  <input type="text" className={inputClass('sectorOther')} placeholder={t('form.step2.sectorOtherPlaceholder')} value={formData.sectorOther} onChange={e => updateField('sectorOther', e.target.value)} />
+                  <label htmlFor="audit-sector-other" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step2.sectorOtherLabel')} {t('form.required')}</label>
+                  <input id="audit-sector-other" name="sectorOther" type="text" className={inputClass('sectorOther')} placeholder={t('form.step2.sectorOtherPlaceholder')} value={formData.sectorOther} onChange={e => updateField('sectorOther', e.target.value)} />
                   <FieldError field="sectorOther" />
                 </div>
               )}
@@ -421,13 +448,14 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
                 <label className="block text-sm font-medium text-gray-700 mb-2">{t('form.step2.teamSizeLabel')} {t('form.required')}</label>
                 <div className="space-y-2">
                   {TEAM_SIZE_KEYS.map(key => (
-                    <div key={key} className={radioClass(formData.teamSize === key)} onClick={() => updateField('teamSize', key)}>
+                    <label key={key} className={radioClass(formData.teamSize === key)}>
+                      <input type="radio" name="teamSize" value={key} checked={formData.teamSize === key} onChange={() => updateField('teamSize', key)} className="sr-only" />
                       <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${formData.teamSize === key ? 'border-indigo-500' : 'border-gray-300'}`}>
                         {formData.teamSize === key && <div className="w-2 h-2 rounded-full bg-indigo-500" />}
                       </div>
                       <Users className="w-4 h-4 text-gray-400" />
                       <span className="text-sm">{t(`teamSizes.${key}`)}</span>
-                    </div>
+                    </label>
                   ))}
                 </div>
                 <FieldError field="teamSize" />
@@ -454,12 +482,13 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
                 </label>
                 <div className="grid grid-cols-2 gap-2">
                   {PROCESS_KEYS.map(key => (
-                    <div key={key} className={checkboxClass(formData.processes.includes(key))} onClick={() => toggleProcess(key)}>
+                    <label key={key} className={checkboxClass(formData.processes.includes(key))}>
+                      <input type="checkbox" name="processes" value={key} checked={formData.processes.includes(key)} onChange={() => toggleProcess(key)} className="sr-only" />
                       <div className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 ${formData.processes.includes(key) ? 'border-indigo-500 bg-indigo-500' : 'border-gray-300'}`}>
                         {formData.processes.includes(key) && <CheckCircle className="w-3 h-3 text-white" />}
                       </div>
                       <span className="text-sm">{t(`processes.${key}`)}</span>
-                    </div>
+                    </label>
                   ))}
                 </div>
                 <FieldError field="processes" />
@@ -467,8 +496,8 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
 
               {formData.processes.includes('other') && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">{t('form.step3.processesOtherLabel')}</label>
-                  <input type="text" className={inputClass('processesOther')} placeholder={t('form.step3.processesOtherPlaceholder')} value={formData.processesOther} onChange={e => updateField('processesOther', e.target.value)} />
+                  <label htmlFor="audit-processes-other" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step3.processesOtherLabel')}</label>
+                  <input id="audit-processes-other" name="processesOther" type="text" className={inputClass('processesOther')} placeholder={t('form.step3.processesOtherPlaceholder')} value={formData.processesOther} onChange={e => updateField('processesOther', e.target.value)} />
                 </div>
               )}
 
@@ -476,21 +505,22 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
                 <label className="block text-sm font-medium text-gray-700 mb-2">{t('form.step3.weeklyHoursLabel')} {t('form.required')}</label>
                 <div className="space-y-2">
                   {WEEKLY_HOURS_KEYS.map(key => (
-                    <div key={key} className={radioClass(formData.weeklyHoursWasted === key)} onClick={() => updateField('weeklyHoursWasted', key)}>
+                    <label key={key} className={radioClass(formData.weeklyHoursWasted === key)}>
+                      <input type="radio" name="weeklyHoursWasted" value={key} checked={formData.weeklyHoursWasted === key} onChange={() => updateField('weeklyHoursWasted', key)} className="sr-only" />
                       <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${formData.weeklyHoursWasted === key ? 'border-indigo-500' : 'border-gray-300'}`}>
                         {formData.weeklyHoursWasted === key && <div className="w-2 h-2 rounded-full bg-indigo-500" />}
                       </div>
                       <Clock className="w-4 h-4 text-gray-400" />
                       <span className="text-sm">{t(`weeklyHours.${key}`)}</span>
-                    </div>
+                    </label>
                   ))}
                 </div>
                 <FieldError field="weeklyHoursWasted" />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('form.step3.currentToolsLabel')}</label>
-                <input type="text" className={inputClass('currentTools')} placeholder={t('form.step3.currentToolsPlaceholder')} value={formData.currentTools} onChange={e => updateField('currentTools', e.target.value)} />
+                <label htmlFor="audit-current-tools" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step3.currentToolsLabel')}</label>
+                <input id="audit-current-tools" name="currentTools" type="text" className={inputClass('currentTools')} placeholder={t('form.step3.currentToolsPlaceholder')} value={formData.currentTools} onChange={e => updateField('currentTools', e.target.value)} />
               </div>
             </div>
           )}
@@ -512,12 +542,13 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
                 <label className="block text-sm font-medium text-gray-700 mb-2">{t('form.step4.aiExperienceLabel')}</label>
                 <div className="space-y-2">
                   {AI_EXPERIENCE_KEYS.map(key => (
-                    <div key={key} className={radioClass(formData.aiExperience === key)} onClick={() => updateField('aiExperience', key)}>
+                    <label key={key} className={radioClass(formData.aiExperience === key)}>
+                      <input type="radio" name="aiExperience" value={key} checked={formData.aiExperience === key} onChange={() => updateField('aiExperience', key)} className="sr-only" />
                       <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${formData.aiExperience === key ? 'border-indigo-500' : 'border-gray-300'}`}>
                         {formData.aiExperience === key && <div className="w-2 h-2 rounded-full bg-indigo-500" />}
                       </div>
                       <span className="text-sm">{t(`aiExperience.${key}`)}</span>
-                    </div>
+                    </label>
                   ))}
                 </div>
               </div>
@@ -526,24 +557,25 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
                 <label className="block text-sm font-medium text-gray-700 mb-2">{t('form.step4.budgetLabel')}</label>
                 <div className="space-y-2">
                   {BUDGET_KEYS.map(key => (
-                    <div key={key} className={radioClass(formData.budget === key)} onClick={() => updateField('budget', key)}>
+                    <label key={key} className={radioClass(formData.budget === key)}>
+                      <input type="radio" name="budget" value={key} checked={formData.budget === key} onChange={() => updateField('budget', key)} className="sr-only" />
                       <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${formData.budget === key ? 'border-indigo-500' : 'border-gray-300'}`}>
                         {formData.budget === key && <div className="w-2 h-2 rounded-full bg-indigo-500" />}
                       </div>
                       <span className="text-sm">{t(`budgets.${key}`)}</span>
-                    </div>
+                    </label>
                   ))}
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('form.step4.priorityLabel')}</label>
-                <input type="text" className={inputClass('priority')} placeholder={t('form.step4.priorityPlaceholder')} value={formData.priority} onChange={e => updateField('priority', e.target.value)} />
+                <label htmlFor="audit-priority" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step4.priorityLabel')}</label>
+                <input id="audit-priority" name="priority" type="text" className={inputClass('priority')} placeholder={t('form.step4.priorityPlaceholder')} value={formData.priority} onChange={e => updateField('priority', e.target.value)} />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('form.step4.additionalInfoLabel')}</label>
-                <textarea className={`${inputClass('additionalInfo')} min-h-[80px] resize-y`} placeholder={t('form.step4.additionalInfoPlaceholder')} value={formData.additionalInfo} onChange={e => updateField('additionalInfo', e.target.value)} rows={3} />
+                <label htmlFor="audit-additional-info" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step4.additionalInfoLabel')}</label>
+                <textarea id="audit-additional-info" name="additionalInfo" className={`${inputClass('additionalInfo')} min-h-[80px] resize-y`} placeholder={t('form.step4.additionalInfoPlaceholder')} value={formData.additionalInfo} onChange={e => updateField('additionalInfo', e.target.value)} rows={3} />
               </div>
             </div>
           )}

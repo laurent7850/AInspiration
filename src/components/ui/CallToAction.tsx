@@ -25,7 +25,7 @@ const CallToAction: React.FC<CTAProps> = ({
   buttonText,
   buttonAction,
   gradientFrom = "from-indigo-600",
-  gradientTo = "to-purple-600",
+  gradientTo = "to-indigo-800",
   solid = false,
   stats,
   rightContent,

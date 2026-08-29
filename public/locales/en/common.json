@@ -28,7 +28,8 @@
     "caseStudies": "Case Studies",
     "crmSolution": "Smart CRM",
     "visualCreation": "AI Visual Creation",
-    "crmDashboard": "CRM Dashboard"
+    "crmDashboard": "CRM Dashboard",
+    "language": "Language"
   },
   "button": {
     "backHome": "Back to Home",
@@ -77,7 +78,7 @@
       "terms": "Terms of Use"
     },
     "address": {
-      "street": "Chauss\u00e9e Brunehault 27",
+      "street": "Chaussée Brunehault 27",
       "city": "7041 Givry",
       "country": "Belgium"
     },
@@ -89,16 +90,15 @@
   },
   "stats": {
     "uptime": "24/7 Uptime",
-    "accuracy": "99.9% Accuracy",
-    "clients": "Satisfied Clients",
-    "trained": "5K+ Trained Models",
-    "acceleration": "2-4x Process Acceleration"
+    "accuracy": "GDPR compliant",
+    "clients": "No commitment",
+    "acceleration": "Free audit in 24h"
   },
   "animatedStats": {
-    "roi": "Average ROI",
-    "satisfaction": "Client satisfaction",
-    "productivity": "Productivity",
-    "processing": "Processing time"
+    "audit": "To receive the free audit",
+    "setup": "Typical setup time",
+    "eu": "Data hosted in Europe",
+    "target": "Typical target on repetitive tasks"
   },
   "cookies": {
     "title": "We respect your privacy",
@@ -109,25 +109,25 @@
     "close": "Close"
   },
   "testimonials": {
-    "title": "They Simplified Their Daily Lives",
-    "subtitle": "Concrete solutions that truly change entrepreneurs' lives",
-    "thierry": {
-      "role": "Restaurant Owner",
-      "city": "Brussels",
-      "text": "Before, it was hell: calls at all hours, reservations on Instagram, texts... We wasted so much time and had no-shows every week. Now, 100% of our reservations go through WhatsApp Business. The system automatically asks the right questions (date, time, number of people), sends confirmation and even a little reminder the day before. Result: we cut no-shows in half, I save at least 1 hour per day, and my customers love the simplicity. Honestly, it was super simple to set up and I would never go back. I recommend it to all restaurants tired of juggling reservations!",
-      "badge": "-50% no-shows"
+    "title": "What it changes, concretely",
+    "subtitle": "Three typical scenarios drawn from our areas of expertise. The figures are realistic targets — the free audit establishes yours.",
+    "restaurant": {
+      "sector": "Restaurants",
+      "scenario": "Typical scenario — WhatsApp reservations",
+      "text": "Calls at all hours, bookings on Instagram, forgotten texts. A WhatsApp Business assistant asks the right questions (date, time, party size), confirms and sends a reminder the day before. Target: halve no-shows and win back an hour a day.",
+      "badge": "Up to -50% no-shows"
     },
-    "sophie": {
-      "role": "Marketing Director",
-      "city": "Lyon",
-      "text": "We spent hours writing newsletters and LinkedIn posts. With AInspiration's AI, we generate quality content in minutes. Our engagement rate jumped 40% and we publish 3 times more often. The team is thrilled to focus on strategy rather than writing.",
-      "badge": "+40% engagement"
+    "marketing": {
+      "sector": "Marketing",
+      "scenario": "Typical scenario — AI-assisted content",
+      "text": "Hours spent on newsletters and LinkedIn posts. A supervised generation pipeline produces quality drafts in minutes; the team keeps control of strategy and tone. Target: publish three times more often, without hiring.",
+      "badge": "3x more publications"
     },
-    "marc": {
-      "role": "E-commerce Manager",
-      "city": "Brussels",
-      "text": "Our customer service was overwhelmed. Since we implemented the virtual assistant, 70% of requests are handled automatically. Our customers get instant responses 24/7, and my team can finally focus on complex cases. The ROI was visible from the very first month.",
-      "badge": "70% automated"
+    "ecommerce": {
+      "sector": "E-commerce",
+      "scenario": "Typical scenario — automated customer support",
+      "text": "A customer service team buried under repetitive questions. A virtual assistant handles routine enquiries 24/7 and passes complex cases to the team. Target: automate around 70% of incoming requests.",
+      "badge": "~70% automatable"
     },
     "indicators": {
       "easySetup": "Easy to set up",
@@ -157,7 +157,7 @@
     "title": "Artificial Intelligence for Belgian and French SMEs",
     "p1": "In 2026, Artificial Intelligence is no longer reserved for large corporations. At AInspiration, we make AI accessible to all SMEs: restaurants, e-commerce businesses, consulting firms, marketing agencies, craftsmen and freelancers. Our mission is simple — save you time and money through intelligent automation solutions, with no technical skills required.",
     "subtitle1": "Concrete, measurable results from the first month",
-    "p2": "Our clients see an average ROI of 180%, a 60% reduction in time spent on repetitive tasks and a 45% increase in productivity. Whether it's automating booking management, generating marketing content, deploying a virtual assistant or optimizing your customer service, our solutions adapt to your industry and specific needs.",
+    "p2": "The automations we deploy target concrete orders of magnitude: up to 60% less time on repetitive tasks and measurable productivity gains from the first months. Whether it's automating booking management, generating marketing content, deploying a virtual assistant or optimizing your customer service, our solutions adapt to your industry and specific needs — and the free audit quantifies the potential of your case before any commitment.",
     "subtitle2": "Personalized end-to-end support",
     "p3": "Everything starts with a free, no-obligation audit. Within 24 hours, we analyze your processes, identify automation opportunities and deliver a concrete action plan. Then, we deploy the solution within 48 hours maximum. Based in Enghien, Belgium, we support businesses in Belgium and France with multilingual support in French, English and Dutch.",
     "subtitle3": "Security and GDPR compliance",

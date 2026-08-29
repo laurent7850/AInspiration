@@ -155,7 +155,6 @@ export default function WhyAI() {
                 index % 2 === 1 ? 'md:flex-row-reverse' : ''
               }`}>
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 to-purple-500/30 rounded-2xl blur-3xl"></div>
                   <OptimizedImage
                     src={useCase.image}
                     alt={useCase.title}

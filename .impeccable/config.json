@@ -1,0 +1,53 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gray-on-color",
+        "value": "*",
+        "files": [
+          "src/components/layout/NavMenu.tsx"
+        ],
+        "createdAt": "2026-08-29T06:34:07.718Z",
+        "reason": "false positive: conditional Tailwind classes - text-gray-700 pairs with bg-gray-100 (unselected state), never with bg-indigo-600"
+      },
+      {
+        "rule": "ai-color-palette",
+        "value": "*",
+        "files": [
+          "src/pages/AnalyseIAPage.tsx"
+        ],
+        "createdAt": "2026-08-29T07:25:23.344Z",
+        "reason": "sanctioned brand exception: indigo IS the AInspiration brand color (documented BrandName rule); remaining hits are monochrome indigo accents and indigo-to-indigo CTA bands, purple mixes were removed this session"
+      },
+      {
+        "rule": "ai-color-palette",
+        "value": "*",
+        "files": [
+          "src/pages/CRMSolutionPage.tsx"
+        ],
+        "createdAt": "2026-08-29T07:25:23.419Z",
+        "reason": "sanctioned brand exception: indigo IS the AInspiration brand color (documented BrandName rule); remaining hits are monochrome indigo accents and indigo-to-indigo CTA bands, purple mixes were removed this session"
+      },
+      {
+        "rule": "ai-color-palette",
+        "value": "*",
+        "files": [
+          "src/pages/TransformationPage.tsx"
+        ],
+        "createdAt": "2026-08-29T07:25:23.498Z",
+        "reason": "sanctioned brand exception: indigo IS the AInspiration brand color (documented BrandName rule); remaining hits are monochrome indigo accents and indigo-to-indigo CTA bands, purple mixes were removed this session"
+      },
+      {
+        "rule": "ai-color-palette",
+        "value": "*",
+        "files": [
+          "src/pages/ThierryBlogPage.tsx"
+        ],
+        "createdAt": "2026-08-29T07:25:23.576Z",
+        "reason": "sanctioned brand exception: indigo IS the AInspiration brand color (documented BrandName rule); remaining hits are monochrome indigo accents and indigo-to-indigo CTA bands, purple mixes were removed this session"
+      }
+    ]
+  }
+}

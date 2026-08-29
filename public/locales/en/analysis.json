@@ -11,7 +11,7 @@
     "titleHighlight": "strategic decisions",
     "description": "Our AI analysis solution transforms your raw data into actionable insights, revealing hidden trends and predicting future developments to give you a decisive competitive advantage.",
     "ctaDemo": "Request a demo",
-    "ctaDocs": "View documentation",
+    "ctaDocs": "Ask a question",
     "imageAlt": "Data analysis dashboard"
   },
   "features": {
@@ -74,24 +74,24 @@
   ],
   "metrics": [
     {
-      "value": "+67%",
-      "label": "Predictive accuracy",
-      "description": "Compared to conventional methods"
+      "value": "24h",
+      "label": "Audit delivered",
+      "description": "Full analysis of your business"
     },
     {
-      "value": "10x",
-      "label": "Faster",
-      "description": "Real-time analyses"
+      "value": "48h",
+      "label": "Typical setup",
+      "description": "For a first operational solution"
     },
     {
-      "value": "98%",
-      "label": "Client satisfaction",
-      "description": "Tailored solutions"
+      "value": "100%",
+      "label": "Data in Europe",
+      "description": "GDPR-compliant hosting"
     },
     {
-      "value": "Fast ROI",
-      "label": "Return on investment",
-      "description": "Measurable results from the first months"
+      "value": "24/7",
+      "label": "Availability",
+      "description": "Your analyses run continuously"
     }
   ],
   "useCases": {
@@ -108,10 +108,7 @@
           "Real-time price optimisation",
           "Personalisation of product recommendations",
           "Analysis of customer behaviour in-store and online"
-        ],
-        "testimonialQuote": "Thanks to AInspiration's predictive analysis, we reduced our stock-outs by 78% whilst reducing our overall stock by 15%.",
-        "testimonialAuthor": "Marie Deschamps",
-        "testimonialRole": "Supply Chain Director, MeubleExpress"
+        ]
       },
       {
         "title": "Financial services",
@@ -121,10 +118,7 @@
           "Real-time fraud detection",
           "Market trend analysis",
           "Investment portfolio optimisation"
-        ],
-        "testimonialQuote": "The implementation of the anomaly detection system allowed us to identify 34% more fraudulent transactions, whilst reducing false positives by 56%.",
-        "testimonialAuthor": "Thomas Lefèvre",
-        "testimonialRole": "CISO, CréditPro"
+        ]
       }
     ]
   },

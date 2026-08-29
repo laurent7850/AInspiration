@@ -7,7 +7,6 @@ import {
   getServiceSchema,
   getBlogPostSchema,
   getFAQSchema,
-  getReviewSchema,
   defaultSEO,
   seoPages,
 } from './seoConfig';
@@ -162,18 +161,6 @@ describe('getFAQSchema', () => {
     expect(schema.mainEntity).toHaveLength(2);
     expect(schema.mainEntity[0].name).toBe('Q1');
     expect(schema.mainEntity[0].acceptedAnswer.text).toBe('A1');
-  });
-});
-
-describe('getReviewSchema', () => {
-  it('should calculate aggregate rating', () => {
-    const reviews = [
-      { author: 'Alice', rating: 5, text: 'Great' },
-      { author: 'Bob', rating: 4, text: 'Good' },
-    ];
-    const schema = getReviewSchema(reviews);
-    expect(schema.aggregateRating.ratingValue).toBe('4.5');
-    expect(schema.aggregateRating.reviewCount).toBe(2);
   });
 });
 

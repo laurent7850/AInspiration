@@ -1,57 +1,57 @@
 {
   "seo": {
-    "title": "Case Studies | AInspiration",
-    "description": "Discover how SMEs are transforming their businesses with our AI solutions."
+    "title": "AI Use-Case Scenarios | AInspiration",
+    "description": "Three typical AI automation scenarios for SMEs — plus AInspiration's real case: this site runs on our own tools."
   },
-  "pageTitle": "Case Studies",
-  "pageSubtitle": "Discover how companies like yours are transforming their business with our AI solutions",
+  "pageTitle": "What AI changes, trade by trade",
+  "pageSubtitle": "Three typical scenarios built from our areas of expertise. The figures are realistic orders of magnitude — your free audit establishes yours.",
   "labels": {
-    "employees": "Employees",
-    "challenge": "Challenge",
-    "solution": "Solution",
-    "results": "Results"
+    "scenario": "Illustrative scenario",
+    "challenge": "Starting point",
+    "solution": "What we put in place",
+    "results": "Target results"
   },
   "study1": {
-    "title": "Customer Service Optimisation with an AI Chatbot",
+    "title": "Automating customer service with an AI chatbot",
     "industry": "E-commerce",
-    "challenge": "Faced with rapid growth, CommerceXpress struggled to respond effectively to customer enquiries, resulting in long response times and declining customer satisfaction.",
-    "solution": "Implementation of an AI chatbot capable of handling 80% of routine enquiries, integrated with the website and social media, with intelligent escalation to human agents.",
-    "result1": "75% reduction in response time",
-    "result2": "30% increase in customer satisfaction",
-    "result3": "Annual saving of €45k in support costs",
-    "result4": "24/7 support availability",
-    "quote": "Our AI chatbot has become indispensable. It instantly answers frequently asked questions, freeing our teams for complex enquiries. Customer satisfaction has soared and our costs have fallen.",
-    "author": "Head of Customer Service, CommerceXpress"
+    "challenge": "A growing online shop is buried under repetitive enquiries: order tracking, returns, product questions. Response times stretch and satisfaction drops.",
+    "solution": "An AI chatbot trained on frequent questions, integrated with the website and social media, with automatic handover to a human as soon as a case falls outside its scope.",
+    "result1": "Up to 75% faster response times",
+    "result2": "Support available 24/7",
+    "result3": "The team focuses on complex cases",
+    "result4": "Support costs kept in check despite growth"
   },
   "study2": {
-    "title": "Invoice Management Automation",
-    "industry": "IT Services",
-    "challenge": "TechnoServic was manually processing over 500 invoices per month, causing payment delays, costly errors and tying up two full-time employees.",
-    "solution": "Deployment of an AI solution for automatic invoice data extraction, integrated with the existing accounting system, with intelligent validation and automatic classification.",
-    "result1": "90% reduction in processing time",
-    "result2": "95% reduction in data entry errors",
-    "result3": "Annual saving of €65k",
-    "result4": "1.5 FTEs redeployed to value-added tasks",
-    "quote": "Our accounts department has been transformed. The AI extracts and processes invoice data with remarkable accuracy, freeing our teams for more strategic analysis.",
-    "author": "Chief Financial Officer, TechnoServic"
+    "title": "Automating invoice processing",
+    "industry": "Services",
+    "challenge": "Hundreds of invoices processed by hand every month: late payments, data-entry errors, and one to two full-time staff tied up in typing.",
+    "solution": "AI-powered invoice data extraction, integrated with the existing accounting software, with human validation on ambiguous cases.",
+    "result1": "Up to 90% less processing time",
+    "result2": "Data-entry errors nearly eliminated",
+    "result3": "Payments on time, reminders automated",
+    "result4": "Freed-up time goes to analysis, not typing"
   },
   "study3": {
-    "title": "Stock Optimisation Through Predictive Analytics",
-    "industry": "Furniture",
-    "challenge": "MobiliFrance suffered from frequent stockouts on popular items whilst tying up too much capital in slow-moving products.",
-    "solution": "Implementation of an AI-based predictive analytics system integrating historical data, seasonal trends and external factors to optimise stock management.",
-    "result1": "85% reduction in stockouts",
-    "result2": "25% reduction in overall stock levels",
-    "result3": "15% increase in stock turnover rate",
-    "result4": "Fast return on investment from the first year",
-    "quote": "Predictive AI has revolutionised our stock management. We now accurately anticipate demand, avoiding stockouts whilst optimising our inventory levels.",
-    "author": "Supply Chain Manager, MobiliFrance"
+    "title": "Anticipating stock with predictive analytics",
+    "industry": "Retail & distribution",
+    "challenge": "Frequent stockouts on popular items, while capital sits idle in slow-moving products.",
+    "solution": "A predictive model fed with sales history, seasonality and trends, recommending replenishments at the right moment.",
+    "result1": "Stockouts sharply reduced",
+    "result2": "Leaner overall inventory",
+    "result3": "Better turnover across references",
+    "result4": "Purchasing decisions backed by data"
   },
-  "stats": {
-    "productivity": "Increase in productivity",
-    "processing": "Reduction in processing time",
-    "revenue": "Increase in turnover",
-    "clients": "SMEs supported"
+  "ownCase": {
+    "title": "Our own case: this site runs on our tools",
+    "subtitle": "We apply to AInspiration what we offer our clients. Verifiable facts, not promises:",
+    "fact1value": "50+",
+    "fact1label": "blog articles generated and published automatically (n8n + AI)",
+    "fact2value": "3",
+    "fact2label": "languages maintained in parallel (FR, EN, NL)",
+    "fact3value": "24h",
+    "fact3label": "to deliver an audit — the analysis pipeline is automated",
+    "fact4value": "1",
+    "fact4label": "full CRM built in-house to run our business"
   },
   "cta": {
     "title": "Ready to transform your business?",

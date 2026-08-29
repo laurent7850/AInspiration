@@ -255,42 +255,6 @@ const ForWhoAIPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('testimonials.sectionTitle')}</h2>
-
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="bg-white rounded-xl shadow p-6">
-              <p className="text-gray-600 italic mb-4">
-                "{t('testimonials.thomas.quote')}"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
-                  <User className="w-5 h-5 text-indigo-600" />
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900">{t('testimonials.thomas.name')}</p>
-                  <p className="text-sm text-gray-500">{t('testimonials.thomas.role')}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow p-6">
-              <p className="text-gray-600 italic mb-4">
-                "{t('testimonials.marie.quote')}"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
-                  <Building className="w-5 h-5 text-indigo-600" />
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900">{t('testimonials.marie.name')}</p>
-                  <p className="text-sm text-gray-500">{t('testimonials.marie.role')}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* CTA */}
         <div className="bg-indigo-600 rounded-xl p-8 text-white">

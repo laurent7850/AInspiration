@@ -13,8 +13,8 @@
   },
   "thierry": {
     "seo": {
-      "title": "Hoe Thierry zijn facturatie transformeerde met AI | AInspiration",
-      "description": "Ontdek hoe Thierry 15 uur per maand bespaarde door zijn facturatie te automatiseren met AInspiration. Een concreet geval van digitale transformatie voor kmo's."
+      "title": "Facturatie automatiseren met AI: een concreet scenario | AInspiration",
+      "description": "Illustratief scenario: hoe een dienstverlenende KMO ongeveer 15 uur per maand kan winnen door de facturatie te automatiseren met AI. Typische cijfers, concrete stappen."
     },
     "breadcrumb": {
       "home": "Startpagina",
@@ -22,14 +22,15 @@
       "current": "Facturatietransformatie"
     },
     "header": {
-      "title": "Hoe Thierry zijn facturatie transformeerde met de AI van AInspiration",
+      "title": "Facturatie automatiseren met AI: het scenario van \"Thierry\"",
       "date": "24 mei 2024",
       "readTime": "Leestijd: 5 min",
-      "imageAlt": "Thierry die werkt op zijn computer met facturen"
+      "imageAlt": "Thierry die werkt op zijn computer met facturen",
+      "disclaimer": "Illustratief scenario — \"Thierry\" is een typisch persona, opgebouwd uit courante KMO-situaties. De cijfers zijn realistische grootteordes, geen gemeten klantresultaten."
     },
     "challenge": {
       "title": "De uitdaging: tijdrovende en foutgevoelige facturatie",
-      "intro": "Thierry Martin leidt een IT-dienstverlener met 15 werknemers. Zoals veel kmo-directeurs werd hij regelmatig overspoeld door administratieve taken, met name de klantenfacturatie.",
+      "intro": "Thierry — het typische persona van dit scenario — leidt een IT-dienstverlener met 15 werknemers. Zoals veel kmo-directeurs werd hij regelmatig overspoeld door administratieve taken, met name de klantenfacturatie.",
       "quote": "Ik besteedde bijna 15 uur per maand aan het beheren van de facturatie, legt Thierry uit. Tussen de handmatige gegevensinvoer, de controles, de foutcorrecties en de herinneringen was het een ware nachtmerrie die mij afleidde van mijn kernactiviteit.",
       "problemsIntro": "De problemen waren velerlei:",
       "problems": [

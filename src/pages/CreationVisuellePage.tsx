@@ -157,7 +157,6 @@ const CreationVisuellePage: React.FC = () => {
           </div>
           
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
             <OptimizedImage
               src="https://images.unsplash.com/photo-1634986666676-ec8fd927c23d"
               alt="Création d'images avec l'IA"
@@ -283,7 +282,6 @@ const CreationVisuellePage: React.FC = () => {
               
               <div className={index % 2 === 0 ? "order-2" : "order-2 md:order-1"}>
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl"></div>
                   <OptimizedImage
                     src={useCase.image}
                     alt={useCase.title}
