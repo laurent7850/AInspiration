@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import AppContextProvider from './context/AppContext';
 import './i18n';  // Import i18n configuration
+import '@fontsource-variable/jost';  // Aurora display face — self-hosted, CSP-safe
 import './index.css';
 
 // Register Service Worker for PWA

@@ -19,6 +19,8 @@ export default function Hero() {
   const { t, i18n } = useTranslation('common');
 
   useEffect(() => {
+    // Reduced-motion users keep the still image — no autoplaying video.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = setTimeout(() => setVideoReady(true), 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -63,23 +65,23 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative bg-canvas pt-24 lg:pt-32 pb-16 lg:pb-20">
+    <section className="relative bg-aurora text-white pt-28 lg:pt-36 pb-16 lg:pb-20 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Asymmetric grid — text 7 cols, visual 5 cols */}
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
 
           {/* Left — Text content */}
           <div className="lg:col-span-7">
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-ink tracking-[-0.035em] leading-[1.05] mb-6">
+            <h1 className="font-display font-light text-4xl sm:text-6xl lg:text-[5.25rem] text-white leading-[1.04] mb-7">
               {t('hero.title')}
             </h1>
-            <p className="text-lg sm:text-xl text-secondary max-w-[50ch] leading-relaxed mb-10">
+            <p className="text-lg sm:text-xl text-indigo-100/85 max-w-[50ch] leading-relaxed mb-10">
               {t('hero.subtitle')}
             </p>
 
             <button
               onClick={() => setShowStartForm(true)}
-              className="group inline-flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-indigo-500/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-600"
+              className="group inline-flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-500 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-[0_18px_45px_-12px_rgba(79,70,229,0.65)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               <span>
                 {t('button.startFreeAudit')}
@@ -93,23 +95,23 @@ export default function Hero() {
             {/* Trust indicators — horizontal, minimal */}
             <div className="mt-12 flex flex-wrap gap-8">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span className="text-sm text-secondary">{t('hero.features.simple')}</span>
+                <span className="w-2 h-2 rounded-full bg-aurora-teal" />
+                <span className="text-sm text-indigo-100/80">{t('hero.features.simple')}</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span className="text-sm text-secondary">{t('hero.features.secure')}</span>
+                <span className="w-2 h-2 rounded-full bg-aurora-teal" />
+                <span className="text-sm text-indigo-100/80">{t('hero.features.secure')}</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span className="text-sm text-secondary">{t('hero.features.support')}</span>
+                <span className="w-2 h-2 rounded-full bg-aurora-teal" />
+                <span className="text-sm text-indigo-100/80">{t('hero.features.support')}</span>
               </div>
             </div>
           </div>
 
-          {/* Right — Video/Image */}
+          {/* Right — Video/Image, floating frame over the aurora */}
           <div className="lg:col-span-5 mt-8 lg:mt-0">
-            <div className="relative rounded-[2rem] overflow-hidden shadow-diffuse-lg">
+            <div className="relative rounded-[2rem] overflow-hidden ring-1 ring-white/15 shadow-[0_45px_90px_-25px_rgba(6,6,25,0.85)]">
               <div className={`relative transition-opacity duration-700 ${hasEnded ? 'opacity-0' : 'opacity-100'}`}>
                 {/* Stable LCP element — stays mounted so the largest paint is never
                     invalidated by a DOM swap. The video (loaded after 2s) overlays it. */}
@@ -176,8 +178,8 @@ export default function Hero() {
 
       {/* Stats bar — clean dividers, no card */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-        <div className="border-t border-zinc-200/60 pt-10">
-          <AnimatedStats />
+        <div className="border-t border-white/10 pt-10">
+          <AnimatedStats variant="dark" />
         </div>
       </div>
 

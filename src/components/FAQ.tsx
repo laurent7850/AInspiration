@@ -30,8 +30,8 @@ export default function FAQ() {
     <section id="faq" className="py-16 lg:py-24 bg-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-ink tracking-tight">
-            Questions fréquentes
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink">
+            {t('faq.title', 'Questions fréquentes')}
           </h2>
         </div>
         <div className="divide-y divide-zinc-200">

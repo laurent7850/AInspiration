@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-01T00:30:00Z",
+  "title": "Design System: AInspiration — Aurora",
+  "extensions": {
+    "colorMeta": {
+      "night": { "role": "neutral", "displayName": "Night", "canonical": "#10102A", "tonalRamp": ["oklch(15% 0.045 285)", "oklch(22% 0.05 285)", "oklch(32% 0.05 285)", "oklch(44% 0.05 285)", "oklch(56% 0.05 285)", "oklch(70% 0.04 285)", "oklch(84% 0.03 285)", "oklch(95% 0.015 285)"] },
+      "aurora-indigo": { "role": "primary", "displayName": "Aurora Indigo", "canonical": "#4F46E5", "tonalRamp": ["#1e1b4b", "#312e81", "#3730a3", "#4338ca", "#4f46e5", "#6366f1", "#a5b4fc", "#e0e7ff"] },
+      "aurora-violet": { "role": "primary", "displayName": "Aurora Violet (gradient-only)", "canonical": "#6D5AE8", "tonalRamp": ["oklch(18% 0.12 285)", "oklch(28% 0.16 285)", "oklch(38% 0.18 285)", "oklch(48% 0.19 285)", "oklch(56% 0.19 285)", "oklch(68% 0.14 285)", "oklch(82% 0.08 285)", "oklch(94% 0.03 285)"] },
+      "aurora-teal": { "role": "secondary", "displayName": "Aurora Teal", "canonical": "#2DD4BF", "tonalRamp": ["#042f2e", "#134e4a", "#115e59", "#0f766e", "#14b8a6", "#2dd4bf", "#5eead4", "#ccfbf1"] },
+      "teal-data": { "role": "secondary", "displayName": "Teal Data", "canonical": "#14B8A6", "tonalRamp": ["#042f2e", "#134e4a", "#115e59", "#0f766e", "#14b8a6", "#2dd4bf", "#5eead4", "#ccfbf1"] },
+      "canvas": { "role": "neutral", "displayName": "Canvas", "canonical": "#F9FAFB", "tonalRamp": ["#18181b", "#3f3f46", "#71717a", "#a1a1aa", "#d4d4d8", "#e4e4e7", "#f4f4f5", "#f9fafb"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#18181B", "tonalRamp": ["#18181b", "#27272a", "#3f3f46", "#52525b", "#71717a", "#a1a1aa", "#d4d4d8", "#f4f4f5"] },
+      "night-hairline": { "role": "neutral", "displayName": "Night Hairline", "canonical": "rgba(255,255,255,0.10)", "tonalRamp": ["rgba(255,255,255,0.05)", "rgba(255,255,255,0.10)", "rgba(255,255,255,0.15)", "rgba(255,255,255,0.20)", "rgba(255,255,255,0.35)", "rgba(255,255,255,0.50)", "rgba(255,255,255,0.70)", "rgba(255,255,255,0.90)"] },
+      "dark-body": { "role": "neutral", "displayName": "Dark Body (indigo-tinted text on night)", "canonical": "rgba(224,231,255,0.85)", "tonalRamp": ["rgba(224,231,255,0.30)", "rgba(224,231,255,0.45)", "rgba(224,231,255,0.60)", "rgba(224,231,255,0.70)", "rgba(224,231,255,0.80)", "rgba(224,231,255,0.85)", "rgba(224,231,255,0.92)", "rgba(224,231,255,1)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only — Jost light, up to 5.25rem, line-height 1.04, white on aurora." },
+      "headline": { "displayName": "Headline", "purpose": "Section headers — Jost light, left-aligned in a max-w-2xl block." },
+      "title": { "displayName": "Title", "purpose": "Card and item headings — Outfit 600, tracking-tight." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs capped at ~50–55ch; ink on light, indigo-100/85 on dark." },
+      "label": { "displayName": "Label", "purpose": "Rare uppercase attribution labels — 0.2em tracking, indigo-300 on dark." },
+      "trademark-sup": { "displayName": "Trademark superscript (documented exception)", "purpose": "The ® beside the brand wordmark in NavMenu renders at 8px zinc-500 — deliberately off the type ramp (legal glyph, not readable text). The only sanctioned sub-12px size; never reuse 8px for content." }
+    },
+    "shadows": [
+      { "name": "lift", "value": "0 2px 8px rgba(0,0,0,0.04)", "purpose": "Resting state of light cards." },
+      { "name": "diffuse", "value": "0 20px 40px -15px rgba(0,0,0,0.05)", "purpose": "Hover state of light cards." },
+      { "name": "diffuse-lg", "value": "0 30px 60px -20px rgba(0,0,0,0.08)", "purpose": "Larger light surfaces on hover." },
+      { "name": "night-cast", "value": "0 30px 60px -20px rgba(6,6,25,0.5)", "purpose": "Dark cards sitting on light grounds." },
+      { "name": "frame-cast", "value": "0 45px 90px -25px rgba(6,6,25,0.85)", "purpose": "Hero media frame floating over the aurora (paired with ring-1 white/15)." },
+      { "name": "cta-glow", "value": "0 18px 45px -12px rgba(79,70,229,0.65)", "purpose": "Indigo light under the primary pill on dark grounds." },
+      { "name": "inner-glow", "value": "inset 0 1px 1px rgba(255,255,255,0.15)", "purpose": "Subtle top edge light on dark raised surfaces." }
+    ],
+    "motion": [
+      { "name": "ease-reveal", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Exponential ease-out for the single Reveal grammar (0.7s, translateY(24px)→0, 90ms stagger steps). Instant under prefers-reduced-motion." },
+      { "name": "duration-state", "value": "200ms", "purpose": "Button hover fill/scale transitions (scale 1.02 hover, 0.98 active)." },
+      { "name": "duration-card", "value": "300ms", "purpose": "Card hover lift (-translate-y-1) and arrow-glyph fade-in." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "container-max", "value": "1400px" }
+    ],
+    "grounds": [
+      { "name": "bg-aurora", "value": "background-color:#10102A; background-image: radial-gradient(90rem 60rem at 12% -10%, rgba(79,70,229,0.55), transparent 55%), radial-gradient(70rem 50rem at 50% 30%, rgba(109,90,232,0.30), transparent 60%), radial-gradient(80rem 60rem at 95% 85%, rgba(45,212,191,0.38), transparent 55%);", "purpose": "Hero and lead surfaces." },
+      { "name": "bg-aurora-teal", "value": "background-color:#10102A; background-image: radial-gradient(70rem 50rem at 0% 100%, rgba(79,70,229,0.50), transparent 60%), radial-gradient(80rem 55rem at 100% 0%, rgba(45,212,191,0.45), transparent 55%);", "purpose": "CTA bands and closing sections." },
+      { "name": "bg-aurora-quiet", "value": "background-color:#10102A; background-image: radial-gradient(60rem 40rem at 20% 20%, rgba(79,70,229,0.22), transparent 60%), radial-gradient(60rem 40rem at 85% 90%, rgba(45,212,191,0.14), transparent 60%);", "purpose": "Interlude sections, barely lit." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Pill CTA",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one conversion button — indigo pill with arrow circle, glows on dark grounds.",
+      "html": "<button class=\"ds-btn-primary\"><span>Lancez votre audit gratuit</span><span class=\"ds-btn-arrow\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></span></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 12px; background: #4F46E5; color: #fff; padding: 16px 32px; border: none; border-radius: 9999px; font-family: 'Outfit', system-ui, sans-serif; font-weight: 600; font-size: 1.125rem; cursor: pointer; box-shadow: 0 18px 45px -12px rgba(79,70,229,0.65); transition: background 0.2s, transform 0.2s; } .ds-btn-primary:hover { background: #6366F1; transform: scale(1.02); } .ds-btn-primary:active { transform: scale(0.98); } .ds-btn-primary:focus-visible { outline: 2px solid #4F46E5; outline-offset: 4px; } .ds-btn-arrow { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 9999px; background: rgba(255,255,255,0.10); transition: background 0.2s; } .ds-btn-primary:hover .ds-btn-arrow { background: rgba(255,255,255,0.20); }"
+    },
+    {
+      "name": "Inverse Pill (on aurora band)",
+      "kind": "button",
+      "refersTo": "button-inverse",
+      "description": "White pill used inside dark aurora CTA bands.",
+      "html": "<button class=\"ds-btn-inverse\">Commencer<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button>",
+      "css": ".ds-btn-inverse { display: inline-flex; align-items: center; gap: 12px; background: #ffffff; color: #4338CA; padding: 16px 32px; border: none; border-radius: 9999px; font-family: 'Outfit', system-ui, sans-serif; font-weight: 600; font-size: 1.125rem; cursor: pointer; transition: background 0.2s, transform 0.2s; } .ds-btn-inverse:hover { background: #eef2ff; transform: scale(1.02); } .ds-btn-inverse:active { transform: scale(0.98); } .ds-btn-inverse:focus-visible { outline: 2px solid #ffffff; outline-offset: 4px; }"
+    },
+    {
+      "name": "Aurora CTA Band",
+      "kind": "card",
+      "refersTo": "band-aurora",
+      "description": "Rounded 2rem dark gradient band inside a light section — the recurring conversion surface.",
+      "html": "<div class=\"ds-band-aurora\"><div><h3>Prêt à découvrir votre potentiel IA ?</h3><p>Gratuit · Résultats en 24h · Sans engagement</p></div><button class=\"ds-band-btn\">Lancez l'audit</button></div>",
+      "css": ".ds-band-aurora { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; background-color: #10102A; background-image: radial-gradient(70rem 50rem at 0% 100%, rgba(79,70,229,0.50), transparent 60%), radial-gradient(80rem 55rem at 100% 0%, rgba(45,212,191,0.45), transparent 55%); border-radius: 2rem; padding: 40px 56px; font-family: 'Outfit', system-ui, sans-serif; } .ds-band-aurora h3 { color: #fff; font-size: 1.875rem; font-weight: 700; letter-spacing: -0.025em; margin: 0 0 8px; } .ds-band-aurora p { color: #e0e7ff; font-size: 1rem; margin: 0; } .ds-band-btn { background: #fff; color: #4338CA; padding: 16px 32px; border: none; border-radius: 9999px; font-weight: 600; font-size: 1.125rem; cursor: pointer; transition: background 0.2s, transform 0.2s; } .ds-band-btn:hover { background: #eef2ff; transform: scale(1.02); }"
+    },
+    {
+      "name": "Bento Card (night tone)",
+      "kind": "card",
+      "refersTo": "card-night",
+      "description": "Dark material step in the features bento — teal icon, white title, indigo-tinted body, hover lift with arrow reveal.",
+      "html": "<a href=\"#\" class=\"ds-card-night\"><svg class=\"ds-card-arrow\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg><svg class=\"ds-card-icon\" width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 3v16a2 2 0 0 0 2 2h16\"/><path d=\"M18 17V9\"/><path d=\"M13 17V5\"/><path d=\"M8 17v-3\"/></svg><h3>Formation IA</h3><p>Des programmes adaptés à votre équipe, du premier prompt à l'automatisation complète.</p></a>",
+      "css": ".ds-card-night { position: relative; display: block; background: #10102A; border-radius: 1.5rem; padding: 32px; text-decoration: none; font-family: 'Outfit', system-ui, sans-serif; box-shadow: 0 30px 60px -20px rgba(6,6,25,0.4); transition: transform 0.3s; } .ds-card-night:hover { transform: translateY(-4px); } .ds-card-night:focus-visible { outline: 2px solid #4F46E5; outline-offset: 2px; } .ds-card-icon { color: #2DD4BF; margin-bottom: 20px; } .ds-card-night h3 { color: #fff; font-size: 1.125rem; font-weight: 600; letter-spacing: -0.025em; margin: 0 0 8px; } .ds-card-night p { color: rgba(224,231,255,0.85); font-size: 0.875rem; line-height: 1.625; margin: 0; } .ds-card-arrow { position: absolute; top: 32px; right: 32px; color: rgba(255,255,255,0.7); opacity: 0; transform: translate(-4px, 4px); transition: opacity 0.3s, transform 0.3s; } .ds-card-night:hover .ds-card-arrow { opacity: 1; transform: translate(0,0); }"
+    },
+    {
+      "name": "Numbered Process Card",
+      "kind": "card",
+      "refersTo": "card-light",
+      "description": "White card opening with a Jost-light teal /0n numeral — the process grammar.",
+      "html": "<div class=\"ds-card-process\"><span class=\"ds-process-num\">/01</span><h3>Analyse</h3><p>Nous cartographions vos processus et identifions les tâches répétitives à fort potentiel.</p></div>",
+      "css": ".ds-card-process { background: #ffffff; border-radius: 1.5rem; padding: 32px; font-family: 'Outfit', system-ui, sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: box-shadow 0.3s; } .ds-card-process:hover { box-shadow: 0 20px 40px -15px rgba(0,0,0,0.05); } .ds-process-num { display: block; font-family: 'Jost Variable', 'Jost', 'Outfit', sans-serif; font-weight: 300; font-size: 1.875rem; color: #14B8A6; margin-bottom: 20px; } .ds-card-process h3 { color: #18181B; font-size: 1.125rem; font-weight: 600; letter-spacing: -0.025em; margin: 0 0 8px; } .ds-card-process p { color: #71717A; font-size: 0.875rem; line-height: 1.625; margin: 0; }"
+    },
+    {
+      "name": "Pastel Badge",
+      "kind": "chip",
+      "refersTo": "card-light",
+      "description": "Flat pastel-tint metric badge on scenario cards — no gradients, no shadows.",
+      "html": "<span class=\"ds-badge\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"22 7 13.5 15.5 8.5 10.5 2 17\"/><polyline points=\"16 7 22 7 22 13\"/></svg>+40% de temps gagné</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 6px; background: #ecfdf5; color: #047857; padding: 6px 12px; border-radius: 0.5rem; font-family: 'Outfit', system-ui, sans-serif; font-weight: 500; font-size: 0.75rem; }"
+    },
+    {
+      "name": "Fixed Night Header",
+      "kind": "nav",
+      "refersTo": "card-night",
+      "description": "Translucent night header with backdrop blur and bottom hairline; brand wordmark uses the two-span AI Mark pattern with the 8px zinc-500 ® superscript (documented exception).",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-brand\"><span class=\"ds-nav-ai\">AI</span><span class=\"ds-nav-rest\">nspiration</span><sup class=\"ds-nav-tm\">®</sup></span><span class=\"ds-nav-links\"><a href=\"#\">Solutions</a><a href=\"#\">Blog</a><a href=\"#\" class=\"ds-nav-cta\">Audit gratuit</a></span></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; background: rgba(16,16,42,0.85); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.10); padding: 16px 32px; font-family: 'Outfit', system-ui, sans-serif; } .ds-nav-brand { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.05em; } .ds-nav-ai { color: #a5b4fc; } .ds-nav-rest { color: #ffffff; } .ds-nav-tm { font-size: 8px; color: #71717a; margin-left: 2px; } .ds-nav-links { display: inline-flex; align-items: center; gap: 24px; } .ds-nav-links a { color: rgba(224,231,255,0.85); text-decoration: none; font-size: 0.9375rem; transition: color 0.2s; } .ds-nav-links a:hover { color: #ffffff; } .ds-nav-links a:focus-visible { outline: 2px solid #4F46E5; outline-offset: 2px; border-radius: 2px; } .ds-nav-cta { background: #4F46E5; color: #fff !important; padding: 10px 20px; border-radius: 9999px; font-weight: 600; } .ds-nav-cta:hover { background: #6366F1; }"
+    },
+    {
+      "name": "Input (accent focus)",
+      "kind": "input",
+      "refersTo": "card-light",
+      "description": "Light field whose focus is always in the indigo accent, never gray.",
+      "html": "<input class=\"ds-input\" type=\"email\" placeholder=\"votre@email.com\" />",
+      "css": ".ds-input { background: #ffffff; color: #18181B; border: 1px solid #d4d4d8; border-radius: 0.5rem; padding: 12px 16px; font-family: 'Outfit', system-ui, sans-serif; font-size: 1rem; transition: border-color 0.15s, box-shadow 0.15s; } .ds-input::placeholder { color: #94A3B8; } .ds-input:focus { outline: none; border-color: #818cf8; box-shadow: 0 0 0 2px #c7d2fe; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Aurora Over the Workshop",
+    "overview": "The site is an AI partner whose own surface is the demo. The ground is a deep night navy (#10102A) lit by layered indigo→teal radial auroras — ambient light suggesting \"new possibilities\" rather than decoration. Against that night, the product is shown working: a floating media frame, live stats on a hairline, typed scenarios. Airy white interlude sections give the eye rest between dark acts, so the page alternates night → light → night like a day cycle rather than staying monotone dark. The world is brief-pinned (Wix \"Suite\" template 3081) adapted to the brand's indigo; it deliberately refuses the light SaaS template of scattered gradient cards. Density is generous: a wide 1400px stage, asymmetric grids, big light-weight display type, and few competing elements per viewport. The voice is calm and confident — one promise, one CTA, one motion.",
+    "keyCharacteristics": [
+      "Deep navy ground with radial aurora gradients (pure CSS, no raster backgrounds)",
+      "Jost light display type over Outfit body — geometric, airy, thin at large sizes",
+      "Indigo pill CTAs; teal reserved for data and small accents",
+      "White/10 hairlines instead of borders or boxes on dark",
+      "One scroll-reveal motion grammar for the entire page",
+      "Section headers left-aligned, never centered (interlude quote excepted)"
+    ],
+    "rules": [
+      { "name": "The Three Grounds Rule", "body": "Dark sections use exactly one of three authored gradient grounds: .bg-aurora (hero, lead surfaces — indigo top-left, teal bottom-right), .bg-aurora-teal (CTA bands, closing sections — teal-tilted diagonal), .bg-aurora-quiet (interludes — barely lit). Never compose ad-hoc gradients on navy.", "section": "colors" },
+      { "name": "The AI Mark Rule", "body": "Every visible \"AInspiration\" renders \"AI\" in indigo — indigo-600 (#4F46E5) on light grounds, indigo-400 on dark. Pattern in code (no shared component exists yet): <span className=\"text-indigo-400\">AI</span><span className=\"text-white\">nspiration</span> on dark (see NavMenu.tsx, Footer.tsx), indigo-600 + ink on light. Never render the brand in a single flat color.", "section": "colors" },
+      { "name": "The No Pure Purple Rule", "body": "Pure purple is banned. The gradient may pass through Aurora Violet (#6D5AE8, an indigo-violet), but no purple fills, purple text, or purple accents anywhere.", "section": "colors" },
+      { "name": "The Two Voices Rule", "body": "Indigo asks (CTAs, links, focus); teal shows (data, process numbers, trust dots, dividers). Never swap the roles — a teal button or an indigo stat dot breaks the grammar.", "section": "colors" },
+      { "name": "The Light Display Rule", "body": "Anything set in font-display is weight 300 with -0.01em tracking. Bold display type does not exist in this world; emphasis comes from size, not weight.", "section": "typography" },
+      { "name": "The Hairline Rule", "body": "On dark grounds, separation is a 1px white/10 line (white/15 for media rings) — never a box, never a filled divider, never a gray border.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use the three authored grounds (.bg-aurora, .bg-aurora-teal, .bg-aurora-quiet) for every dark section — they are the only sanctioned gradients (The Three Grounds Rule).",
+      "Do set the \"AI\" in \"AInspiration\" in indigo everywhere via the two-span pattern (The AI Mark Rule).",
+      "Do keep display type at Jost weight 300; scale for emphasis, never embolden.",
+      "Do tint body text on dark with indigo (text-indigo-100/85), never plain gray/white-alpha grays.",
+      "Do self-host every font (Outfit woff2 in /public/fonts, Jost via @fontsource-variable) — the CSP forbids external assets.",
+      "Do route all visible text through i18next (fr/en/nl); no hard-coded strings.",
+      "Do honor prefers-reduced-motion: instant reveals, static stats, no mounted video.",
+      "Do left-align section headers in a max-w-2xl block; cap body measure near 50–55ch."
+    ],
+    "donts": [
+      "Don't use pure purple anywhere — fills, text, or accents (The No Pure Purple Rule).",
+      "Don't put teal on a CTA or indigo on a data accent (The Two Voices Rule).",
+      "Don't draw boxes or gray borders on dark grounds — hairlines only (The Hairline Rule).",
+      "Don't fabricate proof: no invented client names, logos, testimonials, or metrics — scenario cards are explicitly typed as scenarios (see PRODUCT.md and the no-fabricated-proof rule).",
+      "Don't center section headers (the quote interlude is the sole exception).",
+      "Don't introduce a second motion grammar — everything enters through Reveal.",
+      "Don't set any text below 12px — the sole exception is the 8px ® trademark superscript in the brand wordmark (documented exception in Typography).",
+      "Don't apply Aurora to the CRM behind login, and don't mix Aurora tokens with the outgoing Premium Minimaliste light generation on the same surface — propagate a page fully or leave it."
+    ]
+  }
+}

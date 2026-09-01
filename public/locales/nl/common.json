@@ -193,6 +193,7 @@
     }
   },
   "faq": {
+    "title": "Veelgestelde vragen",
     "q1": "Heb ik technische vaardigheden nodig om uw oplossingen te gebruiken?",
     "a1": "Absoluut niet! Onze oplossingen zijn ontworpen om eenvoudig te gebruiken. Wij zorgen voor alle technische aspecten.",
     "q2": "Hoe lang duurt het om een AI-oplossing te implementeren?",

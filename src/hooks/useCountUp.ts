@@ -53,6 +53,22 @@ export function useCountUp({
     const node = ref.current;
     if (!node || hasAnimated) return;
 
+    // Reduced-motion users see the final value immediately, no count-up.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setHasAnimated(true);
+      setValue(end);
+      return;
+    }
+
+    // Already visible at mount (above the fold): animate now rather than
+    // waiting on an IntersectionObserver notification.
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setHasAnimated(true);
+      animate();
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
@@ -66,7 +82,7 @@ export function useCountUp({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [animate, hasAnimated, threshold]);
+  }, [animate, hasAnimated, threshold, end]);
 
   const displayed = decimals > 0 ? value.toFixed(decimals) : Math.round(value);
   const formattedValue = `${prefix}${displayed}${suffix}`;

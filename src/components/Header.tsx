@@ -6,7 +6,7 @@ export default function Header() {
   const [showStartForm, setShowStartForm] = useState(false);
 
   return (
-    <header className="fixed w-full bg-white/80 backdrop-blur-xl border-b border-zinc-200/50 z-50">
+    <header className="fixed w-full bg-night/85 backdrop-blur-xl border-b border-white/10 z-50">
       <NavMenu onAuditClick={() => setShowStartForm(true)} />
       
       {showStartForm && (

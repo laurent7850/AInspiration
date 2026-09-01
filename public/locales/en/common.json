@@ -193,6 +193,7 @@
     }
   },
   "faq": {
+    "title": "Frequently asked questions",
     "q1": "Do I need technical skills to use your solutions?",
     "a1": "Absolutely not! Our solutions are designed to be easy to use. We handle all the technical aspects.",
     "q2": "How long does it take to implement an AI solution?",

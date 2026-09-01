@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Outfit', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Jost Variable', 'Jost', 'Outfit', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Geist Mono', 'monospace'],
       },
       colors: {
@@ -16,10 +17,21 @@ export default {
         ink: '#18181B',
         secondary: '#71717A',
         muted: '#94A3B8',
+        night: {
+          DEFAULT: '#10102A',
+          soft: '#181838',
+          line: 'rgba(255,255,255,0.10)',
+        },
+        aurora: {
+          indigo: '#4F46E5',
+          violet: '#6D5AE8',
+          teal: '#2DD4BF',
+        },
         accent: {
           DEFAULT: '#4F46E5',
           light: '#6366F1',
           dark: '#4338CA',
+          teal: '#14B8A6',
         },
         whisper: 'rgba(226,232,240,0.5)',
         primary: {

@@ -18,14 +18,14 @@ const AuditSection = lazy(() => import('../components/AuditSection'));
 
 // Skeleton pour la section Audit
 const AuditSkeleton = () => (
-  <section className="py-16 bg-indigo-600">
+  <section className="py-16 bg-canvas">
     <div className="container mx-auto px-4">
       <div className="max-w-3xl mx-auto text-center">
         <div className="animate-pulse">
-          <div className="h-8 bg-indigo-400 rounded w-3/4 mx-auto mb-4"></div>
-          <div className="h-4 bg-indigo-400 rounded w-full mb-2"></div>
-          <div className="h-4 bg-indigo-400 rounded w-2/3 mx-auto mb-8"></div>
-          <div className="h-12 bg-white/20 rounded-lg w-48 mx-auto"></div>
+          <div className="h-8 bg-zinc-200 rounded w-3/4 mx-auto mb-4"></div>
+          <div className="h-4 bg-zinc-200 rounded w-full mb-2"></div>
+          <div className="h-4 bg-zinc-200 rounded w-2/3 mx-auto mb-8"></div>
+          <div className="h-12 bg-zinc-300/60 rounded-lg w-48 mx-auto"></div>
         </div>
       </div>
     </div>

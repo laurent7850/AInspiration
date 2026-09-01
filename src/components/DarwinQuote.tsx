@@ -20,13 +20,13 @@ export default function DarwinQuote() {
   return (
     <section
       ref={ref}
-      className="relative bg-gradient-to-br from-gray-900 via-indigo-950 to-gray-900 py-20 sm:py-28"
+      className="relative bg-aurora-quiet py-20 sm:py-28"
     >
       <div className={`max-w-3xl mx-auto px-6 sm:px-8 relative z-10 transition-transform duration-1000 ease-out ${visible ? 'translate-y-0' : 'translate-y-6'}`}>
-        <div className="w-10 h-px bg-indigo-400 mx-auto mb-10" />
+        <div className="w-10 h-px bg-aurora-teal mx-auto mb-10" />
 
         <blockquote className="text-center">
-          <p className="text-xl sm:text-2xl lg:text-3xl font-light italic text-white/90 leading-relaxed">
+          <p className="font-display text-xl sm:text-2xl lg:text-3xl font-light italic text-white/90 leading-relaxed">
             {t('darwinQuote.text')}
           </p>
           <footer className="mt-8">
@@ -36,7 +36,7 @@ export default function DarwinQuote() {
           </footer>
         </blockquote>
 
-        <div className="w-10 h-px bg-indigo-400 mx-auto mt-10" />
+        <div className="w-10 h-px bg-aurora-teal mx-auto mt-10" />
       </div>
     </section>
   );

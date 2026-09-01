@@ -22,6 +22,13 @@
 }
 
 :root {
+  /* Design tokens — Aurora world (navy + indigo→teal ambient) */
+  --color-night: #10102A;
+  --color-night-soft: #181838;
+  --color-aurora-indigo: #4F46E5;
+  --color-aurora-violet: #6D5AE8;
+  --color-aurora-teal: #2DD4BF;
+
   /* Design tokens — Premium Minimaliste */
   --color-canvas: #F9FAFB;
   --color-surface: #FFFFFF;
@@ -117,10 +124,68 @@ html {
   min-height: -webkit-fill-available;
 }
 
+/* ==========================================================================
+   Aurora world — ambient gradient grounds (navy + indigo→teal nebulas).
+   Layered radial gradients on a deep navy base; no images, GPU-cheap.
+   ========================================================================== */
+
+.bg-aurora {
+  background-color: var(--color-night);
+  background-image:
+    radial-gradient(90rem 60rem at 12% -10%, rgba(79, 70, 229, 0.55), transparent 55%),
+    radial-gradient(70rem 50rem at 50% 30%, rgba(109, 90, 232, 0.30), transparent 60%),
+    radial-gradient(80rem 60rem at 95% 85%, rgba(45, 212, 191, 0.38), transparent 55%);
+}
+
+/* Teal-tilted variant — CTA bands, closing sections */
+.bg-aurora-teal {
+  background-color: var(--color-night);
+  background-image:
+    radial-gradient(70rem 50rem at 0% 100%, rgba(79, 70, 229, 0.50), transparent 60%),
+    radial-gradient(80rem 55rem at 100% 0%, rgba(45, 212, 191, 0.45), transparent 55%);
+}
+
+/* Quiet variant — interlude sections (Darwin quote), barely lit */
+.bg-aurora-quiet {
+  background-color: var(--color-night);
+  background-image:
+    radial-gradient(60rem 40rem at 20% 20%, rgba(79, 70, 229, 0.22), transparent 60%),
+    radial-gradient(60rem 40rem at 85% 90%, rgba(45, 212, 191, 0.14), transparent 60%);
+}
+
+/* Scroll-reveal grammar — one authored motion for the whole page.
+   Elements start slightly low and transparent; .is-revealed lands them
+   with an exponential ease-out. Reduced-motion users see content instantly. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Premium typography defaults */
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
   letter-spacing: -0.025em;
+}
+
+/* Aurora display headings — geometric face, light weight, near-normal tracking */
+.font-display {
+  letter-spacing: -0.01em;
 }
 
 p {

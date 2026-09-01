@@ -47,6 +47,11 @@
         ],
         "createdAt": "2026-08-29T07:25:23.576Z",
         "reason": "sanctioned brand exception: indigo IS the AInspiration brand color (documented BrandName rule); remaining hits are monochrome indigo accents and indigo-to-indigo CTA bands, purple mixes were removed this session"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "8px",
+        "createdAt": "2026-09-01T06:51:26.052Z"
       }
     ]
   }

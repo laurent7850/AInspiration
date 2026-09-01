@@ -10,7 +10,10 @@ vi.mock('./Newsletter', () => ({
 describe('Footer', () => {
   it('should render company name', () => {
     renderWithProviders(<Footer />);
-    expect(screen.getByText('AInspiration')).toBeInTheDocument();
+    // Brand name is split: "AI" (indigo) + "nspiration" (white)
+    expect(
+      screen.getByText((_, el) => el?.tagName === 'SPAN' && el.textContent === 'AInspiration')
+    ).toBeInTheDocument();
   });
 
   it('should render contact info', () => {
@@ -51,6 +54,6 @@ describe('Footer', () => {
   it('should render feature links', () => {
     renderWithProviders(<Footer />);
     const auditLink = screen.getByText('Audit IA');
-    expect(auditLink.closest('a')).toHaveAttribute('href', '#audit');
+    expect(auditLink.closest('a')).toHaveAttribute('href', '/contact');
   });
 });

@@ -193,6 +193,7 @@
     }
   },
   "faq": {
+    "title": "Questions fréquentes",
     "q1": "Faut-il des compétences techniques pour utiliser vos solutions ?",
     "a1": "Absolument pas ! Nos solutions sont conçues pour être simples d'utilisation. Nous nous occupons de toute la partie technique.",
     "q2": "Combien de temps faut-il pour mettre en place une solution IA ?",

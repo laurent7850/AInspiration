@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Scan,
-  FileSearch,
-  PieChart,
-  Lightbulb,
-  ArrowRight,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import AuditForm from './AuditForm';
 
@@ -14,10 +8,10 @@ export default function AuditSection() {
   const [showStartForm, setShowStartForm] = useState(false);
 
   const auditSteps = [
-    { id: 1, icon: Scan, title: t('audit.steps.analysis.title'), description: t('audit.steps.analysis.description') },
-    { id: 2, icon: FileSearch, title: t('audit.steps.diagnostic.title'), description: t('audit.steps.diagnostic.description') },
-    { id: 3, icon: PieChart, title: t('audit.steps.impact.title'), description: t('audit.steps.impact.description') },
-    { id: 4, icon: Lightbulb, title: t('audit.steps.plan.title'), description: t('audit.steps.plan.description') },
+    { id: 1, title: t('audit.steps.analysis.title'), description: t('audit.steps.analysis.description') },
+    { id: 2, title: t('audit.steps.diagnostic.title'), description: t('audit.steps.diagnostic.description') },
+    { id: 3, title: t('audit.steps.impact.title'), description: t('audit.steps.impact.description') },
+    { id: 4, title: t('audit.steps.plan.title'), description: t('audit.steps.plan.description') },
   ];
 
   return (
@@ -25,7 +19,7 @@ export default function AuditSection() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-2xl mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink tracking-tight mb-4">
+          <h2 className="font-display font-light text-3xl sm:text-4xl lg:text-6xl text-ink mb-4">
             {t('audit.title')}
           </h2>
           <p className="text-lg text-secondary leading-relaxed">
@@ -40,12 +34,9 @@ export default function AuditSection() {
               key={step.id}
               className="relative bg-white rounded-card p-8 shadow-lift hover:shadow-diffuse transition-all duration-300"
             >
-              <span className="text-xs font-mono text-secondary tracking-wider mb-4 block">
-                0{step.id}
+              <span className="font-display text-3xl font-light text-accent-teal mb-5 block">
+                /0{step.id}
               </span>
-              <div className="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center mb-4">
-                <step.icon className="w-5 h-5 text-indigo-600" />
-              </div>
               <h3 className="text-lg font-semibold text-ink mb-2 tracking-tight">
                 {step.title}
               </h3>
@@ -56,8 +47,8 @@ export default function AuditSection() {
           ))}
         </div>
 
-        {/* CTA — dark block */}
-        <div className="bg-indigo-600 rounded-[2rem] p-10 lg:p-14 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+        {/* CTA — aurora band */}
+        <div className="bg-aurora rounded-[2rem] p-10 lg:p-14 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
           <div>
             <h3 className="text-2xl lg:text-3xl font-bold text-white tracking-tight mb-2">
               {t('audit.cta')}

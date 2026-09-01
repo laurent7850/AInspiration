@@ -65,7 +65,7 @@ const Testimonials: React.FC = () => {
 
         {/* Header — left-aligned */}
         <div className="max-w-2xl mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink tracking-tight mb-4">
+          <h2 className="font-display font-light text-3xl sm:text-4xl lg:text-6xl text-ink mb-4">
             {t('testimonials.title')}
           </h2>
           <p className="text-lg text-secondary leading-relaxed">
@@ -122,8 +122,8 @@ const Testimonials: React.FC = () => {
           })}
         </div>
 
-        {/* CTA — dark, clean */}
-        <div className="bg-indigo-600 rounded-[2rem] p-10 lg:p-14 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+        {/* CTA — aurora band */}
+        <div className="bg-aurora-teal rounded-[2rem] p-10 lg:p-14 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
           <div>
             <h3 className="text-2xl lg:text-3xl font-bold text-white tracking-tight mb-2">
               {t('testimonials.cta.title')}
