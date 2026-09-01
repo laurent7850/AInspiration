@@ -22,7 +22,7 @@ const BlogCTA: React.FC<BlogCTAProps> = ({ variant = 'default' }) => {
 
   return (
     <>
-      <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-2xl p-8 md:p-12 text-white my-12">
+      <div className="bg-aurora-teal rounded-2xl p-8 md:p-12 text-white my-12">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-center mb-6">
             <div className="bg-white/20 p-3 rounded-full">

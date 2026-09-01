@@ -192,17 +192,21 @@ const SolutionsPage: React.FC = () => {
         keywords={seoConfig.keywords}
         schema={serviceSchema}
       />
-      <section className="pt-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-10">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Solutions d'Intelligence Artificielle
-          </h1>
-          <p className="text-xl text-gray-600">
-            Des solutions innovantes et accessibles pour transformer votre entreprise
-          </p>
+      <section className="relative bg-aurora-quiet text-white overflow-hidden pt-28 lg:pt-32 pb-12 lg:pb-16">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h1 className="font-display font-light text-3xl sm:text-4xl lg:text-6xl text-white leading-[1.06] mb-5">
+              Solutions d'<span className="text-aurora-teal">Intelligence Artificielle</span>
+            </h1>
+            <p className="text-lg sm:text-xl text-indigo-100/85 max-w-[55ch] leading-relaxed">
+              Des solutions innovantes et accessibles pour transformer votre entreprise
+            </p>
+          </div>
         </div>
-        
+      </section>
+      <section className="bg-gradient-to-b from-gray-50 to-white pt-12">
+        <div className="container mx-auto px-4">
+
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map(category => (
@@ -256,7 +260,7 @@ const SolutionsPage: React.FC = () => {
         <div className="max-w-6xl mx-auto mb-16">
           <div className="bg-indigo-50 rounded-2xl p-8">
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
                 Une approche intégrée pour des résultats optimaux
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -284,7 +288,7 @@ const SolutionsPage: React.FC = () => {
         </div>
 
         {/* CTA */}
-        <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-2xl p-8 lg:p-12 text-white mb-16">
+        <div className="bg-aurora-teal rounded-2xl p-8 lg:p-12 text-white mb-16">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-4">
@@ -307,7 +311,7 @@ const SolutionsPage: React.FC = () => {
         
         {/* Expert Guidance Section */}
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
             Un accompagnement expert à chaque étape
           </h2>
           <p className="text-lg text-gray-600 mb-8">

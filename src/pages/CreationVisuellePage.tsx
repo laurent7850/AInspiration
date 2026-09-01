@@ -14,6 +14,7 @@ import {
   Clock
 } from 'lucide-react';
 import AuditForm from '../components/AuditForm';
+import ServiceHero from '../components/ui/ServiceHero';
 import OptimizedImage from '../components/ui/OptimizedImage';
 
 const CreationVisuellePage: React.FC = () => {
@@ -114,63 +115,28 @@ const CreationVisuellePage: React.FC = () => {
   ];
 
   return (
-    <section className="pt-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="bg-gradient-to-b from-gray-50 to-white">
       <SEOHead
         title="Création Visuelle IA | AInspiration"
         description="Générez des images de qualité professionnelle pour tous vos besoins marketing et communication grâce à notre solution de création visuelle propulsée par l'IA."
       />
 
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="inline-flex gap-2 items-center bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium mb-6">
-              <Image className="w-4 h-4" />
-              <span>Génération d'images IA</span>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-              Des visuels <span className="text-indigo-600">professionnels</span> en quelques minutes
-            </h1>
-            
-            <p className="text-lg text-gray-600 mb-8">
-              Générez des images uniques et personnalisées pour tous vos besoins marketing
-              et communication, sans compétences techniques, grâce à l'intelligence artificielle.
-            </p>
-            
-            <div className="flex flex-wrap gap-4">
-              <button 
-                onClick={() => setShowStartForm(true)}
-                className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2 shadow-lg"
-              >
-                Essayer gratuitement
-                <ArrowRight className="w-5 h-5" />
-              </button>
-              
-              <button 
-                onClick={() => setShowStartForm(true)}
-                className="bg-white border border-indigo-200 text-indigo-600 px-6 py-3 rounded-lg hover:bg-indigo-50 transition-colors"
-              >
-                Voir des exemples
-              </button>
-            </div>
-          </div>
-          
-          <div className="relative">
-            <OptimizedImage
-              src="https://images.unsplash.com/photo-1634986666676-ec8fd927c23d"
-              alt="Création d'images avec l'IA"
-              responsive="half"
-              className="relative rounded-xl shadow-xl w-full"
-            />
-          </div>
-        </div>
-      </div>
+      {/* Hero — Aurora declension */}
+      <ServiceHero
+        title="Des visuels"
+        highlight="professionnels"
+        titleSuffix="en quelques minutes"
+        description="Générez des images uniques et personnalisées pour tous vos besoins marketing et communication, sans compétences techniques, grâce à l'intelligence artificielle."
+        primary={{ label: 'Essayer gratuitement', onClick: () => setShowStartForm(true) }}
+        secondary={{ label: 'Voir des exemples', onClick: () => setShowStartForm(true) }}
+        image="https://images.unsplash.com/photo-1634986666676-ec8fd927c23d"
+        imageAlt="Création d'images avec l'IA"
+      />
 
       {/* Key Capabilities */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
             Des possibilités créatives infinies
           </h2>
           <p className="text-lg text-gray-600">
@@ -201,7 +167,7 @@ const CreationVisuellePage: React.FC = () => {
       <div className="bg-indigo-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
               Galerie d'exemples
             </h2>
             <p className="text-lg text-gray-600">
@@ -234,7 +200,7 @@ const CreationVisuellePage: React.FC = () => {
       {/* Use Cases */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
             Applications concrètes
           </h2>
           <p className="text-lg text-gray-600">
@@ -299,7 +265,7 @@ const CreationVisuellePage: React.FC = () => {
       <div className="bg-indigo-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
               Exemples de prompts
             </h2>
             <p className="text-lg text-gray-600">
@@ -320,7 +286,7 @@ const CreationVisuellePage: React.FC = () => {
       {/* Pricing Overview */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
             Une solution abordable et sans engagement
           </h2>
           <p className="text-lg text-gray-600">
@@ -438,7 +404,7 @@ const CreationVisuellePage: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 py-16">
+      <div className="bg-aurora-teal py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="text-white">

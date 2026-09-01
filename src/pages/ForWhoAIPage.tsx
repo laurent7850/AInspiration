@@ -36,24 +36,28 @@ const ForWhoAIPage: React.FC = () => {
         description={t('seo.description')}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl mb-8">
-          {t('hero.title')}
-        </h1>
-
-        {/* Introduction */}
-        <div className="bg-indigo-50 rounded-xl p-8 mb-12">
-          <p className="text-xl text-gray-700 mb-4 max-w-3xl">
-            <span className="font-semibold text-indigo-700">{t('hero.introBold')}</span>{t('hero.introText')}
-          </p>
-          <p className="text-lg text-gray-600">
-            {t('hero.introSub')}
-          </p>
+      {/* Hero — Aurora declension */}
+      <section className="relative bg-aurora text-white overflow-hidden pt-28 lg:pt-32 pb-12 lg:pb-16">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h1 className="font-display font-light text-3xl sm:text-4xl lg:text-6xl text-white leading-[1.06] mb-6">
+              {t('hero.title')}
+            </h1>
+            <p className="text-lg sm:text-xl text-indigo-100/85 max-w-[55ch] leading-relaxed mb-3">
+              <span className="font-semibold text-white">{t('hero.introBold')}</span>{t('hero.introText')}
+            </p>
+            <p className="text-lg text-indigo-100/70 max-w-[55ch] leading-relaxed">
+              {t('hero.introSub')}
+            </p>
+          </div>
         </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         {/* Business Size Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('sizes.sectionTitle')}</h2>
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-6">{t('sizes.sectionTitle')}</h2>
 
           <div className="grid gap-8 md:grid-cols-3">
             <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
@@ -114,7 +118,7 @@ const ForWhoAIPage: React.FC = () => {
 
         {/* Adaptation Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('adaptation.sectionTitle')}</h2>
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-6">{t('adaptation.sectionTitle')}</h2>
 
           <div className="grid gap-6 md:grid-cols-2">
             <div className="bg-white rounded-xl shadow p-6">
@@ -161,7 +165,7 @@ const ForWhoAIPage: React.FC = () => {
 
         {/* Sectors Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('sectors.sectionTitle')}</h2>
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-6">{t('sectors.sectionTitle')}</h2>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <div className="bg-white rounded-xl shadow p-6">
@@ -218,7 +222,7 @@ const ForWhoAIPage: React.FC = () => {
 
         {/* Key Benefits Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('keyBenefits.sectionTitle')}</h2>
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-6">{t('keyBenefits.sectionTitle')}</h2>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             <div className="bg-white rounded-xl shadow p-6 text-center">

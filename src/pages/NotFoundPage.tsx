@@ -13,31 +13,31 @@ export default function NotFoundPage() {
         description={t('notFound.seo.description')}
         noindex
       />
-      <section className="py-20 bg-gradient-to-b from-indigo-50 to-white min-h-[60vh] flex items-center">
+      <section className="bg-aurora-quiet pt-28 py-20 min-h-[60vh] flex items-center">
         <div className="container mx-auto px-4 text-center max-w-lg">
-          <div className="text-8xl font-bold text-indigo-100 mb-4">404</div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">{t('notFound.title')}</h1>
-          <p className="text-gray-600 mb-8">
+          <div className="font-display font-light text-8xl text-white/15 mb-4">404</div>
+          <h1 className="font-display font-light text-2xl sm:text-3xl text-white mb-4">{t('notFound.title')}</h1>
+          <p className="text-indigo-100/80 mb-8">
             {t('notFound.message')}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-full font-semibold hover:bg-indigo-500 transition-colors"
             >
               <Home className="w-4 h-4" />
               {t('notFound.home')}
             </Link>
             <button
               onClick={() => window.history.back()}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white ring-1 ring-white/25 hover:ring-white/50 hover:bg-white/5 transition-all"
             >
               <ArrowLeft className="w-4 h-4" />
               {t('notFound.back')}
             </button>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white ring-1 ring-white/25 hover:ring-white/50 hover:bg-white/5 transition-all"
             >
               <Search className="w-4 h-4" />
               {t('notFound.contact')}

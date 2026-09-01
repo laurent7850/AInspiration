@@ -76,7 +76,7 @@ export default function BlogPost() {
         />
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">Article non trouvé</h1>
+            <h1 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">Article non trouvé</h1>
             <p className="text-gray-600 mb-8">{error || 'Cet article n\'existe pas ou n\'est plus disponible.'}</p>
             <button
               onClick={() => navigate('/blog')}

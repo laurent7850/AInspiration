@@ -18,6 +18,7 @@ import {
   Brain
 } from 'lucide-react';
 import AuditForm from '../components/AuditForm';
+import ServiceHero from '../components/ui/ServiceHero';
 import OptimizedImage from '../components/ui/OptimizedImage';
 import ImageFeature from '../components/creativity/ImageFeature';
 import ImageGallery from '../components/creativity/ImageGallery';
@@ -64,48 +65,25 @@ const CreationIAPage: React.FC = () => {
   const samplePrompts = t('page.visualTab.prompts.items', { returnObjects: true }) as string[];
 
   return (
-    <section className="pt-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="bg-gradient-to-b from-gray-50 to-white">
       <SEOHead
         title={t('page.seo.title')}
         description={t('page.seo.description')}
         schema={getServiceSchema("Création de Contenu IA pour PME", "Génération de contenu marketing par IA : articles de blog, posts réseaux sociaux, newsletters, visuels. Contenu optimisé SEO et adapté à votre marque.")}
       />
 
-      {/* Hero */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex gap-2 items-center bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium mb-6">
-            <Brain className="w-4 h-4" />
-            <span>{t('page.hero.badge')}</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-            {t('page.hero.title')} <span className="text-indigo-600">{t('page.hero.titleHighlight')}</span> {t('page.hero.titleSuffix')}
-          </h1>
-          <p className="text-lg text-gray-600 mb-8">
-            {t('page.hero.description')}
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button
-              type="button"
-              onClick={() => setShowStartForm(true)}
-              className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2 shadow-lg"
-            >
-              {t('page.hero.ctaTry')}
-              <ArrowRight className="w-5 h-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowStartForm(true)}
-              className="bg-white border border-indigo-200 text-indigo-600 px-6 py-3 rounded-lg hover:bg-indigo-50 transition-colors"
-            >
-              {t('page.hero.ctaExamples')}
-            </button>
-          </div>
-        </div>
-      </div>
+      {/* Hero — Aurora declension */}
+      <ServiceHero
+        title={t('page.hero.title')}
+        highlight={t('page.hero.titleHighlight')}
+        titleSuffix={t('page.hero.titleSuffix')}
+        description={t('page.hero.description')}
+        primary={{ label: t('page.hero.ctaTry'), onClick: () => setShowStartForm(true) }}
+        secondary={{ label: t('page.hero.ctaExamples'), onClick: () => setShowStartForm(true) }}
+      />
 
       {/* Tabs */}
-      <div className="container mx-auto px-4 mb-12">
+      <div className="container mx-auto px-4 mb-12 mt-12">
         <div className="flex justify-center gap-2 bg-gray-100 rounded-2xl p-1 max-w-sm mx-auto">
           <button
             type="button"
@@ -252,7 +230,7 @@ const CreationIAPage: React.FC = () => {
           {/* Key Capabilities */}
           <div className="container mx-auto px-4 py-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
                 {t('page.visualTab.capabilities.sectionTitle')}
               </h2>
               <p className="text-lg text-gray-600">
@@ -281,7 +259,7 @@ const CreationIAPage: React.FC = () => {
           <div className="bg-indigo-50 py-16">
             <div className="container mx-auto px-4">
               <div className="text-center max-w-3xl mx-auto mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
                   {t('page.visualTab.gallery.sectionTitle')}
                 </h2>
                 <p className="text-lg text-gray-600">
@@ -314,7 +292,7 @@ const CreationIAPage: React.FC = () => {
           {/* Use Cases */}
           <div className="container mx-auto px-4 py-16">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
                 {t('page.visualTab.useCases.sectionTitle')}
               </h2>
               <p className="text-lg text-gray-600">
@@ -376,7 +354,7 @@ const CreationIAPage: React.FC = () => {
           <div className="bg-indigo-50 py-16">
             <div className="container mx-auto px-4">
               <div className="text-center max-w-3xl mx-auto mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
                   {t('page.visualTab.prompts.sectionTitle')}
                 </h2>
                 <p className="text-lg text-gray-600">
@@ -397,7 +375,7 @@ const CreationIAPage: React.FC = () => {
           {/* Pricing Overview */}
           <div className="container mx-auto px-4 py-16">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
                 {t('page.visualTab.pricing.sectionTitle')}
               </h2>
               <p className="text-lg text-gray-600">
@@ -490,7 +468,7 @@ const CreationIAPage: React.FC = () => {
           </div>
 
           {/* CTA visuel */}
-          <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 py-16">
+          <div className="bg-aurora-teal py-16">
             <div className="container mx-auto px-4">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="text-white">

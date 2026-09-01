@@ -39,6 +39,11 @@ const routeMap: Record<string, string> = {
   'pourquoi-ia': 'Pourquoi l\'IA',
   'pour-qui-ia': 'Pour qui l\'IA',
   'privacy': 'Politique de confidentialité',
+  'mentions-legales': 'Mentions légales',
+  'cgv': 'Conditions générales de vente',
+  'cgu': 'Conditions générales d\'utilisation',
+  'produits': 'Produits',
+  'creation-ia': 'Création IA',
   'opportunities': 'Gestion des opportunités'
 };
 
@@ -61,15 +66,15 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ routes, className = '' }) => 
           return (
             <li key={index} className={`breadcrumb-item flex items-center ${isLast ? 'breadcrumb-current' : ''}`}>
               {isLast ? (
-                <span aria-current="page" className={isLast ? 'font-medium text-indigo-600' : ''}>
+                <span aria-current="page" className="font-medium text-white">
                   {segment.breadcrumb}
                 </span>
               ) : (
                 <>
-                  <Link to={segment.path} className="breadcrumb-link hover:text-indigo-600 transition-colors">
+                  <Link to={segment.path} className="text-indigo-100/60 hover:text-white transition-colors">
                     {segment.breadcrumb}
                   </Link>
-                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400" aria-hidden="true" />
+                  <ChevronRight className="w-4 h-4 mx-1 text-white/25" aria-hidden="true" />
                 </>
               )}
             </li>

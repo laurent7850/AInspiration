@@ -11,9 +11,13 @@ export default function MentionsLegalesPage() {
         description={t('mentions.seo.description')}
         noindex
       />
-      <section className="py-20 bg-gradient-to-b from-indigo-50 to-white">
+      <div className="relative bg-aurora-quiet text-white overflow-hidden pt-28 lg:pt-32 pb-10 lg:pb-14">
         <div className="container mx-auto px-4 max-w-3xl">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8">{t('mentions.pageTitle')}</h1>
+          <h1 className="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-white leading-[1.06]">{t('mentions.pageTitle')}</h1>
+        </div>
+      </div>
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-3xl">
 
           <div className="prose prose-gray max-w-none space-y-6">
             <h2 className="text-xl font-semibold text-gray-900">{t('mentions.s1_title')}</h2>

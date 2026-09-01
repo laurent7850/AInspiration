@@ -1,5 +1,4 @@
 import React from 'react';
-import SectionHeader from '../components/ui/SectionHeader';
 import SEOHead from '../components/SEOHead';
 import { CheckCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -61,15 +60,24 @@ const CaseStudiesPage: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="bg-gradient-to-b from-gray-50 to-white">
       <SEOHead canonical="/etudes-de-cas" title={t('seo.title')} description={t('seo.description')} />
-      <div className="container mx-auto px-4">
-        <SectionHeader
-          title={t('pageTitle')}
-          subtitle={t('pageSubtitle')}
-          centered
-          as="h1"
-        />
+
+      {/* Hero — Aurora declension (quiet ground: a Read surface) */}
+      <div className="relative bg-aurora-quiet text-white overflow-hidden pt-28 lg:pt-32 pb-12 lg:pb-16 mb-16">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h1 className="font-display font-light text-3xl sm:text-4xl lg:text-6xl text-white leading-[1.06] mb-5">
+              {t('pageTitle')}
+            </h1>
+            <p className="text-lg sm:text-xl text-indigo-100/85 max-w-[55ch] leading-relaxed">
+              {t('pageSubtitle')}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 pb-20">
 
         <div className="space-y-16 mb-16">
           {scenarios.map((scenario, index) => (

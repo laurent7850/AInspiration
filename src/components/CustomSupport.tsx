@@ -93,16 +93,21 @@ export default function CustomSupport() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            {t('custom.hero.title')}
-          </h1>
-          <p className="text-xl text-gray-600">
-            {t('custom.hero.subtitle')}
-          </p>
+    <section className="bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero — Aurora declension */}
+      <div className="relative bg-aurora text-white overflow-hidden pt-28 lg:pt-32 pb-12 lg:pb-16 mb-16">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h1 className="font-display font-light text-3xl sm:text-4xl lg:text-6xl text-white leading-[1.06] mb-5">
+              {t('custom.hero.title')}
+            </h1>
+            <p className="text-lg sm:text-xl text-indigo-100/85 max-w-[55ch] leading-relaxed">
+              {t('custom.hero.subtitle')}
+            </p>
+          </div>
         </div>
+      </div>
+      <div className="container mx-auto px-4 pb-20">
 
         {/* Notre approche */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">

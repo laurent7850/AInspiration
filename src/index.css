@@ -594,9 +594,9 @@ input, select, textarea {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Fil d'Ariane */
+/* Fil d'Ariane — sits on the night strip under the header (Aurora world) */
 .breadcrumb {
-  @apply flex flex-wrap items-center text-sm text-gray-500;
+  @apply flex flex-wrap items-center text-sm text-indigo-100/60;
 }
 
 .breadcrumb-item:not(:last-child) {
@@ -604,9 +604,9 @@ input, select, textarea {
 }
 
 .breadcrumb-link {
-  @apply text-zinc-500 hover:text-zinc-900 transition-colors;
+  @apply text-indigo-100/60 hover:text-white transition-colors;
 }
 
 .breadcrumb-current {
-  @apply font-medium text-zinc-900;
+  @apply font-medium text-white;
 }

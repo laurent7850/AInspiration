@@ -69,18 +69,23 @@ const AboutPage: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 lg:py-32 bg-canvas">
+    <>
       <SEOHead canonical="/a-propos" />
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Page Header */}
-        <div className="max-w-2xl mb-20">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-ink tracking-tighter leading-[1.05] mb-4">
-            {t('pageTitle')}
-          </h1>
-          <p className="text-xl text-secondary leading-relaxed">
-            {t('pageSubtitle')}
-          </p>
+      {/* Hero — Aurora declension (quiet ground: a Read surface) */}
+      <section className="relative bg-aurora-quiet text-white overflow-hidden pt-28 lg:pt-32 pb-12 lg:pb-16">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h1 className="font-display font-light text-3xl sm:text-4xl lg:text-6xl text-white leading-[1.06] mb-5">
+              {t('pageTitle')}
+            </h1>
+            <p className="text-lg sm:text-xl text-indigo-100/85 max-w-[55ch] leading-relaxed">
+              {t('pageSubtitle')}
+            </p>
+          </div>
         </div>
+      </section>
+    <section className="py-16 lg:py-24 bg-canvas">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Mission */}
         <div className="max-w-3xl mb-24">
@@ -158,7 +163,7 @@ const AboutPage: React.FC = () => {
         {/* Related Services */}
         <div className="mt-16 mb-8">
           <RelatedServices links={[
-            { path: '/etudes-de-cas', title: 'Études de cas', description: 'Résultats concrets de nos clients' },
+            { path: '/etudes-de-cas', title: 'Scénarios d\'usage', description: 'Ce que l\'IA change, métier par métier' },
             { path: '/contact', title: 'Contact', description: 'Parlons de votre projet IA' },
             { path: '/blog', title: 'Blog', description: 'Articles et guides sur l\'IA pour PME' },
             { path: '/audit', title: 'Audit IA Gratuit', description: 'Analyse complète de votre activité en 24h' },
@@ -166,6 +171,7 @@ const AboutPage: React.FC = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

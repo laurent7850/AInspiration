@@ -139,17 +139,21 @@ const ContactPage: React.FC = () => {
         description={seoConfig.description}
         keywords={seoConfig.keywords}
       />
-      <section className="py-24 lg:py-32 bg-canvas">
+      {/* Hero — Aurora declension (teal ground: an action page) */}
+      <section className="relative bg-aurora-teal text-white overflow-hidden pt-28 lg:pt-32 pb-12 lg:pb-16">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Page Header */}
-          <div className="max-w-2xl mb-16">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-ink tracking-tighter leading-[1.05] mb-4">
+          <div className="max-w-3xl">
+            <h1 className="font-display font-light text-3xl sm:text-4xl lg:text-6xl text-white leading-[1.06] mb-5">
               {t('contact.pageTitle')}
             </h1>
-            <p className="text-xl text-secondary leading-relaxed">
+            <p className="text-lg sm:text-xl text-indigo-100/85 max-w-[55ch] leading-relaxed">
               {t('contact.pageSubtitle')}
             </p>
           </div>
+        </div>
+      </section>
+      <section className="py-16 lg:py-24 bg-canvas">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="grid md:grid-cols-3 gap-4 mb-16">
           {contactInfo.map((info, index) => {

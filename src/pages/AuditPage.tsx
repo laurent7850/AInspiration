@@ -46,42 +46,34 @@ export default function AuditPage() {
         schema={auditSchema}
       />
 
-      {/* Hero */}
-      <section className="pt-20 pb-16 bg-gradient-to-b from-indigo-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-              <Clock className="w-4 h-4" />
-              {t('page.badge')}
-            </div>
-
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
+      {/* Hero — Aurora declension (teal ground: the action page) */}
+      <section className="relative bg-aurora-teal text-white overflow-hidden pt-28 lg:pt-36 pb-16 lg:pb-20">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-7xl text-white leading-[1.06] mb-6">
               {t('page.heroTitle')}{' '}
-              <span className="text-indigo-600">{t('page.heroHighlight')}</span>
+              <span className="text-aurora-teal">{t('page.heroHighlight')}</span>
             </h1>
 
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-indigo-100/85 max-w-[55ch] leading-relaxed mb-10">
               {t('page.heroDescription')}
             </p>
 
             <button
               onClick={() => setShowAuditForm(true)}
-              className="bg-indigo-600 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center gap-3"
+              className="group inline-flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-500 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-[0_18px_45px_-12px_rgba(79,70,229,0.65)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               {t('page.ctaButton')}
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
             </button>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-gray-500">
-              {guaranteeKeys.map((key, i) => {
-                const Icon = guaranteeIcons[i];
-                return (
-                  <div key={key} className="flex items-center gap-2">
-                    <Icon className="w-4 h-4 text-green-500" />
-                    <span>{t(`page.guarantees.${key}`)}</span>
-                  </div>
-                );
-              })}
+            <div className="mt-10 flex flex-wrap gap-8">
+              {guaranteeKeys.map((key) => (
+                <div key={key} className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-aurora-teal" />
+                  <span className="text-sm text-indigo-100/80">{t(`page.guarantees.${key}`)}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

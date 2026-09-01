@@ -5,6 +5,7 @@ import type { LucideIcon } from 'lucide-react';
 import SEOHead from './SEOHead';
 import AuditForm from './AuditForm';
 import CallToAction from './ui/CallToAction';
+import ServiceHero from './ui/ServiceHero';
 import OptimizedImage from './ui/OptimizedImage';
 import { getServiceSchema } from '../config/seoConfig';
 
@@ -68,7 +69,7 @@ const MediaService: React.FC<MediaServiceProps> = ({
   const metrics = t('metrics', { returnObjects: true }) as Metric[];
 
   return (
-    <section className="pt-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="bg-gradient-to-b from-gray-50 to-white">
       <SEOHead
         title={t('seo.title')}
         description={t('seo.description')}
@@ -76,52 +77,21 @@ const MediaService: React.FC<MediaServiceProps> = ({
         schema={getServiceSchema(schemaName, schemaDescription, { url: canonical })}
       />
 
-      {/* Hero */}
-      <div className="container mx-auto px-4 py-12 lg:py-16">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div>
-            <div className="inline-flex gap-2 items-center bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium mb-6">
-              <BadgeIcon className="w-4 h-4" />
-              <span>{t('hero.badge')}</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-              {t('hero.title')}{' '}
-              <span className="text-indigo-600">{t('hero.titleHighlight')}</span>
-            </h1>
-            <p className="text-lg text-gray-600 mb-8">{t('hero.description')}</p>
-            <div className="flex flex-wrap gap-4">
-              <button
-                type="button"
-                onClick={() => setShowForm(true)}
-                className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2 shadow-lg"
-              >
-                {t('hero.ctaPrimary')}
-                <ArrowRight className="w-5 h-5" />
-              </button>
-              <button
-                type="button"
-                onClick={() => setShowForm(true)}
-                className="bg-white border border-indigo-200 text-indigo-600 px-6 py-3 rounded-lg hover:bg-indigo-50 transition-colors"
-              >
-                {t('hero.ctaSecondary')}
-              </button>
-            </div>
-          </div>
-          <div className="relative">
-            <OptimizedImage
-              src={heroImage}
-              alt={t('hero.imageAlt')}
-              responsive="half"
-              className="relative rounded-2xl shadow-2xl w-full h-[320px] md:h-[400px] object-cover"
-            />
-          </div>
-        </div>
-      </div>
+      {/* Hero — Aurora declension */}
+      <ServiceHero
+        title={t('hero.title')}
+        highlight={t('hero.titleHighlight')}
+        description={t('hero.description')}
+        primary={{ label: t('hero.ctaPrimary'), onClick: () => setShowForm(true) }}
+        secondary={{ label: t('hero.ctaSecondary'), onClick: () => setShowForm(true) }}
+        image={heroImage}
+        imageAlt={t('hero.imageAlt')}
+      />
 
       {/* Features */}
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('features.title')}</h2>
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">{t('features.title')}</h2>
           <p className="text-lg text-gray-600">{t('features.subtitle')}</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -158,7 +128,7 @@ const MediaService: React.FC<MediaServiceProps> = ({
       {/* Use cases */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('useCases.title')}</h2>
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">{t('useCases.title')}</h2>
           <p className="text-lg text-gray-600">{t('useCases.subtitle')}</p>
         </div>
 

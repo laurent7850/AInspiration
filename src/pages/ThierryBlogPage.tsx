@@ -43,7 +43,7 @@ const ThierryBlogPage: React.FC = () => {
 
           {/* Blog Header */}
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
               {t('thierry.header.title')}
             </h1>
 
@@ -75,7 +75,7 @@ const ThierryBlogPage: React.FC = () => {
 
           {/* Challenge Section */}
           <div className="bg-gradient-to-br from-indigo-50 to-white rounded-2xl p-8 md:p-12 mb-12 border border-indigo-100">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('thierry.challenge.title')}</h2>
+            <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-6">{t('thierry.challenge.title')}</h2>
 
             <div className="prose prose-lg max-w-none text-gray-700">
               <p>{t('thierry.challenge.intro')}</p>
@@ -99,7 +99,7 @@ const ThierryBlogPage: React.FC = () => {
 
           {/* Solution Section */}
           <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('thierry.solution.title')}</h2>
+            <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-6">{t('thierry.solution.title')}</h2>
 
             <p className="text-lg text-gray-700 mb-8">
               {t('thierry.solution.intro')}
@@ -139,14 +139,14 @@ const ThierryBlogPage: React.FC = () => {
 
           {/* Results Title */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('thierry.results.title')}</h2>
+            <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">{t('thierry.results.title')}</h2>
             <p className="text-xl text-gray-600">
               {t('thierry.results.subtitle')}
             </p>
           </div>
 
           {/* Results Section */}
-          <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-2xl p-8 md:p-12 mb-12">
+          <div className="bg-aurora-teal rounded-2xl p-8 md:p-12 mb-12">
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center text-white">
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -196,7 +196,7 @@ const ThierryBlogPage: React.FC = () => {
 
           {/* Impact Section */}
           <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('thierry.impact.title')}</h2>
+            <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-6">{t('thierry.impact.title')}</h2>
 
             <p className="text-lg text-gray-700 mb-8">
               {t('thierry.impact.intro')}
@@ -239,7 +239,7 @@ const ThierryBlogPage: React.FC = () => {
 
           {/* Success Keys */}
           <div className="bg-gradient-to-br from-indigo-50 to-white rounded-2xl p-8 md:p-12 mb-12 border border-indigo-100">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">{t('thierry.successKeys.title')}</h2>
+            <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-6 text-center">{t('thierry.successKeys.title')}</h2>
 
             <p className="text-lg text-gray-700 mb-8 text-center">
               {t('thierry.successKeys.subtitle')}
@@ -262,7 +262,7 @@ const ThierryBlogPage: React.FC = () => {
 
           {/* Getting Started */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('thierry.gettingStarted.title')}</h2>
+            <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">{t('thierry.gettingStarted.title')}</h2>
             <p className="text-xl text-gray-600">
               {t('thierry.gettingStarted.subtitle')}
             </p>
@@ -272,7 +272,7 @@ const ThierryBlogPage: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             {gettingStartedSteps.map((step, index) => (
               <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div className="w-14 h-14 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-full flex items-center justify-center text-xl font-bold text-white mb-4">
+                <div className="w-14 h-14 bg-aurora-teal rounded-full flex items-center justify-center text-xl font-bold text-white mb-4">
                   {index + 1}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>

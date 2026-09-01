@@ -107,7 +107,7 @@ export default function BlogArticleLayout({
       )}
 
       {metrics && metrics.length > 0 && (
-        <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-2xl p-8 md:p-12">
+        <div className="bg-aurora-teal rounded-2xl p-8 md:p-12">
           <div className={`grid md:grid-cols-${Math.min(metrics.length, 4)} gap-8`}>
             {metrics.map((metric, index) => (
               <div key={index} className="text-center text-white">

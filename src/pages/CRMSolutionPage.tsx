@@ -83,62 +83,63 @@ const CRMSolutionPage: React.FC = () => {
         keywords={t('page.seo.keywords')}
       />
 
-      {/* Hero Section */}
-      <div className="bg-gradient-to-br from-indigo-900 to-indigo-700 text-white">
-        <div className="container mx-auto px-4 py-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <span className="inline-block bg-indigo-800 bg-opacity-50 px-3 py-1 rounded-full text-sm font-medium">{t('page.hero.badge')}</span>
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+      {/* Hero — Aurora declension */}
+      <section className="relative bg-aurora text-white overflow-hidden pt-28 lg:pt-36 pb-16 lg:pb-20">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+            <div className="lg:col-span-7">
+              <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-7xl text-white leading-[1.06] mb-6">
                 {t('page.hero.title')}
               </h1>
-              <p className="text-xl text-indigo-100">
+              <p className="text-lg sm:text-xl text-indigo-100/85 max-w-[55ch] leading-relaxed mb-10">
                 {t('page.hero.description')}
               </p>
-              <div className="pt-4 flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => navigate('/login')}
-                  className="bg-white text-indigo-700 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition flex items-center justify-center gap-2"
+                  className="group inline-flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-500 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-[0_18px_45px_-12px_rgba(79,70,229,0.65)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                 >
                   {t('page.hero.ctaDemo')}
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
                 </button>
                 <button
                   onClick={() => navigate('/contact')}
-                  className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg text-white ring-1 ring-white/25 hover:ring-white/50 hover:bg-white/5 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                 >
                   {t('page.hero.ctaLearnMore')}
                 </button>
               </div>
 
-              <div className="flex flex-wrap gap-6 pt-4">
+              <div className="mt-12 flex flex-wrap gap-8">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="text-green-400 w-5 h-5" />
-                  <span className="text-indigo-100">{t('page.hero.check1')}</span>
+                  <span className="w-2 h-2 rounded-full bg-aurora-teal" />
+                  <span className="text-sm text-indigo-100/80">{t('page.hero.check1')}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="text-green-400 w-5 h-5" />
-                  <span className="text-indigo-100">{t('page.hero.check2')}</span>
+                  <span className="w-2 h-2 rounded-full bg-aurora-teal" />
+                  <span className="text-sm text-indigo-100/80">{t('page.hero.check2')}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="text-green-400 w-5 h-5" />
-                  <span className="text-indigo-100">{t('page.hero.check3')}</span>
+                  <span className="w-2 h-2 rounded-full bg-aurora-teal" />
+                  <span className="text-sm text-indigo-100/80">{t('page.hero.check3')}</span>
                 </div>
               </div>
             </div>
-            <div className="relative hidden md:block">
-              <OptimizedImage
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692"
-                alt={t('page.hero.imageAlt')}
-                responsive="half"
-                width={1024}
-                height={683}
-                className="relative rounded-2xl shadow-2xl w-full"
-              />
+            <div className="lg:col-span-5 hidden md:block">
+              <div className="relative rounded-[2rem] overflow-hidden ring-1 ring-white/15 shadow-[0_45px_90px_-25px_rgba(6,6,25,0.85)]">
+                <OptimizedImage
+                  src="https://images.unsplash.com/photo-1551434678-e076c223a692"
+                  alt={t('page.hero.imageAlt')}
+                  responsive="half"
+                  width={1024}
+                  height={683}
+                  className="w-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Features Section */}
       <div className="container mx-auto px-4 py-20">
@@ -403,7 +404,7 @@ const CRMSolutionPage: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white py-16">
+      <div className="bg-aurora-teal text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">

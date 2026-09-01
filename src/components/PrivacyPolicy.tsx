@@ -7,12 +7,16 @@ export default function PrivacyPolicy() {
   const { t } = useTranslation('legal');
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="bg-white">
       <SEOHead />
-      <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">
-          {t('privacy.pageTitle')}
-        </h1>
+      <div className="relative bg-aurora-quiet text-white overflow-hidden pt-28 lg:pt-32 pb-10 lg:pb-14 mb-12">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h1 className="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-white leading-[1.06]">
+            {t('privacy.pageTitle')}
+          </h1>
+        </div>
+      </div>
+      <div className="container mx-auto px-4 max-w-4xl pb-16">
 
         <div className="prose prose-lg max-w-none">
           <section className="mb-12">

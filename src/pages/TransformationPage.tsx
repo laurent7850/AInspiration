@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import AuditForm from '../components/AuditForm';
 import RelatedServices from '../components/ui/RelatedServices';
+import ServiceHero from '../components/ui/ServiceHero';
 
 const TransformationPage: React.FC = () => {
   const { t } = useTranslation('transformation');
@@ -64,63 +65,28 @@ const TransformationPage: React.FC = () => {
   ];
 
   return (
-    <section className="pt-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="bg-gradient-to-b from-gray-50 to-white">
       <SEOHead
         title={t('seo.title')}
         description={t('seo.description')}
         schema={transformationSchema}
       />
 
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="inline-flex gap-2 items-center bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium mb-6">
-              <RefreshCw className="w-4 h-4" />
-              <span>{t('hero.badge')}</span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-              {t('hero.title')} <span className="text-indigo-600">{t('hero.titleHighlight')}</span>
-            </h1>
-
-            <p className="text-lg text-gray-600 mb-8">
-              {t('hero.description')}
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <button
-                onClick={() => setShowStartForm(true)}
-                className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2 shadow-lg"
-              >
-                {t('hero.ctaStart')}
-                <ArrowRight className="w-5 h-5" />
-              </button>
-
-              <button
-                onClick={() => setShowStartForm(true)}
-                className="bg-white border border-indigo-200 text-indigo-600 px-6 py-3 rounded-lg hover:bg-indigo-50 transition-colors"
-              >
-                {t('hero.ctaDiagnostic')}
-              </button>
-            </div>
-          </div>
-
-          <div className="relative">
-            <img
-              src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=1200&auto=format&fit=crop&q=80"
-              alt={t('hero.imageAlt')}
-              loading="lazy"
-              className="relative rounded-xl shadow-xl w-full"
-            />
-          </div>
-        </div>
-      </div>
+      {/* Hero — Aurora declension */}
+      <ServiceHero
+        title={t('hero.title')}
+        highlight={t('hero.titleHighlight')}
+        description={t('hero.description')}
+        primary={{ label: t('hero.ctaStart'), onClick: () => setShowStartForm(true) }}
+        secondary={{ label: t('hero.ctaDiagnostic'), onClick: () => setShowStartForm(true) }}
+        image="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=1200&auto=format&fit=crop&q=80"
+        imageAlt={t('hero.imageAlt')}
+      />
 
       {/* Process Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
             {t('process.sectionTitle')}
           </h2>
           <p className="text-lg text-gray-600">
@@ -160,7 +126,7 @@ const TransformationPage: React.FC = () => {
       <div className="bg-indigo-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
               {t('benefits.sectionTitle')}
             </h2>
             <p className="text-lg text-gray-600">
@@ -187,7 +153,7 @@ const TransformationPage: React.FC = () => {
       {/* Solutions Section */}
       <div className="container mx-auto px-4 py-16 border-b border-gray-100">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
             {t('solutions.sectionTitle')}
           </h2>
           <p className="text-lg text-gray-600">
@@ -226,7 +192,7 @@ const TransformationPage: React.FC = () => {
       {/* Success Stories Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
             {t('successStories.sectionTitle')}
           </h2>
           <p className="text-lg text-gray-600">
@@ -291,7 +257,7 @@ const TransformationPage: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 py-16">
+      <div className="bg-aurora-teal py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="text-white">
