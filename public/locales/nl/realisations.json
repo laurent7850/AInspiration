@@ -1,0 +1,300 @@
+{
+  "seo": {
+    "title": "Realisaties | Wat wij echt gebouwd hebben — AInspiration",
+    "description": "Zestien automatiseringen en toepassingen in dienst: facturatie, boekhouding, content, conformiteit. Wat gebouwd is, voor wie, en wat het veranderde.",
+    "keywords": "AI realisaties, automatisering praktijkvoorbeelden, n8n projecten, AI voorbeelden kmo, portfolio kunstmatige intelligentie"
+  },
+  "hero": {
+    "title": "Wat wij",
+    "highlight": "echt",
+    "titleSuffix": "gebouwd hebben",
+    "description": "Zestien realisaties in dienst. Voor elk daarvan: wat er gebouwd is, wat het vervangt, en wat het oplevert. De cijfers komen uit de uitvoeringslogs, niet uit een brochure.",
+    "cta": "Vraag mijn gratis audit aan",
+    "ctaSub": "Resultaat binnen 24 u — vrijblijvend",
+    "secondary": "Over mijn situatie praten"
+  },
+  "band": {
+    "count": "16",
+    "countLabel": "realisaties in dienst",
+    "families": "6",
+    "familiesLabel": "soorten behoeften gedekt",
+    "sourced": "100 %",
+    "sourcedLabel": "van de cijfers gemeten of opgegeven"
+  },
+  "filters": {
+    "legend": "Wat wilt u bereiken?",
+    "all": "Alles bekijken",
+    "automatiser": "Een repetitieve taak automatiseren",
+    "repondre": "Klanten 24 u op 24 antwoorden",
+    "creer": "Content maken",
+    "exploiter": "Mijn gegevens benutten",
+    "conformite": "In orde komen met de regelgeving",
+    "visible": "Online vindbaar worden",
+    "empty": "Nog geen realisatie in deze categorie.",
+    "resultsOne": "1 realisatie",
+    "resultsOther": "{{count}} realisaties"
+  },
+  "card": {
+    "detail": "Bekijk het detail",
+    "noDetail": "Korte voorstelling",
+    "production": "In dienst",
+    "prototype": "Prototype",
+    "interne": "Intern"
+  },
+  "method": {
+    "title": "Hoe het verloopt",
+    "description": "Drie stappen, en bij elke stap beslist u of we verdergaan.",
+    "step1Title": "Audit",
+    "step1Body": "We bekijken wat u met de hand doet, en zetten er een cijfer op. Gratis, binnen 24 uur.",
+    "step2Title": "Prototype",
+    "step2Body": "We bouwen de kleinste bruikbare versie, op uw echte gegevens. U ziet ze draaien vóór u zich verbindt.",
+    "step3Title": "In productie",
+    "step3Body": "We zetten ze in dienst, we volgen ze op, en we geven u de sleutels. De code is van u."
+  },
+  "cta": {
+    "title": "En bij u, wat kost er een uur te veel?",
+    "body": "De audit is gratis en duurt niet langer dan een gesprek. U vertrekt met een becijferde lijst van wat automatiseerbaar is, of u nu klant wordt of niet.",
+    "button": "Vraag mijn gratis audit aan"
+  },
+  "detail": {
+    "context": "De context",
+    "problem": "Het probleem",
+    "solution": "Wat er gebouwd is",
+    "results": "Wat het verandert",
+    "howItWorks": "Hoe het werkt",
+    "howItWorksHint": "Het technische detail — open het als het u interesseert.",
+    "transposition": "Wat dit bij u zou kunnen geven",
+    "stack": "Technologieën",
+    "year": "Jaar",
+    "duration": "Duur",
+    "sector": "Sector",
+    "status": "Status",
+    "previous": "Vorige realisatie",
+    "next": "Volgende realisatie",
+    "backToIndex": "Alle realisaties"
+  },
+  "items": {
+    "facturation-automatisee": {
+      "title": "Geautomatiseerde maandfacturatie",
+      "summary": "Een maand factureren: van een uur naar dertien seconden.",
+      "sector": "Media",
+      "client": "Een Franstalige radiogroep",
+      "metrics": {
+        "billing": "Een maand factureren",
+        "reentry": "Manuele herinvoer"
+      },
+      "context": "Elke maand moest een volledige maand prestaties met de hand gefactureerd worden. De agenda openen, elke opdracht terugvinden, het juiste tarief toepassen naargelang ze in de week of in het weekend viel, rekening houden met meerdaagse opdrachten, verplaatsingen en administratiekosten, en dan alles overtypen in een rekenblad en de factuur opstellen.",
+      "problem": "Een uur repetitief werk, elke maand, op tariefregels die u uit het hoofd kent maar op een vermoeide avond verkeerd kunt toepassen. En een tariefvergissing komt pas boven wanneer de klant ze opmerkt.",
+      "solution": "De agenda wordt automatisch gelezen. Elke prestatie wordt getarifeerd volgens de echte regels — week of weekend, duur, verplaatsing, kosten. Het resultaat gaat naar het opvolgingsrekenblad, de factuur vertrekt als HTML per e-mail, en een vergelijkende tabel projecteert de lopende maand tegenover de vorige.",
+      "results": "Een volledige maand factureren draait in dertien seconden, van agenda tot verzonden e-mail. Geen herinvoer meer: de tariefregels zijn één keer geschreven en worden elke maand identiek toegepast.",
+      "howItWorks": "Een n8n-workflow die bij het begin van de maand start. De agenda wordt gelezen via de Google Calendar API, de tarieven worden berekend in een code-node — daar leven de bedrijfsregels, niet in een taalmodel — het resultaat wordt via de API in Google Sheets geschreven, en daarna wordt de factuur-HTML gegenereerd en via SMTP verzonden. De projectie van de lopende maand wordt in dezelfde doorloop berekend en meegestuurd.",
+      "transposition": "Elk bedrijf dat per prestatie factureert is betrokken: een kantoor dat uren factureert, een vakman die werven factureert, een bureau dat opdrachten factureert. Het principe is hetzelfde — uw tariefregels bestaan al, ze zitten alleen in uw hoofd in plaats van in een machine. Het werk bestaat erin ze één keer op te schrijven."
+    },
+    "reconciliation-caisse": {
+      "title": "Kasafstemming voor restaurants",
+      "summary": "Een uur afstemming per exploitatiedag, verdwenen.",
+      "sector": "Horeca",
+      "client": "Twee Brusselse restaurants",
+      "metrics": {
+        "before": "Afstemming, vóór de tool",
+        "restaurants": "Uitgeruste restaurants"
+      },
+      "context": "Elke exploitatiedag moeten de kasrapporten worden afgestemd op de boekhoudkundige samenvatting: Z-nummer, omzet inclusief btw, btw-uitsplitsing, en het detail van de betalingen in cash, met kaart en per overschrijving.",
+      "problem": "Een uur per exploitatiedag om cijfers van het ene document in het andere over te typen. Het voegt niets toe, en het is precies het soort taak waar een verschoven rij onopgemerkt blijft tot de jaarrekening.",
+      "solution": "Twee tools, bewust verschillend, omdat de twee restaurants niet hetzelfde materiaal aanleveren. Het eerste heeft alleen gescande thermische kastickets: de pdf's worden gelezen door een visiemodel, en de opgehaalde bedragen voeden drie werkboeken. Het tweede beschikt over digitale exports: alles wordt in de browser verwerkt, zodat er geen enkel boekhoudkundig gegeven het toestel verlaat.",
+      "results": "De herinvoer verdwijnt. Cellen die al ingevuld zijn worden nooit overschreven, en verschillen worden gesignaleerd in plaats van stil gecorrigeerd — we schaffen de herinvoer af, niet de waakzaamheid.",
+      "howItWorks": "De eerste tool is een Flask-toepassing: pdf's omgezet naar beelden van 300 dpi, gelezen door Claude als OCR, resultaten weggeschreven naar de werkboeken met openpyxl. De tweede is een React-toepassing die volledig in de browser draait: XLSX-exports gelezen met exceljs, en chirurgische bewerking van het doelbestand — alleen de beoogde cellen worden in de XML van het blad gewijzigd, zodat formules en opmaak intact blijven.",
+      "transposition": "Dezelfde redenering geldt overal waar twee systemen met elkaar zouden moeten praten en dat niet doen: kassa en boekhouding, planning en loon, bestellingen en voorraad. En de les is het onthouden waard: we kiezen de technologie naargelang het materiaal dat u aanlevert. Als uw gegevens al digitaal zijn, is er geen reden om een model te betalen om ze opnieuw te lezen."
+    },
+    "factures-fournisseurs": {
+      "title": "Consolidatie van leverancierstarieven",
+      "summary": "646 referenties, 25 factuurformaten, één tabel.",
+      "sector": "Horeca",
+      "client": "Een Brussels restaurant",
+      "metrics": {
+        "references": "Geconsolideerde referenties",
+        "formats": "Verschillende factuurformaten",
+        "manualEntry": "Vermeden manuele invoer"
+      },
+      "context": "Een restaurant koopt bij een dertigtal leveranciers. Elk stuurt zijn facturen in zijn eigen pdf-formaat, en de prijzen bewegen van levering tot levering. Weten wat u vandaag werkelijk betaalt voor een bepaald artikel, betekent de facturen één voor één heropenen.",
+      "problem": "Niemand doet het, want het is twee dagen invoerwerk. Gevolg: u ziet niet wanneer een prijs gestegen is, en u kunt twee leveranciers niet vergelijken op hetzelfde artikel.",
+      "solution": "Een script doorloopt alle pdf-facturen, haalt de productlijnen eruit en consolideert ze in één werkboek, één tabblad per leverancier. Voor elke referentie haalt de meest recente factuur het — de tabel is dus een actueel tarief, geen archief.",
+      "results": "646 referenties geconsolideerd bij 25 leveranciers, waar manuele invoer twee dagen zou hebben gekost. Het werkboek wordt opnieuw aangemaakt zodra er nieuwe facturen binnenkomen.",
+      "howItWorks": "Python, pdfplumber voor de extractie, openpyxl voor de uitvoer. Vijfentwintig aparte parsers, één per factuurformaat — bij één leverancier bestaan er zelfs twee formaten naast elkaar. Ontdubbeling op productcode, btw uit de facturen gehaald met verlegging voor exporterende leveranciers, en categorieën afgeleid uit het codeprefix.",
+      "transposition": "Dit is het meest overdraagbare geval van allemaal: elk bedrijf dat bij meerdere leveranciers koopt heeft dezelfde blinde vlek. De beperking is eerlijk en nuttig om te kennen — een gescande factuur zonder leesbare tekst raakt niet door dit pad. Precies daar neemt het lezen door een visiemodel het over."
+    },
+    "chat-ia-site": {
+      "title": "De AI-chat van deze site",
+      "summary": "Beantwoordt uw vragen nu, rechtsonder.",
+      "sector": "Onze eigen site",
+      "client": "AInspiration",
+      "metrics": {},
+      "context": "Een bezoeker met een vraag om 22 u wacht niet tot morgen: die sluit het tabblad. Een site die automatisering verkoopt en zijn eigen bezoekers zonder antwoord laat, heeft een geloofwaardigheidsprobleem nog vóór een conversieprobleem.",
+      "problem": "Vragen komen buiten de kantooruren binnen, en het zijn vaak de ernstigste — van iemand die 's avonds leveranciers vergelijkt.",
+      "solution": "Een gespreksassistent gekoppeld aan de inhoud van de site, met geheugen van het lopende gesprek. Hij beantwoordt gangbare vragen, verwijst naar de juiste pagina, en biedt de gratis audit aan wanneer de vraag duidelijk is.",
+      "results": "Hij antwoordt 's nachts en in het weekend. Dat is hier het voordeel: geen gewonnen tijd, maar beschikbaarheid.",
+      "howItWorks": "Een n8n-webhook ontvangt het bericht, een code-node bereidt de context voor, een LangChain-agent met geheugenvenster bevraagt een model via OpenRouter, en het antwoord keert via de webhook terug. Er wordt niets bewaard buiten het gesprek.",
+      "transposition": "U test hem op dit moment — de meest directe demonstratie op deze pagina. Dezelfde opzet koppelt aan uw catalogus, uw openingsuren, uw leveringsvoorwaarden. De regel die wij op onszelf toepassen geldt ook bij u: een assistent die het niet weet, zegt dat, en geeft door."
+    },
+    "audityo": {
+      "title": "Audityo — conformiteit met de Europese AI-verordening",
+      "summary": "Uw AI-systemen classificeren en uw conformiteitsdossier opmaken.",
+      "sector": "Onze producten",
+      "client": "Distr'Action",
+      "metrics": {},
+      "context": "De Europese verordening over kunstmatige intelligentie is van toepassing. De vraag is niet langer wanneer u in orde moet zijn, maar waar u staat.",
+      "problem": "De meeste kmo's weten niet welke AI-systemen ze al gebruiken. De chatbot van de site, de tool die cv's sorteert, de klantenscoring, de assistent die een medewerker alleen heeft aangesloten: het is een inventaris vóór het een conformiteitsoefening is.",
+      "solution": "Software die de AI-systemen van een organisatie in kaart brengt, ze indeelt volgens de categorieën van de verordening, en het bijbehorende dossier opmaakt. Ze houdt de inventaris actueel in plaats van een bevroren rapport af te leveren.",
+      "results": "Een product van de groep, in dienst. Een tool helpt classificeren en documenteren — hij maakt niemand conform, en dat beloven we ook niet.",
+      "howItWorks": "Next.js, Prisma op PostgreSQL, authenticatie met Auth.js, betalingen via Stripe, classificatie en documentgeneratie door Claude, pdf-export. Multi-tenant isolatie: de gegevens van de ene organisatie zijn nooit zichtbaar vanuit een andere.",
+      "transposition": "Als u een AI-tool in uw activiteit gebruikt — en dat is waarschijnlijk het geval zonder dat het geformaliseerd is — is de eerste stap weten welke, waarvoor, en met welke gegevens. Voor vragen die verder gaan dan de inventaris hebt u een jurist nodig: wij vervangen die niet."
+    },
+    "labo-nostalgie": {
+      "title": "Gepersonaliseerde playlists voor radioluisteraars",
+      "summary": "Een uur samenstellen per luisteraar, terug tot zeventig seconden.",
+      "sector": "Media",
+      "client": "Een Franstalige nationale radiozender",
+      "metrics": {
+        "composition": "Eén playlist samenstellen",
+        "listeners": "Bediende luisteraars"
+      },
+      "context": "Een radiozender biedt zijn luisteraars een gepersonaliseerde playlist aan, opgebouwd uit hun antwoorden op een vragenlijst: hun leeftijd, de artiesten die ze noemen, de herinneringen die ze vertellen.",
+      "problem": "Die vijfentwintig titels echt samenstellen kost een uur: de categoriequota respecteren, het evenwicht tussen decennia, het aandeel Franstalige titels, en alles uitsluiten wat de voorbije drie weken op antenne kwam. Een uur per luisteraar, van maandag tot vrijdag.",
+      "solution": "De selectie gebeurt door de code, op basis van de catalogus, de quota en de zwarte lijst van recent gedraaide titels. Het model komt pas daarna tussen, om de motivering van elke keuze te schrijven — en als zijn antwoord de regels niet respecteert, corrigeert een tweede oproep het.",
+      "results": "Een uur samenstellen teruggebracht tot zeventig seconden, voor één luisteraar per weekdag. De ontvangen e-mail motiveert elk van de vijfentwintig titels.",
+      "howItWorks": "Een n8n-workflow van zestien nodes: catalogus en zwarte lijst geladen uit Google Sheets, samengevoegd, deterministische selectie op gekruiste quota taal × decennium, een oproep naar Claude via OpenRouter voor de motiveringen, een geldigheidstest, een corrigerende oproep indien nodig, bijwerking van de zwarte lijst, en de HTML-e-mail. Een volledig GDPR-pakket hoort bij de oplevering.",
+      "transposition": "Dit is de demonstratie die bedrijfsleiders geruststelt die vrezen dat een AI dingen \"verzint\": de bedrijfsregels beslissen, de AI legt uit. Overal waar u niet-onderhandelbare beperkingen hebt — een rekeningstelsel, een nomenclatuur, een regelgeving — is dat de taakverdeling om naar te streven."
+    },
+    "autoseo": {
+      "title": "Redactionele publicatiemotor",
+      "summary": "Vijftig artikels gepubliceerd, drie merken, geen tussenkomst.",
+      "sector": "Onze producten",
+      "client": "Distr'Action",
+      "metrics": {
+        "articles": "Artikels gepubliceerd van mei tot augustus 2026",
+        "brands": "Bevoorrade merken"
+      },
+      "context": "Drie merken van de groep hebben een regelmatige redactionele aanwezigheid nodig. Eén artikel per week en per merk schrijven is een halftijdse job.",
+      "problem": "Regelmaat is wat telt in zoekmachines, en regelmaat is precies wat een druk iemand niet volhoudt. Bedrijfsblogs sterven aan een gebrek aan ritme, niet aan een gebrek aan ideeën.",
+      "solution": "Eén motor, gekoppeld aan de drie sites. Hij kiest een onderwerp, controleert of het nog niet behandeld is, schrijft het, en publiceert rechtstreeks in de databank van de betrokken site.",
+      "results": "Vijftig artikels gepubliceerd op één van de drie sites tussen mei en augustus 2026, zonder menselijke tussenkomst.",
+      "howItWorks": "Eén n8n-hub en één publicatieworkflow per merk. Een gedeeld register van publicaties verhindert dat twee sites hetzelfde onderwerp behandelen — de beveiliging die de eerste versies misten, die telkens op dezelfde lijst terugvielen.",
+      "transposition": "De winst zit hier niet in uitgespaarde tijd: het is werk dat anders niet zou hebben plaatsgevonden. Niemand had die vijftig artikels met de hand geschreven. Het is de meest voorkomende vorm van voordeel bij automatisering, en de meest onderschatte."
+    },
+    "preparation-emission": {
+      "title": "Wekelijkse programmavoorbereiding",
+      "summary": "Van twee uur voorbereiding naar drie minuten.",
+      "sector": "Media",
+      "client": "Een Franstalige radiozender",
+      "metrics": {
+        "prep": "Eén uitzending voorbereiden"
+      },
+      "context": "Elke uitzending vraagt voorbereiding: het materiaal verzamelen, vormgeven, en structureren volgens een draaiboek.",
+      "problem": "Twee uur per uitzending, elke week, aan verzamel- en opmaakwerk dat grotendeels mechanisch is.",
+      "solution": "Een workflow verzamelt het materiaal, geeft het vorm volgens het format van de uitzending, en levert het voorbereidingsdocument klaar voor gebruik.",
+      "results": "Twee uur teruggebracht tot drie minuten, gemeten op de automatische ochtenduitvoering.",
+      "howItWorks": "Een n8n-workflow van zestien nodes, wekelijks ingepland, met meerdere bronnen en een eindopmaak. Een globale foutworkflow verwittigt wanneer de geplande uitvoering mislukt.",
+      "transposition": "Elke terugkerende vergadering die een voorbereidend dossier vraagt volgt hetzelfde principe: directiecomité, commerciële review, productieoverleg. Het materiaal bestaat al; het verzamelen ervan is mechanisch."
+    },
+    "dreamoracle": {
+      "title": "DreamOracle — consumentenplatform",
+      "summary": "Een product van begin tot eind: ontwerp, bouw, acquisitie.",
+      "sector": "Onze producten",
+      "client": "Distr'Action",
+      "metrics": {},
+      "context": "Een consumentenplatform voor droomduiding, met een persoonlijk dagboek en een app die op de telefoon te installeren is.",
+      "problem": "Een consumentenproduct helemaal afwerken vraagt meer dan code: een visuele identiteit, een mobiele ervaring, een acquisitiekanaal.",
+      "solution": "Ontwerp, ontwikkeling, een volledige visuele identiteit, een installeerbare webapp, en een acquisitiecampagne. Het product bestaat en draait.",
+      "results": "Het bewijs van een aanpak van begin tot eind, op een product dat zich tot het brede publiek richt en niet tot bedrijven.",
+      "howItWorks": "Next.js, Prisma op PostgreSQL, een progressieve webapp installeerbaar op iOS en Android, een SVG-identiteitsreeks, en een beeldgenerator.",
+      "transposition": "Als uw project een product vraagt en niet enkel een interne tool, is dat de volledige keten die u nodig hebt: ontwerp, vormgeving, ontwikkeling, marktintroductie. De laatste drie worden het vaakst onderschat."
+    },
+    "artpero": {
+      "title": "L'Artpéro — evenementenplatform",
+      "summary": "Ticketing, betaling en inschrijvingen, volledig online.",
+      "sector": "Cultuur",
+      "client": "L'Artpéro",
+      "metrics": {},
+      "context": "Een organisator van culturele evenementen beheerde inschrijvingen en betalingen buiten de eigen website.",
+      "problem": "Inschrijvingen verspreid over een formulier, e-mails en manuele overschrijvingen: verloren tijd, en plaatsen die twee keer verkocht raken.",
+      "solution": "Een volledig platform: voorstelling van de evenementen, online inschrijving, betaling, en een beheerruimte voor de organisator.",
+      "results": "Eén enkele keten, van de ontdekking van het evenement tot de geïnde betaling.",
+      "howItWorks": "React en Supabase voor gegevens en authenticatie, Stripe voor de betalingen.",
+      "transposition": "Alles wat gereserveerd of ingeschreven wordt volgt hetzelfde schema: workshops, opleidingen, consultaties, verhuur. De grootste winst is niet de online betaling, het is het einde van de dubbele invoer."
+    },
+    "tl-services": {
+      "title": "TL Services — vitrinesite",
+      "summary": "Een volledige site, ontworpen en online in vier dagen.",
+      "sector": "Ambacht",
+      "client": "TL Services",
+      "metrics": {
+        "delivery": "Van de eerste regel code tot online"
+      },
+      "context": "Een vakman zonder online aanwezigheid, terwijl zijn potentiële klanten zijn diensten wel op het internet zoeken vóór ze bellen.",
+      "problem": "Zonder site bestaat u niet in een lokale zoekopdracht. En offertes worden per telefoon gevraagd, net op de uren dat de vakman op de werf staat.",
+      "solution": "Een volledige vitrinesite: voorstelling van de diensten, aanvraagformulier gekoppeld aan de mailbox, wettelijke pagina's, vindbaarheid en deelbeelden voor sociale media, en een actieknop op mobiel.",
+      "results": "Opgeleverd in vier dagen, van de eerste regel code tot online.",
+      "howItWorks": "Next.js en React, deelbeelden die ter plekke gegenereerd worden, formulier gekoppeld aan SMTP, Docker-container achter een proxy met automatisch certificaat.",
+      "transposition": "Vier dagen is de orde van grootte voor een vakman of zelfstandige die van nul vertrekt. Wat daarna tijd kost is niet de site: het is beslissen wat u erop wilt zeggen."
+    },
+    "playlist-spotify": {
+      "title": "Spotify-playlistgenerator",
+      "summary": "Eén zin, en de playlist staat in uw account.",
+      "sector": "Media",
+      "client": "Distr'Action",
+      "metrics": {
+        "toPlaylist": "Van de vraag tot de aangemaakte playlist"
+      },
+      "context": "Een thematische playlist maken betekent elk nummer één voor één opzoeken.",
+      "problem": "De tijd gaat niet naar het kiezen van de titels, maar naar het opzoeken en manueel toevoegen van elk van hen.",
+      "solution": "U beschrijft de playlist in één zin. De titels worden voorgesteld, opgezocht in de catalogus, en de playlist wordt rechtstreeks in het account van de gebruiker aangemaakt.",
+      "results": "Tussen vijfentwintig en veertig seconden van de zin tot een bruikbare playlist.",
+      "howItWorks": "Een n8n-webhook met toegangscontrole aan de ingang — een publiek toegangspunt zonder beveiliging is een open factuur. Titels voorgesteld door Claude, opgezocht via de Spotify API, playlist aangemaakt en in batches gevuld. Een terugvalpad herstart een zoekopdracht op enkel de titel voor nummers die bij de eerste doorloop niet gevonden werden.",
+      "transposition": "Dit is de meest onmiddellijk begrijpelijke demonstratie: van een intentie in één zin naar een bruikbaar resultaat, in een tool die iedereen kent. Hetzelfde schema geldt voor elke creatie in serie binnen een externe tool."
+    },
+    "enghien": {
+      "title": "Doorzoekbare historische bibliotheek",
+      "summary": "Acht werken lokale geschiedenis, doorzoekbaar met één vraag.",
+      "sector": "Erfgoed",
+      "client": "Een lokale geschiedkundige kring",
+      "metrics": {},
+      "shortDescription": "Acht werken over de geschiedenis van één stad, van 1876 tot 2007, samengebracht in één doorzoekbare bibliotheek. U stelt een vraag in gewone taal, het systeem vindt de relevante passages in het corpus en antwoordt met vermelding van zijn bronnen, werk per werk. De collectie bevat werken die nog auteursrechtelijk beschermd zijn, gebruikt met toestemming van de rechthebbenden."
+    },
+    "veille-youtube": {
+      "title": "Geautomatiseerde videomonitoring",
+      "summary": "De video's die tellen, elk uur getranscribeerd en geklasseerd.",
+      "sector": "Monitoring",
+      "client": "Distr'Action",
+      "metrics": {},
+      "context": "Volgen wat er over een onderwerp gezegd wordt betekent uren video bekijken, of het niet volgen.",
+      "problem": "Niemand heeft tijd om te kijken. En een video die u niet bekeken hebt is informatie die u niet hebt.",
+      "solution": "Nieuwe video's van de gevolgde kanalen worden automatisch opgemerkt, getranscribeerd, opgeschoond en in een tabel geplaatst waarin u op trefwoord zoekt. U leest in twee minuten wat veertig minuten duurde.",
+      "results": "Monitoring die elk uur draait zonder toezicht, en die netjes terugvalt: heeft een video geen ondertitels, dan wordt de audio gedownload en getranscribeerd.",
+      "howItWorks": "Een n8n-workflow van zesentwintig nodes: playlist uitlezen, ontdubbeling tegenover wat er al is, transcriptie door een gespecialiseerde dienst, terugval op audiotranscriptie wanneer ondertitels ontbreken, tekstopschoning, en wegschrijven naar Google Sheets. De lijst van gevolgde kanalen wordt vanuit de tabel zelf gestuurd.",
+      "transposition": "De terugval is het belangrijke punt: een automatisering die bij het eerste bijzondere geval opgeeft is niet meer dan een demo. Deze draait elk uur zonder dat er iemand naar kijkt."
+    },
+    "paperclip": {
+      "title": "Paperclip — ondersteund directiecomité",
+      "summary": "Tien specialisten tegelijk geraadpleegd over één beslissing.",
+      "sector": "Intern onderzoek",
+      "client": "AInspiration",
+      "metrics": {
+        "agents": "Geraadpleegde specialisten"
+      },
+      "context": "Een kleine structuur heeft geen directiecomité. Ze heeft één zaakvoerder die alleen beslist, met zijn blinde vlekken.",
+      "problem": "Slechte beslissingen komen niet voort uit een gebrek aan informatie maar uit een gebrek aan tegenspraak. Niemand zegt de zaakvoerder wat hij liever niet hoort.",
+      "solution": "Tien gespecialiseerde profielen — directie, verkoop, financieel, juridisch, technisch, marketing, operations — geraadpleegd over dezelfde vraag, elk met zijn eigen kader en prioriteiten. Ze mogen elkaar tegenspreken: dat is net de bedoeling. Een synthese hakt de knoop door.",
+      "results": "Een intern onderzoeksopzet, gebruikt bij echte commerciële afwegingen.",
+      "howItWorks": "Tien profielen beschreven in Markdown, elk met zijn domein, ervaringsniveau en context. Drie commando's sturen de zitting: algemene raadpleging, briefing met verdeling van de opdrachten, of een stand van zaken.",
+      "transposition": "Dit is onderzoek, geen aanbod. We tonen het omdat het laat zien wat we op onszelf testen vóór we het voorstellen — en omdat georganiseerde tegenspraak beter is dan één enkele mening, ook wanneer die ene mening de onze is."
+    },
+    "rampa": {
+      "title": "Hybride zoekfunctie op een documentcorpus",
+      "summary": "Negentien werken doorzoekbaar, met de zoekfunctie die erbij hoort.",
+      "sector": "Intern onderzoek",
+      "client": "Persoonlijk project",
+      "metrics": {},
+      "shortDescription": "Een corpus van negentien werken, doorzoekbaar in gewone taal. Het interessante zit niet in het corpus maar in de zoekfunctie: die is hybride, zowel semantisch als op trefwoorden. De reden is gemeten en niet theoretisch — bij korte vragen in het Frans mist een louter semantische zoekfunctie voor de hand liggende passages, en de zoekfunctie op trefwoorden vangt op wat ze laat vallen. Dat is het soort correctie dat u alleen al testend vindt."
+    }
+  }
+}

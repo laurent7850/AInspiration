@@ -1,0 +1,300 @@
+{
+  "seo": {
+    "title": "Our Work | What We Actually Built — AInspiration",
+    "description": "Sixteen automations and applications in service: invoicing, accounting, content, compliance. What was built, for whom, and what it changed.",
+    "keywords": "AI projects, automation case studies, n8n projects, AI examples SME, artificial intelligence portfolio"
+  },
+  "hero": {
+    "title": "What we have",
+    "highlight": "actually",
+    "titleSuffix": "built",
+    "description": "Sixteen projects in service. For each one: what was built, what it replaces, and what it saves. The figures come from execution logs, not from a brochure.",
+    "cta": "Request my free audit",
+    "ctaSub": "Results within 24 h — no commitment",
+    "secondary": "Talk about my case"
+  },
+  "band": {
+    "count": "16",
+    "countLabel": "projects in service",
+    "families": "6",
+    "familiesLabel": "families of needs covered",
+    "sourced": "100 %",
+    "sourcedLabel": "of figures measured or stated"
+  },
+  "filters": {
+    "legend": "What are you trying to do?",
+    "all": "See everything",
+    "automatiser": "Automate a repetitive task",
+    "repondre": "Answer customers around the clock",
+    "creer": "Create content",
+    "exploiter": "Put my data to work",
+    "conformite": "Get compliant",
+    "visible": "Be found online",
+    "empty": "No project in this category yet.",
+    "resultsOne": "1 project",
+    "resultsOther": "{{count}} projects"
+  },
+  "card": {
+    "detail": "See the details",
+    "noDetail": "Short presentation",
+    "production": "In service",
+    "prototype": "Prototype",
+    "interne": "Internal"
+  },
+  "method": {
+    "title": "How it works",
+    "description": "Three steps, and you decide at each one whether we carry on.",
+    "step1Title": "Audit",
+    "step1Body": "We look at what you do by hand, and put a number on what it costs you. Free, within 24 hours.",
+    "step2Title": "Prototype",
+    "step2Body": "We build the smallest useful version, on your real data. You watch it run before committing to anything.",
+    "step3Title": "Into production",
+    "step3Body": "We put it in service, we monitor it, and we hand you the keys. The code is yours."
+  },
+  "cta": {
+    "title": "And in your business, what takes an hour too many?",
+    "body": "The audit is free and takes no longer than a conversation. You leave with a costed list of what can be automated, whether you become a client or not.",
+    "button": "Request my free audit"
+  },
+  "detail": {
+    "context": "The context",
+    "problem": "The problem",
+    "solution": "What was built",
+    "results": "What it changes",
+    "howItWorks": "How it works",
+    "howItWorksHint": "The technical detail — open it if that interests you.",
+    "transposition": "What this could look like for you",
+    "stack": "Technologies",
+    "year": "Year",
+    "duration": "Duration",
+    "sector": "Sector",
+    "status": "Status",
+    "previous": "Previous project",
+    "next": "Next project",
+    "backToIndex": "All projects"
+  },
+  "items": {
+    "facturation-automatisee": {
+      "title": "Automated monthly invoicing",
+      "summary": "A month of invoicing: from one hour to thirteen seconds.",
+      "sector": "Media",
+      "client": "A French-language radio group",
+      "metrics": {
+        "billing": "Invoicing one month",
+        "reentry": "Manual re-entry"
+      },
+      "context": "At the end of every month, a full month of work had to be invoiced by hand. Open the calendar, find each engagement, apply the right rate depending on whether it fell on a weekday or a weekend, account for multi-day engagements, travel and administrative fees, then copy it all into a spreadsheet and write the invoice.",
+      "problem": "An hour of repetitive work, every month, on pricing rules you know by heart but can still misapply on a tired evening. And a pricing mistake only surfaces when the client spots it.",
+      "solution": "The calendar is read automatically. Each engagement is priced by the real rules — weekday or weekend, duration, travel, fees. The result is written to the tracking spreadsheet, the invoice goes out as HTML by email, and a comparison table projects the current month against the previous one.",
+      "results": "A full month of invoicing runs in thirteen seconds, from calendar to sent email. No more re-entry: the pricing rules are written once and applied identically every month.",
+      "howItWorks": "An n8n workflow triggered at the start of the month. The agenda is read through the Google Calendar API, rates are computed in a code node — that is where the business rules live, not in a language model — results are written to Google Sheets through the API, then the invoice HTML is generated and sent over SMTP. The current-month projection is computed in the same pass and attached to the email.",
+      "transposition": "Any business that invoices per engagement is concerned: a practice billing hours, a tradesperson billing jobs, an agency billing interventions. The principle is the same — your pricing rules already exist, they simply live in your head rather than in a machine. The work is writing them down, once."
+    },
+    "reconciliation-caisse": {
+      "title": "Till reconciliation for restaurants",
+      "summary": "An hour of reconciliation per trading day, removed.",
+      "sector": "Hospitality",
+      "client": "Two Brussels restaurants",
+      "metrics": {
+        "before": "Reconciliation, before the tool",
+        "restaurants": "Restaurants equipped"
+      },
+      "context": "Every trading day, till reports have to be reconciled against the accounting summary: Z number, gross takings, VAT breakdown, and the split between cash, card and transfer payments.",
+      "problem": "An hour per trading day spent copying figures from one document into another. It adds nothing, and it is exactly the kind of task where a misaligned row goes unnoticed until the year-end accounts.",
+      "solution": "Two tools, deliberately different, because the two restaurants do not supply the same material. The first only has scanned thermal receipts: its PDFs are read by a vision model, and the extracted amounts feed three workbooks. The second has digital exports: everything is processed in the browser, so no accounting data ever leaves the machine.",
+      "results": "Re-entry disappears. Cells that already hold a value are never overwritten, and discrepancies are flagged rather than silently corrected — we remove the re-entry, not the vigilance.",
+      "howItWorks": "The first tool is a Flask application: PDFs converted to 300 DPI images, read by Claude as OCR, results written to the workbooks with openpyxl. The second is a React application running entirely in the browser: XLSX exports read with exceljs, and surgical editing of the destination file — only the targeted cells are changed in the sheet XML, so formulas and formatting survive untouched.",
+      "transposition": "The same reasoning applies wherever two systems ought to talk to each other and do not: till and accounts, rota and payroll, orders and stock. And the lesson is worth keeping: we pick the technology to match the material you supply. If your data is already digital, there is no reason to pay a model to read it again."
+    },
+    "factures-fournisseurs": {
+      "title": "Supplier price consolidation",
+      "summary": "646 references, 25 invoice formats, a single table.",
+      "sector": "Hospitality",
+      "client": "A Brussels restaurant",
+      "metrics": {
+        "references": "References consolidated",
+        "formats": "Different invoice formats",
+        "manualEntry": "Manual entry avoided"
+      },
+      "context": "A restaurant buys from around thirty suppliers. Each one sends invoices in its own PDF format, and prices move between deliveries. Knowing what you actually pay today for a given item means reopening the invoices one by one.",
+      "problem": "Nobody does it, because it is two days of data entry. The result: you cannot see when a price went up, and you cannot compare two suppliers on the same item.",
+      "solution": "A script walks through every PDF invoice, extracts the product lines and consolidates them into a single workbook, one tab per supplier. For each reference, the most recent invoice wins — so the table is a current price list, not an archive.",
+      "results": "646 references consolidated across 25 suppliers, where manual entry would have taken two days. The workbook regenerates as new invoices arrive.",
+      "howItWorks": "Python, pdfplumber for extraction, openpyxl for output. Twenty-five distinct parsers, one per invoice format — two formats coexist at a single supplier. Deduplication by product code, VAT read from the invoices with reverse charge for exporting suppliers, and categories derived from the code prefix.",
+      "transposition": "This is the most transferable case of all: any business buying from several suppliers has the same blind spot. The limitation is honest and worth knowing — a scanned invoice with no extractable text does not go through this path. That is precisely where reading by vision model takes over."
+    },
+    "chat-ia-site": {
+      "title": "The AI chat on this site",
+      "summary": "Answering your questions right now, bottom right.",
+      "sector": "Our own site",
+      "client": "AInspiration",
+      "metrics": {},
+      "context": "A visitor with a question at 10 p.m. does not wait until tomorrow: they close the tab. A site that sells automation and leaves its own visitors unanswered has a credibility problem before it has a conversion problem.",
+      "problem": "Questions arrive outside office hours, and they are often the serious ones — from someone comparing suppliers in the evening.",
+      "solution": "A conversational agent connected to the site's content, with memory of the conversation in progress. It answers common questions, points to the right page, and offers the free audit when the intent is clear.",
+      "results": "It answers at night and at weekends. That is the advantage here: not time saved, but availability.",
+      "howItWorks": "An n8n webhook receives the message, a code node prepares the context, a LangChain agent with a memory window queries a model through OpenRouter, and the answer returns through the webhook. Nothing is stored beyond the conversation.",
+      "transposition": "You are testing it right now — the most direct demonstration on this page. The same setup connects to your catalogue, your opening hours, your delivery terms. The rule we apply to ourselves applies to you too: an assistant that does not know says so, and hands over."
+    },
+    "audityo": {
+      "title": "Audityo — compliance with the EU AI Act",
+      "summary": "Classify your AI systems and produce your compliance file.",
+      "sector": "Our products",
+      "client": "Distr'Action",
+      "metrics": {},
+      "context": "The European regulation on artificial intelligence applies. The question is no longer when to get compliant, but where you stand.",
+      "problem": "Most small businesses do not know which AI systems they already use. The site chatbot, the CV screening tool, the customer scoring, the assistant a colleague plugged in alone: it is an inventory before it is a compliance exercise.",
+      "solution": "Software that lists an organisation's AI systems, classifies them against the categories in the regulation, and produces the matching documentation. It keeps the inventory current rather than producing a frozen report.",
+      "results": "A group product, in service. A tool helps you classify and document — it does not make anyone compliant, and we do not promise that.",
+      "howItWorks": "Next.js, Prisma on PostgreSQL, Auth.js authentication, Stripe payments, classification and document generation by Claude, PDF export. Multi-tenant isolation: one organisation's data is never visible from another.",
+      "transposition": "If you use an AI tool in your business — and you probably do without having formalised it — the first step is knowing which one, for what, and with which data. For questions that go beyond the inventory you need a lawyer: we do not replace one."
+    },
+    "labo-nostalgie": {
+      "title": "Personalised playlists for radio listeners",
+      "summary": "An hour of curation per listener, down to seventy seconds.",
+      "sector": "Media",
+      "client": "A French-language national radio station",
+      "metrics": {
+        "composition": "Curating one playlist",
+        "listeners": "Listeners served"
+      },
+      "context": "A radio station offers its listeners a personalised playlist, built from their answers to a questionnaire: their age, the artists they name, the memories they share.",
+      "problem": "Genuinely curating those twenty-five tracks takes an hour: you have to respect the category quotas, the balance across decades, the share of French-language tracks, and exclude everything aired in the last three weeks. An hour per listener, Monday to Friday.",
+      "solution": "The selection is made by the code, from the catalogue, the quotas and the blocklist of recently aired tracks. The model only steps in afterwards, to write the reasoning behind each choice — and if its answer breaks the constraints, a second call corrects it.",
+      "results": "An hour of curation down to seventy seconds, for one listener served every weekday. The email that arrives justifies each of the twenty-five tracks.",
+      "howItWorks": "A sixteen-node n8n workflow: catalogue and blocklist loaded from Google Sheets, merged, deterministic selection by crossed language × decade quotas, a call to Claude through OpenRouter for the justifications, a validity test, a corrective call if needed, blocklist update, and the HTML email. A full GDPR pack ships with the delivery.",
+      "transposition": "This is the demonstration that reassures managers who fear an AI will \"make things up\": the business rules decide, the AI explains. Wherever you have non-negotiable constraints — a chart of accounts, a nomenclature, a regulation — that is the division of labour to aim for."
+    },
+    "autoseo": {
+      "title": "Editorial publishing engine",
+      "summary": "Fifty articles published, three brands, no intervention.",
+      "sector": "Our products",
+      "client": "Distr'Action",
+      "metrics": {
+        "articles": "Articles published May to August 2026",
+        "brands": "Brands supplied"
+      },
+      "context": "Three of the group's brands need a regular editorial presence. Writing one article a week per brand is a part-time job.",
+      "problem": "Consistency is what counts in search, and consistency is precisely what a busy person does not sustain. Company blogs die of a missing cadence, not of missing ideas.",
+      "solution": "A single engine, connected to the three sites. It picks a topic, checks it has not already been covered, writes it, and publishes straight into the relevant site's database.",
+      "results": "Fifty articles published on just one of the three sites between May and August 2026, with no human intervention.",
+      "howItWorks": "One n8n hub and one publishing workflow per brand. A shared register of publications stops two sites covering the same topic — the safeguard the early versions lacked, which kept looping over the same list.",
+      "transposition": "The gain here is not time saved: it is work that would never have happened. Nobody would have written those fifty articles by hand. It is the most common form of advantage in automation, and the most underestimated."
+    },
+    "preparation-emission": {
+      "title": "Weekly show preparation",
+      "summary": "From two hours of preparation to three minutes.",
+      "sector": "Media",
+      "client": "A French-language radio station",
+      "metrics": {
+        "prep": "Preparing one show"
+      },
+      "context": "Every show needs preparation: gathering the material, shaping it, structuring it against a running order.",
+      "problem": "Two hours per show, every week, on collection and formatting work that is largely mechanical.",
+      "solution": "A workflow gathers the material, shapes it to the show's format, and delivers the preparation document ready to use.",
+      "results": "Two hours down to three minutes, measured on the automatic morning run.",
+      "howItWorks": "A sixteen-node n8n workflow on a weekly schedule, with multiple sources and final formatting. A global error workflow raises an alert if the scheduled run fails.",
+      "transposition": "Any recurring meeting that needs a briefing pack follows the same principle: leadership meetings, sales reviews, production stand-ups. The material already exists; gathering it is mechanical."
+    },
+    "dreamoracle": {
+      "title": "DreamOracle — consumer platform",
+      "summary": "A product carried end to end: design, build, acquisition.",
+      "sector": "Our products",
+      "client": "Distr'Action",
+      "metrics": {},
+      "context": "A consumer platform for dream interpretation, with a personal journal and an app installable on a phone.",
+      "problem": "Carrying a consumer product all the way takes more than code: a visual identity, a mobile experience, an acquisition channel.",
+      "solution": "Design, development, a complete visual identity, an installable web app, and an acquisition campaign. The product exists and runs.",
+      "results": "A demonstration of end-to-end capability, on a product aimed at the public rather than at businesses.",
+      "howItWorks": "Next.js, Prisma on PostgreSQL, a progressive web app installable on iOS and Android, an SVG identity suite, and a visual generator.",
+      "transposition": "If your project needs a product and not just an internal tool, this is the full chain you need: design, brand, build, go to market. The last three are the ones people underestimate."
+    },
+    "artpero": {
+      "title": "L'Artpéro — events platform",
+      "summary": "Ticketing, payment and registrations, all online.",
+      "sector": "Culture",
+      "client": "L'Artpéro",
+      "metrics": {},
+      "context": "A cultural events organiser handled registrations and payments outside their own website.",
+      "problem": "Registrations scattered across a form, emails and manual transfers: lost time, and seats sold twice.",
+      "solution": "A complete platform: event listings, online registration, payment, and a management area for the organiser.",
+      "results": "A single chain, from discovering the event to the payment landing.",
+      "howItWorks": "React and Supabase for data and authentication, Stripe for payments.",
+      "transposition": "Anything that is booked or signed up for follows the same pattern: workshops, training, consultations, rentals. The main gain is not online payment, it is the end of double entry."
+    },
+    "tl-services": {
+      "title": "TL Services — showcase website",
+      "summary": "A complete site, designed and live in four days.",
+      "sector": "Trades",
+      "client": "TL Services",
+      "metrics": {
+        "delivery": "From first line of code to launch"
+      },
+      "context": "A tradesperson with no online presence, whose potential customers nonetheless search for their services before picking up the phone.",
+      "problem": "Without a site, you do not exist in a local search. And quotes get requested by phone, at the hours when the tradesperson is on site.",
+      "solution": "A complete showcase site: services, a request form wired to email, legal pages, search optimisation and social sharing images, and a mobile call-to-action button.",
+      "results": "Delivered in four days, from the first line of code to going live.",
+      "howItWorks": "Next.js and React, sharing images generated on the fly, form wired to SMTP, Docker container behind a proxy with automatic certificates.",
+      "transposition": "Four days is the order of magnitude for a tradesperson or freelancer starting from nothing. What takes time afterwards is not the site: it is deciding what you want to say on it."
+    },
+    "playlist-spotify": {
+      "title": "Spotify playlist generator",
+      "summary": "One sentence, and the playlist exists in your account.",
+      "sector": "Media",
+      "client": "Distr'Action",
+      "metrics": {
+        "toPlaylist": "From request to created playlist"
+      },
+      "context": "Building a themed playlist means searching for every track, one at a time.",
+      "problem": "The time is not spent choosing the tracks, it is spent searching for and adding each one.",
+      "solution": "You describe the playlist in a sentence. The tracks are proposed, looked up in the catalogue, and the playlist is created directly in the user's account.",
+      "results": "Between twenty-five and forty seconds from sentence to usable playlist.",
+      "howItWorks": "An n8n webhook with access control at the entrance — a public endpoint without a safeguard is an open invoice. Tracks proposed by Claude, looked up through the Spotify API, playlist created and filled in batches. A fallback branch re-runs a title-only search for tracks missed on the first pass.",
+      "transposition": "This is the most immediately understandable demonstration: from intent expressed in one sentence to a usable result, inside a tool everyone knows. The same pattern applies to any bulk creation inside a third-party tool."
+    },
+    "enghien": {
+      "title": "A searchable historical library",
+      "summary": "Eight books of local history, searchable in one question.",
+      "sector": "Heritage",
+      "client": "A local history society",
+      "metrics": {},
+      "shortDescription": "Eight books on the history of one town, from 1876 to 2007, brought together into a single searchable library. You ask a question in plain language, the system finds the relevant passages across the corpus and answers citing its sources, book by book. The collection includes works still in copyright, used with the rights holders' agreement."
+    },
+    "veille-youtube": {
+      "title": "Automated video monitoring",
+      "summary": "The videos that matter, transcribed and filed hourly.",
+      "sector": "Monitoring",
+      "client": "Distr'Action",
+      "metrics": {},
+      "context": "Following what is being said on a subject means watching hours of video, or not following it at all.",
+      "problem": "Nobody has time to watch. And a video you have not watched is information you do not have.",
+      "solution": "New videos from the channels you follow are spotted automatically, transcribed, cleaned and filed into a table you search by keyword. You read in two minutes what took forty.",
+      "results": "Monitoring that runs every hour unattended, and degrades gracefully: if a video has no subtitles, the audio is downloaded and transcribed.",
+      "howItWorks": "A twenty-six-node n8n workflow: playlist read, deduplication against what is already filed, transcription by a dedicated service, fallback to audio transcription when subtitles are missing, text cleanup, and a write to Google Sheets. The list of channels followed is driven from the table itself.",
+      "transposition": "The fallback is the important part: an automation that gives up at the first edge case is only a demo. This one runs every hour without being watched."
+    },
+    "paperclip": {
+      "title": "Paperclip — an assisted leadership meeting",
+      "summary": "Ten specialists consulted in parallel on one decision.",
+      "sector": "Internal research",
+      "client": "AInspiration",
+      "metrics": {
+        "agents": "Specialists consulted"
+      },
+      "context": "A small business has no board. It has one person deciding alone, with their blind spots.",
+      "problem": "Bad decisions do not come from missing information but from missing contradiction. Nobody tells the founder what they would rather not hear.",
+      "solution": "Ten specialist profiles — leadership, sales, finance, legal, technical, marketing, operations — consulted on the same question, each with their own frame and priorities. They are allowed to disagree: that is the point. A synthesis decides.",
+      "results": "An internal research setup, used on real commercial decisions.",
+      "howItWorks": "Ten profiles described in Markdown, each with its domain, seniority and context. Three commands drive a session: general consultation, briefing with task allocation, or a progress round.",
+      "transposition": "This is research, not an offering. We show it because it is what we test on ourselves before proposing it — and because organised contradiction beats a single opinion, including when the single opinion is ours."
+    },
+    "rampa": {
+      "title": "Hybrid search over a document corpus",
+      "summary": "Nineteen books searchable, with the retrieval to match.",
+      "sector": "Internal research",
+      "client": "Personal project",
+      "metrics": {},
+      "shortDescription": "A corpus of nineteen books, searchable in plain language. The interesting part is not the corpus but the retrieval: it is hybrid, both semantic and keyword-based. The reason is measured rather than theoretical — on short questions in French, semantic search alone misses obvious passages, and keyword search catches what it drops. That is the kind of correction you only find by testing."
+    }
+  }
+}
