@@ -44,7 +44,7 @@ Ces quatre lignes sont vérifiables et n'ont besoin d'aucune validation.
 |---|---|---|---|
 | **Facturation** | **1 heure** par mois, à la main, avec risque d'erreur | **13 s** | *« La facturation d'un mois : d'une heure à treize secondes. »* |
 | **Préparation d'émission** | **2 heures** par émission | **~3 min** | *« De deux heures à trois minutes par émission. »* |
-| **Labo Nostalgie** | **1 heure par jour, du lundi au vendredi** | **~70 s** par playlist | *« Cinq heures de composition par semaine, remplacées par soixante-dix secondes par auditeur. »* |
+| **Labo Nostalgie** | **1 heure** de composition par auditeur, **un auditeur par jour, du lundi au vendredi** | **~70 s** par playlist | *« Une heure de composition par auditeur, ramenée à soixante-dix secondes — un auditeur servi chaque jour de la semaine. »* |
 | **Factures fournisseurs** | **2 jours** de saisie | script | *« Deux jours de saisie pour 646 références chez 25 fournisseurs. »* |
 | **Réconciliation de caisse** | **1 heure par jour d'exploitation** | *non mesuré* | voir réserve 2 |
 | **Chat du site** | — | **20 demandes/semaine** | voir réserve 3 |
@@ -88,12 +88,21 @@ volume mais la **disponibilité** — il répond la nuit et le week-end. **Recom
 afficher le nombre.** Il me manque d'ailleurs la seule donnée qui compterait ici : **quelle
 proportion des demandes arrive en dehors des heures de bureau ?**
 
+> ✅ **Le Labo Nostalgie se recoupe tout seul, et c'est ce qui le rend crédible.** Une heure de
+> composition pour *un* auditeur, un auditeur *par jour*, du lundi au vendredi — et le workflow
+> s'appelle précisément « CLASSIQUE (lundi-vendredi) ». Le rythme déclaré, la charge déclarée et le
+> nom du workflow disent la même chose. C'est le genre de cohérence qu'un prospect sceptique peut
+> vérifier lui-même.
+>
+> ⚠️ **Publier le rythme, jamais un cumul.** « Un auditeur par jour, cinq jours sur sept » est un
+> fait. « Plus de 150 auditeurs servis » serait une extrapolation depuis ce rythme — un calcul, pas
+> une mesure. Si tu veux un total, il faut le compter dans le Google Sheet de la liste noire ;
+> n8n purge son historique et ne peut pas le dire.
+
 ### Reste ouvert
 
 - **Réconciliation de caisse** : le temps de rapprochement d'une journée aujourd'hui (réserve 2).
 - **Chat** : la part des demandes hors heures de bureau (réserve 3).
-- **Labo Nostalgie** : le nombre d'auditeurs servis, à compter dans le Google Sheet de la liste
-  noire — n8n purge son historique et ne peut pas le dire.
 
 ---
 
