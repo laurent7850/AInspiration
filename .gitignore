@@ -57,3 +57,6 @@ supabase/.temp/
 # Claude Code transient artifacts
 .claude/worktrees/
 .claude/scheduled_tasks.lock
+
+# Generated demo assets (rebuild with scripts/demo/generate-demo-fournisseurs.py)
+scripts/demo/out/

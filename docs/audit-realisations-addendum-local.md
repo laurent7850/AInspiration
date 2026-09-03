@@ -249,13 +249,15 @@ outil générique, c'est plus convaincant que l'industrialisation qu'on allait r
 Cela **répond aussi à la question 15 de l'audit** (« les deux restaurants acceptent-ils d'être
 nommés ? ») : non, on ne les nomme pas, donc il n'y a pas d'accord à demander.
 
-> ⚠️ **Une question de fait reste ouverte, et l'anonymisation ne la règle pas.** Savoir *qui*
-> utilise `BrassPat04-2026` aujourd'hui n'est pas qu'une affaire de nom : **tout l'argumentaire du
-> §B repose sur l'existence de deux restaurants distincts.** Si cette application tournait en
-> réalité chez Saint Kilda — ce que son `CLAUDE.md` laisse entendre — alors il n'y a pas deux
-> clients avec deux solutions, mais **un seul client avec deux outils**, et la fiche devient une
-> autre histoire. Le faisceau d'indices penche pour la Patinoire (domaine `brasspat042026`, prompt
-> OCR qui cherche un rapport « LA PATINOIRE »), mais il faut une confirmation avant de rédiger.
+**Et le doute sur « qui utilise quoi » est levé sans avoir à nommer personne.** L'arbitrage n° 5 en
+tête de l'audit le dit déjà : projet d'origine chez le premier restaurant, redéployé en variante
+chez le second. **Ce sont bien deux établissements distincts**, donc l'argumentaire « deux clients,
+deux solutions » tient. Le faisceau technique va dans le même sens : domaine `brasspat042026`,
+prompt OCR qui cherche un rapport « LA PATINOIRE ».
+
+> 📝 Reste une **coquille dans le dépôt**, sans effet sur la vitrine mais qui rendra la relecture
+> pénible : le `CLAUDE.md` de `BrassPat04-2026` est titré du nom du *second* restaurant. C'est ce
+> titre qui m'avait fait douter. À corriger un jour, hors périmètre de cette mission.
 
 ### ✅ Le troisième projet — extraction de factures fournisseurs (question 24)
 
@@ -284,11 +286,35 @@ Ce qui en fait une bonne fiche, et pas un simple script :
 
 > ⚠️ **Contrainte de capture, plus sévère que l'anonymisation du client.** Le classeur produit
 > contient les **prix unitaires d'achat** du restaurant et la **liste nominative de ses
-> fournisseurs** (Sorescol, Avinum, Deconinck, HLS…). En publier une capture divulguerait ses
-> conditions commerciales — c'est plus grave que de le nommer. **Aucune capture du vrai fichier ne
-> peut être publiée.** Il faut générer un classeur de démonstration avec des fournisseurs et des
-> prix fictifs, dans la même mise en forme. Même règle pour le nom du fichier :
-> `Fournisseurs_Patinoire.xlsx` ne doit apparaître ni à l'écran, ni dans un nom d'image.
+> fournisseurs**. En publier une capture divulguerait ses conditions commerciales — c'est plus grave
+> que de le nommer. **Aucune capture du vrai fichier ne peut être publiée.** Même règle pour le nom
+> du fichier réel : il ne doit apparaître ni à l'écran, ni dans un nom d'image.
+
+### ✅ Classeur de démonstration — livré
+
+`scripts/demo/generate-demo-fournisseurs.py` reconstruit **la même mise en page** que la sortie
+réelle — colonnes, en-têtes blancs sur `#2F5496`, bandeaux de catégorie `#D6E4F0`, format euro,
+TVA en pourcentage, largeurs de colonnes — à partir de **données entièrement fictives** :
+8 onglets, 39 lignes produit, fournisseurs inventés.
+
+```bash
+python scripts/demo/generate-demo-fournisseurs.py
+```
+
+Sortie : `scripts/demo/out/Fournisseurs-DEMO.xlsx` (répertoire ignoré par git — le classeur se
+régénère, il n'a pas à être versionné).
+
+Trois choix à connaître avant de capturer :
+
+- **Le premier onglet est groupé par catégories** (FRAIS / SEC / CONGELÉ / ND), comme le plus gros
+  fournisseur du fichier réel. C'est la variante la plus parlante à l'écran : elle montre d'un coup
+  d'œil que l'outil ne se contente pas d'empiler des lignes.
+- **Un onglet ne porte volontairement aucune ligne facturée** (« feuille de commande » uniquement,
+  quantité 0). Le fichier réel en compte cinq. Le retirer rendrait la capture plus jolie et moins
+  vraie.
+- **La mention « données fictives » est dans les propriétés du fichier, pas dans une cellule** —
+  vérifiable par qui ouvre le classeur, invisible sur l'image. Un filigrane « DEMO » en travers de
+  la feuille aurait abîmé le seul visuel de la fiche.
 
 ---
 
@@ -408,14 +434,12 @@ le seul cas qui justifie de revenir sur ce point.
     l'explication. Reste un point de finition : les accents manquants de l'interface sont visibles
     sur la capture, à corriger avant de la prendre (§A).
 23. ~~**Sous quel nom parler de `BrassPat04-2026` ?**~~ **Réglé : « un restaurant »**, terme
-    générique, aucun des trois noms n'apparaît. Ce qui règle aussi la **question 15 de l'audit**.
-    → Reste une question **de fait**, pas de nom : **quel restaurant utilise réellement cette
-    application ?** L'argumentaire « deux restaurants, deux solutions » n'existe que si ce sont bien
-    deux clients distincts (§B).
+    générique, aucun nom d'établissement n'apparaît nulle part dans la vitrine. Ce qui règle aussi
+    la **question 15 de l'audit**. Le doute sur « qui utilise quoi » est levé par l'arbitrage n° 5
+    en tête de l'audit : deux établissements distincts, l'argumentaire tient (§B).
 24. ~~**L'extraction de factures fournisseurs entre-t-elle dans la grille ?**~~ **Réglé : oui,
-    entièrement anonymisée.** Devient la quinzième réalisation. Contrainte forte sur la capture :
-    le classeur réel contient les prix d'achat et les fournisseurs nominatifs du restaurant — il
-    faut un jeu de démonstration fictif (§B).
+    entièrement anonymisée.** Devient la quinzième réalisation. Le classeur de démonstration
+    demandé est **livré** : `scripts/demo/generate-demo-fournisseurs.py` (§B).
 25. ~~**Enghien : qui citer, et les droits couvrent-ils les huit ouvrages ?**~~ **Réglé par
     Laurent** : (a) le partenaire à citer est le **Cercle Royal Archéologique d'Enghien**, pas la
     Ville — les questions 6b de l'audit tombent ; (b) **les huit ouvrages sont couverts** par
@@ -425,6 +449,6 @@ le seul cas qui justifie de revenir sur ce point.
     à demander — mais deux contraintes en découlent, traitées au §A bis : la capture doit exclure le
     pied de page, et la carte ne porte **aucun lien sortant** (§E).
 
-**Toutes les questions de ce périmètre sont tranchées.** Un seul point de fait reste à confirmer
-avant de rédiger la fiche du §B : **quel restaurant utilise `BrassPat04-2026`** — c'est ce qui
-décide si l'histoire est « deux clients, deux solutions » ou « un client, deux outils ».
+**Toutes les questions de ce périmètre sont tranchées.** Règle générale à retenir pour la
+Phase 1 : **aucun nom d'établissement n'apparaît dans la vitrine**, ni en texte, ni sur une capture,
+ni dans un nom de fichier image.
