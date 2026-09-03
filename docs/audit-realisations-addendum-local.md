@@ -403,8 +403,9 @@ une démo d'un automate qui tourne toutes les heures sans surveillance.
 - **Rampa** et **Enghien** passent en **format réduit** : une image, une explication, pas de page
   détail. Les deux sites sont publics, les deux images sont capturables tout de suite.
 
-**Reste bloquant :** questions 3 (angle Audityo), 4 (accès MCP n8n), 9 (chiffres de résultat,
-désormais sans objet pour Rampa et Enghien), 11–12 (TL Services), 18–19 (seconde instance n8n).
+**Reste bloquant :** questions 4 (accès MCP n8n), 9 (chiffres de résultat, désormais sans objet
+pour Rampa et Enghien), 11–12 (TL Services), 18–19 (seconde instance n8n). **Question 3 close** —
+angle Audityo réécrit au §G.
 **Questions 6 et 15 : closes** — la 6 par le format réduit, le partenaire tranché et les droits
 confirmés (§A bis) ; la 15 par l'anonymisation en « un restaurant » (§B).
 
@@ -452,3 +453,60 @@ le seul cas qui justifie de revenir sur ce point.
 **Toutes les questions de ce périmètre sont tranchées.** Règle générale à retenir pour la
 Phase 1 : **aucun nom d'établissement n'apparaît dans la vitrine**, ni en texte, ni sur une capture,
 ni dans un nom de fichier image.
+
+---
+
+## G. Audityo — angle réécrit (question 3)
+
+**Arbitrage de Laurent : adapter l'angle, la date est passée.** Le brief vendait « avant l'échéance
+d'août 2026 » ; le 2 août 2026 est derrière nous. Garder cette formulation ferait daté, et — plus
+grave sur une vitrine qui vend de la rigueur — ferait douter de tout le reste.
+
+### L'angle
+
+| | |
+|---|---|
+| **Mort** | « Anticipez l'échéance d'août 2026 » — une promesse au futur, périmée. |
+| **Retenu** | **« Le règlement s'applique. Où en êtes-vous ? »** — un constat au présent. |
+
+Le changement n'affaiblit pas l'argument, il le renforce : l'urgence n'est plus hypothétique.
+Tant que l'échéance était devant, ne rien faire était un choix défendable. Maintenant, ne rien
+faire est une situation subie. **La question n'est plus « quand », c'est « depuis quand ».**
+
+### Trois conséquences de rédaction
+
+1. **Le premier livrable devient un état des lieux, pas un plan de préparation.** Avant de se
+   mettre en règle, une PME doit savoir **ce qu'elle utilise** — le chatbot de son site, l'outil de
+   tri de CV, le scoring client, l'assistant commercial que quelqu'un a branché seul. La plupart ne
+   le savent pas. C'est le vrai point d'entrée, et c'est celui qui fait comprendre le produit en une
+   phrase.
+2. **Ne rien dater.** Aucune formulation qui vieillit : ni « dans quelques mois », ni « d'ici
+   l'été », ni « la nouvelle réglementation ». Le texte doit rester exact dans un an sans
+   relecture. C'est exactement la faute qui a tué l'angle précédent.
+3. **Rester un produit du groupe.** Consigne inchangée du brief : Audityo n'est pas une réalisation
+   *cliente*. La fiche parle de « nos produits ».
+
+### Deux garde-fous, et ils ne sont pas décoratifs
+
+> ⚠️ **Ne pas promettre la conformité.** Un outil aide à classifier des systèmes et à produire un
+> dossier documentaire ; il ne rend personne conforme, et le dire serait une affirmation juridique
+> qu'on ne peut pas tenir. Formuler en **capacité** (« classer vos systèmes, produire et tenir à
+> jour votre dossier »), jamais en **résultat garanti** (« soyez conforme »).
+>
+> ⚠️ **Aucun chiffre légal non sourcé.** Ni montant d'amende, ni pourcentage de chiffre d'affaires,
+> ni date d'application autre que celles qu'on peut citer d'un texte officiel. La règle
+> `no-fabricated-proof` s'applique au droit comme au reste, et la baseline Distr'Action interdit
+> d'inventer une conformité. En cas de doute : renvoyer vers un juriste, ne pas trancher dans la
+> fiche.
+
+### Éléments de fiche
+
+- **Titre** : Audityo — conformité au règlement européen sur l'IA
+- **Phrase de résultat** (≤ 12 mots) : *« Classer ses systèmes d'IA et produire son dossier de
+  conformité. »*
+- **Stack à corriger** (§4.3) : Next.js 16, **Prisma v6 + PostgreSQL 16, Auth.js v5**, Stripe,
+  Claude pour la classification et la génération documentaire, Puppeteer pour les PDF, Docker +
+  Traefik. **Ni Supabase, ni Clerk** — le brief se trompait.
+- **Isolation multi-tenant** : confirmée dans `ARCHITECTURE.md`, elle peut être mise en avant.
+
+**Question 3 close.**
