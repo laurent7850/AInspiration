@@ -86,6 +86,7 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'complet',
     technologies: ['Python', 'Flask', 'Claude (OCR)', 'React', 'Excel'],
+    cover: '/images/realisations/reconciliation-caisse.jpg',
     metrics: [
       { value: '1 h / jour', labelKey: 'before' },
       { value: '2', labelKey: 'restaurants' },
@@ -98,6 +99,7 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'complet',
     technologies: ['Python', 'pdfplumber', 'openpyxl'],
+    cover: '/images/realisations/factures-fournisseurs.jpg',
     metrics: [
       { value: '646', labelKey: 'references' },
       { value: '25', labelKey: 'formats' },
