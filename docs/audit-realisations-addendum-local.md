@@ -438,7 +438,7 @@ le seul cas qui justifie de revenir sur ce point.
     la **question 15 de l'audit**. Le doute sur « qui utilise quoi » est levé par l'arbitrage n° 5
     en tête de l'audit : deux établissements distincts, l'argumentaire tient (§B).
 24. ~~**L'extraction de factures fournisseurs entre-t-elle dans la grille ?**~~ **Réglé : oui,
-    entièrement anonymisée.** Devient la quinzième réalisation. Le classeur de démonstration
+    entièrement anonymisée.** Devient la **seizième** réalisation. Le classeur de démonstration
     demandé est **livré** : `scripts/demo/generate-demo-fournisseurs.py` (§B).
 25. ~~**Enghien : qui citer, et les droits couvrent-ils les huit ouvrages ?**~~ **Réglé par
     Laurent** : (a) le partenaire à citer est le **Cercle Royal Archéologique d'Enghien**, pas la
@@ -616,9 +616,14 @@ que le brief cherchait au projet n° 1 et qu'il n'y a pas trouvée — ici elle 
 et elle se raconte en une phrase : *un moteur de publication, branché sur trois sites différents.*
 Front déployé sur `seopilot.srv767464.hstgr.cloud`.
 
-> ❓ **Restent sans réponse : VoxStudio et Minutage NRJ+** (les deux autres projets du §4.13).
-> Le premier compte : **VoxStudio donnerait enfin une preuve à la page `/audio`, qui n'en a
-> aucune.** → question 27.
+**✅ VoxStudio et Minutage NRJ+ : écartés** (décision de Laurent). Ils sortent définitivement du
+périmètre — inutile d'y revenir en Phase 1.
+
+> ⚠️ **Une conséquence à assumer : la page `/audio` reste sans preuve.** C'était le seul projet
+> capable de lui en donner une. Trois issues, à traiter hors de cette mission : lui rattacher une
+> autre fiche si une s'y prête, retirer la page tant qu'elle ne prouve rien, ou l'assumer comme
+> page d'offre pure. **Ne pas la laisser promettre sans montrer** — c'est exactement la situation
+> que la section Réalisations existe pour corriger ailleurs sur le site.
 
 ---
 
@@ -630,4 +635,8 @@ Front déployé sur `seopilot.srv767464.hstgr.cloud`.
 |---|---|---|
 | 9 | Chiffres de résultat par projet | Durées, années, gains — même approximatifs. Sans eux, chaque fiche part avec des `[À VALIDER]` visibles. TL Services est déjà servi (§H). |
 | 12 | TL Services : résultat constaté | Une valeur relevée, ou une fiche sans bloc résultats (§H). |
-| 27 | **VoxStudio et Minutage NRJ+ entrent-ils dans la grille ?** | Arbitrage. VoxStudio donnerait une preuve à `/audio`. |
+| — | *(la question 27 est close : VoxStudio et Minutage NRJ+ sont écartés, §H)* | |
+
+**La grille compte 17 réalisations** : les 12 du brief, plus TL Services (13), la réconciliation de
+caisse (14), Rampa (15), l'extraction de factures fournisseurs (16) et AutoSEO / SEOPilot (17).
+Deux d'entre elles — Rampa et Enghien — sont en format réduit.
