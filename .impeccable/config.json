@@ -57,6 +57,15 @@
         "rule": "design-system-radius",
         "value": "2px",
         "createdAt": "2026-09-01T07:52:22.102Z"
+      },
+      {
+        "rule": "ai-color-palette",
+        "value": "*",
+        "files": [
+          "src/components/realisations/RealisationCard.tsx"
+        ],
+        "createdAt": "2026-09-03T11:54:56.428Z",
+        "reason": "DESIGN.md Two Voices rule: aurora.teal on the night ground is the documented way to render a figure across this site (propagated by b88620e); the brief forbids any redesign"
       }
     ]
   }

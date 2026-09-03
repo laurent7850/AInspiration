@@ -111,6 +111,7 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'complet',
     technologies: ['n8n', 'LangChain', 'OpenRouter'],
+    cover: '/images/realisations/chat-ia-site.jpg',
     metrics: [],
   },
   {
@@ -120,6 +121,7 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'complet',
     technologies: ['Next.js', 'Prisma', 'PostgreSQL', 'Auth.js', 'Stripe'],
+    cover: '/images/realisations/audityo.jpg',
     metrics: [],
   },
   {
@@ -129,6 +131,7 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'complet',
     technologies: ['n8n', 'Claude', 'Google Sheets', 'Gmail'],
+    cover: '/images/realisations/labo-nostalgie.jpg',
     metrics: [
       { value: '1 h → 70 s', labelKey: 'composition' },
       { value: '5 / semaine', labelKey: 'listeners' },
@@ -162,6 +165,7 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'complet',
     technologies: ['Next.js', 'Prisma', 'PostgreSQL', 'PWA'],
+    cover: '/images/realisations/dreamoracle.jpg',
     metrics: [],
   },
   {
@@ -172,6 +176,7 @@ export const realisations: Realisation[] = [
     format: 'complet',
     duration: '8 semaines',
     technologies: ['React', 'Supabase', 'Stripe'],
+    cover: '/images/realisations/artpero.jpg',
     metrics: [],
   },
   {
@@ -182,6 +187,7 @@ export const realisations: Realisation[] = [
     format: 'complet',
     duration: '4 jours',
     technologies: ['Next.js', 'React', 'SMTP'],
+    cover: '/images/realisations/tl-services.jpg',
     metrics: [{ value: '4 jours', labelKey: 'delivery' }],
   },
   {
@@ -200,6 +206,7 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'reduit',
     technologies: ['Next.js', 'pgvector', 'Claude'],
+    cover: '/images/realisations/enghien.jpg',
     metrics: [],
   },
   {
@@ -227,6 +234,11 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'reduit',
     technologies: ['Next.js', 'pgvector', 'Claude'],
+    // The capture exists (scripts/captures/capture.mjs rampa) but is NOT wired:
+    // ~30 interface strings on that site have lost their accents, and they are
+    // legible in the shot ("le Troisieme Oeil", "la meditation tibetaine").
+    // A showcase selling rigour cannot publish that. Fix the strings in the
+    // Rampa project first, re-run the capture, then add the cover here.
     metrics: [],
   },
 ];
