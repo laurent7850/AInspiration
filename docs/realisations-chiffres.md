@@ -38,27 +38,62 @@ Ces quatre lignes sont vérifiables et n'ont besoin d'aucune validation.
 
 ---
 
-## 3. Le « avant » — ce que toi seul peux donner
+## 3. Les gains complets — réponses de Laurent, 3 septembre 2026
 
-Six questions, une valeur chacune. Un ordre de grandeur suffit : « une demi-journée », « deux
-heures », « trois jours par mois ».
+| Fiche | Avant | Après | Ce qui se dit sur la fiche |
+|---|---|---|---|
+| **Facturation** | **1 heure** par mois, à la main, avec risque d'erreur | **13 s** | *« La facturation d'un mois : d'une heure à treize secondes. »* |
+| **Préparation d'émission** | **2 heures** par émission | **~3 min** | *« De deux heures à trois minutes par émission. »* |
+| **Labo Nostalgie** | **1 heure par jour, du lundi au vendredi** | **~70 s** par playlist | *« Cinq heures de composition par semaine, remplacées par soixante-dix secondes par auditeur. »* |
+| **Factures fournisseurs** | **2 jours** de saisie | script | *« Deux jours de saisie pour 646 références chez 25 fournisseurs. »* |
+| **Réconciliation de caisse** | **1 heure par jour d'exploitation** | *non mesuré* | voir réserve 2 |
+| **Chat du site** | — | **20 demandes/semaine** | voir réserve 3 |
 
-1. **Facturation** — combien de temps te prenait la facturation d'un mois **à la main** ?
-   *C'est le chiffre le plus rentable de toute la vitrine : « de X heures à 13 secondes » est la
-   phrase qui fait demander un audit.*
-2. **Réconciliation de caisse** — combien de temps prenait le rapprochement mensuel des caisses
-   avant l'outil ? Et **combien d'erreurs** t'a-t-il évitées ou révélées ? *Sur de la comptabilité,
-   l'erreur évitée vaut souvent plus que le temps gagné.*
-3. **Extraction de factures fournisseurs** — combien de temps aurait pris la saisie manuelle des
-   factures d'une trentaine de fournisseurs ? *Je peux compter les lignes produit exactes dans le
-   classeur si tu veux le dénominateur.*
-4. **Labo Nostalgie** — combien de temps mettait un humain à composer une playlist personnalisée de
-   25 titres en respectant les quotas et la liste noire ? *Et combien d'auditeurs servis, si tu as
-   le Sheet sous la main.*
-5. **Préparation d'émission** — même question : le temps de préparation d'une émission avant.
-6. **Chat du site** — combien de demandes reçoit-il par semaine, et lesquelles n'auraient pas eu de
-   réponse en dehors des heures de bureau ? *Ici l'avantage n'est pas le temps mais la
-   disponibilité.*
+Les trois premières lignes sont des soustractions complètes, sourcées des deux côtés. **Ce sont les
+trois meilleurs chiffres de la vitrine**, et la facturation reste le plus fort : une heure de
+travail mensuel réduite à treize secondes se comprend sans explication.
+
+> 📌 **Correction utile.** Ma question parlait d'un rapprochement de caisse *mensuel* ; la réponse
+> dit **par jour d'exploitation**. C'est très différent, et bien meilleur : une corvée quotidienne
+> pèse plus qu'une corvée mensuelle, et le lecteur restaurateur la reconnaît immédiatement. La
+> fiche doit dire « chaque jour », pas « chaque mois ».
+
+### Trois réserves avant publication
+
+**1. « Plus d'erreur humaine » ne peut pas s'écrire tel quel.** ⚠️ L'automatisation ne supprime pas
+l'erreur, elle en change la nature : l'outil du premier restaurant lit des tickets scannés **par
+OCR d'un modèle de langage**, et une mauvaise lecture reste possible. Écrire « plus d'erreur »
+serait une promesse que le code ne tient pas — et le premier client qui trouve un écart aurait
+raison contre nous.
+
+Ce qui est **vrai, vérifiable et déjà inscrit dans le code** dit presque la même chose, en plus
+solide :
+
+- *« Les cellules déjà remplies ne sont jamais écrasées »* — garantie explicite du code.
+- *« La ressaisie manuelle disparaît »* — donc la classe d'erreurs propre à la ressaisie aussi.
+- *« Les écarts sont signalés au lieu d'être corrigés en silence »* — l'outil marque les conflits.
+
+Formulation à retenir : **on supprime la ressaisie, on ne supprime pas la vigilance.**
+
+**2. Il manque l'« après » de la réconciliation de caisse.** Contrairement aux workflows n8n, ces
+deux applications ne laissent aucun journal d'exécution — l'une tourne dans le navigateur, l'autre
+dans un conteneur sans historique. **Combien de temps te prend le rapprochement d'une journée
+aujourd'hui ?** Deux minutes, cinq minutes ? Sans cette valeur, la fiche dira « une heure par jour
+d'exploitation avant l'outil » sans pouvoir refermer la soustraction.
+
+**3. Publier « 20 demandes par semaine » n'est pas évident.** ⚠️ C'est le volume de **notre propre**
+site : le publier renseigne autant les concurrents que les prospects, et vingt est un chiffre
+modeste qui peut se retourner contre nous. L'avantage réel de ce projet n'est de toute façon pas le
+volume mais la **disponibilité** — il répond la nuit et le week-end. **Recommandation : ne pas
+afficher le nombre.** Il me manque d'ailleurs la seule donnée qui compterait ici : **quelle
+proportion des demandes arrive en dehors des heures de bureau ?**
+
+### Reste ouvert
+
+- **Réconciliation de caisse** : le temps de rapprochement d'une journée aujourd'hui (réserve 2).
+- **Chat** : la part des demandes hors heures de bureau (réserve 3).
+- **Labo Nostalgie** : le nombre d'auditeurs servis, à compter dans le Google Sheet de la liste
+  noire — n8n purge son historique et ne peut pas le dire.
 
 ---
 
