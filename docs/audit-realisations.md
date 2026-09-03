@@ -9,9 +9,10 @@
 > 3. Le projet n° 1 devient **le chat IA du site, en démo vivante** — le volet
 >    « widget embarquable multi-clients » est abandonné (§4.7).
 > 4. **TL Services entre dans la grille** comme treizième réalisation (§4.8).
-> 5. « Brasspat » n'est **pas un chatbot** : c'est l'outil de réconciliation de caisse,
->    déployé chez **deux restaurants**. Quatorzième réalisation, et la véritable offre
->    standardisée multi-clients de la vitrine (§4.10).
+> 5. « Brasspat » n'est **pas un chatbot** : c'est l'outil de réconciliation de caisse.
+>    Projet d'origine chez la **Brasserie de la Patinoire**, redéployé en variante chez
+>    **Saint Kilda**. Quatorzième réalisation, et la vraie preuve de réutilisation de la
+>    vitrine (§4.10).
 
 ---
 
@@ -538,10 +539,22 @@ restaurants**. Le brief avait mélangé deux projets distincts.
 
 Ce que cela révèle : **le même outil est déployé chez deux restaurants.**
 
-| Instance | Domaine | Source |
-|---|---|---|
-| Saint Kilda | `caisses.distr-action.com` | `docker-compose.prod.yml` du dépôt |
-| Brasserie de la Patinoire | `brasspat042026.distr-action.com` | fourni par Laurent |
+| Rang | Restaurant | Domaine | Source |
+|---|---|---|---|
+| **Projet d'origine** | Brasserie de la Patinoire | `brasspat042026.distr-action.com` | fourni par Laurent — **code non trouvé sur GitHub** |
+| **Variante** | Saint Kilda | `caisses.distr-action.com` | dépôt `laurent7850/reconciliation-caisse` |
+
+**L'ordre compte pour la fiche.** L'outil a été conçu pour un premier restaurant, puis
+redéployé chez un second : c'est une trajectoire de produit, pas un doublon. Le dépôt que
+je peux lire (`reconciliation-caisse`) est donc **la variante**, ce qui explique qu'il porte
+« Saint Kilda » en dur dans son interface (`src/App.tsx:143`) — c'est un fork adapté, pas
+un socle paramétrable.
+
+> ⚠️ **Conséquence sur l'argumentaire.** « Redéployable en quelques jours » ne se dit pas de
+> la même façon selon qu'on duplique un dépôt ou qu'on change un fichier de configuration.
+> Ici c'est un fork par client. La formulation honnête est celle du sur-mesure réutilisable :
+> *un socle éprouvé chez un premier restaurant, adapté au plan comptable du suivant* — ce qui
+> reste très vendeur, et évite une promesse d'industrialisation que le code ne tient pas.
 
 **C'est l'offre standardisée que le brief cherchait au projet n° 1** — un produit conçu
 une fois, redéployé par client — sauf qu'elle appartient à ce projet-ci, pas au chatbot.
@@ -577,10 +590,9 @@ qui raconte immédiatement l'histoire.
 > clair, et le dépôt est privé — mais il ne devrait pas s'y trouver. Signalé, non corrigé
 > (hors périmètre de cette mission).
 
-> ❓ **Reste à clarifier** : `brasspat042026` est-il le même code redéployé, ou une variante
-> avec son propre dépôt ? Le dépôt `reconciliation-caisse` ne connaît que Saint Kilda
-> (nom du restaurant en dur dans `src/App.tsx:143`), ce qui suggère un fork par client
-> plutôt qu'un vrai multi-tenant. → **question 16.**
+> ❓ **Il me manque le projet d'origine.** Le code de `brasspat042026` n'est sur aucun dépôt
+> du compte `laurent7850`. Or c'est lui la première livraison, et c'est de lui que la fiche
+> doit parler en premier. → **question 16.**
 
 ---
 
@@ -694,11 +706,10 @@ Sans écrire une ligne de code, voici le parti que je défendrai :
     ou reste-t-on sur « deux restaurants bruxellois » ? Et as-tu un gain constaté à me
     donner — temps de rapprochement mensuel avant / après, par exemple ?
 
-16. **`brasspat042026` : même code ou variante ?** Le dépôt `reconciliation-caisse` porte
-    « Saint Kilda » en dur dans son interface, ce qui suggère un fork par client plutôt
-    qu'un produit paramétrable. Existe-t-il un second dépôt ? La réponse change
-    l'argumentaire : « redéployable en quelques jours » ne se dit pas de la même façon
-    selon qu'on duplique un dépôt ou qu'on change un fichier de configuration.
+16. **Où est le code de la Brasserie de la Patinoire ?** C'est le projet d'origine — Saint
+    Kilda en est la variante — donc c'est lui que la fiche doit raconter en premier. Or il
+    n'est sur aucun dépôt du compte `laurent7850`. Dépôt privé ailleurs, autre compte, ou
+    seulement sur ton disque ? Sans lui je n'ai que le fork pour décrire l'original.
 
 ---
 
