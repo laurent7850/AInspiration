@@ -9,6 +9,8 @@
 > 3. Le projet n° 1 devient **le chat IA du site, en démo vivante** — le volet
 >    « widget embarquable multi-clients » est abandonné (§4.7).
 > 4. **TL Services entre dans la grille** comme treizième réalisation (§4.8).
+> 6. **Rampa — le guide des enseignements** est signalé comme quinzième réalisation.
+>    En ligne, mais **hors de portée d'ici** et sans dépôt localisé (§4.11).
 > 5. « Brasspat » n'est **pas un chatbot** : c'est l'outil de réconciliation de caisse.
 >    Projet d'origine chez la **Brasserie de la Patinoire**, redéployé en variante chez
 >    **Saint Kilda**. Quatorzième réalisation, et la vraie preuve de réutilisation de la
@@ -316,9 +318,12 @@ Légende : ✅ vérifié dans le code · ⚠️ partiel · ❌ rien de vérifiab
 | **13** | **TL Services — site vitrine client** *(ajouté, voir §4.8)* | dépôt `laurent7850/tlservices` (attaché) | ✅ | Rien. En production sur `tlservices.distr-action.com`, capturable immédiatement. |
 | **14** | **Réconciliation de caisse — 2 restaurants** *(ajouté, voir §4.10)* | dépôt `laurent7850/reconciliation-caisse` ; instances `caisses.` et `brasspat042026.distr-action.com` | ✅ | Rien de bloquant. **La vraie offre standardisée multi-clients de la vitrine.** |
 
-**Bilan : 7 projets sur 14 sont documentés au point de pouvoir écrire une fiche honnête
+| **15** | **Rampa — le guide des enseignements** *(ajouté, voir §4.11)* | URL de production fournie par Laurent | ❌ | **Tout.** Aucun dépôt localisé, site inatteignable depuis cette session. Objet du projet inconnu. |
+
+**Bilan : 7 projets sur 15 sont documentés au point de pouvoir écrire une fiche honnête
 aujourd'hui** (1, 2, 3, 4, 8, 13, 14). Trois autres le deviennent si l'accès MCP est ouvert
-(5, 6, 11), un si les chiffres sont fournis (7). **Trois n'ont aucune matière** (9, 10, 12).
+(5, 6, 11), un si les chiffres sont fournis (7). **Quatre n'ont aucune matière**
+(9, 10, 12, 15).
 
 ### 4.3 Audityo — deux corrections qui changent la fiche
 
@@ -594,6 +599,28 @@ qui raconte immédiatement l'histoire.
 > du compte `laurent7850`. Or c'est lui la première livraison, et c'est de lui que la fiche
 > doit parler en premier. → **question 16.**
 
+### 4.11 Rampa — le guide des enseignements
+
+Signalé par Laurent. **URL de production : `https://rampa.srv767464.hstgr.cloud/`.**
+
+Ce que l'URL apprend à elle seule : le projet tourne sur **`srv767464.hstgr.cloud`**,
+c'est-à-dire **le même VPS Hostinger que l'instance n8n et le site AInspiration**. C'est
+donc un déploiement maison du groupe, servi par le Traefik du VPS, et non un hébergement
+tiers. Le sous-domaine est brut (pas de domaine de marque), ce qui suggère un projet encore
+interne ou en préproduction plutôt qu'une livraison client finalisée.
+
+**Rien d'autre n'est vérifiable :**
+
+- aucun dépôt contenant « rampa » sur le compte `laurent7850` ;
+- aucun des 36 workflows n8n ;
+- aucune occurrence dans les treize dépôts clonés ;
+- le site est **inatteignable depuis cette session** (politique réseau, cf. §4.9).
+
+**Ce qu'il me faut** (→ question 17) : un dépôt à attacher, ou à défaut une description —
+« le guide des enseignements », est-ce un référentiel de formations, un RAG sur un corpus
+pédagogique, un outil pour un établissement scolaire ? Pour quel client, et à quel stade ?
+Sans cela je ne peux qu'écrire une paraphrase, ce que le §7.1 du brief interdit.
+
 ---
 
 ## 5. Ce que la mission peut réellement produire aujourd'hui
@@ -607,7 +634,7 @@ Pour être franc sur le calendrier, sans rien réduire de la commande :
 - **Fiche écrivable dès que Laurent fournit les chiffres** : Enghien. Une.
 - **Fiches sans matière** : Paperclip, Baseline sécurité, Veille YouTube. Trois.
 
-Le multiplicateur trilingue s'applique à tout : **14 fiches × 3 langues = 42 rédactions**,
+Le multiplicateur trilingue s'applique à tout : **15 fiches × 3 langues = 45 rédactions**,
 plus l'index. C'est le poste de travail le plus lourd de la mission, largement devant le
 code.
 
@@ -705,6 +732,11 @@ Sans écrire une ligne de code, voici le parti que je défendrai :
     « une brasserie ». Saint Kilda et la Brasserie de la Patinoire peuvent-ils apparaître,
     ou reste-t-on sur « deux restaurants bruxellois » ? Et as-tu un gain constaté à me
     donner — temps de rapprochement mensuel avant / après, par exemple ?
+
+17. **Rampa : c'est quoi, et où est le code ?** L'URL ne me dit que l'hébergement (§4.11).
+    Un dépôt à attacher, ou une description : nature du projet, client, stade d'avancement.
+    Et le sous-domaine technique laisse penser à un projet interne — est-il assez abouti
+    pour figurer dans une vitrine commerciale ?
 
 16. **Où est le code de la Brasserie de la Patinoire ?** C'est le projet d'origine — Saint
     Kilda en est la variante — donc c'est lui que la fiche doit raconter en premier. Or il
