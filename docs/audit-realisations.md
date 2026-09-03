@@ -303,11 +303,11 @@ Légende : ✅ vérifié dans le code · ⚠️ partiel · ❌ rien de vérifiab
 
 | # | Projet | Source atteinte | État | Ce qui manque |
 |---|---|---|---|---|
-| 1 | **Chat IA du site — démo vivante** *(recadré, voir §4.7)* | `ainspiration/src/components/ChatbotN8n.tsx` ; workflows `oz9stSLsjRtRFA8F`, `ZroPJAjhPmWkj2sI` | ✅ | Rien : la preuve est le chat lui-même, essayable sur la page. Le volet « embarquable multi-clients » du brief est abandonné, faute de source. |
+| 1 | **Widget de chat embarquable** *(retrouvé, voir §4.7)* | dépôt `laurent7850/DJLyricsNosta` (attaché) : `embed.html`, `src/App.tsx`, `GuideModal.tsx` | ⚠️ | **Le code est complet et conforme au brief.** Manque : la liste des clients en production, invisible depuis le VPS (seconde instance n8n). |
 | 2 | Audityo | dépôt `laurent7850/audityo` (attaché) | ✅ | Rien — mais **la stack du brief est fausse** et **l'échéance est passée** (§4.3). |
 | 3 | Facturation automatisée | workflow `mjZouVog4vArYBPI`, lu intégralement | ✅ | Le gain chiffré (« 6 h → 5 min ») n'a **aucune source**. Et le statut « client » est à revoir (§4.4). |
 | 4 | DreamOracle | dépôt `laurent7850/DreamOracle` | ✅ | Rien de bloquant. Next.js 16, Prisma, PWA, transcription ElevenLabs, stats — conforme au brief. |
-| 5 | Labo Nostalgie — playlists auditeurs | dépôt `laurent7850/playlist-generator` ; workflows `8N7Vb3R8mrBK6DLl` (actif) et `Mrvg6cCeYZEcpv1y` (**inactif**) | ⚠️ | Workflows illisibles (MCP). **Les contraintes métier 40/40/20, 30 % francophone, 25 artistes, la liste noire à 21 jours et le pack RGPD sont pour l'instant invérifiables.** |
+| 5 | Labo Nostalgie — playlists auditeurs | **dépôt `laurent7850/labo-nostalgie-ete` (attaché)** : export du workflow, pack RGPD, interface ; + `playlist-generator` | ✅ | **Débloqué sans MCP** (§4.12). Le JSON du workflow et les cinq documents RGPD sont dans le dépôt. |
 | 6 | Générateur playlist Spotify | dépôt `laurent7850/spotify-playlist-generator` (attaché) ; workflow `lwTH2RIV2QmyTlLX` | ✅ | **Distinction avec le n° 5 confirmée sans ambiguïté** (§4.5). Le workflow lui-même reste illisible (MCP). |
 | 7 | Chatbot RAG Enghien | dépôt `laurent7850/enghien-rag` | ⚠️ | Stack confirmée. **Le corpus a changé** et les chiffres (794 p., 262 000 mots, 4/18/46) ne figurent nulle part dans le dépôt. |
 | 8 | L'Artpéro | dépôt `laurent7850/lartpero2` | ✅ | Production sur `lartpero.ainspiration.eu` — **capturable directement**. Stack conforme (React 18, Vite, shadcn/ui, Express, Stripe, Supabase). |
@@ -320,10 +320,10 @@ Légende : ✅ vérifié dans le code · ⚠️ partiel · ❌ rien de vérifiab
 
 | **15** | **Rampa — le guide des enseignements** *(ajouté, voir §4.11)* | URL de production fournie par Laurent | ❌ | **Tout.** Aucun dépôt localisé, site inatteignable depuis cette session. Objet du projet inconnu. |
 
-**Bilan : 7 projets sur 15 sont documentés au point de pouvoir écrire une fiche honnête
-aujourd'hui** (1, 2, 3, 4, 8, 13, 14). Trois autres le deviennent si l'accès MCP est ouvert
-(5, 6, 11), un si les chiffres sont fournis (7). **Quatre n'ont aucune matière**
-(9, 10, 12, 15).
+**Bilan : 9 projets sur 15 sont documentés au point de pouvoir écrire une fiche honnête
+aujourd'hui** (1, 2, 3, 4, 5, 8, 13, 14 — et 1 sous réserve de la liste clients).
+Deux le deviennent si l'accès MCP est ouvert (6, 11), un si les chiffres sont fournis (7).
+**Quatre n'ont aucune matière** (9, 10, 12, 15).
 
 ### 4.3 Audityo — deux corrections qui changent la fiche
 
@@ -424,43 +424,56 @@ droits exploité avec l'accord de l'ayant droit, c'est exactement la situation d
 avec ses procédures internes. Mais le citer suppose de vérifier que l'autorisation couvre
 la mention publique. → **Question 6 du §7.**
 
-### 4.7 Projet n° 1 — recadré : le chat du site devient la démo
+### 4.7 Projet n° 1 — le widget embarquable existe : je l'avais manqué
 
-**Recherche menée** dans onze dépôts (`ainspiration`, `distr-action2026`, `tlservices`,
-`lartpero2`, `enghien-rag`, `DreamOracle`, `audityo`, `spotify-playlist-generator`,
-`playlist-generator`, `reconciliation-caisse`, `the-event-linkedin`).
+**Correction de ma conclusion précédente.** J'avais conclu que le widget décrit au §6.1 du
+brief n'existait pas. C'était faux : il est dans le dépôt **`laurent7850/DJLyricsNosta`**,
+dont le nom ne le laissait pas deviner et que je n'avais pas ouvert.
 
-Le widget existe **en deux exemplaires**, tous deux soudés à un site du groupe :
+**Tout ce que le brief annonçait s'y trouve, vérifié ligne à ligne :**
 
-| Site | Fichier | Mécanique |
-|---|---|---|
-| ainspiration.eu | `src/components/ChatbotN8n.tsx` (488 l.) | session `localStorage`, POST `/api/webhook/chat` → proxy Express → n8n |
-| distr-action.com | `src/components/ChatBot.tsx` (269 l.) + `functions/chatbot.js` | session cookie, proxy Netlify Function → n8n |
+| Élément du brief | Vérification |
+|---|---|
+| `embed.html` | présent, 260 lignes — **une page d'intégration** qui propose trois extraits à copier-coller : iframe responsive (recommandé), pleine largeur, dimensions fixes, avec bouton « Copier le code » et aperçu en direct |
+| Captation progressive de leads | `UserProfile` dans `src/App.tsx:29` : **`email`, `firstName`, `phoneNumber`, `locality`**, plus les drapeaux `hasProvidedEmail` / `hasCompletedForm` |
+| Consentement | champ **`acceptPrivacy`** dans le formulaire — le RGPD est traité dans le widget lui-même |
+| Guide intégré | `src/components/GuideModal.tsx` |
+| Gestion de session | persistance du profil entre les visites |
+| Webhook n8n | `src/App.tsx:6`, avec repli si le webhook répond en erreur |
 
-**Ce que le brief décrit n'existe nulle part** : pas de fichier `embed.html`, pas de
-captation progressive de leads (email → prénom → téléphone → localité), pas de guide
-intégré, aucun déploiement client.
+**C'est donc bien une offre standardisée, embarquable en trois lignes chez n'importe quel
+client.** La pièce maîtresse annoncée par le brief tient debout.
 
-**Les quatre clients annoncés ne se vérifient pas** : le lieu culturel (`lartpero2`) et
-l'administration communale (`enghien-rag`) n'ont aucun chat ; l'activité de services
-(`tlservices`) n'a qu'un formulaire de contact.
+> ### 🔑 Il existe une **seconde instance n8n**
+>
+> Le webhook du widget pointe vers **`distr-action.app.n8n.cloud`** — une instance
+> **n8n Cloud**, distincte de `n8n.srv767464.hstgr.cloud` (le VPS) à laquelle mon accès MCP
+> est connecté.
+>
+> **C'est l'explication de mon erreur** : je cherchais les workflows clients sur la mauvaise
+> instance. Les 36 workflows que j'ai inventoriés ne sont que ceux du VPS. Les chatbots
+> clients vivent ailleurs, et je ne les vois pas. → **question 18.**
 
-> ⚠️ **La « brasserie » est une donnée de démonstration.** La seule occurrence sur tout le
-> compte est « Brasserie du Hainaut » dans `docker/seed-demo.sql` — société fictive, gérant
-> inventé (« Jean-Pierre Vandenberghe »), opportunité « Chatbot réservations — 299 € — won ».
-> C'est le jeu de démo du CRM. **Ne jamais la citer, ne jamais la capturer.**
+**Ce qui reste à établir** : la liste des clients qui l'utilisent réellement en production,
+avec leurs URLs. C'est la seule pièce manquante — et elle conditionne la formulation
+« déployé chez plusieurs clients ».
 
-> ⚠️ **Position déjà actée dans le dépôt.** Le commit `e4ff57e` du 29 août 2026 porte en
-> toutes lettres : *« Client decision: no real clients exist yet »*. Il a retiré du site les
-> témoignages inventés, les logos clients et les statistiques agrégées. Le témoignage
-> « Thierry — restaurateur » de `TESTIMONIAL_THIERRY.md` a ainsi été transformé en scénario
-> anonyme (`testimonials.restaurant.*`, badge devenu « **Jusqu'à** -50 % de no-shows »).
-> **`TESTIMONIAL_THIERRY.md` décrit une version supprimée** : ne pas s'en servir comme source.
-> Toute la section Réalisations doit rester cohérente avec cette décision.
+> ⚠️ **Pour les captures** : l'URL complète du webhook est en clair dans `src/App.tsx:6`.
+> Elle ne doit apparaître sur aucune capture ni dans aucun extrait de code publié.
 
-**Arbitrage rendu par Laurent :** le projet n° 1 devient **le chat IA du site AInspiration,
-présenté en démo vivante**. Le visiteur l'essaie sur la page qu'il lit. Aucune capture à
-produire, aucune donnée client en jeu, et la preuve se vérifie d'elle-même.
+> ⚠️ **Ce qui reste vrai de mon audit précédent** : la « Brasserie du Hainaut » de
+> `docker/seed-demo.sql` est bien une **donnée de démonstration fictive** du CRM (gérant
+> inventé, opportunité « Chatbot réservations — 299 € — won »). À ne jamais citer ni
+> capturer. Et la décision `e4ff57e` du 29 août — *« Client decision: no real clients exist
+> yet »* — encadre toujours la section : elle a retiré du site les témoignages inventés et
+> les statistiques agrégées. Le témoignage « Thierry — restaurateur » de
+> `TESTIMONIAL_THIERRY.md` a été transformé en scénario anonyme ; **ce fichier décrit une
+> version supprimée, ne pas s'en servir comme source.**
+
+**Arbitrage à reprendre.** Laurent avait tranché « le chat du site en démo vivante » sur la
+base de ma conclusion erronée. La démo vivante reste une excellente idée — elle ne coûte
+rien et se vérifie d'elle-même — mais elle peut désormais **accompagner** la fiche du widget
+embarquable plutôt que la remplacer. → **question 19.**
 
 ### 4.8 TL Services — treizième réalisation, ajoutée par Laurent
 
@@ -621,16 +634,68 @@ interne ou en préproduction plutôt qu'une livraison client finalisée.
 pédagogique, un outil pour un établissement scolaire ? Pour quel client, et à quel stade ?
 Sans cela je ne peux qu'écrire une paraphrase, ce que le §7.1 du brief interdit.
 
+### 4.12 Labo Nostalgie — débloqué, et le brief se trompe sur l'essentiel
+
+Le dépôt **`laurent7850/labo-nostalgie-ete`** contient ce que je croyais inaccessible :
+`n8n/labo-nostalgie-ete-playlist.json` (l'export du workflow, 15 nœuds), un dossier
+`rgpd/`, un dossier `data/` et l'`interface/`. **Plus besoin d'accès MCP pour cette fiche.**
+
+**Le pack RGPD existe bel et bien** — cinq documents, exactement comme annoncé :
+`POLITIQUE_CONFIDENTIALITE.md`, `REGISTRE_TRAITEMENTS.md`, `FORMULAIRE_CONSENTEMENT.md`,
+`ATTESTATION_CONFORMITE.md`, `CHANGELOG_RGPD.md`.
+
+**La chaîne réelle** (15 nœuds) : webhook → chargement du catalogue et de la liste noire
+(Google Sheets) → fusion → préparation → **Claude via OpenRouter** → extraction →
+**test de validité** → *si invalide*, **second appel de correction** → sauvegarde de la
+liste noire → email Gmail → réponse au webhook.
+
+**Contraintes vérifiées dans le code :**
+
+- **Liste noire à 21 jours** — confirmée (`if (diffDays <= 21)`), sur la paire artiste-titre.
+- **Quotas croisés langue × décennie** — bien plus précis que le « 40/40/20 » du brief :
+  une matrice de comptes explicites (FR 80s/90s/2000s, INT 70s/80s/90s/2000s…).
+- **25 titres** par playlist — et non « 25 artistes uniques minimum ».
+
+> ### ⚠️ Correction majeure : **le modèle ne choisit pas les titres**
+>
+> Le prompt envoyé à Claude est sans ambiguïté :
+> *« NE MODIFIE PAS les titres, artistes, annees ou categories. Ajoute SEULEMENT les
+> justifications. »*
+>
+> La sélection est faite **de façon déterministe par le code n8n**, à partir du catalogue,
+> des quotas et de la liste noire. Le modèle n'intervient qu'ensuite, pour **rédiger la
+> justification** de chaque choix. Et si sa réponse ne valide pas, un second appel la
+> corrige.
+>
+> **C'est une bien meilleure histoire que celle du brief**, et elle est vraie : *les règles
+> métier décident, l'IA explique*. Pour un dirigeant qui redoute qu'une IA « invente », c'est
+> exactement la démonstration qu'il attend — et c'est un argument qu'aucun concurrent ne peut
+> copier sans l'avoir construit.
+
+> ⚠️ **Anonymisation.** Le `README.md` de ce dépôt nomme la radio en toutes lettres, comme
+> celui de `playlist-generator`. Ces noms ne doivent apparaître ni dans la fiche, ni dans une
+> capture, ni dans un nom de fichier image.
+
+### 4.13 Autres réalisations trouvées pendant le balayage
+
+Non intégrées à la grille — signalées pour arbitrage (→ question 20) :
+
+| Projet | Dépôt | Ce que c'est |
+|---|---|---|
+| **VoxStudio** | `laurent7850/voxstudio` (attaché) | Synthèse vocale ElevenLabs, Next.js + Prisma + PostgreSQL, déployé sur `voxstudio.srv767464.hstgr.cloud`. **Adossé à la page `/audio` du site**, qui n'a aujourd'hui aucune preuve. |
+| **Minutage NRJ+** | `laurent7850/minutage-NR` (attaché) | Analyse d'un conducteur radio au format PDF pour en extraire le minutage des heures. Cas « lire un document métier et en sortir des données » très transposable. |
+| **AutoSEO / SEOPilot** | `laurent7850/autoseo`, `laurent7850/seopilot` | Hub d'automatisation SEO déployé sur `seopilot.srv767464.hstgr.cloud`, relié aux workflows « Publish from AutoSEO » des trois marques. |
+
 ---
 
 ## 5. Ce que la mission peut réellement produire aujourd'hui
 
 Pour être franc sur le calendrier, sans rien réduire de la commande :
 
-- **Fiches écrivables tout de suite, sur sources vérifiées** : Chat IA du site, Audityo,
-  Facturation, DreamOracle, L'Artpéro, **TL Services**, **Réconciliation de caisse**. Sept.
-- **Fiches écrivables dès l'accès MCP n8n ouvert** : Labo Nostalgie, Spotify,
-  Préparation d'émission. Trois.
+- **Fiches écrivables tout de suite, sur sources vérifiées** : Widget embarquable, Audityo,
+  Facturation, DreamOracle, **Labo Nostalgie**, L'Artpéro, **TL Services**,
+  **Réconciliation de caisse**. Huit.
+- **Fiches écrivables dès l'accès MCP n8n ouvert** : Spotify, Préparation d'émission. Deux.
 - **Fiche écrivable dès que Laurent fournit les chiffres** : Enghien. Une.
 - **Fiches sans matière** : Paperclip, Baseline sécurité, Veille YouTube. Trois.
 
@@ -667,11 +732,12 @@ Sans écrire une ligne de code, voici le parti que je défendrai :
    publique en ferait une preuve immédiatement capturable, et le projet n° 1 pourrait
    redevenir « déployé chez un client » plutôt que « notre propre chat ».
 
-2. **Facturation : « chez nous » ou « chez un client » ?** Le workflow automatise ta
-   propre facturation (ton calendrier, tes tarifs, ton email). Le présenter comme une
-   livraison cliente serait un faux. Je propose de le formuler comme Audityo (« nos
-   propres outils »), ce qui reste très vendeur. Confirmes-tu ? Et si un déploiement
-   client existe par ailleurs, où est-il ?
+2. ~~**Facturation : « chez nous » ou « chez un client » ?**~~ **Tranché par Laurent :
+   cas client.** La fiche présentera « un groupe radio francophone ». Précaution de
+   rédaction, une seule fois et sans y revenir : le workflow prouve que **des prestations
+   sont facturées à un client radio**, ce qui est exact ; il ne prouve pas que ce client ait
+   commandé l'outil. La formulation retenue décrira donc la facturation *d'*un client radio,
+   sans affirmer que la réalisation a été livrée *à* ce client.
 
 3. **Audityo : quel angle maintenant que le 2 août 2026 est passé ?** « Mise en conformité
    d'un règlement déjà applicable » plutôt que « anticipez l'échéance » ?
@@ -753,3 +819,30 @@ Sans écrire une ligne de code, voici le parti que je défendrai :
 
 **Aucun fichier de production n'a été modifié.** Seuls `docs/PROMPT-realisations.md` et ce
 rapport ont été ajoutés sur `feat/realisations`.
+
+---
+
+## 9. Questions ouvertes par le balayage complet des dépôts
+
+Après revue de **26 des 37 dépôts** du compte (les 21 publics, plus `audityo`, `tlservices`,
+`distr-action2026`, `voxstudio`, `autoseo`, `labo-nostalgie-ete`, `djlyricsnosta`,
+`songtastic` — vide — et `minutage-NR`) :
+
+18. **Peux-tu me donner accès à la seconde instance n8n ?** Le widget embarquable pointe
+    vers `distr-action.app.n8n.cloud`, que je ne vois pas. C'est là que doivent vivre les
+    workflows des chatbots clients — donc la preuve du « déployé chez plusieurs clients ».
+
+19. **Widget embarquable : quels clients, quelles URLs ?** Le code est complet et conforme
+    au brief. Il ne manque que la liste des déploiements en production. Et confirmes-tu que
+    la démo vivante du chat du site **accompagne** cette fiche plutôt que de la remplacer ?
+
+20. **VoxStudio, Minutage NRJ+ et AutoSEO entrent-ils dans la grille ?** Trois projets réels
+    trouvés en chemin (§4.13). VoxStudio en particulier donnerait enfin une preuve à la page
+    `/audio`, qui n'en a aucune.
+
+21. **Rampa et brasspat restent introuvables.** Ni dans les 26 dépôts revus, ni parmi les
+    36 workflows du VPS, ni dans aucun fichier accessible. Leurs URLs indiquent qu'ils sont
+    déployés sur le VPS, mais leur code n'est nulle part où je peux aller. Trois dépôts
+    privés n'ont pas encore été ouverts — `minutage-NO`, `Time2invoice2`, `Time2invoice3` —
+    mais leurs noms rendent peu probable qu'ils les contiennent. **Sont-ils sur un autre
+    compte GitHub, ou seulement sur ton disque ?**
