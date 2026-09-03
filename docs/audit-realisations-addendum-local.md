@@ -403,9 +403,8 @@ une démo d'un automate qui tourne toutes les heures sans surveillance.
 - **Rampa** et **Enghien** passent en **format réduit** : une image, une explication, pas de page
   détail. Les deux sites sont publics, les deux images sont capturables tout de suite.
 
-**Reste bloquant :** questions 4 (accès MCP n8n), 9 (chiffres de résultat, désormais sans objet
-pour Rampa et Enghien), 11–12 (TL Services), 18–19 (seconde instance n8n). **Question 3 close** —
-angle Audityo réécrit au §G.
+**Reste bloquant : plus grand-chose.** Voir le tableau récapitulatif du §I — seules les questions
+9, 12 et 27 restent ouvertes. Les questions 3, 4, 10, 11, 18, 19 et 20 sont traitées aux §G et §H.
 **Questions 6 et 15 : closes** — la 6 par le format réduit, le partenaire tranché et les droits
 confirmés (§A bis) ; la 15 par l'anonymisation en « un restaurant » (§B).
 
@@ -510,3 +509,125 @@ faire est une situation subie. **La question n'est plus « quand », c'est « de
 - **Isolation multi-tenant** : confirmée dans `ARCHITECTURE.md`, elle peut être mise en avant.
 
 **Question 3 close.**
+
+---
+
+## H. Les dernières questions, tranchées et vérifiées
+
+### Question 4 — l'accès n8n est ouvert ✅
+
+Vérifié depuis cette session : **les 37 workflows de l'instance VPS sont lisibles**, structure et
+paramètres compris. La réserve du §10.2 de l'audit (« le contenu reste illisible pour 34 d'entre
+eux ») est **caduque**.
+
+Ce que ça débloque immédiatement, sans rien demander de plus :
+
+- **Projet n° 6 — Spotify** (`lwTH2RIV2QmyTlLX`, 12 nœuds). Deux détails que seul le workflow
+  révèle, et qui valent mieux que la paraphrase du brief : un nœud **« Contrôle d'accès »** placé
+  avant l'appel au modèle — un webhook public sans garde-fou serait une facture ouverte — et une
+  **branche de rattrapage** (« Repérer manquants » → « Recherche (titre seul) ») pour les morceaux
+  que la première recherche Spotify ne trouve pas. C'est exactement l'enseignement que le brief
+  mentionnait de mémoire ; il est maintenant vérifiable dans le code.
+- **Projet n° 11 — Préparation d'émission** (`bWQJiJlSMXQeMyyE`, 16 nœuds).
+- Les trois workflows du Labo Nostalgie (`8N7Vb3R8mrBK6DLl`, `Mrvg6cCeYZEcpv1y`,
+  `RYWMDjWiSoK8C72O`).
+
+**Les deux fiches « en attente d'accès MCP » du §5 de l'audit sont donc écrivables.**
+
+### Questions 18 et 19 — il n'y a pas de seconde instance, et pas de chatbot client ✅
+
+**18 — tranché par Laurent : tout est sur le VPS.** Il n'existe pas de seconde instance
+`distr-action.app.n8n.cloud`. Les 37 workflows inventoriés sont la totalité.
+
+**19 — j'ai listé moi-même, et le résultat est net : aucun chatbot client n'existe.**
+Sur les 37 workflows, **deux seulement** sont des chats, et les deux sont maison :
+
+| Workflow | ID | Pour qui |
+|---|---|---|
+| `chat Ainspiration - TEXT ONLY` | `oz9stSLsjRtRFA8F` | le site AInspiration |
+| `chat distr'action V4` | `ZroPJAjhPmWkj2sI` | le site Distr'Action |
+
+Aucun workflow pour une brasserie, un lieu événementiel culturel, une administration communale ou
+une activité de services. Le chat AInspiration est mono-site : webhook → code → agent LangChain
+avec mémoire tampon et modèle OpenRouter → réponse. **Aucun routage par client, aucune notion de
+tenant.**
+
+> ⚠️ **La conclusion à retenir.** L'affirmation du brief — « déjà déployé chez plusieurs clients » —
+> n'a de support **nulle part** : ni sur GitHub (27 dépôts fouillés), ni dans les 37 workflows du
+> VPS, ni dans une seconde instance, puisqu'elle n'existe pas. **L'arbitrage n° 3 de Laurent était
+> le bon**, et il est maintenant démontré plutôt que supposé : le projet n° 1 est le chat IA du
+> site en démo vivante. Écrire autre chose serait exactement la preuve fabriquée que la purge
+> `e4ff57e` a éliminée.
+
+**Questions 18 et 19 closes.**
+
+### Questions 11 et 12 — TL Services
+
+**11 — le nom peut être affiché.** ✅ Tranché par Laurent. La fiche dira « TL Services ».
+Le contraste avec les restaurants est assumé et cohérent : le site TL Services *est* la
+réalisation, il porte publiquement la marque ; les fichiers comptables d'un restaurant, non.
+
+> 📝 Une trace écrite de cet accord doit exister quelque part. La règle `e4ff57e` demande un accord
+> écrit, et c'est la seule fiche de la vitrine qui nommera un client.
+
+**12 — les chiffres.** Laurent demande d'estimer. Deux des trois n'ont pas besoin de l'être :
+
+| Donnée | Valeur | Source |
+|---|---|---|
+| Durée du projet | **4 jours** (24 → 27 avril 2026) | historique git de `laurent7850/tlservices`, 12 commits |
+| Mise en ligne | **fin avril 2026** | dernier commit de mise en production, `2026-04-27` |
+| Résultat constaté | **—** | *aucune source* |
+
+> ⚠️ **Le troisième ne s'estime pas.** « Demandes reçues via le formulaire » ou « position sur une
+> requête locale » sont des **faits mesurés**, pas des ordres de grandeur : les inventer serait
+> précisément la preuve fabriquée qu'on s'interdit, et c'est le genre de chiffre qu'un prospect
+> peut demander à vérifier. Deux issues propres :
+> 1. **Relever la vraie valeur** — nombre de messages reçus depuis avril, ou position actuelle sur
+>    une requête « métier + commune ». Quelques minutes, et la fiche devient la meilleure de la
+>    grille.
+> 2. **Assumer une fiche sans bloc résultats**, qui décrit ce qui a été livré : vitrine Next.js,
+>    pages légales, SEO et images Open Graph générées, formulaire relié au SMTP, bouton d'action
+>    mobile — le tout en quatre jours. « Livré en quatre jours » est déjà un résultat, et il est
+>    vrai.
+>
+> Ma recommandation : l'option 1 si tu peux, l'option 2 sinon. Jamais un chiffre estimé présenté
+> comme constaté.
+
+### Question 10 — méthode ✅
+
+- **(a)** Commits `feat(realisations):` / `docs(realisations):` avec sujet en français : **validé**.
+  C'est déjà la convention appliquée aux commits de cette branche.
+- **(b)** **L'Artpéro peut être nommé.** Deuxième client nommé de la vitrine, avec TL Services.
+
+### Question 20 — AutoSEO entre dans la grille ✅
+
+**Tranché : oui.** AutoSEO / SEOPilot devient une réalisation à part entière, et c'est l'une des
+mieux documentées de toute la vitrine — l'instance n8n en porte la preuve vivante :
+
+| Workflow | ID |
+|---|---|
+| SEOPilot — Automation Hub | `F7YwQHfPDe5yEaPE` |
+| AInspiration — Publish from AutoSEO | `QHf6k01TLsUw3Bww` |
+| Distr-Action — Publish from AutoSEO | `D6fBNktUS3U0F55G` |
+| Audityo — Publish from AutoSEO | `Qf1PGBfHa45NZFtL` |
+
+**Un hub, trois marques branchées dessus, tous actifs.** C'est la démonstration d'industrialisation
+que le brief cherchait au projet n° 1 et qu'il n'y a pas trouvée — ici elle est réelle, vérifiable,
+et elle se raconte en une phrase : *un moteur de publication, branché sur trois sites différents.*
+Front déployé sur `seopilot.srv767464.hstgr.cloud`.
+
+> ❓ **Restent sans réponse : VoxStudio et Minutage NRJ+** (les deux autres projets du §4.13).
+> Le premier compte : **VoxStudio donnerait enfin une preuve à la page `/audio`, qui n'en a
+> aucune.** → question 27.
+
+---
+
+## I. État des questions
+
+**Toutes closes**, sauf :
+
+| # | Question | Ce qu'il manque |
+|---|---|---|
+| 9 | Chiffres de résultat par projet | Durées, années, gains — même approximatifs. Sans eux, chaque fiche part avec des `[À VALIDER]` visibles. TL Services est déjà servi (§H). |
+| 12 | TL Services : résultat constaté | Une valeur relevée, ou une fiche sans bloc résultats (§H). |
+| 27 | **VoxStudio et Minutage NRJ+ entrent-ils dans la grille ?** | Arbitrage. VoxStudio donnerait une preuve à `/audio`. |
