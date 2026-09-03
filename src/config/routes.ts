@@ -91,6 +91,19 @@ const routes: RouteConfig[] = [
     exact: true
   },
   {
+    path: "/realisations",
+    component: lazy(() => import('../pages/RealisationsPage')),
+    exact: true
+  },
+  {
+    // Detail pages. Adding a route here is not enough: the server needs the
+    // `/realisations/` prefix in KNOWN_ROUTE_PREFIXES (docker/backend/server.js)
+    // or these URLs answer a real 404 in production.
+    path: "/realisations/:slug",
+    component: lazy(() => import('../pages/RealisationDetailPage')),
+    exact: true
+  },
+  {
     path: "/a-propos",
     component: lazy(() => import('../pages/AboutPage')),
     exact: true

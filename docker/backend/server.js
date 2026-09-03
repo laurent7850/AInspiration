@@ -2429,6 +2429,7 @@ const routeSEO = {
   '/solutions': { title: 'Solutions IA pour PME | AInspiration', description: 'D\u00e9couvrez nos solutions IA compl\u00e8tes pour PME : audit, automatisation, chatbots, CRM intelligent, formation.' },
   '/a-propos': { title: '\u00c0 Propos d\'AInspiration | \u00c9quipe et Mission', description: 'AInspiration accompagne les PME belges dans leur transition IA. D\u00e9couvrez notre \u00e9quipe, notre mission et nos valeurs.' },
   '/etudes-de-cas': { title: '\u00c9tudes de Cas IA | R\u00e9sultats Clients | AInspiration', description: 'D\u00e9couvrez comment nos clients PME ont transform\u00e9 leur activit\u00e9 gr\u00e2ce \u00e0 l\'intelligence artificielle.' },
+  '/realisations': { title: 'R\u00e9alisations | Ce que nous avons construit | AInspiration', description: 'Seize automatisations et applications en service : facturation, comptabilit\u00e9, contenu, conformit\u00e9. Ce qui a \u00e9t\u00e9 construit, pour qui, et ce que \u00e7a a chang\u00e9.' },
   '/creation-ia': { title: 'Cr\u00e9ation de Contenu IA | AInspiration', description: 'G\u00e9n\u00e9rez du contenu professionnel avec l\'IA : articles, visuels, newsletters, posts r\u00e9seaux sociaux.' },
   '/analyse-ia': { title: 'Analyse de Donn\u00e9es IA | Tableaux de Bord Intelligents | AInspiration', description: 'Exploitez vos donn\u00e9es avec l\'IA. Tableaux de bord intelligents, pr\u00e9dictions de ventes, segmentation clients.' },
   '/cgv': { title: 'Conditions G\u00e9n\u00e9rales de Vente | AInspiration', description: 'CGV des services AInspiration par Distr\'Action SRL.' },
@@ -2453,6 +2454,7 @@ const routeSEO = {
 const KNOWN_ROUTES = new Set([
   '/', '/login', '/audit', '/analyse-ia', '/transformation', '/creation-ia', '/audio', '/video',
   '/recommandations', '/dashboard', '/solutions', '/produits', '/etudes-de-cas', '/a-propos',
+  '/realisations',
   '/contact', '/prompts', '/automatisation', '/assistants', '/conseil', '/formation',
   '/accompagnement', '/blog', '/crm', '/crm-dashboard', '/privacy', '/mentions-legales',
   '/cgv', '/cgu', '/unsubscribe', '/linkedin', '/newsletter-admin',
@@ -2464,7 +2466,7 @@ const KNOWN_ROUTES = new Set([
 ]);
 
 // CRM detail routes (/contacts/:id \u2026) \u2014 known, but with a variable segment.
-const KNOWN_ROUTE_PREFIXES = ['/contacts/', '/companies/', '/opportunities/', '/products/', '/tasks/'];
+const KNOWN_ROUTE_PREFIXES = ['/contacts/', '/companies/', '/opportunities/', '/products/', '/tasks/', '/realisations/'];
 
 // HTML-escape helper for any value injected into the served markup.
 const escHtml = (s) => String(s == null ? '' : s)
@@ -2656,6 +2658,7 @@ const SERVICE_NS = {
   '/prompts': 'prompts',
   '/a-propos': 'about',
   '/etudes-de-cas': 'caseStudies',
+  '/realisations': 'realisations',
   '/analyse-ia': 'analysis',
   '/transformation': 'transformation',
   '/creation-ia': 'content',

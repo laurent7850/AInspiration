@@ -1,6 +1,8 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ChevronRight } from 'lucide-react';
+import { getRealisation } from '../../data/realisations';
 
 interface BreadcrumbRoute {
   path: string;
@@ -19,6 +21,7 @@ const routeMap: Record<string, string> = {
   'transformation': 'Transformation numérique',
   'creation-visuelle': 'Création visuelle IA',
   'recommandations': 'Recommandations',
+  'realisations': 'Réalisations',
   'dashboard': 'Tableau de bord',
   'solutions': 'Solutions',
   'prompts': 'Bibliothèque de prompts',
@@ -52,16 +55,31 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ routes, className = '' }) => 
   
   // Si des routes sont fournies, utilisez-les. Sinon, générez-les à partir de l'emplacement actuel
   const segments = routes || generateBreadcrumbs(location.pathname);
+
+  // Slug routes: the generic fallback de-accents and title-cases the raw slug
+  // ("Facturation automatisee"). For a réalisation we own the real title, so we
+  // substitute it — the crumb is the first thing a reader checks against the H1.
+  const realisationMatch = location.pathname.match(/\/realisations\/([^/]+)$/);
+  const realisationSlug = realisationMatch?.[1];
+  const realisationTitle = useTranslation('realisations').t(
+    `items.${realisationSlug}.title`
+  );
+  const resolved =
+    realisationSlug && getRealisation(realisationSlug)
+      ? segments.map((segment, i) =>
+          i === segments.length - 1 ? { ...segment, breadcrumb: realisationTitle } : segment
+        )
+      : segments;
   
-  if (segments.length <= 1) {
+  if (resolved.length <= 1) {
     return null; // Ne pas afficher la breadcrumb pour la page d'accueil
   }
   
   return (
     <nav aria-label="Fil d'Ariane" className={`breadcrumb ${className}`}>
       <ol className="flex flex-wrap items-center space-x-2">
-        {segments.map((segment, index) => {
-          const isLast = index === segments.length - 1;
+        {resolved.map((segment, index) => {
+          const isLast = index === resolved.length - 1;
           
           return (
             <li key={index} className={`breadcrumb-item flex items-center ${isLast ? 'breadcrumb-current' : ''}`}>

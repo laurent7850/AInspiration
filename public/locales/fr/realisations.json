@@ -1,0 +1,300 @@
+{
+  "seo": {
+    "title": "Réalisations | Ce que nous avons construit — AInspiration",
+    "description": "Seize automatisations et applications livrées : facturation, comptabilité, contenu, conformité. Ce qui a été construit, pour qui, et ce que ça a changé.",
+    "keywords": "réalisations IA, cas concrets automatisation, projets n8n, exemples IA PME, portfolio intelligence artificielle"
+  },
+  "hero": {
+    "title": "Ce que nous avons",
+    "highlight": "réellement",
+    "titleSuffix": "construit",
+    "description": "Seize réalisations en service. Pour chacune : ce qui a été construit, ce que ça remplace, et ce que ça fait gagner. Les chiffres viennent des journaux d'exécution, pas d'une brochure.",
+    "cta": "Demander mon audit gratuit",
+    "ctaSub": "Résultats en 24 h — sans engagement",
+    "secondary": "Parler de mon cas"
+  },
+  "band": {
+    "count": "16",
+    "countLabel": "réalisations en service",
+    "families": "6",
+    "familiesLabel": "familles de besoins couvertes",
+    "sourced": "100 %",
+    "sourcedLabel": "des chiffres mesurés ou déclarés"
+  },
+  "filters": {
+    "legend": "Que cherchez-vous à faire ?",
+    "all": "Tout voir",
+    "automatiser": "Automatiser une tâche répétitive",
+    "repondre": "Répondre aux clients 24 h/24",
+    "creer": "Créer du contenu",
+    "exploiter": "Exploiter mes données",
+    "conformite": "Me mettre en conformité",
+    "visible": "Me rendre visible en ligne",
+    "empty": "Aucune réalisation dans cette catégorie pour le moment.",
+    "resultsOne": "1 réalisation",
+    "resultsOther": "{{count}} réalisations"
+  },
+  "card": {
+    "detail": "Voir le détail",
+    "noDetail": "Présentation courte",
+    "production": "En service",
+    "prototype": "Prototype",
+    "interne": "Interne"
+  },
+  "method": {
+    "title": "Comment ça se passe",
+    "description": "Trois étapes, et vous décidez à chacune si on continue.",
+    "step1Title": "Audit",
+    "step1Body": "On regarde ce que vous faites à la main, et on chiffre ce que ça vous coûte. Gratuit, en 24 h.",
+    "step2Title": "Prototype",
+    "step2Body": "On construit la plus petite version utile, sur vos vraies données. Vous la voyez tourner avant de vous engager.",
+    "step3Title": "Mise en production",
+    "step3Body": "On la met en service, on la surveille, et on vous laisse la main. Le code vous appartient."
+  },
+  "cta": {
+    "title": "Et chez vous, qu'est-ce qui prend une heure de trop ?",
+    "body": "L'audit est gratuit et ne dure pas plus d'une conversation. Vous repartez avec une liste de ce qui est automatisable, chiffrée, que vous soyez client ou non.",
+    "button": "Demander mon audit gratuit"
+  },
+  "detail": {
+    "context": "Le contexte",
+    "problem": "Le problème",
+    "solution": "Ce qui a été construit",
+    "results": "Ce que ça change",
+    "howItWorks": "Comment ça marche",
+    "howItWorksHint": "Le détail technique — à ouvrir si ça vous intéresse.",
+    "transposition": "Ce que ça peut donner chez vous",
+    "stack": "Technologies",
+    "year": "Année",
+    "duration": "Durée",
+    "sector": "Secteur",
+    "status": "Statut",
+    "previous": "Réalisation précédente",
+    "next": "Réalisation suivante",
+    "backToIndex": "Toutes les réalisations"
+  },
+  "items": {
+    "facturation-automatisee": {
+      "title": "Facturation mensuelle automatisée",
+      "summary": "La facturation d'un mois : d'une heure à treize secondes.",
+      "sector": "Médias",
+      "client": "Un groupe radio francophone",
+      "metrics": {
+        "billing": "Facturation d'un mois",
+        "reentry": "Ressaisie manuelle"
+      },
+      "context": "Chaque fin de mois, les prestations d'un mois entier se facturaient à la main. Ouvrir le calendrier, retrouver chaque intervention, appliquer le bon tarif selon qu'elle tombait en semaine ou le week-end, tenir compte des prestations sur plusieurs jours, des déplacements et des frais administratifs, puis recopier le tout dans un tableur et rédiger la facture.",
+      "problem": "Une heure de travail répétitif, tous les mois, sur des règles de tarification qu'on connaît par cœur mais qu'on peut appliquer de travers un soir de fatigue. Et une erreur de tarif ne se voit qu'au moment où le client la relève.",
+      "solution": "Le calendrier est lu automatiquement. Chaque prestation est tarifée selon les règles réelles — semaine ou week-end, durée, déplacement, frais. Le résultat s'écrit dans le tableur de suivi, la facture part par email en HTML, et un tableau comparatif projette le mois en cours par rapport au précédent.",
+      "results": "La facturation d'un mois complet s'exécute en treize secondes, du calendrier à l'email envoyé. Plus aucune ressaisie : les règles de tarification sont écrites une fois, appliquées à l'identique chaque mois.",
+      "howItWorks": "Un workflow n8n déclenché en début de mois. Lecture de l'agenda via l'API Google Calendar, calcul des tarifs dans un nœud de code — c'est là que vivent les règles métier, pas dans un modèle de langage —, écriture dans Google Sheets via l'API, génération du HTML de facture et envoi SMTP. La projection du mois en cours est calculée dans le même passage et jointe à l'envoi.",
+      "transposition": "Toute entreprise qui facture à la prestation est concernée : un cabinet qui facture des heures, un artisan qui facture des chantiers, une agence qui facture des interventions. Le principe est le même — vos règles de tarification existent déjà, elles sont simplement dans votre tête plutôt que dans un automate. Le travail consiste à les écrire, une fois."
+    },
+    "reconciliation-caisse": {
+      "title": "Réconciliation de caisse pour restaurants",
+      "summary": "Une heure de rapprochement par jour d'exploitation, supprimée.",
+      "sector": "Restauration",
+      "client": "Deux restaurants bruxellois",
+      "metrics": {
+        "before": "Rapprochement, avant l'outil",
+        "restaurants": "Restaurants équipés"
+      },
+      "context": "Chaque jour d'exploitation, les rapports de caisse doivent être rapprochés du récapitulatif comptable : numéro de Z, chiffre d'affaires TTC, ventilation de TVA, détail des paiements en espèces, par carte et par virement.",
+      "problem": "Une heure par jour d'exploitation, passée à recopier des chiffres d'un document dans un autre. C'est du travail sans valeur ajoutée, et c'est exactement le genre de tâche où une ligne décalée passe inaperçue jusqu'au bilan.",
+      "solution": "Deux outils, volontairement différents, parce que les deux restaurants ne fournissent pas la même matière. Le premier n'a que des tickets thermiques scannés : ses PDF sont lus par un modèle de vision, et les montants extraits alimentent trois classeurs. Le second dispose d'exports numériques : tout se traite dans le navigateur, sans qu'aucune donnée comptable ne quitte le poste.",
+      "results": "La ressaisie disparaît. Les cellules déjà remplies ne sont jamais écrasées, et les écarts sont signalés au lieu d'être corrigés en silence — on supprime la ressaisie, pas la vigilance.",
+      "howItWorks": "Le premier outil est une application Flask : conversion des PDF en images 300 DPI, lecture par Claude en OCR, écriture dans les classeurs via openpyxl. Le second est une application React entièrement côté navigateur : lecture des exports XLSX avec exceljs, édition chirurgicale du fichier de destination — seules les cellules visées sont modifiées dans le XML de la feuille, formules et mises en forme survivent intactes.",
+      "transposition": "Le même raisonnement vaut partout où deux systèmes doivent se parler sans le faire : caisse et comptabilité, planning et paie, commandes et stock. Et la leçon vaut d'être retenue : on choisit la technologie d'après la matière que vous fournissez. Si vos données sont déjà numériques, il n'y a aucune raison de payer un modèle pour les relire."
+    },
+    "factures-fournisseurs": {
+      "title": "Consolidation des tarifs fournisseurs",
+      "summary": "646 références, 25 formats de facture, un seul tableau.",
+      "sector": "Restauration",
+      "client": "Un restaurant bruxellois",
+      "metrics": {
+        "references": "Références consolidées",
+        "formats": "Formats de facture différents",
+        "manualEntry": "Saisie manuelle évitée"
+      },
+      "context": "Un restaurant achète chez une trentaine de fournisseurs. Chacun envoie ses factures dans son propre format PDF, et les prix bougent d'une livraison à l'autre. Savoir ce qu'on paie réellement, aujourd'hui, pour une référence donnée, suppose de rouvrir les factures une par une.",
+      "problem": "Personne ne le fait, parce que c'est deux jours de saisie. Résultat : on ne sait pas quand un prix a augmenté, et on ne peut pas comparer deux fournisseurs sur une même référence.",
+      "solution": "Un script parcourt toutes les factures PDF, extrait les lignes produit et les consolide dans un classeur unique, un onglet par fournisseur. Pour chaque référence, c'est la facture la plus récente qui l'emporte — le tableau est donc un tarif à jour, pas un historique.",
+      "results": "646 références consolidées chez 25 fournisseurs, là où la saisie manuelle aurait pris deux jours. Le classeur se régénère quand de nouvelles factures arrivent.",
+      "howItWorks": "Python, pdfplumber pour l'extraction, openpyxl pour la sortie. Vingt-cinq analyseurs distincts, un par format de facture — deux formats coexistent d'ailleurs chez un même fournisseur. Dédoublonnage par code produit, TVA extraite des factures avec autoliquidation pour les fournisseurs exportateurs, catégories déduites du préfixe de code.",
+      "transposition": "C'est le cas le plus transposable de tous : toute entreprise qui achète chez plusieurs fournisseurs a le même angle mort. La limite est honnête et utile à connaître — une facture scannée sans texte extractable ne passe pas par ce chemin. C'est précisément là que la lecture par modèle de vision prend le relais."
+    },
+    "chat-ia-site": {
+      "title": "Le chat IA de ce site",
+      "summary": "Répond à vos questions maintenant, en bas à droite.",
+      "sector": "Notre propre site",
+      "client": "AInspiration",
+      "metrics": {},
+      "context": "Un visiteur qui a une question à 22 h n'attend pas le lendemain : il ferme l'onglet. Un site qui vend de l'automatisation et laisse ses propres visiteurs sans réponse a un problème de crédibilité avant d'avoir un problème de conversion.",
+      "problem": "Les questions arrivent en dehors des heures de bureau, et ce sont souvent les plus sérieuses — celles de quelqu'un qui compare des prestataires le soir.",
+      "solution": "Un agent conversationnel branché sur le contenu du site, avec mémoire de la conversation en cours. Il répond aux questions courantes, oriente vers la bonne page, et propose l'audit gratuit quand la demande est claire.",
+      "results": "Il répond la nuit et le week-end. C'est là l'avantage : pas du temps gagné, de la disponibilité.",
+      "howItWorks": "Un webhook n8n reçoit le message, un nœud de code prépare le contexte, un agent LangChain avec fenêtre de mémoire interroge un modèle via OpenRouter, la réponse repart par le webhook. Rien n'est stocké au-delà de la conversation.",
+      "transposition": "Vous le testez en ce moment même — c'est la démonstration la plus directe de cette page. Le même dispositif se branche sur votre catalogue, vos horaires, vos conditions de livraison. La règle que nous appliquons chez nous vaut aussi chez vous : un assistant qui ne sait pas dit qu'il ne sait pas, et passe la main."
+    },
+    "audityo": {
+      "title": "Audityo — conformité au règlement européen sur l'IA",
+      "summary": "Classer ses systèmes d'IA et produire son dossier de conformité.",
+      "sector": "Nos produits",
+      "client": "Distr'Action",
+      "metrics": {},
+      "context": "Le règlement européen sur l'intelligence artificielle s'applique. La question n'est plus de savoir quand se mettre en règle, mais où l'on en est.",
+      "problem": "La plupart des PME ne savent pas quels systèmes d'IA elles utilisent déjà. Le chatbot du site, l'outil de tri de candidatures, le scoring client, l'assistant qu'un collaborateur a branché seul : c'est un inventaire avant d'être une mise en conformité.",
+      "solution": "Un logiciel qui recense les systèmes d'IA d'une organisation, les classe selon les catégories du règlement, et produit le dossier documentaire correspondant. Il tient l'inventaire à jour plutôt que de produire un rapport figé.",
+      "results": "Un produit du groupe, en service. Un outil aide à classer et à documenter — il ne rend personne conforme, et nous ne le promettons pas.",
+      "howItWorks": "Next.js, Prisma sur PostgreSQL, authentification Auth.js, paiement Stripe, classification et génération documentaire par Claude, export PDF. Isolation multi-tenant : les données d'une organisation ne sont jamais visibles d'une autre.",
+      "transposition": "Si vous utilisez un outil d'IA dans votre activité — et c'est probablement le cas sans que ce soit formalisé —, la première étape est de savoir lequel, pour quoi, et avec quelles données. Pour les questions qui dépassent l'inventaire, il faut un juriste : nous ne le remplaçons pas."
+    },
+    "labo-nostalgie": {
+      "title": "Playlists personnalisées pour auditeurs de radio",
+      "summary": "Une heure de composition par auditeur, ramenée à soixante-dix secondes.",
+      "sector": "Médias",
+      "client": "Une radio nationale francophone",
+      "metrics": {
+        "composition": "Composition d'une playlist",
+        "listeners": "Auditeurs servis"
+      },
+      "context": "Une radio propose à ses auditeurs une playlist personnalisée, composée à partir de leurs réponses à un questionnaire : leur âge, les artistes qu'ils citent, les souvenirs qu'ils racontent.",
+      "problem": "Composer vraiment ces vingt-cinq titres prend une heure : il faut respecter les quotas de catégorie, l'équilibre entre décennies, la part de titres francophones, et exclure tout ce qui est passé à l'antenne depuis trois semaines. Une heure par auditeur, du lundi au vendredi.",
+      "solution": "La sélection est faite par le code, à partir du catalogue, des quotas et de la liste noire des titres récemment diffusés. Le modèle n'intervient qu'ensuite, pour rédiger la justification de chaque choix — et si sa réponse ne respecte pas les contraintes, un second appel la corrige.",
+      "results": "Une heure de composition ramenée à soixante-dix secondes, pour un auditeur servi chaque jour de la semaine. L'email reçu justifie chacun des vingt-cinq titres.",
+      "howItWorks": "Un workflow n8n de seize nœuds : chargement du catalogue et de la liste noire depuis Google Sheets, fusion, sélection déterministe par quotas croisés langue × décennie, appel à Claude via OpenRouter pour les justifications, test de validité, appel de correction si nécessaire, mise à jour de la liste noire, envoi de l'email HTML. Un pack RGPD complet accompagne la livraison.",
+      "transposition": "C'est la démonstration qui rassure les dirigeants qui redoutent qu'une IA « invente » : les règles métier décident, l'IA explique. Partout où vous avez des contraintes non négociables — un plan comptable, une nomenclature, une réglementation —, c'est ce partage-là qu'il faut viser."
+    },
+    "autoseo": {
+      "title": "Moteur de publication éditoriale",
+      "summary": "Cinquante articles publiés, trois marques, aucune intervention.",
+      "sector": "Nos produits",
+      "client": "Distr'Action",
+      "metrics": {
+        "articles": "Articles publiés de mai à août 2026",
+        "brands": "Marques alimentées"
+      },
+      "context": "Trois marques du groupe ont besoin d'une présence éditoriale régulière. Écrire un article par semaine et par marque, c'est un mi-temps.",
+      "problem": "La régularité est ce qui compte en référencement, et c'est précisément ce qu'un humain occupé ne tient pas. Les blogs d'entreprise meurent d'un manque de cadence, pas d'un manque d'idées.",
+      "solution": "Un moteur unique, branché sur les trois sites. Il choisit un sujet, vérifie qu'il n'a pas déjà été traité, rédige, et publie directement dans la base du site concerné.",
+      "results": "Cinquante articles publiés sur un seul des trois sites entre mai et août 2026, sans intervention humaine.",
+      "howItWorks": "Un hub n8n et un workflow de publication par marque. Un registre partagé des parutions empêche deux sites de traiter le même sujet — c'est le garde-fou qui manquait aux premières versions, qui rebouclaient sur la même liste.",
+      "transposition": "Le gain ici n'est pas du temps économisé : c'est du travail qui n'aurait pas eu lieu. Personne n'aurait écrit ces cinquante articles à la main. C'est la forme d'avantage la plus fréquente en automatisation, et la plus sous-estimée."
+    },
+    "preparation-emission": {
+      "title": "Préparation d'émission hebdomadaire",
+      "summary": "De deux heures de préparation à trois minutes.",
+      "sector": "Médias",
+      "client": "Une radio francophone",
+      "metrics": {
+        "prep": "Préparation d'une émission"
+      },
+      "context": "Chaque émission demande une préparation : rassembler la matière, la mettre en forme, la structurer selon un conducteur.",
+      "problem": "Deux heures par émission, chaque semaine, sur un travail de collecte et de mise en forme largement mécanique.",
+      "solution": "Un workflow rassemble la matière, la met en forme selon le format de l'émission, et livre le document de préparation prêt à l'usage.",
+      "results": "Deux heures ramenées à trois minutes, mesurées sur l'exécution automatique du matin.",
+      "howItWorks": "Un workflow n8n de seize nœuds, déclenché sur planning hebdomadaire, avec sources multiples et mise en forme finale. Un workflow d'erreur global alerte si l'exécution programmée échoue.",
+      "transposition": "Toute réunion récurrente qui demande un dossier préparatoire relève du même principe : comité de direction, revue commerciale, point de production. La matière existe déjà, la rassembler est mécanique."
+    },
+    "dreamoracle": {
+      "title": "DreamOracle — plateforme grand public",
+      "summary": "Un produit mené de bout en bout : conception, design, acquisition.",
+      "sector": "Nos produits",
+      "client": "Distr'Action",
+      "metrics": {},
+      "context": "Une plateforme grand public d'interprétation de rêves, avec journal personnel et application installable sur téléphone.",
+      "problem": "Mener un produit grand public jusqu'au bout demande autre chose que du code : une identité visuelle, une expérience mobile, une acquisition.",
+      "solution": "Conception, développement, identité visuelle complète, application web installable, et campagne d'acquisition. Le produit existe et tourne.",
+      "results": "La démonstration d'une capacité de bout en bout, sur un produit qui s'adresse au grand public et non à des entreprises.",
+      "howItWorks": "Next.js, Prisma sur PostgreSQL, application web progressive installable sur iOS et Android, suite d'identité visuelle en SVG, générateur de visuels.",
+      "transposition": "Si votre projet suppose un produit et pas seulement un outil interne, c'est cette chaîne complète qu'il faut : conception, design, développement, mise en marché. Les trois dernières sont celles qu'on sous-estime."
+    },
+    "artpero": {
+      "title": "L'Artpéro — plateforme d'événements",
+      "summary": "Billetterie, paiement et gestion des inscriptions en ligne.",
+      "sector": "Culture",
+      "client": "L'Artpéro",
+      "metrics": {},
+      "context": "Un organisateur d'événements culturels gérait ses inscriptions et ses paiements en dehors de son site.",
+      "problem": "Les inscriptions éparpillées entre un formulaire, des emails et des virements manuels : c'est du temps perdu et des places vendues deux fois.",
+      "solution": "Une plateforme complète : présentation des événements, inscription en ligne, paiement, et espace de gestion pour l'organisateur.",
+      "results": "Une chaîne unique, de la découverte de l'événement au paiement encaissé.",
+      "howItWorks": "React et Supabase pour les données et l'authentification, Stripe pour les paiements.",
+      "transposition": "Tout ce qui se réserve ou s'inscrit relève du même schéma : ateliers, formations, consultations, locations. Le gain principal n'est pas le paiement en ligne, c'est la disparition du double encodage."
+    },
+    "tl-services": {
+      "title": "TL Services — site vitrine",
+      "summary": "Un site complet, conçu et mis en ligne en quatre jours.",
+      "sector": "Artisanat",
+      "client": "TL Services",
+      "metrics": {
+        "delivery": "De la première ligne à la mise en ligne"
+      },
+      "context": "Un artisan sans présence en ligne, dont les clients potentiels cherchent pourtant ses services sur internet avant d'appeler.",
+      "problem": "Sans site, on n'existe pas dans une recherche locale. Et les devis se demandent par téléphone, aux heures où l'artisan est sur chantier.",
+      "solution": "Un site vitrine complet : présentation des services, formulaire de demande relié à la messagerie, pages légales, référencement et images de partage sur les réseaux, bouton d'appel à l'action sur mobile.",
+      "results": "Livré en quatre jours, de la première ligne de code à la mise en ligne.",
+      "howItWorks": "Next.js et React, génération des images de partage à la volée, formulaire relié au SMTP, conteneur Docker derrière un proxy avec certificat automatique.",
+      "transposition": "Quatre jours, c'est l'ordre de grandeur pour un artisan ou un indépendant qui part de zéro. Ce qui prend du temps ensuite n'est pas le site : c'est de décider ce qu'on veut y dire."
+    },
+    "playlist-spotify": {
+      "title": "Générateur de playlists Spotify",
+      "summary": "Une phrase, et la playlist existe dans votre compte.",
+      "sector": "Médias",
+      "client": "Distr'Action",
+      "metrics": {
+        "toPlaylist": "De la demande à la playlist créée"
+      },
+      "context": "Créer une playlist thématique demande de chercher chaque morceau, un par un.",
+      "problem": "Le temps passé n'est pas dans le choix des titres, il est dans la recherche et l'ajout manuel de chacun d'eux.",
+      "solution": "On décrit la playlist en une phrase. Les titres sont proposés, recherchés dans le catalogue, et la playlist est créée directement dans le compte de l'utilisateur.",
+      "results": "Entre vingt-cinq et quarante secondes de la phrase à la playlist utilisable.",
+      "howItWorks": "Un webhook n8n avec contrôle d'accès en entrée — un point d'entrée public sans garde-fou est une facture ouverte. Proposition des titres par Claude, recherche via l'API Spotify, création de la playlist et ajout par lots. Une branche de rattrapage relance une recherche sur le titre seul pour les morceaux introuvables au premier passage.",
+      "transposition": "C'est la démonstration la plus immédiatement compréhensible : de l'intention exprimée en une phrase au résultat utilisable, dans un outil que tout le monde connaît. Le même schéma vaut pour toute création en série dans un outil tiers."
+    },
+    "enghien": {
+      "title": "Bibliothèque historique interrogeable",
+      "summary": "Huit ouvrages d'histoire locale, interrogeables en une question.",
+      "sector": "Patrimoine",
+      "client": "Un cercle d'histoire locale",
+      "metrics": {},
+      "shortDescription": "Huit ouvrages consacrés à l'histoire d'une ville, de 1876 à 2007, réunis en une seule bibliothèque interrogeable. On pose une question en français, le système retrouve les passages pertinents dans le corpus et répond en citant ses sources, ouvrage par ouvrage. Le fonds comprend des ouvrages sous droits, exploités avec l'accord des ayants droit."
+    },
+    "veille-youtube": {
+      "title": "Veille vidéo automatisée",
+      "summary": "Les vidéos qui comptent, transcrites et classées chaque heure.",
+      "sector": "Veille",
+      "client": "Distr'Action",
+      "metrics": {},
+      "context": "Suivre ce qui se dit sur un sujet suppose de regarder des heures de vidéo, ou de ne pas le suivre.",
+      "problem": "Personne n'a le temps de regarder. Et une vidéo qu'on n'a pas regardée est une information qu'on n'a pas.",
+      "solution": "Les nouvelles vidéos des chaînes suivies sont repérées automatiquement, transcrites, nettoyées et rangées dans un tableau où l'on cherche par mot-clé. On lit en deux minutes ce qui durait quarante.",
+      "results": "Une veille qui tourne toutes les heures sans surveillance, et qui dégrade proprement : si une vidéo n'a pas de sous-titres, l'audio est téléchargé et transcrit.",
+      "howItWorks": "Un workflow n8n de vingt-six nœuds : lecture de la playlist, déduplication contre l'existant, transcription par service dédié, repli sur une transcription audio quand les sous-titres manquent, nettoyage du texte, écriture dans Google Sheets. La liste des chaînes suivies se pilote depuis le tableau lui-même.",
+      "transposition": "Le repli est le point important : un automate qui abandonne au premier cas particulier n'est qu'une démonstration. Celui-ci tourne toutes les heures sans qu'on le regarde."
+    },
+    "paperclip": {
+      "title": "Paperclip — comité de direction assisté",
+      "summary": "Dix spécialistes consultés en parallèle sur une même décision.",
+      "sector": "Recherche interne",
+      "client": "AInspiration",
+      "metrics": {
+        "agents": "Spécialistes consultés"
+      },
+      "context": "Une petite structure n'a pas de comité de direction. Elle a un dirigeant qui décide seul, avec ses angles morts.",
+      "problem": "Les mauvaises décisions ne viennent pas d'un manque d'information mais d'un manque de contradiction. Personne ne dit au dirigeant ce qu'il ne veut pas entendre.",
+      "solution": "Dix profils spécialisés — direction, commercial, financier, juridique, technique, marketing, opérations — consultés sur une même question, chacun avec son cadre et ses priorités. Ils peuvent se contredire : c'est l'intérêt. Une synthèse tranche.",
+      "results": "Un dispositif de recherche interne, utilisé sur des arbitrages commerciaux réels.",
+      "howItWorks": "Dix profils décrits en Markdown, chacun avec son domaine, son niveau d'expérience et son contexte. Trois commandes pilotent la séance : consultation générale, briefing avec répartition des missions, ou point d'avancement.",
+      "transposition": "C'est de la recherche, pas une offre. Nous le présentons parce qu'il montre ce que nous testons sur nous-mêmes avant de le proposer — et parce qu'un dispositif de contradiction organisée vaut mieux qu'un avis unique, y compris quand l'avis unique est le nôtre."
+    },
+    "rampa": {
+      "title": "Recherche hybride sur un corpus documentaire",
+      "summary": "Dix-neuf ouvrages interrogeables, avec la recherche qui va avec.",
+      "sector": "Recherche interne",
+      "client": "Projet personnel",
+      "metrics": {},
+      "shortDescription": "Un corpus de dix-neuf ouvrages, interrogeable en langage naturel. L'intérêt du projet est ailleurs que dans le corpus : la recherche y est hybride, à la fois sémantique et par mots-clés. La raison est mesurée, pas théorique — sur des questions courtes en français, la recherche sémantique seule passe à côté de passages évidents, et la recherche par mots-clés rattrape ce qu'elle manque. C'est le genre de correction qu'on ne trouve qu'en testant."
+    }
+  }
+}

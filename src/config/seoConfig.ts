@@ -160,6 +160,23 @@ export const seoPages: Record<string, SEOPageConfig> = {
       keywords: 'AI casestudies, succesverhalen, klanttestimonials, AI resultaten, transformatie voorbeelden'
     }
   },
+  '/realisations': {
+    fr: {
+      title: 'Réalisations | Ce que nous avons construit | AInspiration',
+      description: 'Seize automatisations et applications en service : facturation, comptabilité, contenu, conformité. Ce qui a été construit, pour qui, et ce que ça a changé.',
+      keywords: 'réalisations IA, cas concrets automatisation, projets n8n, exemples IA PME, portfolio intelligence artificielle'
+    },
+    en: {
+      title: 'Our Work | What We Actually Built | AInspiration',
+      description: 'Sixteen automations and applications in service: invoicing, accounting, content, compliance. What was built, for whom, and what changed.',
+      keywords: 'AI projects, automation case studies, n8n projects, AI examples SME, artificial intelligence portfolio'
+    },
+    nl: {
+      title: 'Realisaties | Wat wij echt gebouwd hebben | AInspiration',
+      description: 'Zestien automatiseringen en toepassingen in dienst: facturatie, boekhouding, content, conformiteit. Wat gebouwd is, voor wie, en wat het veranderde.',
+      keywords: 'AI realisaties, automatisering praktijkvoorbeelden, n8n projecten, AI voorbeelden kmo, portfolio kunstmatige intelligentie'
+    }
+  },
   '/a-propos': {
     fr: {
       title: 'À Propos | Notre Équipe et Mission | AInspiration',
@@ -609,7 +626,14 @@ export type SupportedLanguage = 'fr' | 'en' | 'nl';
 
 export const getSEOConfig = (path: string, lang: SupportedLanguage = 'fr') => {
   // Gestion des routes dynamiques (blog/:slug, contacts/:id, etc.)
-  const normalizedPath = path.replace(/\/[a-f0-9-]{36}$/i, '').replace(/\/\d+$/, '');
+  // Attention : ces deux règles ne retirent qu'un UUID ou un suffixe numérique.
+  // Une route à slug (/realisations/facturation-automatisee) n'est PAS couverte
+  // et retomberait sur le titre générique — d'où la normalisation explicite
+  // ci-dessous. La page elle-même surcharge ensuite le titre par fiche.
+  const slugSection = path.match(/^(\/realisations)\/[^/]+$/);
+  const normalizedPath = slugSection
+    ? slugSection[1]
+    : path.replace(/\/[a-f0-9-]{36}$/i, '').replace(/\/\d+$/, '');
 
   const config = seoPages[normalizedPath] || seoPages[path];
 
@@ -793,6 +817,7 @@ export const getBreadcrumbSchema = (path: string, lang: SupportedLanguage = 'fr'
     'crm': { fr: 'CRM', en: 'CRM', nl: 'CRM' },
     'produits': { fr: 'Produits', en: 'Products', nl: 'Producten' },
     'etudes-de-cas': { fr: 'Études de cas', en: 'Case Studies', nl: 'Casestudies' },
+    'realisations': { fr: 'Réalisations', en: 'Our Work', nl: 'Realisaties' },
     'conseil': { fr: 'Conseil', en: 'Consulting', nl: 'Advies' },
     'formation': { fr: 'Formation', en: 'Training', nl: 'Opleiding' },
     'accompagnement': { fr: 'Accompagnement', en: 'Support', nl: 'Begeleiding' },
