@@ -483,6 +483,49 @@ savoir le nommer : *être trouvé sur Google quand on cherche un artisan près d
    page d'article écrite à la main, `/blog/thierry-facturation-ia`, dont il faudra vérifier
    duquel des deux elle parle avant tout maillage interne.
 
+### 4.9 Brasserie de la Patinoire — le site existe, mais il est hors de portée d'ici
+
+Laurent a fourni l'URL : **`https://brasspat042026.distr-action.com/`**. Le projet existe
+donc bien, en production, sur un sous-domaine du groupe.
+
+**Il est inaccessible depuis cette session.** La politique réseau de l'environnement
+d'exécution refuse la connexion (`403` du proxy sortant, `connect_rejected — policy
+denial`). Je ne peux ni lire la page, ni vérifier la présence du widget de chat, ni
+capturer quoi que ce soit.
+
+> ### ⚠️ Conséquence majeure : **aucune capture n'est réalisable depuis cet environnement**
+>
+> J'ai testé les sept cibles de la mission. **Toutes sont bloquées** :
+>
+> | Cible | Résultat |
+> |---|---|
+> | `brasspat042026.distr-action.com` | bloqué |
+> | `tlservices.distr-action.com` | bloqué |
+> | `ainspiration.eu` | bloqué |
+> | `lartpero.ainspiration.eu` | bloqué |
+> | `dreamoracle.eu` | bloqué |
+> | `audityo.eu` | bloqué |
+> | `laurent7850.github.io/playlist-generator` | bloqué |
+>
+> Seuls GitHub, npm et les serveurs MCP passent. **La Phase 4 (captures Playwright) ne peut
+> pas s'exécuter ici**, quelle que soit la qualité du script.
+>
+> Trois issues possibles, à arbitrer (question 14) :
+> 1. **J'écris le script, tu l'exécutes.** Le §8.1 du brief exige de toute façon un script
+>    versionné et rejouable dans `scripts/captures/`. Je le livre avec sa configuration par
+>    projet ; tu lances `npm run captures` en local et tu commites les images. C'est le
+>    chemin le plus simple et il respecte le brief à la lettre.
+> 2. **Ouvrir la politique réseau** de l'environnement aux sept domaines ci-dessus.
+> 3. **Travailler depuis ta machine** avec Claude Code en local — où se trouvent d'ailleurs
+>    les worktrees introuvables ici (Paperclip, Baseline sécurité, veille YouTube).
+>
+> Les phases 1, 2, 3, 5 et 6 ne sont **pas** concernées : architecture, modèle de données,
+> gabarits, rédaction des 13 fiches, SEO et accessibilité se font intégralement ici.
+
+**Si le chat de la brasserie tourne bien sur ce site**, le projet n° 1 peut redevenir
+« déployé chez un client » plutôt que « notre propre chat » — c'est nettement plus vendeur.
+Il faut juste que quelqu'un puisse le constater. → **question 14.**
+
 > **Saint Kilda — piste non retenue à ce stade.** Le dépôt `laurent7850/reconciliation-caisse`
 > contient une application Vite/React de réconciliation de caisse (rapports Z du caissier
 > rapprochés d'un récap annuel Excel, sans jamais écraser une cellule déjà remplie). C'est un
@@ -589,6 +632,16 @@ Sans écrire une ligne de code, voici le parti que je défendrai :
 13. **Saint Kilda entre-t-il dans la grille ?** L'app de réconciliation de caisse
     (`reconciliation-caisse`) est un cas PME très transposable. On le prend comme
     quatorzième fiche, ou on le garde en réserve ?
+
+14. **Captures : comment on procède ?** Aucune des sept cibles n'est joignable depuis cet
+    environnement (§4.9). Ma recommandation : **je livre le script Playwright rejouable,
+    tu l'exécutes en local** — c'est ce que le §8.1 du brief demande de toute façon.
+    L'alternative est d'ouvrir la politique réseau, ou de passer en local. À trancher avant
+    la Phase 4, pas avant la Phase 1.
+
+15. **Brasserie de la Patinoire : le chat y tourne-t-il ?** Si oui, le projet n° 1 redevient
+    une preuve cliente. Peux-tu me le confirmer, et me dire si la brasserie accepte d'être
+    nommée (le brief prévoyait « une brasserie ») ?
 
 ---
 
