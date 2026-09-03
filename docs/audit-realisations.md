@@ -846,3 +846,76 @@ Après revue de **26 des 37 dépôts** du compte (les 21 publics, plus `audityo`
     privés n'ont pas encore été ouverts — `minutage-NO`, `Time2invoice2`, `Time2invoice3` —
     mais leurs noms rendent peu probable qu'ils les contiennent. **Sont-ils sur un autre
     compte GitHub, ou seulement sur ton disque ?**
+
+---
+
+## 10. Recherche exhaustive de Rampa et de brasspat — méthode et résultat
+
+Reprise complète après une première recherche insuffisante (elle m'avait déjà fait manquer
+`DJLyricsNosta`). Cette fois, quatre pistes ont été épuisées.
+
+### 10.1 GitHub — fermé
+
+- **`list_repos` renvoie 37 dépôts, `has_more: false`, tous sous `laurent7850`.** Aucune
+  organisation, aucun second compte, aucun dépôt tiers dans la portée autorisée.
+- **Toutes les branches de tous les dépôts** ont été listées (`git ls-remote --heads`).
+  Aucune branche `rampa` ni `brasspat`.
+- **Le dépôt AInspiration a six branches** (`main`, `developpement`, `production`,
+  `jovial-vaughan`, `claude/vigorous-greider`, `pre-security-baseline-2026-05`) : toutes
+  récupérées et fouillées. Rien — une seule correspondance, sur le mot « renseignements ».
+- **Contenu fouillé dans 27 dépôts.** Cinq sont vides (`lartpero`, `Time2Invoice4`,
+  `Time2invoice`, `songtastic`) ; `Time2invoice2` et `Time2invoice3` écartés par Laurent.
+- **Aucun autre hébergeur git** n'est cité nulle part : ni GitLab, ni Bitbucket, ni Gitea.
+
+### 10.2 n8n (VPS) — fermé
+
+`search_projects` renvoie **un seul projet** (`Maréchal Laurent`), les projets d'équipe
+n'étant pas activés sur l'instance. Les **36 workflows** inventoriés sont donc bien la
+totalité. Aucun ne porte « rampa » ni « brasspat » dans son nom.
+
+*Réserve honnête* : la recherche n8n ne porte que sur les noms et descriptions. Le contenu
+des workflows reste illisible pour 34 d'entre eux (accès MCP non activé).
+
+### 10.3 Système de fichiers — fermé
+
+`find / -xdev` sur l'ensemble du disque : **aucun fichier** contenant « rampa »,
+« brasspat », « patinoire » ou « enseignement ». Les seuls volumes montés sont ceux du
+système (`/opt/claude-code`, `/mnt/skills`…). **La machine de Laurent n'est pas montée** —
+cette session s'exécute dans un conteneur isolé.
+
+> ⚠️ **Fausse piste, corrigée.** Un premier balayage avait fait apparaître
+> `rampa.srv767464.hstgr.cloud` « cité dans un dépôt ». C'était **ce rapport lui-même**
+> (§4.11), pas une source. Les sous-domaines VPS réellement cités par le code sont :
+> `ainspiration`, `dreams`, `enghien`, `n8n`, `paperclip-zjyk`, `seopilot`, `voxstudio`.
+
+### 10.4 Conclusion
+
+**Rampa et le brasspat d'origine sont déployés sur le VPS sans être versionnés sur GitHub.**
+C'est cohérent avec le reste : le fork Saint Kilda de la réconciliation de caisse est sur
+GitHub, l'original ne l'est pas. Les deux ont donc un front-end en ligne, mais pas de code
+atteignable d'ici.
+
+**Le seul angle mort qui subsiste** est la **seconde instance n8n**
+(`distr-action.app.n8n.cloud`), invisible depuis cette session — c'est là que vivent les
+workflows des chatbots clients, et peut-être d'autres pièces.
+
+### 10.5 Ce que la piste « front-end » a débloqué : Paperclip
+
+En cherchant les front-ends des projets manquants, **Paperclip (projet n° 9) est sorti de
+l'ombre** : `CLAUDE.md:374-377`.
+
+| Point | Le brief dit | `CLAUDE.md` dit |
+|---|---|---|
+| Nombre d'agents | **13** (CEO, CTO, CPO, CMO, CFO, CLO + 7 spécialistes) | **10 agents comité de direction**, avec des `AGENTS.md` personnalisés |
+| Statut | « backlog initial de 18 tâches » | **« Premier comité lancé (acquisition 10 premiers clients) »** |
+| Front-end | non mentionné | **`https://paperclip-zjyk.srv767464.hstgr.cloud`** — l'interface existe et tourne |
+
+Le projet a donc bien une interface capturable, et son statut réel est meilleur que
+« R&D interne » : un premier comité a effectivement tourné sur un objectif commercial.
+**Le chiffre « 13 agents » devient un `[À VALIDER]`** — deux sources internes se
+contredisent.
+
+**Reste sans front-end, par nature :** la Baseline sécurité & RGPD (projet n° 10) est un
+référentiel documentaire, et la veille YouTube (n° 12) produit un Google Sheet. Ces deux-là
+ne se capturent pas comme une application — le brief le pressentait déjà pour le n° 10 en
+proposant un encart transversal plutôt qu'une carte projet.
