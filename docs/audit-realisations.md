@@ -3,8 +3,12 @@
 > Phase 0 de `docs/PROMPT-realisations.md`. Aucun fichier de production n'a été modifié.
 > Rapport établi le 3 septembre 2026 sur `feat/realisations`, base `main` @ `b88620e`.
 >
-> **Arbitrages déjà rendus par Laurent** : la section **complète** `/etudes-de-cas`
-> (elle ne la remplace pas) ; le contenu est livré en **FR / EN / NL**.
+> **Arbitrages déjà rendus par Laurent**
+> 1. La section **complète** `/etudes-de-cas` — elle ne la remplace pas.
+> 2. Le contenu est livré en **FR / EN / NL**.
+> 3. Le projet n° 1 devient **le chat IA du site, en démo vivante** — le volet
+>    « widget embarquable multi-clients » est abandonné (§4.7).
+> 4. **TL Services entre dans la grille** comme treizième réalisation (§4.8).
 
 ---
 
@@ -26,9 +30,9 @@ récapitulés ici, parce qu'ils changent le travail :
 | 4 | Facturation : cas client d'« un groupe radio francophone » | Le calendrier lu, les tarifs appliqués et le destinataire de l'email sont **ceux de Laurent**. C'est son propre système de facturation, pas une livraison client. |
 | 5 | Enghien : « un livre de 1876 » | Le corpus contient **deux ouvrages**, dont un de 1998 **sous droits** (autorisation de l'ayant droit). |
 | 6 | « Plus de 30 automatisations » | **36 workflows** sur l'instance — mais beaucoup sont internes (sauvegardes, healthchecks, error trigger). Le chiffre « livrées » n'est pas celui-là. |
-| 7 | Chatbot embarquable « déjà déployé chez plusieurs clients » | **Aucune trace vérifiable** : pas d'`embed.html` dans les dépôts accessibles, pas de workflow client sur l'instance n8n. C'est la pièce maîtresse de la vitrine et c'est le projet le moins documenté. |
+| 7 | Chatbot embarquable « déjà déployé chez plusieurs clients » | **Aucune trace vérifiable** dans onze dépôts : pas d'`embed.html`, pas de captation de leads, aucun déploiement client. La seule « brasserie » du compte est une **donnée de démo fictive du CRM**. → **arbitré, §4.7**. |
 
-**Trois décisions bloquantes** avant de coder : §7, questions 1, 2 et 3.
+**Deux décisions bloquantes** restent avant de coder : §7, questions 2 et 3.
 
 ---
 
@@ -293,7 +297,7 @@ Légende : ✅ vérifié dans le code · ⚠️ partiel · ❌ rien de vérifiab
 
 | # | Projet | Source atteinte | État | Ce qui manque |
 |---|---|---|---|---|
-| 1 | Chatbot embarquable multi-clients | `ainspiration/src/components/ChatbotN8n.tsx` ; workflows `oz9stSLsjRtRFA8F`, `ZroPJAjhPmWkj2sI` | ❌ | **Pas d'`embed.html`, pas de captation progressive de leads, aucun déploiement client vérifiable.** Le widget du site n'est pas le produit décrit. |
+| 1 | **Chat IA du site — démo vivante** *(recadré, voir §4.7)* | `ainspiration/src/components/ChatbotN8n.tsx` ; workflows `oz9stSLsjRtRFA8F`, `ZroPJAjhPmWkj2sI` | ✅ | Rien : la preuve est le chat lui-même, essayable sur la page. Le volet « embarquable multi-clients » du brief est abandonné, faute de source. |
 | 2 | Audityo | dépôt `laurent7850/audityo` (attaché) | ✅ | Rien — mais **la stack du brief est fausse** et **l'échéance est passée** (§4.3). |
 | 3 | Facturation automatisée | workflow `mjZouVog4vArYBPI`, lu intégralement | ✅ | Le gain chiffré (« 6 h → 5 min ») n'a **aucune source**. Et le statut « client » est à revoir (§4.4). |
 | 4 | DreamOracle | dépôt `laurent7850/DreamOracle` | ✅ | Rien de bloquant. Next.js 16, Prisma, PWA, transcription ElevenLabs, stats — conforme au brief. |
@@ -305,11 +309,11 @@ Légende : ✅ vérifié dans le code · ⚠️ partiel · ❌ rien de vérifiab
 | 10 | Baseline sécurité & RGPD | — | ❌ | **Aucun dépôt.** Les 13 sections ne sont pas localisées. |
 | 11 | Préparation d'émission | workflow `bWQJiJlSMXQeMyyE` « 120 min 2026 » (actif) | ⚠️ | Existence confirmée, contenu illisible (MCP). |
 | 12 | Veille YouTube → transcriptions | — | ❌ | **Aucun workflow YouTube parmi les 36.** Soit il est ailleurs, soit il n'est plus déployé. |
+| **13** | **TL Services — site vitrine client** *(ajouté, voir §4.8)* | dépôt `laurent7850/tlservices` (attaché) | ✅ | Rien. En production sur `tlservices.distr-action.com`, capturable immédiatement. |
 
-**Bilan : 4 projets sur 12 sont documentés au point de pouvoir écrire une fiche honnête
-aujourd'hui** (2, 3, 4, 8). Quatre autres le deviennent si l'accès MCP est ouvert (5, 6, 11)
-ou si les chiffres sont fournis (7). **Quatre n'ont aucune matière** (1, 9, 10, 12) — dont
-la pièce maîtresse annoncée.
+**Bilan : 6 projets sur 13 sont documentés au point de pouvoir écrire une fiche honnête
+aujourd'hui** (1, 2, 3, 4, 8, 13). Trois autres le deviennent si l'accès MCP est ouvert
+(5, 6, 11), un si les chiffres sont fournis (7). **Trois n'ont aucune matière** (9, 10, 12).
 
 ### 4.3 Audityo — deux corrections qui changent la fiche
 
@@ -410,21 +414,95 @@ droits exploité avec l'accord de l'ayant droit, c'est exactement la situation d
 avec ses procédures internes. Mais le citer suppose de vérifier que l'autorisation couvre
 la mention publique. → **Question 6 du §7.**
 
+### 4.7 Projet n° 1 — recadré : le chat du site devient la démo
+
+**Recherche menée** dans onze dépôts (`ainspiration`, `distr-action2026`, `tlservices`,
+`lartpero2`, `enghien-rag`, `DreamOracle`, `audityo`, `spotify-playlist-generator`,
+`playlist-generator`, `reconciliation-caisse`, `the-event-linkedin`).
+
+Le widget existe **en deux exemplaires**, tous deux soudés à un site du groupe :
+
+| Site | Fichier | Mécanique |
+|---|---|---|
+| ainspiration.eu | `src/components/ChatbotN8n.tsx` (488 l.) | session `localStorage`, POST `/api/webhook/chat` → proxy Express → n8n |
+| distr-action.com | `src/components/ChatBot.tsx` (269 l.) + `functions/chatbot.js` | session cookie, proxy Netlify Function → n8n |
+
+**Ce que le brief décrit n'existe nulle part** : pas de fichier `embed.html`, pas de
+captation progressive de leads (email → prénom → téléphone → localité), pas de guide
+intégré, aucun déploiement client.
+
+**Les quatre clients annoncés ne se vérifient pas** : le lieu culturel (`lartpero2`) et
+l'administration communale (`enghien-rag`) n'ont aucun chat ; l'activité de services
+(`tlservices`) n'a qu'un formulaire de contact.
+
+> ⚠️ **La « brasserie » est une donnée de démonstration.** La seule occurrence sur tout le
+> compte est « Brasserie du Hainaut » dans `docker/seed-demo.sql` — société fictive, gérant
+> inventé (« Jean-Pierre Vandenberghe »), opportunité « Chatbot réservations — 299 € — won ».
+> C'est le jeu de démo du CRM. **Ne jamais la citer, ne jamais la capturer.**
+
+> ⚠️ **Position déjà actée dans le dépôt.** Le commit `e4ff57e` du 29 août 2026 porte en
+> toutes lettres : *« Client decision: no real clients exist yet »*. Il a retiré du site les
+> témoignages inventés, les logos clients et les statistiques agrégées. Le témoignage
+> « Thierry — restaurateur » de `TESTIMONIAL_THIERRY.md` a ainsi été transformé en scénario
+> anonyme (`testimonials.restaurant.*`, badge devenu « **Jusqu'à** -50 % de no-shows »).
+> **`TESTIMONIAL_THIERRY.md` décrit une version supprimée** : ne pas s'en servir comme source.
+> Toute la section Réalisations doit rester cohérente avec cette décision.
+
+**Arbitrage rendu par Laurent :** le projet n° 1 devient **le chat IA du site AInspiration,
+présenté en démo vivante**. Le visiteur l'essaie sur la page qu'il lit. Aucune capture à
+produire, aucune donnée client en jeu, et la preuve se vérifie d'elle-même.
+
+### 4.8 TL Services — treizième réalisation, ajoutée par Laurent
+
+Trouvée en cherchant le chatbot. **Un vrai site client, en production.**
+
+| Point | Vérifié dans `laurent7850/tlservices` |
+|---|---|
+| Activité | rénovation et petits travaux, sud de Bruxelles |
+| Production | **`https://tlservices.distr-action.com`** — capturable immédiatement, sans compte |
+| Stack | Next.js 16 (App Router, Turbopack), TypeScript strict, Tailwind v3 |
+| Hébergement | VPS Hostinger + Docker Compose + Traefik (Let's Encrypt) |
+| Pages | accueil, services (6 prestations), **réalisations (galerie de chantiers)**, à propos, contact, mentions légales, confidentialité RGPD, 404 personnalisée |
+| SEO | **JSON-LD `LocalBusiness`** (services, communes desservies, horaires, géolocalisation), `sitemap.xml` et `robots.txt` auto-générés, **image OpenGraph 1200×630 générée** |
+| Formulaire | validation stricte, **honeypot anti-bot**, limite 1 envoi/minute/IP, envoi SMTP + webhook optionnel |
+| Sécurité | aucune clé en dur, `poweredByHeader: false` |
+
+**L'angle** : c'est la preuve qu'AInspiration livre aussi des sites clients complets et
+correctement référencés — pas seulement de l'automatisation. Le `LocalBusiness` JSON-LD et
+la génération d'OG image sont exactement ce qu'un dirigeant de PME locale cherche sans
+savoir le nommer : *être trouvé sur Google quand on cherche un artisan près de chez soi*.
+
+**Deux points à trancher** (→ questions 11 et 12 du §7) :
+
+1. **Le nom peut-il être affiché ?** Le site est public et porte la marque TL Services. Mais
+   la décision `e4ff57e` interdit de nommer un client sans accord écrit. Le contact configuré
+   est `thierry@tl-services.be`.
+2. **Attention à ne pas confondre deux Thierry.** Celui de TL Services fait de la
+   rénovation ; celui du témoignage retiré était **restaurateur à Bruxelles** (WhatsApp
+   Business, réservations). Même prénom, activités différentes. Il existe par ailleurs une
+   page d'article écrite à la main, `/blog/thierry-facturation-ia`, dont il faudra vérifier
+   duquel des deux elle parle avant tout maillage interne.
+
+> **Saint Kilda — piste non retenue à ce stade.** Le dépôt `laurent7850/reconciliation-caisse`
+> contient une application Vite/React de réconciliation de caisse (rapports Z du caissier
+> rapprochés d'un récap annuel Excel, sans jamais écraser une cellule déjà remplie). C'est un
+> cas PME très parlant, du même calibre que la facturation. Signalé pour arbitrage, non
+> intégré à la grille sans décision.
+
 ---
 
 ## 5. Ce que la mission peut réellement produire aujourd'hui
 
 Pour être franc sur le calendrier, sans rien réduire de la commande :
 
-- **Fiches écrivables tout de suite, sur sources vérifiées** : Audityo, Facturation,
-  DreamOracle, L'Artpéro. Quatre.
+- **Fiches écrivables tout de suite, sur sources vérifiées** : Chat IA du site, Audityo,
+  Facturation, DreamOracle, L'Artpéro, **TL Services**. Six.
 - **Fiches écrivables dès l'accès MCP n8n ouvert** : Labo Nostalgie, Spotify,
   Préparation d'émission. Trois.
 - **Fiche écrivable dès que Laurent fournit les chiffres** : Enghien. Une.
-- **Fiches sans matière** : Chatbot embarquable, Paperclip, Baseline sécurité, Veille
-  YouTube. Quatre — et la première est annoncée comme pièce maîtresse.
+- **Fiches sans matière** : Paperclip, Baseline sécurité, Veille YouTube. Trois.
 
-Le multiplicateur trilingue s'applique à tout : **12 fiches × 3 langues = 36 rédactions**,
+Le multiplicateur trilingue s'applique à tout : **13 fiches × 3 langues = 39 rédactions**,
 plus l'index. C'est le poste de travail le plus lourd de la mission, largement devant le
 code.
 
@@ -448,11 +526,14 @@ Sans écrire une ligne de code, voici le parti que je défendrai :
 
 ## 7. Questions bloquantes — réponses nécessaires avant de coder
 
-1. **Chatbot embarquable (projet n° 1).** Aucune trace dans les dépôts accessibles ni sur
-   l'instance n8n. Où vit le code (`embed.html`, widget React) ? Et surtout : **quels
-   clients l'utilisent réellement en production aujourd'hui**, avec quelle URL publique ?
-   Sans réponse, la pièce maîtresse annoncée ne peut pas être écrite — et il faudra
-   reclasser la grille.
+1. ~~**Chatbot embarquable (projet n° 1).**~~ **Réglé** : le projet devient le chat IA du
+   site, en démo vivante (§4.7). **Reste ouvert : la Brasserie de la Patinoire
+   (« brasspat »).** Elle n'est atteignable nulle part — aucun dépôt sur le compte
+   GitHub (`brass`, `pat` : zéro résultat), **aucun des 36 workflows n8n** (`brass`,
+   `patinoire` : zéro résultat), aucune mention dans les onze dépôts clonés. Où vit ce
+   projet ? Si le chatbot de la brasserie tourne réellement en production, son URL
+   publique en ferait une preuve immédiatement capturable, et le projet n° 1 pourrait
+   redevenir « déployé chez un client » plutôt que « notre propre chat ».
 
 2. **Facturation : « chez nous » ou « chez un client » ?** Le workflow automatise ta
    propre facturation (ton calendrier, tes tarifs, ton email). Le présenter comme une
@@ -495,6 +576,19 @@ Sans écrire une ligne de code, voici le parti que je défendrai :
     est en Conventional Commits, sujets majoritairement en anglais. Je propose
     `feat(realisations):` avec sujet français — ça te va ? (b) `L'Artpéro` peut-il être
     nommé, ou faut-il l'anonymiser aussi ?
+
+11. **TL Services : le nom peut-il être affiché ?** Le site est public et porte la marque,
+    mais la décision `e4ff57e` interdit de nommer un client sans accord écrit. As-tu son
+    accord, ou passe-t-on par « un artisan de la périphérie bruxelloise » ?
+
+12. **TL Services : quels chiffres ?** Durée du projet, date de mise en ligne, et un
+    résultat constaté (demandes reçues via le formulaire, position sur une requête locale
+    du type « rénovation + commune »). Sans cela la fiche décrira un beau site sans dire
+    ce qu'il a rapporté — exactement le piège du §13 du brief.
+
+13. **Saint Kilda entre-t-il dans la grille ?** L'app de réconciliation de caisse
+    (`reconciliation-caisse`) est un cas PME très transposable. On le prend comme
+    quatorzième fiche, ou on le garde en réserve ?
 
 ---
 
