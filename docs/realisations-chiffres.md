@@ -1,104 +1,117 @@
-# Chiffres des fiches — ce qui est établi, ce qu'il me manque
+# Chiffres des fiches — le gain, pas le temps de fabrication
 
 > Réponse à la **question 9** de l'audit, la dernière encore ouverte.
 > Objectif : qu'aucune fiche ne parte avec un `[À VALIDER]` visible à l'écran.
 
-J'ai cherché tout ce qui était **déductible d'une source** avant de te demander quoi que ce soit.
-Résultat : les **dates et durées** sont largement récupérables ; les **gains constatés** ne le sont
-jamais. C'est normal — un gain est une mesure, pas une trace laissée par un outil.
+**Correction de cadrage.** Ma première version chiffrait les durées de réalisation. C'était une
+erreur : j'ai mesuré ce qui était facile à mesurer plutôt que ce qui compte. Le prospect ne se
+demande pas combien de temps l'outil a pris à construire, il se demande **ce qu'il lui rapporte une
+fois en place**. Ce document part donc du gain.
 
 ---
 
-## 1. Deux pièges de méthode, avant les chiffres
+## 1. Le principe : je mesure l'« après », tu donnes l'« avant »
 
-**Un workflow modifié huit mois plus tard n'est pas un projet de huit mois.** n8n donne une date de
-création et une date de dernière modification. La première est un bon indicateur de mise en
-service ; l'écart entre les deux ne mesure **pas** une durée de projet, il mesure une durée de
-maintenance. Les deux se disent, mais pas de la même façon : *« en service depuis janvier 2026 »*
-est vrai et vendeur ; *« huit mois de développement »* serait faux.
+Un gain de temps est une soustraction. La moitié droite — le temps que prend l'outil aujourd'hui —
+est **mesurable dans les journaux d'exécution**, et je l'ai relevée. La moitié gauche — le temps que
+ça prenait avant — n'existe que dans ta tête.
 
-**Six dépôts ont une histoire tronquée.** Audityo, DreamOracle, Paperclip, Rampa, la brasserie et
-Dreams portent tous un premier commit `chore: initial commit (project extracted from monorepo)`
-daté du **15 avril 2026** — c'est la date de l'extraction, pas celle du projet. Pour ceux-là, git
-ne peut pas m'aider : c'est à toi de donner le mois de départ, même approximatif.
+Ça réduit beaucoup ce que j'ai à te demander : **une seule valeur par fiche**, celle d'avant.
 
 ---
 
-## 2. Ce qui est établi — utilisable tel quel
+## 2. Le « après » — mesuré, sourcé, utilisable tel quel
 
-| # | Fiche | Établi | Source |
-|---|---|---|---|
-| 1 | Chat IA du site | En service depuis **janvier 2026**, maintenu (dernière évolution août 2026) | n8n `oz9stSLsjRtRFA8F`, créé le 2026-01-03 |
-| 3 | Facturation automatisée | En service depuis **janvier 2026** | n8n `mjZouVog4vArYBPI`, créé le 2026-01-07 |
-| 5 | Labo Nostalgie | Version classique **janvier 2026**, déclinaison saisonnière **juin 2026**, audit catalogue **août 2026** | n8n `8N7Vb3R8mrBK6DLl`, `Mrvg6cCeYZEcpv1y`, `RYWMDjWiSoK8C72O` |
-| 6 | Spotify | En service depuis **juillet 2026** | n8n `lwTH2RIV2QmyTlLX`, créé le 2026-07-01 |
-| 7 | L'Artpéro | **2 février → 26 mars 2026**, 15 commits — soit **environ 8 semaines** | historique git complet |
-| 8 | Enghien | Démarré le **4 février 2026**, 47 commits, toujours enrichi (dernier : 1ᵉʳ septembre 2026) | historique git complet |
-| 11 | Préparation d'émission | En service depuis **janvier 2026** | n8n `bWQJiJlSMXQeMyyE`, créé le 2026-01-10 |
-| 13 | TL Services | **24 → 27 avril 2026**, 12 commits — **livré en 4 jours** | historique git complet |
-| 14 | Réconciliation de caisse (variante) | **15 → 18 avril 2026**, 7 commits — **4 jours** | historique git complet du dépôt `reconciliation-caisse` |
-| 17 | AutoSEO / SEOPilot | Socle démarré le **27 février 2026**, 63 commits ; hub n8n **mars 2026**, puis branchement des trois marques : AInspiration **mai**, Distr-Action **mai**, Audityo **août 2026** | git + n8n |
+| Fiche | Mesure | Source |
+|---|---|---|
+| **Facturation** | La facturation complète d'un mois s'exécute en **13 secondes** — lecture du calendrier, calcul des tarifs, écriture dans le tableur, envoi de la facture et du comparatif | exécution du 2026-09-01, `mjZouVog4vArYBPI` |
+| **Labo Nostalgie** | Une playlist personnalisée de 25 titres, **justifiée titre par titre**, est générée et envoyée par email en **~70 secondes** | 6 exécutions des 27-28 août 2026, de 67 à 71 s |
+| **Spotify** | Une playlist thématique créée dans le compte de l'utilisateur en **25 à 40 secondes**, à partir d'une phrase | 3 exécutions, août-septembre 2026 |
+| **AutoSEO / SEOPilot** | **50 articles publiés** sur ainspiration.eu entre le **10 mai et le 27 août 2026**, sans intervention humaine — et le même moteur alimente trois marques | API `/api/blog-posts`, comptage direct |
 
-Ces dix lignes n'ont besoin d'aucune validation : elles sont sourcées et vérifiables.
+Ces quatre lignes sont vérifiables et n'ont besoin d'aucune validation.
 
----
-
-## 3. Ce que je ne peux pas déduire — 12 questions, une ligne de réponse chacune
-
-### Dates manquantes (histoire git tronquée)
-
-1. **Audityo** — quel mois as-tu commencé, et quand la première version a-t-elle été utilisable ?
-2. **DreamOracle** — même question : mois de départ et mois de mise en ligne.
-3. **Paperclip** — mois du premier comité de direction lancé ?
-4. **Rampa** — mois de départ. (La fin est connue : dernière évolution le 20 août 2026.)
-5. **Réconciliation de caisse — le premier restaurant.** Le second a pris 4 jours. Le premier,
-   combien ? (Il n'est pas versionné, je n'ai aucune trace.)
-6. **Extraction de factures fournisseurs** — mois de réalisation.
-7. **Veille YouTube** — mois de mise en service. (Trois générations de workflow existent, jamais
-   commitées : je n'ai pas de date fiable.)
-
-### Gains constatés — les seuls chiffres qui font vendre
-
-Un ordre de grandeur validé suffit. **Une fourchette vaut mieux qu'un chiffre inventé, et le
-silence vaut mieux qu'une fourchette fausse.**
-
-8. **Facturation** — combien de temps te prenait la facturation d'un mois **avant**, et combien
-   **maintenant** ? C'est le chiffre le plus important de toute la vitrine : c'est le cas censé
-   convertir.
-9. **Réconciliation de caisse** — combien de temps prenait le rapprochement mensuel des caisses
-   avant l'outil, combien après ? Et as-tu constaté des erreurs évitées ?
-10. **Extraction de factures fournisseurs** — combien de fournisseurs, combien de factures traitées,
-    et combien de temps aurait pris la saisie à la main ? (Le dépôt donne une trentaine de
-    fournisseurs — je peux compter les lignes produit si tu veux un chiffre exact.)
-11. **Labo Nostalgie** — combien d'auditeurs ont reçu une playlist ? Même un ordre de grandeur.
-12. **TL Services** — combien de demandes reçues via le formulaire depuis avril ? Ou, à défaut,
-    la position du site sur une requête « métier + commune ».
+> ⚠️ **Ce que ces mesures ne disent pas.** n8n purge son historique : je vois 6 exécutions du Labo
+> Nostalgie, pas le total depuis janvier. **Les durées sont fiables, les volumes ne le sont pas.**
+> Ne jamais écrire « 6 playlists générées » — ce serait faux, et très en dessous de la réalité.
+> Pour un volume, il faut compter ailleurs (le Google Sheet de la liste noire, par exemple).
 
 ---
 
-## 4. Les fiches qui n'auront pas de chiffre de résultat — et pourquoi c'est bien
+## 3. Le « avant » — ce que toi seul peux donner
 
-Toutes les fiches n'ont pas besoin d'un bloc résultats, et prétendre le contraire mènerait droit à
-l'invention. Quatre cas où le chiffre n'a pas de sens :
+Six questions, une valeur chacune. Un ordre de grandeur suffit : « une demi-journée », « deux
+heures », « trois jours par mois ».
 
-| Fiche | Pourquoi pas de chiffre |
+1. **Facturation** — combien de temps te prenait la facturation d'un mois **à la main** ?
+   *C'est le chiffre le plus rentable de toute la vitrine : « de X heures à 13 secondes » est la
+   phrase qui fait demander un audit.*
+2. **Réconciliation de caisse** — combien de temps prenait le rapprochement mensuel des caisses
+   avant l'outil ? Et **combien d'erreurs** t'a-t-il évitées ou révélées ? *Sur de la comptabilité,
+   l'erreur évitée vaut souvent plus que le temps gagné.*
+3. **Extraction de factures fournisseurs** — combien de temps aurait pris la saisie manuelle des
+   factures d'une trentaine de fournisseurs ? *Je peux compter les lignes produit exactes dans le
+   classeur si tu veux le dénominateur.*
+4. **Labo Nostalgie** — combien de temps mettait un humain à composer une playlist personnalisée de
+   25 titres en respectant les quotas et la liste noire ? *Et combien d'auditeurs servis, si tu as
+   le Sheet sous la main.*
+5. **Préparation d'émission** — même question : le temps de préparation d'une émission avant.
+6. **Chat du site** — combien de demandes reçoit-il par semaine, et lesquelles n'auraient pas eu de
+   réponse en dehors des heures de bureau ? *Ici l'avantage n'est pas le temps mais la
+   disponibilité.*
+
+---
+
+## 4. Quand l'avantage n'est pas du temps
+
+Forcer toutes les fiches dans un gabarit « X heures gagnées » les rendrait fausses. Quatre autres
+formes d'avantage, toutes plus honnêtes selon les cas :
+
+| Forme | Fiche concernée | Ce qui se dit |
+|---|---|---|
+| **Disponibilité** | Chat du site | Répond la nuit et le week-end, quand personne n'est là. |
+| **Capacité** | Labo Nostalgie, Spotify, AutoSEO | Fait à l'échelle ce qu'un humain ne ferait pas du tout : une playlist *par auditeur*, un article *par semaine et par marque*. Le gain n'est pas du temps économisé, c'est du travail qui n'aurait jamais eu lieu. |
+| **Fiabilité** | Réconciliation de caisse, Factures fournisseurs | Ne se trompe pas de ligne, n'écrase jamais une cellule déjà remplie. Sur de la comptabilité, c'est l'argument. |
+| **Accès** | Enghien | Rend interrogeable un fonds documentaire que personne n'aurait lu en entier. |
+
+**Pour Enghien et Rampa, rien à demander** : format réduit, pas de bloc résultats.
+
+---
+
+## 5. Les fiches qui n'auront pas de chiffre — et pourquoi c'est un choix
+
+| Fiche | Pourquoi |
 |---|---|
-| **Audityo** | Produit du groupe, pas une livraison. Le résultat se mesurera en clients, pas en heures gagnées. |
-| **Rampa**, **Enghien** | Format réduit décidé : une image et une explication, sans bloc résultats. |
-| **Paperclip** | R&D interne. Son résultat *est* qualitatif : un comité a tourné sur un objectif commercial. |
+| **Audityo** | Produit du groupe, pas une livraison. Se mesurera en clients, pas en heures. |
+| **Rampa**, **Enghien** | Format réduit : une image et une explication. |
+| **Paperclip** | R&D interne. Son résultat est qualitatif : un comité a tourné sur un objectif commercial. |
 | **Baseline sécurité** | Encart transversal, pas une carte projet. |
-
-Pour celles-là, la règle de rédaction est simple : **décrire ce qui a été construit et ce que ça
-permet**, sans bloc chiffré. « Livré en quatre jours » ou « en service depuis janvier 2026 » sont
-déjà des résultats, et ils sont vrais.
+| **TL Services**, **L'Artpéro** | Sites vitrines : le résultat serait des demandes reçues ou une position SEO — des faits à relever, pas à estimer. À défaut, décrire ce qui a été livré. |
 
 ---
 
-## 5. Ce qu'il se passe si tu ne réponds pas à tout
+## 6. Annexe — les durées de réalisation
 
-Ce n'est pas bloquant. Les dix lignes du §2 suffisent à écrire les fiches ; les questions du §3
-enrichissent. La seule règle à ne pas plier :
+Le brief les demande dans l'**en-tête** de la fiche détail (§5.3 : titre, secteur, année, durée,
+statut). C'est une métadonnée, pas un argument de vente — elle ne va **jamais** dans le bloc
+résultats. Relevées pour mémoire, depuis les historiques git complets :
 
-> **Un `[À VALIDER]` ne doit jamais être publié.** C'est un marqueur de travail, utile dans le
-> dépôt, désastreux à l'écran. Si un chiffre manque au moment de publier, on retire la ligne — on
-> ne publie ni le marqueur, ni une estimation présentée comme une mesure.
+| Fiche | Durée | Année |
+|---|---|---|
+| TL Services | 4 jours | avril 2026 |
+| Réconciliation de caisse (variante) | 4 jours | avril 2026 |
+| L'Artpéro | ~8 semaines | février-mars 2026 |
+| Enghien | démarré en février 2026, enrichi depuis | 2026 |
+| AutoSEO / SEOPilot | socle en février 2026, trois marques branchées jusqu'en août | 2026 |
+
+Six dépôts ont une histoire tronquée au 15 avril 2026 (extraction d'un monorepo) : Audityo,
+DreamOracle, Paperclip, Rampa, la brasserie, Dreams. Pour ceux-là, **seule l'année compte** et elle
+est connue — inutile de chercher une durée.
+
+---
+
+## 7. La règle à ne pas plier
+
+> **Un `[À VALIDER]` ne se publie jamais.** C'est un marqueur de travail, utile dans le dépôt,
+> désastreux à l'écran. Si un chiffre manque au moment de publier : on retire la ligne. Ni le
+> marqueur, ni une estimation présentée comme une mesure.
