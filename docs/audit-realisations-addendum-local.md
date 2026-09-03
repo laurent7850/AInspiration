@@ -66,9 +66,9 @@ de correction qu'on ne trouve qu'en mesurant, et un bon contre-exemple au « on 
 
 **Stade réel — et pourquoi c'est délicat pour la vitrine.**
 
-- Le site **n'est plus ouvert** : authentification inconditionnelle sur la bibliothèque,
-  inscriptions fermées (`ALLOW_REGISTRATION`), chat ouvrable par drapeau `CHAT_PUBLIC`. La page
-  publique se réduit donc à un écran de connexion — **rien à capturer sans compte**.
+- Le site **n'est plus ouvert à l'usage** : authentification inconditionnelle sur la bibliothèque,
+  inscriptions fermées (`ALLOW_REGISTRATION`), chat ouvrable par drapeau `CHAT_PUBLIC`.
+  L'**interface**, elle, reste visible sans connexion — d'où l'image capturable (voir plus bas).
 - Le `CLAUDE.md` parle d'un « propriétaire » qui arbitre et d'un usage « personnel ».
   **Ce n'est pas présenté comme une livraison client.**
 - Dettes assumées et écrites : aucune protection anti-bourrinage sur `/api/auth/login`, sessions de
@@ -240,17 +240,55 @@ C'est un argument de **conseil**, pas de produit : on choisit la technologie d'a
 client au lieu de recaser la même brique deux fois. Pour une PME qui redoute qu'on lui vende un
 outil générique, c'est plus convaincant que l'industrialisation qu'on allait revendiquer.
 
-### Deux réserves nouvelles
+### ✅ Nommage — tranché par Laurent
 
-1. **Ambiguïté de nommage à trancher.** Le `CLAUDE.md` de `BrassPat04-2026` s'intitule
-   « Réconciliation caisse **Saint Kilda** », alors que le domaine est `brasspat042026`, que le
-   prompt OCR parle de « LA PATINOIRE » et que l'interface affiche « Réconciliation caisse —
-   **Maud** ». Trois noms pour une seule application : il faut savoir **qui l'utilise aujourd'hui**
-   avant d'écrire une ligne.
-2. **Le troisième projet Patinoire.** `Claude code\Brasserie de la patinoire` est encore autre
-   chose : extraction de **factures fournisseurs** (`extract_invoices.py`,
-   `Fournisseurs_Patinoire.xlsx`, dossier `Factures/`). Même client, réalisation distincte, absente
-   de l'audit.
+> **Terme générique : « un restaurant ».** Aucun des trois noms qui cohabitent dans le projet
+> (`brasspat042026` en domaine, « Saint Kilda » en titre de `CLAUDE.md`, « Maud » dans l'interface)
+> n'apparaît dans la fiche. Au pluriel, « deux restaurants bruxellois ».
+
+Cela **répond aussi à la question 15 de l'audit** (« les deux restaurants acceptent-ils d'être
+nommés ? ») : non, on ne les nomme pas, donc il n'y a pas d'accord à demander.
+
+> ⚠️ **Une question de fait reste ouverte, et l'anonymisation ne la règle pas.** Savoir *qui*
+> utilise `BrassPat04-2026` aujourd'hui n'est pas qu'une affaire de nom : **tout l'argumentaire du
+> §B repose sur l'existence de deux restaurants distincts.** Si cette application tournait en
+> réalité chez Saint Kilda — ce que son `CLAUDE.md` laisse entendre — alors il n'y a pas deux
+> clients avec deux solutions, mais **un seul client avec deux outils**, et la fiche devient une
+> autre histoire. Le faisceau d'indices penche pour la Patinoire (domaine `brasspat042026`, prompt
+> OCR qui cherche un rapport « LA PATINOIRE »), mais il faut une confirmation avant de rédiger.
+
+### ✅ Le troisième projet — extraction de factures fournisseurs (question 24)
+
+> **Décision de Laurent : il entre dans la grille, entièrement anonymisé.**
+
+`Claude code\Brasserie de la patinoire` — script Python de **1 659 lignes** (`extract_invoices.py`,
+dépendances `pdfplumber` + `openpyxl`). Il parcourt les factures PDF de tous les fournisseurs du
+restaurant, en extrait les lignes produits, dédoublonne et consolide le tout dans un classeur Excel
+mis en forme.
+
+Ce qui en fait une bonne fiche, et pas un simple script :
+
+- **25 parsers d'extraction distincts**, un par format de facture fournisseur, plus 5 fournisseurs
+  repris depuis la feuille de commande — une trentaine d'onglets au total. C'est la démonstration
+  concrète que « lire une facture » n'est pas un problème résolu : chaque fournisseur a sa mise en
+  page, et deux formats coexistent parfois chez le même (Deconinck : ancien « #Facture BO » et
+  nouveau « FVE »).
+- **Dédoublonnage par code produit, la facture la plus récente l'emportant** — c'est ce qui
+  transforme une pile de PDF en *tarif fournisseur à jour*, qui est le vrai livrable.
+- **Détails métier réels** : TVA extraite des factures, 0 % en autoliquidation pour les
+  fournisseurs NL/FR exportateurs, catégories déduites du préfixe de code produit, exclusion des
+  copies SwissTransfer.
+- **Limite honnête et intéressante** : les factures scannées sans texte extractable (Wijnatelier)
+  ne passent pas. C'est exactement le point où l'autre projet du même client — l'OCR par LLM du
+  §B — prend le relais. Les deux réalisations se répondent.
+
+> ⚠️ **Contrainte de capture, plus sévère que l'anonymisation du client.** Le classeur produit
+> contient les **prix unitaires d'achat** du restaurant et la **liste nominative de ses
+> fournisseurs** (Sorescol, Avinum, Deconinck, HLS…). En publier une capture divulguerait ses
+> conditions commerciales — c'est plus grave que de le nommer. **Aucune capture du vrai fichier ne
+> peut être publiée.** Il faut générer un classeur de démonstration avec des fournisseurs et des
+> prix fictifs, dans la même mise en forme. Même règle pour le nom du fichier :
+> `Fournisseurs_Patinoire.xlsx` ne doit apparaître ni à l'écran, ni dans un nom d'image.
 
 ---
 
@@ -339,11 +377,10 @@ une démo d'un automate qui tourne toutes les heures sans surveillance.
 - **Rampa** et **Enghien** passent en **format réduit** : une image, une explication, pas de page
   détail. Les deux sites sont publics, les deux images sont capturables tout de suite.
 
-**Reste bloquant, inchangé :** questions 3 (angle Audityo), 4 (accès MCP n8n), 9 (chiffres de
-résultat, désormais sans objet pour Rampa et Enghien), 11–12 (TL Services), 15 (nom des
-restaurants), 18–19 (seconde instance n8n).
-**Question 6 : entièrement close** — chiffres devenus sans objet (format réduit), partenaire tranché
-(le Cercle), droits confirmés sur les huit ouvrages. Voir §A bis.
+**Reste bloquant :** questions 3 (angle Audityo), 4 (accès MCP n8n), 9 (chiffres de résultat,
+désormais sans objet pour Rampa et Enghien), 11–12 (TL Services), 18–19 (seconde instance n8n).
+**Questions 6 et 15 : closes** — la 6 par le format réduit, le partenaire tranché et les droits
+confirmés (§A bis) ; la 15 par l'anonymisation en « un restaurant » (§B).
 
 ## E. Conséquence d'architecture du format réduit
 
@@ -370,11 +407,15 @@ le seul cas qui justifie de revenir sur ce point.
 22. ~~**Rampa entre-t-il dans la vitrine ?**~~ **Réglé : oui, en format réduit** — une image et
     l'explication. Reste un point de finition : les accents manquants de l'interface sont visibles
     sur la capture, à corriger avant de la prendre (§A).
-23. **`BrassPat04-2026` : Patinoire, Saint Kilda ou Maud ?** Trois noms cohabitent dans le même
-    projet. Qui l'utilise aujourd'hui, et sous quel nom la fiche doit-elle en parler ?
-24. **L'extraction de factures fournisseurs de la Patinoire**
-    (`Claude code\Brasserie de la patinoire`) entre-t-elle dans la grille comme réalisation
-    distincte, ou se fond-elle dans une fiche « client brasserie » ?
+23. ~~**Sous quel nom parler de `BrassPat04-2026` ?**~~ **Réglé : « un restaurant »**, terme
+    générique, aucun des trois noms n'apparaît. Ce qui règle aussi la **question 15 de l'audit**.
+    → Reste une question **de fait**, pas de nom : **quel restaurant utilise réellement cette
+    application ?** L'argumentaire « deux restaurants, deux solutions » n'existe que si ce sont bien
+    deux clients distincts (§B).
+24. ~~**L'extraction de factures fournisseurs entre-t-elle dans la grille ?**~~ **Réglé : oui,
+    entièrement anonymisée.** Devient la quinzième réalisation. Contrainte forte sur la capture :
+    le classeur réel contient les prix d'achat et les fournisseurs nominatifs du restaurant — il
+    faut un jeu de démonstration fictif (§B).
 25. ~~**Enghien : qui citer, et les droits couvrent-ils les huit ouvrages ?**~~ **Réglé par
     Laurent** : (a) le partenaire à citer est le **Cercle Royal Archéologique d'Enghien**, pas la
     Ville — les questions 6b de l'audit tombent ; (b) **les huit ouvrages sont couverts** par
@@ -384,5 +425,6 @@ le seul cas qui justifie de revenir sur ce point.
     à demander — mais deux contraintes en découlent, traitées au §A bis : la capture doit exclure le
     pied de page, et la carte ne porte **aucun lien sortant** (§E).
 
-**Il ne reste que deux questions ouvertes sur ce périmètre : 23 et 24**, toutes deux sur la
-Brasserie de la Patinoire.
+**Toutes les questions de ce périmètre sont tranchées.** Un seul point de fait reste à confirmer
+avant de rédiger la fiche du §B : **quel restaurant utilise `BrassPat04-2026`** — c'est ce qui
+décide si l'histoire est « deux clients, deux solutions » ou « un client, deux outils ».
