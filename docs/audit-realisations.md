@@ -9,6 +9,9 @@
 > 3. Le projet n° 1 devient **le chat IA du site, en démo vivante** — le volet
 >    « widget embarquable multi-clients » est abandonné (§4.7).
 > 4. **TL Services entre dans la grille** comme treizième réalisation (§4.8).
+> 5. « Brasspat » n'est **pas un chatbot** : c'est l'outil de réconciliation de caisse,
+>    déployé chez **deux restaurants**. Quatorzième réalisation, et la véritable offre
+>    standardisée multi-clients de la vitrine (§4.10).
 
 ---
 
@@ -30,7 +33,7 @@ récapitulés ici, parce qu'ils changent le travail :
 | 4 | Facturation : cas client d'« un groupe radio francophone » | Le calendrier lu, les tarifs appliqués et le destinataire de l'email sont **ceux de Laurent**. C'est son propre système de facturation, pas une livraison client. |
 | 5 | Enghien : « un livre de 1876 » | Le corpus contient **deux ouvrages**, dont un de 1998 **sous droits** (autorisation de l'ayant droit). |
 | 6 | « Plus de 30 automatisations » | **36 workflows** sur l'instance — mais beaucoup sont internes (sauvegardes, healthchecks, error trigger). Le chiffre « livrées » n'est pas celui-là. |
-| 7 | Chatbot embarquable « déjà déployé chez plusieurs clients » | **Aucune trace vérifiable** dans onze dépôts : pas d'`embed.html`, pas de captation de leads, aucun déploiement client. La seule « brasserie » du compte est une **donnée de démo fictive du CRM**. → **arbitré, §4.7**. |
+| 7 | Chatbot embarquable « déjà déployé chez plusieurs clients » | **Aucune trace vérifiable** dans onze dépôts : pas d'`embed.html`, pas de captation de leads, aucun déploiement client. La « brasserie » du brief n'a **jamais eu de chatbot** : c'est le projet de réconciliation de caisse (§4.10). → **arbitré, §4.7**. |
 
 **Deux décisions bloquantes** restent avant de coder : §7, questions 2 et 3.
 
@@ -310,9 +313,10 @@ Légende : ✅ vérifié dans le code · ⚠️ partiel · ❌ rien de vérifiab
 | 11 | Préparation d'émission | workflow `bWQJiJlSMXQeMyyE` « 120 min 2026 » (actif) | ⚠️ | Existence confirmée, contenu illisible (MCP). |
 | 12 | Veille YouTube → transcriptions | — | ❌ | **Aucun workflow YouTube parmi les 36.** Soit il est ailleurs, soit il n'est plus déployé. |
 | **13** | **TL Services — site vitrine client** *(ajouté, voir §4.8)* | dépôt `laurent7850/tlservices` (attaché) | ✅ | Rien. En production sur `tlservices.distr-action.com`, capturable immédiatement. |
+| **14** | **Réconciliation de caisse — 2 restaurants** *(ajouté, voir §4.10)* | dépôt `laurent7850/reconciliation-caisse` ; instances `caisses.` et `brasspat042026.distr-action.com` | ✅ | Rien de bloquant. **La vraie offre standardisée multi-clients de la vitrine.** |
 
-**Bilan : 6 projets sur 13 sont documentés au point de pouvoir écrire une fiche honnête
-aujourd'hui** (1, 2, 3, 4, 8, 13). Trois autres le deviennent si l'accès MCP est ouvert
+**Bilan : 7 projets sur 14 sont documentés au point de pouvoir écrire une fiche honnête
+aujourd'hui** (1, 2, 3, 4, 8, 13, 14). Trois autres le deviennent si l'accès MCP est ouvert
 (5, 6, 11), un si les chiffres sont fournis (7). **Trois n'ont aucune matière** (9, 10, 12).
 
 ### 4.3 Audityo — deux corrections qui changent la fiche
@@ -526,11 +530,57 @@ capturer quoi que ce soit.
 « déployé chez un client » plutôt que « notre propre chat » — c'est nettement plus vendeur.
 Il faut juste que quelqu'un puisse le constater. → **question 14.**
 
-> **Saint Kilda — piste non retenue à ce stade.** Le dépôt `laurent7850/reconciliation-caisse`
-> contient une application Vite/React de réconciliation de caisse (rapports Z du caissier
-> rapprochés d'un récap annuel Excel, sans jamais écraser une cellule déjà remplie). C'est un
-> cas PME très parlant, du même calibre que la facturation. Signalé pour arbitrage, non
-> intégré à la grille sans décision.
+### 4.10 Réconciliation de caisse — la vraie offre standardisée multi-clients
+
+**Correction de Laurent, et elle est structurante.** « Brasspat » n'est pas un chatbot :
+c'est un **outil de réconciliation des tickets de caisse pour la comptabilité des
+restaurants**. Le brief avait mélangé deux projets distincts.
+
+Ce que cela révèle : **le même outil est déployé chez deux restaurants.**
+
+| Instance | Domaine | Source |
+|---|---|---|
+| Saint Kilda | `caisses.distr-action.com` | `docker-compose.prod.yml` du dépôt |
+| Brasserie de la Patinoire | `brasspat042026.distr-action.com` | fourni par Laurent |
+
+**C'est l'offre standardisée que le brief cherchait au projet n° 1** — un produit conçu
+une fois, redéployé par client — sauf qu'elle appartient à ce projet-ci, pas au chatbot.
+Elle mérite d'être placée haut dans la grille.
+
+**Ce que fait l'outil** (`src/reconcile.ts`, `src/xlsxPatcher.ts`) : il rapproche les
+rapports Z du caissier (`ReportZStats`, N° Z, date, CA TTC, ventilation TVA) et le détail
+des paiements (`CA_1_*` : espèces, carte, virement) avec le récapitulatif annuel Excel du
+restaurant. Il détecte le mois et le jour depuis la date d'ouverture du Z, remplit la ligne
+correspondante et régénère le classeur.
+
+**Trois détails d'ingénierie qui valent un argumentaire** :
+
+1. **Aucune donnée ne quitte le navigateur.** L'application est 100 % côté client
+   (Vite + React, dépendances `exceljs` et `jszip`, aucun backend, aucune API, aucune base).
+   Les fichiers comptables sont lus, traités et régénérés localement. Pour un restaurateur
+   qui hésite à confier sa comptabilité à un outil en ligne, c'est *l'*argument.
+2. **Édition chirurgicale du XLSX.** Le classeur est traité comme le ZIP qu'il est : seules
+   les cellules visées sont modifiées dans le XML de la feuille. Le reste du fichier —
+   formules, mise en forme, onglets — survit intact.
+3. **Aucune écrasure silencieuse.** « Les cellules déjà remplies ne sont jamais écrasées. »
+   C'est la garantie qui permet de faire confiance à un automate sur de la comptabilité.
+
+**Pour la capture, c'est le projet le plus simple de toute la vitrine** : rien n'étant
+envoyé à un serveur, il suffit de fabriquer un classeur de démonstration et deux exports Z
+fictifs pour produire une capture parfaitement propre — un avant / après de réconciliation,
+qui raconte immédiatement l'histoire.
+
+> ⚠️ **Deux réserves.** (a) Les deux instances sont derrière une **authentification basique
+> Traefik** : identifiants nécessaires pour toute capture en ligne — mais le point précédent
+> permet de s'en passer en lançant l'app localement. (b) Le hash bcrypt du compte `admin`
+> est **commité dans `docker-compose.prod.yml`**. C'est un hash, pas un mot de passe en
+> clair, et le dépôt est privé — mais il ne devrait pas s'y trouver. Signalé, non corrigé
+> (hors périmètre de cette mission).
+
+> ❓ **Reste à clarifier** : `brasspat042026` est-il le même code redéployé, ou une variante
+> avec son propre dépôt ? Le dépôt `reconciliation-caisse` ne connaît que Saint Kilda
+> (nom du restaurant en dur dans `src/App.tsx:143`), ce qui suggère un fork par client
+> plutôt qu'un vrai multi-tenant. → **question 16.**
 
 ---
 
@@ -539,13 +589,13 @@ Il faut juste que quelqu'un puisse le constater. → **question 14.**
 Pour être franc sur le calendrier, sans rien réduire de la commande :
 
 - **Fiches écrivables tout de suite, sur sources vérifiées** : Chat IA du site, Audityo,
-  Facturation, DreamOracle, L'Artpéro, **TL Services**. Six.
+  Facturation, DreamOracle, L'Artpéro, **TL Services**, **Réconciliation de caisse**. Sept.
 - **Fiches écrivables dès l'accès MCP n8n ouvert** : Labo Nostalgie, Spotify,
   Préparation d'émission. Trois.
 - **Fiche écrivable dès que Laurent fournit les chiffres** : Enghien. Une.
 - **Fiches sans matière** : Paperclip, Baseline sécurité, Veille YouTube. Trois.
 
-Le multiplicateur trilingue s'applique à tout : **13 fiches × 3 langues = 39 rédactions**,
+Le multiplicateur trilingue s'applique à tout : **14 fiches × 3 langues = 42 rédactions**,
 plus l'index. C'est le poste de travail le plus lourd de la mission, largement devant le
 code.
 
@@ -629,9 +679,9 @@ Sans écrire une ligne de code, voici le parti que je défendrai :
     du type « rénovation + commune »). Sans cela la fiche décrira un beau site sans dire
     ce qu'il a rapporté — exactement le piège du §13 du brief.
 
-13. **Saint Kilda entre-t-il dans la grille ?** L'app de réconciliation de caisse
-    (`reconciliation-caisse`) est un cas PME très transposable. On le prend comme
-    quatorzième fiche, ou on le garde en réserve ?
+13. ~~**Saint Kilda entre-t-il dans la grille ?**~~ **Réglé** : oui, et il ne s'agit pas
+    d'un cas isolé — c'est le même outil que « brasspat », déployé chez deux restaurants
+    (§4.10). Devient la quatorzième réalisation.
 
 14. **Captures : comment on procède ?** Aucune des sept cibles n'est joignable depuis cet
     environnement (§4.9). Ma recommandation : **je livre le script Playwright rejouable,
@@ -639,9 +689,16 @@ Sans écrire une ligne de code, voici le parti que je défendrai :
     L'alternative est d'ouvrir la politique réseau, ou de passer en local. À trancher avant
     la Phase 4, pas avant la Phase 1.
 
-15. **Brasserie de la Patinoire : le chat y tourne-t-il ?** Si oui, le projet n° 1 redevient
-    une preuve cliente. Peux-tu me le confirmer, et me dire si la brasserie accepte d'être
-    nommée (le brief prévoyait « une brasserie ») ?
+15. **Les deux restaurants acceptent-ils d'être nommés ?** Le brief prévoyait
+    « une brasserie ». Saint Kilda et la Brasserie de la Patinoire peuvent-ils apparaître,
+    ou reste-t-on sur « deux restaurants bruxellois » ? Et as-tu un gain constaté à me
+    donner — temps de rapprochement mensuel avant / après, par exemple ?
+
+16. **`brasspat042026` : même code ou variante ?** Le dépôt `reconciliation-caisse` porte
+    « Saint Kilda » en dur dans son interface, ce qui suggère un fork par client plutôt
+    qu'un produit paramétrable. Existe-t-il un second dépôt ? La réponse change
+    l'argumentaire : « redéployable en quelques jours » ne se dit pas de la même façon
+    selon qu'on duplique un dépôt ou qu'on change un fichier de configuration.
 
 ---
 
