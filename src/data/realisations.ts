@@ -146,6 +146,7 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'complet',
     technologies: ['n8n', 'Claude', 'PostgreSQL'],
+    cover: '/images/realisations/autoseo.jpg',
     metrics: [
       { value: '50', labelKey: 'articles' },
       { value: '3', labelKey: 'brands' },
