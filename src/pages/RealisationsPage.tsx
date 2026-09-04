@@ -105,13 +105,15 @@ const RealisationsPage: React.FC = () => {
       <section className="bg-canvas py-16 lg:py-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <nav aria-label={t('filters.legend')} className="mb-10">
-            <p className="mb-4 text-sm font-medium text-secondary">{t('filters.legend')}</p>
+            {/* A real h2: the card grid's h3 titles would otherwise follow the
+                hero's h1 with no level-2 in between (WCAG 1.3.1 heading order). */}
+            <h2 className="mb-4 text-sm font-medium text-secondary">{t('filters.legend')}</h2>
             <ul className="flex flex-wrap gap-2">
               <li>
                 <Link
                   to={filterHref(null)}
                   aria-current={active === null ? 'true' : undefined}
-                  className={`inline-block rounded-full px-4 py-2 text-sm transition-colors ${
+                  className={`inline-block rounded-full px-4 py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                     active === null
                       ? 'bg-accent text-white'
                       : 'bg-surface text-secondary shadow-lift hover:text-ink'
@@ -125,7 +127,7 @@ const RealisationsPage: React.FC = () => {
                   <Link
                     to={filterHref(category)}
                     aria-current={active === category ? 'true' : undefined}
-                    className={`inline-block rounded-full px-4 py-2 text-sm transition-colors ${
+                    className={`inline-block rounded-full px-4 py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                       active === category
                         ? 'bg-accent text-white'
                         : 'bg-surface text-secondary shadow-lift hover:text-ink'
