@@ -239,7 +239,7 @@
     },
     "playlist-spotify": {
       "title": "Spotify playlist generator",
-      "summary": "One sentence, and the playlist exists in your account.",
+      "summary": "No more hours spent building playlists track by track: in one sentence, let the tool build your personalised playlist.",
       "sector": "Media",
       "client": "Distr'Action",
       "metrics": {

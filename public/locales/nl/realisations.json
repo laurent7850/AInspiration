@@ -239,7 +239,7 @@
     },
     "playlist-spotify": {
       "title": "Spotify-playlistgenerator",
-      "summary": "Eén zin, en de playlist staat in uw account.",
+      "summary": "Geen uren meer sleutelen aan playlists nummer per nummer: in één zin laat u de tool uw gepersonaliseerde playlist maken.",
       "sector": "Media",
       "client": "Distr'Action",
       "metrics": {

@@ -239,7 +239,7 @@
     },
     "playlist-spotify": {
       "title": "Générateur de playlists Spotify",
-      "summary": "Une phrase, et la playlist existe dans votre compte.",
+      "summary": "Fini de passer des heures à créer des playlists titre par titre : en une phrase, laissez l'outil vous créer votre playlist personnalisée.",
       "sector": "Médias",
       "client": "Distr'Action",
       "metrics": {
