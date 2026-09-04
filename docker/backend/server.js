@@ -2466,7 +2466,24 @@ const KNOWN_ROUTES = new Set([
 ]);
 
 // CRM detail routes (/contacts/:id \u2026) \u2014 known, but with a variable segment.
-const KNOWN_ROUTE_PREFIXES = ['/contacts/', '/companies/', '/opportunities/', '/products/', '/tasks/', '/realisations/'];
+// /realisations/:slug is NOT here: unlike the CRM prefixes (private, behind
+// login, never crawled), it is public \u2014 a blanket prefix match would 200 any
+// typo under it, the exact "every unknown URL clones the homepage" defect
+// already fixed once for the site at large. It is validated against
+// REALISATION_DETAIL_SLUGS below instead, the same way blog slugs are
+// validated against the database.
+const KNOWN_ROUTE_PREFIXES = ['/contacts/', '/companies/', '/opportunities/', '/products/', '/tasks/'];
+
+// KEEP IN SYNC with the `format: 'complet'` entries in src/data/realisations.ts.
+// The two `reduit` slugs (enghien, rampa) own no detail page \u2014 the frontend
+// itself redirects them to the index (see RealisationDetailPage.tsx), so a
+// crawler must see a real 404 for them too, not a served-then-redirected shell.
+const REALISATION_DETAIL_SLUGS = new Set([
+  'facturation-automatisee', 'reconciliation-caisse', 'factures-fournisseurs',
+  'chat-ia-site', 'audityo', 'labo-nostalgie', 'autoseo', 'preparation-emission',
+  'dreamoracle', 'artpero', 'tl-services', 'playlist-spotify', 'veille-youtube',
+  'paperclip',
+]);
 
 // HTML-escape helper for any value injected into the served markup.
 const escHtml = (s) => String(s == null ? '' : s)
@@ -2773,8 +2790,16 @@ app.get('*', async (req, res) => {
         post = found;
         seo = { title: post.title, description: post.description, h1: post.h1 };
       }
-    } else if (!isKnownRoute(rest)) {
-      notFound = true;
+    } else {
+      const realisationMatch = rest.match(/^\/realisations\/([a-z0-9-]+)$/i);
+      if (realisationMatch) {
+        if (!REALISATION_DETAIL_SLUGS.has(realisationMatch[1])) notFound = true;
+        // A valid slug keeps the generic '/realisations' SEO entry — accurate,
+        // if not slug-specific; real per-slug titles are a follow-up, not a
+        // correctness bug.
+      } else if (!isKnownRoute(rest)) {
+        notFound = true;
+      }
     }
 
     let out = html;
