@@ -2651,6 +2651,34 @@ function isKnownRoute(rest) {
   return KNOWN_ROUTES.has(rest) || KNOWN_ROUTE_PREFIXES.some((p) => rest.startsWith(p));
 }
 
+// Per-slug SEO for /realisations/:slug — without this, every one of the 14
+// detail pages falls back to the untouched static <title> in dist/index.html
+// (the homepage's), because routeSEO only holds the generic '/realisations'
+// entry. Reads title + summary straight from the shipped locale JSON, the
+// same source the React page itself uses, so the two can never drift apart.
+const realisationSeoCache = new Map();
+
+function getRealisationSeo(lang, slug) {
+  const key = `${lang}:${slug}`;
+  if (realisationSeoCache.has(key)) return realisationSeoCache.get(key);
+
+  let result = null;
+  for (const candidate of [lang, 'fr']) {          // fall back to French
+    try {
+      const json = JSON.parse(
+        fs.readFileSync(path.join(distPath, 'locales', candidate, 'realisations.json'), 'utf8')
+      );
+      const item = json.items && json.items[slug];
+      if (item && item.title && item.summary) {
+        result = { title: `${item.title} | AInspiration`, description: item.summary };
+        break;
+      }
+    } catch (e) { /* try the next candidate */ }
+  }
+  realisationSeoCache.set(key, result);
+  return result;
+}
+
 // ---------------------------------------------------------------------------
 // Service pages: real copy in the served HTML.
 //
@@ -2794,9 +2822,7 @@ app.get('*', async (req, res) => {
       const realisationMatch = rest.match(/^\/realisations\/([a-z0-9-]+)$/i);
       if (realisationMatch) {
         if (!REALISATION_DETAIL_SLUGS.has(realisationMatch[1])) notFound = true;
-        // A valid slug keeps the generic '/realisations' SEO entry — accurate,
-        // if not slug-specific; real per-slug titles are a follow-up, not a
-        // correctness bug.
+        else seo = getRealisationSeo(lang, realisationMatch[1]) || seo;
       } else if (!isKnownRoute(rest)) {
         notFound = true;
       }
