@@ -228,6 +228,7 @@ export const realisations: Realisation[] = [
     status: 'interne',
     format: 'complet',
     technologies: ['Claude', 'Markdown'],
+    cover: '/images/realisations/paperclip.jpg',
     metrics: [{ value: '10', labelKey: 'agents' }],
   },
   {
