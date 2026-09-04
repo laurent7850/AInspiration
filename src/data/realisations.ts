@@ -159,6 +159,7 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'complet',
     technologies: ['n8n', 'Claude', 'Google Sheets'],
+    cover: '/images/realisations/preparation-emission.jpg',
     metrics: [{ value: '2 h → 3 min', labelKey: 'prep' }],
   },
   {
