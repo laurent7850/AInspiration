@@ -321,8 +321,12 @@ export const menuItems: MenuSection[] = [
     label: 'Études de cas',
     path: '/etudes-de-cas'
   },
-  { 
-    label: 'Accompagnement', 
+  {
+    label: 'Réalisations',
+    path: '/realisations'
+  },
+  {
+    label: 'Accompagnement',
     path: '/accompagnement',
     items: [
       { label: 'Conseil stratégique', path: '/conseil' },
