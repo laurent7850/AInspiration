@@ -249,11 +249,14 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'reduit',
     technologies: ['Next.js', 'pgvector', 'Claude'],
-    // The capture exists (scripts/captures/capture.mjs rampa) but is NOT wired:
-    // ~30 interface strings on that site have lost their accents, and they are
-    // legible in the shot ("le Troisieme Oeil", "la meditation tibetaine").
-    // A showcase selling rigour cannot publish that. Fix the strings in the
-    // Rampa project first, re-run the capture, then add the cover here.
+    // The real capture exists (scripts/captures/capture.mjs rampa) but is NOT
+    // wired: ~30 interface strings on that site have lost their accents, and
+    // they are legible in the shot ("le Troisieme Oeil", "la meditation
+    // tibetaine"). A showcase selling rigour cannot publish that. Fix the
+    // strings in the Rampa project first, re-run the capture, then swap this
+    // for it. Stock photo meanwhile — old leather-bound books, no
+    // identifiable location — stands in for "a document corpus". Free tier.
+    cover: 'https://images.unsplash.com/photo-1595123550441-d377e017de6a',
     metrics: [],
   },
 ];
