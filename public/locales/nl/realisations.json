@@ -166,20 +166,20 @@
       "transposition": "Dit is de demonstratie die bedrijfsleiders geruststelt die vrezen dat een AI dingen \"verzint\": de bedrijfsregels beslissen, de AI legt uit. Overal waar u niet-onderhandelbare beperkingen hebt — een rekeningstelsel, een nomenclatuur, een regelgeving — is dat de taakverdeling om naar te streven."
     },
     "autoseo": {
-      "title": "Redactionele publicatiemotor",
-      "summary": "Vijftig artikels gepubliceerd, drie merken, geen tussenkomst.",
+      "title": "SEO-automatisering voor drie merken",
+      "summary": "Zoekwoorden, content en backlinks: de SEO van drie merken, zonder tussenkomst.",
       "sector": "Onze producten",
       "client": "Distr'Action",
       "metrics": {
         "articles": "Artikels gepubliceerd van mei tot augustus 2026",
         "brands": "Bevoorrade merken"
       },
-      "context": "Drie merken van de groep hebben een regelmatige redactionele aanwezigheid nodig. Eén artikel per week en per merk schrijven is een halftijdse job.",
-      "problem": "Regelmaat is wat telt in zoekmachines, en regelmaat is precies wat een druk iemand niet volhoudt. Bedrijfsblogs sterven aan een gebrek aan ritme, niet aan een gebrek aan ideeën.",
-      "solution": "Eén motor, gekoppeld aan de drie sites. Hij kiest een onderwerp, controleert of het nog niet behandeld is, schrijft het, en publiceert rechtstreeks in de databank van de betrokken site.",
-      "results": "Vijftig artikels gepubliceerd op één van de drie sites tussen mei en augustus 2026, zonder menselijke tussenkomst.",
-      "howItWorks": "Eén n8n-hub en één publicatieworkflow per merk. Een gedeeld register van publicaties verhindert dat twee sites hetzelfde onderwerp behandelen — de beveiliging die de eerste versies misten, die telkens op dezelfde lijst terugvielen.",
-      "transposition": "De winst zit hier niet in uitgespaarde tijd: het is werk dat anders niet zou hebben plaatsgevonden. Niemand had die vijftig artikels met de hand geschreven. Het is de meest voorkomende vorm van voordeel bij automatisering, en de meest onderschatte."
+      "context": "Zoekmachineoptimalisatie serieus aanpakken betekent de juiste zoekwoorden opvolgen, geoptimaliseerde content op een vast ritme produceren, en links naar de site opbouwen — drie verschillende vakken, die elk van de drie merken van de groep moet dekken.",
+      "problem": "Apart bekeken kost elk van die taken veel tijd of een externe partij: zoekwoordenonderzoek en linkbuilding gebeuren zelden intern, en regelmatig schrijven is het eerste wat sneuvelt zodra de agenda vol raakt.",
+      "solution": "Eén motor, gekoppeld aan de drie sites. Ze identificeert de te viseren zoekwoorden, schrijft een artikel nadat ze controleerde of het onderwerp nog niet behandeld is, publiceert rechtstreeks in de databank van de betrokken site, en volgt gemiddelde positie en backlinks op in een gedeeld dashboard.",
+      "results": "Vijftig artikels gepubliceerd op één van de drie sites tussen mei en augustus 2026, zonder menselijke tussenkomst. De opvolging van zoekwoorden en backlinks loopt er parallel aan, per merk.",
+      "howItWorks": "Eén n8n-hub stuurt het zoekwoordenonderzoek, het genereren en publiceren van artikels, de linkbuilding en de positieopvolging aan; een aparte publicatieworkflow per merk, met een gedeeld register van publicaties dat verhindert dat twee sites hetzelfde onderwerp behandelen — de beveiliging die de eerste versies misten, die telkens op dezelfde lijst terugvielen.",
+      "transposition": "De winst gaat verder dan content: het is het volledige SEO-werk — zoekwoorden, schrijven, linkbuilding, opvolging — dat draait zonder bureau of voltijdse medewerker erachter. Weinig kmo's kunnen zich duurzame SEO veroorloven; precies dat maakt deze tool mogelijk."
     },
     "preparation-emission": {
       "title": "Wekelijkse programmavoorbereiding",

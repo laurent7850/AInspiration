@@ -71,7 +71,10 @@ const targets = [
     slug: 'artpero',
     url: 'https://lartpero.ainspiration.eu',
     settle: 3000,
-    dismiss: ['button:has-text("Accepter")'],
+    // A launch-event promo modal covers the hero on load and names the
+    // founder ("Nia") — always dismiss it before the cookie banner, or the
+    // capture is the popup, not the site.
+    dismiss: ['button:has-text("Plus tard")', 'button:has-text("Fermer")', 'button:has-text("Accepter")'],
   },
   {
     slug: 'tl-services',
@@ -133,14 +136,23 @@ for (const target of selected) {
   try {
     await page.goto(target.url, { waitUntil: 'networkidle', timeout: 45_000 });
 
-    for (const selector of target.dismiss ?? []) {
-      const button = page.locator(selector).first();
-      if (await button.count().catch(() => 0)) {
-        await button.click({ timeout: 3000 }).catch(() => {});
+    const dismissAll = async () => {
+      for (const selector of target.dismiss ?? []) {
+        const button = page.locator(selector).first();
+        if (await button.count().catch(() => 0)) {
+          await button.click({ timeout: 3000 }).catch(() => {});
+        }
       }
-    }
+    };
 
+    // Some popups (a launch-event modal, a delayed newsletter prompt) mount
+    // on a timer after `networkidle`, not before it — dismissing only once,
+    // pre-settle, misses them entirely and the popup ends up in the shot.
+    // Dismiss again post-settle so a late-arriving modal still gets closed.
+    await dismissAll();
     await page.waitForTimeout(target.settle ?? 1500);
+    await dismissAll();
+    await page.waitForTimeout(500);
 
     const file = join(outDir, `${target.slug}.jpg`);
     await page.screenshot({

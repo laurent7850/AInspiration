@@ -166,20 +166,20 @@
       "transposition": "This is the demonstration that reassures managers who fear an AI will \"make things up\": the business rules decide, the AI explains. Wherever you have non-negotiable constraints — a chart of accounts, a nomenclature, a regulation — that is the division of labour to aim for."
     },
     "autoseo": {
-      "title": "Editorial publishing engine",
-      "summary": "Fifty articles published, three brands, no intervention.",
+      "title": "SEO automation for three brands",
+      "summary": "Keywords, content and backlinks: SEO for three brands, unattended.",
       "sector": "Our products",
       "client": "Distr'Action",
       "metrics": {
         "articles": "Articles published May to August 2026",
         "brands": "Brands supplied"
       },
-      "context": "Three of the group's brands need a regular editorial presence. Writing one article a week per brand is a part-time job.",
-      "problem": "Consistency is what counts in search, and consistency is precisely what a busy person does not sustain. Company blogs die of a missing cadence, not of missing ideas.",
-      "solution": "A single engine, connected to the three sites. It picks a topic, checks it has not already been covered, writes it, and publishes straight into the relevant site's database.",
-      "results": "Fifty articles published on just one of the three sites between May and August 2026, with no human intervention.",
-      "howItWorks": "One n8n hub and one publishing workflow per brand. A shared register of publications stops two sites covering the same topic — the safeguard the early versions lacked, which kept looping over the same list.",
-      "transposition": "The gain here is not time saved: it is work that would never have happened. Nobody would have written those fifty articles by hand. It is the most common form of advantage in automation, and the most underestimated."
+      "context": "Doing SEO properly means tracking the keywords that matter, producing optimised content on a steady rhythm, and building links to the site — three different jobs, each of which the group's three brands has to cover.",
+      "problem": "Taken separately, each of those tasks is expensive in time or in outside help: keyword research and link building are rarely done in-house, and steady writing is the first thing to slip once the calendar fills up.",
+      "solution": "A single engine, connected to the three sites. It identifies the keywords to target, writes an article after checking the topic has not already been covered, publishes straight into the relevant site's database, and tracks average position and backlinks on a shared dashboard.",
+      "results": "Fifty articles published on just one of the three sites between May and August 2026, with no human intervention. Keyword and backlink tracking runs alongside it, brand by brand.",
+      "howItWorks": "One n8n hub drives keyword research, article generation and publishing, link building and rank tracking; a separate publishing workflow per brand, with a shared register of publications that stops two sites covering the same topic — the safeguard the early versions lacked, which kept looping over the same list.",
+      "transposition": "The gain goes beyond content: it is the whole SEO workload — keywords, writing, link building, tracking — running without an agency or a full-time hire behind it. Few small businesses can afford sustained SEO; this is exactly what makes it possible."
     },
     "preparation-emission": {
       "title": "Weekly show preparation",

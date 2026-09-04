@@ -166,20 +166,20 @@
       "transposition": "C'est la démonstration qui rassure les dirigeants qui redoutent qu'une IA « invente » : les règles métier décident, l'IA explique. Partout où vous avez des contraintes non négociables — un plan comptable, une nomenclature, une réglementation —, c'est ce partage-là qu'il faut viser."
     },
     "autoseo": {
-      "title": "Moteur de publication éditoriale",
-      "summary": "Cinquante articles publiés, trois marques, aucune intervention.",
+      "title": "Automatisation SEO pour trois marques",
+      "summary": "Mots-clés, contenu et backlinks : le SEO de trois marques, sans intervention.",
       "sector": "Nos produits",
       "client": "Distr'Action",
       "metrics": {
         "articles": "Articles publiés de mai à août 2026",
         "brands": "Marques alimentées"
       },
-      "context": "Trois marques du groupe ont besoin d'une présence éditoriale régulière. Écrire un article par semaine et par marque, c'est un mi-temps.",
-      "problem": "La régularité est ce qui compte en référencement, et c'est précisément ce qu'un humain occupé ne tient pas. Les blogs d'entreprise meurent d'un manque de cadence, pas d'un manque d'idées.",
-      "solution": "Un moteur unique, branché sur les trois sites. Il choisit un sujet, vérifie qu'il n'a pas déjà été traité, rédige, et publie directement dans la base du site concerné.",
-      "results": "Cinquante articles publiés sur un seul des trois sites entre mai et août 2026, sans intervention humaine.",
-      "howItWorks": "Un hub n8n et un workflow de publication par marque. Un registre partagé des parutions empêche deux sites de traiter le même sujet — c'est le garde-fou qui manquait aux premières versions, qui rebouclaient sur la même liste.",
-      "transposition": "Le gain ici n'est pas du temps économisé : c'est du travail qui n'aurait pas eu lieu. Personne n'aurait écrit ces cinquante articles à la main. C'est la forme d'avantage la plus fréquente en automatisation, et la plus sous-estimée."
+      "context": "Faire du référencement sérieusement demande de suivre les mots-clés porteurs, produire du contenu optimisé à un rythme régulier, et construire des liens vers le site — trois métiers différents, que chacune des trois marques du groupe doit assurer.",
+      "problem": "Prise séparément, chacune de ces tâches coûte cher en temps ou en prestataire externe : la recherche de mots-clés et le netlinking se font rarement en interne, et la rédaction régulière est la première chose qu'on abandonne quand l'agenda se charge.",
+      "solution": "Un moteur unique, branché sur les trois sites. Il identifie les mots-clés à cibler, rédige un article en vérifiant qu'un sujet n'a pas déjà été traité, publie directement dans la base du site concerné, et suit position moyenne et backlinks dans un tableau de bord commun.",
+      "results": "Cinquante articles publiés sur un seul des trois sites entre mai et août 2026, sans intervention humaine. Le suivi des mots-clés et des backlinks tourne en parallèle, marque par marque.",
+      "howItWorks": "Un hub n8n pilote la recherche de mots-clés, la génération et la publication des articles, le netlinking et le suivi des positions ; un workflow de publication distinct par marque, avec un registre partagé des parutions qui empêche deux sites de traiter le même sujet — c'est le garde-fou qui manquait aux premières versions, qui rebouclaient sur la même liste.",
+      "transposition": "Le gain dépasse le contenu : c'est tout le travail de référencement — mots-clés, rédaction, netlinking, suivi — qui tourne sans qu'une agence ou un temps plein s'en occupe. Peu de PME ont les moyens d'un référencement suivi dans la durée ; c'est précisément ce que cet outil rend possible."
     },
     "preparation-emission": {
       "title": "Préparation d'émission hebdomadaire",
