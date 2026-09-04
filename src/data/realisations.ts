@@ -199,6 +199,7 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'complet',
     technologies: ['n8n', 'Claude', 'API Spotify'],
+    cover: '/images/realisations/playlist-spotify.jpg',
     metrics: [{ value: '25–40 s', labelKey: 'toPlaylist' }],
   },
   {

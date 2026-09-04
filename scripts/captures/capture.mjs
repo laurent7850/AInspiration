@@ -85,6 +85,11 @@ const targets = [
     settle: 2500,
   },
   {
+    slug: 'playlist-spotify',
+    url: 'https://distraction-spotify-playlist.netlify.app/',
+    settle: 2000,
+  },
+  {
     slug: 'chat-ia-site',
     // The live chat on our own site. Local by default so the capture can be
     // regenerated without waiting for a deploy; override with CAPTURE_BASE.
