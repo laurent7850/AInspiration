@@ -74,6 +74,10 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'complet',
     technologies: ['n8n', 'Google Calendar', 'Google Sheets', 'SMTP'],
+    // No public front-end (n8n workflow only). Stock photo — a printed
+    // invoice reviewed by hand next to an open invoicing screen — stands in
+    // for the theme. Free tier, by Mediamodifier on Unsplash.
+    cover: 'https://images.unsplash.com/photo-1735825764478-674bb8df9d4a',
     metrics: [
       { value: '1 h → 13 s', labelKey: 'billing' },
       { value: '0', labelKey: 'reentry' },

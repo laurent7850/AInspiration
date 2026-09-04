@@ -30,6 +30,13 @@ const RealisationCard: React.FC<RealisationCardProps> = ({ realisation }) => {
   const hasDetail = realisation.format === 'complet';
   const to = localizedPath(`/realisations/${realisation.slug}`);
   const lead = realisation.metrics[0];
+  // The fallback panel below only prints the sector text itself when there is
+  // neither a cover nor a metric to show instead — that's the one case where
+  // the header badge would repeat it. Once a cover exists, the metric is
+  // irrelevant to what's on screen, so gating the badge on `lead` alone (the
+  // original rule) silently drops it from every real photo whose item has no
+  // metric — Artpéro, Audityo, DreamOracle, the site chat.
+  const sectorShownInMedia = !realisation.cover && !lead;
 
   const media = realisation.cover ? (
     <OptimizedImage
@@ -60,9 +67,7 @@ const RealisationCard: React.FC<RealisationCardProps> = ({ realisation }) => {
 
       <div className="flex flex-1 flex-col p-6">
         <div className="mb-3 flex flex-wrap items-center gap-2">
-          {/* When there is no metric, the media panel already carries the sector.
-              Repeating it here reads as a bug, so the badge stands down. */}
-          {lead && (
+          {!sectorShownInMedia && (
             <span className="inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent-dark">
               {t(`${base}.sector`)}
             </span>
