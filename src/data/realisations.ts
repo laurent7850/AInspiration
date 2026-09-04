@@ -221,6 +221,11 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'complet',
     technologies: ['n8n', 'YouTube API', 'ElevenLabs', 'Google Sheets'],
+    // No public front-end to capture (n8n workflows only). Stock photo —
+    // laptop + headphones, by Alex Ghizila on Unsplash — stands in for the
+    // transcription/monitoring theme. OptimizedImage handles Unsplash URLs
+    // natively (srcset, format) as long as the query string is stripped.
+    cover: 'https://images.unsplash.com/photo-1579362243176-b746a02bc030',
     metrics: [],
   },
   {
