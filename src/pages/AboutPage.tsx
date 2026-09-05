@@ -162,12 +162,7 @@ const AboutPage: React.FC = () => {
 
         {/* Related Services */}
         <div className="mt-16 mb-8">
-          <RelatedServices links={[
-            { path: '/realisations', title: 'Réalisations', description: 'Ce que nous avons construit, et ce que ça a changé' },
-            { path: '/contact', title: 'Contact', description: 'Parlons de votre projet IA' },
-            { path: '/blog', title: 'Blog', description: 'Articles et guides sur l\'IA pour PME' },
-            { path: '/audit', title: 'Audit IA Gratuit', description: 'Analyse complète de votre activité en 24h' },
-          ]} />
+          <RelatedServices links={[{ path: '/realisations' }, { path: '/contact' }, { path: '/blog' }, { path: '/audit' }]} />
         </div>
       </div>
     </section>

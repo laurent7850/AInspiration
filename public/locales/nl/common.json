@@ -221,5 +221,50 @@
     "eyebrow": "Aanbod",
     "title": "Drie manieren om te starten, elk met een prijs",
     "subtitle": "De audit is gratis. Het Express Pack automatiseert een eerste taak tegen een vaste prijs. Het abonnement houdt uw workflows draaiend en laat ze evolueren."
+  },
+  "relatedServices": {
+    "title": "Ontdek ook",
+    "links": {
+      "audit": {
+        "title": "Gratis AI-audit",
+        "description": "Volledige analyse van uw activiteit in 24u"
+      },
+      "automatisation": {
+        "title": "AI-automatisering",
+        "description": "Verminder uw repetitieve taken"
+      },
+      "formation": {
+        "title": "AI-opleiding",
+        "description": "Leid uw teams op in AI-tools"
+      },
+      "solutions": {
+        "title": "Onze oplossingen",
+        "description": "Al onze AI-oplossingen"
+      },
+      "analyse-ia": {
+        "title": "AI-analyse",
+        "description": "Benut uw data met AI"
+      },
+      "conseil": {
+        "title": "AI-advies",
+        "description": "Strategie en begeleiding op maat"
+      },
+      "realisations": {
+        "title": "Realisaties",
+        "description": "Wat we gebouwd hebben, en wat het veranderd heeft"
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "Laten we over uw AI-project praten"
+      },
+      "blog": {
+        "title": "Blog",
+        "description": "Artikels en gidsen over AI voor kmo's"
+      },
+      "assistants": {
+        "title": "Virtuele assistenten",
+        "description": "AI-chatbots en assistenten 24/7"
+      }
+    }
   }
 }

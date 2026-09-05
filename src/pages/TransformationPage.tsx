@@ -321,12 +321,7 @@ const TransformationPage: React.FC = () => {
 
       {/* Related Services */}
       <div className="container mx-auto px-4 mt-16 mb-8">
-        <RelatedServices links={[
-          { path: '/analyse-ia', title: 'Analyse IA', description: 'Exploitez vos données avec l\'IA' },
-          { path: '/conseil', title: 'Conseil IA', description: 'Stratégie et accompagnement personnalisé' },
-          { path: '/formation', title: 'Formation IA', description: 'Formez vos équipes aux outils IA' },
-          { path: '/realisations', title: 'Réalisations', description: 'Automatisations et applications en service' },
-        ]} />
+        <RelatedServices links={[{ path: '/analyse-ia' }, { path: '/conseil' }, { path: '/formation' }, { path: '/realisations' }]} />
       </div>
 
       {/* Contact Form Modal */}

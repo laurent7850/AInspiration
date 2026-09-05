@@ -221,5 +221,50 @@
     "eyebrow": "Offres",
     "title": "Trois façons de commencer, un prix pour chacune",
     "subtitle": "L'audit est gratuit. Le Pack Express automatise une première tâche à prix fixe. L'abonnement fait tourner et évoluer vos workflows."
+  },
+  "relatedServices": {
+    "title": "Découvrez aussi",
+    "links": {
+      "audit": {
+        "title": "Audit IA gratuit",
+        "description": "Analyse complète de votre activité en 24h"
+      },
+      "automatisation": {
+        "title": "Automatisation IA",
+        "description": "Réduisez vos tâches répétitives"
+      },
+      "formation": {
+        "title": "Formation IA",
+        "description": "Formez vos équipes aux outils IA"
+      },
+      "solutions": {
+        "title": "Nos solutions",
+        "description": "Toutes nos solutions IA"
+      },
+      "analyse-ia": {
+        "title": "Analyse IA",
+        "description": "Exploitez vos données avec l'IA"
+      },
+      "conseil": {
+        "title": "Conseil IA",
+        "description": "Stratégie et accompagnement personnalisé"
+      },
+      "realisations": {
+        "title": "Réalisations",
+        "description": "Ce que nous avons construit, et ce que ça a changé"
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "Parlons de votre projet IA"
+      },
+      "blog": {
+        "title": "Blog",
+        "description": "Articles et guides sur l'IA pour PME"
+      },
+      "assistants": {
+        "title": "Assistants virtuels",
+        "description": "Chatbots et assistants IA 24/7"
+      }
+    }
   }
 }

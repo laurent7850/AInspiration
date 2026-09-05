@@ -221,5 +221,50 @@
     "eyebrow": "Offers",
     "title": "Three ways to start, each with a price",
     "subtitle": "The audit is free. The Express Pack automates a first task at a fixed price. The subscription keeps your workflows running and evolving."
+  },
+  "relatedServices": {
+    "title": "See also",
+    "links": {
+      "audit": {
+        "title": "Free AI audit",
+        "description": "Complete analysis of your activity in 24h"
+      },
+      "automatisation": {
+        "title": "AI automation",
+        "description": "Cut down your repetitive tasks"
+      },
+      "formation": {
+        "title": "AI training",
+        "description": "Train your teams on AI tools"
+      },
+      "solutions": {
+        "title": "Our solutions",
+        "description": "All our AI solutions"
+      },
+      "analyse-ia": {
+        "title": "AI analysis",
+        "description": "Put your data to work with AI"
+      },
+      "conseil": {
+        "title": "AI consulting",
+        "description": "Strategy and personalised support"
+      },
+      "realisations": {
+        "title": "Our work",
+        "description": "What we have built, and what it changed"
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "Let's talk about your AI project"
+      },
+      "blog": {
+        "title": "Blog",
+        "description": "Articles and guides on AI for SMEs"
+      },
+      "assistants": {
+        "title": "Virtual assistants",
+        "description": "24/7 AI chatbots and assistants"
+      }
+    }
   }
 }

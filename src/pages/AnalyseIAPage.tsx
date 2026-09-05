@@ -289,12 +289,7 @@ const AnalyseIAPage: React.FC = () => {
 
       {/* Related Services */}
       <div className="container mx-auto px-4 mt-16 mb-8">
-        <RelatedServices links={[
-          { path: '/audit', title: 'Audit IA Gratuit', description: 'Analyse complète de votre activité en 24h' },
-          { path: '/automatisation', title: 'Automatisation IA', description: 'Réduisez 60% de vos tâches répétitives' },
-          { path: '/formation', title: 'Formation IA', description: 'Formez vos équipes aux outils IA' },
-          { path: '/solutions', title: 'Nos Solutions', description: 'Découvrez toutes nos solutions IA' },
-        ]} />
+        <RelatedServices links={[{ path: '/audit' }, { path: '/automatisation' }, { path: '/formation' }, { path: '/solutions' }]} />
       </div>
 
       {/* Contact Form Modal */}
