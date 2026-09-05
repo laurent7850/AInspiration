@@ -339,6 +339,7 @@ Le container télécharge le frontend depuis Netlify au démarrage selon `docker
 | `src/components/PrivateRoute.tsx` | Pages CRM accessibles sans auth ou inaccessibles |
 | `public/locales/*/crm.json` | CRM affiche des clés brutes partout |
 | `docker/backend/server.js` (GitHub) | Backend cassé au prochain restart container |
+| `docker/backend/routes/*.js` + `docker/backend/files.txt` | Depuis le 05/09/2026 le backend est découpé en modules ; le conteneur télécharge la liste `files.txt` au boot. **Un fichier ajouté dans `docker/backend/` doit être ajouté à `files.txt`**, sinon `require` échoue au démarrage. `cd docker/backend && npm test` = contrat d'autorisation (toute route hors liste blanche → 401). |
 
 ### Variables d'environnement requises (backend)
 
