@@ -13,3 +13,5 @@ routes/newsletter.js
 routes/webhooks.js
 routes/linkedin.js
 routes/seo.js
+package.json
+package-lock.json
