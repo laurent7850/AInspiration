@@ -62,3 +62,39 @@ jobs:
         run: |
           for f in $(grep -vE '^(#|$)' files.txt); do test -f "$f" || { echo "files.txt lists missing $f"; exit 1; }; done
           for f in routes/*.js; do grep -qx "$f" files.txt || { echo "$f is not in files.txt (container boot would miss it)"; exit 1; }; done
+
+  backend-db:
+    name: Backend (smoke test against PostgreSQL)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: ainspiration
+          POSTGRES_PASSWORD: ci-only
+          POSTGRES_DB: ainspiration
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U ainspiration"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgres://ainspiration:ci-only@127.0.0.1:5432/ainspiration
+      PGPASSWORD: ci-only
+    defaults:
+      run:
+        working-directory: docker/backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Schema — same sequence as the production bootstrap
+        run: |
+          sudo apt-get install -y -qq postgresql-client > /dev/null
+          for f in ../init.sql migration-001-align-schema.sql migration-002-linkedin.sql migration-003-multitenant.sql migration-004-newsletter-double-optin.sql; do
+            echo "== $f"; psql -h 127.0.0.1 -U ainspiration -d ainspiration -v ON_ERROR_STOP=0 -q -f "$f" || true
+          done
+      - run: npm ci --omit=dev --no-audit --no-fund
+      - name: Smoke test (blog API, article HTML, double opt-in, contact form)
+        run: node --test test/db-smoke.test.mjs

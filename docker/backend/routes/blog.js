@@ -28,7 +28,7 @@ module.exports = function register(ctx) {
 
 app.get('/api/blog-posts', optionalAuth, async (req, res) => {
   try {
-    const { language, status, category_id, category, limit = 50, offset = 0 } = req.query;
+    const { language, status, category_id, category, limit = 50, offset = 0, include } = req.query;
     let query = BLOG_LIST_SQL + ' WHERE 1=1';
     const params = [];
     let pi = 1;
@@ -41,7 +41,11 @@ app.get('/api/blog-posts', optionalAuth, async (req, res) => {
     query += ` ORDER BY p.published_at DESC NULLS LAST, p.created_at DESC LIMIT $${pi++} OFFSET $${pi}`;
     params.push(Math.min(parseInt(limit) || 50, 200), parseInt(offset) || 0);
     const result = await pool.query(query, params);
-    res.json(result.rows.map(publicBlogRow));
+    // The list carries no article body unless asked (?include=content): 50
+    // posts × 6 KB of HTML made the listing a 360 KB payload for a page that
+    // shows titles and excerpts.
+    const rows = result.rows.map(publicBlogRow);
+    res.json(include === 'content' ? rows : rows.map(({ content, ...rest }) => rest));
   } catch (error) {
     console.error('Error fetching blog posts:', error);
     res.status(500).json({ error: 'Internal server error' });

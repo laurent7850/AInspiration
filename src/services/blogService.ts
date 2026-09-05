@@ -45,8 +45,10 @@ export interface BlogComment {
 
 const API_BASE = '/api/blog-posts';
 
-export async function fetchPublishedPosts(language = 'fr'): Promise<BlogPost[]> {
-  const res = await fetch(`${API_BASE}?language=${language}`);
+// The list endpoint omits the article body unless asked: only the client-side
+// search needs it.
+export async function fetchPublishedPosts(language = 'fr', includeContent = false): Promise<BlogPost[]> {
+  const res = await fetch(`${API_BASE}?language=${language}${includeContent ? '&include=content' : ''}`);
   if (!res.ok) throw new Error('Failed to fetch posts');
   return res.json();
 }
@@ -102,12 +104,12 @@ export async function addComment(
 }
 
 export async function searchPosts(query: string): Promise<BlogPost[]> {
-  const posts = await fetchPublishedPosts();
+  const posts = await fetchPublishedPosts('fr', true);
   const q = query.toLowerCase();
   return posts.filter(p =>
     p.title.toLowerCase().includes(q) ||
     (p.excerpt && p.excerpt.toLowerCase().includes(q)) ||
-    p.content.toLowerCase().includes(q)
+    (p.content || '').toLowerCase().includes(q)
   );
 }
 
