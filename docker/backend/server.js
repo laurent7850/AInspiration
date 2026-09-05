@@ -961,13 +961,13 @@ app.get('/api/blog-posts', optionalAuth, async (req, res) => {
     let query = BLOG_LIST_SQL + ' WHERE 1=1';
     const params = [];
     let pi = 1;
-    if (language) { query += ` AND p.language = ${pi++}`; params.push(language); }
+    if (language) { query += ` AND p.language = $${pi++}`; params.push(language); }
     // SECURITY: drafts and archived posts are only listable by a logged-in user.
     const effectiveStatus = req.user ? status : 'published';
-    if (effectiveStatus) { query += ` AND p.status = ${pi++}`; params.push(effectiveStatus); }
-    if (category_id) { query += ` AND p.category_id = ${pi++}`; params.push(category_id); }
-    if (category) { query += ` AND c.slug = ${pi++}`; params.push(category); }
-    query += ` ORDER BY p.published_at DESC NULLS LAST, p.created_at DESC LIMIT ${pi++} OFFSET ${pi}`;
+    if (effectiveStatus) { query += ` AND p.status = $${pi++}`; params.push(effectiveStatus); }
+    if (category_id) { query += ` AND p.category_id = $${pi++}`; params.push(category_id); }
+    if (category) { query += ` AND c.slug = $${pi++}`; params.push(category); }
+    query += ` ORDER BY p.published_at DESC NULLS LAST, p.created_at DESC LIMIT $${pi++} OFFSET $${pi}`;
     params.push(Math.min(parseInt(limit) || 50, 200), parseInt(offset) || 0);
     const result = await pool.query(query, params);
     res.json(result.rows.map(publicBlogRow));
