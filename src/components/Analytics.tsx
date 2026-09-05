@@ -82,7 +82,11 @@ export default function Analytics() {
   // Re-check on 'consent-updated' so accepting cookies starts GA immediately,
   // without waiting for a page reload (loadGA is idempotent).
   useEffect(() => {
-    if (!isProd || !env.analyticsEnabled) return;
+    // isProd only says "production build", not "production host": a local
+    // `vite preview` or the local-preview server sent 7 localhost page views
+    // to the production GA4 property in 30 days (audit 2026-08-13).
+    const isLocalHost = ['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname);
+    if (!isProd || isLocalHost || !env.analyticsEnabled) return;
     if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') return;
 
     const loadIfConsented = () => {
