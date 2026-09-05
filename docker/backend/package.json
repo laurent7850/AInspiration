@@ -9,7 +9,7 @@
     "test": "node --test test/auth-routes.test.mjs"
   },
   "dependencies": {
-    "express": "^4.18.2",
+    "express": "^5.2.1",
     "pg": "^8.11.3",
     "cors": "^2.8.5",
     "dotenv": "^17.4.2",
