@@ -4,6 +4,7 @@ import { resolve } from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { compression } from 'vite-plugin-compression2';
 import { sitemapPlugin } from './scripts/vite-plugin-sitemap';
+import { seoRoutesPlugin } from './scripts/vite-plugin-seo-routes';
 
 export default defineConfig(({ mode }): UserConfig => {
   const isDev = mode === 'development';
@@ -40,6 +41,8 @@ export default defineConfig(({ mode }): UserConfig => {
       // Sitemap dynamique (routes statiques + blog posts depuis Express API)
       ...(isProd ? [
         sitemapPlugin(env.VITE_SITE_URL || 'https://ainspiration.eu'),
+        // Per-route fr/en/nl titles for the server-side SEO injection
+        seoRoutesPlugin(),
       ] : []),
     ],
     build: {

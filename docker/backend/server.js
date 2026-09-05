@@ -2840,10 +2840,85 @@ function getLocaleBlocks(lang, ns) {
   return blocks;
 }
 
-const SERVICE_LINKS =
-  `<p><a href="/audit">Audit IA gratuit</a> · <a href="/automatisation">Automatisation</a> · `
-  + `<a href="/solutions">Solutions IA</a> · <a href="/formation">Formation</a> · `
-  + `<a href="/blog">Blog</a> · <a href="/contact">Contact</a></p>`;
+// Cross-links appended to service pages — in the visitor's language, with the
+// language prefix on every href so /en pages link to /en pages.
+const SERVICE_LINK_LABELS = {
+  fr: { audit: 'Audit IA gratuit', automatisation: 'Automatisation', solutions: 'Solutions IA', formation: 'Formation', blog: 'Blog', contact: 'Contact' },
+  en: { audit: 'Free AI audit', automatisation: 'Automation', solutions: 'AI solutions', formation: 'Training', blog: 'Blog', contact: 'Contact' },
+  nl: { audit: 'Gratis AI-audit', automatisation: 'Automatisering', solutions: 'AI-oplossingen', formation: 'Opleiding', blog: 'Blog', contact: 'Contact' },
+};
+function langPrefix(lang) { return lang === 'fr' ? '' : `/${lang}`; }
+function serviceLinks(lang) {
+  const labels = SERVICE_LINK_LABELS[lang] || SERVICE_LINK_LABELS.fr;
+  const p = langPrefix(lang);
+  return '<p>' + Object.entries(labels)
+    .map(([slug, label]) => `<a href="${p}/${slug}">${escHtml(label)}</a>`)
+    .join(' · ') + '</p>';
+}
+
+// Per-route, per-language <title>/<meta description>, exported at build time
+// from src/config/seoConfig.ts by scripts/vite-plugin-seo-routes.ts. Read from
+// dist like the locale files, re-read when the build changes. Falls back to
+// the French routeSEO map when the file or the language is missing.
+let seoRoutes = null;
+let seoRoutesMtime = 0;
+function getRouteSeo(lang, rest) {
+  try {
+    const p = path.join(distPath, 'seo-routes.json');
+    const stat = fs.statSync(p);
+    if (stat.mtimeMs !== seoRoutesMtime || !seoRoutes) {
+      seoRoutes = JSON.parse(fs.readFileSync(p, 'utf8'));
+      seoRoutesMtime = stat.mtimeMs;
+    }
+  } catch (e) { seoRoutes = seoRoutes || null; }
+  const entry = seoRoutes && seoRoutes[rest];
+  const localized = entry && (entry[lang] || entry.fr);
+  const base = routeSEO[rest] ? { ...routeSEO[rest] } : null;
+  if (!localized) return base;
+  return { ...(base || {}), title: localized.title, description: localized.description, ...(lang !== 'fr' ? { h1: undefined } : {}) };
+}
+
+// hreflang for the static public routes (blog posts have their own, built from
+// the translated rows). x-default is French, the site's primary language.
+function hreflangLinks(rest) {
+  const suffix = rest === '/' ? '' : rest;
+  return [
+    `<link rel="alternate" hreflang="fr" href="${SITE_URL}${suffix || '/'}" />`,
+    `<link rel="alternate" hreflang="en" href="${SITE_URL}/en${suffix}" />`,
+    `<link rel="alternate" hreflang="nl" href="${SITE_URL}/nl${suffix}" />`,
+    `<link rel="alternate" hreflang="x-default" href="${SITE_URL}${suffix || '/'}" />`,
+  ].join('\n    ');
+}
+
+// Homepage body in EN/NL. The static <main> in dist/index.html is French
+// (hand-written for the crawler); for the other languages we rebuild it from
+// the same keys the React homepage renders, so the three versions say the
+// same thing and Google stops seeing French under /en and /nl.
+function readLocaleNs(lang, ns) {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(distPath, 'locales', lang, `${ns}.json`), 'utf8'));
+  } catch (e) { return null; }
+}
+function localizedHomeMain(lang) {
+  const c = readLocaleNs(lang, 'common');
+  if (!c || !c.hero) return null;
+  const parts = [];
+  parts.push(`<h1>${escHtml(c.hero.title)}</h1>`);
+  if (c.hero.subtitle) parts.push(`<p>${escHtml(c.hero.subtitle)}</p>`);
+  const si = c.seoIntro || {};
+  for (const [h, p] of [['subtitle1', 'p1'], ['subtitle2', 'p2'], ['subtitle3', 'p3'], [null, 'p4']]) {
+    if (h && si[h]) parts.push(`<h2>${escHtml(si[h])}</h2>`);
+    if (si[p]) parts.push(`<p>${escHtml(si[p])}</p>`);
+  }
+  const faq = c.faq || {};
+  const qa = [1, 2, 3, 4, 5].filter((i) => faq[`q${i}`] && faq[`a${i}`]);
+  if (qa.length) {
+    parts.push(`<h2>${escHtml(faq.title || 'FAQ')}</h2><dl>`);
+    for (const i of qa) parts.push(`<dt>${escHtml(faq[`q${i}`])}</dt><dd>${escHtml(faq[`a${i}`])}</dd>`);
+    parts.push('</dl>');
+  }
+  return parts.join('');
+}
 
 // SPA fallback with per-route SEO injected into the RAW HTML. SEO crawlers that
 // do not execute JS (e.g. SEOPilot) only see this server response, so we inject
@@ -2861,8 +2936,9 @@ app.get('*', async (req, res) => {
     const { lang, rest } = splitLang(routePath);
     const canonical = SITE_URL + (routePath === '/' ? '/' : routePath);
 
-    // Resolve SEO: static route map first, then a dynamic blog-post lookup.
-    let seo = routeSEO[rest] ? { ...routeSEO[rest] } : null;
+    // Resolve SEO: static route map (per language) first, then a dynamic
+    // blog-post lookup.
+    let seo = getRouteSeo(lang, rest);
     let post = null;
     let notFound = false;
 
@@ -2918,6 +2994,16 @@ app.get('*', async (req, res) => {
       out = out.replace(canonicalTag, `${canonicalTag}\n    ${ogUrlTag}`);
     }
 
+    // The served document must declare the language it is written in — the
+    // built index.html always says "fr".
+    out = out.replace(/<html([^>]*)\slang="[a-zA-Z-]*"/, `<html$1 lang="${lang}"`);
+
+    // hreflang for the static public routes (not blog posts: they get theirs
+    // from the translated rows below; not the CRM: private).
+    if (!blogMatch && !notFound && KNOWN_ROUTES.has(rest)) {
+      out = out.replace(canonicalTag, `${canonicalTag}\n    ${hreflangLinks(rest)}`);
+    }
+
     // Unknown URL → a real 404. Serving the homepage with 200 (the previous
     // behaviour) turned every typo and every stale link into another copy of the
     // homepage in the index.
@@ -2969,7 +3055,7 @@ app.get('*', async (req, res) => {
         + post.body
         + `</article>`
         + (others.length ? `<aside><h2>À lire aussi</h2>${renderPostList(others)}</aside>` : '')
-        + `<p><a href="/blog">Tous les articles</a> · <a href="/audit">Audit IA gratuit</a></p></main>`
+        + serviceLinks(post.language || lang) + '</main>'
       );
     } else if (rest === '/blog') {
       // The article list was rendered client-side, so the raw HTML carried no
@@ -2982,11 +3068,20 @@ app.get('*', async (req, res) => {
         + renderPostList(posts)
         + `</main>`
       );
-    } else if (routePath === '/') {
-      // The homepage carried a hand-written list of four article links whose
-      // slugs matched nothing in the database. Generate it instead.
+    } else if (rest === '/') {
       const posts = await getRecentPosts(lang, 8);
-      if (posts.length) {
+      if (lang !== 'fr') {
+        // EN/NL homepage: rebuild <main> from the translated locale, then the
+        // article list in that language.
+        const body = localizedHomeMain(lang);
+        if (body) {
+          const blogTitle = lang === 'nl' ? 'Blog — Recente artikels' : 'Blog — Latest articles';
+          out = out.replace(/<main>[\s\S]*?<\/main>/,
+            `<main>${body}${posts.length ? `<h2>${blogTitle}</h2>${renderPostList(posts)}` : ''}${serviceLinks(lang)}</main>`);
+        }
+      } else if (posts.length) {
+        // The homepage carried a hand-written list of four article links whose
+        // slugs matched nothing in the database. Generate it instead.
         out = out.replace(/(<h2>Blog[^<]*<\/h2>\s*)<ul>[\s\S]*?<\/ul>/, `$1${renderPostList(posts)}`);
       }
     } else if (seo) {
@@ -2998,14 +3093,10 @@ app.get('*', async (req, res) => {
       const ns = SERVICE_NS[rest];
       const body = ns
         ? getLocaleBlocks(lang, ns).map((b) => `<${b.tag}>${escHtml(b.text)}</${b.tag}>`).join('')
-        : `<p>AInspiration accompagne les PME et indépendants en Belgique et en France `
-          + `dans l'adoption de l'intelligence artificielle : `
-          + `<a href="/audit">audit IA gratuit</a>, <a href="/automatisation">automatisation</a>, `
-          + `<a href="/solutions">solutions IA</a>, <a href="/formation">formation</a> et `
-          + `<a href="/contact">accompagnement sur mesure</a>. Résultats concrets en 5 jours, sans engagement.</p>`;
+        : serviceLinks(lang);
 
       out = out.replace(/<main>[\s\S]*?<\/main>/,
-        `<main><h1>${h1}</h1><p>${intro}</p>${body}${ns ? SERVICE_LINKS : ''}</main>`
+        `<main><h1>${h1}</h1><p>${intro}</p>${body}${ns ? serviceLinks(lang) : ''}</main>`
       );
     }
 
