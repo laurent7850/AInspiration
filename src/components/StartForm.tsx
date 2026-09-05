@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, ArrowRight, Mail, Building2, Phone, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useHoneypot } from '../hooks/useHoneypot';
 import { validateContactForm, checkRateLimit, isValidEmail, isValidPhone } from '../utils/validation';
 
 // Proxy backend — les webhooks n8n sont appelés via le serveur Express
@@ -18,6 +19,7 @@ interface StartFormProps {
 
 export default function StartForm({ isOpen, onClose, productId }: StartFormProps) {
   const { t } = useTranslation('forms');
+  const { honeypotField, honeypotValue } = useHoneypot();
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -141,6 +143,7 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
 
       // Send data to n8n webhook
       const webhookData = {
+        website: honeypotValue,
         name: validation.sanitizedData.name,
         email: validation.sanitizedData.email,
         company: validation.sanitizedData.company,
@@ -245,6 +248,7 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
           )}
 
           <form onSubmit={handleSubmit} className="space-y-3">
+            {honeypotField}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 {t('contact.fullName')}

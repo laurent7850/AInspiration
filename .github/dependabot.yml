@@ -1,0 +1,38 @@
+# Dependabot — Distr'Action security baseline ("Dépendances": Dependabot/Snyk activé,
+# mises à jour majeures testées en branche).
+version: 2
+updates:
+  # Frontend (Vite/React) — root package.json
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "07:00"
+      timezone: "Europe/Brussels"
+    open-pull-requests-limit: 5
+    labels: ["dependencies", "frontend"]
+    groups:
+      minor-and-patch:
+        update-types: ["minor", "patch"]
+    # Major bumps (vite, vitest, react-router, i18next-http-backend) arrive as
+    # separate PRs and must be tested on a branch before merging.
+
+  # Backend (Express) — docker/backend/package.json
+  - package-ecosystem: "npm"
+    directory: "/docker/backend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "07:00"
+      timezone: "Europe/Brussels"
+    open-pull-requests-limit: 5
+    labels: ["dependencies", "backend"]
+    groups:
+      minor-and-patch:
+        update-types: ["minor", "patch"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"

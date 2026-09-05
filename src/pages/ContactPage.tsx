@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SectionHeader from '../components/ui/SectionHeader';
 import { Mail, Phone, MapPin, MessageSquare, Send } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useHoneypot } from '../hooks/useHoneypot';
 import SEOHead from '../components/SEOHead';
 import { getSEOConfig } from '../config/seoConfig';
 import { validateContactForm, checkRateLimit } from '../utils/validation';
@@ -14,6 +15,7 @@ const CONTACT_PHONE = '+32 477 94 28 65';
 
 const ContactPage: React.FC = () => {
   const { t, i18n } = useTranslation('forms');
+  const { honeypotField, honeypotValue } = useHoneypot();
   const seoConfig = getSEOConfig('/contact', i18n.language as 'fr' | 'en');
   const [formData, setFormData] = useState({
     name: '',
@@ -71,7 +73,8 @@ const ContactPage: React.FC = () => {
         subject: validation.sanitizedData.subject,
         message: validation.sanitizedData.message,
         timestamp: new Date().toISOString(),
-        source: 'contact_page'
+        source: 'contact_page',
+        website: honeypotValue
       };
 
       const response = await fetch(CONTACT_WEBHOOK_URL, {
@@ -220,6 +223,7 @@ const ContactPage: React.FC = () => {
                   onSubmit={handleSubmit}
                   className="space-y-4"
                 >
+                  {honeypotField}
 
                   {error && (
                     <div className="bg-red-50 text-red-700 p-4 rounded-lg">

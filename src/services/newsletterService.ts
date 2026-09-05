@@ -38,10 +38,16 @@ export const getSubscriberByToken = async (token: string): Promise<NewsletterSub
   }
 };
 
-export const addSubscriber = async (email: string, source: string = 'website'): Promise<NewsletterSubscriber> => {
+export const addSubscriber = async (
+  email: string,
+  source: string = 'website',
+  honeypot: string = ''
+): Promise<NewsletterSubscriber> => {
   return api.post<NewsletterSubscriber>('/newsletter-subscribers', {
     email: email.toLowerCase().trim(),
-    source
+    source,
+    // SECURITY: anti-spam honeypot, dropped server-side when non-empty
+    website: honeypot
   });
 };
 

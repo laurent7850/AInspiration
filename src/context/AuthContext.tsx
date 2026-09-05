@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { api, setToken, clearToken, getToken } from '../utils/api';
-import { logLogin, logLogout } from '../services/accessLogService';
 
 export interface AuthUser {
   id: string;
@@ -55,23 +54,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(user);
   };
 
+  // Login/logout access logs are recorded server-side by the auth endpoints
+  // (the public POST /access-logs was removed for security).
   const signIn = async (email: string, password: string) => {
-    try {
-      const { token, user } = await api.post<{ token: string; user: AuthUser }>('/auth/login', {
-        email,
-        password,
-      });
-      setToken(token);
-      setUser(user);
-      await logLogin(user.id, 'success');
-    } catch (err) {
-      await logLogin('', 'failed');
-      throw err;
-    }
+    const { token, user } = await api.post<{ token: string; user: AuthUser }>('/auth/login', {
+      email,
+      password,
+    });
+    setToken(token);
+    setUser(user);
   };
 
   const signOut = async () => {
-    await logLogout();
     await api.post('/auth/logout').catch(() => {});
     clearToken();
     setUser(null);

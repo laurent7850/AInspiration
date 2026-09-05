@@ -103,6 +103,41 @@ const webhookLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+// SECURITY: public form submissions (contact, audit, newsletter) get a strict
+// per-IP hourly cap on top of the per-minute limiters — a script must not be
+// able to fill contact_messages or burn n8n/LLM budget (baseline "Rate limiting").
+const formLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 5,
+  message: { error: 'Trop de soumissions depuis cette adresse. Réessayez dans une heure.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// The chatbot legitimately sends several messages per session, but each one is
+// a paid LLM call downstream — cap it per hour as well.
+const chatLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 40,
+  message: { message: 'Limite de messages atteinte pour cette heure. Réessayez plus tard.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// SECURITY: honeypot. Public forms render a hidden `website` field that humans
+// never fill; bots do. A filled honeypot gets a fake success (so the bot does
+// not adapt) and nothing is stored or forwarded.
+const HONEYPOT_FIELD = 'website';
+function rejectHoneypot(req, res, next) {
+  const value = req.body && req.body[HONEYPOT_FIELD];
+  if (typeof value === 'string' && value.trim() !== '') {
+    console.warn(`[honeypot] dropped submission on ${req.path} from ${req.ip}`);
+    return res.status(201).json({ success: true });
+  }
+  if (req.body && HONEYPOT_FIELD in req.body) delete req.body[HONEYPOT_FIELD];
+  next();
+}
+
 // Apply general rate limit to all API routes
 app.use('/api/', apiLimiter);
 
@@ -425,9 +460,16 @@ async function syncBlogTranslations() {
   }
 }
 
-// Run once on startup (after blog seed), then daily
-setTimeout(() => syncBlogTranslations(), 10000);
-setInterval(syncBlogTranslations, BLOG_SYNC_INTERVAL);
+// Blog translations are produced by the n8n auto-blog workflow (OpenRouter,
+// "Traduire EN/NL", fail-secure since 2026-09-01). This MyMemory sync was the
+// original mechanism; left enabled it silently fills any EN/NL gap left by a
+// failed n8n translation with a lower-quality machine translation, which is
+// exactly what the fail-secure change was meant to prevent. Opt-in only.
+if (process.env.BLOG_AUTO_TRANSLATE === 'true') {
+  console.log('[I18N] MyMemory blog translation sync enabled (BLOG_AUTO_TRANSLATE=true)');
+  setTimeout(() => syncBlogTranslations(), 10000);
+  setInterval(syncBlogTranslations, BLOG_SYNC_INTERVAL);
+}
 
 // Health check (before any auth middleware)
 app.get('/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }));
@@ -447,7 +489,8 @@ function getTokenFromRequest(req) {
   return null;
 }
 
-const AUTH_COOKIE_MAX_AGE = 7 * 24 * 60 * 60; // 7 days, seconds
+// SECURITY: sessions must stay under 24h (baseline "Auth"); matches the JWT expiresIn.
+const AUTH_COOKIE_MAX_AGE = 24 * 60 * 60; // 24 hours, seconds
 const COOKIE_SECURE = process.env.NODE_ENV === 'production';
 
 function setAuthCookie(res, token) {
@@ -722,7 +765,7 @@ app.post('/api/auth/register', authLimiter, validateBody(schemas.authRegister), 
     );
 
     const user = result.rows[0];
-    const token = jwt.sign({ id: user.id, email: user.email, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ id: user.id, email: user.email, role: user.role }, JWT_SECRET, { expiresIn: '24h' });
 
     await pool.query(
       `INSERT INTO activities (id, user_id, type, description, entity_type, entity_id) VALUES ($1, $2, $3, $4, $5, $6)`,
@@ -747,22 +790,26 @@ app.post('/api/auth/login', authLimiter, validateBody(schemas.authLogin), async 
     );
 
     if (result.rows.length === 0) {
+      recordAccessLog(req, null, 'login_failed');
       return res.status(401).json({ error: 'Invalid email or password' });
     }
 
     const user = result.rows[0];
     if (!user.password_hash) {
+      recordAccessLog(req, user.id, 'login_failed');
       return res.status(401).json({ error: 'Account not configured for password login' });
     }
 
     const valid = await bcrypt.compare(password, user.password_hash);
     if (!valid) {
+      recordAccessLog(req, user.id, 'login_failed');
       return res.status(401).json({ error: 'Invalid email or password' });
     }
 
     const { password_hash, ...userData } = user;
-    const token = jwt.sign({ id: user.id, email: user.email, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ id: user.id, email: user.email, role: user.role }, JWT_SECRET, { expiresIn: '24h' });
 
+    recordAccessLog(req, user.id, 'login_success');
     setAuthCookie(res, token);
     res.json({ user: userData, token });
   } catch (error) {
@@ -771,7 +818,8 @@ app.post('/api/auth/login', authLimiter, validateBody(schemas.authLogin), async 
   }
 });
 
-app.post('/api/auth/logout', (req, res) => {
+app.post('/api/auth/logout', optionalAuth, (req, res) => {
+  if (req.user) recordAccessLog(req, req.user.id, 'logout');
   clearAuthCookie(res);
   res.json({ success: true });
 });
@@ -792,12 +840,17 @@ app.get('/api/auth/me', requireAuth, async (req, res) => {
   }
 });
 
-// Health check
-app.get('/health', (req, res) => {
-  res.json({ status: 'healthy' });
-});
-
 // ==================== HELPERS ====================
+
+// SECURITY: access logs are written server-side only, with the IP Express
+// derives from the trusted proxy — never from a value supplied by the client.
+// Fire-and-forget: an audit-trail failure must not break login.
+function recordAccessLog(req, userId, action) {
+  pool.query(
+    'INSERT INTO access_logs (id, user_id, action, ip_address, user_agent) VALUES ($1,$2,$3,$4,$5)',
+    [uuidv4(), userId || null, action, req.ip || null, (req.headers['user-agent'] || '').slice(0, 500)]
+  ).catch(err => console.error('Error recording access log:', err.message));
+}
 
 function mapOpportunity(row) {
   return {
@@ -1609,7 +1662,7 @@ app.get('/api/contact-messages/:id', requireAuth, validateUuidParam(), async (re
   }
 });
 
-app.post('/api/contact-messages', validateBody(schemas.contactMessage), async (req, res) => {
+app.post('/api/contact-messages', formLimiter, rejectHoneypot, validateBody(schemas.contactMessage), async (req, res) => {
   try {
     const { name, email, phone, company, subject, message, source } = req.body;
     const id = uuidv4();
@@ -1687,14 +1740,16 @@ app.get('/api/access-logs/stats', requireAuth, async (req, res) => {
   }
 });
 
-app.post('/api/access-logs', validateBody(schemas.accessLog), async (req, res) => {
+// SECURITY: authenticated only. Login/logout events are recorded server-side by
+// recordAccessLog(); this endpoint remains for in-app events of a logged-in user.
+// The client-supplied ip_address/user_agent are ignored on purpose.
+app.post('/api/access-logs', requireAuth, validateBody(schemas.accessLog), async (req, res) => {
   try {
-    const { action, ip_address, user_agent } = req.body;
+    const { action } = req.body;
     const id = uuidv4();
-    const user_id = req.user ? req.user.id : null;
     const result = await pool.query(
       'INSERT INTO access_logs (id, user_id, action, ip_address, user_agent) VALUES ($1,$2,$3,$4,$5) RETURNING *',
-      [id, user_id, action, ip_address || req.ip, user_agent || req.headers['user-agent']]
+      [id, req.user.id, action, req.ip || null, (req.headers['user-agent'] || '').slice(0, 500)]
     );
     res.status(201).json(result.rows[0]);
   } catch (error) {
@@ -1789,35 +1844,30 @@ app.get('/api/newsletter-subscribers', requireAuth, async (req, res) => {
   }
 });
 
-app.get('/api/newsletter-subscribers/by-email', async (req, res) => {
-  try {
-    const { email } = req.query;
-    if (!email) return res.status(400).json({ error: 'Email is required' });
-    const result = await pool.query('SELECT * FROM newsletter_subscribers WHERE email = $1', [email.toLowerCase()]);
-    if (result.rows.length === 0) return res.json(null);
-    const s = result.rows[0];
-    res.json({ ...s, status: s.status === 'subscribed' ? 'active' : s.status });
-  } catch (error) {
-    console.error('Error:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
+// SECURITY: the former public GET /by-email endpoint was removed (2026-09-05).
+// It returned the full subscriber row — unsubscribe_token included — for any
+// email, enabling enumeration and third-party unsubscribes. Nothing in the
+// frontend called it. Admin lookups go through the authenticated list endpoint.
 
+// Public by design: the unsubscribe link carries the token. Only the fields the
+// unsubscribe page displays are returned, never the whole row.
 app.get('/api/newsletter-subscribers/by-token', async (req, res) => {
   try {
     const { token } = req.query;
-    if (!token) return res.status(400).json({ error: 'Token is required' });
-    const result = await pool.query('SELECT * FROM newsletter_subscribers WHERE unsubscribe_token = $1', [token]);
+    if (!token || typeof token !== 'string' || token.length > 200) {
+      return res.status(400).json({ error: 'Token is required' });
+    }
+    const result = await pool.query('SELECT email, status FROM newsletter_subscribers WHERE unsubscribe_token = $1', [token]);
     if (result.rows.length === 0) return res.json(null);
     const s = result.rows[0];
-    res.json({ ...s, status: s.status === 'subscribed' ? 'active' : s.status });
+    res.json({ email: s.email, status: s.status === 'subscribed' ? 'active' : s.status });
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
 
-app.post('/api/newsletter-subscribers', validateBody(schemas.newsletterSubscriber), async (req, res) => {
+app.post('/api/newsletter-subscribers', formLimiter, rejectHoneypot, validateBody(schemas.newsletterSubscriber), async (req, res) => {
   try {
     const { email, first_name, last_name, language, source } = req.body;
     const normalizedEmail = email; // already lowercased+trimmed by zod
@@ -2018,7 +2068,7 @@ app.get('/api/newsletter-stats', requireAuth, async (req, res) => {
 
 const N8N_BASE = process.env.N8N_BASE || 'https://n8n.srv767464.hstgr.cloud/webhook';
 
-app.post('/api/webhook/chat', webhookLimiter, async (req, res) => {
+app.post('/api/webhook/chat', webhookLimiter, chatLimiter, async (req, res) => {
   try {
     const n8nUrl = `${N8N_BASE}/ainspiration`;
     const response = await fetch(n8nUrl, {
@@ -2037,7 +2087,7 @@ app.post('/api/webhook/chat', webhookLimiter, async (req, res) => {
   }
 });
 
-app.post('/api/webhook/audit', webhookLimiter, async (req, res) => {
+app.post('/api/webhook/audit', webhookLimiter, formLimiter, rejectHoneypot, async (req, res) => {
   try {
     const n8nUrl = `${N8N_BASE}/audit-ia`;
     const response = await fetch(n8nUrl, {
@@ -2055,7 +2105,7 @@ app.post('/api/webhook/audit', webhookLimiter, async (req, res) => {
   }
 });
 
-app.post('/api/webhook/contact', webhookLimiter, async (req, res) => {
+app.post('/api/webhook/contact', webhookLimiter, formLimiter, rejectHoneypot, async (req, res) => {
   try {
     const n8nUrl = `${N8N_BASE}/Aimaginationcontact`;
     const response = await fetch(n8nUrl, {
@@ -2125,7 +2175,8 @@ app.get('/api/linkedin/connect', requireAuth, (req, res) => {
     res.json({ url, state });
   } catch (error) {
     console.error('LinkedIn connect error:', error.message);
-    res.status(500).json({ error: error.message });
+    // SECURITY: internal error details stay in the server log, never in the response.
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
@@ -2165,7 +2216,7 @@ app.get('/api/linkedin/status', requireAuth, async (req, res) => {
     const status = await linkedin.getConnectionStatus(pool);
     res.json(status);
   } catch (error) {
-    res.json({ connected: false, error: error.message });
+    res.json({ connected: false, error: 'LinkedIn status unavailable' });
   }
 });
 
@@ -2187,7 +2238,8 @@ app.get('/api/linkedin/posts', requireAuth, async (req, res) => {
     res.json({ posts: result.rows, total: parseInt(countResult.rows[0].count) });
   } catch (error) {
     console.error('LinkedIn posts list error:', error.message);
-    res.status(500).json({ error: error.message });
+    // SECURITY: internal error details stay in the server log, never in the response.
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
@@ -2199,7 +2251,8 @@ app.post('/api/linkedin/posts/generate', requireAuth, async (req, res) => {
     res.json(post);
   } catch (error) {
     console.error('LinkedIn generate error:', error.message);
-    res.status(500).json({ error: error.message });
+    // SECURITY: internal error details stay in the server log, never in the response.
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
@@ -2226,7 +2279,8 @@ app.post('/api/linkedin/posts/:id/publish', requireAuth, async (req, res) => {
   } catch (error) {
     console.error('LinkedIn publish error:', error.message);
     await pool.query(`UPDATE linkedin_posts SET status = 'failed', error_message = $2, updated_at = NOW() WHERE id = $1`, [req.params.id, error.message]).catch(() => {});
-    res.status(500).json({ error: error.message });
+    // SECURITY: internal error details stay in the server log, never in the response.
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
@@ -2241,7 +2295,8 @@ app.post('/api/linkedin/posts/:id/approve', requireAuth, async (req, res) => {
     `, [id, req.user?.email || 'admin']);
     res.json({ success: true });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    // SECURITY: internal error details stay in the server log, never in the response.
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
@@ -2268,7 +2323,8 @@ app.put('/api/linkedin/posts/:id', requireAuth, async (req, res) => {
     const result = await pool.query(`SELECT * FROM linkedin_posts WHERE id = $1`, [id]);
     res.json(result.rows[0]);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    // SECURITY: internal error details stay in the server log, never in the response.
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
@@ -2278,7 +2334,8 @@ app.delete('/api/linkedin/posts/:id', requireAuth, async (req, res) => {
     await pool.query(`UPDATE linkedin_posts SET deleted_at = NOW() WHERE id = $1`, [req.params.id]);
     res.json({ success: true });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    // SECURITY: internal error details stay in the server log, never in the response.
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
@@ -2290,7 +2347,8 @@ app.get('/api/linkedin/settings', requireAuth, async (req, res) => {
     result.rows.forEach(r => { settings[r.key] = r.value; });
     res.json(settings);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    // SECURITY: internal error details stay in the server log, never in the response.
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
@@ -2305,7 +2363,8 @@ app.put('/api/linkedin/settings', requireAuth, async (req, res) => {
     `, [key, JSON.stringify(value)]);
     res.json({ success: true });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    // SECURITY: internal error details stay in the server log, never in the response.
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
@@ -2345,7 +2404,8 @@ app.post('/api/webhook/linkedin-post', webhookLimiter, async (req, res) => {
     }
   } catch (error) {
     console.error('[LinkedIn Webhook] Error:', error.message);
-    res.status(500).json({ error: error.message });
+    // SECURITY: internal error details stay in the server log, never in the response.
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 

@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { X, Mail, CheckCircle, AlertCircle } from 'lucide-react';
 import { isValidEmail, checkRateLimit, sanitizeString } from '../utils/validation';
 import { useTranslation } from 'react-i18next';
+import { useHoneypot } from '../hooks/useHoneypot';
 import { addSubscriber } from '../services/newsletterService';
 
 export default function PopupNewsletter() {
   const { t } = useTranslation('forms');
+  const { honeypotField, honeypotValue } = useHoneypot();
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -66,7 +68,7 @@ export default function PopupNewsletter() {
 
     try {
       // Add subscriber directly to Supabase
-      await addSubscriber(sanitizedEmail, 'popup_newsletter');
+      await addSubscriber(sanitizedEmail, 'popup_newsletter', honeypotValue);
 
       setStatus('success');
       setMessage(t('newsletter.success'));
@@ -113,6 +115,7 @@ export default function PopupNewsletter() {
         </div>
         
         <form onSubmit={handleSubmit} className="space-y-4">
+          {honeypotField}
           <div className="relative">
             <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
             <input

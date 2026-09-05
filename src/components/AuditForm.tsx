@@ -17,6 +17,7 @@ import {
   Send
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useHoneypot } from '../hooks/useHoneypot';
 import { isValidEmail, isValidPhone, checkRateLimit } from '../utils/validation';
 
 // Webhook n8n direct pour le pipeline audit
@@ -71,6 +72,7 @@ const BUDGET_KEYS = ['discovery', 'starter', 'growth', 'enterprise'];
 
 export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
   const { t } = useTranslation('audit');
+  const { honeypotField, honeypotValue } = useHoneypot();
   const [step, setStep] = useState(1);
   const totalSteps = 4;
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -236,7 +238,8 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
         message: structuredMessage,
         timestamp: new Date().toISOString(),
         source: 'audit_form',
-        productId: 'audit-ia'
+        productId: 'audit-ia',
+        website: honeypotValue
       };
 
       const response = await fetch(AUDIT_WEBHOOK_URL, {
@@ -379,6 +382,7 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
               <div>
                 <label htmlFor="audit-name" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.name')} {t('form.required')}</label>
                 <input id="audit-name" name="name" autoComplete="name" type="text" className={inputClass('name')} placeholder={t('form.step1.namePlaceholder')} value={formData.name} onChange={e => updateField('name', e.target.value)} />
+                {honeypotField}
                 <FieldError field="name" />
               </div>
 

@@ -20,7 +20,7 @@ Disallow: /unsubscribe
 
 # Disallow API and system files
 Disallow: /api/
-Disallow: /*.json$
+# /locales/*.json must stay crawlable: Googlebot needs them to render the app
 Disallow: /stats.html
 
 # Crawl-delay for polite crawling
