@@ -8,6 +8,9 @@ export const env = {
   logLevel: (import.meta.env.VITE_LOG_LEVEL || 'error') as string,
   siteUrl: (import.meta.env.VITE_SITE_URL || 'https://ainspiration.eu') as string,
   analyticsEnabled: import.meta.env.VITE_ENABLE_ANALYTICS === 'true',
+  // Public scheduling link (Calendly, Google Calendar…). Empty = the booking
+  // buttons are not rendered; the audit form stays the only path.
+  bookingUrl: ((import.meta.env.VITE_BOOKING_URL as string | undefined) || '').trim(),
 };
 
 export const isDev = env.appEnv === 'development';

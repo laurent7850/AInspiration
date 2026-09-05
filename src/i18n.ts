@@ -17,7 +17,7 @@ const allNamespaces = [
   'collaboration', 'content', 'crm', 'dashboard', 'forms', 'pricing',
   'prompts', 'recommendations', 'support', 'training',
   'legal', 'about', 'caseStudies', 'pages',
-  'transformation', 'audio', 'video', 'realisations', 'solutions'
+  'transformation', 'audio', 'video', 'realisations', 'solutions', 'local'
 ];
 
 i18n

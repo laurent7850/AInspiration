@@ -59,7 +59,8 @@
       "simple": "Mise en place en 48h",
       "secure": "Données 100% sécurisées",
       "support": "Accompagnement personnalisé"
-    }
+    },
+    "bookCall": "Réserver un appel de 20 min"
   },
   "footer": {
     "company": "AInspiration®",
@@ -75,7 +76,8 @@
       "aiAudit": "Audit IA",
       "promptMaster": "PromptMaster Pro",
       "privacy": "Politique de confidentialité",
-      "terms": "Conditions d'utilisation"
+      "terms": "Conditions d'utilisation",
+      "local": "PME du Hainaut et de Bruxelles"
     },
     "address": {
       "street": "Chaussée Brunehault 27",
@@ -86,7 +88,8 @@
     "contact": {
       "email": "info@ainspiration.eu",
       "phone": "+32 477 94 28 65"
-    }
+    },
+    "bookCall": "Réserver un appel"
   },
   "stats": {
     "uptime": "Disponibilité 24/7",

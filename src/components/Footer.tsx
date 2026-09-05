@@ -1,8 +1,9 @@
 import React from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, CalendarDays } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Newsletter from './Newsletter';
+import { env } from '../config/environment';
 
 const CONTACT_EMAIL = 'info@ainspiration.eu';
 const CONTACT_PHONE = '+32 477 94 28 65';
@@ -41,6 +42,11 @@ export default function Footer() {
               <li>
                 <Link to="/prompts" className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
                   {t('footer.links.promptMaster')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/pme-hainaut-bruxelles" className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
+                  {t('footer.links.local')}
                 </Link>
               </li>
               <li>
@@ -108,6 +114,14 @@ export default function Footer() {
                   {CONTACT_EMAIL}
                 </a>
               </p>
+              {env.bookingUrl && (
+                <p className="flex items-center gap-3 text-sm text-indigo-100/70">
+                  <CalendarDays className="w-4 h-4 text-indigo-300/60" />
+                  <a href={env.bookingUrl} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-300 transition-colors">
+                    {t('footer.bookCall')}
+                  </a>
+                </p>
+              )}
             </address>
           </div>
         </div>

@@ -100,6 +100,12 @@ const routes: RouteConfig[] = [
     exact: true
   },
   {
+    // Local landing page (Hainaut / Bruxelles). Server: KNOWN_ROUTES + SERVICE_NS.
+    path: "/pme-hainaut-bruxelles",
+    component: lazy(() => import('../pages/LocalPage')),
+    exact: true
+  },
+  {
     path: "/a-propos",
     component: lazy(() => import('../pages/AboutPage')),
     exact: true

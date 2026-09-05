@@ -143,6 +143,23 @@ export const seoPages: Record<string, SEOPageConfig> = {
       keywords: 'AI producten, AI prijzen, kunstmatige intelligentie aanbiedingen, AI oplossingen prijzen'
     }
   },
+  '/pme-hainaut-bruxelles': {
+    fr: {
+      title: 'Automatisation IA pour les PME du Hainaut et de Bruxelles | AInspiration',
+      description: 'Basés à Givry, nous automatisons les tâches répétitives des PME du Hainaut, de Bruxelles et du Brabant wallon. Audit gratuit en 24h, sur place ou à distance.',
+      keywords: 'automatisation IA Hainaut, IA PME Mons, IA PME Charleroi, IA PME Bruxelles, agence IA Belgique'
+    },
+    en: {
+      title: 'AI automation for SMEs in Hainaut and Brussels | AInspiration',
+      description: 'Based in Givry, we automate the repetitive tasks of SMEs in Hainaut, Brussels and Walloon Brabant. Free audit in 24h, on site or remote.',
+      keywords: 'AI automation Hainaut, AI SME Mons, AI SME Charleroi, AI SME Brussels, AI agency Belgium'
+    },
+    nl: {
+      title: "AI-automatisering voor kmo's in Henegouwen en Brussel | AInspiration",
+      description: "Vanuit Givry automatiseren we de repetitieve taken van kmo's in Henegouwen, Brussel en Waals-Brabant. Gratis audit in 24u, ter plaatse of op afstand.",
+      keywords: 'AI automatisering Henegouwen, AI kmo Bergen, AI kmo Charleroi, AI kmo Brussel, AI bureau België'
+    }
+  },
   '/realisations': {
     fr: {
       title: 'Réalisations | Ce que nous avons construit | AInspiration',

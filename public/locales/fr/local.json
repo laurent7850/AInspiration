@@ -1,0 +1,58 @@
+{
+  "seo": {
+    "title": "Automatisation IA pour les PME du Hainaut et de Bruxelles | AInspiration",
+    "description": "Basés à Givry, nous automatisons les tâches répétitives des PME du Hainaut, de Bruxelles et du Brabant wallon : facturation, relances, service client. Audit gratuit en 24h, sur place ou à distance."
+  },
+  "hero": {
+    "eyebrow": "Givry · Mons · Charleroi · Bruxelles",
+    "title": "L'IA pour les PME du Hainaut et de Bruxelles",
+    "subtitle": "Une entreprise d'ici, pas une agence parisienne à dix personnes. Nous venons chez vous, nous parlons votre langue et vos outils, et nous commençons par la tâche qui vous coûte le plus de temps.",
+    "cta": "Demander l'audit gratuit",
+    "ctaSub": "Réponse sous 24h, sur place ou à distance"
+  },
+  "why": {
+    "title": "Pourquoi un partenaire local change quelque chose",
+    "items": [
+      { "title": "Sur place quand il le faut", "body": "Formations dans vos locaux, réunion de cadrage autour de votre vrai poste de travail, dépannage sans ticket ni file d'attente. Mons, Charleroi, La Louvière, Tournai, Bruxelles : moins d'une heure de route." },
+      { "title": "Vos outils, pas les nôtres", "body": "Odoo, Teamleader, Exact Online, WinBooks, Google Workspace, Microsoft 365 : les logiciels que les PME belges utilisent déjà. Nous branchons l'IA dessus, nous ne vous demandons pas de changer." },
+      { "title": "Français, néerlandais, anglais", "body": "Un assistant qui répond aux clients flamands en néerlandais et aux clients wallons en français, sans engager quelqu'un pour chaque langue. Utile dès qu'on vend à Bruxelles." },
+      { "title": "Données en Europe, contrats belges", "body": "Hébergement dans l'Union européenne, RGPD, DPA disponible, factures d'une SRL belge. Pas de zone grise avec votre comptable ni avec l'APD." }
+    ]
+  },
+  "sectors": {
+    "title": "Les métiers que nous rencontrons le plus",
+    "subtitle": "Des exemples de ce qui se passe une fois la première tâche automatisée. Les chiffres sont des objectifs types, pas des résultats promis.",
+    "items": [
+      { "name": "Horeca", "body": "Réservations par WhatsApp confirmées automatiquement, rappel la veille, réconciliation de caisse chaque matin sans ressaisie." },
+      { "name": "Artisans et bâtiment", "body": "Devis générés à partir d'un métré dicté, factures envoyées à la fin du chantier, relances des impayés sans y penser." },
+      { "name": "Commerce et e-commerce", "body": "Fiches produits rédigées en trois langues, questions courantes traitées par un assistant, alertes de stock avant la rupture." },
+      { "name": "Professions libérales et cabinets", "body": "Tri du courrier entrant, préparation des dossiers, synthèse de documents longs, prise de rendez-vous sans téléphone." },
+      { "name": "Associations et indépendants", "body": "Newsletter et réseaux sociaux préparés en une heure par mois, membres relancés automatiquement, comptabilité allégée." }
+    ]
+  },
+  "proof": {
+    "title": "Construit pour des entreprises d'ici",
+    "subtitle": "Nos réalisations sont documentées, avec ce qui a été fait et ce que ça a changé.",
+    "link": "Voir les réalisations"
+  },
+  "aid": {
+    "title": "Financer le projet",
+    "body": "La Région wallonne et la Région de Bruxelles-Capitale proposent des aides à la digitalisation et au conseil pour les PME ; les conditions changent régulièrement et dépendent de votre taille et de votre secteur. Nous vous indiquons celles qui s'appliquent à votre cas lors de l'audit, et nous fournissons les documents que le dossier demande.",
+    "note": "Nous ne sommes pas conseillers en subsides : nous vous orientons, votre comptable ou votre guichet régional confirme."
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "items": [
+      { "q": "Vous déplacez-vous vraiment ?", "a": "Oui, dans tout le Hainaut, à Bruxelles et dans le Brabant wallon sans frais de déplacement. Au-delà (Namur, Liège, Flandre), nous privilégions la visioconférence et venons pour les formations." },
+      { "q": "Faut-il changer nos logiciels ?", "a": "Non. La plupart des automatisations se branchent sur vos outils existants. Si un outil doit changer, nous le disons avant de commencer, pas après." },
+      { "q": "Combien de temps avant un premier résultat ?", "a": "L'audit gratuit est livré sous 24h. Un premier workflow est en général opérationnel en cinq jours ouvrés après validation du périmètre." },
+      { "q": "Et si l'IA n'est pas la bonne réponse ?", "a": "Nous vous le disons. Une partie des demandes se règle avec un simple réglage d'outil ou une procédure, et ça ne se facture pas." }
+    ]
+  },
+  "cta": {
+    "title": "On commence par un café et vos vraies factures",
+    "body": "Vingt minutes suffisent pour savoir si une automatisation vaut le coup chez vous. Sur place ou en visio, sans engagement.",
+    "audit": "Demander l'audit gratuit",
+    "book": "Réserver un appel de 20 min"
+  }
+}

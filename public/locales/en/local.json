@@ -1,0 +1,58 @@
+{
+  "seo": {
+    "title": "AI automation for SMEs in Hainaut and Brussels | AInspiration",
+    "description": "Based in Givry, we automate the repetitive tasks of SMEs in Hainaut, Brussels and Walloon Brabant: invoicing, reminders, customer service. Free audit in 24h, on site or remote."
+  },
+  "hero": {
+    "eyebrow": "Givry · Mons · Charleroi · Brussels",
+    "title": "AI for SMEs in Hainaut and Brussels",
+    "subtitle": "A local company, not a ten-person agency in Paris. We come to you, we speak your language and your tools, and we start with the task that costs you the most time.",
+    "cta": "Request the free audit",
+    "ctaSub": "Answer within 24h, on site or remote"
+  },
+  "why": {
+    "title": "Why a local partner makes a difference",
+    "items": [
+      { "title": "On site when it matters", "body": "Training at your premises, scoping meeting at your actual workstation, troubleshooting without a ticket queue. Mons, Charleroi, La Louvière, Tournai, Brussels: under an hour's drive." },
+      { "title": "Your tools, not ours", "body": "Odoo, Teamleader, Exact Online, WinBooks, Google Workspace, Microsoft 365: the software Belgian SMEs already use. We plug AI into it, we don't ask you to switch." },
+      { "title": "French, Dutch, English", "body": "An assistant that answers Flemish customers in Dutch and Walloon customers in French, without hiring for each language. Useful as soon as you sell in Brussels." },
+      { "title": "Data in Europe, Belgian contracts", "body": "EU hosting, GDPR, DPA available, invoices from a Belgian SRL. No grey area with your accountant or with the data protection authority." }
+    ]
+  },
+  "sectors": {
+    "title": "The trades we meet most often",
+    "subtitle": "Examples of what happens once the first task is automated. The figures are typical targets, not promised results.",
+    "items": [
+      { "name": "Hospitality", "body": "WhatsApp bookings confirmed automatically, reminder the day before, cash reconciliation every morning without re-entry." },
+      { "name": "Trades and construction", "body": "Quotes generated from a dictated measurement, invoices sent when the job ends, unpaid reminders without thinking about it." },
+      { "name": "Retail and e-commerce", "body": "Product sheets written in three languages, routine questions handled by an assistant, stock alerts before a shortage." },
+      { "name": "Professions and firms", "body": "Incoming mail sorted, files prepared, long documents summarised, appointments booked without a phone call." },
+      { "name": "Associations and freelancers", "body": "Newsletter and social posts prepared in an hour a month, members chased automatically, lighter bookkeeping." }
+    ]
+  },
+  "proof": {
+    "title": "Built for companies from here",
+    "subtitle": "Our work is documented: what was built and what it changed.",
+    "link": "See our work"
+  },
+  "aid": {
+    "title": "Funding the project",
+    "body": "The Walloon Region and the Brussels-Capital Region offer digitalisation and consulting grants for SMEs; the conditions change regularly and depend on your size and sector. We tell you which apply to your case during the audit and provide the documents the file requires.",
+    "note": "We are not grant consultants: we point you in the right direction, your accountant or regional desk confirms."
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      { "q": "Do you really travel on site?", "a": "Yes, across Hainaut, Brussels and Walloon Brabant with no travel fee. Beyond (Namur, Liège, Flanders) we favour video calls and come for training sessions." },
+      { "q": "Do we have to change our software?", "a": "No. Most automations plug into your existing tools. If a tool has to change, we say so before starting, not after." },
+      { "q": "How long before a first result?", "a": "The free audit is delivered within 24h. A first workflow is usually running five working days after the scope is validated." },
+      { "q": "What if AI is not the right answer?", "a": "We tell you. Some requests are solved with a simple tool setting or a procedure, and that is not billed." }
+    ]
+  },
+  "cta": {
+    "title": "We start with a coffee and your real invoices",
+    "body": "Twenty minutes are enough to know whether an automation is worth it for you. On site or by video, no commitment.",
+    "audit": "Request the free audit",
+    "book": "Book a 20-minute call"
+  }
+}

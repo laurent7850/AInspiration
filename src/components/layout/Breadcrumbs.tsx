@@ -34,6 +34,7 @@ const routeMap: Record<string, string> = {
   'blog': 'Blog',
   'audio': 'Audio IA',
   'video': 'Vidéo IA',
+  'pme-hainaut-bruxelles': 'PME du Hainaut et de Bruxelles',
   'a-propos': 'À propos',
   'contact': 'Contact',
   'crm': 'CRM intelligent',

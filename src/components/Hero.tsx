@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ArrowRight, Play, Pause } from 'lucide-react';
+import { ArrowRight, Play, Pause, CalendarDays } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import AuditForm from './AuditForm';
 import AnimatedStats from './AnimatedStats';
+import { env } from '../config/environment';
 
 const VIDEO_SOURCES: Record<string, { webm: string; mp4: string }> = {
   fr: { webm: '/videos/intro-fr.webm', mp4: '/videos/intro-fr.mp4' },
@@ -91,6 +92,18 @@ export default function Hero() {
                 <ArrowRight className="w-5 h-5" />
               </span>
             </button>
+
+            {env.bookingUrl && (
+              <a
+                href={env.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-indigo-100/90 hover:text-white underline-offset-4 hover:underline"
+              >
+                <CalendarDays className="w-4 h-4" aria-hidden="true" />
+                {t('hero.bookCall')}
+              </a>
+            )}
 
             {/* Trust indicators — horizontal, minimal */}
             <div className="mt-12 flex flex-wrap gap-8">

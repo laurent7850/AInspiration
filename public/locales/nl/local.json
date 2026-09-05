@@ -1,0 +1,58 @@
+{
+  "seo": {
+    "title": "AI-automatisering voor kmo's in Henegouwen en Brussel | AInspiration",
+    "description": "Vanuit Givry automatiseren we de repetitieve taken van kmo's in Henegouwen, Brussel en Waals-Brabant: facturatie, herinneringen, klantendienst. Gratis audit in 24u, ter plaatse of op afstand."
+  },
+  "hero": {
+    "eyebrow": "Givry · Bergen · Charleroi · Brussel",
+    "title": "AI voor kmo's in Henegouwen en Brussel",
+    "subtitle": "Een bedrijf van hier, geen Parijs agentschap met tien man. We komen naar u toe, we spreken uw taal en uw tools, en we beginnen met de taak die u het meeste tijd kost.",
+    "cta": "Gratis audit aanvragen",
+    "ctaSub": "Antwoord binnen 24u, ter plaatse of op afstand"
+  },
+  "why": {
+    "title": "Waarom een lokale partner het verschil maakt",
+    "items": [
+      { "title": "Ter plaatse als het nodig is", "body": "Opleidingen in uw kantoren, scopingvergadering aan uw echte werkpost, hulp zonder ticket of wachtrij. Bergen, Charleroi, La Louvière, Doornik, Brussel: minder dan een uur rijden." },
+      { "title": "Uw tools, niet de onze", "body": "Odoo, Teamleader, Exact Online, WinBooks, Google Workspace, Microsoft 365: de software die Belgische kmo's al gebruiken. We koppelen er AI aan, we vragen u niet te veranderen." },
+      { "title": "Frans, Nederlands, Engels", "body": "Een assistent die Vlaamse klanten in het Nederlands en Waalse klanten in het Frans antwoordt, zonder voor elke taal iemand aan te werven. Handig zodra u in Brussel verkoopt." },
+      { "title": "Data in Europa, Belgische contracten", "body": "Hosting in de EU, AVG, verwerkersovereenkomst beschikbaar, facturen van een Belgische bv. Geen grijze zone met uw boekhouder of met de GBA." }
+    ]
+  },
+  "sectors": {
+    "title": "De vakgebieden die we het vaakst tegenkomen",
+    "subtitle": "Voorbeelden van wat er gebeurt zodra de eerste taak geautomatiseerd is. De cijfers zijn typische doelen, geen beloofde resultaten.",
+    "items": [
+      { "name": "Horeca", "body": "WhatsApp-reservaties automatisch bevestigd, herinnering de dag ervoor, kasafstemming elke ochtend zonder herinvoer." },
+      { "name": "Ambachten en bouw", "body": "Offertes gemaakt vanuit een gedicteerde opmeting, facturen verstuurd bij het einde van de werf, aanmaningen zonder eraan te denken." },
+      { "name": "Handel en e-commerce", "body": "Productfiches in drie talen, courante vragen door een assistent behandeld, voorraadmeldingen vóór de stockbreuk." },
+      { "name": "Vrije beroepen en kantoren", "body": "Inkomende post gesorteerd, dossiers voorbereid, lange documenten samengevat, afspraken zonder telefoon." },
+      { "name": "Verenigingen en zelfstandigen", "body": "Nieuwsbrief en sociale media in een uur per maand voorbereid, leden automatisch herinnerd, lichtere boekhouding." }
+    ]
+  },
+  "proof": {
+    "title": "Gebouwd voor bedrijven van hier",
+    "subtitle": "Onze realisaties zijn gedocumenteerd: wat er gebouwd is en wat het veranderd heeft.",
+    "link": "Bekijk de realisaties"
+  },
+  "aid": {
+    "title": "Het project financieren",
+    "body": "Het Waals Gewest en het Brussels Hoofdstedelijk Gewest bieden steun voor digitalisering en advies aan kmo's; de voorwaarden veranderen regelmatig en hangen af van uw grootte en sector. We geven tijdens de audit aan welke op uw geval van toepassing zijn en leveren de documenten die het dossier vraagt.",
+    "note": "We zijn geen subsidieadviseurs: wij wijzen de weg, uw boekhouder of het gewestelijk loket bevestigt."
+  },
+  "faq": {
+    "title": "Veelgestelde vragen",
+    "items": [
+      { "q": "Komt u echt ter plaatse?", "a": "Ja, in heel Henegouwen, Brussel en Waals-Brabant zonder verplaatsingskosten. Verder (Namen, Luik, Vlaanderen) geven we de voorkeur aan videogesprekken en komen we voor opleidingen." },
+      { "q": "Moeten we van software veranderen?", "a": "Nee. De meeste automatiseringen koppelen met uw bestaande tools. Als een tool moet veranderen, zeggen we dat vooraf, niet achteraf." },
+      { "q": "Hoe lang tot een eerste resultaat?", "a": "De gratis audit wordt binnen 24u geleverd. Een eerste workflow draait meestal vijf werkdagen na validatie van de scope." },
+      { "q": "En als AI niet het juiste antwoord is?", "a": "Dan zeggen we het u. Een deel van de vragen wordt opgelost met een eenvoudige toolinstelling of een procedure, en dat wordt niet gefactureerd." }
+    ]
+  },
+  "cta": {
+    "title": "We beginnen met een koffie en uw echte facturen",
+    "body": "Twintig minuten volstaan om te weten of een automatisering bij u de moeite loont. Ter plaatse of via video, vrijblijvend.",
+    "audit": "Gratis audit aanvragen",
+    "book": "Een gesprek van 20 min boeken"
+  }
+}
