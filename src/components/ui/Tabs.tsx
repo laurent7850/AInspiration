@@ -47,13 +47,6 @@ interface TabsTriggerProps {
   children: React.ReactNode;
 }
 
-interface TabsTriggerPropsInternal {
-  value: string;
-  onClick?: () => void;
-  children: React.ReactNode;
-  onValueChange?: (value: string) => void;
-}
-
 export const TabsTrigger: React.FC<TabsTriggerProps> = ({
   value,
   onClick,
@@ -89,11 +82,6 @@ export const TabsTrigger: React.FC<TabsTriggerProps> = ({
 };
 
 interface TabsContentProps {
-  value: string;
-  children: React.ReactNode;
-}
-
-interface TabsContentPropsInternal {
   value: string;
   children: React.ReactNode;
 }

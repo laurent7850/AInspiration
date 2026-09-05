@@ -14,7 +14,7 @@ import {
   ExternalLink,
   Mail
 } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { fetchCompanyById } from '../../services/companyService';
 import { fetchTasksByRelation } from '../../services/taskService';
 import { fetchContacts } from '../../services/contactService';

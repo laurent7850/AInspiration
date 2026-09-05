@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Package, CircleDollarSign, Tag, Calendar, ArrowDownUp, PieChart, Eye, EyeOff } from 'lucide-react';
+import { Package, CircleDollarSign, Tag, ArrowDownUp, PieChart, Eye, EyeOff } from 'lucide-react';
 import { Product, Opportunity } from '../../../utils/types';
 import { fetchProducts } from '../../../services/productService';
 import ReportFilters from './ReportFilters';
@@ -28,7 +28,7 @@ const ProductsReport: React.FC = () => {
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
   const [sortField, setSortField] = useState<string>('name');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
   const [dateRange, setDateRange] = useState<{start: Date, end: Date}>({

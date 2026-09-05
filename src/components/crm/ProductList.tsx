@@ -12,7 +12,6 @@ import {
   Eye,
   EyeOff
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { fetchProducts, deleteProduct } from '../../services/productService';
 import { Product } from '../../utils/types';
@@ -33,7 +32,6 @@ const ProductList: React.FC<ProductListProps> = ({ onCreateNew, onEditProduct })
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
   const [uniqueCategories, setUniqueCategories] = useState<string[]>([]);
   
-  const navigate = useNavigate();
   const { user } = useAuth();
 
   // Load products

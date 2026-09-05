@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import SEOHead from '../components/SEOHead';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/Tabs';
+import { Tabs, TabsList, TabsTrigger } from '../components/ui/Tabs';
 import { BarChart, FileText, Users, Package, CheckSquare, RefreshCw } from 'lucide-react';
 
 import CrmLayout from '../components/crm/CrmLayout';

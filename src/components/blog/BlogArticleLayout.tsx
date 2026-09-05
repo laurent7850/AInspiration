@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { LucideIcon } from 'lucide-react';
 import { sanitizeHtml } from '../../utils/validation';
 

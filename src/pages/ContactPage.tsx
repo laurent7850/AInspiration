@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import SectionHeader from '../components/ui/SectionHeader';
-import { Mail, Phone, MapPin, MessageSquare, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useHoneypot } from '../hooks/useHoneypot';
 import ConsentCheckbox from '../components/ui/ConsentCheckbox';

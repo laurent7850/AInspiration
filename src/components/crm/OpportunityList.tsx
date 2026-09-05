@@ -12,8 +12,6 @@ import {
   SearchIcon,
   Link
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
 import { fetchOpportunities, getOpportunityStages, deleteOpportunity } from '../../services/opportunityService';
 import { Opportunity, OpportunityStage } from '../../utils/types';
 import CompanyLink from './CompanyLink';
@@ -34,8 +32,6 @@ const OpportunityList: React.FC<OpportunityListProps> = ({ onCreateNew, onEditOp
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
   
-  const navigate = useNavigate();
-  const { user } = useAuth();
   
   const stages = getOpportunityStages();
 

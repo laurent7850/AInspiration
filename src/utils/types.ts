@@ -1,11 +1,3 @@
-type Json =
-  | string
-  | number
-  | boolean
-  | null
-  | { [key: string]: Json | undefined }
-  | Json[]
-
 export type OpportunityStage = 'Qualification' | 'Proposition' | 'Négociation' | 'Gagné' | 'Perdu';
 export type TaskPriority = 'low' | 'medium' | 'high';
 export type TaskStatus = 'not_started' | 'in_progress' | 'completed' | 'waiting' | 'deferred';

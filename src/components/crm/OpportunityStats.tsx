@@ -8,7 +8,7 @@ import {
   DollarSign
 } from 'lucide-react';
 import { fetchOpportunities } from '../../services/opportunityService';
-import { Opportunity, OpportunityStage } from '../../utils/types';
+import { Opportunity } from '../../utils/types';
 
 const OpportunityStats: React.FC = () => {
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
@@ -81,27 +81,6 @@ const OpportunityStats: React.FC = () => {
   };
 
   // Compter les opportunités par étape
-  const getStageDistribution = () => {
-    const distribution: Record<OpportunityStage, number> = {
-      'Qualification': 0,
-      'Proposition': 0,
-      'Négociation': 0,
-      'Gagné': 0,
-      'Perdu': 0
-    };
-
-    opportunities.forEach(opp => {
-      if (distribution[opp.stage] !== undefined) {
-        distribution[opp.stage]++;
-      }
-    });
-
-    return (Object.keys(distribution) as OpportunityStage[]).map(stage => ({
-      stage,
-      count: distribution[stage]
-    }));
-  };
-
   const formatDate = (dateString?: string): string => {
     if (!dateString) return '-';
     return new Date(dateString).toLocaleDateString('fr-FR');

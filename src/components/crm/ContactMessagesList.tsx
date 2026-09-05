@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Clock, Building, Trash2, Eye, CheckCircle, MessageSquare, Archive } from 'lucide-react';
+import { Mail, Clock, Building, Trash2 } from 'lucide-react';
 import type { ContactMessage } from '../../utils/types';
 import { contactMessageService } from '../../services/contactMessageService';
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Zap, Image, FileText, Brain, Paintbrush, Pencil, MessageSquare, Wand2, Layers, Settings } from 'lucide-react';
+import { ArrowRight, Image, FileText, Brain, Paintbrush, Pencil, MessageSquare, Wand2, Layers, Settings } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import AuditForm from './AuditForm';
 import ImageFeature from './creativity/ImageFeature';

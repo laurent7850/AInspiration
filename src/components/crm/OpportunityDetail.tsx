@@ -12,7 +12,7 @@ import {
   PlusSquare,
   ListTodo
 } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { fetchOpportunityById } from '../../services/opportunityService';
 import { fetchTasksByRelation } from '../../services/taskService';
 import { Opportunity, OpportunityStage, Task } from '../../utils/types';

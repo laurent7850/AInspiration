@@ -1,0 +1,64 @@
+# CI — runs on every push and pull request.
+# Frontend: typecheck, lint (errors block; warnings are a burn-down, see
+# eslint.config.js), unit tests, production build, npm audit (high+ on prod deps).
+# Backend: authorization contract (every route outside the public allowlist
+# answers 401 to an anonymous request) — see docker/backend/test/.
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  frontend:
+    name: Frontend (typecheck, lint, tests, build, audit)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npx tsc --noEmit
+      - name: Lint
+        run: npm run lint
+      - name: Unit tests
+        run: npx vitest run
+      - name: Production build
+        env:
+          # The sitemap plugin fetches blog posts from the live API at build
+          # time; CI must not depend on production being up.
+          CI: 'true'
+        run: npx vite build --mode production
+      - name: Audit production dependencies (high and critical fail the build)
+        run: npm audit --omit=dev --audit-level=high
+
+  backend:
+    name: Backend (authorization contract)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: docker/backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --omit=dev --no-audit --no-fund
+      - name: Syntax check
+        run: for f in server.js routes/*.js; do node --check "$f"; done
+      - name: Auth contract (88 routes)
+        run: npm test
+      - name: Boot file list is complete
+        run: |
+          for f in $(grep -vE '^(#|$)' files.txt); do test -f "$f" || { echo "files.txt lists missing $f"; exit 1; }; done
+          for f in routes/*.js; do grep -qx "$f" files.txt || { echo "$f is not in files.txt (container boot would miss it)"; exit 1; }; done

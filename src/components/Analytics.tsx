@@ -16,6 +16,7 @@ declare global {
 // objects. A plain array — what rest parameters produce — is accepted by
 // dataLayer.push but never processed: no config, no hit, no data in GA4.
 const gtag: (...args: unknown[]) => void = function () {
+  // eslint-disable-next-line prefer-rest-params -- the official gtag shim relies on `arguments`
   window.dataLayer.push(arguments);
 };
 

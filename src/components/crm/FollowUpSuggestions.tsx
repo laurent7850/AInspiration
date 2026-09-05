@@ -4,7 +4,6 @@ import {
   Phone,
   Mail,
   Calendar,
-  ChevronRight,
   RefreshCw,
   Copy,
   CheckCircle,

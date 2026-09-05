@@ -3,14 +3,13 @@ import { X, ArrowRight, Mail, Building2, Phone, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useHoneypot } from '../hooks/useHoneypot';
 import ConsentCheckbox from './ui/ConsentCheckbox';
-import { validateContactForm, checkRateLimit, isValidEmail, isValidPhone } from '../utils/validation';
+import { validateContactForm, checkRateLimit } from '../utils/validation';
 
 // Proxy backend — les webhooks n8n sont appelés via le serveur Express
 const CONTACT_WEBHOOK_URL = "/api/webhook/contact";
 const AUDIT_WEBHOOK_URL = "/api/webhook/audit";
 
 export const CONTACT_EMAIL = 'info@ainspiration.eu';
-const CONTACT_PHONE = '+32 477 94 28 65';
 
 interface StartFormProps {
   isOpen: boolean;

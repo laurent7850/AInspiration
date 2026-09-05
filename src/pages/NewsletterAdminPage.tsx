@@ -17,13 +17,11 @@ import {
   XCircle,
   AlertCircle
 } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 import CrmLayout from '../components/crm/CrmLayout';
 import {
   getSubscribers,
   getNewsletters,
   createNewsletter,
-  updateNewsletter,
   deleteNewsletter,
   sendNewsletter,
   deleteSubscriber,
@@ -41,7 +39,6 @@ interface SendLogWithEmail extends NewsletterSendLog {
 }
 
 export default function NewsletterAdminPage() {
-  const { t } = useTranslation('common');
   const [activeTab, setActiveTab] = useState<TabType>('dashboard');
   const [subscribers, setSubscribers] = useState<NewsletterSubscriber[]>([]);
   const [newsletters, setNewsletters] = useState<Newsletter[]>([]);

@@ -3,16 +3,13 @@ import {
   BarChart,
   PieChart,
   LineChart,
-  Calendar,
   Download,
-  Filter,
   RefreshCcw,
   AlertCircle
 } from 'lucide-react';
 import { fetchOpportunities } from '../../../services/opportunityService';
 import { fetchTasks } from '../../../services/taskService';
 import { fetchContacts } from '../../../services/contactService';
-import { fetchCompanies } from '../../../services/companyService';
 import { Opportunity, Task, Contact } from '../../../utils/types';
 import SalesFunnelChart from './charts/SalesFunnelChart';
 import SalesPerformanceChart from '../charts/SalesPerformanceChart';

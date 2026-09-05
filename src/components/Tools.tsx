@@ -3,7 +3,6 @@ import {
   Bot,
   Brain,
   Sparkles,
-  MessageSquare,
   ArrowRight,
   Zap,
   Globe,

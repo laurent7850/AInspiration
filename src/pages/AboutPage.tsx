@@ -1,5 +1,4 @@
 import React from 'react';
-import SectionHeader from '../components/ui/SectionHeader';
 import SEOHead from '../components/SEOHead';
 import { useTranslation } from 'react-i18next';
 import {

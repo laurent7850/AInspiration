@@ -60,7 +60,6 @@ describe('routes', () => {
 
   it('should not have duplicate paths', () => {
     const paths = routes.map((r) => r.path);
-    const uniquePaths = new Set(paths);
     // Allow /products appearing twice (public + private)
     // Just check no exact duplicates cause issues
     expect(paths.length).toBeGreaterThan(20);

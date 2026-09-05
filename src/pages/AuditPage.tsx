@@ -6,11 +6,9 @@ import {
   Lightbulb,
   ArrowRight,
   CheckCircle,
-  Clock,
   Shield,
   Zap,
   Users,
-  FileText
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SEOHead from '../components/SEOHead';
@@ -23,7 +21,6 @@ export default function AuditPage() {
   const { t } = useTranslation('audit');
   const [showAuditForm, setShowAuditForm] = useState(false);
 
-  const guaranteeIcons = [Clock, Shield, FileText, Users];
   const guaranteeKeys = ['results', 'free', 'report', 'expert'] as const;
 
   const auditFAQs = [

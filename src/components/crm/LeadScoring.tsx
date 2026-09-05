@@ -66,17 +66,6 @@ const LeadScoring: React.FC<LeadScoringProps> = ({
     }
   };
 
-  const getPriorityLabel = (priority: LeadScore['priority']) => {
-    switch (priority) {
-      case 'hot':
-        return 'Chaud';
-      case 'warm':
-        return 'Tiède';
-      case 'cold':
-        return 'Froid';
-    }
-  };
-
   const getPriorityColor = (priority: LeadScore['priority']) => {
     switch (priority) {
       case 'hot':

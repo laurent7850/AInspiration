@@ -6,7 +6,6 @@ import {
   Building2,
   DollarSign,
   Package,
-  BarChart2,
   CheckSquare,
   Mail
 } from 'lucide-react';

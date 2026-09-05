@@ -8,7 +8,6 @@ import {
   MessageSquare,
   Calendar,
   Database,
-  Zap,
   CheckCircle,
   ChevronDown,
   ChevronUp,

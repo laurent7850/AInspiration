@@ -29,7 +29,7 @@ export const createProduct = async (product: Omit<Product, 'id' | 'created_at'>,
 };
 
 export const updateProduct = async (id: string, product: Partial<Omit<Product, 'id' | 'created_at'>>, userId: string): Promise<Product> => {
-  const { user_id, ...updateData } = product as Partial<Product>;
+  const { user_id: _userId, ...updateData } = product as Partial<Product>;
   const data = await api.put<Product>(`/products/${id}`, updateData);
 
   try {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ArrowRight, CheckCircle, Clock, TrendingUp } from 'lucide-react';
+import { CheckCircle, Clock, TrendingUp } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import SEOHead from './SEOHead';
 import AuditForm from './AuditForm';
@@ -53,7 +53,7 @@ const MediaService: React.FC<MediaServiceProps> = ({
   featureIcons,
   useCaseIcons,
   useCaseImages,
-  badgeIcon: BadgeIcon,
+  badgeIcon: _badgeIcon,
 }) => {
   const { t } = useTranslation(ns);
   const [showForm, setShowForm] = useState(false);

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Brain, LineChart, Clock, ArrowRight, ShieldCheck } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import AuditForm from './AuditForm';
 
 export default function SmartRecommendations() {
-  const navigate = useNavigate();
   const [showStartForm, setShowStartForm] = useState(false);
   const { t } = useTranslation('recommendations');
 

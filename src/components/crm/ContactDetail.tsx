@@ -7,7 +7,6 @@ import {
   ArrowLeft, 
   MapPin, 
   Tag,
-  Briefcase,
   FileText,
   PlusSquare,
   ListTodo,
@@ -15,8 +14,7 @@ import {
   Package,
   Link as LinkIcon
 } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import { fetchContactById } from '../../services/contactService';
 import { fetchTasksByRelation } from '../../services/taskService';
 import { Contact, Task } from '../../utils/types';
@@ -35,7 +33,6 @@ const ContactDetail: React.FC<ContactDetailProps> = ({ contactId, onBack, onEdit
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   
-  const { user } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {

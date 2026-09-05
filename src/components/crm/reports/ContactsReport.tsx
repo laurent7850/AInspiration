@@ -25,7 +25,7 @@ const ContactsReport: React.FC = () => {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [filteredContacts, setFilteredContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
   const [sortField, setSortField] = useState<string>('created_at');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
   const [dateRange, setDateRange] = useState<{start: Date, end: Date}>({
@@ -175,7 +175,6 @@ const ContactsReport: React.FC = () => {
   const totalContacts = filteredContacts.length;
   const prospectCount = filteredContacts.filter(c => c.status === 'lead').length;
   const customerCount = filteredContacts.filter(c => c.status === 'customer').length;
-  const inactiveCount = filteredContacts.filter(c => c.status === 'inactive').length;
   
   // Group by lead source
   const leadSources: Record<string, number> = {};

@@ -86,18 +86,6 @@ interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
   route?: string;
 }
 
-function AllProviders({ children }: { children: React.ReactNode }) {
-  return (
-    <HelmetProvider>
-      <I18nextProvider i18n={i18nTest}>
-        <MemoryRouter>
-          {children}
-        </MemoryRouter>
-      </I18nextProvider>
-    </HelmetProvider>
-  );
-}
-
 function renderWithProviders(ui: ReactElement, options?: CustomRenderOptions) {
   const { route = '/', ...renderOptions } = options || {};
 

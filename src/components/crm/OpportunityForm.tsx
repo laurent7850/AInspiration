@@ -19,7 +19,7 @@ import {
   fetchContacts,
   fetchProducts
 } from '../../services/opportunityService';
-import { Opportunity, OpportunityStage, Company, Contact, Product } from '../../utils/types';
+import { Opportunity, Company, Contact, Product } from '../../utils/types';
 
 interface OpportunityFormProps {
   opportunityId?: string;

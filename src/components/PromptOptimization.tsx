@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   Brain,
   MessageSquare,
-  Zap,
   ArrowRight,
   Users,
   Star,

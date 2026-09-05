@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
-  Brain,
   LineChart,
   PieChart,
   BarChart2,
@@ -22,7 +20,6 @@ import { getServiceSchema, getFAQSchema } from '../config/seoConfig';
 
 const AnalyseIAPage: React.FC = () => {
   const { t } = useTranslation('analysis');
-  const navigate = useNavigate();
   const [showStartForm, setShowStartForm] = useState(false);
 
   const featureIcons = [LineChart, PieChart, BarChart2, Eye];

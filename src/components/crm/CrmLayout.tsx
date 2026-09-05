@@ -2,7 +2,6 @@ import React, { ReactNode, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
-  BarChart2,
   Users,
   Building2,
   Package,

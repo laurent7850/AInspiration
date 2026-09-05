@@ -7,7 +7,6 @@ import {
   Flag,
   Edit,
   Trash,
-  CheckCircle,
   SearchIcon,
   Filter
 } from 'lucide-react';

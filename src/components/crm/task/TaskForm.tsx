@@ -8,7 +8,6 @@ import {
   Tag,
   Link,
   Flag,
-  CheckSquare
 } from 'lucide-react';
 import { useAuth } from '../../../context/AuthContext';
 import { 
@@ -126,7 +125,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
   }, [user]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target;
+    const { name, value } = e.target;
     
     if (name === 'related_to_type') {
       // Reset related_to when changing the type

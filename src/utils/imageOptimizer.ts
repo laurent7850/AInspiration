@@ -16,14 +16,3 @@ export const getOptimizedImageUrl = (url: string, width: number = 800) => {
   
   return url;
 };
-
-const getResponsiveImageSrcSet = (url: string, sizes: number[] = [400, 800, 1200, 1600]) => {
-  if (!url) return '';
-  
-  // Only handle Unsplash images
-  if (!url.includes('unsplash.com')) return url;
-  
-  return sizes
-    .map(size => `${getOptimizedImageUrl(url, size)} ${size}w`)
-    .join(', ');
-};

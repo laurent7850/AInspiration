@@ -6,7 +6,6 @@ import {
   Zap,
   Clock,
   TrendingUp,
-  Shield,
   Bot,
   FileText,
   Database,
