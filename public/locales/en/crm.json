@@ -150,7 +150,8 @@
     "reports": "Reports",
     "messages": "Messages",
     "newsletter": "Newsletter",
-    "linkedin": "LinkedIn"
+    "linkedin": "LinkedIn",
+    "blog": "Articles"
   },
   "pages": {
     "companies": {
@@ -619,5 +620,36 @@
       "ctaDemo": "Demo",
       "ctaContact": "Contact us"
     }
+  },
+  "blogAdmin": {
+    "seoTitle": "Blog articles | AInspiration CRM",
+    "title": "Blog articles",
+    "subtitle": "Review queue of the auto-blog. An article held by the quality gate lands here as a draft with its three languages; the reasons are in the \"To review\" email.",
+    "refresh": "Refresh",
+    "loading": "Loading…",
+    "loadError": "Could not load the articles.",
+    "updateError": "The update failed.",
+    "status": {
+      "draft": "Drafts",
+      "published": "Published",
+      "archived": "Archived"
+    },
+    "empty": {
+      "draft": "No draft waiting.",
+      "published": "No published article.",
+      "archived": "No archived article."
+    },
+    "columns": {
+      "category": "Category",
+      "author": "Author",
+      "updated": "Updated",
+      "published": "Published"
+    },
+    "actions": {
+      "publish": "Publish all 3 languages",
+      "archive": "Archive",
+      "restore": "Back to draft"
+    },
+    "missingLanguages": "{{count}} language(s) missing"
   }
 }

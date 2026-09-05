@@ -277,6 +277,13 @@ const routes: RouteConfig[] = [
     private: true
   },
   {
+    // CRM › Articles: review queue of the auto-blog (drafts held by the QA gate)
+    path: "/blog-admin",
+    component: lazy(() => import('../pages/BlogAdminPage')),
+    exact: true,
+    private: true
+  },
+  {
     path: "/unsubscribe",
     component: lazy(() => import('../pages/UnsubscribePage')),
     exact: true
@@ -349,6 +356,7 @@ export const menuItems: MenuSection[] = [
       { label: 'Tâches', path: '/tasks' },
       { label: 'Messages', path: '/messages' },
       { label: 'Newsletter', path: '/newsletter-admin' },
+      { label: 'Articles', path: '/blog-admin' },
       { label: 'LinkedIn', path: '/linkedin' },
       { label: 'Rapports', path: '/reports' }
     ]

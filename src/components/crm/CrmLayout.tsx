@@ -16,6 +16,7 @@ import {
   Mail,
   Linkedin
 } from 'lucide-react';
+import { Newspaper } from 'lucide-react';
 
 interface CrmLayoutProps {
   children: ReactNode;
@@ -75,6 +76,13 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
       labelKey: 'menu.newsletter',
       label: 'Newsletter',
       icon: Mail,
+      disabled: false
+    },
+    {
+      path: '/blog-admin',
+      labelKey: 'menu.blog',
+      label: 'Articles',
+      icon: Newspaper,
       disabled: false
     },
     {

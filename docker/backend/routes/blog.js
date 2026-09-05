@@ -207,12 +207,22 @@ app.post('/api/blog-posts', requireAuth, validateBody(schemas.blogPost), async (
 app.put('/api/blog-posts/:id', requireAuth, validateUuidParam(), validateBody(updateSchemas.blogPost), async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, slug, excerpt, content, featured_image, category_id, status, language, author_name } = req.body;
+    // Partial update: only the columns present in the body change. A
+    // status-only PUT (CRM › Articles) used to overwrite every other column
+    // with NULL.
+    const allowed = ['title', 'slug', 'excerpt', 'content', 'featured_image', 'category_id', 'status', 'language', 'author_name'];
+    const sets = [];
+    const params = [];
+    for (const key of allowed) {
+      if (req.body[key] !== undefined) { params.push(req.body[key]); sets.push(`${key}=$${params.length}`); }
+    }
+    if (sets.length === 0) return res.status(400).json({ error: 'No updatable field in body' });
+    // First publication stamps published_at; later edits keep it.
+    if (req.body.status === 'published') sets.push('published_at=COALESCE(blog_posts.published_at, NOW())');
+    params.push(id);
     const result = await pool.query(
-      `UPDATE blog_posts SET title=$1, slug=$2, excerpt=$3, content=$4, featured_image=$5,
-       category_id=$6, status=$7, language=$8, author_name=$9, updated_at=NOW()
-       WHERE id=$10 RETURNING *`,
-      [title, slug, excerpt, content, featured_image, category_id, status, language, author_name, id]
+      `UPDATE blog_posts SET ${sets.join(', ')}, updated_at=NOW() WHERE id=$${params.length} RETURNING *`,
+      params
     );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Post not found' });
     res.json(result.rows[0]);

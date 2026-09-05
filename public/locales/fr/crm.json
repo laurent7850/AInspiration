@@ -150,7 +150,8 @@
     "reports": "Rapports",
     "messages": "Messages",
     "newsletter": "Newsletter",
-    "linkedin": "LinkedIn"
+    "linkedin": "LinkedIn",
+    "blog": "Articles"
   },
   "pages": {
     "companies": {
@@ -619,5 +620,36 @@
       "ctaDemo": "Démo",
       "ctaContact": "Contactez-nous"
     }
+  },
+  "blogAdmin": {
+    "seoTitle": "Articles du blog | CRM AInspiration",
+    "title": "Articles du blog",
+    "subtitle": "File de relecture du blog automatique. Un article retenu par le contrôle qualité arrive ici en brouillon avec ses trois langues ; les motifs sont dans l'email « À relire ».",
+    "refresh": "Actualiser",
+    "loading": "Chargement…",
+    "loadError": "Impossible de charger les articles.",
+    "updateError": "La mise à jour a échoué.",
+    "status": {
+      "draft": "Brouillons",
+      "published": "Publiés",
+      "archived": "Archivés"
+    },
+    "empty": {
+      "draft": "Aucun brouillon en attente.",
+      "published": "Aucun article publié.",
+      "archived": "Aucun article archivé."
+    },
+    "columns": {
+      "category": "Catégorie",
+      "author": "Auteur",
+      "updated": "Modifié",
+      "published": "Publié"
+    },
+    "actions": {
+      "publish": "Publier les 3 langues",
+      "archive": "Archiver",
+      "restore": "Remettre en brouillon"
+    },
+    "missingLanguages": "{{count}} langue(s) manquante(s)"
   }
 }

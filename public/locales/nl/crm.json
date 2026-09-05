@@ -150,7 +150,8 @@
     "reports": "Rapporten",
     "messages": "Berichten",
     "newsletter": "Nieuwsbrief",
-    "linkedin": "LinkedIn"
+    "linkedin": "LinkedIn",
+    "blog": "Artikels"
   },
   "pages": {
     "companies": {
@@ -619,5 +620,36 @@
       "ctaDemo": "Demo",
       "ctaContact": "Neem contact op"
     }
+  },
+  "blogAdmin": {
+    "seoTitle": "Blogartikels | AInspiration CRM",
+    "title": "Blogartikels",
+    "subtitle": "Nalezingswachtrij van de automatische blog. Een artikel dat door de kwaliteitscontrole wordt tegengehouden komt hier als concept aan met zijn drie talen; de redenen staan in de e-mail \"Na te lezen\".",
+    "refresh": "Vernieuwen",
+    "loading": "Laden…",
+    "loadError": "De artikels konden niet worden geladen.",
+    "updateError": "De update is mislukt.",
+    "status": {
+      "draft": "Concepten",
+      "published": "Gepubliceerd",
+      "archived": "Gearchiveerd"
+    },
+    "empty": {
+      "draft": "Geen concept in wacht.",
+      "published": "Geen gepubliceerd artikel.",
+      "archived": "Geen gearchiveerd artikel."
+    },
+    "columns": {
+      "category": "Categorie",
+      "author": "Auteur",
+      "updated": "Gewijzigd",
+      "published": "Gepubliceerd"
+    },
+    "actions": {
+      "publish": "De 3 talen publiceren",
+      "archive": "Archiveren",
+      "restore": "Terug naar concept"
+    },
+    "missingLanguages": "{{count}} ta(a)l(en) ontbreekt/ontbreken"
   }
 }

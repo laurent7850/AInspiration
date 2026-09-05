@@ -128,7 +128,7 @@ const KNOWN_ROUTES = new Set([
   '/realisations', '/newsletter-confirmee',
   '/contact', '/prompts', '/automatisation', '/assistants', '/conseil', '/formation',
   '/accompagnement', '/blog', '/crm', '/crm-dashboard', '/privacy', '/mentions-legales',
-  '/cgv', '/cgu', '/unsubscribe', '/linkedin', '/newsletter-admin',
+  '/cgv', '/cgu', '/unsubscribe', '/linkedin', '/newsletter-admin', '/blog-admin',
   '/opportunities', '/contacts', '/companies', '/products', '/tasks', '/reports', '/messages',
   // Client-side redirects (App.tsx) \u2014 must stay 200 so the redirect can run.
   '/pourquoi-ia', '/pour-qui-ia', '/creation-visuelle', '/creativite',
