@@ -1,0 +1,87 @@
+{
+  "hero": {
+    "titlePrefix": "",
+    "titleHighlight": "Artificial Intelligence",
+    "titleSuffix": "solutions",
+    "subtitle": "Concrete, accessible solutions to automate, answer, create and decide — with no technical skills needed on your side."
+  },
+  "schema": {
+    "name": "Complete AI solutions",
+    "description": "Artificial intelligence solutions for SMEs: data analysis, automation, virtual assistants, CRM and content creation"
+  },
+  "categories": {
+    "all": "All solutions",
+    "data": "Data analysis",
+    "automation": "Automation",
+    "communication": "Communication",
+    "creative": "Creation & content"
+  },
+  "learnMore": "Learn more",
+  "solutions": {
+    "analysis": {
+      "title": "AI data analysis",
+      "description": "Turn your data into decisions: trends, segments, anomalies, dashboards.",
+      "benefits": ["Predictions and trends", "Advanced customer segmentation", "Anomaly detection", "Custom dashboards"]
+    },
+    "transformation": {
+      "title": "Digital transformation",
+      "description": "End-to-end support to speed up your digital transition and streamline your processes.",
+      "benefits": ["Digital maturity assessment", "Personalised roadmap", "Step-by-step implementation", "Team training"]
+    },
+    "automation": {
+      "title": "Smart automation",
+      "description": "Free your team from repetitive tasks: invoicing, reminders, data entry, reports.",
+      "benefits": ["Custom n8n workflows", "Connects to your current tools", "First workflow in 5 working days", "Built-in error handling and alerts"]
+    },
+    "assistants": {
+      "title": "Virtual assistants",
+      "description": "Assistants that answer routine questions around the clock and hand the rest to a human.",
+      "benefits": ["24/7 customer support", "Instant answers", "French, Dutch, English", "Automatic human handover"]
+    },
+    "crm": {
+      "title": "Smart CRM",
+      "description": "A complete solution to track your contacts, opportunities and follow-ups.",
+      "benefits": ["360° customer view", "Task automation", "Opportunity scoring", "Custom reporting"]
+    },
+    "prompts": {
+      "title": "Optimised prompts",
+      "description": "Ready-to-use instructions to get the best out of ChatGPT, Claude or Gemini in your trade.",
+      "benefits": ["Prompts tested per task", "Library by sector", "Continuous optimisation", "Prompt-writing training"]
+    },
+    "content": {
+      "title": "AI content and visuals",
+      "description": "Articles, newsletters, posts, product sheets and visuals — produced fast, reviewed by you.",
+      "benefits": ["SEO-optimised articles", "Emails and newsletters", "Social media posts", "Custom visuals and images"]
+    }
+  },
+  "approach": {
+    "title": "An integrated approach for measurable results",
+    "subtitle": "Our solutions are designed to work together: one audit, one priority, one first result, then we widen the scope.",
+    "items": {
+      "expertise": { "title": "Recent AI models", "description": "The best-performing models of the moment, chosen for each use." },
+      "multilingual": { "title": "Three languages", "description": "French, Dutch and English, for the whole of Belgium and beyond." },
+      "security": { "title": "Data in Europe", "description": "EU hosting, GDPR compliance, DPA available on request." },
+      "results": { "title": "Quantified targets", "description": "Every project starts from a measurable target set during the audit." }
+    }
+  },
+  "cta": {
+    "title": "Can't find what you're looking for?",
+    "body": "Describe the problem; we build the right solution, or tell you honestly if AI is not the answer.",
+    "button": "Discuss your needs"
+  },
+  "guidance": {
+    "title": "Support at every step",
+    "body": "From identifying your needs to continuous optimisation, we stay by your side.",
+    "steps": {
+      "audit": { "title": "Personalised audit", "description": "Needs analysis and opportunity identification" },
+      "implementation": { "title": "Implementation", "description": "Step-by-step rollout and team training" },
+      "optimization": { "title": "Optimisation", "description": "Results tracking and continuous improvement" }
+    }
+  },
+  "related": {
+    "audit": { "title": "Free AI audit", "description": "Complete analysis of your activity in 24h" },
+    "automation": { "title": "AI automation", "description": "Cut down your repetitive tasks" },
+    "assistants": { "title": "Virtual assistants", "description": "24/7 AI chatbots and assistants" },
+    "analysis": { "title": "AI analysis", "description": "Put your data to work with AI" }
+  }
+}

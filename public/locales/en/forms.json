@@ -62,6 +62,31 @@
       "message": "An error occurred while sending the form. Please try again or contact us directly by email.",
       "general": "An error occurred while sending the form. Please try again.",
       "rateLimit": "Too many requests. Please wait a minute before trying again."
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "q": "How quickly will I get an answer to my request?",
+          "a": "We commit to replying within 24 working hours (Monday-Friday, 9am-6pm). For free AI audit requests, the personalised report is generated automatically and emailed within 24 hours of submitting your form. For sales or technical questions, our team contacts you by email or phone, as you prefer."
+        },
+        {
+          "q": "Is the free AI audit really without obligation?",
+          "a": "Yes, entirely. The AI audit is a free service with no purchase obligation whatsoever. You receive a personalised PDF report with 3 concrete automation recommendations for your business. If the recommendations interest you, we can discuss them in a 30-minute call, also free. No credit card is requested, no commitment is made."
+        },
+        {
+          "q": "Where are you based, and do you work across Belgium?",
+          "a": "Our head office is in Givry (7041), in Hainaut, Belgium. We work across the whole of Belgium (Brussels, Wallonia and Flanders) as well as in French-speaking France and Luxembourg. Most of our services (audit, automation, support) are delivered remotely. On-site training is available at your premises anywhere in Belgium."
+        },
+        {
+          "q": "Can I contact you by phone?",
+          "a": "Yes, you can reach us on +32 477 94 28 65 during working hours (Monday-Friday, 9am-6pm). For non-urgent requests we recommend the contact form or an email to contact@ainspiration.eu, which lets us give you a more detailed, documented answer."
+        },
+        {
+          "q": "What kinds of projects can you support?",
+          "a": "We support SMEs and freelancers in every aspect of their AI transition: automating repetitive tasks (invoicing, reminders, reports), deploying customer-service chatbots, setting up a smart CRM with lead scoring, AI-assisted content creation, and training your teams on AI tools. Every project starts with a free audit that identifies the highest-impact opportunities for your specific activity."
+        }
+      ]
     }
   },
   "products": {

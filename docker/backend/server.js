@@ -2760,11 +2760,12 @@ function getRealisationSeo(lang, slug) {
 // frontend, so we read it here instead of duplicating the text server-side:
 // one source of truth, and translations stay in step automatically.
 //
-// Routes absent from this map keep the generic block on purpose: /solutions
-// and /produits hold their copy inline in the React components or in the CRM
-// namespace, which would spill application labels onto a public page.
+// Routes absent from this map keep the generic block on purpose: /produits
+// holds its copy in the CRM namespace, which would spill application labels
+// onto a public page. (/solutions moved to its own namespace on 2026-09-05.)
 // KEEP IN SYNC with the namespace a page actually calls useTranslation() with.
 const SERVICE_NS = {
+  '/solutions': 'solutions',
   '/audit': 'audit',
   '/formation': 'training',
   '/automatisation': 'automation',

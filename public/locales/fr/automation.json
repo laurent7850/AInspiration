@@ -147,7 +147,7 @@
       },
       "3": {
         "q": "Que se passe-t-il si l'automatisation échoue ou produit une erreur ?",
-        "a": "Chaque workflow inclut une gestion d'erreurs intégrée. En cas de problème, le système envoie une alerte email immédiate et conserve les données en attente pour retraitement. Avec l'abonnement managé (290 EUR/mois), notre équipe surveille vos workflows en continu et intervient en moins de 4 heures pour les incidents critiques. Le taux de réussite moyen de nos workflows en production est de 98.5%."
+        "a": "Chaque workflow inclut une gestion d'erreurs intégrée. En cas de problème, le système envoie une alerte email immédiate et conserve les données en attente pour retraitement. Avec l'abonnement managé (290 EUR/mois), notre équipe surveille vos workflows en continu et intervient en moins de 4 heures pour les incidents critiques."
       },
       "4": {
         "q": "L'automatisation IA est-elle accessible pour un indépendant ou une très petite entreprise ?",

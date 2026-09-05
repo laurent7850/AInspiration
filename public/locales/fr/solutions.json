@@ -1,0 +1,87 @@
+{
+  "hero": {
+    "titlePrefix": "Solutions d'",
+    "titleHighlight": "Intelligence Artificielle",
+    "titleSuffix": "",
+    "subtitle": "Des solutions concrètes et accessibles pour automatiser, répondre, créer et décider — sans compétence technique de votre côté."
+  },
+  "schema": {
+    "name": "Solutions IA complètes",
+    "description": "Solutions d'intelligence artificielle pour PME : analyse de données, automatisation, assistants virtuels, CRM et création de contenu"
+  },
+  "categories": {
+    "all": "Toutes les solutions",
+    "data": "Analyse de données",
+    "automation": "Automatisation",
+    "communication": "Communication",
+    "creative": "Création & contenu"
+  },
+  "learnMore": "En savoir plus",
+  "solutions": {
+    "analysis": {
+      "title": "Analyse de données IA",
+      "description": "Transformez vos données en décisions : tendances, segments, anomalies, tableaux de bord.",
+      "benefits": ["Prédictions et tendances", "Segmentation client avancée", "Détection d'anomalies", "Tableaux de bord personnalisés"]
+    },
+    "transformation": {
+      "title": "Transformation numérique",
+      "description": "Un accompagnement global pour accélérer votre transition digitale et optimiser vos processus.",
+      "benefits": ["Diagnostic de maturité digitale", "Feuille de route personnalisée", "Implémentation progressive", "Formation des équipes"]
+    },
+    "automation": {
+      "title": "Automatisation intelligente",
+      "description": "Libérez votre équipe des tâches répétitives : facturation, relances, saisie, rapports.",
+      "benefits": ["Workflows n8n sur mesure", "Se branche sur vos outils actuels", "Premier workflow en 5 jours ouvrés", "Gestion d'erreurs et alertes intégrées"]
+    },
+    "assistants": {
+      "title": "Assistants virtuels",
+      "description": "Des assistants qui répondent 24h/24 aux questions courantes et transmettent le reste à un humain.",
+      "benefits": ["Support client 24/7", "Réponses instantanées", "Français, néerlandais, anglais", "Transfert humain automatique"]
+    },
+    "crm": {
+      "title": "CRM intelligent",
+      "description": "Une solution complète pour suivre vos contacts, vos opportunités et vos relances.",
+      "benefits": ["Vision 360° de vos clients", "Automatisation des tâches", "Scoring des opportunités", "Reporting personnalisé"]
+    },
+    "prompts": {
+      "title": "Prompts optimisés",
+      "description": "Des instructions prêtes à l'emploi pour tirer le meilleur de ChatGPT, Claude ou Gemini dans votre métier.",
+      "benefits": ["Prompts testés par tâche", "Bibliothèque par secteur", "Optimisation continue", "Formation à la rédaction de prompts"]
+    },
+    "content": {
+      "title": "Création de contenu et visuels IA",
+      "description": "Articles, newsletters, posts, fiches produits et visuels — produits vite, relus par vous.",
+      "benefits": ["Articles optimisés SEO", "Emails et newsletters", "Posts réseaux sociaux", "Visuels et images sur mesure"]
+    }
+  },
+  "approach": {
+    "title": "Une approche intégrée pour des résultats mesurables",
+    "subtitle": "Nos solutions sont conçues pour fonctionner ensemble : un audit, une priorité, un premier résultat, puis on élargit.",
+    "items": {
+      "expertise": { "title": "Modèles IA récents", "description": "Les modèles les plus performants du moment, choisis pour chaque usage." },
+      "multilingual": { "title": "Trois langues", "description": "Français, néerlandais et anglais, pour toute la Belgique et au-delà." },
+      "security": { "title": "Données en Europe", "description": "Hébergement UE, conformité RGPD, DPA disponible sur demande." },
+      "results": { "title": "Objectifs chiffrés", "description": "Chaque projet part d'un objectif mesurable fixé lors de l'audit." }
+    }
+  },
+  "cta": {
+    "title": "Vous ne trouvez pas ce que vous cherchez ?",
+    "body": "Décrivez-nous le problème ; nous construisons la solution adaptée, ou nous vous disons honnêtement si l'IA n'est pas la bonne réponse.",
+    "button": "Discuter de vos besoins"
+  },
+  "guidance": {
+    "title": "Un accompagnement à chaque étape",
+    "body": "De l'identification de vos besoins à l'optimisation continue, nous restons à vos côtés.",
+    "steps": {
+      "audit": { "title": "Audit personnalisé", "description": "Analyse de vos besoins et identification des opportunités" },
+      "implementation": { "title": "Implémentation", "description": "Déploiement progressif et formation de vos équipes" },
+      "optimization": { "title": "Optimisation", "description": "Suivi des résultats et amélioration continue" }
+    }
+  },
+  "related": {
+    "audit": { "title": "Audit IA gratuit", "description": "Analyse complète de votre activité en 24h" },
+    "automation": { "title": "Automatisation IA", "description": "Réduisez vos tâches répétitives" },
+    "assistants": { "title": "Assistants virtuels", "description": "Chatbots et assistants IA 24/7" },
+    "analysis": { "title": "Analyse IA", "description": "Exploitez vos données avec l'IA" }
+  }
+}

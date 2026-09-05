@@ -48,8 +48,16 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   const { siteUrl, siteName, defaultImage: defaultOgImage, twitterHandle } = defaultSEO;
   const currentUrl = `${siteUrl}${location.pathname}`;
 
+  // /en/... and /nl/... are language prefixes, not routes: strip them before
+  // looking up the per-route config, otherwise EN/NL pages fell back to the
+  // generic title and hreflang pointed at /en/en/...
+  const langPrefix = ['/en', '/nl'].find(
+    (p) => location.pathname === p || location.pathname.startsWith(`${p}/`)
+  );
+  const routePath = langPrefix ? location.pathname.slice(langPrefix.length) || '/' : location.pathname;
+
   // Get SEO config from centralized configuration
-  const seoConfig = getSEOConfig(location.pathname, currentLang);
+  const seoConfig = getSEOConfig(routePath, currentLang);
 
   // Use provided values or fall back to config
   const pageTitle = title || seoConfig.title;
@@ -63,7 +71,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   ].join(', ');
 
   // Get hreflang tags
-  const hreflangTags = getHreflangTags(location.pathname);
+  const hreflangTags = getHreflangTags(routePath);
 
   // Get locale for Open Graph
   const getOgLocale = (lang: string) => {
@@ -86,8 +94,8 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   }
 
   // BreadcrumbList schema (included on all pages except homepage)
-  if (location.pathname !== '/') {
-    combinedSchema.push(getBreadcrumbSchema(location.pathname, currentLang));
+  if (routePath !== '/') {
+    combinedSchema.push(getBreadcrumbSchema(routePath, currentLang));
   }
 
   // WebPage schema (always included)

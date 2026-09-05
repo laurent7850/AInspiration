@@ -68,7 +68,11 @@
     "s9_title": "9. Vertrouwelijkheid",
     "s9_body": "Beide partijen verbinden zich ertoe alle informatie die in het kader van de dienstverlening wordt uitgewisseld, vertrouwelijk te behandelen. Deze verplichting blijft van kracht na het einde van de overeenkomst.",
     "s10_title": "10. Toepasselijk recht",
-    "s10_body": "Deze AVV zijn onderworpen aan het Belgisch recht. Elk geschil valt onder de bevoegdheid van de rechtbanken van het arrondissement van de maatschappelijke zetel van Distr'Action SPRL."
+    "s10_body": "Deze AVV zijn onderworpen aan het Belgisch recht. Elk geschil valt onder de bevoegdheid van de rechtbanken van het arrondissement van de maatschappelijke zetel van Distr'Action SPRL.",
+    "s11_title": "11. Service Level Agreement (SLA)",
+    "s11_body": "De diensten van AInspiration vallen onder een Service Level Agreement (SLA) die de beschikbaarheidsverbintenissen (99% voor beheerde abonnementen), de leveringstermijnen (24u voor audits, 5 werkdagen voor Express Packs), de supportniveaus (4u voor kritieke incidenten) en de compensaties bij niet-naleving vastlegt. Het volledige SLA-document is op aanvraag beschikbaar via contact@ainspiration.eu.",
+    "s12_title": "12. Verwerking van gegevens voor rekening van de klant",
+    "s12_body": "Wanneer AInspiration persoonsgegevens verwerkt voor rekening van de klant in het kader van gehoste workflows, wordt tussen de partijen een verwerkersovereenkomst (DPA) gesloten conform artikel 28 van de AVG. Deze DPA beschrijft de soorten verwerkte gegevens, de beveiligingsmaatregelen, de subverwerkers en de voorwaarden voor verwijdering. De DPA is op aanvraag beschikbaar via contact@ainspiration.eu."
   },
   "mentions": {
     "seo": {

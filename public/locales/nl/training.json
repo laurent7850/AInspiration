@@ -95,6 +95,31 @@
         "duration": "Om AI te beheersen",
         "satisfaction": "Tevredenheid"
       }
+    },
+    "faq": {
+      "title": "Veelgestelde vragen over onze AI-opleidingen",
+      "items": [
+        {
+          "q": "Heb ik technische kennis nodig om de opleiding te volgen?",
+          "a": "Geen enkele. Onze opleidingen zijn ontworpen voor niet-technici: kmo-bedrijfsleiders, directieassistenten, marketingverantwoordelijken, boekhouders. We vertrekken van nul en bouwen uw vaardigheden stap voor stap op met praktische oefeningen op uw echte cases. De enige vereiste is dat u een webbrowser en e-mail kunt gebruiken."
+        },
+        {
+          "q": "Vindt de opleiding ter plaatse of op afstand plaats?",
+          "a": "Beide formules zijn mogelijk. Ter plaatse in uw kantoren in België (Brussel, Wallonië, Vlaanderen) voor groepen van 3 tot 10 personen. Op afstand via Zoom voor individuele sessies of geografisch verspreide teams. De standaardduur is 1 tot 3 dagen, afhankelijk van het gekozen programma. Elke deelnemer ontvangt cursusmateriaal en 3 maanden toegang tot onze bronnenruimte."
+        },
+        {
+          "q": "Welke AI-tools komen aan bod in de opleiding?",
+          "a": "We behandelen de tools die meteen bruikbaar zijn in een bedrijf: ChatGPT en Claude voor schrijven en analyse, Midjourney en DALL-E voor visuele creatie, n8n voor workflowautomatisering, en de AI-integraties in de tools die u al gebruikt (Google Workspace, Microsoft 365, Canva). Het programma wordt aangepast aan uw sector en uw specifieke behoeften."
+        },
+        {
+          "q": "Is er opvolging na de opleiding?",
+          "a": "Ja. Elke deelnemer krijgt 3 maanden toegang tot onze bronnenruimte met gidsen, promptsjablonen per sector en videotutorials. We bieden ook een opvolgsessie van een uur op dag 30 om de vragen te beantwoorden die met de praktijk opduiken. Voor bedrijven is maandelijkse begeleiding mogelijk via ons beheerde abonnement."
+        },
+        {
+          "q": "Wat kost een AI-opleiding voor mijn team?",
+          "a": "De prijs hangt af van de formule en het aantal deelnemers. Individuele opleiding op afstand: vanaf 490 EUR excl. btw voor één dag. Bedrijfsopleiding (tot 10 personen): vanaf 1.490 EUR excl. btw voor één dag. Programma op maat over 3 dagen: op offerte. Neem contact op voor een offerte op maat; de eerste evaluatie is gratis."
+        }
+      ]
     }
   }
 }

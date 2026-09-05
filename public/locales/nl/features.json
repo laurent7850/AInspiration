@@ -267,6 +267,31 @@
       "button": "Nu beginnen",
       "configLabel": "Configuratie",
       "availabilityLabel": "Beschikbaarheid"
+    },
+    "faq": {
+      "title": "Veelgestelde vragen over virtuele AI-assistenten",
+      "items": [
+        {
+          "q": "Kan een AI-chatbot echt een klantendienstmedewerker vervangen?",
+          "a": "Nee, hij vervangt niet, hij vult aan. Een virtuele AI-assistent neemt de repetitieve vragen op zich (openingsuren, prijzen, orderstatus, FAQ) die 60 tot 80% van de aanvragen uitmaken. Complexe, emotionele of gevoelige gevallen worden automatisch doorgegeven aan een mens. Resultaat: uw team richt zich op interacties met hoge toegevoegde waarde terwijl de chatbot het volume afhandelt."
+        },
+        {
+          "q": "Hoe lang duurt het om een virtuele assistent op te zetten?",
+          "a": "Een basisassistent is operationeel binnen 5 werkdagen. Dat omvat de configuratie van de chatbot, de integratie op uw website, het instellen van gepersonaliseerde antwoorden en de tests. Voor een geavanceerdere assistent met CRM-integratie, kennisbank of automatische afspraakplanning rekent u 2 à 3 weken. We beginnen altijd met een gratis audit om de exacte scope te bepalen."
+        },
+        {
+          "q": "Werkt mijn assistent in het Nederlands en het Engels?",
+          "a": "Ja. Onze virtuele assistenten zijn van bij de start meertalig. Ze herkennen automatisch de taal van de bezoeker en antwoorden in het Frans, Nederlands of Engels. Een belangrijk voordeel voor Belgische bedrijven met klanten in de drie taalgebieden."
+        },
+        {
+          "q": "Zijn de gegevens van mijn klanten beschermd?",
+          "a": "Absoluut. Alle gegevens worden gehost in Europa (Hostinger-servers in Litouwen, Europese Unie). We voldoen aan de AVG, met een duidelijk bewaarbeleid (12 maanden voor auditgegevens). Geen enkel gegeven wordt gedeeld met derden. Een verwerkersovereenkomst (DPA) is op aanvraag beschikbaar voor uw contractuele verplichtingen."
+        },
+        {
+          "q": "Wat kost een virtuele AI-assistent voor een kmo?",
+          "a": "Ons Express Pack begint bij 1.043 EUR excl. btw (lanceeraanbod met getuigenis) of 1.490 EUR excl. btw (standaardtarief) voor de installatie. Hosting en onderhoud zitten in het beheerde abonnement van 290 EUR per maand. Vergeleken met een toegewijde supportmedewerker (2.500-3.500 EUR/maand) is de terugverdientijd kort. Onze gratis audit geeft u een precieze raming van de besparing voor uw situatie."
+        }
+      ]
     }
   },
   "tools": {

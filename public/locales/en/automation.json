@@ -129,5 +129,30 @@
     "title": "Ready to automate your processes?",
     "subtitle": "Discover how AI automation can transform your business",
     "button": "Start Automation"
+  },
+  "faq": {
+    "title": "Frequently asked questions about AI automation",
+    "items": [
+      {
+        "q": "What kinds of tasks can be automated with AI in an SME?",
+        "a": "Practically any repetitive, rule-based task: processing incoming invoices and documents, automatic customer reminders, generating quotes from templates, publishing content on social networks, syncing data between your tools (CRM, accounting, email), qualifying incoming leads, and automatic weekly reports. During our free audit we identify the 3 most time-consuming tasks in your specific activity."
+      },
+      {
+        "q": "Do I have to change my current tools to benefit from automation?",
+        "a": "No. Our n8n technology connects to more than 400 existing applications: Gmail, Outlook, Google Sheets, Excel, Slack, WhatsApp, WordPress, WooCommerce, Shopify, Exact Online, Teamleader and many more. We build bridges between your current tools without replacing anything. That is the power of workflow automation: each tool keeps its role, but they talk to each other automatically."
+      },
+      {
+        "q": "How long before I see the first results?",
+        "a": "You receive your first working workflow within 5 working days after the scope is validated. The typical target of a first automation is to free up to 10 hours a week; the free audit puts a figure on yours. We always start with the highest-impact task identified in the free audit, so the return is visible from the first month."
+      },
+      {
+        "q": "What happens if the automation fails or produces an error?",
+        "a": "Every workflow includes built-in error handling. If something goes wrong, the system sends an immediate email alert and keeps the pending data for reprocessing. With the managed subscription (EUR 290/month), our team monitors your workflows continuously and responds within 4 hours to critical incidents."
+      },
+      {
+        "q": "Is AI automation accessible to a freelancer or a very small business?",
+        "a": "Absolutely. Our offer is designed for Belgian micro-businesses and freelancers. The Express Pack starts at EUR 1,043 excl. VAT (with a testimonial) for a complete automation. That is the equivalent of 2-3 days of consulting, but the workflow then runs 24/7. A freelance accountant, a restaurant, an online shop with 2 employees: all can benefit from automation without technical skills."
+      }
+    ]
   }
 }

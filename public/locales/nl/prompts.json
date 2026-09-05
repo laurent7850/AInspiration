@@ -112,6 +112,31 @@
       "button": "Beginnen",
       "timeSavedLabel": "Gewonnen tijd",
       "usersLabel": "Gebruikers"
+    },
+    "faq": {
+      "title": "Veelgestelde vragen over AI-prompts",
+      "items": [
+        {
+          "q": "Wat is een prompt en waarom is het belangrijk voor mijn bedrijf?",
+          "a": "Een prompt is de instructie die u aan een AI (ChatGPT, Claude, Gemini) geeft om een resultaat te krijgen. De kwaliteit van de prompt bepaalt rechtstreeks de kwaliteit van het antwoord. Een goed gestructureerde prompt maakt van een generiek antwoord professionele content die perfect past bij uw vak. Voor een kmo betekent prompts beheersen tijd winnen bij schrijven, data-analyse, klantendienst en contentcreatie."
+        },
+        {
+          "q": "Hoe kan een geoptimaliseerde prompt mij tijd besparen?",
+          "a": "Een generieke prompt zoals \"schrijf me een e-mail\" geeft een middelmatig resultaat dat 15 minuten bijwerken vraagt. Een prompt die geoptimaliseerd is met context, toon, structuur en beperkingen levert een resultaat dat meteen bruikbaar is. Typisch doel: een half uur per dag terugwinnen op terugkerende taken zoals klantenmails, rapporten, LinkedIn-posts, productbeschrijvingen en FAQ-antwoorden."
+        },
+        {
+          "q": "Werken uw prompts met alle AI-tools?",
+          "a": "Ja. Onze prompts zijn ontworpen om compatibel te zijn met ChatGPT (OpenAI), Claude (Anthropic), Gemini (Google) en de meeste generatieve AI-tools op de markt. We optimaliseren ze vooral voor ChatGPT en Claude, de twee meest gebruikte modellen in bedrijven. Elke prompt wordt op meerdere platformen getest om consistente resultaten te garanderen."
+        },
+        {
+          "q": "Hebt u prompts specifiek voor mijn sector?",
+          "a": "Ja. Onze bibliotheek bevat gespecialiseerde prompts per sector: boekhouding (aanmaningsbrieven, financiële analyses), juridisch (contractsamenvattingen, regelgevingsmonitoring), horeca (menu's, antwoorden op klantenreviews), e-commerce (productbeschrijvingen, marketingmails) en professionele diensten (offertes, rapporten). Tijdens onze opleiding passen we de prompts aan uw specifieke activiteit aan."
+        },
+        {
+          "q": "Hoe leer ik zelf doeltreffende prompts schrijven?",
+          "a": "Onze AI-opleiding bevat een volledige module over het schrijven van prompts. U leert de CRISP-structuur (Context, Rol, Instructie, Stijl, Parameters), chain-of-thought-technieken en de beste praktijken per taaktype. Na de opleiding krijgt u toegang tot onze promptbibliotheek en een beknopte referentiegids. Begin met onze gratis audit om de taken te bepalen waar AI-prompts de grootste impact hebben op uw dagelijkse werk."
+        }
+      ]
     }
   }
 }

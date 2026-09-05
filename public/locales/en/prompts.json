@@ -112,6 +112,31 @@
       "button": "Get started",
       "timeSavedLabel": "Time saved",
       "usersLabel": "Users"
+    },
+    "faq": {
+      "title": "Frequently asked questions about AI prompts",
+      "items": [
+        {
+          "q": "What is a prompt, and why does it matter for my business?",
+          "a": "A prompt is the instruction you give an AI (ChatGPT, Claude, Gemini) to get a result. The quality of the prompt directly determines the quality of the answer. A well-structured prompt can turn a generic reply into professional content perfectly suited to your trade. For an SME, mastering prompts means saving time on writing, data analysis, customer service and content creation."
+        },
+        {
+          "q": "How can an optimised prompt save me time?",
+          "a": "A generic prompt such as \"write me an email\" gives an average result that needs 15 minutes of editing. A prompt optimised with context, tone, structure and constraints produces a result that can be used as is. Typical target: half an hour a day recovered on recurring tasks, such as customer emails, reports, LinkedIn posts, product descriptions and FAQ answers."
+        },
+        {
+          "q": "Do your prompts work with every AI tool?",
+          "a": "Yes. Our prompts are designed to be compatible with ChatGPT (OpenAI), Claude (Anthropic), Gemini (Google) and most generative AI tools on the market. We optimise them mainly for ChatGPT and Claude, the two models most used in business. Each prompt is tested on several platforms to guarantee consistent results."
+        },
+        {
+          "q": "Do you have prompts specific to my sector?",
+          "a": "Yes. Our library includes prompts specialised by sector: accounting (reminder letters, financial analyses), legal (contract summaries, regulatory watch), hospitality (menus, replies to customer reviews), e-commerce (product descriptions, marketing emails) and professional services (proposals, reports). During our training we tailor the prompts to your specific activity."
+        },
+        {
+          "q": "How can I learn to write my own effective prompts?",
+          "a": "Our AI training includes a full module on prompt writing. You learn the CRISP structure (Context, Role, Instruction, Style, Parameters), chain-of-thought techniques and best practices by task type. After the training you get access to our prompt library and a quick reference guide. Start with our free audit to identify the tasks where AI prompts will have the most impact on your daily work."
+        }
+      ]
     }
   }
 }

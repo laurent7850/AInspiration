@@ -129,5 +129,30 @@
     "title": "Klaar om uw processen te automatiseren?",
     "subtitle": "Ontdek hoe AI-automatisering uw bedrijf kan transformeren",
     "button": "Start automatisering"
+  },
+  "faq": {
+    "title": "Veelgestelde vragen over AI-automatisering",
+    "items": [
+      {
+        "q": "Welke taken kunnen met AI worden geautomatiseerd in een kmo?",
+        "a": "Vrijwel elke repetitieve, regelgebaseerde taak: verwerking van inkomende facturen en documenten, automatische klantherinneringen, offertes genereren op basis van sjablonen, content publiceren op sociale media, gegevens synchroniseren tussen uw tools (CRM, boekhouding, e-mail), inkomende leads kwalificeren en automatische weekrapporten. Tijdens onze gratis audit bepalen we de 3 meest tijdrovende taken in uw specifieke activiteit."
+      },
+      {
+        "q": "Moet ik mijn huidige tools vervangen om te automatiseren?",
+        "a": "Nee. Onze n8n-technologie koppelt met meer dan 400 bestaande toepassingen: Gmail, Outlook, Google Sheets, Excel, Slack, WhatsApp, WordPress, WooCommerce, Shopify, Exact Online, Teamleader en vele andere. We bouwen bruggen tussen uw huidige tools zonder iets te vervangen. Dat is de kracht van workflowautomatisering: elke tool behoudt zijn rol, maar ze communiceren automatisch met elkaar."
+      },
+      {
+        "q": "Hoe snel zie ik de eerste resultaten?",
+        "a": "U ontvangt uw eerste werkende workflow binnen 5 werkdagen na validatie van de scope. Het typische doel van een eerste automatisering is tot 10 uur per week vrijmaken; de gratis audit becijfert het voor u. We beginnen altijd met de taak met de grootste impact uit de gratis audit, zodat het rendement al in de eerste maand zichtbaar is."
+      },
+      {
+        "q": "Wat gebeurt er als de automatisering faalt of een fout maakt?",
+        "a": "Elke workflow bevat ingebouwde foutafhandeling. Bij een probleem stuurt het systeem onmiddellijk een e-mailwaarschuwing en bewaart het de gegevens in wacht voor herverwerking. Met het beheerde abonnement (290 EUR/maand) bewaakt ons team uw workflows continu en grijpt het binnen 4 uur in bij kritieke incidenten."
+      },
+      {
+        "q": "Is AI-automatisering haalbaar voor een zelfstandige of een heel klein bedrijf?",
+        "a": "Absoluut. Ons aanbod is ontworpen voor Belgische micro-ondernemingen en zelfstandigen. Het Express Pack begint bij 1.043 EUR excl. btw (met getuigenis) voor een volledige automatisering. Dat is het equivalent van 2 à 3 dagen consultancy, maar de workflow draait daarna 24/7. Een zelfstandige boekhouder, een restaurant, een webshop met 2 medewerkers: allemaal kunnen ze automatiseren zonder technische kennis."
+      }
+    ]
   }
 }

@@ -68,7 +68,11 @@
     "s9_title": "9. Confidentiality",
     "s9_body": "The parties undertake to keep confidential all information exchanged in the course of the service. This obligation survives the termination of the contract.",
     "s10_title": "10. Applicable Law",
-    "s10_body": "These GTCS are governed by Belgian law. Any dispute falls under the jurisdiction of the courts of the district of Distr'Action SPRL's registered office."
+    "s10_body": "These GTCS are governed by Belgian law. Any dispute falls under the jurisdiction of the courts of the district of Distr'Action SPRL's registered office.",
+    "s11_title": "11. Service Level Agreement (SLA)",
+    "s11_body": "AInspiration's services are subject to a Service Level Agreement (SLA) defining availability commitments (99% for managed subscriptions), delivery times (24h for audits, 5 working days for Express Packs), support levels (4h for critical incidents) and compensation in case of non-compliance. The full SLA document is available on request at contact@ainspiration.eu.",
+    "s12_title": "12. Processing of data on behalf of the customer",
+    "s12_body": "When AInspiration processes personal data on behalf of the customer as part of hosted workflows, a Data Processing Agreement (DPA) compliant with Article 28 of the GDPR is concluded between the parties. This DPA details the types of data processed, security measures, sub-processors and deletion conditions. The DPA is available on request at contact@ainspiration.eu."
   },
   "mentions": {
     "seo": {

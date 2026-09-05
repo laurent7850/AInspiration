@@ -235,6 +235,31 @@
       "smeHelped": "KMO's begeleid"
     },
     "seoTitle": "Gratis AI Audit in 24u | Gepersonaliseerde Diagnose | AInspiration",
-    "seoDescription": "Vraag uw gratis AI-audit aan. Een expert analyseert uw bedrijf en levert een concreet actieplan binnen 24u. Zonder verplichting. KMO's en zelfstandigen in België en Frankrijk."
+    "seoDescription": "Vraag uw gratis AI-audit aan. Een expert analyseert uw bedrijf en levert een concreet actieplan binnen 24u. Zonder verplichting. KMO's en zelfstandigen in België en Frankrijk.",
+    "faq": {
+      "title": "Veelgestelde vragen over de gratis AI-audit",
+      "items": [
+        {
+          "q": "Wat bevat het AI-auditrapport precies?",
+          "a": "Het gepersonaliseerde pdf-rapport bevat 5 delen: de context van uw bedrijf, een diagnose van uw huidige processen met het automatiseringspotentieel van elk proces, de 3 belangrijkste kansen met de geschatte tijdwinst, concrete aanbevelingen met geschikte tools, en voorgestelde volgende stappen. Alles wordt gegenereerd door onze AI (Claude Sonnet) en afgestemd op uw sector."
+        },
+        {
+          "q": "Hoe verloopt het proces concreet?",
+          "a": "Heel eenvoudig: u vult een formulier in 4 stappen in (contactgegevens, activiteit, behoeften, context), wat 2 tot 5 minuten duurt. Onze AI-pipeline analyseert uw antwoorden in ongeveer 26 seconden en genereert een gepersonaliseerd rapport. U ontvangt het per e-mail binnen 24 werkuren. Als het rapport u interesseert, stellen we een gratis gesprek van 30 minuten voor. Nooit enige verplichting."
+        },
+        {
+          "q": "Waarom is het gratis? Waar zit het addertje?",
+          "a": "Er is geen addertje. De gratis audit is ons instapproduct: zo tonen we onze expertise en vinden we de bedrijven waarvoor we waarde kunnen creëren. Als onze aanbevelingen u interesseren, kunt u kiezen voor ons Express Pack (vanaf 1.043 EUR excl. btw) om de geïdentificeerde prioritaire taak te automatiseren. Zo niet, dan houdt u het rapport en de aanbevelingen zonder iets verschuldigd te zijn. Zo bouwen wij vertrouwen op."
+        },
+        {
+          "q": "Is de audit echt gepersonaliseerd of is het een generiek sjabloon?",
+          "a": "Elke audit is uniek. Onze AI analyseert specifiek uw antwoorden: uw sector, de grootte van uw team, uw huidige tools, uw dagelijkse uitdagingen en uw budget. Een zelfstandige boekhouder krijgt niet hetzelfde rapport als een restaurant of een marketingbureau. De geanalyseerde processen, de kansen en de aanbevelingen zijn afgestemd op uw werkelijke situatie."
+        },
+        {
+          "q": "Zijn mijn gegevens beschermd tijdens de audit?",
+          "a": "Ja, absoluut. Alle gegevens die u via het formulier doorgeeft, worden verwerkt conform de AVG. Ze worden gehost in de Europese Unie (servers in Litouwen), uitsluitend gebruikt voor uw audit, maximaal 12 maanden bewaard en nooit doorgegeven aan derden. Ons privacybeleid en onze algemene voorwaarden beschrijven deze garanties. Een verwerkersovereenkomst (DPA) is op aanvraag beschikbaar."
+        }
+      ]
+    }
   }
 }

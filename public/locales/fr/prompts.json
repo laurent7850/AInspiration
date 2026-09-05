@@ -122,7 +122,7 @@
         },
         "1": {
           "q": "Comment un prompt optimisé peut-il me faire gagner du temps ?",
-          "a": "Un prompt générique comme 'écris-moi un email' donne un résultat moyen qui nécessite 15 minutes de retouche. Un prompt optimisé avec le contexte, le ton, la structure et les contraintes produit un résultat utilisable en l'état. Nos clients gagnent en moyenne 30 minutes par jour grâce à des prompts adaptés à leurs tâches récurrentes : emails clients, rapports, posts LinkedIn, descriptions produits, réponses FAQ."
+          "a": "Un prompt générique comme 'écris-moi un email' donne un résultat moyen qui nécessite 15 minutes de retouche. Un prompt optimisé avec le contexte, le ton, la structure et les contraintes produit un résultat utilisable en l'état. Objectif type : une demi-heure par jour récupérée sur les tâches récurrentes — emails clients, rapports, posts LinkedIn, descriptions produits, réponses FAQ."
         },
         "2": {
           "q": "Vos prompts fonctionnent-ils avec tous les outils IA ?",

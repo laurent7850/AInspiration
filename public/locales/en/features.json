@@ -267,6 +267,31 @@
       "button": "Start now",
       "configLabel": "Configuration",
       "availabilityLabel": "Availability"
+    },
+    "faq": {
+      "title": "Frequently asked questions about AI virtual assistants",
+      "items": [
+        {
+          "q": "Can an AI chatbot really replace a customer-service employee?",
+          "a": "No, it does not replace, it complements. An AI virtual assistant handles the repetitive questions (opening hours, prices, order status, FAQ) that make up 60 to 80% of requests. Complex, emotional or sensitive cases are automatically handed over to a human. Result: your team focuses on high-value interactions while the chatbot handles the volume."
+        },
+        {
+          "q": "How long does it take to set up a virtual assistant?",
+          "a": "A basic assistant is up and running in 5 working days. That includes configuring the chatbot, integrating it on your website, setting up personalised answers and testing. For a more advanced assistant with CRM integration, a knowledge base or automatic appointment booking, allow 2 to 3 weeks. We always start with a free audit to define the exact scope."
+        },
+        {
+          "q": "Will my assistant work in Dutch and English?",
+          "a": "Yes. Our virtual assistants are multilingual from the start. They automatically detect the visitor's language and answer in French, Dutch or English. That is a key advantage for Belgian companies serving customers in all three language regions."
+        },
+        {
+          "q": "Is my customers' data protected?",
+          "a": "Absolutely. All data is hosted in Europe (Hostinger servers in Lithuania, European Union). We comply with the GDPR, with a clear retention policy (12 months for audit data). No data is shared with third parties. A DPA (data processing agreement) is available on request for your contractual obligations."
+        },
+        {
+          "q": "How much does an AI virtual assistant cost for an SME?",
+          "a": "Our Express Pack starts at EUR 1,043 excl. VAT (launch offer with a testimonial) or EUR 1,490 excl. VAT (standard rate) for the setup. Hosting and maintenance are included in the managed subscription at EUR 290 per month. Compared with a dedicated support employee (EUR 2,500-3,500/month), the return on investment is fast. Our free audit gives you a precise estimate of the savings for your specific case."
+        }
+      ]
     }
   },
   "tools": {

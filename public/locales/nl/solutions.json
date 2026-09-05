@@ -1,0 +1,87 @@
+{
+  "hero": {
+    "titlePrefix": "Oplossingen met ",
+    "titleHighlight": "Artificiële Intelligentie",
+    "titleSuffix": "",
+    "subtitle": "Concrete, toegankelijke oplossingen om te automatiseren, te antwoorden, te creëren en te beslissen — zonder technische kennis aan uw kant."
+  },
+  "schema": {
+    "name": "Complete AI-oplossingen",
+    "description": "Oplossingen met artificiële intelligentie voor kmo's: data-analyse, automatisering, virtuele assistenten, CRM en contentcreatie"
+  },
+  "categories": {
+    "all": "Alle oplossingen",
+    "data": "Data-analyse",
+    "automation": "Automatisering",
+    "communication": "Communicatie",
+    "creative": "Creatie & content"
+  },
+  "learnMore": "Meer info",
+  "solutions": {
+    "analysis": {
+      "title": "AI-data-analyse",
+      "description": "Zet uw data om in beslissingen: trends, segmenten, afwijkingen, dashboards.",
+      "benefits": ["Voorspellingen en trends", "Geavanceerde klantsegmentatie", "Detectie van afwijkingen", "Dashboards op maat"]
+    },
+    "transformation": {
+      "title": "Digitale transformatie",
+      "description": "Volledige begeleiding om uw digitale transitie te versnellen en uw processen te optimaliseren.",
+      "benefits": ["Diagnose van digitale maturiteit", "Roadmap op maat", "Stapsgewijze implementatie", "Opleiding van uw teams"]
+    },
+    "automation": {
+      "title": "Slimme automatisering",
+      "description": "Bevrijd uw team van repetitieve taken: facturatie, herinneringen, invoer, rapporten.",
+      "benefits": ["n8n-workflows op maat", "Koppelt met uw huidige tools", "Eerste workflow in 5 werkdagen", "Ingebouwde foutafhandeling en meldingen"]
+    },
+    "assistants": {
+      "title": "Virtuele assistenten",
+      "description": "Assistenten die de klok rond courante vragen beantwoorden en de rest aan een mens doorgeven.",
+      "benefits": ["Klantenondersteuning 24/7", "Onmiddellijke antwoorden", "Frans, Nederlands, Engels", "Automatische overdracht naar een mens"]
+    },
+    "crm": {
+      "title": "Slimme CRM",
+      "description": "Een complete oplossing om uw contacten, opportuniteiten en opvolgingen bij te houden.",
+      "benefits": ["360°-zicht op uw klanten", "Automatisering van taken", "Scoring van opportuniteiten", "Rapportering op maat"]
+    },
+    "prompts": {
+      "title": "Geoptimaliseerde prompts",
+      "description": "Kant-en-klare instructies om het beste te halen uit ChatGPT, Claude of Gemini in uw vak.",
+      "benefits": ["Geteste prompts per taak", "Bibliotheek per sector", "Continue optimalisatie", "Opleiding in het schrijven van prompts"]
+    },
+    "content": {
+      "title": "AI-content en visuals",
+      "description": "Artikels, nieuwsbrieven, posts, productfiches en visuals — snel gemaakt, door u nagelezen.",
+      "benefits": ["SEO-geoptimaliseerde artikels", "E-mails en nieuwsbrieven", "Socialemediaposts", "Visuals en beelden op maat"]
+    }
+  },
+  "approach": {
+    "title": "Een geïntegreerde aanpak voor meetbare resultaten",
+    "subtitle": "Onze oplossingen zijn ontworpen om samen te werken: één audit, één prioriteit, één eerste resultaat, daarna breiden we uit.",
+    "items": {
+      "expertise": { "title": "Recente AI-modellen", "description": "De best presterende modellen van het moment, gekozen per toepassing." },
+      "multilingual": { "title": "Drie talen", "description": "Frans, Nederlands en Engels, voor heel België en daarbuiten." },
+      "security": { "title": "Data in Europa", "description": "EU-hosting, AVG-conform, verwerkersovereenkomst op aanvraag." },
+      "results": { "title": "Becijferde doelen", "description": "Elk project vertrekt van een meetbaar doel dat tijdens de audit wordt vastgelegd." }
+    }
+  },
+  "cta": {
+    "title": "Vindt u niet wat u zoekt?",
+    "body": "Beschrijf ons het probleem; wij bouwen de passende oplossing, of zeggen u eerlijk of AI niet het juiste antwoord is.",
+    "button": "Bespreek uw behoeften"
+  },
+  "guidance": {
+    "title": "Begeleiding bij elke stap",
+    "body": "Van het bepalen van uw behoeften tot continue optimalisatie: wij blijven aan uw zijde.",
+    "steps": {
+      "audit": { "title": "Audit op maat", "description": "Analyse van uw behoeften en identificatie van kansen" },
+      "implementation": { "title": "Implementatie", "description": "Stapsgewijze uitrol en opleiding van uw teams" },
+      "optimization": { "title": "Optimalisatie", "description": "Opvolging van de resultaten en continue verbetering" }
+    }
+  },
+  "related": {
+    "audit": { "title": "Gratis AI-audit", "description": "Volledige analyse van uw activiteit in 24u" },
+    "automation": { "title": "AI-automatisering", "description": "Verminder uw repetitieve taken" },
+    "assistants": { "title": "Virtuele assistenten", "description": "AI-chatbots en assistenten 24/7" },
+    "analysis": { "title": "AI-analyse", "description": "Benut uw data met AI" }
+  }
+}

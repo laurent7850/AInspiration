@@ -95,6 +95,31 @@
         "duration": "To master AI",
         "satisfaction": "Satisfaction"
       }
+    },
+    "faq": {
+      "title": "Frequently asked questions about our AI training",
+      "items": [
+        {
+          "q": "Do I need technical skills to follow the training?",
+          "a": "None. Our courses are designed for non-technical people: SME managers, executive assistants, marketing managers, accountants. We start from scratch and build your skills step by step with practical exercises on your real cases. The only prerequisite is knowing how to use a web browser and email."
+        },
+        {
+          "q": "Is the training on site or remote?",
+          "a": "Both formats are available. On site at your premises in Belgium (Brussels, Wallonia, Flanders) for groups of 3 to 10 people. Remotely via Zoom for individual sessions or geographically spread teams. The standard length is 1 to 3 days depending on the programme chosen. Each participant receives course material and 3 months of access to our resource area."
+        },
+        {
+          "q": "Which AI tools does the training cover?",
+          "a": "We cover the tools that can be used in business right away: ChatGPT and Claude for writing and analysis, Midjourney and DALL-E for visual creation, n8n for workflow automation, and the AI integrations in the tools you already use (Google Workspace, Microsoft 365, Canva). The programme is adapted to your sector and specific needs."
+        },
+        {
+          "q": "Is there follow-up after the training?",
+          "a": "Yes. Each participant gets 3 months of access to our resource area with guides, prompt templates by sector and video tutorials. We also offer a one-hour follow-up session 30 days later to answer the questions that come up with practice. For companies, monthly support is available through our managed subscription."
+        },
+        {
+          "q": "How much does AI training cost for my team?",
+          "a": "The price depends on the format and the number of participants. Individual remote training: from EUR 490 excl. VAT for one day. In-company training (up to 10 people): from EUR 1,490 excl. VAT for one day. Customised 3-day programme: on quotation. Contact us for a quote tailored to your needs; the initial assessment is free."
+        }
+      ]
     }
   }
 }

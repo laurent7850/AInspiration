@@ -62,6 +62,31 @@
       "message": "Er is een fout opgetreden bij het verzenden van het formulier. Probeer het opnieuw of neem rechtstreeks contact met ons op via e-mail.",
       "general": "Er is een fout opgetreden bij het verzenden van het formulier. Probeer het opnieuw.",
       "rateLimit": "Te veel verzoeken. Wacht een minuut voordat u het opnieuw probeert."
+    },
+    "faq": {
+      "title": "Veelgestelde vragen",
+      "items": [
+        {
+          "q": "Hoe snel krijg ik een antwoord op mijn aanvraag?",
+          "a": "We verbinden ons ertoe te antwoorden binnen 24 werkuren (maandag-vrijdag, 9u-18u). Voor aanvragen van een gratis AI-audit wordt het gepersonaliseerde rapport automatisch gegenereerd en per e-mail verstuurd binnen 24 uur na het indienen van uw formulier. Voor commerciële of technische vragen neemt ons team contact op per e-mail of telefoon, naar uw voorkeur."
+        },
+        {
+          "q": "Is de gratis AI-audit echt vrijblijvend?",
+          "a": "Ja, volledig. De AI-audit is een gratis dienst zonder enige aankoopverplichting. U ontvangt een gepersonaliseerd pdf-rapport met 3 concrete automatiseringsaanbevelingen voor uw activiteit. Als de aanbevelingen u interesseren, bespreken we ze in een gesprek van 30 minuten, eveneens gratis. Er wordt geen bankkaart gevraagd, er wordt geen engagement aangegaan."
+        },
+        {
+          "q": "Waar bent u gevestigd en werkt u in heel België?",
+          "a": "Onze zetel bevindt zich in Givry (7041), in Henegouwen, België. We werken in heel België (Brussel, Wallonië en Vlaanderen) en ook in Franstalig Frankrijk en Luxemburg. De meeste van onze diensten (audit, automatisering, support) worden op afstand geleverd. Opleidingen ter plaatse zijn beschikbaar in uw kantoren overal in België."
+        },
+        {
+          "q": "Kan ik u telefonisch bereiken?",
+          "a": "Ja, u bereikt ons op +32 477 94 28 65 tijdens de kantooruren (maandag-vrijdag, 9u-18u). Voor niet-dringende vragen raden we het contactformulier of een e-mail naar contact@ainspiration.eu aan, zodat we u een gedetailleerder en gedocumenteerd antwoord kunnen geven."
+        },
+        {
+          "q": "Welke soorten projecten kunt u begeleiden?",
+          "a": "We begeleiden kmo's en zelfstandigen in alle aspecten van hun AI-transitie: automatisering van repetitieve taken (facturatie, herinneringen, rapporten), inzet van chatbots voor de klantendienst, opzetten van een slimme CRM met leadscoring, AI-ondersteunde contentcreatie en opleiding van uw teams in AI-tools. Elk project begint met een gratis audit die de kansen met de grootste impact voor uw specifieke activiteit in kaart brengt."
+        }
+      ]
     }
   },
   "products": {
