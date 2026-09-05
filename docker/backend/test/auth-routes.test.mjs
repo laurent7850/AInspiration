@@ -12,7 +12,7 @@
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -47,9 +47,11 @@ const PUBLIC = new Set([
   // x-webhook-secret header, which is exactly the contract the private test checks.
 ]);
 
-// Every `app.<method>('/api/...'` in server.js. The catch-alls (`*`) are the SPA.
+// Every `app.<method>('/api/...'` in server.js and routes/*.js (split of
+// 2026-09-05). The catch-alls (`*`) are the SPA.
 function discoverRoutes() {
-  const src = readFileSync(SERVER, 'utf8');
+  const files = [SERVER, ...readdirSync(path.join(here, '..', 'routes')).filter((f) => f.endsWith('.js')).map((f) => path.join(here, '..', 'routes', f))];
+  const src = files.map((f) => readFileSync(f, 'utf8')).join(String.fromCharCode(10));
   const re = /^app\.(get|post|put|patch|delete)\('([^']+)'/gm;
   const routes = [];
   let m;

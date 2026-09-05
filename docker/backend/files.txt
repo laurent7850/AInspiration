@@ -1,0 +1,15 @@
+# Backend files the production container downloads from GitHub (main) at boot.
+# One path per line, relative to docker/backend/. Read by the `web` service
+# command in /docker/ainspiration/docker-compose.yml on the VPS.
+# KEEP IN SYNC when a backend file is added — a missing file crashes the boot.
+server.js
+crypto.js
+linkedin.js
+content-generator.js
+routes/auth.js
+routes/blog.js
+routes/crm.js
+routes/newsletter.js
+routes/webhooks.js
+routes/linkedin.js
+routes/seo.js
