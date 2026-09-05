@@ -54,7 +54,6 @@
     "title": "Bespaar 10 uur per week dankzij AI",
     "subtitle": "Sluit u aan bij de KMO's die repetitieve taken automatiseren en hun omzet verhogen met onze AI-oplossingen — geen technische kennis vereist.",
     "ctaSubtext": "Resultaten in 24u — Geen verplichting",
-    "caseStudiesSubtext": "+50 KMO's begeleid",
     "imageAlt": "Artificiële Intelligentie in het bedrijfsleven",
     "features": {
       "simple": "Operationeel in 48u",
@@ -211,5 +210,16 @@
     "privacyLink": "privacybeleid",
     "note": "Geen nieuwsbrief zonder uw toestemming; u kunt zich altijd uitschrijven.",
     "required": "Vink het toestemmingsvakje aan om uw aanvraag te verzenden."
+  },
+  "showcase": {
+    "eyebrow": "Realisaties",
+    "title": "Wat we hebben gebouwd",
+    "subtitle": "Vier automatiseringen en toepassingen die vandaag in gebruik zijn, en wat ze veranderd hebben. Geen scenario's hier: opgeleverde projecten.",
+    "link": "Bekijk alle zestien realisaties"
+  },
+  "offers": {
+    "eyebrow": "Aanbod",
+    "title": "Drie manieren om te starten, elk met een prijs",
+    "subtitle": "De audit is gratis. Het Express Pack automatiseert een eerste taak tegen een vaste prijs. Het abonnement houdt uw workflows draaiend en laat ze evolueren."
   }
 }

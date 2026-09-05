@@ -1,32 +1,37 @@
 import { lazy, Suspense } from 'react';
 import SEOHead from '../components/SEOHead';
 import Hero from '../components/Hero';
-import {
-  FeaturesSkeleton,
-  TestimonialsSkeleton,
-  CardSkeleton
-} from '../components/ui/Skeleton';
+import { CardSkeleton } from '../components/ui/Skeleton';
 import { getOrganizationSchema, getFAQSchema } from '../config/seoConfig';
 
-const SocialProof = lazy(() => import('../components/SocialProof'));
-const DarwinQuote = lazy(() => import('../components/DarwinQuote'));
-const SEOIntro = lazy(() => import('../components/SEOIntro'));
-const Features = lazy(() => import('../components/Features'));
-const Testimonials = lazy(() => import('../components/Testimonials'));
-const FAQ = lazy(() => import('../components/FAQ'));
+/**
+ * Homepage — six screens, one thread (redesign of 2026-09-05).
+ *
+ *   Hero (promise + audit CTA)
+ *   → four real builds (the proof, was buried in the menu)
+ *   → three offers with prices (the anchor the page never had)
+ *   → how it works (the four audit steps)
+ *   → FAQ
+ *   → final CTA
+ *
+ * Removed on purpose: the "Fonctionnalités" SaaS-style feature grid (this is a
+ * services company, not a software product), the Darwin quote and the 400-word
+ * SEO block (filler the visitor had to scroll through; crawlers still get the
+ * server-injected copy), and the self-declared "social proof" bar.
+ */
+const RealisationsShowcase = lazy(() => import('../components/RealisationsShowcase'));
+const Offers = lazy(() => import('../components/Offers'));
 const AuditSection = lazy(() => import('../components/AuditSection'));
+const FAQ = lazy(() => import('../components/FAQ'));
+const Testimonials = lazy(() => import('../components/Testimonials'));
 
-// Skeleton pour la section Audit
-const AuditSkeleton = () => (
+const SectionSkeleton = () => (
   <section className="py-16 bg-canvas">
-    <div className="container mx-auto px-4">
-      <div className="max-w-3xl mx-auto text-center">
-        <div className="animate-pulse">
-          <div className="h-8 bg-zinc-200 rounded w-3/4 mx-auto mb-4"></div>
-          <div className="h-4 bg-zinc-200 rounded w-full mb-2"></div>
-          <div className="h-4 bg-zinc-200 rounded w-2/3 mx-auto mb-8"></div>
-          <div className="h-12 bg-zinc-300/60 rounded-lg w-48 mx-auto"></div>
-        </div>
+    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        {[0, 1, 2, 3].map((i) => (
+          <CardSkeleton key={i} />
+        ))}
       </div>
     </div>
   </section>
@@ -48,47 +53,34 @@ const combinedSchema = [
 export default function HomePage() {
   return (
     <main>
-      <SEOHead
-        includeOrganizationSchema={true}
-        schema={combinedSchema}
-      />
+      <SEOHead includeOrganizationSchema={true} schema={combinedSchema} />
 
-      {/* Hero Section - chargement direct, pas de lazy (LCP critique) */}
+      {/* Hero — eager: LCP critical */}
       <Hero />
 
-      {/* Social Proof Bar */}
+      {/* 2. Proof: four real builds */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <RealisationsShowcase />
+      </Suspense>
+
+      {/* 3. Offers with prices */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <Offers />
+      </Suspense>
+
+      {/* 4. How it works — the four audit steps + CTA */}
       <Suspense fallback={null}>
-        <SocialProof />
+        <AuditSection />
       </Suspense>
 
-      {/* Darwin Quote */}
+      {/* 5. What it changes — illustrative scenarios, labelled as such */}
       <Suspense fallback={null}>
-        <DarwinQuote />
-      </Suspense>
-
-      {/* SEO Intro Section */}
-      <Suspense fallback={null}>
-        <SEOIntro />
-      </Suspense>
-
-      {/* Features Section */}
-      <Suspense fallback={<FeaturesSkeleton />}>
-        <Features />
-      </Suspense>
-
-      {/* Testimonials Section */}
-      <Suspense fallback={<TestimonialsSkeleton />}>
         <Testimonials />
       </Suspense>
 
-      {/* FAQ Section */}
+      {/* 6. FAQ */}
       <Suspense fallback={null}>
         <FAQ />
-      </Suspense>
-
-      {/* Audit CTA Section */}
-      <Suspense fallback={<AuditSkeleton />}>
-        <AuditSection />
       </Suspense>
     </main>
   );

@@ -151,13 +151,23 @@
     "placeholder": "Your email address",
     "subscribe": "Subscribe",
     "subscribing": "Subscribing...",
-    "success": "Thank you for subscribing!",
+    "success": "Thank you! A confirmation email is on its way: click the link to activate your subscription.",
     "privacy": "We respect your privacy and never share your data. Easy unsubscribe at any time.",
     "dismiss": "No thanks",
     "error": {
       "invalidEmail": "Please enter a valid email address.",
       "general": "An error occurred. Please try again.",
       "rateLimit": "Too many requests. Please wait a minute before trying again."
+    },
+    "close": "Close",
+    "confirmPage": {
+      "seoTitle": "Newsletter subscription | AInspiration",
+      "seoDescription": "Confirmation of your subscription to the AInspiration newsletter.",
+      "okTitle": "Subscription confirmed",
+      "okBody": "Thank you! You will now receive the AInspiration newsletter: AI for SMEs, automations, field notes. Every email carries an unsubscribe link.",
+      "invalidTitle": "Invalid or already used link",
+      "invalidBody": "This confirmation link is no longer valid. If you still want the newsletter, subscribe again from the site: a new link will be sent to you.",
+      "back": "Back to the homepage"
     }
   }
 }

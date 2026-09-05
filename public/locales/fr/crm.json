@@ -505,31 +505,6 @@
         }
       ]
     },
-    "testimonials": {
-      "badge": "Témoignages",
-      "sectionTitle": "Ce que nos clients disent",
-      "sectionDescription": "Découvrez comment notre CRM a transformé l'activité de nos clients",
-      "items": [
-        {
-          "quote": "Le CRM d'AInspiration a révolutionné notre approche commerciale. Nos équipes sont plus réactives et notre taux de conversion a augmenté de 32% en seulement 3 mois.",
-          "name": "Marie Dupont",
-          "position": "Directrice Commerciale",
-          "company": "TechSolutions"
-        },
-        {
-          "quote": "L'implémentation a été rapide et l'accompagnement exceptionnel. Notre retour sur investissement a été atteint en moins de 6 mois grâce à l'augmentation des ventes et l'optimisation de nos processus.",
-          "name": "Thomas Lefebvre",
-          "position": "CEO",
-          "company": "GrowthMarketing"
-        },
-        {
-          "quote": "La vue à 360° de nos clients nous permet enfin d'offrir une expérience véritablement personnalisée à chacun de nos 10 000+ clients. Un outil indispensable pour notre croissance.",
-          "name": "Sophie Moreau",
-          "position": "Responsable Relation Client",
-          "company": "EleganCE"
-        }
-      ]
-    },
     "pricing": {
       "badge": "Tarification",
       "sectionTitle": "Des forfaits adaptés à chaque besoin",

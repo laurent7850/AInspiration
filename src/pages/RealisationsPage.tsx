@@ -26,6 +26,7 @@ const isCategory = (value: string | null): value is RealisationCategory =>
  */
 const RealisationsPage: React.FC = () => {
   const { t } = useTranslation('realisations');
+  const { t: tc } = useTranslation('caseStudies');
   const { localizedPath } = useLocalizedPath();
   const [searchParams] = useSearchParams();
 
@@ -156,6 +157,53 @@ const RealisationsPage: React.FC = () => {
               ))}
             </ul>
           )}
+        </div>
+      </section>
+
+      {/* Scenarios — the former /etudes-de-cas page, merged here on 2026-09-05.
+          Explicitly illustrative (no real client behind them), placed after
+          the real builds so the proof comes before the projection. */}
+      <section className="bg-canvas py-16 lg:py-20" aria-labelledby="scenarios-title">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mb-10">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-secondary mb-3">{tc('labels.scenario')}</p>
+            <h2 id="scenarios-title" className="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.1] mb-4">
+              {tc('pageTitle')}
+            </h2>
+            <p className="text-lg text-secondary leading-relaxed">{tc('pageSubtitle')}</p>
+          </div>
+          <ul className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+            {(['study1', 'study2', 'study3'] as const).map((study, index) => (
+              <Reveal as="li" key={study} delay={index * 90} className="h-full">
+                <article className="flex h-full flex-col rounded-card bg-surface p-8 shadow-lift">
+                  <span className="inline-flex self-start rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent-dark mb-4">
+                    {tc(`${study}.industry`)}
+                  </span>
+                  <h3 className="text-lg font-semibold tracking-tight text-ink mb-4">{tc(`${study}.title`)}</h3>
+                  <dl className="space-y-4 text-sm leading-relaxed">
+                    <div>
+                      <dt className="font-medium text-ink">{tc('labels.challenge')}</dt>
+                      <dd className="text-secondary">{tc(`${study}.challenge`)}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-medium text-ink">{tc('labels.solution')}</dt>
+                      <dd className="text-secondary">{tc(`${study}.solution`)}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-medium text-ink">{tc('labels.results')}</dt>
+                      <dd>
+                        <ul className="mt-1 space-y-1 text-secondary">
+                          {(['result1', 'result2', 'result3', 'result4'] as const).map((r) => (
+                            <li key={r}>{tc(`${study}.${r}`)}</li>
+                          ))}
+                        </ul>
+                      </dd>
+                    </div>
+                  </dl>
+                </article>
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
 

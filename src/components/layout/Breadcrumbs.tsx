@@ -34,7 +34,6 @@ const routeMap: Record<string, string> = {
   'blog': 'Blog',
   'audio': 'Audio IA',
   'video': 'Vidéo IA',
-  'etudes-de-cas': 'Études de cas',
   'a-propos': 'À propos',
   'contact': 'Contact',
   'crm': 'CRM intelligent',

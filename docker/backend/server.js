@@ -692,10 +692,10 @@ const schemas = {
     language: z.enum(['fr', 'en', 'nl', 'de']).optional(),
     source: zOptText(50),
   }),
+  // SECURITY: token only. Accepting a bare email let anyone unsubscribe anyone.
   newsletterUnsubscribe: z.object({
-    email: zEmail.optional(),
-    token: zOptText(200),
-  }).refine(d => d.email || d.token, { message: 'Email or token required' }),
+    token: zShortText(200).refine(s => s.length >= 20, { message: 'Token required' }),
+  }),
   newsletter: z.object({
     subject: zOptText(300),
     content: zOptText(100000),
@@ -1878,44 +1878,126 @@ app.get('/api/newsletter-subscribers/by-token', async (req, res) => {
   }
 });
 
+// Double opt-in (RGPD art. 7). A submitted address is stored as 'pending' with
+// a one-time confirm_token; the n8n workflow "Newsletter double opt-in"
+// (Mi8VlalnAIyx6bre) emails the confirmation link. Only the GET /confirm hit
+// flips the row to 'subscribed'. Unconfirmed rows are purged after 30 days.
+//
+// SECURITY: the response is the same whatever the state of the address
+// (new, pending, already subscribed) — no enumeration, no row returned.
+const PENDING_TTL_DAYS = 30;
+
+async function sendNewsletterConfirmation(token) {
+  try {
+    const r = await fetch(`${N8N_BASE}/ainspiration-newsletter-confirm`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token }),
+    });
+    if (!r.ok) console.error('[newsletter] confirmation webhook responded', r.status);
+  } catch (e) {
+    console.error('[newsletter] confirmation webhook failed:', e.message);
+  }
+}
+
 app.post('/api/newsletter-subscribers', formLimiter, rejectHoneypot, validateBody(schemas.newsletterSubscriber), async (req, res) => {
+  const generic = { success: true, pending: true };
   try {
     const { email, first_name, last_name, language, source } = req.body;
-    const normalizedEmail = email; // already lowercased+trimmed by zod
-    const existing = await pool.query('SELECT * FROM newsletter_subscribers WHERE email = $1', [normalizedEmail]);
-    if (existing.rows.length > 0) {
-      if (existing.rows[0].status === 'unsubscribed') {
-        const result = await pool.query(
-          `UPDATE newsletter_subscribers SET status='subscribed', subscribed_at=NOW(), unsubscribed_at=NULL, source=$1 WHERE email=$2 RETURNING *`,
-          [source || 'website', normalizedEmail]
-        );
-        return res.json({ ...result.rows[0], status: 'active' });
-      }
-      const s = existing.rows[0];
-      return res.json({ ...s, status: s.status === 'subscribed' ? 'active' : s.status });
+    const lang = ['fr', 'en', 'nl'].includes(language) ? language : 'fr';
+    const existing = await pool.query('SELECT id, status FROM newsletter_subscribers WHERE email = $1', [email]);
+    const token = uuidv4();
+
+    if (existing.rows.length === 0) {
+      await pool.query(
+        `INSERT INTO newsletter_subscribers (id, email, first_name, last_name, language, status, source, confirm_token, confirm_sent_at, consent_ip)
+         VALUES ($1,$2,$3,$4,$5,'pending',$6,$7,NOW(),$8)`,
+        [uuidv4(), email, first_name || null, last_name || null, lang, source || 'website', token, req.ip || null]
+      );
+      sendNewsletterConfirmation(token);
+    } else if (existing.rows[0].status === 'pending' || existing.rows[0].status === 'unsubscribed') {
+      // Re-send a fresh link; a previous unsubscribe means consent must be re-given.
+      await pool.query(
+        `UPDATE newsletter_subscribers
+         SET status='pending', confirm_token=$1, confirm_sent_at=NOW(), consent_ip=$2, language=$3, source=$4
+         WHERE id=$5`,
+        [token, req.ip || null, lang, source || 'website', existing.rows[0].id]
+      );
+      sendNewsletterConfirmation(token);
     }
-    const id = uuidv4();
-    const result = await pool.query(
-      `INSERT INTO newsletter_subscribers (id, email, first_name, last_name, language, status, source, subscribed_at)
-       VALUES ($1,$2,$3,$4,$5,'subscribed',$6,NOW()) RETURNING *`,
-      [id, normalizedEmail, first_name, last_name, language || 'fr', source || 'website']
-    );
-    res.status(201).json({ ...result.rows[0], status: 'active' });
+    // 'subscribed' / 'bounced': nothing to do, same answer.
+    res.status(201).json(generic);
   } catch (error) {
     console.error('Error creating subscriber:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
 
+// Called by the n8n confirmation workflow. Public, but only a valid pending
+// token gets an answer — it is the server that hands n8n the address to write
+// to, never the other way round.
+app.get('/api/newsletter-subscribers/pending', async (req, res) => {
+  try {
+    const { token } = req.query;
+    if (!token || typeof token !== 'string' || token.length > 100) return res.status(400).json({ error: 'Token required' });
+    const r = await pool.query(
+      `SELECT email, language, confirm_token FROM newsletter_subscribers
+       WHERE confirm_token = $1 AND status = 'pending' AND confirm_sent_at > NOW() - INTERVAL '${PENDING_TTL_DAYS} days'`,
+      [token]
+    );
+    if (r.rows.length === 0) return res.status(404).json({ error: 'Not found' });
+    res.json(r.rows[0]);
+  } catch (error) {
+    console.error('Error reading pending subscriber:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// The link in the confirmation email. Redirects to the localized confirmation page.
+app.get('/api/newsletter-subscribers/confirm', async (req, res) => {
+  const { token } = req.query;
+  let status = 'invalid';
+  let lang = 'fr';
+  try {
+    if (token && typeof token === 'string' && token.length <= 100) {
+      const r = await pool.query(
+        `UPDATE newsletter_subscribers
+         SET status='subscribed', subscribed_at=NOW(), confirmed_at=NOW(), confirm_token=NULL, unsubscribed_at=NULL
+         WHERE confirm_token = $1 AND status = 'pending'
+         RETURNING language`,
+        [token]
+      );
+      if (r.rows.length > 0) {
+        status = 'ok';
+        if (['fr', 'en', 'nl'].includes(r.rows[0].language)) lang = r.rows[0].language;
+      }
+    }
+  } catch (error) {
+    console.error('Error confirming subscriber:', error);
+    status = 'error';
+  }
+  res.redirect(302, `${langPrefix(lang)}/newsletter-confirmee?status=${status}`);
+});
+
+// Unconfirmed addresses are personal data kept without consent: purge them.
+async function purgeStalePendingSubscribers() {
+  try {
+    const r = await pool.query(
+      `DELETE FROM newsletter_subscribers WHERE status = 'pending' AND confirm_sent_at < NOW() - INTERVAL '${PENDING_TTL_DAYS} days'`
+    );
+    if (r.rowCount) console.log(`[newsletter] purged ${r.rowCount} unconfirmed subscriber(s)`);
+  } catch (e) { /* table may predate migration 004 — logged on next run */ }
+}
+setTimeout(purgeStalePendingSubscribers, 60 * 1000);
+setInterval(purgeStalePendingSubscribers, 24 * 60 * 60 * 1000);
+
 app.post('/api/newsletter-subscribers/unsubscribe', validateBody(schemas.newsletterUnsubscribe), async (req, res) => {
   try {
-    const { email, token } = req.body;
-    let query = `UPDATE newsletter_subscribers SET status='unsubscribed', unsubscribed_at=NOW() WHERE `;
-    const params = [];
-    if (token) { query += 'unsubscribe_token = $1'; params.push(token); }
-    else { query += 'email = $1'; params.push(email); }
-    query += ' RETURNING *';
-    const result = await pool.query(query, params);
+    const { token } = req.body;
+    const result = await pool.query(
+      `UPDATE newsletter_subscribers SET status='unsubscribed', unsubscribed_at=NOW() WHERE unsubscribe_token = $1 RETURNING id`,
+      [token]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Subscriber not found' });
     res.json({ success: true, message: 'Unsubscribed successfully' });
   } catch (error) {
@@ -2499,7 +2581,7 @@ const routeSEO = {
   '/blog': { title: 'Blog IA pour PME | Actualit\u00e9s et Guides | AInspiration', description: 'Articles, guides et actualit\u00e9s sur l\'intelligence artificielle pour PME et ind\u00e9pendants belges.' },
   '/solutions': { title: 'Solutions IA pour PME | AInspiration', description: 'D\u00e9couvrez nos solutions IA compl\u00e8tes pour PME : audit, automatisation, chatbots, CRM intelligent, formation.' },
   '/a-propos': { title: '\u00c0 Propos d\'AInspiration | \u00c9quipe et Mission', description: 'AInspiration accompagne les PME belges dans leur transition IA. D\u00e9couvrez notre \u00e9quipe, notre mission et nos valeurs.' },
-  '/etudes-de-cas': { title: '\u00c9tudes de Cas IA | R\u00e9sultats Clients | AInspiration', description: 'D\u00e9couvrez comment nos clients PME ont transform\u00e9 leur activit\u00e9 gr\u00e2ce \u00e0 l\'intelligence artificielle.' },
+  '/newsletter-confirmee': { title: 'Newsletter | AInspiration', description: 'Confirmation de votre inscription \u00e0 la newsletter AInspiration.' },
   '/realisations': { title: 'R\u00e9alisations | Ce que nous avons construit | AInspiration', description: 'Seize automatisations et applications en service : facturation, comptabilit\u00e9, contenu, conformit\u00e9. Ce qui a \u00e9t\u00e9 construit, pour qui, et ce que \u00e7a a chang\u00e9.' },
   '/creation-ia': { title: 'Cr\u00e9ation de Contenu IA | AInspiration', description: 'G\u00e9n\u00e9rez du contenu professionnel avec l\'IA : articles, visuels, newsletters, posts r\u00e9seaux sociaux.' },
   '/analyse-ia': { title: 'Analyse de Donn\u00e9es IA | Tableaux de Bord Intelligents | AInspiration', description: 'Exploitez vos donn\u00e9es avec l\'IA. Tableaux de bord intelligents, pr\u00e9dictions de ventes, segmentation clients.' },
@@ -2524,8 +2606,8 @@ const routeSEO = {
 // URL, which Google reads as an unbounded supply of duplicate homepages.
 const KNOWN_ROUTES = new Set([
   '/', '/login', '/audit', '/analyse-ia', '/transformation', '/creation-ia', '/audio', '/video',
-  '/recommandations', '/dashboard', '/solutions', '/produits', '/etudes-de-cas', '/a-propos',
-  '/realisations',
+  '/recommandations', '/dashboard', '/solutions', '/produits', '/a-propos',
+  '/realisations', '/newsletter-confirmee',
   '/contact', '/prompts', '/automatisation', '/assistants', '/conseil', '/formation',
   '/accompagnement', '/blog', '/crm', '/crm-dashboard', '/privacy', '/mentions-legales',
   '/cgv', '/cgu', '/unsubscribe', '/linkedin', '/newsletter-admin',
@@ -2774,7 +2856,6 @@ const SERVICE_NS = {
   '/accompagnement': 'support',
   '/prompts': 'prompts',
   '/a-propos': 'about',
-  '/etudes-de-cas': 'caseStudies',
   '/realisations': 'realisations',
   '/analyse-ia': 'analysis',
   '/transformation': 'transformation',
@@ -2878,6 +2959,34 @@ function getRouteSeo(lang, rest) {
   return { ...(base || {}), title: localized.title, description: localized.description, ...(lang !== 'fr' ? { h1: undefined } : {}) };
 }
 
+// Full body of a réalisation detail page for crawlers — the same fields the
+// React page renders, read from the shipped locale JSON. Without this the raw
+// HTML of a proof page held ~380 characters.
+function localizedRealisationMain(lang, slug) {
+  const data = readLocaleNs(lang, 'realisations') || readLocaleNs('fr', 'realisations');
+  const item = data && data.items && data.items[slug];
+  if (!item) return null;
+  const labels = (data && data.detail) || {};
+  const block = (label, value) => {
+    if (!value) return '';
+    const heading = label ? `<h2>${escHtml(label)}</h2>` : '';
+    if (Array.isArray(value)) return heading + '<ul>' + value.filter((v) => typeof v === 'string').map((v) => `<li>${escHtml(v)}</li>`).join('') + '</ul>';
+    if (typeof value === 'string') return heading + `<p>${escHtml(value)}</p>`;
+    if (typeof value === 'object') return heading + Object.values(value).filter((v) => typeof v === 'string').map((v) => `<p>${escHtml(v)}</p>`).join('');
+    return '';
+  };
+  return `<article><h1>${escHtml(item.title)}</h1>`
+    + (item.summary ? `<p>${escHtml(item.summary)}</p>` : '')
+    + (item.sector ? `<p>${escHtml(labels.sector || 'Secteur')} : ${escHtml(item.sector)}${item.client ? ' — ' + escHtml(item.client) : ''}</p>` : '')
+    + block(labels.context, item.context)
+    + block(labels.problem, item.problem)
+    + block(labels.solution, item.solution)
+    + block(labels.results, item.results)
+    + block(labels.howItWorks, item.howItWorks)
+    + block(labels.transposition, item.transposition)
+    + `</article><p><a href="${langPrefix(lang)}/realisations">${escHtml(labels.backToIndex || 'Réalisations')}</a></p>`;
+}
+
 // hreflang for the static public routes (blog posts have their own, built from
 // the translated rows). x-default is French, the site's primary language.
 function hreflangLinks(rest) {
@@ -2934,6 +3043,11 @@ app.get('*', async (req, res) => {
   try {
     const routePath = req.path.replace(/\/+$/, '') || '/';
     const { lang, rest } = splitLang(routePath);
+
+    // Études de cas merged into Réalisations (2026-09-05): keep the indexed URL alive.
+    if (rest === '/etudes-de-cas') {
+      return res.redirect(301, `${langPrefix(lang)}/realisations`);
+    }
     const canonical = SITE_URL + (routePath === '/' ? '/' : routePath);
 
     // Resolve SEO: static route map (per language) first, then a dynamic
@@ -3068,6 +3182,9 @@ app.get('*', async (req, res) => {
         + renderPostList(posts)
         + `</main>`
       );
+    } else if (/^\/realisations\/[a-z0-9-]+$/i.test(rest)) {
+      const body = localizedRealisationMain(lang, rest.slice('/realisations/'.length));
+      if (body) out = out.replace(/<main>[\s\S]*?<\/main>/, `<main>${body}${serviceLinks(lang)}</main>`);
     } else if (rest === '/') {
       const posts = await getRecentPosts(lang, 8);
       if (lang !== 'fr') {

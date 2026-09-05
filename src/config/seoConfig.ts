@@ -143,23 +143,6 @@ export const seoPages: Record<string, SEOPageConfig> = {
       keywords: 'AI producten, AI prijzen, kunstmatige intelligentie aanbiedingen, AI oplossingen prijzen'
     }
   },
-  '/etudes-de-cas': {
-    fr: {
-      title: 'Études de Cas IA | Success Stories | AInspiration',
-      description: 'Découvrez nos études de cas clients. Comment l\'IA a transformé des entreprises comme la vôtre avec des résultats concrets et mesurables.',
-      keywords: 'études de cas IA, success stories, témoignages clients, résultats IA, exemples transformation'
-    },
-    en: {
-      title: 'AI Case Studies | Success Stories | AInspiration',
-      description: 'Discover our client case studies. How AI has transformed businesses like yours with concrete and measurable results.',
-      keywords: 'AI case studies, success stories, client testimonials, AI results, transformation examples'
-    },
-    nl: {
-      title: 'AI Casestudies | Succesverhalen | AInspiration',
-      description: 'Ontdek onze klantcasestudies. Hoe AI bedrijven zoals het uwe heeft getransformeerd met concrete en meetbare resultaten.',
-      keywords: 'AI casestudies, succesverhalen, klanttestimonials, AI resultaten, transformatie voorbeelden'
-    }
-  },
   '/realisations': {
     fr: {
       title: 'Réalisations | Ce que nous avons construit | AInspiration',
@@ -816,7 +799,6 @@ export const getBreadcrumbSchema = (path: string, lang: SupportedLanguage = 'fr'
     'creativite': { fr: 'Créativité', en: 'Creativity', nl: 'Creativiteit' },
     'crm': { fr: 'CRM', en: 'CRM', nl: 'CRM' },
     'produits': { fr: 'Produits', en: 'Products', nl: 'Producten' },
-    'etudes-de-cas': { fr: 'Études de cas', en: 'Case Studies', nl: 'Casestudies' },
     'realisations': { fr: 'Réalisations', en: 'Our Work', nl: 'Realisaties' },
     'conseil': { fr: 'Conseil', en: 'Consulting', nl: 'Advies' },
     'formation': { fr: 'Formation', en: 'Training', nl: 'Opleiding' },

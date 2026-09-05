@@ -85,11 +85,7 @@ const routes: RouteConfig[] = [
     component: lazy(() => import('../pages/ProductsPage')),
     exact: true
   },
-  {
-    path: "/etudes-de-cas",
-    component: lazy(() => import('../pages/CaseStudiesPage')),
-    exact: true
-  },
+  // NOTE: /etudes-de-cas → /realisations redirect is in App.tsx (merged 2026-09-05)
   {
     path: "/realisations",
     component: lazy(() => import('../pages/RealisationsPage')),
@@ -162,6 +158,13 @@ const routes: RouteConfig[] = [
   {
     path: "/blog/:slug",
     component: lazy(() => import('../pages/BlogPostPage')),
+    exact: true
+  },
+  {
+    // Landing of the newsletter confirmation link (server redirects here).
+    // Also listed in KNOWN_ROUTES (docker/backend/server.js).
+    path: "/newsletter-confirmee",
+    component: lazy(() => import('../pages/NewsletterConfirmPage')),
     exact: true
   },
   {
@@ -316,10 +319,6 @@ export const menuItems: MenuSection[] = [
       { label: 'Vidéo IA', path: '/video' },
       { label: 'Solution CRM', path: '/crm' }
     ]
-  },
-  {
-    label: 'Études de cas',
-    path: '/etudes-de-cas'
   },
   {
     label: 'Réalisations',

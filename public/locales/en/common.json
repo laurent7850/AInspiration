@@ -54,7 +54,6 @@
     "title": "Save 10 Hours a Week with AI",
     "subtitle": "Join the SMEs automating repetitive tasks and boosting revenue with our AI solutions — no technical skills required.",
     "ctaSubtext": "Results in 24h — No commitment",
-    "caseStudiesSubtext": "+50 SMEs supported",
     "imageAlt": "Artificial Intelligence in business",
     "features": {
       "simple": "Up and running in 48h",
@@ -211,5 +210,16 @@
     "privacyLink": "privacy policy",
     "note": "No newsletter without your consent; unsubscribe at any time.",
     "required": "Please tick the consent box to send your request."
+  },
+  "showcase": {
+    "eyebrow": "Our work",
+    "title": "What we have built",
+    "subtitle": "Four automations and applications in service today, and what they changed. No scenarios here: delivered projects.",
+    "link": "See all sixteen projects"
+  },
+  "offers": {
+    "eyebrow": "Offers",
+    "title": "Three ways to start, each with a price",
+    "subtitle": "The audit is free. The Express Pack automates a first task at a fixed price. The subscription keeps your workflows running and evolving."
   }
 }

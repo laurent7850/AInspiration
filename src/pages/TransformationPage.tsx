@@ -325,7 +325,7 @@ const TransformationPage: React.FC = () => {
           { path: '/analyse-ia', title: 'Analyse IA', description: 'Exploitez vos données avec l\'IA' },
           { path: '/conseil', title: 'Conseil IA', description: 'Stratégie et accompagnement personnalisé' },
           { path: '/formation', title: 'Formation IA', description: 'Formez vos équipes aux outils IA' },
-          { path: '/etudes-de-cas', title: 'Études de cas', description: 'Résultats concrets de nos clients' },
+          { path: '/realisations', title: 'Réalisations', description: 'Automatisations et applications en service' },
         ]} />
       </div>
 

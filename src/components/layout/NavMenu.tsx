@@ -56,10 +56,6 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
       items: serviceCategories
     },
     {
-      labelKey: 'nav.caseStudies',
-      path: '/etudes-de-cas'
-    },
-    {
       labelKey: 'nav.realisations',
       path: '/realisations'
     },

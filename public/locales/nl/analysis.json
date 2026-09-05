@@ -161,8 +161,6 @@
   },
   "stats": {
     "accuracy": "99,9% nauwkeurigheid",
-    "processing": "Realtime verwerking",
-    "improvement": "45% gemiddelde verbetering",
-    "satisfaction": "98% tevreden klanten"
+    "processing": "Realtime verwerking"
   }
 }

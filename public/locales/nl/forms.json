@@ -151,13 +151,23 @@
     "placeholder": "Uw e-mailadres",
     "subscribe": "Inschrijven",
     "subscribing": "Inschrijven...",
-    "success": "Bedankt voor uw inschrijving!",
+    "success": "Bedankt! Er is een bevestigingsmail onderweg: klik op de link om uw inschrijving te activeren.",
     "privacy": "We respecteren uw privacy en delen uw gegevens nooit. Eenvoudig uitschrijven op elk moment.",
     "dismiss": "Nee bedankt",
     "error": {
       "invalidEmail": "Voer een geldig e-mailadres in.",
       "general": "Er is een fout opgetreden. Probeer het opnieuw.",
       "rateLimit": "Te veel verzoeken. Wacht een minuut voordat u het opnieuw probeert."
+    },
+    "close": "Sluiten",
+    "confirmPage": {
+      "seoTitle": "Inschrijving nieuwsbrief | AInspiration",
+      "seoDescription": "Bevestiging van uw inschrijving op de AInspiration-nieuwsbrief.",
+      "okTitle": "Inschrijving bevestigd",
+      "okBody": "Bedankt! U ontvangt voortaan de AInspiration-nieuwsbrief: AI voor kmo's, automatiseringen, praktijkervaringen. Elke e-mail bevat een uitschrijflink.",
+      "invalidTitle": "Ongeldige of al gebruikte link",
+      "invalidBody": "Deze bevestigingslink is niet meer geldig. Wilt u de nieuwsbrief nog steeds ontvangen? Schrijf u opnieuw in via de site: u krijgt een nieuwe link.",
+      "back": "Terug naar de startpagina"
     }
   }
 }

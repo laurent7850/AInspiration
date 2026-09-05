@@ -161,8 +161,6 @@
   },
   "stats": {
     "accuracy": "99.9% de précision",
-    "processing": "Traitement en temps réel",
-    "improvement": "45% d'amélioration moyenne",
-    "satisfaction": "98% de clients satisfaits"
+    "processing": "Traitement en temps réel"
   }
 }

@@ -505,31 +505,6 @@
         }
       ]
     },
-    "testimonials": {
-      "badge": "Getuigenissen",
-      "sectionTitle": "Wat onze klanten zeggen",
-      "sectionDescription": "Ontdek hoe onze CRM de activiteit van onze klanten heeft getransformeerd",
-      "items": [
-        {
-          "quote": "De CRM van AInspiration heeft onze commerciële aanpak gerevolutioneerd. Onze teams zijn reactiever en onze conversieratio is in slechts 3 maanden met 32% gestegen.",
-          "name": "Marie Dupont",
-          "position": "Commercieel Directeur",
-          "company": "TechSolutions"
-        },
-        {
-          "quote": "De implementatie verliep snel en de begeleiding was uitzonderlijk. Onze return on investment was bereikt in minder dan 6 maanden dankzij hogere verkopen en procesoptimalisatie.",
-          "name": "Thomas Lefebvre",
-          "position": "CEO",
-          "company": "GrowthMarketing"
-        },
-        {
-          "quote": "Het 360°-beeld van onze klanten stelt ons eindelijk in staat om elk van onze 10.000+ klanten een echt gepersonaliseerde ervaring te bieden. Een onmisbaar hulpmiddel voor onze groei.",
-          "name": "Sophie Moreau",
-          "position": "Verantwoordelijke Klantrelaties",
-          "company": "EleganCE"
-        }
-      ]
-    },
     "pricing": {
       "badge": "Prijzen",
       "sectionTitle": "Formules afgestemd op elke behoefte",

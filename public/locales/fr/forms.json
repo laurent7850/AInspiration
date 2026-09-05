@@ -151,13 +151,23 @@
     "placeholder": "Votre adresse email",
     "subscribe": "S'inscrire",
     "subscribing": "Inscription...",
-    "success": "Merci pour votre inscription!",
+    "success": "Merci ! Un email de confirmation vient de vous être envoyé : cliquez sur le lien pour activer votre inscription.",
     "privacy": "Nous respectons votre vie privée et ne partageons jamais vos données. Désinscription facile à tout moment.",
     "dismiss": "Non merci",
     "error": {
       "invalidEmail": "Veuillez entrer une adresse email valide.",
       "general": "Une erreur est survenue. Veuillez réessayer.",
       "rateLimit": "Trop de demandes. Veuillez patienter une minute avant de réessayer."
+    },
+    "close": "Fermer",
+    "confirmPage": {
+      "seoTitle": "Inscription à la newsletter | AInspiration",
+      "seoDescription": "Confirmation de votre inscription à la newsletter AInspiration.",
+      "okTitle": "Inscription confirmée",
+      "okBody": "Merci ! Vous recevrez désormais la newsletter AInspiration : IA pour les PME, automatisations, retours d'expérience. Chaque email contient un lien de désinscription.",
+      "invalidTitle": "Lien invalide ou déjà utilisé",
+      "invalidBody": "Ce lien de confirmation n'est plus valable. Si vous souhaitez toujours recevoir la newsletter, réinscrivez-vous depuis le site : un nouveau lien vous sera envoyé.",
+      "back": "Retour à l'accueil"
     }
   }
 }

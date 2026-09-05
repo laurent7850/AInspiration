@@ -53,6 +53,8 @@ export default function App() {
             <Route path="/pour-qui-ia" element={<Navigate to="/solutions" replace />} />
             <Route path="/creation-visuelle" element={<Navigate to="/creation-ia" replace />} />
             <Route path="/creativite" element={<Navigate to="/creation-ia" replace />} />
+            {/* Études de cas (three illustrative scenarios) merged into Réalisations */}
+            <Route path="/etudes-de-cas" element={<Navigate to="/realisations" replace />} />
             {/* Default French routes (no prefix) */}
             {routes.map((route) => (
               <Route

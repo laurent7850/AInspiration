@@ -54,7 +54,6 @@
     "title": "Gagnez 10h par semaine grâce à l'IA",
     "subtitle": "Rejoignez les PME qui automatisent leurs tâches répétitives et boostent leur chiffre d'affaires avec nos solutions d'Intelligence Artificielle — sans compétence technique requise.",
     "ctaSubtext": "Résultats en 24h — Sans engagement",
-    "caseStudiesSubtext": "+50 PME accompagnées",
     "imageAlt": "Intelligence Artificielle en entreprise",
     "features": {
       "simple": "Mise en place en 48h",
@@ -211,5 +210,16 @@
     "privacyLink": "politique de confidentialité",
     "note": "Aucune newsletter sans votre accord, désinscription à tout moment.",
     "required": "Merci de cocher la case de consentement pour envoyer votre demande."
+  },
+  "showcase": {
+    "eyebrow": "Réalisations",
+    "title": "Ce que nous avons construit",
+    "subtitle": "Quatre automatisations et applications en service aujourd'hui, avec ce qu'elles ont changé. Pas de scénario ici : des projets livrés.",
+    "link": "Voir les seize réalisations"
+  },
+  "offers": {
+    "eyebrow": "Offres",
+    "title": "Trois façons de commencer, un prix pour chacune",
+    "subtitle": "L'audit est gratuit. Le Pack Express automatise une première tâche à prix fixe. L'abonnement fait tourner et évoluer vos workflows."
   }
 }
