@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useHoneypot } from '../hooks/useHoneypot';
+import ConsentCheckbox from './ui/ConsentCheckbox';
 import { isValidEmail, isValidPhone, checkRateLimit } from '../utils/validation';
 
 // Webhook n8n direct pour le pipeline audit
@@ -79,6 +80,7 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [consent, setConsent] = useState(false);
 
   const [formData, setFormData] = useState<AuditFormData>({
     name: '', email: '', phone: '', company: '',
@@ -169,6 +171,10 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
 
   const handleSubmit = async () => {
     if (!validateStep(step)) return;
+    if (!consent) {
+      setFieldErrors(prev => ({ ...prev, consent: t('consent.required', { ns: 'common' }) }));
+      return;
+    }
 
     if (!checkRateLimit('auditform', 2, 300000)) {
       setError(t('form.errors.rateLimit'));
@@ -239,7 +245,9 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
         timestamp: new Date().toISOString(),
         source: 'audit_form',
         productId: 'audit-ia',
-        website: honeypotValue
+        website: honeypotValue,
+        consent: true,
+        consentAt: new Date().toISOString()
       };
 
       const response = await fetch(AUDIT_WEBHOOK_URL, {
@@ -581,6 +589,13 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
                 <label htmlFor="audit-additional-info" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step4.additionalInfoLabel')}</label>
                 <textarea id="audit-additional-info" name="additionalInfo" className={`${inputClass('additionalInfo')} min-h-[80px] resize-y`} placeholder={t('form.step4.additionalInfoPlaceholder')} value={formData.additionalInfo} onChange={e => updateField('additionalInfo', e.target.value)} rows={3} />
               </div>
+
+              <ConsentCheckbox
+                id="audit-consent"
+                checked={consent}
+                onChange={(v) => { setConsent(v); if (v) setFieldErrors(prev => ({ ...prev, consent: '' })); }}
+                error={fieldErrors.consent || undefined}
+              />
             </div>
           )}
         </div>

@@ -171,7 +171,7 @@ const RealisationsPage: React.FC = () => {
           <ol className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
             {steps.map((step, index) => (
               <Reveal as="li" key={step.title} delay={index * 90}>
-                <span className="block font-display font-light text-3xl text-accent-teal leading-none mb-4">
+                <span className="block font-display font-light text-3xl text-teal-700 leading-none mb-4">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <h3 className="text-lg font-semibold tracking-tight text-ink mb-2">{step.title}</h3>

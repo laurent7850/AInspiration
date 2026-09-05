@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, ArrowRight, Mail, Building2, Phone, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useHoneypot } from '../hooks/useHoneypot';
+import ConsentCheckbox from './ui/ConsentCheckbox';
 import { validateContactForm, checkRateLimit, isValidEmail, isValidPhone } from '../utils/validation';
 
 // Proxy backend — les webhooks n8n sont appelés via le serveur Express
@@ -29,6 +30,7 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [consent, setConsent] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
@@ -134,6 +136,10 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
       setFieldErrors(validation.errors);
       return;
     }
+    if (!consent) {
+      setFieldErrors({ consent: t('consent.required', { ns: 'common' }) });
+      return;
+    }
 
     setIsSubmitting(true);
 
@@ -144,6 +150,8 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
       // Send data to n8n webhook
       const webhookData = {
         website: honeypotValue,
+        consent: true,
+        consentAt: new Date().toISOString(),
         name: validation.sanitizedData.name,
         email: validation.sanitizedData.email,
         company: validation.sanitizedData.company,
@@ -354,7 +362,14 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
               {fieldErrors.message && <p className="text-red-500 text-xs mt-1">{fieldErrors.message}</p>}
             </div>
 
-            <p className="text-xs text-gray-500">* {t('common.required')}</p>
+            <p className="text-xs text-gray-600">* {t('common.required')}</p>
+
+            <ConsentCheckbox
+              id="start-consent"
+              checked={consent}
+              onChange={(v) => { setConsent(v); if (v) setFieldErrors(prev => ({ ...prev, consent: '' })); }}
+              error={fieldErrors.consent || undefined}
+            />
 
             <div className="flex gap-3">
               <button

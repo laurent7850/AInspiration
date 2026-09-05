@@ -3,6 +3,7 @@ import SectionHeader from '../components/ui/SectionHeader';
 import { Mail, Phone, MapPin, MessageSquare, Send } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useHoneypot } from '../hooks/useHoneypot';
+import ConsentCheckbox from '../components/ui/ConsentCheckbox';
 import SEOHead from '../components/SEOHead';
 import { getSEOConfig } from '../config/seoConfig';
 import { validateContactForm, checkRateLimit } from '../utils/validation';
@@ -26,6 +27,7 @@ const ContactPage: React.FC = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [consent, setConsent] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
@@ -61,6 +63,10 @@ const ContactPage: React.FC = () => {
       setFieldErrors(validation.errors);
       return;
     }
+    if (!consent) {
+      setFieldErrors({ consent: t('consent.required', { ns: 'common' }) });
+      return;
+    }
 
     setIsSubmitting(true);
 
@@ -74,7 +80,9 @@ const ContactPage: React.FC = () => {
         message: validation.sanitizedData.message,
         timestamp: new Date().toISOString(),
         source: 'contact_page',
-        website: honeypotValue
+        website: honeypotValue,
+        consent: true,
+        consentAt: new Date().toISOString()
       };
 
       const response = await fetch(CONTACT_WEBHOOK_URL, {
@@ -316,8 +324,15 @@ const ContactPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <p className="text-sm text-gray-500">* {t('common.required')}</p>
+                    <p className="text-sm text-gray-600">* {t('common.required')}</p>
                   </div>
+
+                  <ConsentCheckbox
+                    id="contact-consent"
+                    checked={consent}
+                    onChange={(v) => { setConsent(v); if (v) setFieldErrors(prev => ({ ...prev, consent: '' })); }}
+                    error={fieldErrors.consent || undefined}
+                  />
 
                   <button
                     type="submit"

@@ -34,7 +34,7 @@ export default function AuditSection() {
               key={step.id}
               className="relative bg-white rounded-card p-8 shadow-lift hover:shadow-diffuse transition-all duration-300"
             >
-              <span className="font-display text-3xl font-light text-accent-teal mb-5 block">
+              <span className="font-display text-3xl font-light text-teal-700 mb-5 block">
                 /0{step.id}
               </span>
               <h3 className="text-lg font-semibold text-ink mb-2 tracking-tight">

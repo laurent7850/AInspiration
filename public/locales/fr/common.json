@@ -205,5 +205,11 @@
     "a4": "Absolument. Nous sommes conformes RGPD et toutes les données sont hébergées en Europe.",
     "q5": "Quel type d'entreprise peut bénéficier de vos services ?",
     "a5": "Toute PME peut en bénéficier ! Restaurants, e-commerces, agences marketing, cabinets de conseil, artisans..."
+  },
+  "consent": {
+    "label": "J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la",
+    "privacyLink": "politique de confidentialité",
+    "note": "Aucune newsletter sans votre accord, désinscription à tout moment.",
+    "required": "Merci de cocher la case de consentement pour envoyer votre demande."
   }
 }

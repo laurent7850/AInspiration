@@ -205,5 +205,11 @@
     "a4": "Absolutely. We are GDPR compliant and all data is hosted in Europe.",
     "q5": "What type of business can benefit from your services?",
     "a5": "Any SME can benefit! Restaurants, e-commerce, marketing agencies, consulting firms, craftsmen..."
+  },
+  "consent": {
+    "label": "I agree that my data may be used to process my request, in line with the",
+    "privacyLink": "privacy policy",
+    "note": "No newsletter without your consent; unsubscribe at any time.",
+    "required": "Please tick the consent box to send your request."
   }
 }

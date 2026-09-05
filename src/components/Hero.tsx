@@ -85,7 +85,7 @@ export default function Hero() {
             >
               <span>
                 {t('button.startFreeAudit')}
-                <span className="block text-sm font-normal text-indigo-200 mt-0.5">{t('hero.ctaSubtext')}</span>
+                <span className="block text-sm font-normal text-white/90 mt-0.5">{t('hero.ctaSubtext')}</span>
               </span>
               <span className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors">
                 <ArrowRight className="w-5 h-5" />

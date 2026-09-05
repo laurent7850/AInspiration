@@ -138,6 +138,15 @@ function rejectHoneypot(req, res, next) {
   next();
 }
 
+// RGPD: public forms must carry an explicit, unchecked-by-default consent.
+// The client blocks submission without it; the server enforces it too.
+function requireConsent(req, res, next) {
+  if (!req.body || req.body.consent !== true) {
+    return res.status(400).json({ success: false, error: 'Consentement requis (case à cocher).' });
+  }
+  next();
+}
+
 // Apply general rate limit to all API routes
 app.use('/api/', apiLimiter);
 
@@ -669,6 +678,8 @@ const schemas = {
     company: zOptText(200),
     subject: zOptText(300),
     source: zOptText(50),
+    consent: z.literal(true),
+    consentAt: zOptText(40),
   }),
   contactMessageUpdate: z.object({
     status: z.enum(['new', 'read', 'replied', 'archived']).optional(),
@@ -2087,7 +2098,7 @@ app.post('/api/webhook/chat', webhookLimiter, chatLimiter, async (req, res) => {
   }
 });
 
-app.post('/api/webhook/audit', webhookLimiter, formLimiter, rejectHoneypot, async (req, res) => {
+app.post('/api/webhook/audit', webhookLimiter, formLimiter, rejectHoneypot, requireConsent, async (req, res) => {
   try {
     const n8nUrl = `${N8N_BASE}/audit-ia`;
     const response = await fetch(n8nUrl, {
@@ -2105,7 +2116,7 @@ app.post('/api/webhook/audit', webhookLimiter, formLimiter, rejectHoneypot, asyn
   }
 });
 
-app.post('/api/webhook/contact', webhookLimiter, formLimiter, rejectHoneypot, async (req, res) => {
+app.post('/api/webhook/contact', webhookLimiter, formLimiter, rejectHoneypot, requireConsent, async (req, res) => {
   try {
     const n8nUrl = `${N8N_BASE}/Aimaginationcontact`;
     const response = await fetch(n8nUrl, {

@@ -111,7 +111,7 @@ const RealisationDetailPage: React.FC = () => {
                   <div key={metric.labelKey}>
                     <dt className="sr-only">{t(`${base}.metrics.${metric.labelKey}`)}</dt>
                     <dd>
-                      <span className="block font-display font-light text-4xl sm:text-5xl text-accent-teal leading-none">
+                      <span className="block font-display font-light text-4xl sm:text-5xl text-teal-700 leading-none">
                         {metric.value}
                       </span>
                       <span className="mt-2 block text-sm text-secondary">

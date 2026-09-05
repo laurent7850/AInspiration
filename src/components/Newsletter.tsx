@@ -73,7 +73,7 @@ export default function Newsletter() {
             onChange={(e) => setEmail(e.target.value)}
             disabled={status === 'loading' || status === 'success'}
             placeholder={t('newsletter.placeholder')}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           />
         </div>
 
@@ -99,7 +99,7 @@ export default function Newsletter() {
           {status === 'loading' ? t('newsletter.subscribing') : t('newsletter.subscribe')}
         </button>
 
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-gray-600">
           {t('newsletter.privacy')}
         </p>
       </form>
