@@ -989,11 +989,12 @@ app.get('/api/blog-posts/slug/:slug', optionalAuth, async (req, res) => {
   }
 });
 
-app.get('/api/blog-posts/:id', validateUuidParam(), async (req, res) => {
+app.get('/api/blog-posts/:id', optionalAuth, validateUuidParam(), async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM blog_posts WHERE id = $1', [req.params.id]);
-    if (result.rows.length === 0) return res.status(404).json({ error: 'Post not found' });
-    res.json(result.rows[0]);
+    const result = await pool.query(BLOG_LIST_SQL + ' WHERE p.id = $1', [req.params.id]);
+    const row = result.rows[0];
+    if (!row || (!req.user && row.status !== 'published')) return res.status(404).json({ error: 'Post not found' });
+    res.json(publicBlogRow(row));
   } catch (error) {
     console.error('Error fetching blog post:', error);
     res.status(500).json({ error: 'Internal server error' });
