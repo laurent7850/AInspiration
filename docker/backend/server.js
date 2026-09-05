@@ -729,8 +729,61 @@ const schemas = {
     status: z.enum(['draft', 'published', 'archived']).optional(),
     language: z.enum(['fr', 'en', 'nl', 'de']).optional(),
     author_name: zOptText(200),
+    // Aliases used by the n8n Auto Blog workflow (were silently stripped until
+    // 2026-09-05, which is why 0/50 articles had an author, cover or category)
+    author: zOptText(200),
+    category: zOptText(100),
+    image_url: zOptText(1000),
+    meta_description: zOptText(300),
   }),
 };
+
+// ---- Blog helpers -----------------------------------------------------------
+// Cover per category when the producer sends none. Unsplash free tier, the
+// same source the Réalisations covers use; ids verified 2026-09-05.
+const BLOG_COVERS = {
+  automatisation: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=1200&q=75&auto=format&fit=crop',
+  innovation: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=75&auto=format&fit=crop',
+  'cas-usage': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=75&auto=format&fit=crop',
+  formation: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=75&auto=format&fit=crop',
+  'case-study': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=75&auto=format&fit=crop',
+};
+const BLOG_DEFAULT_COVER = BLOG_COVERS.innovation;
+const BLOG_DEFAULT_AUTHOR = 'Laurent Maréchal';
+
+function blogCoverFor(categorySlug) {
+  return BLOG_COVERS[categorySlug] || BLOG_DEFAULT_COVER;
+}
+
+// 200 words/minute, minimum 1.
+function estimateReadTime(html) {
+  const words = String(html || '').replace(/<[^>]*>/g, ' ').split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
+}
+
+// The producer sends a category *slug* ('automatisation'); the table wants the id.
+const blogCategoryCache = new Map();
+async function resolveBlogCategory(slugOrId) {
+  if (!slugOrId) return null;
+  if (/^[0-9a-f-]{36}$/i.test(slugOrId)) return slugOrId;
+  const key = String(slugOrId).toLowerCase().trim();
+  if (blogCategoryCache.has(key)) return blogCategoryCache.get(key);
+  const r = await pool.query('SELECT id FROM blog_categories WHERE slug = $1 OR lower(name) = $1', [key]);
+  const id = r.rows[0] ? r.rows[0].id : null;
+  blogCategoryCache.set(key, id);
+  return id;
+}
+
+// API shape the frontend expects (image_url, category slug) on top of the row.
+const BLOG_LIST_SQL = `SELECT p.*, c.slug AS category, c.name AS category_name FROM blog_posts p LEFT JOIN blog_categories c ON c.id = p.category_id`;
+function publicBlogRow(row) {
+  return {
+    ...row,
+    image_url: row.featured_image || blogCoverFor(row.category),
+    author_name: row.author_name || BLOG_DEFAULT_AUTHOR,
+    read_time: row.read_time || estimateReadTime(row.content),
+  };
+}
 
 // Convenience: PUT schemas accept any subset of fields
 const updateSchemas = {
@@ -902,30 +955,34 @@ function mapTask(row) {
 
 // ==================== BLOG POSTS ====================
 
-app.get('/api/blog-posts', async (req, res) => {
+app.get('/api/blog-posts', optionalAuth, async (req, res) => {
   try {
-    const { language, status, category_id, limit = 50, offset = 0 } = req.query;
-    let query = 'SELECT * FROM blog_posts WHERE 1=1';
+    const { language, status, category_id, category, limit = 50, offset = 0 } = req.query;
+    let query = BLOG_LIST_SQL + ' WHERE 1=1';
     const params = [];
     let pi = 1;
-    if (language) { query += ` AND language = $${pi++}`; params.push(language); }
-    if (status) { query += ` AND status = $${pi++}`; params.push(status); }
-    if (category_id) { query += ` AND category_id = $${pi++}`; params.push(category_id); }
-    query += ` ORDER BY published_at DESC NULLS LAST, created_at DESC LIMIT $${pi++} OFFSET $${pi}`;
-    params.push(parseInt(limit), parseInt(offset));
+    if (language) { query += ` AND p.language = ${pi++}`; params.push(language); }
+    // SECURITY: drafts and archived posts are only listable by a logged-in user.
+    const effectiveStatus = req.user ? status : 'published';
+    if (effectiveStatus) { query += ` AND p.status = ${pi++}`; params.push(effectiveStatus); }
+    if (category_id) { query += ` AND p.category_id = ${pi++}`; params.push(category_id); }
+    if (category) { query += ` AND c.slug = ${pi++}`; params.push(category); }
+    query += ` ORDER BY p.published_at DESC NULLS LAST, p.created_at DESC LIMIT ${pi++} OFFSET ${pi}`;
+    params.push(Math.min(parseInt(limit) || 50, 200), parseInt(offset) || 0);
     const result = await pool.query(query, params);
-    res.json(result.rows);
+    res.json(result.rows.map(publicBlogRow));
   } catch (error) {
     console.error('Error fetching blog posts:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
 
-app.get('/api/blog-posts/slug/:slug', async (req, res) => {
+app.get('/api/blog-posts/slug/:slug', optionalAuth, async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM blog_posts WHERE slug = $1', [req.params.slug]);
-    if (result.rows.length === 0) return res.status(404).json({ error: 'Post not found' });
-    res.json(result.rows[0]);
+    const result = await pool.query(BLOG_LIST_SQL + ' WHERE p.slug = $1', [req.params.slug]);
+    const row = result.rows[0];
+    if (!row || (!req.user && row.status !== 'published')) return res.status(404).json({ error: 'Post not found' });
+    res.json(publicBlogRow(row));
   } catch (error) {
     console.error('Error fetching blog post:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -986,8 +1043,15 @@ app.get('/api/publications/check', requireAuth, async (req, res) => {
 
 app.post('/api/blog-posts', requireAuth, validateBody(schemas.blogPost), async (req, res) => {
   try {
-    const { title, slug, excerpt, content, featured_image, category_id, status, language, author_name } = req.body;
+    const { title, slug, excerpt, content, status, language } = req.body;
     if (!slug) return res.status(400).json({ error: 'slug is required' });
+    const author_name = req.body.author_name || req.body.author || BLOG_DEFAULT_AUTHOR;
+    const category_id = (await resolveBlogCategory(req.body.category_id || req.body.category)) || null;
+    const categorySlug = req.body.category && !/^[0-9a-f-]{36}$/i.test(req.body.category) ? String(req.body.category).toLowerCase() : null;
+    // '/images/blog/ai-default.webp' was the workflow's placeholder; the file never existed.
+    const sentImage = req.body.featured_image || req.body.image_url;
+    const featured_image = sentImage && !/ai-default\.webp$/.test(sentImage) ? sentImage : blogCoverFor(categorySlug);
+    const read_time = estimateReadTime(content);
     const newId = uuidv4();
     const finalStatus = status || 'draft';
 
@@ -1040,8 +1104,8 @@ app.post('/api/blog-posts', requireAuth, validateBody(schemas.blogPost), async (
     // row instead of crashing on the unique constraint. published_at is set to NOW() the first
     // time the row transitions to 'published' and preserved on subsequent updates.
     const result = await pool.query(
-      `INSERT INTO blog_posts (id, title, slug, excerpt, content, featured_image, category_id, status, published_at, language, author_name)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8, CASE WHEN $8 = 'published' THEN NOW() ELSE NULL END, $9, $10)
+      `INSERT INTO blog_posts (id, title, slug, excerpt, content, featured_image, category_id, status, published_at, language, author_name, read_time)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8, CASE WHEN $8 = 'published' THEN NOW() ELSE NULL END, $9, $10, $11)
        ON CONFLICT (slug) DO UPDATE SET
          title = EXCLUDED.title,
          excerpt = EXCLUDED.excerpt,
@@ -1051,13 +1115,14 @@ app.post('/api/blog-posts', requireAuth, validateBody(schemas.blogPost), async (
          status = EXCLUDED.status,
          language = EXCLUDED.language,
          author_name = EXCLUDED.author_name,
+         read_time = EXCLUDED.read_time,
          updated_at = NOW(),
          published_at = CASE
            WHEN blog_posts.published_at IS NULL AND EXCLUDED.status = 'published' THEN NOW()
            ELSE blog_posts.published_at
          END
        RETURNING *`,
-      [newId, title, slug, excerpt, content, featured_image, category_id, finalStatus, language || 'en', author_name]
+      [newId, title, slug, excerpt, content, featured_image, category_id, finalStatus, language || 'fr', author_name, read_time]
     );
     const created = result.rows[0].id === newId;
     res.status(created ? 201 : 200).json(result.rows[0]);
@@ -2711,7 +2776,9 @@ async function getBlogPost(slug) {
   if (cached !== undefined) return cached;
   try {
     const r = await pool.query(
-      "SELECT title, excerpt, content, language, published_at FROM blog_posts WHERE slug = $1 AND status = 'published'",
+      `SELECT p.title, p.excerpt, p.content, p.language, p.published_at, p.updated_at, p.featured_image, p.author_name, p.read_time, c.slug AS category
+       FROM blog_posts p LEFT JOIN blog_categories c ON c.id = p.category_id
+       WHERE p.slug = $1 AND p.status = 'published'`,
       [slug]
     );
     if (!r.rows[0]) return cacheSet(key, null);
@@ -2724,6 +2791,11 @@ async function getBlogPost(slug) {
       body: sanitizeArticleHtml(p.content),
       language: p.language || 'fr',
       publishedAt: p.published_at,
+      updatedAt: p.updated_at,
+      image: p.featured_image || blogCoverFor(p.category),
+      author: p.author_name || BLOG_DEFAULT_AUTHOR,
+      readTime: p.read_time || estimateReadTime(p.content),
+      wordCount: plain.split(' ').filter(Boolean).length,
     });
   } catch (e) {
     return undefined; // DB not ready — serve the plain shell, never a 404
@@ -3142,6 +3214,39 @@ app.get('*', async (req, res) => {
       out = out.replace(/<meta property="og:description" content="[^"]*"/, `<meta property="og:description" content="${description}"`);
     }
 
+    // Article metadata for crawlers and link previews: og:type article, the
+    // article's own cover, publication dates and a BlogPosting JSON-LD.
+    // Until 2026-09-05 every article shared the generic og-image and carried
+    // only the Organization/WebSite schemas — no rich result possible.
+    if (post && blogMatch) {
+      const iso = (d) => (d ? new Date(d).toISOString() : null);
+      out = out.replace(/<meta property="og:type" content="[^"]*"/, '<meta property="og:type" content="article"');
+      out = out.replace(/<meta property="og:image" content="[^"]*"/, `<meta property="og:image" content="${escHtml(post.image)}"`);
+      out = out.replace(/<meta name="twitter:image" content="[^"]*"/, `<meta name="twitter:image" content="${escHtml(post.image)}"`);
+      const ld = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        '@id': `${canonical}#article`,
+        headline: post.h1,
+        description: post.description,
+        image: post.image,
+        inLanguage: post.language,
+        wordCount: post.wordCount,
+        datePublished: iso(post.publishedAt),
+        dateModified: iso(post.updatedAt || post.publishedAt),
+        author: { '@type': 'Person', name: post.author, url: 'https://ainspiration.eu/a-propos' },
+        publisher: { '@id': 'https://ainspiration.eu/#organization' },
+        mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+      };
+      const extra = [
+        post.publishedAt ? `<meta property="article:published_time" content="${iso(post.publishedAt)}" />` : '',
+        post.updatedAt ? `<meta property="article:modified_time" content="${iso(post.updatedAt)}" />` : '',
+        `<meta property="article:author" content="${escHtml(post.author)}" />`,
+        `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`,
+      ].filter(Boolean).join('\n    ');
+      out = out.replace(canonicalTag, `${canonicalTag}\n    ${extra}`);
+    }
+
     // hreflang for translated articles, so the FR/EN/NL versions reinforce one
     // another instead of competing as near-duplicates.
     if (post && blogMatch) {
@@ -3166,6 +3271,8 @@ app.get('*', async (req, res) => {
       out = out.replace(/<main>[\s\S]*?<\/main>/,
         `<main><article><h1>${escHtml(post.h1)}</h1>`
         + `<p>${escHtml(post.description)}</p>`
+        + `<p><img src="${escHtml(post.image)}" alt="" width="1200" height="630" loading="lazy" /></p>`
+        + `<p>${escHtml(post.author)}${post.publishedAt ? ' · ' + new Date(post.publishedAt).toISOString().slice(0, 10) : ''} · ${post.readTime} min</p>`
         + post.body
         + `</article>`
         + (others.length ? `<aside><h2>À lire aussi</h2>${renderPostList(others)}</aside>` : '')
