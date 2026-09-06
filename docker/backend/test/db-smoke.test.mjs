@@ -25,9 +25,29 @@ const skip = !DATABASE_URL || DATABASE_URL.includes('127.0.0.1:1/');
 
 let child;
 let pool;
+let stubbedDist = false;
+
+// The SEO handler rewrites dist/index.html; CI has no frontend build next to
+// the backend, so a minimal shell with the tags the handler replaces stands in.
+const DIST = path.join(here, '..', 'dist');
+const INDEX_STUB = `<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<title>Stub</title>
+<meta name="description" content="stub" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="stub" />
+<meta property="og:description" content="stub" />
+<meta property="og:image" content="stub" />
+<meta name="twitter:image" content="stub" />
+</head><body><div id="root"></div><main><h1>stub</h1></main></body></html>`;
 
 before(async () => {
   if (skip) return;
+  const fs = require('node:fs');
+  if (!fs.existsSync(path.join(DIST, 'index.html'))) {
+    fs.mkdirSync(DIST, { recursive: true });
+    fs.writeFileSync(path.join(DIST, 'index.html'), INDEX_STUB);
+    stubbedDist = true;
+  }
   const { Pool } = require('pg');
   pool = new Pool({ connectionString: DATABASE_URL });
   // A published article to serve
@@ -59,6 +79,7 @@ before(async () => {
 
 after(async () => {
   child?.kill();
+  if (stubbedDist) require('node:fs').rmSync(DIST, { recursive: true, force: true });
   if (pool) {
     await pool.query(`DELETE FROM newsletter_subscribers WHERE email LIKE 'ci-smoke-%@example.com'`);
     await pool.query(`DELETE FROM contact_messages WHERE email LIKE 'ci-smoke-%@example.com'`);
