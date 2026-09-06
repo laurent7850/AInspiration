@@ -575,6 +575,20 @@ app.get('*', async (req, res) => {
     if (rest === '/etudes-de-cas') {
       return res.redirect(301, `${langPrefix(lang)}/realisations`);
     }
+    // Un article porte sa langue dans le slug (`-en`, `-nl`) : le sitemap ne
+    // liste que la forme sans prefixe, et /en/blog comme /nl/blog pointent vers
+    // cette meme forme. Mais splitLang retire le prefixe et sert ce qui suit,
+    // si bien que chaque article etait aussi joignable sous /en/... et /nl/...,
+    // dans toutes les combinaisons prefixe x suffixe : neuf URL pour un seul
+    // article, chacune se declarant canonique. Google en a signale onze comme
+    // doublons qu'il devait arbitrer lui-meme.
+    //
+    // On redirige plutot que de renvoyer 404 : ces URL sont indexees, et
+    // l'autorite acquise se transfere alors qu'une 404 la jette.
+    if (lang !== 'fr' && /^\/blog\/[a-z0-9-]+$/i.test(rest)) {
+      return res.redirect(301, rest);
+    }
+
     const canonical = SITE_URL + (routePath === '/' ? '/' : routePath);
 
     // Resolve SEO: static route map (per language) first, then a dynamic

@@ -30,7 +30,8 @@
 | `/creation-ia` | CreationIAPage | content |
 | `/solutions` | SolutionsPage | common |
 | `/produits` | ProductsPage | common |
-| `/etudes-de-cas` | CaseStudiesPage | caseStudies |
+| `/pme-hainaut-bruxelles` | LocalPage | local (page locale Hainaut/Bruxelles, 05/09/2026 ; `/etudes-de-cas` → 301 `/realisations`) |
+| `/newsletter-confirmee` | NewsletterConfirmPage | forms (atterrissage du lien de confirmation newsletter, noindex) |
 | `/a-propos` | AboutPage | about |
 | `/contact` | ContactPage | forms |
 | `/prompts` | PromptOptimizationPage | common |
@@ -65,6 +66,7 @@ Toutes ces pages sont wrappées dans `<PrivateRoute><CrmLayout>...</CrmLayout></
 | `/messages` | MessagesPage | crm | ContactMessagesList, ContactMessageDetail |
 | `/newsletter-admin` | NewsletterAdminPage | common | Newsletter management |
 | `/linkedin` | LinkedinPage | crm | linkedinService |
+| `/blog-admin` | BlogAdminPage | crm (section blogAdmin) | File de relecture de l'auto-blog : brouillons retenus par le contrôle qualité n8n, publication/archivage des 3 langues (PUT partiel `/api/blog-posts/:id`) |
 
 ### Préfixes langue
 
