@@ -56,7 +56,7 @@ function discoverRoutes() {
   const routes = [];
   let m;
   while ((m = re.exec(src))) {
-    if (m[2] === '*') continue;
+    if (m[2] === '*' || m[2].includes('{*')) continue; // SPA/SEO catch-alls
     routes.push({ method: m[1].toUpperCase(), path: m[2] });
   }
   return routes;

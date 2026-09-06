@@ -41,7 +41,7 @@ app.use(express.static(distPath, {
 }));
 
 // 404 for unknown API routes
-app.all('/api/*', (req, res) => {
+app.all('/api/{*splat}', (req, res) => {
   res.status(404).json({ error: 'Not found' });
 });
 
@@ -55,7 +55,7 @@ app.all('/api/*', (req, res) => {
 // silent, site-wide outage. Returning 404 makes a partial deploy fail loudly.
 // The SPA fallback must only handle navigation routes (Accept: text/html).
 const ASSET_EXT = /\.(js|mjs|cjs|css|map|json|woff2?|ttf|otf|eot|png|jpe?g|gif|svg|webp|avif|ico|bmp|mp4|webm|mp3|wav|wasm|txt|xml|webmanifest|pdf)$/i;
-app.get('*', (req, res, next) => {
+app.get('/{*splat}', (req, res, next) => {
   // A hashed asset path (/assets/* or any *.js/.css/.woff2/...) that reaches
   // here is missing from disk — 404 instead of masking it with index.html.
   // Extension-less paths (/, /audit, /blog/slug) are navigation routes and fall
@@ -562,7 +562,7 @@ function localizedHomeMain(lang) {
 // translated posts, and a real <main> — including the full article body for
 // blog routes. Real users get the React app, which re-manages the meta tags via
 // react-helmet (data-rh) on hydration.
-app.get('*', async (req, res) => {
+app.get('/{*splat}', async (req, res) => {
   res.setHeader('Cache-Control', 'no-cache');
   const html = readIndexHtml();
   if (!html) return res.sendFile(path.join(distPath, 'index.html'));
