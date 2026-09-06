@@ -17,6 +17,11 @@ updates:
         update-types: ["minor", "patch"]
     # Major bumps (vite, vitest, react-router, i18next-http-backend) arrive as
     # separate PRs and must be tested on a branch before merging.
+    ignore:
+      # typescript-eslint 8.x pins typescript <6.1 (peer dep): TS 7 cannot be
+      # installed until it ships support. Re-enable when it does (2026-09-06).
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
 
   # Backend (Express) — docker/backend/package.json
   - package-ecosystem: "npm"
