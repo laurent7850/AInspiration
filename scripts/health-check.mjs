@@ -21,9 +21,9 @@ const CONCURRENCY = 6;
 const failures = [];
 const warnings = [];
 const passes = [];
-const fail = (scope, msg) => failures.push(`${scope}: ${msg}`);
-const warn = (scope, msg) => warnings.push(`${scope}: ${msg}`);
-const pass = (scope, msg) => passes.push(`${scope}: ${msg}`);
+const fail = (scope, msg) => { failures.push(`${scope}: ${msg}`); };
+const warn = (scope, msg) => { warnings.push(`${scope}: ${msg}`); };
+const pass = (scope, msg) => { passes.push(`${scope}: ${msg}`); };
 
 async function get(url, { redirect = 'manual', method = 'GET' } = {}) {
   const res = await fetch(url, {
