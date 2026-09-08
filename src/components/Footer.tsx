@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Newsletter from './Newsletter';
 import { env } from '../config/environment';
+import { useLocalizedPath } from '../hooks/useLocalizedPath';
 
 const CONTACT_EMAIL = 'info@ainspiration.eu';
 const CONTACT_PHONE = '+32 477 94 28 65';
@@ -11,6 +12,7 @@ const CONTACT_PHONE = '+32 477 94 28 65';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { t } = useTranslation('common');
+  const { localizedPath } = useLocalizedPath();
 
   return (
     <footer className="bg-night text-indigo-100/70 border-t border-white/10">
@@ -30,32 +32,32 @@ export default function Footer() {
             <h3 className="text-xs font-medium text-indigo-200/60 uppercase tracking-[0.15em] mb-5">{t('footer.sections.features')}</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/analyse-ia" className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
+                <Link to={localizedPath('/analyse-ia')} className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
                   {t('footer.links.aiAnalysis')}
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
+                <Link to={localizedPath('/contact')} className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
                   {t('footer.links.aiAudit')}
                 </Link>
               </li>
               <li>
-                <Link to="/prompts" className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
+                <Link to={localizedPath('/prompts')} className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
                   {t('footer.links.promptMaster')}
                 </Link>
               </li>
               <li>
-                <Link to="/pme-hainaut-bruxelles" className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
+                <Link to={localizedPath('/pme-hainaut-bruxelles')} className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
                   {t('footer.links.local')}
                 </Link>
               </li>
               <li>
-                <Link to="/automatisation" className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
+                <Link to={localizedPath('/automatisation')} className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
                   Automatisation IA
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
+                <Link to={localizedPath('/blog')} className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
                   Blog
                 </Link>
               </li>
@@ -66,22 +68,22 @@ export default function Footer() {
             <h3 className="text-xs font-medium text-indigo-200/60 uppercase tracking-[0.15em] mb-5">{t('footer.sections.legal')}</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/privacy" className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
+                <Link to={localizedPath('/privacy')} className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
                   {t('footer.links.privacy')}
                 </Link>
               </li>
               <li>
-                <Link to="/mentions-legales" className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
+                <Link to={localizedPath('/mentions-legales')} className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
                   Mentions légales
                 </Link>
               </li>
               <li>
-                <Link to="/cgv" className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
+                <Link to={localizedPath('/cgv')} className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
                   {t('footer.links.terms')}
                 </Link>
               </li>
               <li>
-                <Link to="/cgu" className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
+                <Link to={localizedPath('/cgu')} className="text-indigo-100/70 hover:text-indigo-300 text-sm transition-colors">
                   CGU
                 </Link>
               </li>

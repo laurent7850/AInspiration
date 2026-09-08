@@ -6,9 +6,11 @@ import BlogCTA from './blog/BlogCTA';
 import EnhancedBlogContent from './blog/EnhancedBlogContent';
 import SEOHead from './SEOHead';
 import { getBlogPostSchema } from '../config/seoConfig';
+import { useLocalizedPath } from '../hooks/useLocalizedPath';
 
 export default function BlogPost() {
   const navigate = useNavigate();
+  const { localizedPath } = useLocalizedPath();
   const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<BlogPostType | null>(null);
   const [loading, setLoading] = useState(true);
@@ -208,15 +210,15 @@ export default function BlogPost() {
           <nav className="mt-12 pt-8 border-t border-gray-200" aria-label="Articles et services liés">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Découvrir nos solutions</h2>
             <div className="grid sm:grid-cols-3 gap-4">
-              <Link to="/automatisation" className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition-colors">
+              <Link to={localizedPath('/automatisation')} className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition-colors">
                 <ArrowRight className="w-4 h-4" />
                 Automatisation IA
               </Link>
-              <Link to="/solutions" className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition-colors">
+              <Link to={localizedPath('/solutions')} className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition-colors">
                 <ArrowRight className="w-4 h-4" />
                 Toutes nos solutions
               </Link>
-              <Link to="/contact" className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition-colors">
+              <Link to={localizedPath('/contact')} className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition-colors">
                 <ArrowRight className="w-4 h-4" />
                 Audit IA gratuit
               </Link>
