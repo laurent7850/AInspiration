@@ -4,6 +4,7 @@
 # KEEP IN SYNC when a backend file is added — a missing file crashes the boot.
 server.js
 sanitize.js
+seo-meta.js
 crypto.js
 linkedin.js
 content-generator.js

@@ -22,6 +22,7 @@ module.exports = function register(ctx) {
 // ==================== STATIC FILES + SPA FALLBACK ====================
 
 const path = require('path');
+const { metaTitleFor, metaDescriptionFor } = require('../seo-meta.js');
 // routes/ lives one level below server.js: dist/ is next to server.js
 const distPath = path.join(__dirname, '..', 'dist');
 
@@ -90,33 +91,33 @@ function readIndexHtml() {
 readIndexHtml();
 
 const routeSEO = {
-  '/audit': { title: 'Audit IA Gratuit en 24h | Diagnostic Personnalis\u00e9 | AInspiration', description: 'Demandez votre audit IA gratuit. Un expert analyse votre activit\u00e9 et vous livre un plan d\'action concret en 24h. Sans engagement. PME et ind\u00e9pendants en Belgique.' },
-  '/assistants': { title: 'Assistants Virtuels IA | Chatbots Intelligents | AInspiration', description: 'D\u00e9ployez des assistants virtuels IA pour votre service client. Chatbots intelligents disponibles 24/7 pour r\u00e9pondre \u00e0 vos clients.' },
-  '/automatisation': { title: 'Automatisation IA pour PME | Workflows Intelligents | AInspiration', description: 'Automatisez 60% de vos t\u00e2ches r\u00e9p\u00e9titives gr\u00e2ce \u00e0 l\'IA. Workflows n8n sur mesure, livr\u00e9s en 5 jours.' },
-  '/formation': { title: 'Formation IA pour Entreprises | ChatGPT, Claude, Outils IA | AInspiration', description: 'Formations pratiques IA pour PME et ind\u00e9pendants. Apprenez \u00e0 utiliser ChatGPT, Claude et les outils IA pour votre m\u00e9tier.' },
-  '/contact': { title: 'Contactez AInspiration | Solutions IA pour PME', description: 'Contactez notre \u00e9quipe pour discuter de vos besoins en intelligence artificielle. R\u00e9ponse sous 24h. Givry, Belgique.' },
-  '/prompts': { title: 'Biblioth\u00e8que de Prompts IA | Optimisez vos Interactions | AInspiration', description: 'Acc\u00e9dez \u00e0 notre biblioth\u00e8que de prompts IA optimis\u00e9s pour PME. Gagnez du temps avec des prompts test\u00e9s par secteur.' },
-  '/blog': { title: 'Blog IA pour PME | Actualit\u00e9s et Guides | AInspiration', description: 'Articles, guides et actualit\u00e9s sur l\'intelligence artificielle pour PME et ind\u00e9pendants belges.' },
-  '/solutions': { title: 'Solutions IA pour PME | AInspiration', description: 'D\u00e9couvrez nos solutions IA compl\u00e8tes pour PME : audit, automatisation, chatbots, CRM intelligent, formation.' },
-  '/a-propos': { title: '\u00c0 Propos d\'AInspiration | \u00c9quipe et Mission', description: 'AInspiration accompagne les PME belges dans leur transition IA. D\u00e9couvrez notre \u00e9quipe, notre mission et nos valeurs.' },
-  '/pme-hainaut-bruxelles': { title: 'Automatisation IA pour les PME du Hainaut et de Bruxelles | AInspiration', description: 'Bas\u00e9s \u00e0 Givry, nous automatisons les t\u00e2ches r\u00e9p\u00e9titives des PME du Hainaut, de Bruxelles et du Brabant wallon. Audit gratuit en 24h, sur place ou \u00e0 distance.' },
+  '/audit': { title: 'Audit IA gratuit en 24h | Diagnostic PME | AInspiration', description: 'Un expert analyse votre activit\u00e9 et vous livre un plan d\'action concret en 24h. Gratuit, sans engagement, pour PME et ind\u00e9pendants.' },
+  '/assistants': { title: 'Assistants virtuels IA et chatbots | AInspiration', description: 'D\u00e9ployez des assistants virtuels IA pour votre service client. Chatbots intelligents disponibles 24/7 pour r\u00e9pondre \u00e0 vos clients.' },
+  '/automatisation': { title: 'Automatisation IA | Workflows Intelligents | AInspiration', description: 'Automatisez vos t\u00e2ches r\u00e9p\u00e9titives avec l\'IA. Workflows intelligents, int\u00e9grations et gain de productivit\u00e9 pour votre \u00e9quipe.' },
+  '/formation': { title: 'Formation IA pour entreprises et ind\u00e9pendants', description: 'Formez vos \u00e9quipes \u00e0 l\'IA. Programmes adapt\u00e9s \u00e0 tous niveaux : initiation, perfectionnement, certifications pour ma\u00eetriser l\'IA.' },
+  '/contact': { title: 'Contact | Audit IA Gratuit Belgique | AInspiration', description: 'Demandez votre audit IA gratuit. Notre \u00e9quipe bas\u00e9e en Belgique vous r\u00e9pond sous 24h. Sans engagement, 100% personnalis\u00e9 pour votre PME.' },
+  '/prompts': { title: 'Prompts IA | Biblioth\u00e8que ChatGPT & Claude | AInspiration', description: 'Acc\u00e9dez \u00e0 notre biblioth\u00e8que de prompts optimis\u00e9s pour ChatGPT, Claude et autres IA. Gagnez du temps avec des prompts professionnels test\u00e9s.' },
+  '/blog': { title: 'Blog IA | Actualit\u00e9s & Tendances ML 2026 | AInspiration', description: 'Articles IA : conseils pratiques, cas d\'usage, tendances machine learning, deep learning, NLP et actualit\u00e9s intelligence artificielle pour PME.' },
+  '/solutions': { title: 'Solutions IA pour PME en Belgique | AInspiration', description: 'Automatisation, CRM intelligent, chatbots, machine learning : nos solutions IA pour PME, avec un premier r\u00e9sultat concret en 5 jours.' },
+  '/a-propos': { title: '\u00c0 Propos | Notre \u00c9quipe et Mission | AInspiration', description: 'D\u00e9couvrez l\'\u00e9quipe AInspiration. Notre mission : d\u00e9mocratiser l\'IA pour les entreprises belges et europ\u00e9ennes avec un accompagnement humain.' },
+  '/pme-hainaut-bruxelles': { title: 'Automatisation IA pour les PME du Hainaut et de Bruxelles', description: 'Bas\u00e9s \u00e0 Givry, nous automatisons les t\u00e2ches r\u00e9p\u00e9titives des PME du Hainaut, de Bruxelles et du Brabant wallon. Audit gratuit en 24h, sur place ou \u00e0 distance.' },
   '/newsletter-confirmee': { title: 'Newsletter | AInspiration', description: 'Confirmation de votre inscription \u00e0 la newsletter AInspiration.' },
   '/realisations': { title: 'R\u00e9alisations | Ce que nous avons construit | AInspiration', description: 'Seize automatisations et applications en service : facturation, comptabilit\u00e9, contenu, conformit\u00e9. Ce qui a \u00e9t\u00e9 construit, pour qui, et ce que \u00e7a a chang\u00e9.' },
   '/creation-ia': { title: 'Cr\u00e9ation de Contenu IA | AInspiration', description: 'G\u00e9n\u00e9rez du contenu professionnel avec l\'IA : articles, visuels, newsletters, posts r\u00e9seaux sociaux.' },
-  '/analyse-ia': { title: 'Analyse de Donn\u00e9es IA | Tableaux de Bord Intelligents | AInspiration', description: 'Exploitez vos donn\u00e9es avec l\'IA. Tableaux de bord intelligents, pr\u00e9dictions de ventes, segmentation clients.' },
-  '/cgv': { title: 'Conditions G\u00e9n\u00e9rales de Vente | AInspiration', description: 'CGV des services AInspiration par Distr\'Action SRL.' },
-  '/cgu': { title: 'Conditions G\u00e9n\u00e9rales d\'Utilisation | AInspiration', description: 'CGU du site ainspiration.eu.' },
-  '/privacy': { title: 'Politique de Confidentialit\u00e9 | AInspiration', description: 'Politique de confidentialit\u00e9 et protection des donn\u00e9es personnelles d\'AInspiration.' },
-  '/mentions-legales': { title: 'Mentions L\u00e9gales | AInspiration', description: 'Mentions l\u00e9gales du site ainspiration.eu - Distr\'Action SRL.' },
-  '/login': { title: 'Connexion | AInspiration', description: 'Connectez-vous \u00e0 votre espace AInspiration.' },
+  '/analyse-ia': { title: 'Analyse de Donn\u00e9es IA | Business Intelligence | AInspiration', description: 'Exploitez vos donn\u00e9es avec l\'IA. Analyses pr\u00e9dictives, tableaux de bord intelligents et insights actionnables pour des d\u00e9cisions \u00e9clair\u00e9es.' },
+  '/cgv': { title: 'Conditions G\u00e9n\u00e9rales de Vente | AInspiration', description: 'Consultez nos conditions g\u00e9n\u00e9rales de vente. Modalit\u00e9s de paiement, livraison et garanties pour nos services IA.' },
+  '/cgu': { title: 'Conditions G\u00e9n\u00e9rales d\'Utilisation | AInspiration', description: 'Consultez nos conditions g\u00e9n\u00e9rales d\'utilisation du site ainspiration.eu et de nos services IA.' },
+  '/privacy': { title: 'Politique de Confidentialit\u00e9 | RGPD | AInspiration', description: 'Consultez notre politique de confidentialit\u00e9 et notre conformit\u00e9 RGPD. Protection de vos donn\u00e9es personnelles chez AInspiration.' },
+  '/mentions-legales': { title: 'Mentions L\u00e9gales | AInspiration', description: 'Mentions l\u00e9gales du site ainspiration.eu. Informations sur l\'\u00e9diteur, l\'h\u00e9bergeur et les conditions d\'utilisation.' },
+  '/login': { title: 'Connexion | AInspiration', description: 'Connectez-vous \u00e0 votre espace client AInspiration pour acc\u00e9der \u00e0 votre tableau de bord et g\u00e9rer vos projets IA.' },
   '/transformation': { title: 'Transformation Digitale IA | PME Belgique | AInspiration', description: 'Acc\u00e9l\u00e9rez votre transformation digitale gr\u00e2ce \u00e0 l\'IA. Modernisez vos processus, optimisez vos op\u00e9rations et pr\u00e9parez l\'avenir de votre entreprise.' },
-  '/produits': { title: 'Offres IA pour PME | Audit Gratuit | AInspiration', description: 'Consultez nos offres IA pour PME : audit gratuit, formation IA, accompagnement premium. Solutions adapt\u00e9es \u00e0 chaque budget en Belgique et France.' },
-  '/conseil': { title: 'Conseil Strat\u00e9gique IA | Consulting IA | AInspiration', description: 'B\u00e9n\u00e9ficiez de notre expertise en conseil strat\u00e9gique IA : audit, roadmap et accompagnement pour une int\u00e9gration r\u00e9ussie de l\'IA.' },
-  '/accompagnement': { title: 'Accompagnement IA Personnalis\u00e9 | Support Expert | AInspiration', description: 'B\u00e9n\u00e9ficiez d\'un accompagnement IA sur mesure : support d\u00e9di\u00e9, suivi de projet et expertise continue pour r\u00e9ussir votre transformation.' },
-  '/crm': { title: 'CRM IA | Gestion Client Intelligente | AInspiration', description: 'Optimisez votre relation client avec notre CRM propuls\u00e9 par l\'IA : automatisation, insights et suivi intelligent de vos opportunit\u00e9s.' },
+  '/produits': { title: 'Offres IA PME | Audit Gratuit d\u00e8s 490\u20ac | AInspiration', description: 'Consultez nos offres IA pour PME. Audit gratuit, formation IA, accompagnement premium. Solutions adapt\u00e9es \u00e0 chaque budget en Belgique et France.' },
+  '/conseil': { title: 'Conseil Strat\u00e9gique IA | Consulting IA | AInspiration', description: 'B\u00e9n\u00e9ficiez de notre expertise en conseil strat\u00e9gique IA. Audit, roadmap, accompagnement pour une int\u00e9gration r\u00e9ussie de l\'IA.' },
+  '/accompagnement': { title: 'Accompagnement IA sur mesure | AInspiration', description: 'B\u00e9n\u00e9ficiez d\'un accompagnement IA sur mesure. Support d\u00e9di\u00e9, suivi de projet et expertise continue pour r\u00e9ussir votre transformation.' },
+  '/crm': { title: 'CRM IA | Gestion Client Intelligente | AInspiration', description: 'Optimisez votre relation client avec notre CRM propuls\u00e9 par l\'IA. Automatisation, insights et suivi intelligent de vos opportunit\u00e9s.' },
   '/audio': { title: 'Audio IA | Voix de Synth\u00e8se et Podcasts | AInspiration', description: 'Produisez voix off, podcasts et contenus audio gr\u00e2ce \u00e0 l\'IA. Solutions audio pour PME en Belgique et en France.' },
   '/video': { title: 'Vid\u00e9o IA | G\u00e9n\u00e9ration et Montage Automatis\u00e9s | AInspiration', description: 'Cr\u00e9ez et montez vos vid\u00e9os avec l\'IA : g\u00e9n\u00e9ration, sous-titrage et d\u00e9clinaisons automatiques pour vos canaux.' },
-  '/recommandations': { title: 'Recommandations IA Personnalis\u00e9es | AInspiration', description: 'Recevez des recommandations IA adapt\u00e9es \u00e0 votre activit\u00e9 : outils, cas d\'usage et priorit\u00e9s de mise en \u0153uvre.' },
+  '/recommandations': { title: 'Recommandations IA Personnalis\u00e9es | AInspiration', description: 'Recevez des recommandations IA sur mesure pour votre entreprise. Solutions adapt\u00e9es \u00e0 vos besoins sp\u00e9cifiques et votre secteur d\'activit\u00e9.' },
 };
 
 // Navigation routes the SPA actually serves (src/config/routes.ts + the
@@ -193,8 +194,10 @@ async function getBlogPost(slug) {
     const p = r.rows[0];
     const plain = (p.content || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
     return cacheSet(key, {
-      title: `${p.title} | Blog AInspiration`,
-      description: (p.excerpt && p.excerpt.trim()) ? p.excerpt.trim() : plain.slice(0, 155),
+      // Bounded: the raw title plus the brand suffix reached 94 characters on
+      // one article, and an excerpt 239. Google cut both. See seo-meta.js.
+      title: metaTitleFor(p.title),
+      description: metaDescriptionFor(p.excerpt, plain),
       h1: p.title,
       body: sanitizeArticleHtml(p.content),
       language: p.language || 'fr',

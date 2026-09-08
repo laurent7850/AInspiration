@@ -27,7 +27,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
   '/': {
     fr: {
       title: 'AInspiration | Solutions IA pour PME - Audit Gratuit',
-      description: 'Automatisez vos tâches répétitives et boostez votre CA grâce à l\'IA. Un premier résultat concret en 5 jours. Audit gratuit en 24h, sans engagement. Pour les PME de Belgique et de France.',
+      description: 'Automatisez vos tâches répétitives grâce à l\'IA. Un premier résultat concret en 5 jours, audit gratuit en 24h. PME de Belgique et de France.',
       keywords: 'intelligence artificielle PME, IA entreprise, automatisation IA, audit IA gratuit, solutions IA Belgique, transformation digitale PME, machine learning, deep learning, outils IA'
     },
     en: {
@@ -37,7 +37,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     nl: {
       title: 'AInspiration | AI Oplossingen KMO - Gratis Audit',
-      description: 'Automatiseer repetitieve taken en verhoog uw omzet met AI. Eerste concrete resultaten in 5 dagen. Gratis audit in 24u, zonder verplichtingen. Voor KMO\'s in België en Frankrijk.',
+      description: 'Automatiseer repetitieve taken met AI. Eerste concrete resultaat in 5 dagen, gratis audit in 24u. Voor KMO\'s in België en Frankrijk.',
       keywords: 'kunstmatige intelligentie KMO, AI bedrijf, AI automatisering, gratis AI audit, AI oplossingen België, digitale transformatie KMO, machine learning, deep learning, AI tools'
     }
   },
@@ -111,17 +111,17 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/solutions': {
     fr: {
-      title: 'Solutions IA PME Belgique | Automatisation & ML | AInspiration',
-      description: 'Solutions IA complètes pour PME : automatisation, CRM intelligent, chatbots, machine learning. Résultats concrets en 5 jours. Accompagnement en Belgique et France.',
+      title: 'Solutions IA pour PME en Belgique | AInspiration',
+      description: 'Automatisation, CRM intelligent, chatbots, machine learning : nos solutions IA pour PME, avec un premier résultat concret en 5 jours.',
       keywords: 'solutions IA PME, services intelligence artificielle Belgique, automatisation IA, CRM IA, chatbot entreprise, machine learning applications, deep learning, NLP, outils IA startups'
     },
     en: {
-      title: 'AI Solutions | Artificial Intelligence Services | AInspiration',
+      title: 'AI Solutions for SMEs in Belgium | AInspiration',
       description: 'Discover our complete AI solutions: data analysis, automation, virtual assistants, visual creation and personalized support.',
       keywords: 'AI solutions, artificial intelligence services, AI offerings, business solutions, AI packages'
     },
     nl: {
-      title: 'AI Oplossingen | Kunstmatige Intelligentie Diensten | AInspiration',
+      title: 'AI-oplossingen voor KMO\'s in België | AInspiration',
       description: 'Ontdek onze complete AI-oplossingen: data-analyse, automatisering, virtuele assistenten, visuele creatie en gepersonaliseerde begeleiding.',
       keywords: 'AI oplossingen, kunstmatige intelligentie diensten, AI aanbod, bedrijfsoplossingen, AI pakketten'
     }
@@ -145,12 +145,12 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/pme-hainaut-bruxelles': {
     fr: {
-      title: 'Automatisation IA pour les PME du Hainaut et de Bruxelles | AInspiration',
+      title: 'Automatisation IA pour les PME du Hainaut et de Bruxelles',
       description: 'Basés à Givry, nous automatisons les tâches répétitives des PME du Hainaut, de Bruxelles et du Brabant wallon. Audit gratuit en 24h, sur place ou à distance.',
       keywords: 'automatisation IA Hainaut, IA PME Mons, IA PME Charleroi, IA PME Bruxelles, agence IA Belgique'
     },
     en: {
-      title: 'AI automation for SMEs in Hainaut and Brussels | AInspiration',
+      title: 'AI automation for SMEs in Hainaut and Brussels',
       description: 'Based in Givry, we automate the repetitive tasks of SMEs in Hainaut, Brussels and Walloon Brabant. Free audit in 24h, on site or remote.',
       keywords: 'AI automation Hainaut, AI SME Mons, AI SME Charleroi, AI SME Brussels, AI agency Belgium'
     },
@@ -196,8 +196,8 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/audit': {
     fr: {
-      title: 'Audit IA Gratuit en 24h | Diagnostic Personnalisé | AInspiration',
-      description: 'Demandez votre audit IA gratuit. Un expert analyse votre activité et vous livre un plan d\'action concret en 24h. Sans engagement. PME et indépendants en Belgique et France.',
+      title: 'Audit IA gratuit en 24h | Diagnostic PME | AInspiration',
+      description: 'Un expert analyse votre activité et vous livre un plan d\'action concret en 24h. Gratuit, sans engagement, pour PME et indépendants.',
       keywords: 'audit IA gratuit, diagnostic IA, audit intelligence artificielle, bilan IA PME, audit automatisation'
     },
     en: {
@@ -206,7 +206,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
       keywords: 'free AI audit, AI diagnosis, artificial intelligence audit, SME AI assessment, automation audit'
     },
     nl: {
-      title: 'Gratis AI Audit in 24u | Gepersonaliseerde Diagnose | AInspiration',
+      title: 'Gratis AI-audit in 24u | Diagnose voor KMO\'s | AInspiration',
       description: 'Vraag uw gratis AI-audit aan. Een expert analyseert uw bedrijf en levert een concreet actieplan in 24u. Zonder verplichtingen. KMO\'s in België en Frankrijk.',
       keywords: 'gratis AI audit, AI diagnose, kunstmatige intelligentie audit, KMO AI beoordeling, automatisering audit'
     }
@@ -264,7 +264,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/assistants': {
     fr: {
-      title: 'Assistants Virtuels IA | Chatbots Intelligents | AInspiration',
+      title: 'Assistants virtuels IA et chatbots | AInspiration',
       description: 'Déployez des assistants virtuels IA pour votre service client. Chatbots intelligents disponibles 24/7 pour répondre à vos clients.',
       keywords: 'assistants virtuels, chatbots IA, service client IA, agents conversationnels, support automatisé'
     },
@@ -315,24 +315,24 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/formation': {
     fr: {
-      title: 'Formation IA | Apprentissage Intelligence Artificielle | AInspiration',
+      title: 'Formation IA pour entreprises et indépendants',
       description: 'Formez vos équipes à l\'IA. Programmes adaptés à tous niveaux : initiation, perfectionnement, certifications pour maîtriser l\'IA.',
       keywords: 'formation IA, apprentissage intelligence artificielle, cours IA, certification IA, upskilling'
     },
     en: {
-      title: 'AI Training | Artificial Intelligence Learning | AInspiration',
-      description: 'Train your teams in AI. Programs adapted to all levels: introduction, advanced, certifications to master AI.',
+      title: 'AI Training for Businesses | AInspiration',
+      description: 'Train your teams in AI. Programmes for every level: introduction, advanced practice and certification, shaped around your business.',
       keywords: 'AI training, artificial intelligence learning, AI courses, AI certification, upskilling'
     },
     nl: {
-      title: 'AI Opleiding | Kunstmatige Intelligentie Training | AInspiration',
+      title: 'AI-opleiding voor bedrijven | AInspiration',
       description: 'Train uw teams in AI. Programma\'s aangepast aan alle niveaus: introductie, gevorderd, certificeringen om AI te beheersen.',
       keywords: 'AI opleiding, kunstmatige intelligentie training, AI cursussen, AI certificering, upskilling'
     }
   },
   '/accompagnement': {
     fr: {
-      title: 'Accompagnement IA Personnalisé | Support Expert | AInspiration',
+      title: 'Accompagnement IA sur mesure | AInspiration',
       description: 'Bénéficiez d\'un accompagnement IA sur mesure. Support dédié, suivi de projet et expertise continue pour réussir votre transformation.',
       keywords: 'accompagnement IA, support personnalisé, suivi projet IA, expertise dédiée, coaching IA'
     },
@@ -342,7 +342,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
       keywords: 'AI support, personalized guidance, AI project monitoring, dedicated expertise, AI coaching'
     },
     nl: {
-      title: 'Gepersonaliseerde AI Begeleiding | Expert Ondersteuning | AInspiration',
+      title: 'AI-begeleiding op maat | AInspiration',
       description: 'Profiteer van AI-begeleiding op maat. Toegewijde ondersteuning, projectopvolging en continue expertise voor een succesvolle transformatie.',
       keywords: 'AI begeleiding, gepersonaliseerde ondersteuning, AI projectopvolging, toegewijde expertise, AI coaching'
     }
@@ -366,7 +366,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/blog/thierry-facturation-ia': {
     fr: {
-      title: 'Cas Thierry | Facturation Automatisée avec l\'IA | AInspiration',
+      title: 'Cas Thierry | Facturation automatisée avec l\'IA',
       description: 'Découvrez comment Thierry a automatisé sa facturation grâce à l\'IA et gagné 10 heures par semaine. Témoignage client inspirant.',
       keywords: 'cas client IA, facturation automatisée, témoignage IA, automatisation PME, gain de temps IA'
     },
@@ -376,8 +376,8 @@ export const seoPages: Record<string, SEOPageConfig> = {
       keywords: 'AI customer case, automated invoicing, AI testimonial, SME automation, AI time savings'
     },
     nl: {
-      title: 'Case Thierry | Geautomatiseerde Facturatie met AI | AInspiration',
-      description: 'Ontdek hoe Thierry zijn facturatie automatiseerde met AI en 10 uur per week bespaarde. Inspirerend klantverhaal.',
+      title: 'Case Thierry | Geautomatiseerde facturatie met AI',
+      description: 'Ontdek hoe Thierry zijn facturatie automatiseerde met AI en zo tien uur per week bespaarde. Een concreet klantverhaal uit België.',
       keywords: 'AI klantcase, geautomatiseerde facturatie, AI testimonial, KMO automatisering, AI tijdsbesparing'
     }
   },
