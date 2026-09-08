@@ -7,7 +7,7 @@ interface RevealProps {
   /** Stagger delay in ms, applied once the element enters the viewport */
   delay?: number;
   /** Wrapper element — defaults to div */
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
 }
 
 /**
