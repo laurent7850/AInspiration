@@ -6,6 +6,7 @@ import BlogCTA from './blog/BlogCTA';
 import EnhancedBlogContent from './blog/EnhancedBlogContent';
 import SEOHead from './SEOHead';
 import { getBlogPostSchema } from '../config/seoConfig';
+import { metaTitleFor, metaDescriptionFor, plainTextFrom } from '../utils/seoMeta';
 import { useLocalizedPath } from '../hooks/useLocalizedPath';
 
 export default function BlogPost() {
@@ -50,7 +51,7 @@ export default function BlogPost() {
     return (
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <SEOHead
-          title={`${titleFromSlug} | Blog AInspiration`}
+          title={metaTitleFor(titleFromSlug)}
           description={`Article du blog AInspiration sur ${titleFromSlug.toLowerCase()}. Conseils, retours d'expérience et bonnes pratiques IA pour PME.`}
           article={true}
         />
@@ -72,7 +73,7 @@ export default function BlogPost() {
     return (
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <SEOHead
-          title={`${titleFromSlug} | Blog AInspiration`}
+          title={metaTitleFor(titleFromSlug)}
           description="Article non trouvé. Découvrez nos autres articles sur l'intelligence artificielle pour PME."
           noindex={true}
         />
@@ -122,14 +123,15 @@ export default function BlogPost() {
     return 'audit';
   };
 
-  const articleDescription = post.content
-    ? post.content.replace(/<[^>]*>/g, '').substring(0, 155).trim() + '...'
-    : post.title;
+  // Same rules as the server injection, and the same source order: the
+  // excerpt when the author wrote one, the body otherwise. The two used to
+  // disagree on every article.
+  const articleDescription = metaDescriptionFor(post.excerpt, plainTextFrom(post.content) || post.title);
 
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <SEOHead
-        title={`${post.title} | Blog AInspiration`}
+        title={metaTitleFor(post.title)}
         description={articleDescription}
         image={post.image_url}
         article={true}
