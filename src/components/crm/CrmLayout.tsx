@@ -13,10 +13,10 @@ import {
   DollarSign,
   Brain,
   MessageSquare,
-  Mail,
-  Linkedin
+  Mail
 } from 'lucide-react';
 import { Newspaper } from 'lucide-react';
+import Linkedin from '../ui/icons/LinkedinIcon';
 
 interface CrmLayoutProps {
   children: ReactNode;
