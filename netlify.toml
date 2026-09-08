@@ -3,7 +3,7 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "22"
   VITE_APP_ENV = "production"
   VITE_SITE_URL = "https://ainspiration.eu"
   VITE_API_URL = "https://ainspiration.eu/api"

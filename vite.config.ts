@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { compression } from 'vite-plugin-compression2';
-import { sitemapPlugin } from './scripts/vite-plugin-sitemap';
-import { seoRoutesPlugin } from './scripts/vite-plugin-seo-routes';
+import { sitemapPlugin } from './scripts/vite-plugin-sitemap.ts';
+import { seoRoutesPlugin } from './scripts/vite-plugin-seo-routes.ts';
 
 export default defineConfig(({ mode }): UserConfig => {
   const isDev = mode === 'development';
@@ -59,12 +59,16 @@ export default defineConfig(({ mode }): UserConfig => {
         },
       } : {}),
       rollupOptions: {
-        input: resolve(__dirname, 'index.html'),
+        input: resolve(import.meta.dirname, 'index.html'),
         output: {
-          manualChunks: {
-            'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-            'ui-vendor': ['lucide-react'],
-            'i18n-vendor': ['i18next', 'react-i18next', 'i18next-http-backend', 'i18next-browser-languagedetector']
+          // Vite 8 (rolldown) only accepts the function form. Same three
+          // vendor chunks as the former object form.
+          manualChunks(id: string) {
+            if (!id.includes('node_modules')) return undefined;
+            if (/[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom|scheduler)[\\/]/.test(id)) return 'react-vendor';
+            if (/[\\/]node_modules[\\/]lucide-react[\\/]/.test(id)) return 'ui-vendor';
+            if (/[\\/]node_modules[\\/](i18next|react-i18next|i18next-http-backend|i18next-browser-languagedetector)[\\/]/.test(id)) return 'i18n-vendor';
+            return undefined;
           }
         }
       },
@@ -73,7 +77,7 @@ export default defineConfig(({ mode }): UserConfig => {
     },
     resolve: {
       alias: {
-        '@': resolve(__dirname, 'src')
+        '@': resolve(import.meta.dirname, 'src')
       },
       dedupe: ['react', 'react-dom']
     },

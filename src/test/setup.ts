@@ -1,4 +1,6 @@
-import '@testing-library/jest-dom';
+// The /vitest entry augments Vitest's own Assertion type (toBeInTheDocument…);
+// the bare import only extends Jest's, which Vitest 5 no longer aliases.
+import '@testing-library/jest-dom/vitest';
 
 // Mock for DOMParser used in sanitizeHtml
 class MockDOMParser {
