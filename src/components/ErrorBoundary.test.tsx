@@ -7,7 +7,7 @@ beforeEach(() => {
   vi.spyOn(console, 'error').mockImplementation(() => {});
 });
 
-function ProblemChild(): JSX.Element {
+function ProblemChild(): React.JSX.Element {
   throw new Error('Test error');
 }
 
