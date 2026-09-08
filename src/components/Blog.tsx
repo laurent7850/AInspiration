@@ -58,8 +58,22 @@ export default function Blog() {
       <div className="container mx-auto px-4 pb-20">
 
         {loading && (
-          <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+          // Skeleton cards with the final card geometry: a centred spinner pushed
+          // the whole list down once it resolved (CLS 0.27 on /blog, 2026-09-08).
+          <div className="grid gap-8 max-w-5xl mx-auto" aria-busy="true" aria-label={t('loading', { defaultValue: 'Chargement…' })}>
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="bg-white rounded-2xl shadow-lg overflow-hidden animate-pulse">
+                <div className="md:flex">
+                  <div className="md:w-1/3 aspect-[16/10] md:aspect-auto md:min-h-[16rem] bg-gray-200" />
+                  <div className="md:w-2/3 p-8 space-y-4">
+                    <div className="h-4 w-1/2 bg-gray-200 rounded" />
+                    <div className="h-7 w-5/6 bg-gray-200 rounded" />
+                    <div className="h-4 w-full bg-gray-200 rounded" />
+                    <div className="h-4 w-2/3 bg-gray-200 rounded" />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         )}
 
@@ -79,7 +93,7 @@ export default function Blog() {
 
         {!loading && !error && articles.length > 0 && (
           <div className="grid gap-8 max-w-5xl mx-auto">
-            {articles.map((article) => {
+            {articles.map((article, index) => {
               const formattedDate = article.published_at
                 ? new Date(article.published_at).toLocaleDateString(dateLocale, {
                     year: 'numeric',
@@ -96,10 +110,14 @@ export default function Blog() {
                   className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="md:flex">
-                    <div className="md:w-1/3">
+                    <div className="md:w-1/3 aspect-[16/10] md:aspect-auto">
                       <img
                         src={article.image_url || defaultImage}
                         alt={article.title}
+                        width={800}
+                        height={500}
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        decoding="async"
                         className="h-full w-full object-cover"
                       />
                     </div>
