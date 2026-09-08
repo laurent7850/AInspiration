@@ -568,6 +568,12 @@ app.get('/{*splat}', async (req, res) => {
   if (!html) return res.sendFile(path.join(distPath, 'index.html'));
 
   try {
+    // /solutions/ and /solutions both answered 200 with the same content and
+    // the same canonical: one URL per page, the slash-less form (2026-09-08).
+    if (req.path.length > 1 && /\/+$/.test(req.path)) {
+      const q = req.originalUrl.indexOf('?');
+      return res.redirect(301, req.path.replace(/\/+$/, '') + (q >= 0 ? req.originalUrl.slice(q) : ''));
+    }
     const routePath = req.path.replace(/\/+$/, '') || '/';
     const { lang, rest } = splitLang(routePath);
 
