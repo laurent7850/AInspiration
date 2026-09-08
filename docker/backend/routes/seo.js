@@ -347,6 +347,13 @@ const SERVICE_NS = {
   '/recommandations': 'recommendations',
   '/audio': 'audio',
   '/video': 'video',
+  // Legal and contact pages: the crawler read 32 to 43 words on pages that
+  // render 600 when the app runs. Each takes its own section of the bundle.
+  '/cgv': 'legal#cgv',
+  '/cgu': 'legal#cgu',
+  '/mentions-legales': 'legal#mentions',
+  '/privacy': 'legal#privacy',
+  '/contact': 'forms#contact',
 };
 
 // Interface chrome (buttons, placeholders, form steps) and meta already emitted
@@ -374,12 +381,21 @@ function getLocaleBlocks(lang, ns) {
   const key = `${lang}:${ns}`;
   if (localeBlockCache.has(key)) return localeBlockCache.get(key);
 
+  // `legal#cgv` reads locales/<lang>/legal.json and keeps the `cgv` section.
+  // One bundle serves four legal pages; without the selector each of them
+  // would carry all four texts, trading thin content for duplicate content.
+  const [file, section] = String(ns).split('#');
+
   let json = null;
   for (const candidate of [lang, 'fr']) {          // fall back to French
     try {
-      json = JSON.parse(fs.readFileSync(path.join(distPath, 'locales', candidate, `${ns}.json`), 'utf8'));
+      json = JSON.parse(fs.readFileSync(path.join(distPath, 'locales', candidate, `${file}.json`), 'utf8'));
       break;
     } catch (e) { /* try the next candidate */ }
+  }
+  if (section && json) {
+    for (const part of section.split('.')) json = json && json[part];
+    if (!json || typeof json !== 'object') json = null;
   }
   if (!json) {
     localeBlockCache.set(key, []);
@@ -708,7 +724,10 @@ app.get('/{*splat}', async (req, res) => {
       out = out.replace(/<main>[\s\S]*?<\/main>/,
         `<main><article><h1>${escHtml(post.h1)}</h1>`
         + `<p>${escHtml(post.description)}</p>`
-        + `<p><img src="${escHtml(post.image)}" alt="" width="1200" height="630" loading="lazy" /></p>`
+        // The cover illustrates the subject, so it takes the subject as its
+        // description. An empty alt says "decorative", which this is not, and
+        // the crawler counted it as missing on all thirty article pages.
+        + `<p><img src="${escHtml(post.image)}" alt="${escHtml(post.h1 || '')}" width="1200" height="630" loading="lazy" /></p>`
         + `<p>${escHtml(post.author)}${post.publishedAt ? ' · ' + new Date(post.publishedAt).toISOString().slice(0, 10) : ''} · ${post.readTime} min</p>`
         + post.body
         + `</article>`
