@@ -43,20 +43,34 @@ export default function BlogAdminPage() {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
 
-  const load = useCallback(async () => {
+  // Bumped by `load()` to re-run the fetch effect below.
+  const [reloadKey, setReloadKey] = useState(0);
+
+  // Reload from event handlers: shows the loading state, then re-fetches.
+  const load = useCallback(() => {
     setLoading(true);
     setError(null);
-    try {
-      const rows = await api.get<AdminPost[]>('/blog-posts', { status, limit: 200 });
-      setPosts(rows);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : t('blogAdmin.loadError'));
-    } finally {
-      setLoading(false);
-    }
-  }, [status, t]);
+    setReloadKey((k) => k + 1);
+  }, []);
 
-  useEffect(() => { load(); }, [load]);
+  // The fetch lives inside the effect (react-hooks/set-state-in-effect); the
+  // loading flag is raised by whoever triggers it: the initial state, the tab
+  // click handler, or `load()`. A stale response is dropped on cleanup.
+  useEffect(() => {
+    let cancelled = false;
+    const fetchPosts = async () => {
+      try {
+        const rows = await api.get<AdminPost[]>('/blog-posts', { status, limit: 200 });
+        if (!cancelled) setPosts(rows);
+      } catch (e) {
+        if (!cancelled) setError(e instanceof Error ? e.message : t('blogAdmin.loadError'));
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    };
+    fetchPosts();
+    return () => { cancelled = true; };
+  }, [status, t, reloadKey]);
 
   // One row per subject: the FR post plus its EN/NL siblings.
   const groups = useMemo(() => {
@@ -74,8 +88,8 @@ export default function BlogAdminPage() {
     setBusy(baseSlug(items[0].slug));
     try {
       await Promise.all(items.map((p) => api.put(`/blog-posts/${p.id}`, { status: next })));
-      await load();
-    } catch (e) {
+      load();
+} catch (e) {
       setError(e instanceof Error ? e.message : t('blogAdmin.updateError'));
     } finally {
       setBusy(null);
@@ -113,7 +127,7 @@ export default function BlogAdminPage() {
               role="tab"
               type="button"
               aria-selected={status === s}
-              onClick={() => setStatus(s)}
+              onClick={() => { setStatus(s); setLoading(true); setError(null); }}
               className={`px-4 py-2 text-sm font-medium border-b-2 -mb-px ${
                 status === s ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-gray-600 hover:text-gray-900'
               }`}

@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Cookies from 'js-cookie';
 import { X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function CookieBanner() {
-  const [isVisible, setIsVisible] = useState(false);
+  // Visible until the visitor has recorded a consent choice (read once, on mount).
+  const [isVisible, setIsVisible] = useState(() => !Cookies.get('cookie-consent'));
   const { t } = useTranslation('common');
-
-  useEffect(() => {
-    const consent = Cookies.get('cookie-consent');
-    if (!consent) {
-      setIsVisible(true);
-    }
-  }, []);
 
   const acceptAll = () => {
     Cookies.set('cookie-consent', 'all', { expires: 365 });

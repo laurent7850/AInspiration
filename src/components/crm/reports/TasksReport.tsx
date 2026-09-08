@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { CheckSquare, Calendar, Tag, AlertCircle, Clock, ArrowDownUp } from 'lucide-react';
 import { Task } from '../../../utils/types';
 import { fetchTasks, getTaskPriorities, getTaskStatuses } from '../../../services/taskService';
@@ -25,7 +25,6 @@ type TaskFilters = {
 
 const TasksReport: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [filteredTasks, setFilteredTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [sortField, setSortField] = useState<string>('due_date');
@@ -98,8 +97,8 @@ const TasksReport: React.FC = () => {
     loadTasks();
   }, []);
   
-  useEffect(() => {
-    // Apply filters to tasks
+  // Derived from the loaded tasks and the current filters/sort
+  const filteredTasks = useMemo(() => {
     let result = [...tasks];
     
     // Filter by date range
@@ -133,28 +132,21 @@ const TasksReport: React.FC = () => {
     
     // Apply sorting
     result.sort((a, b) => {
-      let valueA = a[sortField as keyof Task];
-      let valueB = b[sortField as keyof Task];
-      
+      const valueA = a[sortField as keyof Task];
+      const valueB = b[sortField as keyof Task];
+
       // Handle special cases for sorting
       if (sortField === 'completed') {
-        // @ts-ignore - Converting boolean to number for sorting
-        valueA = valueA ? 1 : 0;
-        // @ts-ignore - Converting boolean to number for sorting
-        valueB = valueB ? 1 : 0;
-      } else if (typeof valueA === 'string' && typeof valueB === 'string') {
+        // Booleans have no natural order: compare them as 0/1
+        const diff = (a.completed ? 1 : 0) - (b.completed ? 1 : 0);
+        return sortDirection === 'asc' ? diff : -diff;
+      }
+      if (typeof valueA === 'string' && typeof valueB === 'string') {
         return sortDirection === 'asc'
           ? valueA.localeCompare(valueB)
           : valueB.localeCompare(valueA);
       }
-      // @ts-ignore - Date check
-      else if (valueA instanceof Date && valueB instanceof Date) {
-        // @ts-ignore - Converting dates to numbers
-        valueA = valueA.getTime();
-        // @ts-ignore - Converting dates to numbers
-        valueB = valueB.getTime();
-      }
-      
+
       if (valueA !== undefined && valueB !== undefined) {
         if (valueA < valueB) return sortDirection === 'asc' ? -1 : 1;
         if (valueA > valueB) return sortDirection === 'asc' ? 1 : -1;
@@ -162,7 +154,7 @@ const TasksReport: React.FC = () => {
       return 0;
     });
 
-    setFilteredTasks(result);
+    return result;
   }, [tasks, filters, sortField, sortDirection, dateRange]);
 
   const handleFilterChange = (filterName: string, values: string[]) => {

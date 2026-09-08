@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Mail, Clock, Building, Trash2 } from 'lucide-react';
 import type { ContactMessage } from '../../utils/types';
 import { contactMessageService } from '../../services/contactMessageService';
@@ -20,12 +20,7 @@ export default function ContactMessagesList({ onSelectMessage, selectedId }: Con
     archived: 0
   });
 
-  useEffect(() => {
-    loadMessages();
-    loadStats();
-  }, [filter]);
-
-  const loadMessages = async () => {
+  const loadMessages = useCallback(async () => {
     try {
       setLoading(true);
       const data = await contactMessageService.getAll(filter);
@@ -35,16 +30,23 @@ export default function ContactMessagesList({ onSelectMessage, selectedId }: Con
     } finally {
       setLoading(false);
     }
-  };
+  }, [filter]);
 
-  const loadStats = async () => {
+  const loadStats = useCallback(async () => {
     try {
       const data = await contactMessageService.getStats();
       setStats(data);
     } catch (error) {
       console.error('Error loading stats:', error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    const run = async () => {
+      await Promise.all([loadMessages(), loadStats()]);
+    };
+    void run();
+  }, [loadMessages, loadStats]);
 
   const handleDelete = async (id: string, e: React.MouseEvent) => {
     e.stopPropagation();

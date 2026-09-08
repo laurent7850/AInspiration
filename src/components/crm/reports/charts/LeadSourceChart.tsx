@@ -1,65 +1,64 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Contact } from '../../../../utils/types';
 
 interface LeadSourceChartProps {
   contacts: Contact[];
 }
 
-const LeadSourceChart: React.FC<LeadSourceChartProps> = ({ contacts }) => {
-  type SourceData = {
-    source: string;
-    count: number;
-    percentage: number;
-    color: string;
-  };
+type SourceData = {
+  source: string;
+  count: number;
+  percentage: number;
+  color: string;
+};
 
-  const [sourceData, setSourceData] = useState<SourceData[]>([]);
-  
-  // Define colors for lead sources
-  const sourceColors: Record<string, string> = {
-    'Website': '#8b5cf6',     // Violet
-    'Site web': '#8b5cf6',    // Violet (French)
-    'Referral': '#10b981',    // Green
-    'Référence': '#10b981',   // Green (French)
-    'LinkedIn': '#6366f1',    // Indigo
-    'Email': '#f59e0b',       // Amber
-    'Cold Call': '#ef4444',   // Red
-    'Prospection': '#ef4444', // Red (French)
-    'Conference': '#0ea5e9',  // Sky blue
-    'Conférence': '#0ea5e9',  // Sky blue (French)
-    'Partner': '#8b5cf6',     // Violet
-    'Partenaire': '#8b5cf6',  // Violet (French)
-    'Other': '#94a3b8',       // Slate
-    'Autre': '#94a3b8',       // Slate (French)
-  };
-  
-  const defaultColors = [
-    '#8b5cf6', '#10b981', '#6366f1', '#f59e0b', 
-    '#ef4444', '#0ea5e9', '#ec4899', '#64748b'
-  ];
-  
-  useEffect(() => {
+// Define colors for lead sources
+const SOURCE_COLORS: Record<string, string> = {
+  'Website': '#8b5cf6',     // Violet
+  'Site web': '#8b5cf6',    // Violet (French)
+  'Referral': '#10b981',    // Green
+  'Référence': '#10b981',   // Green (French)
+  'LinkedIn': '#6366f1',    // Indigo
+  'Email': '#f59e0b',       // Amber
+  'Cold Call': '#ef4444',   // Red
+  'Prospection': '#ef4444', // Red (French)
+  'Conference': '#0ea5e9',  // Sky blue
+  'Conférence': '#0ea5e9',  // Sky blue (French)
+  'Partner': '#8b5cf6',     // Violet
+  'Partenaire': '#8b5cf6',  // Violet (French)
+  'Other': '#94a3b8',       // Slate
+  'Autre': '#94a3b8',       // Slate (French)
+};
+
+const DEFAULT_COLORS = [
+  '#8b5cf6', '#10b981', '#6366f1', '#f59e0b',
+  '#ef4444', '#0ea5e9', '#ec4899', '#64748b'
+];
+
+const LeadSourceChart: React.FC<LeadSourceChartProps> = ({ contacts }) => {
+  // Derived from props, not stored in state
+  const sourceData = useMemo<SourceData[]>(() => {
     // Count contacts by lead_source
     const sourceCounts: Record<string, number> = {};
-    
+
     contacts.forEach(contact => {
       const source = contact.lead_source || 'Unknown';
       sourceCounts[source] = (sourceCounts[source] || 0) + 1;
     });
-    
+
     // Convert to array format needed for chart
     const total = contacts.length;
     let colorIndex = 0;
-    
-    const data = Object.entries(sourceCounts)
+
+    return Object.entries(sourceCounts)
       // Sort by count (descending)
       .sort((a, b) => b[1] - a[1])
       // Transform to required format
       .map(([source, count]) => {
         const percentage = total > 0 ? (count / total) * 100 : 0;
-        const color = sourceColors[source] || defaultColors[colorIndex % defaultColors.length];
+        const color = SOURCE_COLORS[source] || DEFAULT_COLORS[colorIndex % DEFAULT_COLORS.length];
         colorIndex++;
-        
+
         return {
           source: source === 'Unknown' ? 'Non spécifié' : source,
           count,
@@ -67,8 +66,6 @@ const LeadSourceChart: React.FC<LeadSourceChartProps> = ({ contacts }) => {
           color
         };
       });
-    
-    setSourceData(data);
   }, [contacts]);
   
   // Pie chart rendering variables

@@ -22,6 +22,12 @@ import { isValidEmail, isValidPhone, checkRateLimit } from '../utils/validation'
 // Proxy backend — le webhook n8n est appelé via le serveur Express
 const AUDIT_WEBHOOK_URL = "/api/webhook/audit";
 
+// Module-scope component: declaring it inside AuditForm would recreate it on
+// every render (react-hooks/static-components) and remount the <p>.
+const FieldError = ({ message }: { message?: string }) => (
+  message ? <p className="text-red-500 text-sm mt-1">{message}</p> : null
+);
+
 interface AuditFormProps {
   isOpen: boolean;
   onClose: () => void;
@@ -265,11 +271,7 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
     }
   };
 
-  const FieldError = ({ field }: { field: string }) => (
-    fieldErrors[field] ? <p className="text-red-500 text-sm mt-1">{fieldErrors[field]}</p> : null
-  );
-
-  const inputClass = (field: string) =>
+const inputClass = (field: string) =>
     `w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all ${
       fieldErrors[field] ? 'border-red-400 bg-red-50' : 'border-gray-300'
     }`;
@@ -388,25 +390,25 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
                 <label htmlFor="audit-name" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.name')} {t('form.required')}</label>
                 <input id="audit-name" name="name" autoComplete="name" type="text" className={inputClass('name')} placeholder={t('form.step1.namePlaceholder')} value={formData.name} onChange={e => updateField('name', e.target.value)} />
                 {honeypotField}
-                <FieldError field="name" />
+                <FieldError message={fieldErrors.name} />
               </div>
 
               <div>
                 <label htmlFor="audit-email" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.email')} {t('form.required')}</label>
                 <input id="audit-email" name="email" autoComplete="email" type="email" className={inputClass('email')} placeholder={t('form.step1.emailPlaceholder')} value={formData.email} onChange={e => updateField('email', e.target.value)} />
-                <FieldError field="email" />
+                <FieldError message={fieldErrors.email} />
               </div>
 
               <div>
                 <label htmlFor="audit-company" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.company')} {t('form.required')}</label>
                 <input id="audit-company" name="company" autoComplete="organization" type="text" className={inputClass('company')} placeholder={t('form.step1.companyPlaceholder')} value={formData.company} onChange={e => updateField('company', e.target.value)} />
-                <FieldError field="company" />
+                <FieldError message={fieldErrors.company} />
               </div>
 
               <div>
                 <label htmlFor="audit-phone" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step1.phone')}</label>
                 <input id="audit-phone" name="phone" autoComplete="tel" type="tel" className={inputClass('phone')} placeholder={t('form.step1.phonePlaceholder')} value={formData.phone} onChange={e => updateField('phone', e.target.value)} />
-                <FieldError field="phone" />
+                <FieldError message={fieldErrors.phone} />
               </div>
 
               <div>
@@ -442,14 +444,14 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
                     </label>
                   ))}
                 </div>
-                <FieldError field="sector" />
+                <FieldError message={fieldErrors.sector} />
               </div>
 
               {formData.sector === 'other' && (
                 <div>
                   <label htmlFor="audit-sector-other" className="block text-sm font-medium text-gray-700 mb-1">{t('form.step2.sectorOtherLabel')} {t('form.required')}</label>
                   <input id="audit-sector-other" name="sectorOther" type="text" className={inputClass('sectorOther')} placeholder={t('form.step2.sectorOtherPlaceholder')} value={formData.sectorOther} onChange={e => updateField('sectorOther', e.target.value)} />
-                  <FieldError field="sectorOther" />
+                  <FieldError message={fieldErrors.sectorOther} />
                 </div>
               )}
 
@@ -467,7 +469,7 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
                     </label>
                   ))}
                 </div>
-                <FieldError field="teamSize" />
+                <FieldError message={fieldErrors.teamSize} />
               </div>
             </div>
           )}
@@ -500,7 +502,7 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
                     </label>
                   ))}
                 </div>
-                <FieldError field="processes" />
+                <FieldError message={fieldErrors.processes} />
               </div>
 
               {formData.processes.includes('other') && (
@@ -524,7 +526,7 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
                     </label>
                   ))}
                 </div>
-                <FieldError field="weeklyHoursWasted" />
+                <FieldError message={fieldErrors.weeklyHoursWasted} />
               </div>
 
               <div>

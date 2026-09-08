@@ -10,20 +10,22 @@ type Status = 'loading' | 'confirming' | 'success' | 'error' | 'not_found';
 export default function UnsubscribePage() {
   const [searchParams] = useSearchParams();
   const token = searchParams.get('token');
-  const [status, setStatus] = useState<Status>('loading');
+  const [tokenStatus, setStatus] = useState<Status>('loading');
   const [email, setEmail] = useState<string>('');
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [tokenErrorMessage, setErrorMessage] = useState<string>('');
   const { t } = useTranslation('pages');
 
+  // A missing token is derived at render time instead of being pushed into
+  // state from the effect (react-hooks/set-state-in-effect); this also keeps
+  // the message in sync when the language changes.
+  const status: Status = token ? tokenStatus : 'not_found';
+  const errorMessage = token ? tokenErrorMessage : t('unsubscribe.error_invalid_link');
+
   useEffect(() => {
-    if (!token) {
-      setStatus('not_found');
-      setErrorMessage(t('unsubscribe.error_invalid_link'));
-      return;
-    }
+    if (!token) return;
 
     // Verify token and get subscriber info
-    const verifyToken = async () => {
+const verifyToken = async () => {
       try {
         const subscriber = await getSubscriberByToken(token);
         if (subscriber) {

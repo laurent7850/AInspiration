@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { DollarSign, Calendar, User, Building, Package, ArrowDownUp } from 'lucide-react';
 import { Opportunity } from '../../../utils/types';
 import { fetchOpportunities } from '../../../services/opportunityService';
@@ -23,7 +23,6 @@ type OpportunityFilters = {
 
 const OpportunitiesReport: React.FC = () => {
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
-  const [filteredOpportunities, setFilteredOpportunities] = useState<Opportunity[]>([]);
   const [loading, setLoading] = useState(true);
   const [, setError] = useState<string | null>(null);
   const [sortField, setSortField] = useState<string>('created_at');
@@ -75,8 +74,8 @@ const OpportunitiesReport: React.FC = () => {
     loadOpportunities();
   }, []);
   
-  useEffect(() => {
-    // Apply filters to opportunities
+  // Derived from the loaded opportunities and the current filters/sort
+  const filteredOpportunities = useMemo(() => {
     let result = [...opportunities];
     
     // Filter by date range
@@ -104,14 +103,7 @@ const OpportunitiesReport: React.FC = () => {
           ? valueA.localeCompare(valueB)
           : valueB.localeCompare(valueA);
       }
-      // @ts-ignore - Date check
-      else if (valueA instanceof Date && valueB instanceof Date) {
-        // @ts-ignore - Converting dates to numbers
-        valueA = valueA.getTime();
-        // @ts-ignore - Converting dates to numbers
-        valueB = valueB.getTime();
-      }
-      
+
       if (valueA !== undefined && valueB !== undefined) {
         if (valueA < valueB) return sortDirection === 'asc' ? -1 : 1;
         if (valueA > valueB) return sortDirection === 'asc' ? 1 : -1;
@@ -119,7 +111,7 @@ const OpportunitiesReport: React.FC = () => {
       return 0;
     });
 
-    setFilteredOpportunities(result);
+    return result;
   }, [opportunities, filters, sortField, sortDirection, dateRange]);
 
   const handleFilterChange = (filterName: string, values: string[]) => {

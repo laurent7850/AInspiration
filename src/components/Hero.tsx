@@ -130,7 +130,7 @@ export default function Hero() {
                     invalidated by a DOM swap. The video (loaded after 2s) overlays it. */}
                 <img
                   src="/images/hero-ai-business.webp"
-                  srcSet="/images/hero-ai-business-480.webp 480w, /images/hero-ai-business.webp 1000w"
+                  srcSet="/images/hero-ai-business-480.webp 480w, /images/hero-ai-business-800.webp 800w, /images/hero-ai-business.webp 1000w"
                   sizes="(max-width: 1024px) 90vw, 40vw"
                   alt={t('hero.imageAlt')}
                   className="w-full rounded-[2rem]"

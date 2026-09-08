@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { Menu, X, LogOut, ChevronDown, Database, Languages, Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 import NotificationCenter from '../ui/NotificationCenter';
 import { useLocalizedPath } from '../../hooks/useLocalizedPath';
 

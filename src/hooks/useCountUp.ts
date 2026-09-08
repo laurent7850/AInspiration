@@ -25,8 +25,15 @@ export function useCountUp({
   threshold = 0.3,
 }: UseCountUpOptions) {
   const ref = useRef<HTMLDivElement>(null);
-  const [value, setValue] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
+  // Reduced-motion users see the final value immediately, no count-up.
+  // Resolved in a lazy initializer so the effect below never has to set state
+  // synchronously (react-hooks/set-state-in-effect).
+  const [reducedMotion] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const [value, setValue] = useState(() => (reducedMotion ? end : 0));
+  const [hasAnimated, setHasAnimated] = useState(reducedMotion);
+  // Guards against starting the animation twice; a ref (not state) so the
+  // effect does not need to re-run when the animation starts.
+  const startedRef = useRef(reducedMotion);
 
   const animate = useCallback(() => {
     const startTime = performance.now();
@@ -46,34 +53,33 @@ export function useCountUp({
       }
     };
 
-    setTimeout(() => requestAnimationFrame(tick), delay);
+    setTimeout(() => {
+      setHasAnimated(true);
+      requestAnimationFrame(tick);
+    }, delay);
   }, [end, duration, delay]);
 
   useEffect(() => {
     const node = ref.current;
-    if (!node || hasAnimated) return;
+    if (!node || startedRef.current) return;
 
-    // Reduced-motion users see the final value immediately, no count-up.
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setHasAnimated(true);
-      setValue(end);
-      return;
-    }
+    const start = () => {
+      startedRef.current = true;
+      animate();
+    };
 
     // Already visible at mount (above the fold): animate now rather than
     // waiting on an IntersectionObserver notification.
     const rect = node.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
-      setHasAnimated(true);
-      animate();
+      start();
       return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          animate();
+        if (entry.isIntersecting && !startedRef.current) {
+          start();
           observer.disconnect();
         }
       },
@@ -82,7 +88,7 @@ export function useCountUp({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [animate, hasAnimated, threshold, end]);
+  }, [animate, threshold]);
 
   const displayed = decimals > 0 ? value.toFixed(decimals) : Math.round(value);
   const formattedValue = `${prefix}${displayed}${suffix}`;

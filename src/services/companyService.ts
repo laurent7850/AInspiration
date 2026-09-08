@@ -64,5 +64,6 @@ export const searchCompanies = async (query: string): Promise<Company[]> => {
 };
 
 export const getCompanyStats = async () => {
-  return api.get<{ total: number; recentAdditions: any[] }>('/companies/stats');
+  // Shape returned by GET /api/companies/stats (docker/backend/routes/crm.js)
+  return api.get<{ totalCount: number; activeCount: number; recentAdditions: Company[] }>('/companies/stats');
 };

@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Bell, X, Mail, CheckCircle, AlertCircle, Info } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useNotifications } from '../../context/NotificationContext';
+import { useNotifications } from '../../hooks/useNotifications';
+
+// Notification shape as exposed by the context (the interface itself is not exported)
+type Notification = ReturnType<typeof useNotifications>['notifications'][number];
 
 export default function NotificationCenter() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +28,7 @@ export default function NotificationCenter() {
     };
   }, [isOpen]);
 
-  const handleNotificationClick = (notification: any) => {
+  const handleNotificationClick = (notification: Notification) => {
     if (notification.type === 'new_message') {
       navigate('/dashboard/messages');
       setIsOpen(false);

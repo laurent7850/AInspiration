@@ -14,7 +14,7 @@ import {
   AlertCircle,
   Link,
 } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 import { Contact } from '../../utils/types';
 import CompanyLink from './CompanyLink';
 import BulkActions from './BulkActions';
@@ -40,7 +40,8 @@ const ContactList: React.FC<ContactListProps> = ({ onCreateNew, onEditContact })
   const query = useContactsList({ limit: PAGE_SIZE, offset: page * PAGE_SIZE });
   const deleteMutation = useDeleteContact();
 
-  const contacts = query.data?.data ?? [];
+  // Memoised so the list keeps a stable identity between renders (useMemo dep below).
+  const contacts = useMemo(() => query.data?.data ?? [], [query.data]);
   const total = query.data?.total ?? null;
   const isFetchingNewPage = query.isFetching && !query.isLoading;
 

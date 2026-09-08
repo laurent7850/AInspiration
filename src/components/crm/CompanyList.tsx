@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Building2, 
   Plus, 
@@ -12,7 +12,7 @@ import {
   PackageOpen
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 import { fetchCompanies, deleteCompany } from '../../services/companyService';
 import { Company } from '../../utils/types';
 
@@ -23,7 +23,6 @@ interface CompanyListProps {
 
 const CompanyList: React.FC<CompanyListProps> = ({ onCreateNew, onEditCompany }) => {
   const [companies, setCompanies] = useState<Company[]>([]);
-  const [filteredCompanies, setFilteredCompanies] = useState<Company[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -38,7 +37,6 @@ const CompanyList: React.FC<CompanyListProps> = ({ onCreateNew, onEditCompany })
         setLoading(true);
         const data = await fetchCompanies();
         setCompanies(data);
-        setFilteredCompanies(data);
       } catch (err) {
         console.error('Failed to load companies', err);
         setError('Impossible de charger les entreprises. Veuillez réessayer.');
@@ -50,19 +48,15 @@ const CompanyList: React.FC<CompanyListProps> = ({ onCreateNew, onEditCompany })
     loadCompanies();
   }, []);
 
-  useEffect(() => {
-    // Filter companies based on search term
-    if (searchTerm.trim()) {
-      const term = searchTerm.toLowerCase();
-      const result = companies.filter(company => 
-        (company.name?.toLowerCase() || '').includes(term) || 
-        (company.address?.toLowerCase() || '').includes(term) || 
-        (company.website?.toLowerCase() || '').includes(term)
-      );
-      setFilteredCompanies(result);
-    } else {
-      setFilteredCompanies(companies);
-    }
+  // Filter companies based on search term (derived, not stored)
+  const filteredCompanies = useMemo(() => {
+    if (!searchTerm.trim()) return companies;
+    const term = searchTerm.toLowerCase();
+    return companies.filter(company =>
+      (company.name?.toLowerCase() || '').includes(term) ||
+      (company.address?.toLowerCase() || '').includes(term) ||
+      (company.website?.toLowerCase() || '').includes(term)
+    );
   }, [searchTerm, companies]);
 
   const handleDelete = async (id: string) => {

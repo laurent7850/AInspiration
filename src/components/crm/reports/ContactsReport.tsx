@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { User, Mail, Phone, Building, Calendar, ArrowDownUp } from 'lucide-react';
 import { Contact } from '../../../utils/types';
 import { fetchContacts } from '../../../services/contactService';
@@ -23,7 +23,6 @@ type ContactFilters = {
 
 const ContactsReport: React.FC = () => {
   const [contacts, setContacts] = useState<Contact[]>([]);
-  const [filteredContacts, setFilteredContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
   const [, setError] = useState<string | null>(null);
   const [sortField, setSortField] = useState<string>('created_at');
@@ -76,8 +75,8 @@ const ContactsReport: React.FC = () => {
     loadContacts();
   }, []);
   
-  useEffect(() => {
-    // Apply filters to contacts
+  // Derived from the loaded contacts and the current filters/sort
+  const filteredContacts = useMemo(() => {
     let result = [...contacts];
     
     // Filter by date range
@@ -93,21 +92,14 @@ const ContactsReport: React.FC = () => {
     
     // Apply sorting
     result.sort((a, b) => {
-      let valueA = a[sortField as keyof Contact];
-      let valueB = b[sortField as keyof Contact];
-      
+      const valueA = a[sortField as keyof Contact];
+      const valueB = b[sortField as keyof Contact];
+
       // Handle special cases for sorting
       if (typeof valueA === 'string' && typeof valueB === 'string') {
         return sortDirection === 'asc'
           ? valueA.localeCompare(valueB)
           : valueB.localeCompare(valueA);
-      }
-      // @ts-ignore - Date check after string check
-      else if (valueA instanceof Date && valueB instanceof Date) {
-        // @ts-ignore - Converting dates to numbers for comparison
-        valueA = valueA.getTime();
-        // @ts-ignore - Converting dates to numbers for comparison
-        valueB = valueB.getTime();
       }
 
       if (valueA !== undefined && valueB !== undefined) {
@@ -117,7 +109,7 @@ const ContactsReport: React.FC = () => {
       return 0;
     });
     
-    setFilteredContacts(result);
+    return result;
   }, [contacts, filters, sortField, sortDirection, dateRange]);
   
   const handleFilterChange = (filterName: string, values: string[]) => {

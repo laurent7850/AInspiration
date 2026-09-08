@@ -1,4 +1,4 @@
-import { TrendingUp, TrendingDown, Minus, DollarSign, Clock, Target, BarChart2 } from 'lucide-react';
+import { TrendingUp, TrendingDown, Minus, DollarSign, Clock, Target, BarChart2, LucideIcon } from 'lucide-react';
 import { Opportunity, Task, Contact } from '../../utils/types';
 
 interface AdvancedStatsProps {
@@ -69,7 +69,7 @@ const AdvancedStats: React.FC<AdvancedStatsProps> = ({ opportunities, tasks, con
   const stats: Array<{
     label: string;
     value: string;
-    icon: any;
+    icon: LucideIcon;
     bgColor: string;
     iconColor: string;
     trend: TrendType;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 import { Mail, Lock, AlertCircle } from 'lucide-react';
 
 export default function SignInForm() {

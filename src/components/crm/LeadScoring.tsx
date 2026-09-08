@@ -50,10 +50,11 @@ const LeadScoring: React.FC<LeadScoringProps> = ({
 
     if (contacts.length > 0) {
       calculateScores();
-    } else {
-      setLoading(false);
     }
   }, [contacts, opportunities, activities]);
+
+  // Nothing is computed without contacts, so the spinner only applies when there are some.
+  const isLoading = contacts.length > 0 && loading;
 
   const getPriorityIcon = (priority: LeadScore['priority']) => {
     switch (priority) {
@@ -103,7 +104,7 @@ const LeadScoring: React.FC<LeadScoringProps> = ({
   const warmCount = leadScores.filter(s => s.priority === 'warm').length;
   const coldCount = leadScores.filter(s => s.priority === 'cold').length;
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="bg-white rounded-xl shadow p-6">
         <div className="flex items-center justify-between mb-4">

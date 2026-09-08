@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Mail, Building, Calendar, Tag, ArrowLeft } from 'lucide-react';
 import type { ContactMessage } from '../../utils/types';
 import { contactMessageService } from '../../services/contactMessageService';
@@ -10,13 +10,19 @@ interface ContactMessageDetailProps {
 }
 
 export default function ContactMessageDetail({ message, onBack, onStatusChange }: ContactMessageDetailProps) {
+  // Mark a message as read once per opened message. The ref guard means the
+  // effect only acts when message.id changes, not when the parent re-renders
+  // with a new onStatusChange identity (which would otherwise re-trigger it).
+  const handledMessageId = useRef<string | null>(null);
   useEffect(() => {
+    if (handledMessageId.current === message.id) return;
+    handledMessageId.current = message.id;
     if (message.status === 'new') {
       contactMessageService.updateStatus(message.id, 'read').then(() => {
         onStatusChange();
       });
     }
-  }, [message.id]);
+  }, [message.id, message.status, onStatusChange]);
 
   const handleStatusChange = async (newStatus: string) => {
     try {

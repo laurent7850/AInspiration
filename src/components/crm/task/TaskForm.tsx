@@ -9,7 +9,7 @@ import {
   Link,
   Flag,
 } from 'lucide-react';
-import { useAuth } from '../../../context/AuthContext';
+import { useAuth } from '../../../hooks/useAuth';
 import { 
   createTask, 
   fetchTaskById, 
@@ -53,24 +53,33 @@ const TaskForm: React.FC<TaskFormProps> = ({
   onClose, 
   onSaved 
 }) => {
-  const [task, setTask] = useState<Omit<Task, 'id' | 'created_at' | 'updated_at' | 'related_to_name'>>({
+  const { user } = useAuth();
+
+  const [task, setTask] = useState<Omit<Task, 'id' | 'created_at' | 'updated_at' | 'related_to_name'>>(() => ({
     ...initialTask,
-    user_id: '',
+    user_id: user?.id ?? '',
     completed: false,
     related_to_type: initialRelatedToType,
     related_to: initialRelatedTo
-  });
-  
+  }));
+
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [companies, setCompanies] = useState<Company[]>([]);
-  
-  const { user } = useAuth();
+
   const priorities = getTaskPriorities();
   const statuses = getTaskStatuses();
+
+  // Keep user_id in sync with the authenticated user. State is adjusted during
+  // render (previous-value pattern) instead of in an effect.
+  const [syncedUserId, setSyncedUserId] = useState(user?.id);
+  if (user && user.id !== syncedUserId) {
+    setSyncedUserId(user.id);
+    setTask(prev => ({ ...prev, user_id: user.id }));
+  }
 
   // Load task data if editing
   useEffect(() => {
@@ -116,13 +125,6 @@ const TaskForm: React.FC<TaskFormProps> = ({
     
     loadReferenceData();
   }, []);
-
-  // Set user_id when authenticated user is available
-  useEffect(() => {
-    if (user) {
-      setTask(prev => ({ ...prev, user_id: user.id }));
-    }
-  }, [user]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;

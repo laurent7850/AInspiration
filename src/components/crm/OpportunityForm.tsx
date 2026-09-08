@@ -9,7 +9,7 @@ import {
   X,
   AlertTriangle 
 } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 import { 
   createOpportunity, 
   fetchOpportunityById, 
@@ -39,20 +39,29 @@ const initialOpportunity: Omit<Opportunity, 'id' | 'created_at' | 'updated_at' |
 };
 
 const OpportunityForm: React.FC<OpportunityFormProps> = ({ opportunityId, onClose, onSaved }) => {
-  const [opportunity, setOpportunity] = useState<Omit<Opportunity, 'id' | 'created_at' | 'updated_at'>>({
+  const { user } = useAuth();
+
+  const [opportunity, setOpportunity] = useState<Omit<Opportunity, 'id' | 'created_at' | 'updated_at'>>(() => ({
     ...initialOpportunity,
-    user_id: ''
-  });
-  
+    user_id: user?.id ?? ''
+  }));
+
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [companies, setCompanies] = useState<Company[]>([]);
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
-  
-  const { user } = useAuth();
+
   const stages = getOpportunityStages();
+
+  // Keep user_id in sync with the authenticated user. State is adjusted during
+  // render (previous-value pattern) instead of in an effect.
+  const [syncedUserId, setSyncedUserId] = useState(user?.id);
+  if (user && user.id !== syncedUserId) {
+    setSyncedUserId(user.id);
+    setOpportunity(prev => ({ ...prev, user_id: user.id }));
+  }
 
   // Load opportunity data if editing
   useEffect(() => {
@@ -98,13 +107,6 @@ const OpportunityForm: React.FC<OpportunityFormProps> = ({ opportunityId, onClos
     
     loadReferenceData();
   }, []);
-
-  // Set user_id when authenticated user is available
-  useEffect(() => {
-    if (user) {
-      setOpportunity(prev => ({ ...prev, user_id: user.id }));
-    }
-  }, [user]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;

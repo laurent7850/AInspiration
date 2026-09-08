@@ -53,10 +53,11 @@ const FollowUpSuggestions: React.FC<FollowUpSuggestionsProps> = ({
 
     if (contacts.length > 0) {
       loadSuggestions();
-    } else {
-      setLoading(false);
     }
   }, [contacts, opportunities, tasks, activities]);
+
+  // Nothing is fetched without contacts, so the spinner only applies when there are some.
+  const isLoading = contacts.length > 0 && loading;
 
   const getPriorityColor = (priority: FollowUpSuggestion['priority']) => {
     switch (priority) {
@@ -147,7 +148,7 @@ const FollowUpSuggestions: React.FC<FollowUpSuggestionsProps> = ({
     return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
   };
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="bg-white rounded-xl shadow p-6">
         <div className="flex items-center space-x-2 mb-4">

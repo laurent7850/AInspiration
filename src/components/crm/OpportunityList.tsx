@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   BarChart, 
   DollarSign, 
@@ -25,7 +25,6 @@ interface OpportunityListProps {
 
 const OpportunityList: React.FC<OpportunityListProps> = ({ onCreateNew, onEditOpportunity }) => {
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
-  const [filteredOpportunities, setFilteredOpportunities] = useState<Opportunity[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [stageFilter, setStageFilter] = useState<string>('all');
@@ -41,7 +40,6 @@ const OpportunityList: React.FC<OpportunityListProps> = ({ onCreateNew, onEditOp
         setLoading(true);
         const data = await fetchOpportunities();
         setOpportunities(data);
-        setFilteredOpportunities(data);
       } catch (err) {
         console.error('Failed to load opportunities', err);
         setError('Impossible de charger les opportunités. Veuillez réessayer.');
@@ -53,26 +51,26 @@ const OpportunityList: React.FC<OpportunityListProps> = ({ onCreateNew, onEditOp
     loadOpportunities();
   }, []);
 
-  useEffect(() => {
-    // Filter opportunities based on stage filter and search term
+  // Filter opportunities based on stage filter and search term (derived, not stored)
+  const filteredOpportunities = useMemo(() => {
     let result = [...opportunities];
-    
+
     if (stageFilter !== 'all') {
       result = result.filter(opp => opp.stage === stageFilter);
     }
-    
+
     if (searchTerm.trim()) {
       const term = searchTerm.toLowerCase();
-      result = result.filter(opp => 
-        opp.name.toLowerCase().includes(term) || 
+      result = result.filter(opp =>
+        opp.name.toLowerCase().includes(term) ||
         opp.company_name?.toLowerCase().includes(term) ||
         opp.contact_name?.toLowerCase().includes(term) ||
         opp.product_name?.toLowerCase().includes(term) ||
         opp.description?.toLowerCase().includes(term)
       );
     }
-    
-    setFilteredOpportunities(result);
+
+    return result;
   }, [stageFilter, searchTerm, opportunities]);
 
   const handleDelete = async (id: string) => {

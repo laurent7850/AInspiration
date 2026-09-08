@@ -3,7 +3,7 @@ import { Download, FileText, FileSpreadsheet, CheckCircle, AlertCircle } from 'l
 
 interface ReportExporterProps {
   reportName: string;
-  data: any[];
+  data: object[];
   columns: {
     key: string;
     label: string;
@@ -15,7 +15,7 @@ const ReportExporter: React.FC<ReportExporterProps> = ({ reportName, data, colum
   const [exportStatus, setExportStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [exportError, setExportError] = useState<string | null>(null);
   
-  const convertToCSV = (data: any[]): string => {
+  const convertToCSV = (data: object[]): string => {
     // Create header row using column labels
     let csvContent = columns.map(col => `"${col.label}"`).join(',') + '\n';
     
@@ -24,7 +24,7 @@ const ReportExporter: React.FC<ReportExporterProps> = ({ reportName, data, colum
       const row = columns
         .map(column => {
           // Get the value for this column
-          const value = item[column.key];
+          const value = (item as Record<string, unknown>)[column.key];
           
           // Handle different data types
           if (value === null || value === undefined) {
