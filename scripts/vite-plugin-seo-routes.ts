@@ -11,7 +11,7 @@
 import { writeFileSync, mkdirSync } from 'fs';
 import { resolve } from 'path';
 import type { Plugin } from 'vite';
-import { seoPages } from '../src/config/seoConfig';
+import { seoPages } from '../src/config/seoConfig.ts';
 
 export interface SeoRouteEntry {
   title: string;
