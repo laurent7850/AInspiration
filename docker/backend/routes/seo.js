@@ -656,12 +656,17 @@ app.get('/{*splat}', async (req, res) => {
     }
 
     // The served document must declare the language it is written in — the
-    // built index.html always says "fr".
-    out = out.replace(/<html([^>]*)\slang="[a-zA-Z-]*"/, `<html$1 lang="${lang}"`);
+    // built index.html always says "fr". An article carries its own language
+    // (slug suffix -en/-nl, no URL prefix): until 2026-09-08 /blog/…-en was
+    // served as lang="fr" (caught by the weekly health check).
+    const docLang = (post && post.language) || lang;
+    out = out.replace(/<html([^>]*)\slang="[a-zA-Z-]*"/, `<html$1 lang="${docLang}"`);
 
-    // hreflang for the static public routes (not blog posts: they get theirs
-    // from the translated rows below; not the CRM: private).
-    if (!blogMatch && !notFound && KNOWN_ROUTES.has(rest)) {
+    // hreflang for the static public routes and the réalisation detail pages
+    // (not blog posts: they get theirs from the translated rows below; not the
+    // CRM: private).
+    const isRealisationDetail = /^\/realisations\/[a-z0-9-]+$/i.test(rest);
+    if (!blogMatch && !notFound && (KNOWN_ROUTES.has(rest) || isRealisationDetail)) {
       out = out.replace(canonicalTag, `${canonicalTag}\n    ${hreflangLinks(rest)}`);
     }
 

@@ -1,0 +1,44 @@
+name: Health check
+
+# Weekly production check, on the raw HTML (what crawlers see): per-language
+# SEO invariants, redirects, sitemap URLs, dead links, security headers, TLS,
+# API, then Lighthouse budgets. A failed run e-mails the last committer of this
+# file (GitHub notifies on scheduled-workflow failures).
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Monday 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      site:
+        description: Site URL
+        default: https://ainspiration.eu
+
+concurrency:
+  group: health-check
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  site:
+    name: Raw HTML, links, headers, API
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+      - run: node scripts/health-check.mjs "${{ github.event.inputs.site || 'https://ainspiration.eu' }}"
+
+  lighthouse:
+    name: Lighthouse budgets
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+      - run: node scripts/lighthouse-check.mjs "${{ github.event.inputs.site || 'https://ainspiration.eu' }}"
