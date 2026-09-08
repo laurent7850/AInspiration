@@ -2,9 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import SEOHead from '../components/SEOHead';
 import CrmLayout from '../components/crm/CrmLayout';
+import Linkedin from '../components/ui/icons/LinkedinIcon';
 
 import {
-  Linkedin,
   Plus,
   Send,
   Check,
