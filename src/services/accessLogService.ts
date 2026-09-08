@@ -8,7 +8,7 @@ export interface AccessLog {
   user_agent?: string;
   page_url?: string;
   status?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   created_at?: string;
 }
 
@@ -52,7 +52,7 @@ export const logApiCall = async (
   endpoint: string,
   method: string,
   status: 'success' | 'failed',
-  metadata?: Record<string, any>
+  metadata?: Record<string, unknown>
 ): Promise<void> => {
   await logAccess({
     event_type: 'api_call',

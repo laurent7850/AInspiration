@@ -7,6 +7,12 @@ interface TabsProps {
   children: React.ReactNode;
 }
 
+// Props that <Tabs> injects into its direct children through cloneElement
+interface TabsInjectedProps {
+  value?: string;
+  onValueChange?: (value: string) => void;
+}
+
 export const Tabs: React.FC<TabsProps> = ({
   value,
   onValueChange,
@@ -17,7 +23,7 @@ export const Tabs: React.FC<TabsProps> = ({
     <div className={className}>
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
-          return React.cloneElement(child as React.ReactElement<any>, {
+          return React.cloneElement(child as React.ReactElement<TabsInjectedProps>, {
             value,
             onValueChange,
           });
@@ -47,15 +53,16 @@ interface TabsTriggerProps {
   children: React.ReactNode;
 }
 
-export const TabsTrigger: React.FC<TabsTriggerProps> = ({
+export const TabsTrigger: React.FC<TabsTriggerProps & TabsInjectedProps> = ({
   value,
   onClick,
   children,
   ...props
-}: any) => {
+}) => {
   // Get value and onValueChange from parent Tabs component
-  const parentValue = props.value;
-  const parentOnValueChange = props.onValueChange;
+  const injected: TabsInjectedProps = props;
+  const parentValue = injected.value;
+  const parentOnValueChange = injected.onValueChange;
 
   const isActive = parentValue === value;
 
@@ -86,9 +93,10 @@ interface TabsContentProps {
   children: React.ReactNode;
 }
 
-export const TabsContent: React.FC<TabsContentProps> = ({ value, children, ...props }: any) => {
+export const TabsContent: React.FC<TabsContentProps & TabsInjectedProps> = ({ value, children, ...props }) => {
   // Get value from parent Tabs component
-  const parentValue = props.value;
+  const injected: TabsInjectedProps = props;
+  const parentValue = injected.value;
 
   // Only render content if this tab is active
   if (parentValue !== value) return null;

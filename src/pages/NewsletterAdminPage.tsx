@@ -65,30 +65,43 @@ export default function NewsletterAdminPage() {
   const [newSubscriberEmail, setNewSubscriberEmail] = useState('');
   const [isAddingSubscriber, setIsAddingSubscriber] = useState(false);
 
-  useEffect(() => {
-    loadData();
-  }, []);
+  // Bumped by `loadData()` to re-run the fetch effect below.
+  const [reloadKey, setReloadKey] = useState(0);
 
-  const loadData = async () => {
+  // Reload from event handlers: shows the loading state, then re-fetches.
+  const loadData = () => {
     setIsLoading(true);
-    try {
-      const [subscribersData, newslettersData, statsData, logsData] = await Promise.all([
-        getSubscribers(),
-        getNewsletters(),
-        getNewsletterStats(),
-        getSendLogs()
-      ]);
-      setSubscribers(subscribersData);
-      setNewsletters(newslettersData);
-      setStats(statsData);
-      setSendLogs(logsData);
-    } catch (error) {
-      console.error('Error loading data:', error);
-      setMessage({ type: 'error', text: 'Erreur lors du chargement des données' });
-    } finally {
-      setIsLoading(false);
-    }
+    setReloadKey((k) => k + 1);
   };
+
+  // The fetch lives inside the effect (react-hooks/set-state-in-effect);
+  // isLoading starts at true, so the initial load needs no extra setState.
+  // A stale response is dropped on cleanup.
+  useEffect(() => {
+    let cancelled = false;
+    const fetchData = async () => {
+      try {
+        const [subscribersData, newslettersData, statsData, logsData] = await Promise.all([
+          getSubscribers(),
+          getNewsletters(),
+          getNewsletterStats(),
+          getSendLogs()
+        ]);
+        if (cancelled) return;
+        setSubscribers(subscribersData);
+        setNewsletters(newslettersData);
+        setStats(statsData);
+        setSendLogs(logsData);
+      } catch (error) {
+        console.error('Error loading data:', error);
+        if (!cancelled) setMessage({ type: 'error', text: 'Erreur lors du chargement des données' });
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    };
+    fetchData();
+    return () => { cancelled = true; };
+  }, [reloadKey]);
 
   const handleGenerateContent = async () => {
     setIsGenerating(true);

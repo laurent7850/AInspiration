@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Sparkles,
   TrendingUp,
@@ -20,13 +20,20 @@ interface AIInsightsProps {
   contacts: Contact[];
 }
 
+const calculateWinRate = (opps: Opportunity[]): number => {
+  const closed = opps.filter(o => ['Gagné', 'Perdu'].includes(o.stage));
+  if (closed.length === 0) return 0;
+  const won = opps.filter(o => o.stage === 'Gagné').length;
+  return Math.round((won / closed.length) * 100);
+};
+
 const AIInsights: React.FC<AIInsightsProps> = ({ opportunities, tasks, contacts }) => {
   const [insights, setInsights] = useState<AIInsight[]>([]);
   const [aiInsights, setAiInsights] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
-  const loadInsights = async () => {
+  const loadInsights = useCallback(async () => {
     try {
       // Charger les insights via n8n
       const n8nInsights = await getAIInsights(opportunities, tasks, contacts);
@@ -54,18 +61,14 @@ const AIInsights: React.FC<AIInsightsProps> = ({ opportunities, tasks, contacts 
       setLoading(false);
       setRefreshing(false);
     }
-  };
-
-  const calculateWinRate = (opps: Opportunity[]): number => {
-    const closed = opps.filter(o => ['Gagné', 'Perdu'].includes(o.stage));
-    if (closed.length === 0) return 0;
-    const won = opps.filter(o => o.stage === 'Gagné').length;
-    return Math.round((won / closed.length) * 100);
-  };
+  }, [opportunities, tasks, contacts]);
 
   useEffect(() => {
-    loadInsights();
-  }, [opportunities, tasks, contacts]);
+    const run = async () => {
+      await loadInsights();
+    };
+    void run();
+  }, [loadInsights]);
 
   const handleRefresh = async () => {
     setRefreshing(true);

@@ -12,7 +12,7 @@ import {
   Tag,
   Info
 } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 import { 
   createContact, 
   fetchContactById, 
@@ -48,17 +48,25 @@ const initialContact: Omit<Contact, 'id' | 'created_at' | 'updated_at' | 'user_i
 };
 
 const ContactForm: React.FC<ContactFormProps> = ({ contactId, onClose, onSaved }) => {
-  const [contact, setContact] = useState<Omit<Contact, 'id' | 'created_at' | 'updated_at'>>({
+  const { user } = useAuth();
+
+  const [contact, setContact] = useState<Omit<Contact, 'id' | 'created_at' | 'updated_at'>>(() => ({
     ...initialContact,
-    user_id: ''
-  });
-  
+    user_id: user?.id ?? ''
+  }));
+
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [companies, setCompanies] = useState<Company[]>([]);
-  
-  const { user } = useAuth();
+
+  // Keep user_id in sync with the authenticated user. State is adjusted during
+  // render (previous-value pattern) instead of in an effect.
+  const [syncedUserId, setSyncedUserId] = useState(user?.id);
+  if (user && user.id !== syncedUserId) {
+    setSyncedUserId(user.id);
+    setContact(prev => ({ ...prev, user_id: user.id }));
+  }
 
   // Load contact data if editing
   useEffect(() => {
@@ -97,13 +105,6 @@ const ContactForm: React.FC<ContactFormProps> = ({ contactId, onClose, onSaved }
     
     loadCompanies();
   }, []);
-
-  // Set user_id when authenticated user is available
-  useEffect(() => {
-    if (user) {
-      setContact(prev => ({ ...prev, user_id: user.id }));
-    }
-  }, [user]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;

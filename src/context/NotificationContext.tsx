@@ -1,9 +1,10 @@
-import React, { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react';
+import React, { useCallback, useState, useEffect, useRef, ReactNode } from 'react';
 import { api, getToken } from '../utils/api';
-import { useAuth } from './AuthContext';
+import { NotificationContext } from '../hooks/useNotifications';
+import { useAuth } from '../hooks/useAuth';
 import type { ContactMessage } from '../utils/types';
 
-interface Notification {
+export interface Notification {
   id: string;
   type: 'new_message' | 'info' | 'success' | 'error';
   title: string;
@@ -13,7 +14,7 @@ interface Notification {
   read: boolean;
 }
 
-interface NotificationContextType {
+export interface NotificationContextType {
   notifications: Notification[];
   unreadCount: number;
   addNotification: (notification: Omit<Notification, 'id' | 'timestamp' | 'read'>) => void;
@@ -24,15 +25,8 @@ interface NotificationContextType {
   newMessagesCount: number;
 }
 
-const NotificationContext = createContext<NotificationContextType | undefined>(undefined);
-
-export const useNotifications = () => {
-  const context = useContext(NotificationContext);
-  if (!context) {
-    throw new Error('useNotifications must be used within a NotificationProvider');
-  }
-  return context;
-};
+// The context object and its consumer hook live in src/hooks/useNotifications.ts
+// so this module only exports a component (react-refresh/only-export-components).
 
 interface NotificationProviderProps {
   children: ReactNode;
@@ -46,26 +40,33 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({ chil
   const prevCountRef = useRef<number | null>(null);
   const { user } = useAuth();
 
-  useEffect(() => {
-    // Only poll when user is authenticated (not just token present)
+  // Reset the badge on logout. Done while rendering (React's "adjust state on
+  // prop change" pattern) rather than in the polling effect, where a
+  // synchronous setState is flagged by react-hooks/set-state-in-effect.
+  const [prevUser, setPrevUser] = useState(user);
+  if (user !== prevUser) {
+    setPrevUser(user);
     if (!user) {
-      prevCountRef.current = null;
       setNewMessagesCount(0);
-      return;
     }
+  }
 
-    loadNewMessagesCount();
+  const addNotification = useCallback((notification: Omit<Notification, 'id' | 'timestamp' | 'read'>) => {
+    const newNotification: Notification = {
+      ...notification,
+      id: `notif-${Date.now()}-${Math.random()}`,
+      timestamp: new Date(),
+      read: false
+    };
 
-    const interval = setInterval(() => {
-      if (getToken()) {
-        loadNewMessagesCount();
-      }
-    }, POLL_INTERVAL);
+    setNotifications(prev => [newNotification, ...prev]);
 
-    return () => clearInterval(interval);
-  }, [user]);
+    setTimeout(() => {
+      setNotifications(prev => prev.filter(n => n.id !== newNotification.id));
+    }, 10000);
+  }, []);
 
-  const loadNewMessagesCount = async () => {
+  const loadNewMessagesCount = useCallback(async () => {
     try {
       const stats = await api.get<{ new: number }>('/contact-messages/stats');
       const currentCount = stats.new || 0;
@@ -98,22 +99,25 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({ chil
     } catch (error) {
       console.error('Error loading new messages count:', error);
     }
-  };
+  }, [addNotification]);
 
-  const addNotification = (notification: Omit<Notification, 'id' | 'timestamp' | 'read'>) => {
-    const newNotification: Notification = {
-      ...notification,
-      id: `notif-${Date.now()}-${Math.random()}`,
-      timestamp: new Date(),
-      read: false
-    };
+  useEffect(() => {
+    // Only poll when user is authenticated (not just token present)
+    if (!user) {
+      prevCountRef.current = null;
+      return;
+    }
 
-    setNotifications(prev => [newNotification, ...prev]);
+    loadNewMessagesCount();
 
-    setTimeout(() => {
-      setNotifications(prev => prev.filter(n => n.id !== newNotification.id));
-    }, 10000);
-  };
+    const interval = setInterval(() => {
+      if (getToken()) {
+        loadNewMessagesCount();
+      }
+    }, POLL_INTERVAL);
+
+    return () => clearInterval(interval);
+  }, [user, loadNewMessagesCount]);
 
   const markAsRead = (id: string) => {
     setNotifications(prev =>

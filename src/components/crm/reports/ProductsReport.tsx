@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Package, CircleDollarSign, Tag, ArrowDownUp, PieChart, Eye, EyeOff } from 'lucide-react';
 import { Product, Opportunity } from '../../../utils/types';
 import { fetchProducts } from '../../../services/productService';
@@ -26,7 +26,6 @@ type ProductFilters = {
 const ProductsReport: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [, setError] = useState<string | null>(null);
   const [sortField, setSortField] = useState<string>('name');
@@ -98,8 +97,8 @@ const ProductsReport: React.FC = () => {
     loadData();
   }, []);
   
-  useEffect(() => {
-    // Apply filters to products
+  // Derived from the loaded products and the current filters/sort
+  const filteredProducts = useMemo(() => {
     let result = [...products];
     
     // Filter by date range (created_at)
@@ -145,14 +144,7 @@ const ProductsReport: React.FC = () => {
           ? valueA.localeCompare(valueB)
           : valueB.localeCompare(valueA);
       }
-      // @ts-ignore - Date check
-      else if (valueA instanceof Date && valueB instanceof Date) {
-        // @ts-ignore - Converting dates to numbers
-        valueA = valueA.getTime();
-        // @ts-ignore - Converting dates to numbers
-        valueB = valueB.getTime();
-      }
-      
+
       if (valueA !== undefined && valueB !== undefined) {
         if (valueA < valueB) return sortDirection === 'asc' ? -1 : 1;
         if (valueA > valueB) return sortDirection === 'asc' ? 1 : -1;
@@ -160,7 +152,7 @@ const ProductsReport: React.FC = () => {
       return 0;
     });
 
-    setFilteredProducts(result);
+    return result;
   }, [products, filters, sortField, sortDirection, dateRange]);
 
   const handleFilterChange = (filterName: string, values: string[]) => {

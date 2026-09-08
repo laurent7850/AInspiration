@@ -30,59 +30,69 @@ interface Message {
 // Proxy backend — le webhook n8n est appelé via le serveur Express
 const N8N_WEBHOOK_URL = "/api/webhook/chat";
 
+const WELCOME_TEXT = "Bienvenue ! Comment puis-je vous aider aujourd'hui ? Vous cherchez à automatiser certaines tâches, améliorer votre relation client, ou explorer ce que l'IA peut apporter à votre activité ?";
+
+// Reuse the session stored by a previous visit, or mint a new one. Persisting
+// it is done in an effect below (side effects stay out of render).
+const readOrCreateSessionId = (): string => localStorage.getItem('chatSessionId') || uuidv4();
+
+interface ChatToggleButtonProps {
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+// Dedicated button component with better touch target. Module scope so it is
+// not recreated on every ChatbotN8n render (react-hooks/static-components).
+const ChatToggleButton = ({ isOpen, onToggle }: ChatToggleButtonProps) => (
+  <button
+    onClick={onToggle}
+    className="fixed bottom-4 right-4 bg-indigo-600 text-white p-4 rounded-full shadow-lg hover:bg-indigo-700 transition-colors z-50 w-14 h-14 flex items-center justify-center touch-manipulation"
+    aria-label={isOpen ? "Fermer le chat" : "Ouvrir le chat"}
+  >
+    <MessageSquare className="w-6 h-6" />
+  </button>
+);
+
 export default function ChatbotN8n() {
-  // Session management
-  const [sessionId, setSessionId] = useState<string>('');
-  
+  // Session management — lazy initializers replace the former mount effect,
+  // which called setState synchronously (react-hooks/set-state-in-effect).
+  const [sessionId] = useState<string>(readOrCreateSessionId);
+
   // State management
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>(() => [{
+    id: uuidv4(),
+    text: WELCOME_TEXT,
+    isBot: true,
+    timestamp: new Date()
+  }]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [isTtsEnabled, setIsTtsEnabled] = useState(false);
+  const [isTtsEnabled, setIsTtsEnabled] = useState(() => localStorage.getItem('ttsEnabled') === 'true');
   const [isPlaying, setIsPlaying] = useState(false);
-  
+
   // References
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   
-  // Initialize session ID on first render
+  // Persist the session ID so the conversation survives a reload
   useEffect(() => {
-    // Try to get session ID from localStorage
-    const storedSessionId = localStorage.getItem('chatSessionId');
-    
-    if (storedSessionId) {
-      setSessionId(storedSessionId);
-    } else {
-      const newSessionId = uuidv4();
-      setSessionId(newSessionId);
-      localStorage.setItem('chatSessionId', newSessionId);
-    }
+    localStorage.setItem('chatSessionId', sessionId);
+  }, [sessionId]);
 
-    // Get TTS preference
-    const ttsPref = localStorage.getItem('ttsEnabled');
-    setIsTtsEnabled(ttsPref === 'true');
-    
-    // Add welcome message
-    const welcomeMessage: Message = {
-      id: uuidv4(),
-      text: "Bienvenue ! Comment puis-je vous aider aujourd'hui ? Vous cherchez à automatiser certaines tâches, améliorer votre relation client, ou explorer ce que l'IA peut apporter à votre activité ?",
-      isBot: true,
-      timestamp: new Date()
-    };
-    
-    setMessages([welcomeMessage]);
-  }, []);
-  
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   // Scroll to bottom of messages
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-  
+
   // Focus input when chat is opened
   useEffect(() => {
     if (isOpen && !isMinimized && inputRef.current) {
@@ -107,10 +117,6 @@ export default function ChatbotN8n() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   // Toggle text-to-speech
   const toggleTts = () => {
     const newValue = !isTtsEnabled;
@@ -373,19 +379,8 @@ export default function ChatbotN8n() {
     }
   };
 
-  // Dedicated button component with better touch target
-  const ChatButton = () => (
-    <button
-      onClick={handleChatToggle}
-      className="fixed bottom-4 right-4 bg-indigo-600 text-white p-4 rounded-full shadow-lg hover:bg-indigo-700 transition-colors z-50 w-14 h-14 flex items-center justify-center touch-manipulation"
-      aria-label={isOpen ? "Fermer le chat" : "Ouvrir le chat"}
-    >
-      <MessageSquare className="w-6 h-6" />
-    </button>
-  );
-
   if (!isOpen) {
-    return <ChatButton />;
+    return <ChatToggleButton isOpen={isOpen} onToggle={handleChatToggle} />;
   }
 
   return (

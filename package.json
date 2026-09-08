@@ -14,7 +14,7 @@
     "preview": "vite preview",
     "preview:prod": "vite build --mode production && vite preview",
     "deploy": "npm run build:prod && echo '✅ Build production prêt dans dist/'",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 90",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "test": "vitest",
     "type-check": "tsc --noEmit"
   },

@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Opportunity } from '../../../../utils/types';
 
 interface SalesFunnelChartProps {
   opportunities: Opportunity[];
 }
 
+// Define the stages in the correct order
+const STAGES = ['Qualification', 'Proposition', 'Négociation', 'Gagné', 'Perdu'];
+
 const SalesFunnelChart: React.FC<SalesFunnelChartProps> = ({ opportunities }) => {
-  const [stageData, setStageData] = useState<{ stage: string; count: number; value: number }[]>([]);
-  
-  useEffect(() => {
-    // Define the stages in the correct order
-    const stages = ['Qualification', 'Proposition', 'Négociation', 'Gagné', 'Perdu'];
-    
+  // Derived from props, not stored in state
+  const stageData = useMemo(() => {
+    const stages = STAGES;
+
     // Create a map to hold the data for each stage
     const stageMap = new Map<string, { count: number; value: number }>();
     
@@ -31,13 +32,11 @@ const SalesFunnelChart: React.FC<SalesFunnelChartProps> = ({ opportunities }) =>
     });
     
     // Convert the map to an array for rendering
-    const data = stages.map(stage => ({
+    return stages.map(stage => ({
       stage,
       count: stageMap.get(stage)?.count || 0,
       value: stageMap.get(stage)?.value || 0
     }));
-    
-    setStageData(data);
   }, [opportunities]);
   
   const maxCount = Math.max(...stageData.map(d => d.count), 1);

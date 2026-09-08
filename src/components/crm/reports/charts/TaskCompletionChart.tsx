@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Task } from '../../../../utils/types';
 
 interface TaskCompletionChartProps {
@@ -6,14 +6,8 @@ interface TaskCompletionChartProps {
 }
 
 const TaskCompletionChart: React.FC<TaskCompletionChartProps> = ({ tasks }) => {
-  const [monthlyData, setMonthlyData] = useState<{
-    month: string;
-    completed: number;
-    total: number;
-    rate: number;
-  }[]>([]);
-
-  useEffect(() => {
+  // Derived from props, not stored in state
+  const monthlyData = useMemo(() => {
     // Get the last 6 months
     const today = new Date();
     const lastSixMonths = Array.from({ length: 6 }, (_, i) => {
@@ -49,12 +43,10 @@ const TaskCompletionChart: React.FC<TaskCompletionChartProps> = ({ tasks }) => {
     });
     
     // Calculate completion rates
-    const data = lastSixMonths.map(month => ({
+    return lastSixMonths.map(month => ({
       ...month,
       rate: month.total > 0 ? (month.completed / month.total) * 100 : 0
     }));
-    
-    setMonthlyData(data);
   }, [tasks]);
 
   return (

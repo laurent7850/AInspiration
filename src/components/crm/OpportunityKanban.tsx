@@ -19,20 +19,20 @@ const OpportunityKanban: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const loadOpportunities = async () => {
+      try {
+        setLoading(true);
+        const data = await fetchOpportunities();
+        setOpportunities(data);
+      } catch (error) {
+        console.error('Error loading opportunities:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     loadOpportunities();
   }, []);
-
-  const loadOpportunities = async () => {
-    try {
-      setLoading(true);
-      const data = await fetchOpportunities();
-      setOpportunities(data);
-    } catch (error) {
-      console.error('Error loading opportunities:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleDragStart = (opportunity: Opportunity) => {
     setDraggedItem(opportunity);

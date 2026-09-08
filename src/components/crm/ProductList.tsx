@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Package, 
   Plus, 
@@ -12,7 +12,7 @@ import {
   Eye,
   EyeOff
 } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 import { fetchProducts, deleteProduct } from '../../services/productService';
 import { Product } from '../../utils/types';
 
@@ -23,7 +23,6 @@ interface ProductListProps {
 
 const ProductList: React.FC<ProductListProps> = ({ onCreateNew, onEditProduct }) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -45,8 +44,6 @@ const ProductList: React.FC<ProductListProps> = ({ onCreateNew, onEditProduct })
         // Extract unique categories
         const categories = [...new Set(data.map(product => product.category).filter(Boolean))];
         setUniqueCategories(categories as string[]);
-        
-        setFilteredProducts(data);
       } catch (err) {
         console.error('Failed to load products', err);
         setError('Impossible de charger les produits. Veuillez réessayer.');
@@ -58,8 +55,8 @@ const ProductList: React.FC<ProductListProps> = ({ onCreateNew, onEditProduct })
     loadProducts();
   }, []);
 
-  // Apply filters and search
-  useEffect(() => {
+  // Apply filters and search (derived, not stored)
+  const filteredProducts = useMemo(() => {
     let result = [...products];
     
     // Filter by status (is_active)
@@ -84,7 +81,7 @@ const ProductList: React.FC<ProductListProps> = ({ onCreateNew, onEditProduct })
       );
     }
     
-    setFilteredProducts(result);
+    return result;
   }, [products, statusFilter, categoryFilter, searchTerm]);
 
   // Handle product deletion

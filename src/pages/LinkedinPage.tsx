@@ -50,8 +50,11 @@ const STATUS_COLORS: Record<string, { color: string; icon: React.ElementType }> 
   draft: { color: 'bg-gray-100 text-gray-700', icon: Edit3 }
 };
 
+// API failures are Error instances (ApiError, network TypeError); anything else has no usable message
+const errorMessage = (err: unknown): string => (err instanceof Error ? err.message : '');
+
 const LinkedinPage: React.FC = () => {
-  const { t } = useTranslation('crm');
+  const { t, i18n } = useTranslation('crm');
   const [status, setStatus] = useState<LinkedinStatus | null>(null);
   const [posts, setPosts] = useState<LinkedinPost[]>([]);
   const [total, setTotal] = useState(0);
@@ -67,33 +70,43 @@ const LinkedinPage: React.FC = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  const loadData = useCallback(async () => {
-    try {
-      setLoading(true);
-      const [statusRes, postsRes, settingsRes] = await Promise.all([
-        fetchLinkedinStatus().catch(() => ({ connected: false, message: 'Non connecté' } as LinkedinStatus)),
-        fetchLinkedinPosts({ status: statusFilter || undefined, limit: 50 }),
-        fetchLinkedinSettings().catch(() => null)
-      ]);
-      setStatus(statusRes);
-      setPosts(postsRes.posts);
-      setTotal(postsRes.total);
-      setSettings(settingsRes);
-    } catch (err: any) {
-      setError(err.message || t('pages.linkedin.errors.loading'));
-    } finally {
-      setLoading(false);
-    }
-  }, [statusFilter]);
+  // Fetches everything for the current filter and stores it. State is only set
+  // inside promise callbacks so the effect below never calls setState
+  // synchronously; the page spinner (`loading`) is switched on by the callers
+  // (it is already true on mount).
+  const fetchAll = useCallback(() =>
+    Promise.all([
+      fetchLinkedinStatus().catch(() => ({ connected: false, message: 'Non connecté' } as LinkedinStatus)),
+      fetchLinkedinPosts({ status: statusFilter || undefined, limit: 50 }),
+      fetchLinkedinSettings().catch(() => null)
+    ])
+      .then(([statusRes, postsRes, settingsRes]) => {
+        setStatus(statusRes);
+        setPosts(postsRes.posts);
+        setTotal(postsRes.total);
+        setSettings(settingsRes);
+      })
+      .catch((err: unknown) => {
+        // i18n.t (stable identity) rather than t, which would re-run the fetch on every language change
+        setError(errorMessage(err) || i18n.t('pages.linkedin.errors.loading', { ns: 'crm' }));
+      })
+      .finally(() => setLoading(false)),
+  [statusFilter, i18n]);
 
-  useEffect(() => { loadData(); }, [loadData]);
+  // Reload with the page spinner (refresh button and actions)
+  const loadData = useCallback(async () => {
+    setLoading(true);
+    await fetchAll();
+  }, [fetchAll]);
+
+  useEffect(() => { fetchAll(); }, [fetchAll]);
 
   const handleConnect = async () => {
     try {
       const { url } = await fetchLinkedinConnectUrl();
       window.location.href = url;
-    } catch (err: any) {
-      setError(err.message || t('pages.linkedin.errors.connection'));
+    } catch (err) {
+      setError(errorMessage(err) || t('pages.linkedin.errors.connection'));
     }
   };
 
@@ -104,8 +117,8 @@ const LinkedinPage: React.FC = () => {
       const post = await generateLinkedinPost();
       setSuccess(t('pages.linkedin.success.generated', { title: post.title }));
       await loadData();
-    } catch (err: any) {
-      setError(err.message || t('pages.linkedin.errors.generation'));
+    } catch (err) {
+      setError(errorMessage(err) || t('pages.linkedin.errors.generation'));
     } finally {
       setGenerating(false);
     }
@@ -118,8 +131,8 @@ const LinkedinPage: React.FC = () => {
       const result = await publishLinkedinPost(id);
       setSuccess(result.postUrl ? t('pages.linkedin.success.published') : t('pages.linkedin.success.publishedAlt'));
       await loadData();
-    } catch (err: any) {
-      setError(err.message || t('pages.linkedin.errors.publishing'));
+    } catch (err) {
+      setError(errorMessage(err) || t('pages.linkedin.errors.publishing'));
     } finally {
       setPublishing(null);
     }
@@ -130,8 +143,8 @@ const LinkedinPage: React.FC = () => {
       await approveLinkedinPost(id);
       setSuccess(t('pages.linkedin.success.approved'));
       await loadData();
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError(errorMessage(err));
     }
   };
 
@@ -141,8 +154,8 @@ const LinkedinPage: React.FC = () => {
       await deleteLinkedinPost(id);
       setSelectedPost(null);
       await loadData();
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError(errorMessage(err));
     }
   };
 
@@ -153,8 +166,8 @@ const LinkedinPage: React.FC = () => {
       setEditingPost(null);
       setSuccess(t('pages.linkedin.success.updated'));
       await loadData();
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError(errorMessage(err));
     }
   };
 
@@ -169,8 +182,8 @@ const LinkedinPage: React.FC = () => {
       await updateLinkedinSettings('linkedin_config', newConfig);
       setSuccess(newConfig.auto_publish ? t('pages.linkedin.success.autoPublishOn') : t('pages.linkedin.success.manualApproval'));
       await loadData();
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError(errorMessage(err));
     }
   };
 
@@ -306,7 +319,13 @@ const LinkedinPage: React.FC = () => {
             {['', 'review_pending', 'approved', 'published', 'generated', 'failed'].map(f => (
               <button
                 key={f}
-                onClick={() => setStatusFilter(f)}
+                onClick={() => {
+                  // Show the spinner now; the fetch itself runs in the effect once the filter changes
+                  if (f !== statusFilter) {
+                    setLoading(true);
+                    setStatusFilter(f);
+                  }
+                }}
                 className={`px-3 py-1.5 text-sm rounded-lg transition-colors ${
                   statusFilter === f
                     ? 'bg-indigo-600 text-white'

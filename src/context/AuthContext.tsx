@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { AuthContext } from '../hooks/useAuth';
 import { api, setToken, clearToken, getToken } from '../utils/api';
 
 export interface AuthUser {
@@ -10,7 +11,7 @@ export interface AuthUser {
   created_at?: string;
 }
 
-interface AuthContextType {
+export interface AuthContextType {
   user: AuthUser | null;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string, name: string, company: string) => Promise<void>;
@@ -18,8 +19,7 @@ interface AuthContextType {
   loading: boolean;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
+// The `useAuth` hook and the context object live in src/hooks/useAuth.ts.
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(() => !!getToken());
@@ -36,7 +36,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           .finally(() => setLoading(false));
       };
       if ('requestIdleCallback' in window) {
-        (window as any).requestIdleCallback(check, { timeout: 2000 });
+        window.requestIdleCallback(check, { timeout: 2000 });
       } else {
         setTimeout(check, 100);
       }
@@ -82,12 +82,4 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       {children}
     </AuthContext.Provider>
   );
-}
-
-export function useAuth() {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
 }

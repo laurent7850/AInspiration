@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   CheckSquare, 
   Plus, 
@@ -33,7 +33,6 @@ const TaskList: React.FC<TaskListProps> = ({
   onEditTask 
 }) => {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [filteredTasks, setFilteredTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -60,7 +59,6 @@ const TaskList: React.FC<TaskListProps> = ({
           : data;
         
         setTasks(filteredData);
-        setFilteredTasks(filteredData);
       } catch (err) {
         console.error('Failed to load tasks', err);
         setError('Impossible de charger les tâches. Veuillez réessayer.');
@@ -72,8 +70,8 @@ const TaskList: React.FC<TaskListProps> = ({
     loadTasks();
   }, [relatedToType, relatedToId]);
 
-  // Apply filters and search
-  useEffect(() => {
+  // Apply filters and search (derived, not stored)
+  const filteredTasks = useMemo(() => {
     let result = [...tasks];
     
     // Apply status filter
@@ -102,7 +100,7 @@ const TaskList: React.FC<TaskListProps> = ({
       );
     }
     
-    setFilteredTasks(result);
+    return result;
   }, [tasks, statusFilter, priorityFilter, searchTerm]);
 
   // Handle task completion toggle
