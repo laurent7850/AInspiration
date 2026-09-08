@@ -61,7 +61,7 @@ jobs:
       - name: Boot file list is complete
         run: |
           for f in $(grep -vE '^(#|$)' files.txt); do test -f "$f" || { echo "files.txt lists missing $f"; exit 1; }; done
-          for f in routes/*.js; do grep -qx "$f" files.txt || { echo "$f is not in files.txt (container boot would miss it)"; exit 1; }; done
+          for f in *.js routes/*.js; do grep -qx "$f" files.txt || { echo "$f is not in files.txt (container boot would miss it)"; exit 1; }; done
 
   backend-db:
     name: Backend (smoke test against PostgreSQL)
