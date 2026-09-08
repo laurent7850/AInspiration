@@ -112,7 +112,7 @@ const AIInsights: React.FC<AIInsightsProps> = ({ opportunities, tasks, contacts 
 
   if (loading) {
     return (
-      <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
+      <div className="bg-indigo-600 rounded-xl shadow-lg p-6 text-white">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-2">
             <Sparkles className="w-6 h-6" />
@@ -128,7 +128,7 @@ const AIInsights: React.FC<AIInsightsProps> = ({ opportunities, tasks, contacts 
   }
 
   return (
-    <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
+    <div className="bg-indigo-600 rounded-xl shadow-lg p-6 text-white">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
           <Sparkles className="w-6 h-6" />

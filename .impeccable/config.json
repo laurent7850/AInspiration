@@ -66,6 +66,15 @@
         ],
         "createdAt": "2026-09-03T11:54:56.428Z",
         "reason": "DESIGN.md Two Voices rule: aurora.teal on the night ground is the documented way to render a figure across this site (propagated by b88620e); the brief forbids any redesign"
+      },
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          "src/components/crm/CompanyList.tsx"
+        ],
+        "createdAt": "2026-09-08T07:10:00.000Z",
+        "reason": "false positive: the flagged element is the loading spinner (rounded-full + border-t/border-b), not a card with an accent border"
       }
     ]
   }

@@ -394,7 +394,7 @@ const LinkedinPage: React.FC = () => {
                         <div className="flex items-center gap-1 flex-shrink-0">
                           <button
                             onClick={() => setSelectedPost(selectedPost?.id === post.id ? null : post)}
-                            className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg"
+                            className="p-2 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg"
                             title="Voir"
                           >
                             <Eye className="w-4 h-4" />
@@ -402,7 +402,7 @@ const LinkedinPage: React.FC = () => {
                           {post.status !== 'published' && (
                             <button
                               onClick={() => { setEditingPost(post); setEditContent(post.content); }}
-                              className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg"
+                              className="p-2 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg"
                               title="Modifier"
                             >
                               <Edit3 className="w-4 h-4" />
@@ -411,7 +411,7 @@ const LinkedinPage: React.FC = () => {
                           {post.status === 'review_pending' && (
                             <button
                               onClick={() => handleApprove(post.id)}
-                              className="p-2 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg"
+                              className="p-2 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-lg"
                               title="Approuver"
                             >
                               <Check className="w-4 h-4" />
@@ -421,7 +421,7 @@ const LinkedinPage: React.FC = () => {
                             <button
                               onClick={() => handlePublish(post.id)}
                               disabled={publishing === post.id || !status?.connected}
-                              className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg disabled:opacity-50"
+                              className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg disabled:opacity-50"
                               title="Publier"
                             >
                               {publishing === post.id
@@ -434,7 +434,7 @@ const LinkedinPage: React.FC = () => {
                               href={post.linkedin_post_url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg"
+                              className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg"
                               title="Voir sur LinkedIn"
                             >
                               <ExternalLink className="w-4 h-4" />
@@ -442,7 +442,7 @@ const LinkedinPage: React.FC = () => {
                           )}
                           <button
                             onClick={() => handleDelete(post.id)}
-                            className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg"
+                            className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg"
                             title="Supprimer"
                           >
                             <Trash2 className="w-4 h-4" />
