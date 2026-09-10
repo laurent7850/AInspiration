@@ -248,10 +248,10 @@ export default function EnhancedBlogContent({ content }: EnhancedBlogContentProp
 
         {/* Conclusion */}
         {conclusion && (
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 md:p-12 text-white">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Conclusion</h2>
+          <div className="bg-surface border border-line rounded-card p-8 md:p-12 text-ink">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">Conclusion</h2>
             <div
-              className="blog-prose blog-prose-invert"
+              className="blog-prose"
               dangerouslySetInnerHTML={{ __html: conclusion }}
             />
           </div>

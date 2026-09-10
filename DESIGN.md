@@ -50,6 +50,12 @@ typography:
     fontWeight: 600
     lineHeight: 1.4
     letterSpacing: "0"
+  mono:
+    fontFamily: "JetBrains Mono, Geist Mono, monospace"
+    fontSize: "0.9375rem"
+    fontWeight: 400
+    lineHeight: 1.6
+
   prose:
     fontFamily: "Outfit, system-ui, sans-serif"
     fontSize: "1.0625rem"

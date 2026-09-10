@@ -412,41 +412,6 @@ p {
   color: var(--color-accent-dark);
 }
 
-/* Inverted variant for dark backgrounds (e.g. conclusion banner) */
-.blog-prose-invert {
-  color: #e5e7eb;
-}
-
-.blog-prose-invert h1,
-.blog-prose-invert h2,
-.blog-prose-invert h3,
-.blog-prose-invert h4,
-.blog-prose-invert strong {
-  color: #ffffff;
-}
-
-.blog-prose-invert h2 {
-  border-bottom-color: rgba(255, 255, 255, 0.15);
-}
-
-.blog-prose-invert p,
-.blog-prose-invert li {
-  color: #e5e7eb;
-}
-
-.blog-prose-invert a {
-  color: #a5b4fc;
-}
-
-.blog-prose-invert a:hover {
-  color: #c7d2fe;
-}
-
-.blog-prose-invert ul > li::before {
-  background: linear-gradient(135deg, #a5b4fc, #c7d2fe);
-  box-shadow: 0 0 0 3px rgba(165, 180, 252, 0.2);
-}
-
 /* Responsive — slightly tighter on mobile */
 @media (max-width: 640px) {
   .blog-prose {
