@@ -121,7 +121,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right — Video/Image, floating frame over the aurora */}
+          {/* Droite — vidéo/image, cadre cerné d'un filet */}
           <div className="lg:col-span-5 mt-8 lg:mt-0">
             <div className="relative rounded-card overflow-hidden border border-line">
               <div className={`relative transition-opacity duration-700 ${hasEnded ? 'opacity-0' : 'opacity-100'}`}>

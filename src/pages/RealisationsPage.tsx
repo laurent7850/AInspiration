@@ -57,7 +57,7 @@ const RealisationsPage: React.FC = () => {
         keywords={t('seo.keywords')}
       />
 
-      {/* Hero — aurora ground, Jost-light display, teal highlight */}
+      {/* Hero — fond craie, titre en 700 */}
       <section className="relative bg-canvas text-ink pt-28 lg:pt-32 pb-16 lg:pb-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
@@ -219,7 +219,7 @@ const RealisationsPage: React.FC = () => {
           <ol className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
             {steps.map((step, index) => (
               <Reveal as="li" key={step.title} delay={index * 90}>
-                <span className="block font-display font-bold text-3xl text-teal-700 leading-none mb-4">
+                <span className="block font-display font-bold text-3xl text-ink tabular-nums leading-none mb-4">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <h3 className="text-lg font-semibold tracking-tight text-ink mb-2">{step.title}</h3>
@@ -230,7 +230,7 @@ const RealisationsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Closing CTA — aurora band, the Aurora world's CTA motif */}
+      {/* CTA de fin — bande accent */}
       <section className="bg-accent text-white py-16 lg:py-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">

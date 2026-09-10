@@ -24,22 +24,11 @@ export default {
         secondary: '#6B7280',
         muted: '#9AA1AC',
         line: '#E4E4EA',
-        night: {
-          DEFAULT: '#10102A',
-          soft: '#181838',
-          line: 'rgba(255,255,255,0.10)',
-        },
-        aurora: {
-          indigo: '#4F46E5',
-          violet: '#6D5AE8',
-          teal: '#2DD4BF',
-        },
         accent: {
           DEFAULT: '#4540D0',
           light: '#5F58DA',
           dark: '#3A35B8',
           wash: '#EEEDFC',
-          teal: '#14B8A6',
         },
         // La rampe `indigo` de Tailwind est utilisée plus de 1100 fois dans le code.
         // On la recentre sur le bleu du logo plutôt que de réécrire chaque occurrence :

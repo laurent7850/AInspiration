@@ -24,12 +24,21 @@ lui-même (blog auto-généré n8n 50+ articles, CRM maison, pipeline d'audit au
 en place, données EU/RGPD).
 
 ## Engagements de marque
-- « AI » dans « AInspiration » toujours en indigo (composant `<BrandName />`) — indigo-600 sur
-  clair, indigo-400 sur fond sombre.
-- Indigo = couleur de marque primaire ; le violet pur est banni.
-- Monde visuel courant : « Aurora » (2026-08-29, épinglé par le client sur le template Wix
-  « Suite » 3081) — navy #10102A, aurores radiales indigo→teal, Jost light en display,
-  Outfit en body, sections blanches aérées en alternance. Voir DESIGN.md.
+- Deux couleurs, échantillonnées au pixel sur `public/logo-ainspiration.png` : le bleu
+  **#4540D0** (le cerveau et le « AI ») et le navy **#1E293B** (le mot-marque). Le « AI »
+  d'« AInspiration » est toujours dans le bleu, le reste du mot dans le navy.
+- #4540D0 = couleur de marque primaire et **accent unique** ; aucune seconde couleur d'accent
+  (le teal d'Aurora a été supprimé pour cette raison). Le violet pur reste banni.
+- ⚠️ **Le fichier logo est défectueux** : `logo-ainspiration.png` est amputé du « i »
+  d'« inspiration » (la lettre n'est pas dessinée) et lit « AInsp ration ». Le mot-marque est
+  donc **re-composé en Outfit 700 + tracking-tight**, calé sur le ratio largeur / hauteur de
+  capitale de l'original (7,95). `logo-ainspiration.svg` n'est qu'un JPEG embarqué ;
+  `white_logo_-_no_background.svg` est un vrai vectoriel mais porte une AUTRE identité.
+  Remplacer le lettrage par l'asset dès qu'un fichier propre existe.
+- Le ® affiché dans l'en-tête ne figure pas sur le logo — statut de dépôt à confirmer.
+- Monde visuel courant : « **Atelier clair** » (2026-09-10) — fond craie #FFFFFF, panneaux
+  #F8F8FA, filets #E4E4EA, arrondis généreux, aucune ombre décorative, aucun dégradé, une
+  seule famille (Outfit). Voir DESIGN.md.
 
 ## Contraintes techniques
 React 18 + Vite + Tailwind, i18next (fr/en/nl — tout texte visible passe par les locales),
@@ -38,5 +47,6 @@ Perf : hero = LCP critique (image stable montée sous la vidéo). Baseline sécu
 applicable (RGPD, rate limiting, validation serveur).
 
 ## Périmètre design
-Mode Persuade sur tout le site public ; le CRM interne (Operate) n'est pas concerné par le
-monde Aurora tant que non demandé.
+Mode Persuade sur tout le site public, entièrement migré en Atelier clair (accueil, coque,
+services, blog, contact, réalisations, pages légales) ; le CRM interne (Operate) reste hors
+de ce monde tant que non demandé.

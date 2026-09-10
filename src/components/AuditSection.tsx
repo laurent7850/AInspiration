@@ -47,7 +47,7 @@ export default function AuditSection() {
           ))}
         </div>
 
-        {/* CTA — aurora band */}
+        {/* CTA — bande accent */}
         <div className="bg-accent rounded-card p-10 lg:p-14 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
           <div>
             <h3 className="text-2xl lg:text-3xl font-bold text-white tracking-tight mb-2">

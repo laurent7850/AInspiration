@@ -22,13 +22,6 @@
 }
 
 :root {
-  /* Design tokens — Aurora world (navy + indigo→teal ambient) */
-  --color-night: #10102A;
-  --color-night-soft: #181838;
-  --color-aurora-indigo: #4F46E5;
-  --color-aurora-violet: #6D5AE8;
-  --color-aurora-teal: #2DD4BF;
-
   /* Design tokens — Atelier clair, fond « Craie » (2026-09-10).
      Accent et encre sont les deux couleurs du logo, échantillonnées sur
      public/logo-ainspiration.png : #4540D0 et #1E293B. */
@@ -126,35 +119,6 @@ html {
   flex-direction: column;
   min-height: 100dvh;
   min-height: -webkit-fill-available;
-}
-
-/* ==========================================================================
-   Aurora world — ambient gradient grounds (navy + indigo→teal nebulas).
-   Layered radial gradients on a deep navy base; no images, GPU-cheap.
-   ========================================================================== */
-
-.bg-aurora {
-  background-color: var(--color-night);
-  background-image:
-    radial-gradient(90rem 60rem at 12% -10%, rgba(79, 70, 229, 0.55), transparent 55%),
-    radial-gradient(70rem 50rem at 50% 30%, rgba(109, 90, 232, 0.30), transparent 60%),
-    radial-gradient(80rem 60rem at 95% 85%, rgba(45, 212, 191, 0.38), transparent 55%);
-}
-
-/* Teal-tilted variant — CTA bands, closing sections */
-.bg-aurora-teal {
-  background-color: var(--color-night);
-  background-image:
-    radial-gradient(70rem 50rem at 0% 100%, rgba(79, 70, 229, 0.50), transparent 60%),
-    radial-gradient(80rem 55rem at 100% 0%, rgba(45, 212, 191, 0.45), transparent 55%);
-}
-
-/* Quiet variant — interlude sections (Darwin quote), barely lit */
-.bg-aurora-quiet {
-  background-color: var(--color-night);
-  background-image:
-    radial-gradient(60rem 40rem at 20% 20%, rgba(79, 70, 229, 0.22), transparent 60%),
-    radial-gradient(60rem 40rem at 85% 90%, rgba(45, 212, 191, 0.14), transparent 60%);
 }
 
 /* Scroll-reveal grammar — one authored motion for the whole page.
@@ -599,7 +563,7 @@ input, select, textarea {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Fil d'Ariane — sits on the night strip under the header (Aurora world) */
+/* Fil d'Ariane — bandeau `surface` sous l'en-tête */
 .breadcrumb {
   @apply flex flex-wrap items-center text-sm text-indigo-100/60;
 }
