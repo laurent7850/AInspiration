@@ -86,7 +86,7 @@ const TransformationPage: React.FC = () => {
       {/* Process Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">
             {t('process.sectionTitle')}
           </h2>
           <p className="text-lg text-gray-600">
@@ -126,7 +126,7 @@ const TransformationPage: React.FC = () => {
       <div className="bg-indigo-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
+            <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">
               {t('benefits.sectionTitle')}
             </h2>
             <p className="text-lg text-gray-600">
@@ -153,7 +153,7 @@ const TransformationPage: React.FC = () => {
       {/* Solutions Section */}
       <div className="container mx-auto px-4 py-16 border-b border-gray-100">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">
             {t('solutions.sectionTitle')}
           </h2>
           <p className="text-lg text-gray-600">
@@ -192,7 +192,7 @@ const TransformationPage: React.FC = () => {
       {/* Success Stories Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">
             {t('successStories.sectionTitle')}
           </h2>
           <p className="text-lg text-gray-600">
@@ -257,7 +257,7 @@ const TransformationPage: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-aurora-teal py-16">
+      <div className="bg-accent py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="text-white">

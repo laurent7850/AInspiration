@@ -41,7 +41,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       {/* Contenu principal */}
       <main id="main-content" role="main" className="flex-grow pt-16">
         {!isHomePage && (
-          <nav aria-label="Fil d'Ariane" className="bg-night">
+          <nav aria-label="Fil d'Ariane" className="bg-surface border-b border-line">
             <div className="container mx-auto px-4 py-3">
               <Breadcrumbs />
             </div>

@@ -97,9 +97,9 @@ export default function Hero() {
               {t('hero.kicker')}
             </p>
 
-            {/* leading-[1.16] : le mot surligné dépasse la hauteur de sa ligne
+            {/* leading-[1.1] : le mot surligné dépasse la hauteur de sa ligne
                 (fond + padding), il lui faut cet interlignage pour respirer. */}
-            <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-[4.5rem] text-ink leading-[1.16] mb-6">
+            <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-[4.5rem] text-ink leading-[1.1] mb-6">
               <HighlightedTitle title={t('hero.title')} accent={t('hero.titleAccent', '')} />
             </h1>
             <p className="text-lg sm:text-xl text-secondary max-w-[50ch] leading-relaxed mb-9">

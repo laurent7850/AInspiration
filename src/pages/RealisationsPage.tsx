@@ -58,25 +58,25 @@ const RealisationsPage: React.FC = () => {
       />
 
       {/* Hero — aurora ground, Jost-light display, teal highlight */}
-      <section className="relative bg-aurora text-white overflow-hidden pt-28 lg:pt-32 pb-16 lg:pb-20">
+      <section className="relative bg-canvas text-ink pt-28 lg:pt-32 pb-16 lg:pb-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl leading-[1.06] mb-6">
+            <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.06] mb-6">
               {t('hero.title')}{' '}
-              <span className="text-aurora-teal">{t('hero.highlight')}</span>{' '}
+              <span className="title-mark">{t('hero.highlight')}</span>{' '}
               {t('hero.titleSuffix')}
             </h1>
-            <p className="text-lg text-indigo-100/85 leading-relaxed max-w-2xl mb-8">
+            <p className="text-lg text-secondary leading-relaxed max-w-2xl mb-8">
               {t('hero.description')}
             </p>
             <Link
               to={localizedPath('/audit')}
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-medium text-white shadow-[0_18px_45px_-12px_rgba(79,70,229,0.65)] transition-colors hover:bg-accent-light"
+              className="inline-flex items-center gap-2 rounded-button bg-white px-7 py-3.5 font-semibold text-accent-dark transition-colors hover:bg-indigo-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               {t('hero.cta')}
               <ArrowRight className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
             </Link>
-            <p className="mt-3 text-sm text-indigo-100/85">{t('hero.ctaSub')}</p>
+            <p className="mt-3 text-sm text-secondary">{t('hero.ctaSub')}</p>
           </div>
 
           {/* Consolidated figures — deliberately modest. The brief proposed
@@ -91,10 +91,10 @@ const RealisationsPage: React.FC = () => {
               <div key={stat.label}>
                 <dt className="sr-only">{stat.label}</dt>
                 <dd>
-                  <span className="block font-display font-light text-5xl text-aurora-teal leading-none">
+                  <span className="block font-display font-bold text-5xl text-accent leading-none tabular-nums">
                     {stat.value}
                   </span>
-                  <span className="mt-2 block text-sm text-indigo-100/85">{stat.label}</span>
+                  <span className="mt-2 block text-sm text-secondary">{stat.label}</span>
                 </dd>
               </div>
             ))}
@@ -139,7 +139,7 @@ const RealisationsPage: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <p className="mt-4 text-sm text-muted" aria-live="polite">
+            <p className="mt-4 text-sm text-secondary" aria-live="polite">
               {visible.length === 1
                 ? t('filters.resultsOne')
                 : t('filters.resultsOther', { count: visible.length })}
@@ -167,7 +167,7 @@ const RealisationsPage: React.FC = () => {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-10">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-secondary mb-3">{tc('labels.scenario')}</p>
-            <h2 id="scenarios-title" className="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.1] mb-4">
+            <h2 id="scenarios-title" className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.1] mb-4">
               {tc('pageTitle')}
             </h2>
             <p className="text-lg text-secondary leading-relaxed">{tc('pageSubtitle')}</p>
@@ -211,7 +211,7 @@ const RealisationsPage: React.FC = () => {
       <section className="bg-surface py-16 lg:py-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-12">
-            <h2 className="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.1] mb-4">
+            <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.1] mb-4">
               {t('method.title')}
             </h2>
             <p className="text-lg text-secondary leading-relaxed">{t('method.description')}</p>
@@ -219,7 +219,7 @@ const RealisationsPage: React.FC = () => {
           <ol className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
             {steps.map((step, index) => (
               <Reveal as="li" key={step.title} delay={index * 90}>
-                <span className="block font-display font-light text-3xl text-teal-700 leading-none mb-4">
+                <span className="block font-display font-bold text-3xl text-teal-700 leading-none mb-4">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <h3 className="text-lg font-semibold tracking-tight text-ink mb-2">{step.title}</h3>
@@ -231,16 +231,16 @@ const RealisationsPage: React.FC = () => {
       </section>
 
       {/* Closing CTA — aurora band, the Aurora world's CTA motif */}
-      <section className="bg-aurora-teal text-white py-16 lg:py-20">
+      <section className="bg-accent text-white py-16 lg:py-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
-            <h2 className="font-display font-light text-3xl sm:text-4xl lg:text-5xl leading-[1.1] mb-5">
+            <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-[1.1] mb-5">
               {t('cta.title')}
             </h2>
-            <p className="text-lg text-indigo-100/85 leading-relaxed mb-8">{t('cta.body')}</p>
+            <p className="text-lg text-white/85 leading-relaxed mb-8">{t('cta.body')}</p>
             <Link
               to={localizedPath('/audit')}
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-medium text-white shadow-[0_18px_45px_-12px_rgba(79,70,229,0.65)] transition-colors hover:bg-accent-light"
+              className="inline-flex items-center gap-2 rounded-button bg-white px-7 py-3.5 font-semibold text-accent-dark transition-colors hover:bg-indigo-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               {t('cta.button')}
               <ArrowRight className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />

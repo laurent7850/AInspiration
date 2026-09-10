@@ -136,7 +136,7 @@ const CreationVisuellePage: React.FC = () => {
       {/* Key Capabilities */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">
             Des possibilités créatives infinies
           </h2>
           <p className="text-lg text-gray-600">
@@ -167,7 +167,7 @@ const CreationVisuellePage: React.FC = () => {
       <div className="bg-indigo-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
+            <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">
               Galerie d'exemples
             </h2>
             <p className="text-lg text-gray-600">
@@ -200,7 +200,7 @@ const CreationVisuellePage: React.FC = () => {
       {/* Use Cases */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">
             Applications concrètes
           </h2>
           <p className="text-lg text-gray-600">
@@ -265,7 +265,7 @@ const CreationVisuellePage: React.FC = () => {
       <div className="bg-indigo-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
+            <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">
               Exemples de prompts
             </h2>
             <p className="text-lg text-gray-600">
@@ -286,7 +286,7 @@ const CreationVisuellePage: React.FC = () => {
       {/* Pricing Overview */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">
             Une solution abordable et sans engagement
           </h2>
           <p className="text-lg text-gray-600">
@@ -404,7 +404,7 @@ const CreationVisuellePage: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-aurora-teal py-16">
+      <div className="bg-accent py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="text-white">

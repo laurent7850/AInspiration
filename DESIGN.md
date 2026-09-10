@@ -51,7 +51,7 @@ typography:
     lineHeight: 1.4
     letterSpacing: "0"
 rounded:
-  mark: "0.22em"
+  mark: "0.16em"
   soft: "0.875rem"
   card: "1.375rem"
   container: "2rem"
@@ -106,14 +106,11 @@ components:
 
 # Design System : AInspiration — Atelier clair
 
-> **Périmètre.** Atelier clair couvre la **page d'accueil et la coque globale**
-> (Header/NavMenu, Footer, tokens, typographie, surfaces navigateur). Les autres
-> pages publiques (services, blog, contact, réalisations) tournent encore sur la
-> génération précédente « Aurora » et doivent être migrées, pas mélangées : quand
-> on touche une page pas encore migrée, on la fait basculer dans Atelier clair
-> plutôt que de laisser cohabiter les deux mondes sur une même surface. Le **CRM
-> derrière le login est explicitement hors de ce monde** — ne pas le restyler
-> depuis ce fichier.
+> **Périmètre.** Atelier clair couvre **tout le site public** : page d'accueil,
+> coque globale (Header/NavMenu, Footer), pages services, blog, contact,
+> réalisations, pages légales. Plus aucune classe Aurora ne subsiste dans
+> `src/`. Le **CRM derrière le login est explicitement hors de ce monde** — ne pas
+> le restyler depuis ce fichier.
 
 ## Overview
 
@@ -144,7 +141,7 @@ unique appliqué partout.
 - Arrondis généreux et assumés (22 px sur les blocs, pilule pleine sur les actions)
 - Une seule famille typographique (Outfit) à plusieurs graisses, titres en 700
 - Aucun dégradé, aucune ombre décorative
-- Un trait dessiné à main levée sous un mot du titre, une fois par page
+- Un mot surligné dans le titre, une fois par page
 
 ## Colors
 
@@ -155,7 +152,7 @@ erreur, alerte) ne servent qu'aux états de formulaire.
 ### Primary
 
 - **Bleu Cerveau** (`#4540D0`) : la couleur du logo. Remplit les CTA, colore le
-  « AI » de la marque, les puces, les compteurs d'étape, le trait dessiné,
+  « AI » de la marque, les puces, les compteurs d'étape,
   l'anneau de focus, la sélection de texte et la scrollbar. Survol :
   **Bleu Encre** (`#3A35B8`). **Bleu Clair** (`#5F58DA`) sert aux états
   secondaires et aux liens sur fond sombre.
@@ -185,7 +182,7 @@ fichier, pas un composant.
 
 **La règle du seul bleu.** L'accent ne colore que ce sur quoi on clique. Une
 preuve, un chiffre, une date, un libellé se lisent en encre. Test : si un élément
-bleu n'est pas cliquable et n'est pas le trait du titre, il est en trop.
+bleu n'est pas cliquable et n'est pas le mot surligné du titre, il est en trop.
 
 ## Typography
 
@@ -326,7 +323,7 @@ Aplat accent plein, rayon 22 px, texte blanc, bouton inverse. **Une seule par
 ### Signature — le mot surligné
 
 `.title-mark` : le mot-clé du titre principal est posé sur le Voile Bleu
-(`#EEEDFC`) et écrit en Bleu Encre (`#3A35B8`), rayon `mark` (`0.22em`).
+(`#EEEDFC`) et écrit en Bleu Encre (`#3A35B8`), rayon `mark` (`0.16em`).
 
 - **Tout est en `em`** : le surlignage suit la taille du titre, de 2.25rem sur
   mobile à 4.5rem en display, sans réglage par palier.

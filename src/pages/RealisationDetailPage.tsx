@@ -54,21 +54,21 @@ const RealisationDetailPage: React.FC = () => {
       />
 
       {/* Header */}
-      <section className="relative bg-aurora-quiet text-white overflow-hidden pt-28 lg:pt-32 pb-14 lg:pb-16">
+      <section className="relative bg-surface text-ink pt-28 lg:pt-32 pb-14 lg:pb-16">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             to={localizedPath('/realisations')}
-            className="inline-flex items-center gap-2 text-sm text-indigo-100/85 hover:text-white transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-sm text-secondary hover:text-white transition-colors mb-8"
           >
             <ArrowLeft className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
             {t('detail.backToIndex')}
           </Link>
 
           <div className="max-w-3xl">
-            <h1 className="font-display font-light text-3xl sm:text-4xl lg:text-6xl leading-[1.06] mb-5">
+            <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-6xl leading-[1.06] mb-5">
               {t(`${base}.title`)}
             </h1>
-            <p className="text-lg text-indigo-100/85 leading-relaxed max-w-2xl">
+            <p className="text-lg text-secondary leading-relaxed max-w-2xl">
               {t(`${base}.summary`)}
             </p>
           </div>
@@ -76,7 +76,7 @@ const RealisationDetailPage: React.FC = () => {
           <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-4 border-t border-night-line pt-6">
             {meta.map((entry) => (
               <div key={entry.label}>
-                <dt className="text-xs uppercase tracking-[0.2em] text-indigo-100/85">
+                <dt className="text-xs uppercase tracking-[0.2em] text-secondary">
                   {entry.label}
                 </dt>
                 <dd className="mt-1 text-base text-white">{entry.value}</dd>
@@ -92,7 +92,7 @@ const RealisationDetailPage: React.FC = () => {
           <div className="max-w-[55ch] space-y-12">
             {(['context', 'problem', 'solution'] as const).map((section) => (
               <Reveal key={section}>
-                <h2 className="font-display font-light text-2xl sm:text-3xl text-ink leading-tight mb-4">
+                <h2 className="font-display font-bold text-2xl sm:text-3xl text-ink leading-tight mb-4">
                   {t(`detail.${section}`)}
                 </h2>
                 <p className="text-lg text-secondary leading-relaxed">{t(`${base}.${section}`)}</p>
@@ -103,7 +103,7 @@ const RealisationDetailPage: React.FC = () => {
           {/* Results — at most three, each one measured or stated. */}
           {realisation.metrics.length > 0 && (
             <Reveal className="mt-16">
-              <h2 className="font-display font-light text-2xl sm:text-3xl text-ink leading-tight mb-8 max-w-[55ch]">
+              <h2 className="font-display font-bold text-2xl sm:text-3xl text-ink leading-tight mb-8 max-w-[55ch]">
                 {t('detail.results')}
               </h2>
               <dl className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl">
@@ -111,7 +111,7 @@ const RealisationDetailPage: React.FC = () => {
                   <div key={metric.labelKey}>
                     <dt className="sr-only">{t(`${base}.metrics.${metric.labelKey}`)}</dt>
                     <dd>
-                      <span className="block font-display font-light text-4xl sm:text-5xl text-teal-700 leading-none">
+                      <span className="block font-display font-bold text-4xl sm:text-5xl text-teal-700 leading-none">
                         {metric.value}
                       </span>
                       <span className="mt-2 block text-sm text-secondary">
@@ -132,7 +132,7 @@ const RealisationDetailPage: React.FC = () => {
             <details className="group rounded-card bg-surface p-6 shadow-lift">
               <summary className="cursor-pointer list-none text-lg font-semibold tracking-tight text-ink marker:hidden">
                 {t('detail.howItWorks')}
-                <span className="mt-1 block text-sm font-normal text-muted">
+                <span className="mt-1 block text-sm font-normal text-secondary">
                   {t('detail.howItWorksHint')}
                 </span>
               </summary>
@@ -155,18 +155,18 @@ const RealisationDetailPage: React.FC = () => {
       </article>
 
       {/* Transposition — the section that converts */}
-      <section className="bg-aurora text-white py-16 lg:py-20">
+      <section className="bg-accent text-white py-16 lg:py-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-[55ch]">
-            <h2 className="font-display font-light text-3xl sm:text-4xl lg:text-5xl leading-[1.1] mb-5">
+            <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-[1.1] mb-5">
               {t('detail.transposition')}
             </h2>
-            <p className="text-lg text-indigo-100/85 leading-relaxed mb-8">
+            <p className="text-lg text-secondary leading-relaxed mb-8">
               {t(`${base}.transposition`)}
             </p>
             <Link
               to={localizedPath('/audit')}
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-medium text-white shadow-[0_18px_45px_-12px_rgba(79,70,229,0.65)] transition-colors hover:bg-accent-light"
+              className="inline-flex items-center gap-2 rounded-button bg-white px-7 py-3.5 font-semibold text-accent-dark transition-colors hover:bg-indigo-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               {t('cta.button')}
               <ArrowRight className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
@@ -186,7 +186,7 @@ const RealisationDetailPage: React.FC = () => {
               to={localizedPath(`/realisations/${previous.slug}`)}
               className="group max-w-xs"
             >
-              <span className="block text-xs uppercase tracking-[0.2em] text-muted">
+              <span className="block text-xs uppercase tracking-[0.2em] text-secondary">
                 {t('detail.previous')}
               </span>
               <span className="mt-1 block text-base font-medium text-ink group-hover:text-accent transition-colors">
@@ -201,7 +201,7 @@ const RealisationDetailPage: React.FC = () => {
               to={localizedPath(`/realisations/${next.slug}`)}
               className="group max-w-xs text-right"
             >
-              <span className="block text-xs uppercase tracking-[0.2em] text-muted">
+              <span className="block text-xs uppercase tracking-[0.2em] text-secondary">
                 {t('detail.next')}
               </span>
               <span className="mt-1 block text-base font-medium text-ink group-hover:text-accent transition-colors">

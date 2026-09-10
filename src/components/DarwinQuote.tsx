@@ -20,23 +20,23 @@ export default function DarwinQuote() {
   return (
     <section
       ref={ref}
-      className="relative bg-aurora-quiet py-20 sm:py-28"
+      className="relative bg-surface py-20 sm:py-28"
     >
       <div className={`max-w-3xl mx-auto px-6 sm:px-8 relative z-10 transition-transform duration-1000 ease-out ${visible ? 'translate-y-0' : 'translate-y-6'}`}>
-        <div className="w-10 h-px bg-aurora-teal mx-auto mb-10" />
+        <div className="w-10 h-px bg-accent mx-auto mb-10" />
 
         <blockquote className="text-center">
-          <p className="font-display text-xl sm:text-2xl lg:text-3xl font-light italic text-white/90 leading-relaxed">
+          <p className="font-display text-xl sm:text-2xl lg:text-3xl italic text-ink leading-relaxed">
             {t('darwinQuote.text')}
           </p>
           <footer className="mt-8">
-            <cite className="not-italic text-indigo-300 font-medium text-xs tracking-[0.2em] uppercase">
+            <cite className="not-italic text-secondary font-semibold text-xs tracking-[0.2em] uppercase">
               Charles Darwin
             </cite>
           </footer>
         </blockquote>
 
-        <div className="w-10 h-px bg-aurora-teal mx-auto mt-10" />
+        <div className="w-10 h-px bg-accent mx-auto mt-10" />
       </div>
     </section>
   );

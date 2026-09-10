@@ -91,7 +91,7 @@ const MediaService: React.FC<MediaServiceProps> = ({
       {/* Features */}
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">{t('features.title')}</h2>
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">{t('features.title')}</h2>
           <p className="text-lg text-gray-600">{t('features.subtitle')}</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -128,7 +128,7 @@ const MediaService: React.FC<MediaServiceProps> = ({
       {/* Use cases */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">{t('useCases.title')}</h2>
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">{t('useCases.title')}</h2>
           <p className="text-lg text-gray-600">{t('useCases.subtitle')}</p>
         </div>
 

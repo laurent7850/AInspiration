@@ -13,11 +13,11 @@ export default function NotFoundPage() {
         description={t('notFound.seo.description')}
         noindex
       />
-      <section className="bg-aurora-quiet pt-28 py-20 min-h-[60vh] flex items-center">
+      <section className="bg-surface pt-28 py-20 min-h-[60vh] flex items-center">
         <div className="container mx-auto px-4 text-center max-w-lg">
-          <div className="font-display font-light text-8xl text-white/15 mb-4">404</div>
-          <h1 className="font-display font-light text-2xl sm:text-3xl text-white mb-4">{t('notFound.title')}</h1>
-          <p className="text-indigo-100/80 mb-8">
+          <div className="font-display font-bold text-8xl text-white/15 mb-4">404</div>
+          <h1 className="font-display font-bold text-2xl sm:text-3xl text-white mb-4">{t('notFound.title')}</h1>
+          <p className="text-secondary mb-8">
             {t('notFound.message')}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

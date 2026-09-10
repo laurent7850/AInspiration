@@ -115,7 +115,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
           <span className="ml-2 text-lg md:text-xl font-extrabold tracking-tighter">
             <span className="text-accent">AI</span>
             <span className="text-ink">nspiration</span>
-            <sup className="text-[8px] text-muted ml-0.5">®</sup>
+            <sup className="text-[8px] text-secondary ml-0.5">®</sup>
           </span>
         </div>
 
@@ -188,19 +188,19 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
             <div className="absolute top-full right-0 w-20 py-2 mt-1 bg-white rounded-soft shadow-diffuse border border-line opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all z-50">
               <button
                 onClick={() => switchLanguageTo('fr')}
-                className={`w-full px-4 py-1.5 text-center text-sm hover:bg-surface transition-colors ${currentLang === 'fr' ? 'bg-surface text-ink font-semibold' : 'text-muted'}`}
+                className={`w-full px-4 py-1.5 text-center text-sm hover:bg-surface transition-colors ${currentLang === 'fr' ? 'bg-surface text-ink font-semibold' : 'text-secondary'}`}
               >
                 FR
               </button>
               <button
                 onClick={() => switchLanguageTo('en')}
-                className={`w-full px-4 py-1.5 text-center text-sm hover:bg-surface transition-colors ${currentLang === 'en' ? 'bg-surface text-ink font-semibold' : 'text-muted'}`}
+                className={`w-full px-4 py-1.5 text-center text-sm hover:bg-surface transition-colors ${currentLang === 'en' ? 'bg-surface text-ink font-semibold' : 'text-secondary'}`}
               >
                 EN
               </button>
               <button
                 onClick={() => switchLanguageTo('nl')}
-                className={`w-full px-4 py-1.5 text-center text-sm hover:bg-surface transition-colors ${currentLang === 'nl' ? 'bg-surface text-ink font-semibold' : 'text-muted'}`}
+                className={`w-full px-4 py-1.5 text-center text-sm hover:bg-surface transition-colors ${currentLang === 'nl' ? 'bg-surface text-ink font-semibold' : 'text-secondary'}`}
               >
                 NL
               </button>

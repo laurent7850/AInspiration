@@ -246,7 +246,7 @@ export default function WhyAI() {
 
         {/* Final CTA */}
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-6">
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-6">
             {t('whyai.finalCta.title')}
           </h2>
           <p className="text-xl text-gray-600 mb-8">

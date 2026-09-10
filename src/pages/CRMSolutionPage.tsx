@@ -83,27 +83,27 @@ const CRMSolutionPage: React.FC = () => {
       />
 
       {/* Hero — Aurora declension */}
-      <section className="relative bg-aurora text-white overflow-hidden pt-28 lg:pt-36 pb-16 lg:pb-20">
+      <section className="relative bg-canvas text-ink pt-28 lg:pt-36 pb-16 lg:pb-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             <div className="lg:col-span-7">
-              <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-7xl text-white leading-[1.06] mb-6">
+              <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-7xl text-ink leading-[1.16] mb-6">
                 {t('page.hero.title')}
               </h1>
-              <p className="text-lg sm:text-xl text-indigo-100/85 max-w-[55ch] leading-relaxed mb-10">
+              <p className="text-lg sm:text-xl text-secondary max-w-[55ch] leading-relaxed mb-10">
                 {t('page.hero.description')}
               </p>
               <div className="flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => navigate('/login')}
-                  className="group inline-flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-500 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-[0_18px_45px_-12px_rgba(79,70,229,0.65)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                  className="group inline-flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-500 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                 >
                   {t('page.hero.ctaDemo')}
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
                 </button>
                 <button
                   onClick={() => navigate('/contact')}
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg text-white ring-1 ring-white/25 hover:ring-white/50 hover:bg-white/5 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-button font-semibold text-lg text-ink border border-line hover:border-ink hover:bg-surface transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                 >
                   {t('page.hero.ctaLearnMore')}
                 </button>
@@ -111,16 +111,16 @@ const CRMSolutionPage: React.FC = () => {
 
               <div className="mt-12 flex flex-wrap gap-8">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-aurora-teal" />
-                  <span className="text-sm text-indigo-100/80">{t('page.hero.check1')}</span>
+                  <span className="w-2 h-2 rounded-full bg-accent" />
+                  <span className="text-sm text-secondary">{t('page.hero.check1')}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-aurora-teal" />
-                  <span className="text-sm text-indigo-100/80">{t('page.hero.check2')}</span>
+                  <span className="w-2 h-2 rounded-full bg-accent" />
+                  <span className="text-sm text-secondary">{t('page.hero.check2')}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-aurora-teal" />
-                  <span className="text-sm text-indigo-100/80">{t('page.hero.check3')}</span>
+                  <span className="w-2 h-2 rounded-full bg-accent" />
+                  <span className="text-sm text-secondary">{t('page.hero.check3')}</span>
                 </div>
               </div>
             </div>
@@ -403,7 +403,7 @@ const CRMSolutionPage: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-aurora-teal text-white py-16">
+      <div className="bg-accent text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">

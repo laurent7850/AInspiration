@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold text-muted uppercase tracking-[0.15em] mb-5">{t('footer.sections.features')}</h3>
+            <h3 className="text-xs font-semibold text-secondary uppercase tracking-[0.15em] mb-5">{t('footer.sections.features')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link to={localizedPath('/analyse-ia')} className="text-secondary hover:text-accent text-sm transition-colors">
@@ -65,7 +65,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold text-muted uppercase tracking-[0.15em] mb-5">{t('footer.sections.legal')}</h3>
+            <h3 className="text-xs font-semibold text-secondary uppercase tracking-[0.15em] mb-5">{t('footer.sections.legal')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link to={localizedPath('/privacy')} className="text-secondary hover:text-accent text-sm transition-colors">
@@ -94,7 +94,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold text-muted uppercase tracking-[0.15em] mb-5">{t('footer.sections.contact')}</h3>
+            <h3 className="text-xs font-semibold text-secondary uppercase tracking-[0.15em] mb-5">{t('footer.sections.contact')}</h3>
             <address className="not-italic space-y-3">
               <div className="flex items-start gap-3 text-sm text-secondary">
                 <MapPin className="w-4 h-4 flex-shrink-0 text-accent mt-0.5" />
@@ -135,10 +135,10 @@ export default function Footer() {
 
         <div className="border-t border-line pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-xs text-muted">
+            <div className="text-xs text-secondary">
               © {currentYear} {t('footer.company')} — {t('footer.rights')}
             </div>
-            <div className="text-xs text-muted">
+            <div className="text-xs text-secondary">
               {t('footer.vat')}
             </div>
           </div>

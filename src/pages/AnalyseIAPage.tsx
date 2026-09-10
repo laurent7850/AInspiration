@@ -83,7 +83,7 @@ const AnalyseIAPage: React.FC = () => {
       {/* Main Features Section */}
       <div className="container mx-auto px-4 py-16 border-b border-gray-100">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">
             {t('features.sectionTitle')}
           </h2>
           <p className="text-lg text-gray-600">
@@ -120,7 +120,7 @@ const AnalyseIAPage: React.FC = () => {
       </div>
 
       {/* Key Metrics Section */}
-      <div className="bg-aurora-quiet py-16">
+      <div className="bg-surface py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-12">
             {metrics.map((metric, index) => (
@@ -137,7 +137,7 @@ const AnalyseIAPage: React.FC = () => {
       {/* Use Cases Section */}
       <div className="container mx-auto px-4 py-16 border-b border-gray-100">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">
             {t('useCases.sectionTitle')}
           </h2>
           <p className="text-lg text-gray-600">
@@ -194,7 +194,7 @@ const AnalyseIAPage: React.FC = () => {
       {/* Process Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">
             {t('process.sectionTitle')}
           </h2>
           <p className="text-lg text-gray-600">
@@ -222,7 +222,7 @@ const AnalyseIAPage: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-aurora-teal py-16">
+      <div className="bg-accent py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="text-white">

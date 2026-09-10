@@ -204,9 +204,11 @@ h1, h2, h3, h4, h5, h6 {
 .title-mark {
   background-color: var(--color-accent-wash);
   color: var(--color-accent-dark);
-  padding: 0.02em 0.16em 0.06em;
-  margin: 0 -0.06em;
-  border-radius: 0.22em;
+  /* Aucun padding horizontal, aucune marge : un mot surligné en début de ligne
+     ferait sortir son fond du bloc de texte. Le fond épouse exactement le mot. */
+  padding: 0;
+  margin: 0;
+  border-radius: 0.16em;
   /* Sans cela, un mot surligné qui passe à la ligne perd ses coins arrondis
      et son padding sur la coupure. */
   -webkit-box-decoration-break: clone;

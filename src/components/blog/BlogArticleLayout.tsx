@@ -107,13 +107,13 @@ export default function BlogArticleLayout({
       )}
 
       {metrics && metrics.length > 0 && (
-        <div className="bg-aurora-teal rounded-2xl p-8 md:p-12">
+        <div className="bg-accent rounded-card p-8 md:p-12">
           <div className={`grid md:grid-cols-${Math.min(metrics.length, 4)} gap-8`}>
             {metrics.map((metric, index) => (
               <div key={index} className="text-center text-white">
                 <div className="text-4xl md:text-5xl font-bold mb-2">{metric.value}</div>
                 <div className="text-xl font-semibold mb-1">{metric.label}</div>
-                <div className="text-indigo-100">{metric.description}</div>
+                <div className="text-white/85">{metric.description}</div>
               </div>
             ))}
           </div>
@@ -133,7 +133,7 @@ export default function BlogArticleLayout({
         <div className="grid md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-accent-wash rounded-soft flex items-center justify-center mb-4">
                 <benefit.icon className="w-6 h-6 text-indigo-600" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">

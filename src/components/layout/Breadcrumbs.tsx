@@ -84,15 +84,15 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ routes, className = '' }) => 
           return (
             <li key={index} className={`breadcrumb-item flex items-center ${isLast ? 'breadcrumb-current' : ''}`}>
               {isLast ? (
-                <span aria-current="page" className="font-medium text-white">
+                <span aria-current="page" className="font-semibold text-ink">
                   {segment.breadcrumb}
                 </span>
               ) : (
                 <>
-                  <Link to={segment.path} className="text-indigo-100/60 hover:text-white transition-colors">
+                  <Link to={segment.path} className="text-secondary hover:text-ink transition-colors">
                     {segment.breadcrumb}
                   </Link>
-                  <ChevronRight className="w-4 h-4 mx-1 text-white/25" aria-hidden="true" />
+                  <ChevronRight className="w-4 h-4 mx-1 text-secondary" aria-hidden="true" />
                 </>
               )}
             </li>

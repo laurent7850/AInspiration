@@ -71,13 +71,13 @@ const AboutPage: React.FC = () => {
     <>
       <SEOHead canonical="/a-propos" />
       {/* Hero — Aurora declension (quiet ground: a Read surface) */}
-      <section className="relative bg-aurora-quiet text-white overflow-hidden pt-28 lg:pt-32 pb-12 lg:pb-16">
+      <section className="relative bg-surface text-ink pt-28 lg:pt-32 pb-12 lg:pb-16">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="font-display font-light text-3xl sm:text-4xl lg:text-6xl text-white leading-[1.06] mb-5">
+            <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-6xl text-ink leading-[1.16] mb-5">
               {t('pageTitle')}
             </h1>
-            <p className="text-lg sm:text-xl text-indigo-100/85 max-w-[55ch] leading-relaxed">
+            <p className="text-lg sm:text-xl text-secondary max-w-[55ch] leading-relaxed">
               {t('pageSubtitle')}
             </p>
           </div>

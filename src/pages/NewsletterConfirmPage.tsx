@@ -26,7 +26,7 @@ export default function NewsletterConfirmPage() {
           >
             {ok ? <CheckCircle className="h-8 w-8" aria-hidden="true" /> : <AlertCircle className="h-8 w-8" aria-hidden="true" />}
           </div>
-          <h1 className="font-display font-light text-3xl sm:text-4xl text-ink leading-[1.1] mb-4">
+          <h1 className="font-display font-bold text-3xl sm:text-4xl text-ink leading-[1.1] mb-4">
             {ok ? t('newsletter.confirmPage.okTitle') : t('newsletter.confirmPage.invalidTitle')}
           </h1>
           <p className="text-lg text-secondary leading-relaxed mb-8">

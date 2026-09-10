@@ -44,21 +44,21 @@ export default function AuditPage() {
       />
 
       {/* Hero — Aurora declension (teal ground: the action page) */}
-      <section className="relative bg-aurora-teal text-white overflow-hidden pt-28 lg:pt-36 pb-16 lg:pb-20">
+      <section className="relative bg-surface text-ink pt-28 lg:pt-36 pb-16 lg:pb-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-7xl text-white leading-[1.06] mb-6">
+            <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-7xl text-ink leading-[1.16] mb-6">
               {t('page.heroTitle')}{' '}
-              <span className="text-aurora-teal">{t('page.heroHighlight')}</span>
+              <span className="title-mark">{t('page.heroHighlight')}</span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-indigo-100/85 max-w-[55ch] leading-relaxed mb-10">
+            <p className="text-lg sm:text-xl text-secondary max-w-[55ch] leading-relaxed mb-10">
               {t('page.heroDescription')}
             </p>
 
             <button
               onClick={() => setShowAuditForm(true)}
-              className="group inline-flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-500 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-[0_18px_45px_-12px_rgba(79,70,229,0.65)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              className="group inline-flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-500 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               {t('page.ctaButton')}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
@@ -67,8 +67,8 @@ export default function AuditPage() {
             <div className="mt-10 flex flex-wrap gap-8">
               {guaranteeKeys.map((key) => (
                 <div key={key} className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-aurora-teal" />
-                  <span className="text-sm text-indigo-100/80">{t(`page.guarantees.${key}`)}</span>
+                  <span className="w-2 h-2 rounded-full bg-accent" />
+                  <span className="text-sm text-secondary">{t(`page.guarantees.${key}`)}</span>
                 </div>
               ))}
             </div>

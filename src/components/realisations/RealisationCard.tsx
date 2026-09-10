@@ -48,13 +48,13 @@ const RealisationCard: React.FC<RealisationCardProps> = ({ realisation }) => {
     />
   ) : (
     // Typographic stand-in — the metric, set large on the night ground.
-    <div className="w-full h-full bg-aurora-quiet flex items-center justify-center px-6 text-center">
+    <div className="w-full h-full bg-surface flex items-center justify-center px-6 text-center">
       {lead ? (
-        <span className="font-display font-light text-4xl sm:text-5xl text-aurora-teal leading-none">
+        <span className="font-display font-bold text-4xl sm:text-5xl text-accent leading-none tabular-nums">
           {lead.value}
         </span>
       ) : (
-        <span className="font-display font-light text-2xl text-indigo-100/85 leading-snug">
+        <span className="font-display font-semibold text-2xl text-ink leading-snug">
           {t(`${base}.sector`)}
         </span>
       )}
@@ -72,7 +72,7 @@ const RealisationCard: React.FC<RealisationCardProps> = ({ realisation }) => {
               {t(`${base}.sector`)}
             </span>
           )}
-          <span className="text-xs text-muted">{t(`card.${realisation.status}`)}</span>
+          <span className="text-xs text-secondary">{t(`card.${realisation.status}`)}</span>
         </div>
 
         <h3 className="text-lg font-semibold tracking-tight text-ink">{t(`${base}.title`)}</h3>
@@ -83,7 +83,7 @@ const RealisationCard: React.FC<RealisationCardProps> = ({ realisation }) => {
 
         <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-1">
           {realisation.technologies.slice(0, 3).map((tech) => (
-            <li key={tech} className="text-xs text-muted">
+            <li key={tech} className="text-xs text-secondary">
               {tech}
             </li>
           ))}
@@ -96,7 +96,7 @@ const RealisationCard: React.FC<RealisationCardProps> = ({ realisation }) => {
               <ArrowRight className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
             </span>
           ) : (
-            <span className="text-muted">{t('card.noDetail')}</span>
+            <span className="text-secondary">{t('card.noDetail')}</span>
           )}
         </div>
       </div>

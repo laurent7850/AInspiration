@@ -56,17 +56,17 @@ export default function LocalPage() {
       <SEOHead title={t('seo.title')} description={t('seo.description')} schema={faqSchema} />
 
       {/* Hero */}
-      <section className="relative bg-aurora text-white overflow-hidden pt-28 lg:pt-32 pb-16 lg:pb-20">
+      <section className="relative bg-canvas text-ink pt-28 lg:pt-32 pb-16 lg:pb-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-indigo-100/80 mb-4">{t('hero.eyebrow')}</p>
-            <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl leading-[1.06] mb-6">{t('hero.title')}</h1>
-            <p className="text-lg text-indigo-100/85 leading-relaxed max-w-2xl mb-8">{t('hero.subtitle')}</p>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-secondary mb-4">{t('hero.eyebrow')}</p>
+            <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.06] mb-6">{t('hero.title')}</h1>
+            <p className="text-lg text-secondary leading-relaxed max-w-2xl mb-8">{t('hero.subtitle')}</p>
             <div className="flex flex-wrap items-center gap-4">
               <button
                 type="button"
                 onClick={() => setShowAudit(true)}
-                className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-medium text-white shadow-[0_18px_45px_-12px_rgba(79,70,229,0.65)] transition-colors hover:bg-accent-light"
+                className="inline-flex items-center gap-2 rounded-button bg-white px-7 py-3.5 font-semibold text-accent-dark transition-colors hover:bg-indigo-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 {t('hero.cta')}
                 <ArrowRight className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
@@ -83,7 +83,7 @@ export default function LocalPage() {
                 </a>
               )}
             </div>
-            <p className="mt-3 text-sm text-indigo-100/85">{t('hero.ctaSub')}</p>
+            <p className="mt-3 text-sm text-secondary">{t('hero.ctaSub')}</p>
           </div>
         </div>
       </section>
@@ -91,7 +91,7 @@ export default function LocalPage() {
       {/* Why local */}
       <section className="bg-surface py-16 lg:py-20" aria-labelledby="local-why">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 id="local-why" className="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.1] mb-10 max-w-2xl">
+          <h2 id="local-why" className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.1] mb-10 max-w-2xl">
             {t('why.title')}
           </h2>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -117,7 +117,7 @@ export default function LocalPage() {
       <section className="bg-canvas py-16 lg:py-20" aria-labelledby="local-sectors">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-10">
-            <h2 id="local-sectors" className="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.1] mb-4">{t('sectors.title')}</h2>
+            <h2 id="local-sectors" className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.1] mb-4">{t('sectors.title')}</h2>
             <p className="text-lg text-secondary leading-relaxed">{t('sectors.subtitle')}</p>
           </div>
           <dl className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -136,7 +136,7 @@ export default function LocalPage() {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between mb-10">
             <div className="max-w-2xl">
-              <h2 id="local-proof" className="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.1] mb-4">{t('proof.title')}</h2>
+              <h2 id="local-proof" className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.1] mb-4">{t('proof.title')}</h2>
               <p className="text-lg text-secondary leading-relaxed">{t('proof.subtitle')}</p>
             </div>
             <Link to={localizedPath('/realisations')} className="inline-flex items-center gap-2 self-start text-accent-dark font-medium hover:gap-3 transition-all">
@@ -157,16 +157,16 @@ export default function LocalPage() {
       {/* Funding */}
       <section className="bg-canvas py-16 lg:py-20" aria-labelledby="local-aid">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 id="local-aid" className="font-display font-light text-3xl sm:text-4xl text-ink leading-[1.1] mb-4">{t('aid.title')}</h2>
+          <h2 id="local-aid" className="font-display font-bold text-3xl sm:text-4xl text-ink leading-[1.1] mb-4">{t('aid.title')}</h2>
           <p className="text-lg text-secondary leading-relaxed mb-3">{t('aid.body')}</p>
-          <p className="text-sm text-muted">{t('aid.note')}</p>
+          <p className="text-sm text-secondary">{t('aid.note')}</p>
         </div>
       </section>
 
       {/* FAQ */}
       <section className="bg-surface py-16 lg:py-20" aria-labelledby="local-faq">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 id="local-faq" className="font-display font-light text-3xl sm:text-4xl text-ink leading-[1.1] mb-8">{t('faq.title')}</h2>
+          <h2 id="local-faq" className="font-display font-bold text-3xl sm:text-4xl text-ink leading-[1.1] mb-8">{t('faq.title')}</h2>
           <dl className="divide-y divide-zinc-200">
             {faq.map((f) => (
               <div key={f.q} className="py-5">
@@ -179,16 +179,16 @@ export default function LocalPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-aurora-teal text-white py-16 lg:py-20">
+      <section className="bg-accent text-white py-16 lg:py-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
-            <h2 className="font-display font-light text-3xl sm:text-4xl lg:text-5xl leading-[1.1] mb-5">{t('cta.title')}</h2>
-            <p className="text-lg text-indigo-100/85 leading-relaxed mb-8">{t('cta.body')}</p>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-[1.1] mb-5">{t('cta.title')}</h2>
+            <p className="text-lg text-white/85 leading-relaxed mb-8">{t('cta.body')}</p>
             <div className="flex flex-wrap gap-4">
               <button
                 type="button"
                 onClick={() => setShowAudit(true)}
-                className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-medium text-white shadow-[0_18px_45px_-12px_rgba(79,70,229,0.65)] transition-colors hover:bg-accent-light"
+                className="inline-flex items-center gap-2 rounded-button bg-white px-7 py-3.5 font-semibold text-accent-dark transition-colors hover:bg-indigo-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 {t('cta.audit')}
                 <ArrowRight className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />

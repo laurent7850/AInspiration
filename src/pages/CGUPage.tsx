@@ -11,9 +11,9 @@ export default function CGUPage() {
         description={t('cgu.seo.description')}
         noindex
       />
-      <div className="relative bg-aurora-quiet text-white overflow-hidden pt-28 lg:pt-32 pb-10 lg:pb-14">
+      <div className="relative bg-surface text-ink pt-28 lg:pt-32 pb-10 lg:pb-14">
         <div className="container mx-auto px-4 max-w-3xl">
-          <h1 className="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-white leading-[1.06]">{t('cgu.pageTitle')}</h1>
+          <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.16]">{t('cgu.pageTitle')}</h1>
         </div>
       </div>
       <section className="py-16 bg-white">

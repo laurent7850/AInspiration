@@ -73,15 +73,15 @@ const SolutionsPage: React.FC = () => {
       {/* Title/description come from seoConfig per language via SEOHead */}
       <SEOHead schema={serviceSchema} />
 
-      <section className="relative bg-aurora-quiet text-white overflow-hidden pt-28 lg:pt-32 pb-12 lg:pb-16">
+      <section className="relative bg-surface text-ink pt-28 lg:pt-32 pb-12 lg:pb-16">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="font-display font-light text-3xl sm:text-4xl lg:text-6xl text-white leading-[1.06] mb-5">
+            <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-6xl text-ink leading-[1.16] mb-5">
               {t('hero.titlePrefix')}
-              <span className="text-aurora-teal">{t('hero.titleHighlight')}</span>
+              <span className="title-mark">{t('hero.titleHighlight')}</span>
               {t('hero.titleSuffix', '') ? ` ${t('hero.titleSuffix')}` : ''}
             </h1>
-            <p className="text-lg sm:text-xl text-indigo-100/85 max-w-[55ch] leading-relaxed">
+            <p className="text-lg sm:text-xl text-secondary max-w-[55ch] leading-relaxed">
               {t('hero.subtitle')}
             </p>
           </div>
@@ -147,7 +147,7 @@ const SolutionsPage: React.FC = () => {
           <div className="max-w-6xl mx-auto mb-16">
             <div className="bg-indigo-50 rounded-2xl p-8">
               <div className="text-center mb-10">
-                <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">{t('approach.title')}</h2>
+                <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">{t('approach.title')}</h2>
                 <p className="text-lg text-gray-600 max-w-3xl mx-auto">{t('approach.subtitle')}</p>
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -165,7 +165,7 @@ const SolutionsPage: React.FC = () => {
           </div>
 
           {/* CTA */}
-          <div className="bg-aurora-teal rounded-2xl p-8 lg:p-12 text-white mb-16">
+          <div className="bg-accent rounded-card p-8 lg:p-12 text-white mb-16">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <h2 className="text-3xl font-bold mb-4">{t('cta.title')}</h2>
@@ -185,7 +185,7 @@ const SolutionsPage: React.FC = () => {
 
           {/* Guidance */}
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="font-display font-light text-3xl sm:text-5xl text-ink mb-4">{t('guidance.title')}</h2>
+            <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">{t('guidance.title')}</h2>
             <p className="text-lg text-gray-600 mb-8">{t('guidance.body')}</p>
             <ol className="grid md:grid-cols-3 gap-6">
               {GUIDANCE_STEPS.map((step, index) => (
