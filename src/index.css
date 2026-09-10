@@ -205,14 +205,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .underline-hand svg {
   position: absolute;
-  left: 0;
+  /* Le marqueur déborde légèrement du mot des deux côtés : un trait qui s'arrête
+     pile aux lettres n'a pas été tracé à la main. */
+  left: -3%;
   /* Le trait reste DANS la boîte de sa propre ligne (le mot souligné n'a pas de
      jambage), sinon il mord sur la ligne suivante dès que le titre passe à la ligne. */
-  bottom: 0.02em;
-  width: 100%;
-  height: 0.10em;
+  bottom: -0.09em;
+  width: 106%;
+  height: 0.52em;
   overflow: visible;
-  stroke: var(--color-accent);
+  fill: var(--color-accent);
+}
+
+/* Le second passage du feutre, posé par-dessus le premier. */
+.underline-hand__pass2 {
+  opacity: 0.5;
 }
 
 p {

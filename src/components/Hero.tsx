@@ -25,12 +25,17 @@ function HighlightedTitle({ title, accent }: { title: string; accent: string }) 
       {title.slice(0, at)}
       <span className="underline-hand">
         {accent}
-        <svg viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true">
+        {/* Trait de gros marqueur : une forme PLEINE, pas un tracé. Avec
+            preserveAspectRatio="none" un stroke se déforme (les bouts ronds
+            deviennent ovales) ; une forme pleine s'étire proprement. Les deux
+            bords ondulent en parallèle — c'est le passage d'un feutre, pas une
+            règle. Le second passage, plus court et translucide, imite l'encre
+            repassée une fois. */}
+        <svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2 12.4 C 38 6.8, 68 4.8, 100 4.4 C 133 4.2, 163 6.6, 198 11.4 L 198 17.6 C 163 12.8, 133 10.6, 100 11.2 C 68 11.4, 38 13.2, 2 18.6 Z" />
           <path
-            d="M3 7 C 48 2, 96 10, 152 4 S 194 6, 197 5"
-            fill="none"
-            strokeWidth="3.2"
-            strokeLinecap="round"
+            className="underline-hand__pass2"
+            d="M21 14.2 C 51 9.4, 75 7.4, 100 7.3 C 127 7.2, 152 8.8, 179 12.8 L 179 15.4 C 152 11.6, 127 10, 100 10.1 C 75 10.2, 51 12, 21 16.6 Z"
           />
         </svg>
       </span>

@@ -44,23 +44,23 @@ typography:
     fontSize: "1.125rem"
     fontWeight: 400
     lineHeight: 1.65
-  kicker:
+  label:
     fontFamily: "Outfit, system-ui, sans-serif"
     fontSize: "0.875rem"
     fontWeight: 600
+    lineHeight: 1.4
     letterSpacing: "0"
 rounded:
-  button: "9999px"
   soft: "0.875rem"
   card: "1.375rem"
   container: "2rem"
-  pill: "9999px"
+  button: "9999px"
 spacing:
-  card-padding: "32px"
   card-gap: "16px"
+  card-padding: "32px"
+  band-padding: "40px 56px"
   section-y: "64px"
   section-y-lg: "96px"
-  band-padding: "40px 56px"
 components:
   button-primary:
     backgroundColor: "{colors.accent}"
@@ -74,19 +74,21 @@ components:
   button-outline:
     backgroundColor: "transparent"
     textColor: "{colors.ink}"
-    borderColor: "{colors.line}"
     rounded: "{rounded.button}"
     padding: "14px 24px"
+  button-inverse:
+    backgroundColor: "#FFFFFF"
+    textColor: "{colors.accent-dark}"
+    rounded: "{rounded.button}"
+    padding: "16px 32px"
   card:
     backgroundColor: "{colors.canvas}"
-    borderColor: "{colors.line}"
     textColor: "{colors.ink}"
     rounded: "{rounded.card}"
     padding: "32px"
   card-featured:
     backgroundColor: "{colors.canvas}"
-    borderColor: "{colors.accent}"
-    borderWidth: "2px"
+    textColor: "{colors.ink}"
     rounded: "{rounded.card}"
     padding: "32px"
   band-accent:
@@ -94,6 +96,11 @@ components:
     textColor: "#FFFFFF"
     rounded: "{rounded.card}"
     padding: "40px 56px"
+  chip-wash:
+    backgroundColor: "{colors.accent-wash}"
+    textColor: "{colors.accent-dark}"
+    rounded: "{rounded.button}"
+    padding: "4px 12px"
 ---
 
 # Design System : AInspiration — Atelier clair
@@ -107,115 +114,251 @@ components:
 > derrière le login est explicitement hors de ce monde** — ne pas le restyler
 > depuis ce fichier.
 
-## Vue d'ensemble
+## Overview
 
-**Point de départ : les deux couleurs du logo, rien d'autre.**
+**Creative North Star : « L'atelier sous la verrière »**
 
-Le bleu `#4540D0` (le cerveau et le « AI ») et le navy `#1E293B` (le mot-marque)
-sont échantillonnés au pixel sur `public/logo-ainspiration.png`. Tout le reste de
-la palette est neutre. Le fond « Craie » — blanc franc, cartes en très léger
-retrait — a été retenu après comparaison de six fonds candidats (sable, lin,
-bleuté, vert-de-gris, craie, nuit).
+Un atelier éclairé au jour : les murs sont blancs, les établis d'un gris à peine
+plus sombre, et un seul outil est peint en bleu — celui avec lequel on travaille.
+Rien n'est mis en scène, rien n'est éclairé artificiellement. Ce qui se voit, ce
+sont les pièces et les mesures, pas le décor.
 
-Ce que la direction remplace : Aurora, un monde nuit + dégradé indigo→violet +
-accent teal. Ses trois défauts étaient un accent dédoublé (indigo pour l'action,
-teal pour la donnée, donc aucune hiérarchie), un violet qui ne venait d'aucune
-réalité de la marque, et un rayon unique appliqué partout qui aplatissait tout.
+Les deux couleurs de la marque sont échantillonnées au pixel sur
+`public/logo-ainspiration.png` : le bleu `#4540D0` (le cerveau et le « AI ») et le
+navy `#1E293B` (le mot-marque). Tout le reste est neutre. Le fond « Craie » —
+blanc franc, panneaux en très léger retrait — a été retenu par le client après
+comparaison de six fonds candidats (sable, lin, bleuté, vert-de-gris, craie,
+nuit).
 
-**Caractéristiques :**
+Anti-référence confirmée : **Aurora**, la génération précédente (nuit `#10102A`,
+dégradés radiaux indigo→violet, accent teal, CTA en pilule ombrée de couleur).
+Ses trois défauts sont interdits de retour — un accent dédoublé qui aplatit la
+hiérarchie, une teinte qui ne vient d'aucune réalité de la marque, et un rayon
+unique appliqué partout.
 
-- Fond blanc, panneaux `#F8F8FA`, séparation par filets `#E4E4EA` — jamais par
-  une ombre.
-- **Un seul accent.** Le bleu du logo porte l'action et rien d'autre. Une preuve,
-  un chiffre, un libellé se lisent en encre.
-- Arrondis généreux et assumés : 22 px sur les cartes, 14 px sur les petits blocs,
-  pilule pleine sur les boutons.
-- Une seule famille typographique (Outfit) à plusieurs graisses, titres en 700 et
-  tracking serré.
-- Aucune ombre décorative. `shadow-diffuse` ne sert plus qu'aux surfaces vraiment
-  flottantes (menus déroulants).
+**Key Characteristics :**
 
-## Couleurs
+- Fond blanc, panneaux `#F8F8FA`, séparation par filets `#E4E4EA` — jamais par une ombre
+- Un seul accent : le bleu du logo, réservé à l'action
+- Arrondis généreux et assumés (22 px sur les blocs, pilule pleine sur les actions)
+- Une seule famille typographique (Outfit) à plusieurs graisses, titres en 700
+- Aucun dégradé, aucune ombre décorative
+- Un trait dessiné à main levée sous un mot du titre, une fois par page
 
-### Accent
+## Colors
 
-- **Accent** `#4540D0` — la couleur du logo. Remplit les CTA, colore le « AI » de
-  la marque, les puces, les compteurs d'étape, l'anneau de focus, la sélection et
-  la scrollbar. Survol : `#3A35B8` (accent-dark). `#5F58DA` (accent-light) sert
-  aux états secondaires.
-- **Accent-wash** `#EEEDFC` — fond des pastilles et des états sélectionnés. Jamais
-  du texte.
+Deux couleurs de marque et une échelle de neutres légèrement froids. Aucune
+troisième teinte n'entre dans le monde ; les couleurs sémantiques (succès,
+erreur, alerte) ne servent qu'aux états de formulaire.
+
+### Primary
+
+- **Bleu Cerveau** (`#4540D0`) : la couleur du logo. Remplit les CTA, colore le
+  « AI » de la marque, les puces, les compteurs d'étape, le trait dessiné,
+  l'anneau de focus, la sélection de texte et la scrollbar. Survol :
+  **Bleu Encre** (`#3A35B8`). **Bleu Clair** (`#5F58DA`) sert aux états
+  secondaires et aux liens sur fond sombre.
+- **Voile Bleu** (`#EEEDFC`) : fond des pastilles, des états sélectionnés et des
+  survols de ligne. Ne porte jamais de texte à lui seul — il est toujours associé
+  à l'encre ou au bleu encre.
 
 La rampe `indigo` de Tailwind est **recentrée sur cette couleur** dans
 `tailwind.config.js` (600 = `#4540D0`) : plus de 1100 occurrences de `indigo-*`
-existaient dans le code, les recentrer valait mieux que les réécrire une à une.
-Une nouvelle classe `indigo-*` reste donc acceptable, elle tombe dans la marque.
+existaient dans le code, les recentrer valait mieux que de les réécrire une à une.
+Une classe `indigo-*` reste donc acceptable, elle tombe dans la marque.
 
-### Neutres
+### Neutral
 
-- **Canvas** `#FFFFFF` — le sol de la page.
-- **Surface** `#F8F8FA` — panneaux, sections en alternance, cartes en retrait.
-- **Ink** `#1E293B` — le navy du logo, couleur de tout le texte courant.
-- **Secondary** `#6B7280` — texte d'appui, libellés, descriptions.
-- **Muted** `#9AA1AC` — mentions, légendes, placeholders.
-- **Line** `#E4E4EA` — le filet, seul outil de séparation.
+- **Craie** (`#FFFFFF`) : le sol de la page.
+- **Établi** (`#F8F8FA`) : panneaux, sections en alternance, cartes en retrait.
+- **Navy Marque** (`#1E293B`) : le navy du logo, couleur de tout le texte courant.
+- **Gris Atelier** (`#6B7280`) : texte d'appui, libellés, descriptions.
+- **Gris Mention** (`#9AA1AC`) : légendes, mentions légales, placeholders.
+- **Filet** (`#E4E4EA`) : la bordure — seul outil de séparation.
 
-Le rythme des sections alterne canvas et surface. Deux sections voisines ne
-portent jamais le même fond.
+### Named Rules
 
-## Typographie
+**La règle des deux couleurs.** Toute couleur visible vient du logo ou est un
+neutre de cette liste. Introduire une troisième teinte demande de modifier ce
+fichier, pas un composant.
 
-Outfit, une seule famille, auto-hébergée en woff2 (`public/fonts/`) pour ne pas
-payer un aller-retour Google Fonts sur le LCP. Jost, mentionné par l'ancienne
-génération, n'a jamais été chargé et a été retiré de la pile.
+**La règle du seul bleu.** L'accent ne colore que ce sur quoi on clique. Une
+preuve, un chiffre, une date, un libellé se lisent en encre. Test : si un élément
+bleu n'est pas cliquable et n'est pas le trait du titre, il est en trop.
 
-- Les titres d'affichage sont en **700**, `letter-spacing: -0.035em`. Aurora les
-  voulait légers et aérés : c'est l'inverse exact.
-- Le corps reste en 400 avec `leading-relaxed`, largeur maximale ~50 caractères
-  pour les chapôs, 64 pour les réponses longues.
-- Chiffres alignés (`tabular-nums`) partout où ils se comparent : prix, durées,
-  compteurs.
-- Le kicker (surtitre) est en 600, à l'accent, précédé d'un trait de 28 × 3 px.
-  Il remplace les petites capitales espacées d'Aurora.
+## Typography
 
-### Le trait dessiné
+**Display :** Outfit (repli `system-ui`, `-apple-system`, `sans-serif`)
+**Body :** Outfit — la même famille
+**Mono :** JetBrains Mono, uniquement dans le CRM et les blocs de code du blog
 
-`.underline-hand` souligne **un seul mot** du titre principal d'une page, d'un
-trait tracé à main levée en SVG. Un par page, jamais deux. Le mot vient de la
-traduction (`hero.titleAccent`) pour que les trois langues restent justes ; si la
-clé manque, le titre s'affiche sans trait plutôt que de casser.
+**Caractère :** une géométrique large et ronde, lisible en petites tailles et
+franche en gros titres. Auto-hébergée en woff2 (`public/fonts/`) pour ne pas payer
+un aller-retour Google Fonts sur le LCP. Jost, mentionné par la génération
+précédente, n'a jamais été chargé — ni `@font-face` ni `<link>` — et a été retiré
+de la pile.
 
-Le trait reste dans la boîte de sa propre ligne (`bottom: 0.02em`) : le mot
-souligné n'a pas de jambage, et un trait plus bas mord sur la ligne suivante dès
-que le titre passe à la ligne.
+### Hierarchy
 
-## Formes et profondeur
+- **Display** (700, `clamp(2.25rem, 6vw, 4.5rem)`, 1.08, `-0.035em`) : le titre du
+  hero, un par page.
+- **Headline** (700, `clamp(1.875rem, 4vw, 3rem)`, 1.1, `-0.035em`) : les titres de
+  section.
+- **Title** (600, 1.125rem, 1.4, `-0.02em`) : titres de cartes et de questions.
+- **Lede** (400, 1.125rem, 1.65) : le chapô sous un titre, ≤ 50 caractères par ligne.
+- **Body** (400, 1rem, 1.625) : le texte courant, ≤ 64 caractères par ligne.
+- **Label / kicker** (600, 0.875rem) : le surtitre, à l'accent, précédé d'un trait
+  de 28 × 3 px. Il remplace les petites capitales espacées d'Aurora — pas de
+  `uppercase`, pas de `tracking-[0.2em]`.
 
-- **Rayon** : `rounded-card` (22 px) pour les blocs, `rounded-soft` (14 px) pour
-  les petits éléments, `rounded-button` (pilule) pour toute action. Pas de
-  `rounded-lg` par défaut.
-- **Bordure plutôt qu'ombre.** Un bloc se détache par un filet `line`, pas par une
-  élévation. Au survol, la bordure fonce (`border-ink/25`) — on ne déplace pas le
-  bloc, on ne l'agrandit pas.
-- **Ombres** : réservées aux surfaces réellement flottantes (menus, popovers).
-  Aucune ombre sur un élément en flux.
-- **Un seul aplat d'accent par écran** : la bande CTA. Les boutons accent peuvent
-  cohabiter avec elle, mais pas un second aplat plein.
+Les chiffres qui se comparent — prix, durées, compteurs — sont en `tabular-nums`.
 
-## États
+### Named Rules
 
-- `focus-visible` : anneau de 2 px à l'accent, décalé de 2 px. Jamais
-  `outline-none`.
-- Cibles tactiles ≥ 44 px, y compris les lignes de FAQ.
-- Survol : changement de couleur uniquement (bordure ou fond), 180–200 ms,
-  `ease-out`. Pas de `scale`, pas de translation verticale sauf `active`.
-- `prefers-reduced-motion` coupe les animations globalement (`src/index.css`).
+**La règle des deux tailles.** Deux niveaux de titre qui s'opposent franchement
+valent mieux que trois qui se ressemblent. Entre Display et Title, il n'y a rien.
 
-## Ce qu'on n'utilise plus
+**La règle du trait unique.** `.underline-hand` souligne **un seul mot** du titre
+principal, une fois par page. Le mot vient de la traduction (`hero.titleAccent`)
+pour que les trois langues restent justes ; si la clé manque ou ne figure pas dans
+le titre, le titre s'affiche sans trait plutôt que de casser.
 
-- `.bg-aurora`, `.bg-aurora-teal`, `.bg-aurora-quiet` et la couleur `night` :
-  toujours définies pour les pages pas encore migrées, à supprimer quand la
-  dernière page publique aura basculé.
-- Le teal comme accent de données — il créait un second accent.
-- `shadow-lift` / `shadow-diffuse` sur des cartes en flux.
-- Les titres en `font-light`.
+## Layout
+
+Conteneur à `1400px` maximum, gouttières `px-4 / sm:px-6 / lg:px-8`. Le hero suit
+une grille asymétrique de 12 colonnes (texte 7, visuel 5) ; les sections courantes
+alternent 1, 3 et 4 colonnes selon le contenu, jamais une grille imposée.
+
+Rythme vertical : `64px` de padding vertical par section, `96px` à partir de `lg`.
+L'espacement n'est pas uniforme — serré à l'intérieur d'un bloc (`8–16px`), large
+entre les blocs (`64px`) : c'est l'écart qui fait le groupement.
+
+Points de rupture Tailwind par défaut (`sm 640`, `md 768`, `lg 1024`, `xl 1280`).
+Tout est vérifié à 375 px ; les cibles tactiles ne descendent jamais sous 44 px,
+y compris les lignes de FAQ.
+
+### Named Rules
+
+**La règle de l'alternance.** Deux sections voisines ne portent jamais le même
+fond. Craie, puis Établi, puis Craie.
+
+## Elevation & Depth
+
+**Le système est plat.** La profondeur vient d'un changement de valeur — Craie
+contre Établi — et d'un filet d'un pixel. Aucun élément en flux ne porte d'ombre.
+
+Les ombres restent définies pour les seules surfaces qui flottent réellement
+au-dessus du document : menus déroulants du header, popovers, modales.
+
+### Shadow Vocabulary
+
+- **`shadow-diffuse`** (`0 20px 40px -15px rgba(0,0,0,0.05)`) : menus déroulants
+  et popovers. Rien d'autre.
+- **`shadow-lift`** (`0 2px 8px rgba(0,0,0,0.04)`) : hérité de la génération
+  précédente, à ne plus appliquer — remplacer par une bordure.
+
+### Named Rules
+
+**La règle du filet.** Un bloc se détache par une bordure, jamais par une
+élévation. Au survol, la bordure fonce (`border-ink/25`) : on ne déplace pas le
+bloc, on ne l'agrandit pas, on ne l'éclaire pas.
+
+## Shapes
+
+Le rayon est le trait le plus reconnaissable de ce monde, et il est franc :
+
+- **`rounded-button`** (pilule, `9999px`) : toute action, sans exception.
+- **`rounded-card`** (`1.375rem` / 22 px) : cartes, panneaux, bandes CTA, cadres
+  média.
+- **`rounded-soft`** (`0.875rem` / 14 px) : petits blocs internes, pastilles
+  carrées, vignettes d'icône.
+- **`rounded-container`** (`2rem`) : réservé aux conteneurs pleine largeur.
+
+Les bordures font 1 px (`line`), 2 px uniquement pour désigner l'élément mis en
+avant d'une série, et sur les quatre côtés.
+
+### Named Rules
+
+**La règle de la pilule.** Toute action est une pilule ; tout bloc est à 22 px.
+Un `rounded-lg` à 8 px dans ce monde est une erreur, pas une nuance.
+
+**La règle des quatre côtés.** Une bordure colorée entoure ou n'existe pas. Un
+filet épais sur un seul bord — la « tranche » d'accent — est banni : c'est la
+signature la plus reconnaissable d'une interface générée.
+
+## Components
+
+### Buttons
+
+- **Forme :** pilule pleine (`9999px`), hauteur minimale 44 px.
+- **Primary :** fond accent, texte blanc, `16px 32px`. Survol : `accent-dark`.
+  `active` descend d'un pixel (`translate-y-px`) — pas de `scale`.
+- **Inverse :** sur une bande accent, fond blanc et texte `accent-dark`.
+- **Outline :** fond transparent, bordure `line`, texte encre. Survol : bordure
+  encre, fond `surface`.
+- **Focus :** anneau de 2 px à l'accent, décalé de 4 px sur les boutons pleins.
+
+### Cards / Containers
+
+- **Coins :** 22 px. **Fond :** Craie sur une section Établi, et inversement.
+- **Bordure :** filet 1 px. **Ombre :** aucune.
+- **Padding interne :** 32 px (`lg:40px` sur les bandes).
+- **Mise en avant :** bordure accent de 2 px sur les quatre côtés, plus une
+  pastille `chip-wash` — jamais un fond sombre ni un fond plein.
+
+### Navigation
+
+Header fixe, fond `canvas/90` avec `backdrop-blur`, filet bas `line`. Liens en
+`Gris Atelier`, encre au survol. Le CTA d'audit est la seule pilule pleine de la
+barre. Le mot-marque porte « AI » à l'accent et « nspiration » en encre.
+
+### Inputs / Fields
+
+Fond Craie, bordure `line`, rayon `soft`. Focus : bordure accent + anneau de 2 px.
+Erreur : bordure `error` et message sous le champ, jamais un simple bord rouge.
+
+### Bande CTA
+
+Aplat accent plein, rayon 22 px, texte blanc, bouton inverse. **Une seule par
+écran** : c'est le seul endroit où le monde hausse la voix.
+
+### Signature — le trait de marqueur
+
+`.underline-hand` : un SVG en `viewBox="0 0 200 20"`, à la couleur de l'accent.
+
+- **Une forme pleine, pas un tracé.** Avec `preserveAspectRatio="none"` un `stroke`
+  se déforme — les bouts ronds deviennent des ovales. Une forme fermée s'étire
+  proprement quelle que soit la longueur du mot.
+- **Un arc en sourire inversé** : le trait remonte au milieu et retombe aux deux
+  extrémités, comme un feutre passé d'un seul geste.
+- **Deux passages** : le second (`.underline-hand__pass2`), plus court et à 50 %
+  d'opacité, imite l'encre repassée une fois.
+- **Il déborde du mot** de 3 % de chaque côté : un trait qui s'arrête pile aux
+  lettres n'a pas été tracé à la main.
+- **Il reste dans la boîte de sa propre ligne** (`bottom: -0.09em`,
+  `height: 0.52em`) — le mot souligné n'a pas de jambage, et un trait plus bas mord
+  sur la ligne suivante dès que le titre passe à la ligne.
+
+## Do's and Don'ts
+
+### Do:
+
+- **Do** réserver l'accent à ce sur quoi on clique — un chiffre de preuve se lit en encre.
+- **Do** séparer par un filet `#E4E4EA` et un changement de fond.
+- **Do** utiliser `rounded-button` pour toute action et `rounded-card` pour tout bloc.
+- **Do** alterner les fonds Craie et Établi d'une section à la suivante.
+- **Do** mettre `tabular-nums` sur tout chiffre qui se compare à un autre.
+- **Do** faire varier l'espacement selon le groupement (8–16 px dedans, 64 px entre).
+- **Do** vérifier chaque page à 375 px avant de la considérer finie.
+
+### Don't:
+
+- **Don't** ajouter un second accent — le teal d'Aurora a été retiré pour cette raison.
+- **Don't** poser un dégradé, où que ce soit.
+- **Don't** mettre une ombre sur un élément en flux (`shadow-lift`, `shadow-diffuse`).
+- **Don't** poser un filet épais sur un seul bord d'un bloc.
+- **Don't** agrandir ou déplacer un bloc au survol (`hover:scale`, translation).
+- **Don't** écrire un titre en `font-light` : les titres sont en 700.
+- **Don't** réutiliser `.bg-aurora`, `.bg-aurora-teal`, `.bg-aurora-quiet` ni la
+  couleur `night` — elles ne survivent que pour les pages pas encore migrées et
+  disparaissent avec la dernière.
