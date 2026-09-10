@@ -102,7 +102,7 @@ const AboutPage: React.FC = () => {
           <h2 className="text-3xl font-bold text-ink tracking-tight mb-10">{t('approach.title')}</h2>
           <div className="grid md:grid-cols-3 gap-4">
             {approachPillars.map((pillar, index) => (
-              <div key={index} className="bg-white rounded-card p-8 lg:p-10 shadow-lift hover:shadow-diffuse transition-all duration-300">
+              <div key={index} className="bg-canvas border border-line rounded-card p-8 lg:p-10 transition-colors duration-200 hover:border-ink/25">
                 <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-5">
                   <pillar.icon className="w-6 h-6 text-indigo-600" />
                 </div>
@@ -118,7 +118,7 @@ const AboutPage: React.FC = () => {
           <h2 className="text-3xl font-bold text-ink tracking-tight mb-10">{t('values.title')}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {values.map((value, index) => (
-              <div key={index} className="bg-white rounded-card p-8 shadow-lift hover:shadow-diffuse transition-all duration-300">
+              <div key={index} className="bg-canvas border border-line rounded-card p-8 transition-colors duration-200 hover:border-ink/25">
                 <div className="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center mb-4">
                   <value.icon className="w-5 h-5 text-indigo-600" />
                 </div>

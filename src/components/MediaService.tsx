@@ -98,7 +98,7 @@ const MediaService: React.FC<MediaServiceProps> = ({
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300"
+              className="bg-canvas border border-line rounded-card p-6 hover:shadow-xl transition-all duration-300"
             >
               <div className="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-5">
                 <feature.icon className="w-7 h-7 text-indigo-600" />
@@ -141,7 +141,7 @@ const MediaService: React.FC<MediaServiceProps> = ({
                   {useCase.title}
                 </h3>
                 <p className="text-gray-600 mb-6 text-lg">{useCase.description}</p>
-                <div className="bg-white rounded-xl shadow-lg p-6">
+                <div className="bg-canvas border border-line rounded-card p-6">
                   <h4 className="font-semibold text-gray-900 mb-3">
                     {t('useCases.examplesLabel')}
                   </h4>

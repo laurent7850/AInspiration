@@ -12,7 +12,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {images.map((image, index) => (
-        <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div key={index} className="bg-canvas border border-line rounded-card overflow-hidden">
           <img
             src={image.url}
             alt={image.title}

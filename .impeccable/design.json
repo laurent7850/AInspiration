@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-10T07:08:16Z",
+  "generatedAt": "2026-09-10T14:35:28Z",
   "title": "Design System : AInspiration — Atelier clair",
   "extensions": {
     "colorMeta": {
@@ -240,12 +240,7 @@
       {
         "name": "diffuse",
         "value": "0 20px 40px -15px rgba(0,0,0,0.05)",
-        "purpose": "Menus déroulants et popovers uniquement — les seules surfaces qui flottent réellement au-dessus du document."
-      },
-      {
-        "name": "lift",
-        "value": "0 2px 8px rgba(0,0,0,0.04)",
-        "purpose": "Hérité de la génération Aurora, à ne plus appliquer. Remplacer par une bordure `line`."
+        "purpose": "La seule ombre du système : menus déroulants et popovers, les surfaces qui flottent réellement au-dessus du document."
       }
     ],
     "motion": [

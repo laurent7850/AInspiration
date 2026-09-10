@@ -96,7 +96,7 @@ const TransformationPage: React.FC = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {transformationPhases.map((phase, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+            <div key={index} className="bg-canvas border border-line rounded-card p-6 hover:shadow-xl transition-all duration-300">
               <div className="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-5">
                 <phase.icon className="w-7 h-7 text-indigo-600" />
               </div>
@@ -163,7 +163,7 @@ const TransformationPage: React.FC = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {solutions.map((solution, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+            <div key={index} className="bg-canvas border border-line rounded-card p-6 hover:shadow-xl transition-all duration-300">
               <div className="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-5">
                 <solution.icon className="w-7 h-7 text-indigo-600" />
               </div>
@@ -202,7 +202,7 @@ const TransformationPage: React.FC = () => {
 
         <div className="space-y-12">
           {successStories.map((story, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div key={index} className="bg-canvas border border-line rounded-card overflow-hidden">
               <div className="grid md:grid-cols-2">
                 <div className="p-8">
                   <div className="flex items-center gap-3 mb-4 flex-wrap">
@@ -283,7 +283,7 @@ const TransformationPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-xl p-8">
+            <div className="bg-canvas border border-line rounded-card p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 {t('cta.formTitle')}
               </h3>

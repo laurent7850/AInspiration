@@ -122,7 +122,7 @@ export default function LocalPage() {
           </div>
           <dl className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {sectors.map((s) => (
-              <div key={s.name} className="rounded-card bg-surface p-6 shadow-lift">
+              <div key={s.name} className="rounded-card bg-surface border border-line p-6">
                 <dt className="text-lg font-semibold tracking-tight text-ink mb-2">{s.name}</dt>
                 <dd className="text-base leading-relaxed text-secondary">{s.body}</dd>
               </div>

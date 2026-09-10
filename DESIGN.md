@@ -55,7 +55,6 @@ typography:
     fontSize: "0.9375rem"
     fontWeight: 400
     lineHeight: 1.6
-
   prose:
     fontFamily: "Outfit, system-ui, sans-serif"
     fontSize: "1.0625rem"
@@ -88,7 +87,6 @@ rounded:
   code: "0.375rem"
   soft: "0.875rem"
   card: "1.375rem"
-  container: "2rem"
   button: "9999px"
 spacing:
   card-gap: "16px"
@@ -283,10 +281,12 @@ au-dessus du document : menus déroulants du header, popovers, modales.
 
 ### Shadow Vocabulary
 
-- **`shadow-diffuse`** (`0 20px 40px -15px rgba(0,0,0,0.05)`) : menus déroulants
-  et popovers. Rien d'autre.
-- **`shadow-lift`** (`0 2px 8px rgba(0,0,0,0.04)`) : hérité de la génération
-  précédente, à ne plus appliquer — remplacer par une bordure.
+- **`shadow-diffuse`** (`0 20px 40px -15px rgba(0,0,0,0.05)`) : la seule ombre du
+  système. Menus déroulants du header, popovers. Rien d'autre.
+
+`shadow-lift`, `shadow-diffuse-lg` et `shadow-inner-glow` ont été supprimés du token
+layer le 10/09/2026, une fois leurs derniers usages convertis en bordures.
+
 
 ### Named Rules
 
@@ -303,7 +303,6 @@ Le rayon est le trait le plus reconnaissable de ce monde, et il est franc :
   média.
 - **`rounded-soft`** (`0.875rem` / 14 px) : petits blocs internes, pastilles
   carrées, vignettes d'icône.
-- **`rounded-container`** (`2rem`) : réservé aux conteneurs pleine largeur.
 
 Les bordures font 1 px (`line`), 2 px uniquement pour désigner l'élément mis en
 avant d'une série, et sur les quatre côtés.

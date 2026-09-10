@@ -116,7 +116,7 @@ const SolutionsPage: React.FC = () => {
               return (
                 <article
                   key={solution.key}
-                  className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+                  className="bg-canvas border border-line rounded-card p-6 hover:shadow-xl transition-all duration-300 flex flex-col h-full"
                 >
                   <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
                     <solution.icon className="w-6 h-6 text-indigo-600" />
@@ -152,7 +152,7 @@ const SolutionsPage: React.FC = () => {
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {APPROACH.map((item) => (
-                  <div key={item.key} className="bg-white rounded-xl shadow-sm p-6">
+                  <div key={item.key} className="bg-canvas border border-line rounded-card p-6">
                     <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
                       <item.icon className="w-6 h-6 text-indigo-600" />
                     </div>

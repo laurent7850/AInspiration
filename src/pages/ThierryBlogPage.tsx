@@ -98,7 +98,7 @@ const ThierryBlogPage: React.FC = () => {
           </div>
 
           {/* Solution Section */}
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-12">
+          <div className="bg-canvas border border-line rounded-card p-8 md:p-12 mb-12">
             <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-6">{t('thierry.solution.title')}</h2>
 
             <p className="text-lg text-gray-700 mb-8">
@@ -195,7 +195,7 @@ const ThierryBlogPage: React.FC = () => {
           </div>
 
           {/* Impact Section */}
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-12">
+          <div className="bg-canvas border border-line rounded-card p-8 md:p-12 mb-12">
             <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-6">{t('thierry.impact.title')}</h2>
 
             <p className="text-lg text-gray-700 mb-8">
@@ -271,7 +271,7 @@ const ThierryBlogPage: React.FC = () => {
           {/* Steps to Start */}
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             {gettingStartedSteps.map((step, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+              <div key={index} className="bg-canvas border border-line rounded-card p-6 hover:shadow-xl transition-shadow">
                 <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center text-xl font-bold text-white mb-4">
                   {index + 1}
                 </div>

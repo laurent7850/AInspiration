@@ -133,8 +133,7 @@ export default function Hero() {
                   sizes="(max-width: 1024px) 90vw, 40vw"
                   alt={t('hero.imageAlt')}
                   className="w-full rounded-card"
-                  // @ts-expect-error -- fetchpriority is valid HTML but not yet in React types
-                  fetchpriority="high"
+                  fetchPriority="high"
                   decoding="async"
                   width={600}
                   height={400}

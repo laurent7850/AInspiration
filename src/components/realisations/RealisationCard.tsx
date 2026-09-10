@@ -104,14 +104,14 @@ const RealisationCard: React.FC<RealisationCardProps> = ({ realisation }) => {
   );
 
   const shell =
-    'group flex h-full flex-col overflow-hidden rounded-card bg-surface shadow-lift transition-shadow duration-300';
+    'group flex h-full flex-col overflow-hidden rounded-card bg-surface border border-line transition-colors duration-200';
 
   if (!hasDetail) {
     return <article className={shell}>{body}</article>;
   }
 
   return (
-    <article className={`${shell} hover:shadow-diffuse-lg`}>
+    <article className={`${shell} hover:border-ink/25`}>
       <Link to={to} className="flex h-full flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
         {body}
       </Link>

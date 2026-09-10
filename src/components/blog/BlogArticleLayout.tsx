@@ -76,7 +76,7 @@ export default function BlogArticleLayout({
       {sections && sections.length > 0 && (
         <div className="grid lg:grid-cols-3 gap-8">
           {sections.map((section, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+            <div key={index} className="bg-canvas border border-line rounded-card p-6 hover:shadow-xl transition-shadow">
               <div className={`w-12 h-12 ${section.color} rounded-lg flex items-center justify-center mb-4`}>
                 <section.icon className="w-6 h-6" />
               </div>
@@ -121,7 +121,7 @@ export default function BlogArticleLayout({
       )}
 
       {content && (
-        <div className="bg-white rounded-xl shadow-sm p-8 md:p-12">
+        <div className="bg-canvas border border-line rounded-card p-8 md:p-12">
           <div
             className="prose prose-lg max-w-none"
             dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }}
@@ -132,7 +132,7 @@ export default function BlogArticleLayout({
       {benefits && benefits.length > 0 && (
         <div className="grid md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+            <div key={index} className="bg-canvas border border-line rounded-card p-6 hover:shadow-xl transition-shadow">
               <div className="w-12 h-12 bg-accent-wash rounded-soft flex items-center justify-center mb-4">
                 <benefit.icon className="w-6 h-6 text-indigo-600" />
               </div>

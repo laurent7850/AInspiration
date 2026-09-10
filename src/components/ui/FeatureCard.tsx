@@ -26,7 +26,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 }) => {
   return (
     <div 
-      className={`bg-white rounded-xl shadow-lg p-6 ${isHoverable ? 'hover:shadow-xl hover:-translate-y-1 transition-all duration-300' : ''} ${className}`}
+      className={`bg-canvas border border-line rounded-card p-6 ${isHoverable ? 'hover:shadow-xl hover:-translate-y-1 transition-all duration-300' : ''} ${className}`}
     >
       <div className={`w-12 h-12 ${iconClassName} rounded-lg flex items-center justify-center mb-4`}>
         <Icon className="w-6 h-6 text-indigo-600" />

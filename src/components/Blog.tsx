@@ -62,7 +62,7 @@ export default function Blog() {
           // the whole list down once it resolved (CLS 0.27 on /blog, 2026-09-08).
           <div className="grid gap-8 max-w-5xl mx-auto" aria-busy="true" aria-label={t('loading', { defaultValue: 'Chargement…' })}>
             {[0, 1, 2].map((i) => (
-              <div key={i} className="bg-white rounded-2xl shadow-lg overflow-hidden animate-pulse">
+              <div key={i} className="bg-canvas border border-line rounded-card overflow-hidden animate-pulse">
                 <div className="md:flex">
                   <div className="md:w-1/3 aspect-[16/10] md:aspect-auto md:min-h-[16rem] bg-gray-200" />
                   <div className="md:w-2/3 p-8 space-y-4">
@@ -107,7 +107,7 @@ export default function Blog() {
               return (
                 <article
                   key={article.id}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                  className="bg-canvas border border-line rounded-card overflow-hidden hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="md:flex">
                     <div className="md:w-1/3 aspect-[16/10] md:aspect-auto">

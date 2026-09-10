@@ -185,7 +185,7 @@ const ContactPage: React.FC = () => {
               return (
                 <div
                   key={index}
-                  className="bg-white rounded-card p-6 shadow-lift"
+                  className="bg-canvas border border-line rounded-card p-6"
                 >
                   {cardContent}
                 </div>
@@ -196,7 +196,7 @@ const ContactPage: React.FC = () => {
               <a
                 key={index}
                 href={info.link}
-                className="bg-white rounded-card p-6 shadow-lift hover:shadow-diffuse transition-all duration-300 hover:-translate-y-1"
+                className="bg-canvas border border-line rounded-card p-6 transition-colors duration-200 hover:border-ink/25"
               >
                 {cardContent}
               </a>
@@ -204,7 +204,7 @@ const ContactPage: React.FC = () => {
           })}
         </div>
 
-        <div className="bg-white rounded-[2rem] shadow-diffuse overflow-hidden">
+        <div className="bg-canvas border border-line rounded-card overflow-hidden">
           <div>
             <div className="p-8 lg:p-12">
               <h2 className="text-2xl font-bold text-ink tracking-tight mb-6">

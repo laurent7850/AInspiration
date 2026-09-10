@@ -157,7 +157,7 @@ export const FormSkeleton: React.FC = () => (
 export const ListSkeleton: React.FC<{ count?: number }> = ({ count = 5 }) => (
   <div className="space-y-4">
     {Array.from({ length: count }).map((_, i) => (
-      <div key={i} className="flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm">
+      <div key={i} className="flex items-center gap-4 p-4 bg-canvas border border-line rounded-card">
         <Skeleton variant="circular" width={40} height={40} />
         <div className="flex-1">
           <Skeleton variant="text" width="60%" height={18} className="mb-1" />

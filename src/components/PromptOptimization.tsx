@@ -107,7 +107,7 @@ export default function PromptOptimization() {
         </div>
 
         {/* Tableau comparatif */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-16">
+        <div className="bg-canvas border border-line rounded-card p-6 mb-16">
           <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
             {t('optimization.comparison.title')}
           </h3>
@@ -138,7 +138,7 @@ export default function PromptOptimization() {
         {/* Fonctionnalités */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {features.map((feature, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6">
+            <div key={index} className="bg-canvas border border-line rounded-card p-6">
               <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
                 <feature.icon className="w-6 h-6 text-indigo-600" />
               </div>

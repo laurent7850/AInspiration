@@ -117,7 +117,7 @@ export default function AuditPage() {
               {t('page.receiveTitle')}
             </h2>
 
-            <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="bg-canvas border border-line rounded-card p-8">
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">

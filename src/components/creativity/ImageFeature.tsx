@@ -9,7 +9,7 @@ interface ImageFeatureProps {
 
 export default function ImageFeature({ icon: Icon, title, description }: ImageFeatureProps) {
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
+    <div className="bg-canvas border border-line rounded-card p-6">
       <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
         <Icon className="w-6 h-6 text-indigo-600" />
       </div>

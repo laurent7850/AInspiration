@@ -158,7 +158,7 @@ const CRMSolutionPage: React.FC = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300"
+              className="bg-canvas border border-line rounded-card p-6 hover:shadow-xl transition-all duration-300"
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
@@ -203,7 +203,7 @@ const CRMSolutionPage: React.FC = () => {
             {screenshots.map((screenshot, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="bg-canvas border border-line rounded-card overflow-hidden hover:shadow-xl transition-all duration-300"
                 data-aos="zoom-in"
                 data-aos-delay={index * 150}
               >
@@ -247,7 +247,7 @@ const CRMSolutionPage: React.FC = () => {
           {keyBenefits.map((benefit, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-all duration-300"
+              className="bg-canvas border border-line rounded-card p-6 text-center hover:shadow-xl transition-all duration-300"
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
@@ -281,7 +281,7 @@ const CRMSolutionPage: React.FC = () => {
           {pricingPlans.map((plan, index) => (
             <div
               key={index}
-              className={`bg-white rounded-xl shadow-lg p-8 relative hover:shadow-xl transition-all duration-300 flex flex-col ${
+              className={`bg-canvas border border-line rounded-card p-8 relative hover:shadow-xl transition-all duration-300 flex flex-col ${
                 plan.popular ? 'ring-2 ring-indigo-600' : ''
               }`}
               data-aos="fade-up"
@@ -385,7 +385,7 @@ const CRMSolutionPage: React.FC = () => {
 
         <div className="grid lg:grid-cols-4 gap-8">
           {deploySteps.map((step, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6">
+            <div key={index} className="bg-canvas border border-line rounded-card p-6">
               <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-xl font-bold text-indigo-600 mb-4">
                 {index + 1}
               </div>

@@ -117,7 +117,7 @@ const RealisationsPage: React.FC = () => {
                   className={`inline-block rounded-full px-4 py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                     active === null
                       ? 'bg-accent text-white'
-                      : 'bg-surface text-secondary shadow-lift hover:text-ink'
+                      : 'bg-surface text-secondary border border-line hover:text-ink hover:border-ink/25'
                   }`}
                 >
                   {t('filters.all')}
@@ -131,7 +131,7 @@ const RealisationsPage: React.FC = () => {
                     className={`inline-block rounded-full px-4 py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                       active === category
                         ? 'bg-accent text-white'
-                        : 'bg-surface text-secondary shadow-lift hover:text-ink'
+                        : 'bg-surface text-secondary border border-line hover:text-ink hover:border-ink/25'
                     }`}
                   >
                     {t(`filters.${category}`)}
@@ -175,7 +175,7 @@ const RealisationsPage: React.FC = () => {
           <ul className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             {(['study1', 'study2', 'study3'] as const).map((study, index) => (
               <Reveal as="li" key={study} delay={index * 90} className="h-full">
-                <article className="flex h-full flex-col rounded-card bg-surface p-8 shadow-lift">
+                <article className="flex h-full flex-col rounded-card bg-surface border border-line p-8">
                   <span className="inline-flex self-start rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent-dark mb-4">
                     {tc(`${study}.industry`)}
                   </span>

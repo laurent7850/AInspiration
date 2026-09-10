@@ -129,7 +129,7 @@ const RealisationDetailPage: React.FC = () => {
 
           {/* Technical detail — folded by default, on purpose. */}
           <Reveal className="mt-16 max-w-[55ch]">
-            <details className="group rounded-card bg-surface p-6 shadow-lift">
+            <details className="group rounded-card bg-surface border border-line p-6">
               <summary className="cursor-pointer list-none text-lg font-semibold tracking-tight text-ink marker:hidden">
                 {t('detail.howItWorks')}
                 <span className="mt-1 block text-sm font-normal text-secondary">

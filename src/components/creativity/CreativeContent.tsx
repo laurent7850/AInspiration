@@ -10,7 +10,7 @@ interface CreativeContentProps {
 
 export default function CreativeContent({ title, description, wordCount, languages }: CreativeContentProps) {
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
+    <div className="bg-canvas border border-line rounded-card p-6">
       <div className="flex items-center gap-2 text-sm text-indigo-600 font-medium mb-3">
         <FileText className="w-4 h-4" />
         {title}

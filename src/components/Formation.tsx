@@ -87,7 +87,7 @@ export default function Formation() {
 
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
           {courses.map((course, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+            <div key={index} className="bg-canvas border border-line rounded-card p-6 hover:shadow-xl transition-shadow">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
                   <course.icon className="w-6 h-6 text-indigo-600" />
@@ -116,7 +116,7 @@ export default function Formation() {
 
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           {benefits.map((benefit, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6">
+            <div key={index} className="bg-canvas border border-line rounded-card p-6">
               <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
                 <benefit.icon className="w-6 h-6 text-indigo-600" />
               </div>

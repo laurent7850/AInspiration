@@ -83,7 +83,7 @@ export default function Automation() {
         {/* Fonctionnalités principales */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {mainFeatures.map((feature, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6">
+            <div key={index} className="bg-canvas border border-line rounded-card p-6">
               <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
                 <feature.icon className="w-6 h-6 text-indigo-600" />
               </div>
@@ -125,7 +125,7 @@ export default function Automation() {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {useCases.map((useCase, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6">
+              <div key={index} className="bg-canvas border border-line rounded-card p-6">
                 <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
                   <useCase.icon className="w-6 h-6 text-indigo-600" />
                 </div>
@@ -150,7 +150,7 @@ export default function Automation() {
           {schedule.map((item, index) => {
             const scheduleItem = (t('automation:schedule', { returnObjects: true }) as Array<{title: string, description: string}>)[item.index];
             return (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6">
+              <div key={index} className="bg-canvas border border-line rounded-card p-6">
                 <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
                   <item.icon className="w-6 h-6 text-indigo-600" />
                 </div>

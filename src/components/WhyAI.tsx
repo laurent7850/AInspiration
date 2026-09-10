@@ -128,7 +128,7 @@ export default function WhyAI() {
         {/* Benefits Section */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           {benefits.map((benefit, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <div key={index} className="bg-canvas border border-line rounded-card p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
               <div className="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
                 <benefit.icon className="w-7 h-7 text-indigo-600" />
               </div>

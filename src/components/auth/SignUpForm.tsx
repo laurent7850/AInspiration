@@ -41,7 +41,7 @@ export default function SignUpForm() {
 
   return (
     <div className="w-full max-w-md">
-      <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-md p-8">
+      <form onSubmit={handleSubmit} className="bg-canvas border border-line rounded-card p-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Inscription</h2>
 
         {error && (

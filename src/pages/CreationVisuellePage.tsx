@@ -146,7 +146,7 @@ const CreationVisuellePage: React.FC = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {capabilities.map((capability, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+            <div key={index} className="bg-canvas border border-line rounded-card p-6 hover:shadow-xl transition-all duration-300">
               <div className="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-5">
                 <capability.icon className="w-7 h-7 text-indigo-600" />
               </div>
@@ -221,7 +221,7 @@ const CreationVisuellePage: React.FC = () => {
                   {useCase.description}
                 </p>
                 
-                <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+                <div className="bg-canvas border border-line rounded-card p-6 mb-6">
                   <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                     <PenTool className="w-5 h-5 text-indigo-600" />
                     Exemples d'applications
@@ -295,7 +295,7 @@ const CreationVisuellePage: React.FC = () => {
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <div className="bg-white rounded-xl shadow-lg p-8 border border-transparent hover:border-indigo-100 transition-all">
+          <div className="bg-canvas border border-line rounded-card p-8 border border-transparent hover:border-indigo-100 transition-all">
             <div className="flex items-center gap-3 mb-5">
               <CircleDollarSign className="w-7 h-7 text-indigo-600" />
               <h3 className="text-2xl font-bold text-gray-900">Pay as you go</h3>
@@ -324,7 +324,7 @@ const CreationVisuellePage: React.FC = () => {
             </button>
           </div>
           
-          <div className="bg-white rounded-xl shadow-xl p-8 border-2 border-indigo-600 relative transform scale-105">
+          <div className="bg-canvas border border-line rounded-card p-8 border-2 border-indigo-600 relative transform scale-105">
             <div className="absolute -top-4 right-8 bg-indigo-600 text-white px-4 py-1 rounded-full text-sm font-medium">
               Le plus populaire
             </div>
@@ -364,7 +364,7 @@ const CreationVisuellePage: React.FC = () => {
             </button>
           </div>
           
-          <div className="bg-white rounded-xl shadow-lg p-8 border border-transparent hover:border-indigo-100 transition-all">
+          <div className="bg-canvas border border-line rounded-card p-8 border border-transparent hover:border-indigo-100 transition-all">
             <div className="flex items-center gap-3 mb-5">
               <Layers className="w-7 h-7 text-indigo-600" />
               <h3 className="text-2xl font-bold text-gray-900">Business</h3>
@@ -431,7 +431,7 @@ const CreationVisuellePage: React.FC = () => {
               </div>
             </div>
             
-            <div className="bg-white rounded-xl shadow-xl p-8">
+            <div className="bg-canvas border border-line rounded-card p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 Commencez gratuitement
               </h3>

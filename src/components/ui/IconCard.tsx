@@ -27,7 +27,7 @@ const IconCard: React.FC<IconCardProps> = ({
   const { container, icon } = sizeConfig[size];
 
   return (
-    <div className={`bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow ${className}`}>
+    <div className={`bg-canvas border border-line rounded-card p-6 hover:shadow-xl transition-shadow ${className}`}>
       <div className={`${container} bg-indigo-100 rounded-lg flex items-center justify-center mb-4`}>
         <Icon className={`${icon} text-indigo-600`} />
       </div>

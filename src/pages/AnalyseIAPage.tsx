@@ -93,7 +93,7 @@ const AnalyseIAPage: React.FC = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {mainFeatures.map((feature, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+            <div key={index} className="bg-canvas border border-line rounded-card p-6 hover:shadow-xl transition-all duration-300">
               <div className="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-5">
                 <feature.icon className="w-7 h-7 text-indigo-600" />
               </div>
@@ -158,7 +158,7 @@ const AnalyseIAPage: React.FC = () => {
                   {useCase.description}
                 </p>
 
-                <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+                <div className="bg-canvas border border-line rounded-card p-6 mb-6">
                   <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                     <Database className="w-5 h-5 text-indigo-600" />
                     {t('useCases.concreteApplications')}
@@ -204,7 +204,7 @@ const AnalyseIAPage: React.FC = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {processSteps.map((step) => (
-            <div key={step.step} className="bg-white rounded-xl shadow-lg p-6">
+            <div key={step.step} className="bg-canvas border border-line rounded-card p-6">
               <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-4">
                 {step.step}
               </div>
@@ -248,7 +248,7 @@ const AnalyseIAPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-xl p-8">
+            <div className="bg-canvas border border-line rounded-card p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 {t('cta.demoTitle')}
               </h3>

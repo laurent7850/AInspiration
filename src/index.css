@@ -35,7 +35,6 @@
   --color-accent-light: #5F58DA;
   --color-accent-dark: #3A35B8;
   --color-accent-wash: #EEEDFC;
-  --color-whisper: rgba(226,232,240,0.5);
 
   /* Semantic */
   --color-success: #10B981;
@@ -43,9 +42,8 @@
   --color-warning: #F59E0B;
   --color-info: #0EA5E9;
 
-  /* Shadows */
+  /* Ombre — uniquement pour ce qui flotte réellement (menus déroulants) */
   --shadow-diffuse: 0 20px 40px -15px rgba(0,0,0,0.05);
-  --shadow-lift: 0 2px 8px rgba(0,0,0,0.04);
 
   /* Viewport height fix pour iOS */
   --vh: 1vh;

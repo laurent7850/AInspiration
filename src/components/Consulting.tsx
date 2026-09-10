@@ -113,7 +113,7 @@ export default function Consulting() {
         {/* Expertises */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {expertises.map((expertise, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6">
+            <div key={index} className="bg-canvas border border-line rounded-card p-6">
               <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
                 <expertise.icon className="w-6 h-6 text-indigo-600" />
               </div>
@@ -134,7 +134,7 @@ export default function Consulting() {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {methodology.map((phase, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6">
+              <div key={index} className="bg-canvas border border-line rounded-card p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-xl font-bold text-indigo-600">
                     {index + 1}
@@ -160,7 +160,7 @@ export default function Consulting() {
         {/* Bénéfices */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {benefits.map((benefit, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6">
+            <div key={index} className="bg-canvas border border-line rounded-card p-6">
               <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
                 <benefit.icon className="w-6 h-6 text-indigo-600" />
               </div>
