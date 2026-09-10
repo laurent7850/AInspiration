@@ -79,6 +79,7 @@ typography:
     fontWeight: 600
     lineHeight: 1.4
 rounded:
+  code: "0.375rem"
   soft: "0.875rem"
   card: "1.375rem"
   container: "2rem"
@@ -351,7 +352,8 @@ La seule surface du site avec sa propre échelle typographique (`prose`,
 - **Citation** : panneau `surface` cerné d'un filet sur les quatre côtés, rayon
   `soft`. Pas de bandeau latéral, pas de dégradé.
 - **Encadré** : fond `accent-wash`, filet sur les quatre côtés, rayon `soft`.
-- **Code** : en ligne sur `surface`, en bloc sur `ink`. Liens à l'accent.
+- **Code** : en ligne sur `surface` au rayon `code` (0.375rem — un chip de 14 px
+  ne peut pas porter le rayon `soft`), en bloc sur `ink`. Liens à l'accent.
 
 ### Bande CTA
 
