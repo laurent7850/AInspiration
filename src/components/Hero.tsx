@@ -12,9 +12,10 @@ const VIDEO_SOURCES: Record<string, { webm: string; mp4: string }> = {
 };
 
 /**
- * Souligne d'un trait dessiné le mot-clé du titre (« 10h », « 10 Hours », « 10 uur »).
- * Le mot vient de la traduction (`hero.titleAccent`) : si la clé manque ou ne figure
- * pas dans le titre, le titre s'affiche tel quel plutôt que de casser une langue.
+ * Met en évidence le mot-clé du titre (« 10h », « 10 Hours », « 10 uur ») par un
+ * surlignage : Voile Bleu en fond, Bleu Encre en texte. Le mot vient de la
+ * traduction (`hero.titleAccent`) : si la clé manque ou ne figure pas dans le
+ * titre, le titre s'affiche tel quel plutôt que de casser une langue.
  */
 function HighlightedTitle({ title, accent }: { title: string; accent: string }) {
   const at = accent ? title.indexOf(accent) : -1;
@@ -23,22 +24,7 @@ function HighlightedTitle({ title, accent }: { title: string; accent: string }) 
   return (
     <>
       {title.slice(0, at)}
-      <span className="underline-hand">
-        {accent}
-        {/* Trait de gros marqueur : une forme PLEINE, pas un tracé. Avec
-            preserveAspectRatio="none" un stroke se déforme (les bouts ronds
-            deviennent ovales) ; une forme pleine s'étire proprement. Les deux
-            bords ondulent en parallèle — c'est le passage d'un feutre, pas une
-            règle. Le second passage, plus court et translucide, imite l'encre
-            repassée une fois. */}
-        <svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M2 12.4 C 38 6.8, 68 4.8, 100 4.4 C 133 4.2, 163 6.6, 198 11.4 L 198 17.6 C 163 12.8, 133 10.6, 100 11.2 C 68 11.4, 38 13.2, 2 18.6 Z" />
-          <path
-            className="underline-hand__pass2"
-            d="M21 14.2 C 51 9.4, 75 7.4, 100 7.3 C 127 7.2, 152 8.8, 179 12.8 L 179 15.4 C 152 11.6, 127 10, 100 10.1 C 75 10.2, 51 12, 21 16.6 Z"
-          />
-        </svg>
-      </span>
+      <span className="title-mark">{accent}</span>
       {title.slice(at + accent.length)}
     </>
   );
@@ -111,9 +97,9 @@ export default function Hero() {
               {t('hero.kicker')}
             </p>
 
-            {/* leading-[1.08] : le trait dessiné sous « 10h » descend à -0.14em,
-                il mordait sur la ligne suivante avec un interlignage plus serré. */}
-            <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-[4.5rem] text-ink leading-[1.08] mb-6">
+            {/* leading-[1.16] : le mot surligné dépasse la hauteur de sa ligne
+                (fond + padding), il lui faut cet interlignage pour respirer. */}
+            <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-[4.5rem] text-ink leading-[1.16] mb-6">
               <HighlightedTitle title={t('hero.title')} accent={t('hero.titleAccent', '')} />
             </h1>
             <p className="text-lg sm:text-xl text-secondary max-w-[50ch] leading-relaxed mb-9">

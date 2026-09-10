@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-10T09:10:00Z",
+  "generatedAt": "2026-09-10T07:08:16Z",
   "title": "Design System : AInspiration — Atelier clair",
   "extensions": {
     "colorMeta": {
@@ -370,12 +370,12 @@
       "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; font-family: Outfit, system-ui, sans-serif; } .ds-field__l { font-size: 0.875rem; font-weight: 600; color: var(--color-ink, #1E293B); } .ds-field__i { background: var(--color-canvas, #fff); border: 1px solid var(--color-line, #E4E4EA); border-radius: 0.875rem; padding: 13px 16px; min-height: 46px; font-family: inherit; font-size: 0.9375rem; color: var(--color-ink, #1E293B); transition: border-color 200ms cubic-bezier(0,0,0.2,1); } .ds-field__i::placeholder { color: var(--color-muted, #9AA1AC); } .ds-field__i:focus { outline: 2px solid var(--color-accent, #4540D0); outline-offset: 2px; border-color: var(--color-accent, #4540D0); }"
     },
     {
-      "name": "Trait de marqueur (signature)",
+      "name": "Mot surligné (signature)",
       "kind": "custom",
       "refersTo": "typography.display",
-      "description": "Le trait de gros feutre sous un mot du titre principal, une fois par page. Forme pleine et non tracé (avec preserveAspectRatio=\"none\" un stroke se déforme), en arc de sourire inversé : il remonte au milieu et retombe aux extrémités. Deux passages, le second translucide.",
-      "html": "<h1 class=\"ds-display\">Gagnez <span class=\"ds-underline\">10h<svg viewBox=\"0 0 200 20\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path d=\"M2 12.4 C 38 6.8, 68 4.8, 100 4.4 C 133 4.2, 163 6.6, 198 11.4 L 198 17.6 C 163 12.8, 133 10.6, 100 11.2 C 68 11.4, 38 13.2, 2 18.6 Z\"/><path class=\"ds-underline__p2\" d=\"M21 14.2 C 51 9.4, 75 7.4, 100 7.3 C 127 7.2, 152 8.8, 179 12.8 L 179 15.4 C 152 11.6, 127 10, 100 10.1 C 75 10.2, 51 12, 21 16.6 Z\"/></svg></span> par semaine</h1>",
-      "css": ".ds-display { font-family: Outfit, system-ui, sans-serif; font-size: clamp(2.25rem, 6vw, 4.5rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.035em; color: var(--color-ink, #1E293B); margin: 0; max-width: 13ch; } .ds-underline { position: relative; white-space: nowrap; text-decoration: none; } .ds-underline svg { position: absolute; left: -3%; bottom: -0.09em; width: 106%; height: 0.52em; overflow: visible; fill: var(--color-accent, #4540D0); } .ds-underline__p2 { opacity: 0.5; }"
+      "description": "Le mot-clé du titre principal, posé sur le Voile Bleu et écrit en Bleu Encre. Une fois par page. Tout est en em pour suivre la taille du titre sans réglage par palier.",
+      "html": "<h1 class=\"ds-display\">Gagnez <span class=\"ds-mark\">10h</span> par semaine</h1>",
+      "css": ".ds-display { font-family: Outfit, system-ui, sans-serif; font-size: clamp(2.25rem, 6vw, 4.5rem); font-weight: 700; line-height: 1.16; letter-spacing: -0.035em; color: var(--color-ink, #1E293B); margin: 0; max-width: 13ch; } .ds-mark { background-color: var(--color-accent-wash, #EEEDFC); color: var(--color-accent-dark, #3A35B8); padding: 0.02em 0.16em 0.06em; margin: 0 -0.06em; border-radius: 0.22em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }"
     }
   ],
   "narrative": {
@@ -387,7 +387,7 @@
       "Arrondis généreux et assumés (22 px sur les blocs, pilule pleine sur les actions)",
       "Une seule famille typographique (Outfit) à plusieurs graisses, titres en 700",
       "Aucun dégradé, aucune ombre décorative",
-      "Un trait de gros marqueur sous un mot du titre, une fois par page"
+      "Un mot surligné dans le titre, une fois par page"
     ],
     "rules": [
       {
@@ -406,8 +406,8 @@
         "section": "typography"
       },
       {
-        "name": "La règle du trait unique",
-        "body": "Le trait de marqueur souligne un seul mot du titre principal, une fois par page. Le mot vient de la traduction (hero.titleAccent) pour que les trois langues restent justes ; si la clé manque, le titre s'affiche sans trait plutôt que de casser.",
+        "name": "La règle du mot unique",
+        "body": "Un seul mot surligné par page, dans le titre principal. Le mot vient de la traduction (hero.titleAccent) pour que les trois langues restent justes ; si la clé manque, le titre s'affiche sans surlignage plutôt que de casser.",
         "section": "typography"
       },
       {

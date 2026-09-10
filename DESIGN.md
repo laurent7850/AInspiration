@@ -51,6 +51,7 @@ typography:
     lineHeight: 1.4
     letterSpacing: "0"
 rounded:
+  mark: "0.22em"
   soft: "0.875rem"
   card: "1.375rem"
   container: "2rem"
@@ -322,22 +323,22 @@ Erreur : bordure `error` et message sous le champ, jamais un simple bord rouge.
 Aplat accent plein, rayon 22 px, texte blanc, bouton inverse. **Une seule par
 écran** : c'est le seul endroit où le monde hausse la voix.
 
-### Signature — le trait de marqueur
+### Signature — le mot surligné
 
-`.underline-hand` : un SVG en `viewBox="0 0 200 20"`, à la couleur de l'accent.
+`.title-mark` : le mot-clé du titre principal est posé sur le Voile Bleu
+(`#EEEDFC`) et écrit en Bleu Encre (`#3A35B8`), rayon `mark` (`0.22em`).
 
-- **Une forme pleine, pas un tracé.** Avec `preserveAspectRatio="none"` un `stroke`
-  se déforme — les bouts ronds deviennent des ovales. Une forme fermée s'étire
-  proprement quelle que soit la longueur du mot.
-- **Un arc en sourire inversé** : le trait remonte au milieu et retombe aux deux
-  extrémités, comme un feutre passé d'un seul geste.
-- **Deux passages** : le second (`.underline-hand__pass2`), plus court et à 50 %
-  d'opacité, imite l'encre repassée une fois.
-- **Il déborde du mot** de 3 % de chaque côté : un trait qui s'arrête pile aux
-  lettres n'a pas été tracé à la main.
-- **Il reste dans la boîte de sa propre ligne** (`bottom: -0.09em`,
-  `height: 0.52em`) — le mot souligné n'a pas de jambage, et un trait plus bas mord
-  sur la ligne suivante dès que le titre passe à la ligne.
+- **Tout est en `em`** : le surlignage suit la taille du titre, de 2.25rem sur
+  mobile à 4.5rem en display, sans réglage par palier.
+- **Marges négatives** (`0 -0.06em`) pour compenser le padding : l'espacement entre
+  les mots reste celui du texte.
+- **`box-decoration-break: clone`** — sans quoi un mot surligné qui passe à la
+  ligne perd ses coins arrondis et son padding sur la coupure.
+- **Le titre qui le porte monte à `leading-[1.16]`** : le bloc surligné dépasse la
+  hauteur de sa ligne, il lui faut cet interlignage pour respirer.
+- **Ni fond plein ni trait dessiné.** Un aplat accent ferait un second aplat plein
+  sur une page qui en a déjà un (la bande CTA) ; un trait à main levée imiterait un
+  geste manuel dans un monde qui n'en a aucun autre.
 
 ## Do's and Don'ts
 

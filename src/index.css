@@ -194,32 +194,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   Atelier clair — le trait dessiné sous un mot du titre.
+   Atelier clair — le mot mis en évidence dans un titre.
    Un seul par page : c'est un accent, pas un motif.
+
+   Tout est en `em` : le surlignage suit la taille du titre, de 2.25rem sur
+   mobile à 4.5rem en display, sans réglage par palier. Les marges négatives
+   compensent le padding pour que l'espacement des mots reste celui du texte.
    ========================================================================== */
-.underline-hand {
-  text-decoration: none;
-  position: relative;
-  white-space: nowrap;
-}
-
-.underline-hand svg {
-  position: absolute;
-  /* Le marqueur déborde légèrement du mot des deux côtés : un trait qui s'arrête
-     pile aux lettres n'a pas été tracé à la main. */
-  left: -3%;
-  /* Le trait reste DANS la boîte de sa propre ligne (le mot souligné n'a pas de
-     jambage), sinon il mord sur la ligne suivante dès que le titre passe à la ligne. */
-  bottom: -0.09em;
-  width: 106%;
-  height: 0.52em;
-  overflow: visible;
-  fill: var(--color-accent);
-}
-
-/* Le second passage du feutre, posé par-dessus le premier. */
-.underline-hand__pass2 {
-  opacity: 0.5;
+.title-mark {
+  background-color: var(--color-accent-wash);
+  color: var(--color-accent-dark);
+  padding: 0.02em 0.16em 0.06em;
+  margin: 0 -0.06em;
+  border-radius: 0.22em;
+  /* Sans cela, un mot surligné qui passe à la ligne perd ses coins arrondis
+     et son padding sur la coupure. */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 p {
