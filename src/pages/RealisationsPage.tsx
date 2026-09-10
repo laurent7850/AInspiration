@@ -63,7 +63,7 @@ const RealisationsPage: React.FC = () => {
           <div className="max-w-3xl">
             <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.06] mb-6">
               {t('hero.title')}{' '}
-              <span className="title-mark">{t('hero.highlight')}</span>{' '}
+              {t('hero.highlight')}{' '}
               {t('hero.titleSuffix')}
             </h1>
             <p className="text-lg text-secondary leading-relaxed max-w-2xl mb-8">

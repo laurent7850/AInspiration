@@ -213,7 +213,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Le titre du hero, un seul par page. Porte le trait de marqueur."
+        "purpose": "Le titre du hero, un seul par page."
       },
       "headline": {
         "displayName": "Headline",
@@ -368,14 +368,6 @@
       "description": "Champ de formulaire : fond craie, filet, rayon soft, anneau accent au focus.",
       "html": "<label class=\"ds-field\"><span class=\"ds-field__l\">Votre adresse e-mail</span><input class=\"ds-field__i\" type=\"email\" placeholder=\"nom@entreprise.be\" /></label>",
       "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; font-family: Outfit, system-ui, sans-serif; } .ds-field__l { font-size: 0.875rem; font-weight: 600; color: var(--color-ink, #1E293B); } .ds-field__i { background: var(--color-canvas, #fff); border: 1px solid var(--color-line, #E4E4EA); border-radius: 0.875rem; padding: 13px 16px; min-height: 46px; font-family: inherit; font-size: 0.9375rem; color: var(--color-ink, #1E293B); transition: border-color 200ms cubic-bezier(0,0,0.2,1); } .ds-field__i::placeholder { color: var(--color-muted, #9AA1AC); } .ds-field__i:focus { outline: 2px solid var(--color-accent, #4540D0); outline-offset: 2px; border-color: var(--color-accent, #4540D0); }"
-    },
-    {
-      "name": "Mot surligné (signature)",
-      "kind": "custom",
-      "refersTo": "typography.display",
-      "description": "Le mot-clé du titre principal, posé sur le Voile Bleu et écrit en Bleu Encre. Une fois par page. Tout est en em pour suivre la taille du titre sans réglage par palier.",
-      "html": "<h1 class=\"ds-display\">Gagnez <span class=\"ds-mark\">10h</span> par semaine</h1>",
-      "css": ".ds-display { font-family: Outfit, system-ui, sans-serif; font-size: clamp(2.25rem, 6vw, 4.5rem); font-weight: 700; line-height: 1.16; letter-spacing: -0.035em; color: var(--color-ink, #1E293B); margin: 0; max-width: 13ch; } .ds-mark { background-color: var(--color-accent-wash, #EEEDFC); color: var(--color-accent-dark, #3A35B8); padding: 0.02em 0.16em 0.06em; margin: 0 -0.06em; border-radius: 0.22em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }"
     }
   ],
   "narrative": {
@@ -386,8 +378,7 @@
       "Un seul accent : le bleu du logo, réservé à l'action",
       "Arrondis généreux et assumés (22 px sur les blocs, pilule pleine sur les actions)",
       "Une seule famille typographique (Outfit) à plusieurs graisses, titres en 700",
-      "Aucun dégradé, aucune ombre décorative",
-      "Un mot surligné dans le titre, une fois par page"
+      "Aucun dégradé, aucune ombre décorative"
     ],
     "rules": [
       {
@@ -403,11 +394,6 @@
       {
         "name": "La règle des deux tailles",
         "body": "Deux niveaux de titre qui s'opposent franchement valent mieux que trois qui se ressemblent. Entre Display et Title, il n'y a rien.",
-        "section": "typography"
-      },
-      {
-        "name": "La règle du mot unique",
-        "body": "Un seul mot surligné par page, dans le titre principal. Le mot vient de la traduction (hero.titleAccent) pour que les trois langues restent justes ; si la clé manque, le titre s'affiche sans surlignage plutôt que de casser.",
         "section": "typography"
       },
       {

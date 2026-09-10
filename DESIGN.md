@@ -51,7 +51,6 @@ typography:
     lineHeight: 1.4
     letterSpacing: "0"
 rounded:
-  mark: "0.16em"
   soft: "0.875rem"
   card: "1.375rem"
   container: "2rem"
@@ -141,7 +140,6 @@ unique appliqué partout.
 - Arrondis généreux et assumés (22 px sur les blocs, pilule pleine sur les actions)
 - Une seule famille typographique (Outfit) à plusieurs graisses, titres en 700
 - Aucun dégradé, aucune ombre décorative
-- Un mot surligné dans le titre, une fois par page
 
 ## Colors
 
@@ -182,7 +180,7 @@ fichier, pas un composant.
 
 **La règle du seul bleu.** L'accent ne colore que ce sur quoi on clique. Une
 preuve, un chiffre, une date, un libellé se lisent en encre. Test : si un élément
-bleu n'est pas cliquable et n'est pas le mot surligné du titre, il est en trop.
+bleu n'est pas cliquable, il est en trop.
 
 ## Typography
 
@@ -319,23 +317,6 @@ Erreur : bordure `error` et message sous le champ, jamais un simple bord rouge.
 
 Aplat accent plein, rayon 22 px, texte blanc, bouton inverse. **Une seule par
 écran** : c'est le seul endroit où le monde hausse la voix.
-
-### Signature — le mot surligné
-
-`.title-mark` : le mot-clé du titre principal est posé sur le Voile Bleu
-(`#EEEDFC`) et écrit en Bleu Encre (`#3A35B8`), rayon `mark` (`0.16em`).
-
-- **Tout est en `em`** : le surlignage suit la taille du titre, de 2.25rem sur
-  mobile à 4.5rem en display, sans réglage par palier.
-- **Marges négatives** (`0 -0.06em`) pour compenser le padding : l'espacement entre
-  les mots reste celui du texte.
-- **`box-decoration-break: clone`** — sans quoi un mot surligné qui passe à la
-  ligne perd ses coins arrondis et son padding sur la coupure.
-- **Le titre qui le porte monte à `leading-[1.16]`** : le bloc surligné dépasse la
-  hauteur de sa ligne, il lui faut cet interlignage pour respirer.
-- **Ni fond plein ni trait dessiné.** Un aplat accent ferait un second aplat plein
-  sur une page qui en a déjà un (la bande CTA) ; un trait à main levée imiterait un
-  geste manuel dans un monde qui n'en a aucun autre.
 
 ## Do's and Don'ts
 

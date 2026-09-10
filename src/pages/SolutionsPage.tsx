@@ -76,9 +76,9 @@ const SolutionsPage: React.FC = () => {
       <section className="relative bg-surface text-ink pt-28 lg:pt-32 pb-12 lg:pb-16">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-6xl text-ink leading-[1.16] mb-5">
+            <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-6xl text-ink leading-[1.08] mb-5">
               {t('hero.titlePrefix')}
-              <span className="title-mark">{t('hero.titleHighlight')}</span>
+              {t('hero.titleHighlight')}
               {t('hero.titleSuffix', '') ? ` ${t('hero.titleSuffix')}` : ''}
             </h1>
             <p className="text-lg sm:text-xl text-secondary max-w-[55ch] leading-relaxed">

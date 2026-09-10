@@ -193,28 +193,6 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.035em;
 }
 
-/* ==========================================================================
-   Atelier clair — le mot mis en évidence dans un titre.
-   Un seul par page : c'est un accent, pas un motif.
-
-   Tout est en `em` : le surlignage suit la taille du titre, de 2.25rem sur
-   mobile à 4.5rem en display, sans réglage par palier. Les marges négatives
-   compensent le padding pour que l'espacement des mots reste celui du texte.
-   ========================================================================== */
-.title-mark {
-  background-color: var(--color-accent-wash);
-  color: var(--color-accent-dark);
-  /* Aucun padding horizontal, aucune marge : un mot surligné en début de ligne
-     ferait sortir son fond du bloc de texte. Le fond épouse exactement le mot. */
-  padding: 0;
-  margin: 0;
-  border-radius: 0.16em;
-  /* Sans cela, un mot surligné qui passe à la ligne perd ses coins arrondis
-     et son padding sur la coupure. */
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-
 p {
   text-wrap: pretty;
 }

@@ -11,25 +11,6 @@ const VIDEO_SOURCES: Record<string, { webm: string; mp4: string }> = {
   nl: { webm: '/videos/intro-nl.webm', mp4: '/videos/intro-nl.mp4' },
 };
 
-/**
- * Met en évidence le mot-clé du titre (« 10h », « 10 Hours », « 10 uur ») par un
- * surlignage : Voile Bleu en fond, Bleu Encre en texte. Le mot vient de la
- * traduction (`hero.titleAccent`) : si la clé manque ou ne figure pas dans le
- * titre, le titre s'affiche tel quel plutôt que de casser une langue.
- */
-function HighlightedTitle({ title, accent }: { title: string; accent: string }) {
-  const at = accent ? title.indexOf(accent) : -1;
-  if (at === -1) return <>{title}</>;
-
-  return (
-    <>
-      {title.slice(0, at)}
-      <span className="title-mark">{accent}</span>
-      {title.slice(at + accent.length)}
-    </>
-  );
-}
-
 export default function Hero() {
   const [showStartForm, setShowStartForm] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -97,10 +78,8 @@ export default function Hero() {
               {t('hero.kicker')}
             </p>
 
-            {/* leading-[1.1] : le mot surligné dépasse la hauteur de sa ligne
-                (fond + padding), il lui faut cet interlignage pour respirer. */}
-            <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-[4.5rem] text-ink leading-[1.1] mb-6">
-              <HighlightedTitle title={t('hero.title')} accent={t('hero.titleAccent', '')} />
+            <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-[4.5rem] text-ink leading-[1.06] mb-6">
+              {t('hero.title')}
             </h1>
             <p className="text-lg sm:text-xl text-secondary max-w-[50ch] leading-relaxed mb-9">
               {t('hero.subtitle')}

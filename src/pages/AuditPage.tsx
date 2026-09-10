@@ -47,9 +47,9 @@ export default function AuditPage() {
       <section className="relative bg-surface text-ink pt-28 lg:pt-36 pb-16 lg:pb-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-7xl text-ink leading-[1.16] mb-6">
+            <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-7xl text-ink leading-[1.08] mb-6">
               {t('page.heroTitle')}{' '}
-              <span className="title-mark">{t('page.heroHighlight')}</span>
+              {t('page.heroHighlight')}
             </h1>
 
             <p className="text-lg sm:text-xl text-secondary max-w-[55ch] leading-relaxed mb-10">

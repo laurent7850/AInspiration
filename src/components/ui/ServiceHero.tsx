@@ -14,9 +14,12 @@ interface HeroCta {
 
 interface ServiceHeroProps {
   title: string;
-  /** Mot-clé du titre, posé sur le surlignage accent (voir DESIGN.md, la règle du mot unique) */
+  /**
+   * Suite du titre. `highlight` et `titleSuffix` n'existent plus que parce que les
+   * traductions découpent le titre en trois morceaux ; ils sont simplement
+   * recollés. Le monde n'a plus d'ornement typographique sur le titre.
+   */
   highlight?: string;
-  /** Suite du titre après le mot surligné */
   titleSuffix?: string;
   description?: string;
   primary?: HeroCta;
@@ -96,15 +99,8 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
   );
 
   const heading = (
-    <h1 className={`font-display font-bold text-ink leading-[1.16] ${compact ? 'text-3xl sm:text-4xl lg:text-5xl mb-5' : 'text-4xl sm:text-5xl lg:text-6xl mb-6'}`}>
-      {title}
-      {highlight && (
-        <>
-          {' '}
-          <span className="title-mark">{highlight}</span>
-        </>
-      )}
-      {titleSuffix && <> {titleSuffix}</>}
+    <h1 className={`font-display font-bold text-ink leading-[1.08] ${compact ? 'text-3xl sm:text-4xl lg:text-5xl mb-5' : 'text-4xl sm:text-5xl lg:text-6xl mb-6'}`}>
+      {[title, highlight, titleSuffix].filter(Boolean).join(' ')}
     </h1>
   );
 
