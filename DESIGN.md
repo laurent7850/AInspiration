@@ -57,24 +57,24 @@ typography:
     lineHeight: 1.6
   prose:
     fontFamily: "Outfit, system-ui, sans-serif"
-    fontSize: "1.0625rem"
+    fontSize: "clamp(1rem, 0.964rem + 0.154vw, 1.0625rem)"
     fontWeight: 400
     lineHeight: 1.75
   prose-h1:
     fontFamily: "Outfit, system-ui, sans-serif"
-    fontSize: "2.25rem"
+    fontSize: "clamp(1.875rem, 1.658rem + 0.924vw, 2.25rem)"
     fontWeight: 800
     lineHeight: 1.2
     letterSpacing: "-0.03em"
   prose-h2:
     fontFamily: "Outfit, system-ui, sans-serif"
-    fontSize: "1.75rem"
+    fontSize: "clamp(1.5rem, 1.356rem + 0.616vw, 1.75rem)"
     fontWeight: 700
     lineHeight: 1.25
     letterSpacing: "-0.025em"
   prose-h3:
     fontFamily: "Outfit, system-ui, sans-serif"
-    fontSize: "1.375rem"
+    fontSize: "clamp(1.25rem, 1.178rem + 0.308vw, 1.375rem)"
     fontWeight: 700
     lineHeight: 1.3
     letterSpacing: "-0.02em"

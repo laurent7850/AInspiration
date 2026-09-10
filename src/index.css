@@ -166,7 +166,7 @@ p {
 
 .blog-prose {
   color: var(--color-ink);
-  font-size: 1.0625rem;
+  font-size: clamp(1rem, 0.964rem + 0.154vw, 1.0625rem);
   line-height: 1.75;
   max-width: 42rem;
   margin-left: auto;
@@ -179,7 +179,7 @@ p {
 
 /* Headings */
 .blog-prose h1 {
-  font-size: 2.25rem;
+  font-size: clamp(1.875rem, 1.658rem + 0.924vw, 2.25rem);
   line-height: 1.2;
   font-weight: 800;
   color: var(--color-ink);
@@ -189,7 +189,7 @@ p {
 }
 
 .blog-prose h2 {
-  font-size: 1.75rem;
+  font-size: clamp(1.5rem, 1.356rem + 0.616vw, 1.75rem);
   line-height: 1.25;
   font-weight: 700;
   color: var(--color-ink);
@@ -201,7 +201,7 @@ p {
 }
 
 .blog-prose h3 {
-  font-size: 1.375rem;
+  font-size: clamp(1.25rem, 1.178rem + 0.308vw, 1.375rem);
   line-height: 1.3;
   font-weight: 700;
   color: var(--color-ink);
@@ -408,26 +408,6 @@ p {
 .blog-prose p.blog-callout strong,
 .blog-prose .blog-callout strong {
   color: var(--color-accent-dark);
-}
-
-/* Responsive — slightly tighter on mobile */
-@media (max-width: 640px) {
-  .blog-prose {
-    font-size: 1rem;
-  }
-
-  .blog-prose h1 {
-    font-size: 1.875rem;
-  }
-
-  .blog-prose h2 {
-    font-size: 1.5rem;
-    margin-top: 2em;
-  }
-
-  .blog-prose h3 {
-    font-size: 1.25rem;
-  }
 }
 
 /* Animation pour les modales */
