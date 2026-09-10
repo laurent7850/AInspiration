@@ -50,6 +50,34 @@ typography:
     fontWeight: 600
     lineHeight: 1.4
     letterSpacing: "0"
+  prose:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "1.0625rem"
+    fontWeight: 400
+    lineHeight: 1.75
+  prose-h1:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "2.25rem"
+    fontWeight: 800
+    lineHeight: 1.2
+    letterSpacing: "-0.03em"
+  prose-h2:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "1.75rem"
+    fontWeight: 700
+    lineHeight: 1.25
+    letterSpacing: "-0.025em"
+  prose-h3:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "1.375rem"
+    fontWeight: 700
+    lineHeight: 1.3
+    letterSpacing: "-0.02em"
+  prose-h4:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 600
+    lineHeight: 1.4
 rounded:
   soft: "0.875rem"
   card: "1.375rem"
@@ -312,6 +340,18 @@ barre. Le mot-marque porte « AI » à l'accent et « nspiration » en encre.
 
 Fond Craie, bordure `line`, rayon `soft`. Focus : bordure accent + anneau de 2 px.
 Erreur : bordure `error` et message sous le champ, jamais un simple bord rouge.
+
+### Prose d'article (`.blog-prose`)
+
+La seule surface du site avec sa propre échelle typographique (`prose`,
+`prose-h1` à `prose-h4`) : un article se lit, il ne se scanne pas. Colonne de
+42 rem, interlignage 1.75.
+
+- **Titres** : filet `line` d'un pixel sous les `h2`, rien sous les autres.
+- **Citation** : panneau `surface` cerné d'un filet sur les quatre côtés, rayon
+  `soft`. Pas de bandeau latéral, pas de dégradé.
+- **Encadré** : fond `accent-wash`, filet sur les quatre côtés, rayon `soft`.
+- **Code** : en ligne sur `surface`, en bloc sur `ink`. Liens à l'accent.
 
 ### Bande CTA
 
