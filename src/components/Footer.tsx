@@ -19,7 +19,9 @@ export default function Footer() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div>
-            <span className="text-xl font-extrabold tracking-tighter mb-4 block">
+            {/* Voir NavMenu : le mot-marque est re-composé, le fichier logo étant
+                amputé du « i » d'« inspiration ». */}
+            <span className="text-xl font-bold tracking-tight mb-4 block">
               <span className="text-accent">AI</span>
               <span className="text-ink">nspiration</span>
             </span>

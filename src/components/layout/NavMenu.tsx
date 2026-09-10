@@ -106,13 +106,21 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
         >
           <img
             src="/brain-icon.webp"
-            alt="AInspiration"
+            alt=""
             className="h-8 md:h-10 w-auto"
             width={80}
             height={80}
             decoding="async"
           />
-          <span className="ml-2 text-lg md:text-xl font-extrabold tracking-tighter">
+          {/* Le mot-marque est re-composé et NON repris du fichier logo :
+              public/logo-ainspiration.png est amputé du « i » d'« inspiration »
+              (14 pixels opaques là où une lettre voisine en compte 18 000) et
+              lit « AInsp ration ». Graisse et chasse calées sur l'original :
+              son ratio largeur / hauteur de capitale vaut 7,95 une fois le « i »
+              rétabli — Outfit 700 + tracking-tight y tombe, 800 + tracking-tighter
+              donnait 7,50, soit nettement trop resserré. À remplacer par l'asset
+              le jour où un fichier propre existe. */}
+          <span className="ml-2 text-lg md:text-xl font-bold tracking-tight">
             <span className="text-accent">AI</span>
             <span className="text-ink">nspiration</span>
             <sup className="text-[8px] text-secondary ml-0.5">®</sup>
