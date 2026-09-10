@@ -60,7 +60,9 @@
       "secure": "100% beveiligde gegevens",
       "support": "Persoonlijke begeleiding"
     },
-    "bookCall": "Een gesprek van 20 min boeken"
+    "bookCall": "Een gesprek van 20 min boeken",
+    "titleAccent": "10 uur",
+    "kicker": "Automatisering voor kmo's · Henegouwen & Brussel"
   },
   "footer": {
     "company": "AInspiration®",

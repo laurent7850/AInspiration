@@ -60,12 +60,12 @@ const Testimonials: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-white">
+    <section className="py-16 lg:py-24 bg-surface">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header — left-aligned */}
         <div className="max-w-2xl mb-16">
-          <h2 className="font-display font-light text-3xl sm:text-4xl lg:text-6xl text-ink mb-4">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-ink mb-4">
             {t('testimonials.title')}
           </h2>
           <p className="text-lg text-secondary leading-relaxed">
@@ -83,8 +83,8 @@ const Testimonials: React.FC = () => {
               <div
                 key={item.id}
                 className={`
-                  bg-canvas rounded-[2rem] p-8 lg:p-10
-                  transition-all duration-300 hover:shadow-diffuse
+                  bg-canvas border border-line rounded-card p-8 lg:p-10
+                  transition-colors duration-200 hover:border-ink/25
                   ${isFeatured ? 'lg:col-span-5 lg:row-span-1' : 'lg:col-span-7'}
                   ${index === 2 ? 'lg:col-span-12' : ''}
                 `}
@@ -92,8 +92,8 @@ const Testimonials: React.FC = () => {
                 {/* Header */}
                 <div className="flex items-start justify-between mb-6 flex-wrap gap-3">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center">
-                      <Briefcase className="w-5 h-5 text-indigo-600" />
+                    <div className="w-12 h-12 bg-accent-wash rounded-soft flex items-center justify-center">
+                      <Briefcase className="w-5 h-5 text-accent" />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-ink tracking-tight">
@@ -123,19 +123,19 @@ const Testimonials: React.FC = () => {
         </div>
 
         {/* CTA — aurora band */}
-        <div className="bg-aurora-teal rounded-[2rem] p-10 lg:p-14 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+        <div className="bg-accent rounded-card p-10 lg:p-14 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
           <div>
             <h3 className="text-2xl lg:text-3xl font-bold text-white tracking-tight mb-2">
               {t('testimonials.cta.title')}
             </h3>
-            <p className="text-indigo-100 text-lg max-w-[50ch]">
+            <p className="text-white/85 text-lg max-w-[50ch]">
               {t('testimonials.cta.subtitle')}
             </p>
           </div>
 
           <button
             onClick={() => setShowStartForm(true)}
-            className="group inline-flex items-center gap-3 bg-white text-indigo-700 px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] flex-shrink-0"
+            className="group inline-flex items-center gap-3 bg-white text-accent-dark px-8 py-4 rounded-button font-semibold text-lg hover:bg-indigo-50 transition-colors duration-200 active:translate-y-px flex-shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
           >
             {t('testimonials.cta.button')}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />

@@ -7,16 +7,23 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        // One family, several weights — the "Atelier clair" rule. Jost was never
+        // actually loaded (no @font-face, no <link>), so dropping it changes nothing
+        // at render time and stops the stack from lying about what ships.
         sans: ['Outfit', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Jost Variable', 'Jost', 'Outfit', 'system-ui', 'sans-serif'],
+        display: ['Outfit', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['JetBrains Mono', 'Geist Mono', 'monospace'],
       },
       colors: {
-        canvas: '#F9FAFB',
-        surface: '#FFFFFF',
-        ink: '#18181B',
-        secondary: '#71717A',
-        muted: '#94A3B8',
+        // --- Atelier clair (fond « Craie »), 2026-09-10 ---
+        // Les deux couleurs de marque sont échantillonnées sur le logo :
+        // #4540D0 (cerveau + « AI ») et #1E293B (mot-marque).
+        canvas: '#FFFFFF',
+        surface: '#F8F8FA',
+        ink: '#1E293B',
+        secondary: '#6B7280',
+        muted: '#9AA1AC',
+        line: '#E4E4EA',
         night: {
           DEFAULT: '#10102A',
           soft: '#181838',
@@ -28,10 +35,27 @@ export default {
           teal: '#2DD4BF',
         },
         accent: {
-          DEFAULT: '#4F46E5',
-          light: '#6366F1',
-          dark: '#4338CA',
+          DEFAULT: '#4540D0',
+          light: '#5F58DA',
+          dark: '#3A35B8',
+          wash: '#EEEDFC',
           teal: '#14B8A6',
+        },
+        // La rampe `indigo` de Tailwind est utilisée plus de 1100 fois dans le code.
+        // On la recentre sur le bleu du logo plutôt que de réécrire chaque occurrence :
+        // même famille de teinte, valeur exacte de la marque au 600.
+        indigo: {
+          50: '#F1F0FD',
+          100: '#E5E3FB',
+          200: '#CDCAF6',
+          300: '#ADA8EF',
+          400: '#837CE4',
+          500: '#5F58DA',
+          600: '#4540D0',
+          700: '#3A35B8',
+          800: '#322E96',
+          900: '#2C2A77',
+          950: '#1B1946',
         },
         whisper: 'rgba(226,232,240,0.5)',
         primary: {
@@ -50,8 +74,9 @@ export default {
       },
       borderRadius: {
         'container': '2rem',
-        'card': '1.5rem',
-        'button': '0.5rem',
+        'card': '1.375rem',
+        'soft': '0.875rem',
+        'button': '9999px',
       },
       boxShadow: {
         'diffuse': '0 20px 40px -15px rgba(0,0,0,0.05)',

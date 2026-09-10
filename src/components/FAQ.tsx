@@ -27,14 +27,14 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-16 lg:py-24 bg-white">
+    <section id="faq" className="py-16 lg:py-24 bg-canvas">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <h2 className="font-display font-light text-3xl sm:text-5xl text-ink">
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink">
             {t('faq.title', 'Questions fréquentes')}
           </h2>
         </div>
-        <div className="divide-y divide-zinc-200">
+        <div className="divide-y divide-line border-t border-line">
           {faqItems.map((item, idx) => {
             const question = t(item.questionKey, { defaultValue: fallbackFaq[idx]?.question });
             const answer = t(item.answerKey, { defaultValue: fallbackFaq[idx]?.answer });
@@ -44,15 +44,15 @@ export default function FAQ() {
               <div key={idx}>
                 <button
                   onClick={() => toggle(idx)}
-                  className="w-full flex items-center justify-between py-6 text-left group"
+                  className="w-full flex items-center justify-between py-6 text-left group min-h-[44px]"
                 >
-                  <span className="font-medium text-ink pr-4 group-hover:text-zinc-600 transition-colors">{question}</span>
-                  <ChevronDown className={`w-5 h-5 text-zinc-400 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+                  <span className="font-semibold text-ink pr-4 tracking-tight transition-colors">{question}</span>
+                  <ChevronDown className={`w-5 h-5 text-accent flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
                 </button>
                 <div
                   className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-40 pb-6' : 'max-h-0'}`}
                 >
-                  <p className="text-secondary text-sm leading-relaxed">
+                  <p className="text-secondary text-base leading-relaxed max-w-[64ch]">
                     {answer}
                   </p>
                 </div>

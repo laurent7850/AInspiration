@@ -11,6 +11,34 @@ const VIDEO_SOURCES: Record<string, { webm: string; mp4: string }> = {
   nl: { webm: '/videos/intro-nl.webm', mp4: '/videos/intro-nl.mp4' },
 };
 
+/**
+ * Souligne d'un trait dessiné le mot-clé du titre (« 10h », « 10 Hours », « 10 uur »).
+ * Le mot vient de la traduction (`hero.titleAccent`) : si la clé manque ou ne figure
+ * pas dans le titre, le titre s'affiche tel quel plutôt que de casser une langue.
+ */
+function HighlightedTitle({ title, accent }: { title: string; accent: string }) {
+  const at = accent ? title.indexOf(accent) : -1;
+  if (at === -1) return <>{title}</>;
+
+  return (
+    <>
+      {title.slice(0, at)}
+      <span className="underline-hand">
+        {accent}
+        <svg viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true">
+          <path
+            d="M3 7 C 48 2, 96 10, 152 4 S 194 6, 197 5"
+            fill="none"
+            strokeWidth="3.2"
+            strokeLinecap="round"
+          />
+        </svg>
+      </span>
+      {title.slice(at + accent.length)}
+    </>
+  );
+}
+
 export default function Hero() {
   const [showStartForm, setShowStartForm] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -66,29 +94,36 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative bg-aurora text-white pt-28 lg:pt-36 pb-16 lg:pb-20 overflow-hidden">
+    <section className="relative bg-canvas text-ink pt-24 lg:pt-32 pb-14 lg:pb-16">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Asymmetric grid — text 7 cols, visual 5 cols */}
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
 
           {/* Left — Text content */}
           <div className="lg:col-span-7">
-            <h1 className="font-display font-light text-4xl sm:text-6xl lg:text-[5.25rem] text-white leading-[1.04] mb-7">
-              {t('hero.title')}
+            <p className="flex items-center gap-3 text-sm font-semibold text-accent mb-5">
+              <span className="w-7 h-[3px] rounded-full bg-accent" aria-hidden="true" />
+              {t('hero.kicker')}
+            </p>
+
+            {/* leading-[1.08] : le trait dessiné sous « 10h » descend à -0.14em,
+                il mordait sur la ligne suivante avec un interlignage plus serré. */}
+            <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-[4.5rem] text-ink leading-[1.08] mb-6">
+              <HighlightedTitle title={t('hero.title')} accent={t('hero.titleAccent', '')} />
             </h1>
-            <p className="text-lg sm:text-xl text-indigo-100/85 max-w-[50ch] leading-relaxed mb-10">
+            <p className="text-lg sm:text-xl text-secondary max-w-[50ch] leading-relaxed mb-9">
               {t('hero.subtitle')}
             </p>
 
             <button
               onClick={() => setShowStartForm(true)}
-              className="group inline-flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-500 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-[0_18px_45px_-12px_rgba(79,70,229,0.65)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              className="group inline-flex items-center gap-3 bg-accent text-white px-8 py-4 rounded-button font-semibold text-lg hover:bg-accent-dark transition-colors duration-200 active:translate-y-px focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
             >
               <span>
                 {t('button.startFreeAudit')}
-                <span className="block text-sm font-normal text-white/90 mt-0.5">{t('hero.ctaSubtext')}</span>
+                <span className="block text-sm font-normal text-white/85 mt-0.5">{t('hero.ctaSubtext')}</span>
               </span>
-              <span className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors">
+              <span className="flex items-center justify-center w-10 h-10 rounded-full bg-white/15 group-hover:bg-white/25 transition-colors">
                 <ArrowRight className="w-5 h-5" />
               </span>
             </button>
@@ -98,7 +133,7 @@ export default function Hero() {
                 href={env.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-indigo-100/90 hover:text-white underline-offset-4 hover:underline"
+                className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-secondary hover:text-ink underline-offset-4 hover:underline"
               >
                 <CalendarDays className="w-4 h-4" aria-hidden="true" />
                 {t('hero.bookCall')}
@@ -106,25 +141,19 @@ export default function Hero() {
             )}
 
             {/* Trust indicators — horizontal, minimal */}
-            <div className="mt-12 flex flex-wrap gap-8">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-aurora-teal" />
-                <span className="text-sm text-indigo-100/80">{t('hero.features.simple')}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-aurora-teal" />
-                <span className="text-sm text-indigo-100/80">{t('hero.features.secure')}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-aurora-teal" />
-                <span className="text-sm text-indigo-100/80">{t('hero.features.support')}</span>
-              </div>
+            <div className="mt-11 flex flex-wrap gap-x-8 gap-y-3">
+              {(['simple', 'secure', 'support'] as const).map((key) => (
+                <div key={key} className="flex items-center gap-2">
+                  <span className="w-[7px] h-[7px] rounded-full bg-accent" aria-hidden="true" />
+                  <span className="text-sm text-secondary">{t(`hero.features.${key}`)}</span>
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Right — Video/Image, floating frame over the aurora */}
           <div className="lg:col-span-5 mt-8 lg:mt-0">
-            <div className="relative rounded-[2rem] overflow-hidden ring-1 ring-white/15 shadow-[0_45px_90px_-25px_rgba(6,6,25,0.85)]">
+            <div className="relative rounded-card overflow-hidden border border-line">
               <div className={`relative transition-opacity duration-700 ${hasEnded ? 'opacity-0' : 'opacity-100'}`}>
                 {/* Stable LCP element — stays mounted so the largest paint is never
                     invalidated by a DOM swap. The video (loaded after 2s) overlays it. */}
@@ -133,7 +162,7 @@ export default function Hero() {
                   srcSet="/images/hero-ai-business-480.webp 480w, /images/hero-ai-business-800.webp 800w, /images/hero-ai-business.webp 1000w"
                   sizes="(max-width: 1024px) 90vw, 40vw"
                   alt={t('hero.imageAlt')}
-                  className="w-full rounded-[2rem]"
+                  className="w-full rounded-card"
                   // @ts-expect-error -- fetchpriority is valid HTML but not yet in React types
                   fetchpriority="high"
                   decoding="async"
@@ -144,7 +173,7 @@ export default function Hero() {
                   <video
                     ref={videoRef}
                     key={videoSource.mp4}
-                    className="absolute inset-0 w-full h-full object-cover rounded-[2rem] cursor-pointer"
+                    className="absolute inset-0 w-full h-full object-cover rounded-card cursor-pointer"
                     poster="/images/hero-ai-business.webp"
                     preload="metadata"
                     playsInline
@@ -164,7 +193,7 @@ export default function Hero() {
                     className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 cursor-pointer ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}
                     onClick={handlePlayPause}
                   >
-                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-diffuse transition-transform duration-200 hover:scale-110 active:scale-95">
+                    <div className="bg-canvas/95 backdrop-blur-sm rounded-full p-4 border border-line transition-transform duration-200 hover:scale-110 active:scale-95">
                       {isPlaying ? (
                         <Pause className="w-6 h-6 text-indigo-600" />
                       ) : (
@@ -191,8 +220,8 @@ export default function Hero() {
 
       {/* Stats bar — clean dividers, no card */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-        <div className="border-t border-white/10 pt-10">
-          <AnimatedStats variant="dark" />
+        <div className="border-t border-line pt-10">
+          <AnimatedStats variant="light" />
         </div>
       </div>
 

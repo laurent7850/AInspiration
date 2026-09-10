@@ -29,15 +29,19 @@
   --color-aurora-violet: #6D5AE8;
   --color-aurora-teal: #2DD4BF;
 
-  /* Design tokens — Premium Minimaliste */
-  --color-canvas: #F9FAFB;
-  --color-surface: #FFFFFF;
-  --color-ink: #18181B;
-  --color-secondary: #71717A;
-  --color-muted: #94A3B8;
-  --color-accent: #4F46E5;
-  --color-accent-light: #6366F1;
-  --color-accent-dark: #4338CA;
+  /* Design tokens — Atelier clair, fond « Craie » (2026-09-10).
+     Accent et encre sont les deux couleurs du logo, échantillonnées sur
+     public/logo-ainspiration.png : #4540D0 et #1E293B. */
+  --color-canvas: #FFFFFF;
+  --color-surface: #F8F8FA;
+  --color-ink: #1E293B;
+  --color-secondary: #6B7280;
+  --color-muted: #9AA1AC;
+  --color-line: #E4E4EA;
+  --color-accent: #4540D0;
+  --color-accent-light: #5F58DA;
+  --color-accent-dark: #3A35B8;
+  --color-accent-wash: #EEEDFC;
   --color-whisper: rgba(226,232,240,0.5);
 
   /* Semantic */
@@ -70,7 +74,7 @@ body {
 
 /* Browser surfaces — selection, focus, scrollbar carry the palette too */
 ::selection {
-  background: rgba(79, 70, 229, 0.18);
+  background: rgba(69, 64, 208, 0.16);
   color: var(--color-accent-dark);
 }
 
@@ -81,7 +85,7 @@ body {
 }
 
 html {
-  scrollbar-color: rgba(79, 70, 229, 0.28) transparent;
+  scrollbar-color: rgba(69, 64, 208, 0.26) transparent;
 }
 
 *::-webkit-scrollbar {
@@ -90,14 +94,14 @@ html {
 }
 
 *::-webkit-scrollbar-thumb {
-  background: rgba(79, 70, 229, 0.28);
+  background: rgba(69, 64, 208, 0.26);
   border-radius: 9999px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: rgba(79, 70, 229, 0.45);
+  background: rgba(69, 64, 208, 0.42);
   background-clip: content-box;
   border: 2px solid transparent;
 }
@@ -183,9 +187,32 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.025em;
 }
 
-/* Aurora display headings — geometric face, light weight, near-normal tracking */
+/* Atelier clair display headings — même famille que le corps, graisse forte,
+   tracking serré. (Aurora les voulait légers et aérés : l'inverse exact.) */
 .font-display {
-  letter-spacing: -0.01em;
+  letter-spacing: -0.035em;
+}
+
+/* ==========================================================================
+   Atelier clair — le trait dessiné sous un mot du titre.
+   Un seul par page : c'est un accent, pas un motif.
+   ========================================================================== */
+.underline-hand {
+  text-decoration: none;
+  position: relative;
+  white-space: nowrap;
+}
+
+.underline-hand svg {
+  position: absolute;
+  left: 0;
+  /* Le trait reste DANS la boîte de sa propre ligne (le mot souligné n'a pas de
+     jambage), sinon il mord sur la ligne suivante dès que le titre passe à la ligne. */
+  bottom: 0.02em;
+  width: 100%;
+  height: 0.10em;
+  overflow: visible;
+  stroke: var(--color-accent);
 }
 
 p {

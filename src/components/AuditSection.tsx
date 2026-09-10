@@ -19,7 +19,7 @@ export default function AuditSection() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-2xl mb-16">
-          <h2 className="font-display font-light text-3xl sm:text-4xl lg:text-6xl text-ink mb-4">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-ink mb-4">
             {t('audit.title')}
           </h2>
           <p className="text-lg text-secondary leading-relaxed">
@@ -32,9 +32,9 @@ export default function AuditSection() {
           {auditSteps.map((step) => (
             <div
               key={step.id}
-              className="relative bg-white rounded-card p-8 shadow-lift hover:shadow-diffuse transition-all duration-300"
+              className="relative bg-surface border border-line rounded-card p-8 transition-colors duration-200 hover:border-ink/25"
             >
-              <span className="font-display text-3xl font-light text-teal-700 mb-5 block">
+              <span className="font-display text-2xl font-bold text-accent mb-5 block tabular-nums">
                 /0{step.id}
               </span>
               <h3 className="text-lg font-semibold text-ink mb-2 tracking-tight">
@@ -48,22 +48,22 @@ export default function AuditSection() {
         </div>
 
         {/* CTA — aurora band */}
-        <div className="bg-aurora rounded-[2rem] p-10 lg:p-14 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+        <div className="bg-accent rounded-card p-10 lg:p-14 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
           <div>
             <h3 className="text-2xl lg:text-3xl font-bold text-white tracking-tight mb-2">
               {t('audit.cta')}
             </h3>
-            <div className="flex flex-wrap gap-4 text-sm text-indigo-100">
+            <div className="flex flex-wrap gap-4 text-sm text-white/80">
               <span>{t('audit.badges.free')}</span>
-              <span className="text-indigo-300">|</span>
+              <span className="text-white/40" aria-hidden="true">|</span>
               <span>{t('audit.badges.fast')}</span>
-              <span className="text-indigo-300">|</span>
+              <span className="text-white/40" aria-hidden="true">|</span>
               <span>{t('audit.badges.noCommitment')}</span>
             </div>
           </div>
           <button
             onClick={() => setShowStartForm(true)}
-            className="group inline-flex items-center gap-3 bg-white text-indigo-700 px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] flex-shrink-0"
+            className="group inline-flex items-center gap-3 bg-white text-accent-dark px-8 py-4 rounded-button font-semibold text-lg hover:bg-indigo-50 transition-colors duration-200 active:translate-y-px flex-shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
           >
             {t('button.startFreeAudit')}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />

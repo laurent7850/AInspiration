@@ -29,17 +29,17 @@ export default function RealisationsShowcase() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between mb-10 lg:mb-12">
           <div className="max-w-2xl">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-secondary mb-3">
+            <p className="text-sm font-semibold text-accent mb-3">
               {t('showcase.eyebrow')}
             </p>
-            <h2 id="showcase-title" className="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.1] mb-4">
+            <h2 id="showcase-title" className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.1] mb-4">
               {t('showcase.title')}
             </h2>
             <p className="text-lg text-secondary leading-relaxed">{t('showcase.subtitle')}</p>
           </div>
           <Link
             to={localizedPath('/realisations')}
-            className="inline-flex items-center gap-2 self-start text-accent-dark font-medium hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 self-start text-accent font-semibold hover:gap-3 transition-all"
           >
             {t('showcase.link')}
             <ArrowRight className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
