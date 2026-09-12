@@ -610,3 +610,17 @@ input, select, textarea {
 .breadcrumb-current {
   @apply font-medium text-white;
 }
+/* Rendu sans JavaScript (#seo-fallback dans index.html).
+
+   Masqué ici, dans la feuille de styles, et non par un attribut
+   style="display:none" sur la balise : la CSS est chargée par les navigateurs
+   (donc aucun flash de contenu brut avant le montage de React, la feuille étant
+   bloquante) mais pas par les extracteurs de texte des moteurs génératifs, qui
+   ne lisent que le HTML. Eux, en revanche, écartent tout élément portant
+   style="display:none" ou aria-hidden="true" — ce qui revenait à leur servir une
+   page vide, puisque c'est le seul contenu qu'ils reçoivent (ils n'exécutent pas
+   le bundle React). Le <noscript> en fin de index.html rétablit l'affichage pour
+   les visiteurs sans JavaScript. Ne pas remettre le display:none inline. */
+#seo-fallback {
+  display: none;
+}

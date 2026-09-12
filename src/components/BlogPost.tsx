@@ -94,17 +94,24 @@ export default function BlogPost() {
     );
   }
 
-  const formattedDate = post.published_at
-    ? new Date(post.published_at).toLocaleDateString('fr-FR', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      })
-    : new Date(post.created_at).toLocaleDateString('fr-FR', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
+  // La date porte un libellé et une balise <time> : un moteur génératif cite le
+  // texte affiché, pas les méta article:published_time. Elle suit la langue de
+  // l'article (les traductions -en / -nl affichaient un mois français).
+  const dateLocale = post.language === 'nl' ? 'nl-NL' : post.language === 'en' ? 'en-US' : 'fr-FR';
+  const dateLabels = post.language === 'nl'
+    ? { published: 'Gepubliceerd op', updated: 'Bijgewerkt op' }
+    : post.language === 'en'
+      ? { published: 'Published on', updated: 'Updated on' }
+      : { published: 'Publié le', updated: 'Mis à jour le' };
+  const formatDate = (value: string) =>
+    new Date(value).toLocaleDateString(dateLocale, { year: 'numeric', month: 'long', day: 'numeric' });
+  const isoDay = (value?: string) => (value ? new Date(value).toISOString().slice(0, 10) : null);
+
+  const publishedIso = post.published_at || post.created_at;
+  const formattedDate = formatDate(publishedIso);
+  // Affichée seulement quand la mise à jour tombe un autre jour que la
+  // publication : sinon la ligne répète deux fois la même date.
+  const updatedIso = isoDay(post.updated_at) !== isoDay(publishedIso) ? post.updated_at : null;
 
   const getCtaVariant = (): 'audit' | 'consultation' | 'formation' | 'default' => {
     const category = post.category?.toLowerCase() || '';
@@ -170,8 +177,17 @@ export default function BlogPost() {
             <div className="flex flex-wrap items-center gap-6 text-gray-600">
               <span className="flex items-center gap-2">
                 <Calendar className="w-5 h-5" />
-                {formattedDate}
+                <time dateTime={isoDay(publishedIso) ?? undefined}>
+                  {dateLabels.published} {formattedDate}
+                </time>
               </span>
+              {updatedIso && (
+                <span className="flex items-center gap-2">
+                  <time dateTime={isoDay(updatedIso) ?? undefined}>
+                    {dateLabels.updated} {formatDate(updatedIso)}
+                  </time>
+                </span>
+              )}
               {post.author_name && (
                 <span className="flex items-center gap-2">
                   <User className="w-5 h-5" />
