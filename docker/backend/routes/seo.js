@@ -235,7 +235,7 @@ async function getRecentPosts(language, limit) {
   if (cached !== undefined) return cached;
   try {
     const r = await pool.query(
-      `SELECT title, slug, excerpt FROM blog_posts
+      `SELECT title, slug, excerpt, published_at FROM blog_posts
        WHERE status = 'published' AND language = $1
        ORDER BY published_at DESC NULLS LAST LIMIT $2`,
       [language, limit]
@@ -265,13 +265,76 @@ async function getBlogAlternates(slug) {
   }
 }
 
-function renderPostList(posts) {
+// Dates écrites en toutes lettres dans le corps de la page. Un moteur génératif
+// extrait le texte affiché : une date qui ne vit que dans article:published_time
+// ou dans le JSON-LD ne lui sert à rien pour dater ce qu'il cite, et l'audit GEO
+// du 12/09/2026 relevait « aucune date visible sur la page ».
+//
+// Formatage à la main plutôt qu'Intl.DateTimeFormat : rien ne garantit l'ICU
+// complète dans le conteneur (node:20-alpine), et une bascule silencieuse en
+// anglais sur un article français passerait inaperçue.
+const DATE_MONTHS = {
+  fr: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
+  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  nl: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+};
+const DATE_LABELS = {
+  fr: { by: 'Par', published: 'Publié le', updated: 'Mis à jour le', read: 'min de lecture' },
+  en: { by: 'By', published: 'Published on', updated: 'Updated on', read: 'min read' },
+  nl: { by: 'Door', published: 'Gepubliceerd op', updated: 'Bijgewerkt op', read: 'min leestijd' },
+};
+
+function isoDay(value) {
+  if (!value) return null;
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? null : d.toISOString().slice(0, 10);
+}
+
+function formatDate(value, lang) {
+  if (!value) return null;
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return null;
+  const months = DATE_MONTHS[lang] || DATE_MONTHS.fr;
+  const day = d.getUTCDate();
+  const month = months[d.getUTCMonth()];
+  const year = d.getUTCFullYear();
+  if (lang === 'en') return `${month} ${day}, ${year}`;
+  // « 1er septembre » en français, « 1 september » en néerlandais.
+  return `${lang === 'fr' && day === 1 ? '1er' : day} ${month} ${year}`;
+}
+
+// <time> porte la date machine, le texte la porte en clair : les deux publics.
+function timeTag(value, lang, label) {
+  const human = formatDate(value, lang);
+  const machine = isoDay(value);
+  if (!human || !machine) return '';
+  return `<time datetime="${machine}">${escHtml(label ? `${label} ${human}` : human)}</time>`;
+}
+
+function renderPostList(posts, lang) {
   if (!posts.length) return '';
-  return '<ul>' + posts.map((p) =>
-    `<li><a href="/blog/${escHtml(p.slug)}">${escHtml(p.title)}</a>`
-    + (p.excerpt ? ` — ${escHtml(String(p.excerpt).trim().slice(0, 160))}` : '')
-    + '</li>'
-  ).join('') + '</ul>';
+  return '<ul>' + posts.map((p) => {
+    const date = timeTag(p.published_at, lang);
+    return `<li><a href="/blog/${escHtml(p.slug)}">${escHtml(p.title)}</a>`
+      + (date ? ` · ${date}` : '')
+      + (p.excerpt ? ` — ${escHtml(String(p.excerpt).trim().slice(0, 160))}` : '')
+      + '</li>';
+  }).join('') + '</ul>';
+}
+
+// Signature de l'article : auteur, date de publication, date de mise à jour
+// quand elle diffère, temps de lecture.
+function articleByline(post, lang) {
+  const L = DATE_LABELS[lang] || DATE_LABELS.fr;
+  const parts = [`${escHtml(L.by)} ${escHtml(post.author)}`];
+  const published = timeTag(post.publishedAt, lang, L.published);
+  if (published) parts.push(published);
+  if (isoDay(post.updatedAt) && isoDay(post.updatedAt) !== isoDay(post.publishedAt)) {
+    const updated = timeTag(post.updatedAt, lang, L.updated);
+    if (updated) parts.push(updated);
+  }
+  if (post.readTime) parts.push(`${post.readTime} ${escHtml(L.read)}`);
+  return `<p>${parts.join(' · ')}</p>`;
 }
 
 const SITE_URL = 'https://ainspiration.eu';
@@ -360,6 +423,11 @@ const SERVICE_NS = {
 // in <title>/<meta description> — neither belongs in the page body.
 const SKIP_LOCALE_KEY = /(placeholder|button|submit|cancel|close|back|continue|next|prev|loading|error|success|required|step\d|stepOf|\bform\b|\bnav\b|menu|aria|alt$|badge|tag$|unit$|currency|^seo\.|\.seo\.|^meta\.|\.meta\.)/i;
 const LOCALE_HEADING_KEY = /(^|\.)(title|heading|name|q)$/i;
+// « Dernière mise à jour : 17 mars 2026 » fait 35 caractères et tombait sous le
+// plancher des 40 : les CGV et les CGU servaient leur texte sans jamais servir
+// leur date, la seule que le site possède pour ces pages. Les moteurs
+// génératifs datent ce qu'ils citent à partir du texte affiché.
+const LOCALE_DATE_KEY = /(^|\.)(lastUpdated|lastUpdate|updatedAt|effectiveDate|date)$/i;
 const MAX_LOCALE_BLOCKS = 120;
 
 function flattenLocale(node, prefix, out) {
@@ -412,6 +480,7 @@ function getLocaleBlocks(lang, ns) {
     if (!text || seen.has(text)) continue;
     const isHeading = LOCALE_HEADING_KEY.test(k);
     if (isHeading && text.length >= 8 && text.length <= 120) blocks.push({ tag: 'h2', text });
+    else if (LOCALE_DATE_KEY.test(k) && text.length >= 8) blocks.push({ tag: 'p', text });
     else if (!isHeading && text.length >= 40) blocks.push({ tag: 'p', text });
     else continue;
     seen.add(text);
@@ -529,6 +598,14 @@ function localizedHomeMain(lang) {
   return parts.join('');
 }
 
+// String.replace interprete $&, $', $` et $1 dans la CHAINE de remplacement.
+// Tout ce qu'on injecte ici vient de la base ou des bundles de traduction : un
+// article contenant « $& », ou un extrait de shell comme $'\n', ferait recopier
+// le document (ou la portion capturee) au milieu de la page, sans la moindre
+// erreur. Passer une fonction desactive completement cette substitution, et
+// escHtml n'en protege pas : il laisse passer le $ comme l'apostrophe.
+const literal = (value) => () => value;
+
 // SPA fallback with per-route SEO injected into the RAW HTML. SEO crawlers that
 // do not execute JS (e.g. SEOPilot) only see this server response, so we inject
 // here: a per-route canonical, the title/description/OG tags, hreflang for
@@ -633,7 +710,7 @@ app.get('/{*splat}', async (req, res) => {
     // (slug suffix -en/-nl, no URL prefix): until 2026-09-08 /blog/…-en was
     // served as lang="fr" (caught by the weekly health check).
     const docLang = (post && post.language) || lang;
-    out = out.replace(/<html([^>]*)\slang="[a-zA-Z-]*"/, `<html$1 lang="${docLang}"`);
+    out = out.replace(/<html([^>]*)\slang="[a-zA-Z-]*"/, (_m, attrs) => `<html${attrs} lang="${docLang}"`);
 
     // hreflang for the static public routes and the réalisation detail pages
     // (not blog posts: they get theirs from the translated rows below; not the
@@ -654,17 +731,17 @@ app.get('/{*splat}', async (req, res) => {
         + `<a href="/solutions">Solutions IA</a> · <a href="/contact">Contact</a></p></main>`;
       out = out.replace(/<title>[^<]*<\/title>/, '<title>Page introuvable | AInspiration</title>');
       out = out.replace(/<\/title>/, '</title>\n    <meta name="robots" content="noindex,follow" />');
-      out = out.replace(/<main>[\s\S]*?<\/main>/, main);
+      out = out.replace(/<main>[\s\S]*?<\/main>/, literal(main));
       return res.status(404).send(out);
     }
 
     if (seo) {
       const title = escHtml(seo.title);
       const description = escHtml(seo.description);
-      out = out.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`);
-      out = out.replace(/<meta name="description" content="[^"]*"/, `<meta name="description" content="${description}"`);
-      out = out.replace(/<meta property="og:title" content="[^"]*"/, `<meta property="og:title" content="${title}"`);
-      out = out.replace(/<meta property="og:description" content="[^"]*"/, `<meta property="og:description" content="${description}"`);
+      out = out.replace(/<title>[^<]*<\/title>/, literal(`<title>${title}</title>`));
+      out = out.replace(/<meta name="description" content="[^"]*"/, literal(`<meta name="description" content="${description}"`));
+      out = out.replace(/<meta property="og:title" content="[^"]*"/, literal(`<meta property="og:title" content="${title}"`));
+      out = out.replace(/<meta property="og:description" content="[^"]*"/, literal(`<meta property="og:description" content="${description}"`));
     }
 
     // Article metadata for crawlers and link previews: og:type article, the
@@ -674,8 +751,8 @@ app.get('/{*splat}', async (req, res) => {
     if (post && blogMatch) {
       const iso = (d) => (d ? new Date(d).toISOString() : null);
       out = out.replace(/<meta property="og:type" content="[^"]*"/, '<meta property="og:type" content="article"');
-      out = out.replace(/<meta property="og:image" content="[^"]*"/, `<meta property="og:image" content="${escHtml(post.image)}"`);
-      out = out.replace(/<meta name="twitter:image" content="[^"]*"/, `<meta name="twitter:image" content="${escHtml(post.image)}"`);
+      out = out.replace(/<meta property="og:image" content="[^"]*"/, literal(`<meta property="og:image" content="${escHtml(post.image)}"`));
+      out = out.replace(/<meta name="twitter:image" content="[^"]*"/, literal(`<meta name="twitter:image" content="${escHtml(post.image)}"`));
       const ld = {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
@@ -697,7 +774,7 @@ app.get('/{*splat}', async (req, res) => {
         `<meta property="article:author" content="${escHtml(post.author)}" />`,
         `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`,
       ].filter(Boolean).join('\n    ');
-      out = out.replace(canonicalTag, `${canonicalTag}\n    ${extra}`);
+      out = out.replace(canonicalTag, literal(`${canonicalTag}\n    ${extra}`));
     }
 
     // hreflang for translated articles, so the FR/EN/NL versions reinforce one
@@ -710,7 +787,7 @@ app.get('/{*splat}', async (req, res) => {
         );
         const fr = alternates.find((a) => a.language === 'fr');
         if (fr) links.push(`<link rel="alternate" hreflang="x-default" href="${SITE_URL}/blog/${escHtml(fr.slug)}" />`);
-        out = out.replace(canonicalTag, `${canonicalTag}\n    ${links.join('\n    ')}`);
+        out = out.replace(canonicalTag, literal(`${canonicalTag}\n    ${links.join('\n    ')}`));
       }
     }
 
@@ -721,33 +798,33 @@ app.get('/{*splat}', async (req, res) => {
     if (post) {
       const related = await getRecentPosts(post.language, 6);
       const others = related.filter((p) => p.slug !== blogMatch[1]).slice(0, 5);
-      out = out.replace(/<main>[\s\S]*?<\/main>/,
+      out = out.replace(/<main>[\s\S]*?<\/main>/, literal(
         `<main><article><h1>${escHtml(post.h1)}</h1>`
         + `<p>${escHtml(post.description)}</p>`
         // The cover illustrates the subject, so it takes the subject as its
         // description. An empty alt says "decorative", which this is not, and
         // the crawler counted it as missing on all thirty article pages.
         + `<p><img src="${escHtml(post.image)}" alt="${escHtml(post.h1 || '')}" width="1200" height="630" loading="lazy" /></p>`
-        + `<p>${escHtml(post.author)}${post.publishedAt ? ' · ' + new Date(post.publishedAt).toISOString().slice(0, 10) : ''} · ${post.readTime} min</p>`
+        + articleByline(post, post.language || lang)
         + post.body
         + `</article>`
-        + (others.length ? `<aside><h2>À lire aussi</h2>${renderPostList(others)}</aside>` : '')
+        + (others.length ? `<aside><h2>À lire aussi</h2>${renderPostList(others, post.language || lang)}</aside>` : '')
         + serviceLinks(post.language || lang) + '</main>'
-      );
+      ));
     } else if (rest === '/blog') {
       // The article list was rendered client-side, so the raw HTML carried no
       // link at all to any post: 50 published articles reachable only through
       // the sitemap, with zero internal linking.
       const posts = await getRecentPosts(lang, 30);
-      out = out.replace(/<main>[\s\S]*?<\/main>/,
+      out = out.replace(/<main>[\s\S]*?<\/main>/, literal(
         `<main><h1>${escHtml(seo.h1 || 'Blog IA pour PME')}</h1>`
         + `<p>${escHtml(seo.description)}</p>`
-        + renderPostList(posts)
+        + renderPostList(posts, lang)
         + `</main>`
-      );
+      ));
     } else if (/^\/realisations\/[a-z0-9-]+$/i.test(rest)) {
       const body = localizedRealisationMain(lang, rest.slice('/realisations/'.length));
-      if (body) out = out.replace(/<main>[\s\S]*?<\/main>/, `<main>${body}${serviceLinks(lang)}</main>`);
+      if (body) out = out.replace(/<main>[\s\S]*?<\/main>/, literal(`<main>${body}${serviceLinks(lang)}</main>`));
     } else if (rest === '/') {
       const posts = await getRecentPosts(lang, 8);
       if (lang !== 'fr') {
@@ -756,13 +833,13 @@ app.get('/{*splat}', async (req, res) => {
         const body = localizedHomeMain(lang);
         if (body) {
           const blogTitle = lang === 'nl' ? 'Blog — Recente artikels' : 'Blog — Latest articles';
-          out = out.replace(/<main>[\s\S]*?<\/main>/,
-            `<main>${body}${posts.length ? `<h2>${blogTitle}</h2>${renderPostList(posts)}` : ''}${serviceLinks(lang)}</main>`);
+          out = out.replace(/<main>[\s\S]*?<\/main>/, literal(
+            `<main>${body}${posts.length ? `<h2>${blogTitle}</h2>${renderPostList(posts, lang)}` : ''}${serviceLinks(lang)}</main>`));
         }
       } else if (posts.length) {
         // The homepage carried a hand-written list of four article links whose
         // slugs matched nothing in the database. Generate it instead.
-        out = out.replace(/(<h2>Blog[^<]*<\/h2>\s*)<ul>[\s\S]*?<\/ul>/, `$1${renderPostList(posts)}`);
+        out = out.replace(/(<h2>Blog[^<]*<\/h2>\s*)<ul>[\s\S]*?<\/ul>/, (_m, heading) => heading + renderPostList(posts, lang));
       }
     } else if (seo) {
       const h1 = escHtml(seo.h1 || seo.title.split(' | ')[0]);
@@ -775,9 +852,9 @@ app.get('/{*splat}', async (req, res) => {
         ? getLocaleBlocks(lang, ns).map((b) => `<${b.tag}>${escHtml(b.text)}</${b.tag}>`).join('')
         : serviceLinks(lang);
 
-      out = out.replace(/<main>[\s\S]*?<\/main>/,
+      out = out.replace(/<main>[\s\S]*?<\/main>/, literal(
         `<main><h1>${h1}</h1><p>${intro}</p>${body}${ns ? serviceLinks(lang) : ''}</main>`
-      );
+      ));
     }
 
     res.send(out);

@@ -17,7 +17,7 @@ export const organizationSchema = {
   "foundingDate": "2025",
   "founder": {
     "@type": "Person",
-    "name": "Laurent Doyen"
+    "name": "Laurent Maréchal"
   },
   "address": {
     "@type": "PostalAddress",

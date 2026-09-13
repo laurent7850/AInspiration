@@ -139,8 +139,20 @@
     provenance.
     -->
     <div id="root">
-      <!-- Contenu initial pour crawlers SEO (remplacé par React au chargement) -->
-      <div id="seo-fallback" style="display:none" aria-hidden="true">
+      <!-- Contenu initial pour crawlers SEO (remplacé par React au chargement :
+           main.tsx vide #root avant de monter l'application).
+
+           Le masquage vit dans la feuille de styles (règle #seo-fallback dans
+           src/index.css) et NON dans un attribut style="display:none". Les
+           extracteurs de texte (Readability, trafilatura, et les robots des
+           moteurs génératifs qui s'en servent) n'exécutent pas de JavaScript et
+           ne chargent pas la CSS, mais ils lisent l'attribut style et
+           aria-hidden : les deux réunis leur faisaient écarter ce bloc, c'est-à-
+           dire la totalité de ce qu'ils voient du site. Le rendu était donc
+           « vide » pour eux, alors que le serveur y injecte tout le contenu.
+           aria-hidden est parti pour la raison symétrique : sans JavaScript, ce
+           bloc EST la page, il doit rester exposé aux lecteurs d'écran. -->
+      <div id="seo-fallback">
       <header>
         <nav aria-label="Navigation principale">
           <a href="/">AInspiration</a> |
@@ -199,7 +211,12 @@
         </ul>
       </main>
       <footer>
-        <p>AInspiration — Solutions d'Intelligence Artificielle pour PME | Chaussée Brunehault 27, 7041 Givry, Belgique | info@ainspiration.eu | +32 477 94 28 65</p>
+        <!-- Ces coordonnées reprennent en clair ce que le JSON-LD Organization
+             déclare plus haut (email, telephone, address, sameAs). Un moteur
+             génératif cite le texte affiché, pas le balisage : ce qui n'existe
+             qu'en JSON-LD n'est pas citable. Les horaires reprennent de même
+             l'openingHoursSpecification du schéma LocalBusiness. -->
+        <p>AInspiration — Solutions d'Intelligence Artificielle pour PME | Chaussée Brunehault 27, 7041 Givry, Belgique | info@ainspiration.eu | +32 477 94 28 65 | Lundi au vendredi, 9h-18h | <a href="https://www.linkedin.com/company/ainspiration">LinkedIn</a></p>
         <p><a href="/privacy">Politique de confidentialité</a> | <a href="/mentions-legales">Mentions légales</a> | <a href="/cgv">CGV</a></p>
       </footer>
       </div>
