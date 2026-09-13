@@ -307,6 +307,20 @@ HTML brut n'existe pas.
   coupure de base délisterait tous les articles d'un coup.
 - **Ne jamais remettre un `catch` muet** sur le chemin de rendu. C'est ce silence qui a laissé
   le problème durer trois mois.
+- **Ne jamais masquer `#seo-fallback` par un attribut.** Tout ce que ce handler injecte vit
+  dans ce conteneur, et c'est la seule chose que voient les robots des moteurs génératifs.
+  Tant qu'il portait `style="display:none"` et `aria-hidden="true"` (jusqu'au 12/09/2026), les
+  extracteurs de texte — Readability, trafilatura, et les pipelines d'ingestion LLM qui s'en
+  servent — l'écartaient comme contenu masqué : la page leur paraissait vide, alors que le
+  serveur y injecte tout. Le masquage appartient à la feuille de styles (`#seo-fallback` dans
+  `src/index.css`), que ces robots ne chargent pas et que les navigateurs appliquent avant le
+  premier paint. Verrouillé par `src/test/seo-fallback.test.ts`.
+- **Ne pas passer de chaîne de remplacement à `String.replace`** sur ce chemin. `$&`, `$'`,
+  `` $` `` et `$1` y sont interprétés, et `escHtml` ne protège ni le `$` ni l'apostrophe : un
+  article citant « 100$ » ou un extrait de shell `$'
+'` recopiait la portion capturée au
+  milieu de la page, sans la moindre erreur. Passer par le helper `literal()`, ou par une
+  fonction quand une capture est nécessaire.
 
 ## Déploiement - Ne pas casser
 
