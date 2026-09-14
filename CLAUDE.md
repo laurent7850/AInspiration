@@ -246,6 +246,33 @@ products (pas de FK — catalogue indépendant)
 - **IDs fixes:** companies `c0000000-*`, contacts `d0000000-*`, products `e0000000-*`, opportunities `f0000000-*`, tasks `b0000000-*`, messages `a1000000-*`
 - **Le seed utilise `ON CONFLICT (id) DO UPDATE`** — safe à re-exécuter
 
+### Cloisonnement démo / données réelles (14/09/2026) — ne pas défaire
+
+Les identifiants du compte démo sont **publics** (affichés sur `/login`). Tout ce qui
+n'est pas cloisonné est donc lisible par n'importe quel visiteur.
+
+- **Ne jamais supprimer « ce qui n'est pas du seed ».** `resetDemoData()` contenait
+  cinq `DELETE ... WHERE id NOT LIKE '<plage seed>'` : appliqués à toute la base, sans
+  regarder le propriétaire, ils effaçaient les contacts, sociétés, produits et messages
+  réels. Le nettoyage se borne aux plages d'IDs du seed, ou à `owner_id = DEMO_USER_ID`.
+- **`id` est de type `uuid` : toujours `id::text LIKE '...'`.** `uuid LIKE texte` lève une
+  erreur. Avec les `.catch(() => {})` d'origine, le nettoyage échouait en silence et le
+  re-seed n'aboutissait jamais — d'où des tâches en retard depuis mai et des contacts
+  sans société dans la démo. Les catch loguent désormais.
+- **Le compte démo ne doit JAMAIS avoir `role = 'admin'`.** `ownerScope()` renvoie `NULL`
+  pour un admin, ce qui signifie « voit tout » : un démo admin annule tout le
+  cloisonnement, y compris celui des contacts. Forcé par `migration-005`.
+- **Chaque lecture ET chaque écriture porte `($N::uuid IS NULL OR owner_col = $N)`.** Un
+  seul endpoint oublié suffit. `migration-005` ajoute `owner_id` à `companies`,
+  `products` et `contact_messages` (la 003 ne couvrait que contacts/opportunités/
+  tâches/activités) ; `routes/crm.js` filtre désormais ces trois tables, les
+  access-logs (le `?user_id=` libre exposait les connexions d'autrui) et
+  l'enrichissement des activités.
+- **Ordre de déploiement obligatoire : la migration AVANT le code.** Le code référence
+  `owner_id` sur trois tables qui ne l'ont pas encore — déployer d'abord = 500 partout.
+- **Test de non-régression manuel :** créer une fiche depuis le compte admin, se
+  connecter en démo, vérifier qu'elle est invisible.
+
 ---
 
 ## Analytics — trafic local envoyé en production (13/08/2026)

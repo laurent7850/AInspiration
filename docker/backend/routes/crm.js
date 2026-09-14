@@ -26,12 +26,20 @@ module.exports = function register(ctx) {
 
 // ==================== COMPANIES ====================
 
+// Cloisonnement : ownerScope(req) renvoie NULL pour un admin (voit tout) et
+// req.user.id sinon. Le motif ($N::uuid IS NULL OR owner_id = $N) doit figurer
+// sur CHAQUE lecture et CHAQUE écriture — un seul endpoint oublié suffit à
+// exposer les données réelles au compte démo, dont les identifiants sont publics.
+// owner_id sur companies/products/contact_messages vient de migration-005.
+
 app.get('/api/companies', requireAuth, async (req, res) => {
   try {
     const { limit = 100, offset = 0 } = req.query;
+    const owner = ownerScope(req);
     const result = await pool.query(
-      'SELECT * FROM companies ORDER BY created_at DESC LIMIT $1 OFFSET $2',
-      [parseInt(limit), parseInt(offset)]
+      `SELECT * FROM companies WHERE ($1::uuid IS NULL OR owner_id = $1)
+       ORDER BY created_at DESC LIMIT $2 OFFSET $3`,
+      [owner, parseInt(limit), parseInt(offset)]
     );
     res.json(result.rows);
   } catch (error) {
@@ -43,9 +51,12 @@ app.get('/api/companies', requireAuth, async (req, res) => {
 app.get('/api/companies/search', requireAuth, async (req, res) => {
   try {
     const { q = '' } = req.query;
+    const owner = ownerScope(req);
     const result = await pool.query(
-      'SELECT * FROM companies WHERE name ILIKE $1 OR website ILIKE $1 ORDER BY name LIMIT 50',
-      [`%${q}%`]
+      `SELECT * FROM companies
+       WHERE ($2::uuid IS NULL OR owner_id = $2) AND (name ILIKE $1 OR website ILIKE $1)
+       ORDER BY name LIMIT 50`,
+      [`%${q}%`, owner]
     );
     res.json(result.rows);
   } catch (error) {
@@ -56,9 +67,11 @@ app.get('/api/companies/search', requireAuth, async (req, res) => {
 
 app.get('/api/companies/stats', requireAuth, async (req, res) => {
   try {
-    const total = await pool.query('SELECT COUNT(*) FROM companies');
-    const active = await pool.query("SELECT COUNT(*) FROM companies WHERE status = 'active'");
-    const recent = await pool.query('SELECT * FROM companies ORDER BY created_at DESC LIMIT 5');
+    const owner = ownerScope(req);
+    const scope = ' WHERE ($1::uuid IS NULL OR owner_id = $1)';
+    const total = await pool.query(`SELECT COUNT(*) FROM companies${scope}`, [owner]);
+    const active = await pool.query(`SELECT COUNT(*) FROM companies${scope} AND status = 'active'`, [owner]);
+    const recent = await pool.query(`SELECT * FROM companies${scope} ORDER BY created_at DESC LIMIT 5`, [owner]);
     res.json({
       totalCount: parseInt(total.rows[0].count),
       activeCount: parseInt(active.rows[0].count),
@@ -72,7 +85,11 @@ app.get('/api/companies/stats', requireAuth, async (req, res) => {
 
 app.get('/api/companies/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM companies WHERE id = $1', [req.params.id]);
+    const owner = ownerScope(req);
+    const result = await pool.query(
+      'SELECT * FROM companies WHERE id = $1 AND ($2::uuid IS NULL OR owner_id = $2)',
+      [req.params.id, owner]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Company not found' });
     res.json(result.rows[0]);
   } catch (error) {
@@ -86,9 +103,9 @@ app.post('/api/companies', requireAuth, validateBody(schemas.company), async (re
     const { name, industry, website, address, city, country, phone, email, notes, status } = req.body;
     const id = uuidv4();
     const result = await pool.query(
-      `INSERT INTO companies (id, name, industry, website, address, city, country, phone, email, notes, status)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`,
-      [id, name, industry, website, address, city, country, phone, email, notes, status || 'active']
+      `INSERT INTO companies (id, name, industry, website, address, city, country, phone, email, notes, status, owner_id)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *`,
+      [id, name, industry, website, address, city, country, phone, email, notes, status || 'active', req.user.id]
     );
     res.status(201).json(result.rows[0]);
   } catch (error) {
@@ -101,11 +118,12 @@ app.put('/api/companies/:id', requireAuth, validateUuidParam(), validateBody(upd
   try {
     const { id } = req.params;
     const { name, industry, website, address, city, country, phone, email, notes, status } = req.body;
+    const owner = ownerScope(req);
     const result = await pool.query(
       `UPDATE companies SET name=$1, industry=$2, website=$3, address=$4, city=$5,
        country=$6, phone=$7, email=$8, notes=$9, status=$10, updated_at=NOW()
-       WHERE id=$11 RETURNING *`,
-      [name, industry, website, address, city, country, phone, email, notes, status, id]
+       WHERE id=$11 AND ($12::uuid IS NULL OR owner_id = $12) RETURNING *`,
+      [name, industry, website, address, city, country, phone, email, notes, status, id, owner]
     );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Company not found' });
     res.json(result.rows[0]);
@@ -117,7 +135,11 @@ app.put('/api/companies/:id', requireAuth, validateUuidParam(), validateBody(upd
 
 app.delete('/api/companies/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
-    const result = await pool.query('DELETE FROM companies WHERE id=$1 RETURNING *', [req.params.id]);
+    const owner = ownerScope(req);
+    const result = await pool.query(
+      'DELETE FROM companies WHERE id=$1 AND ($2::uuid IS NULL OR owner_id = $2) RETURNING *',
+      [req.params.id, owner]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Company not found' });
     res.json({ message: 'Company deleted successfully' });
   } catch (error) {
@@ -222,9 +244,9 @@ app.delete('/api/contacts/:id', requireAuth, validateUuidParam(), async (req, re
 app.get('/api/products', requireAuth, async (req, res) => {
   try {
     const { active_only, category, limit = 100, offset = 0 } = req.query;
-    let query = 'SELECT * FROM products WHERE 1=1';
-    const params = [];
-    let pi = 1;
+    let query = 'SELECT * FROM products WHERE ($1::uuid IS NULL OR owner_id = $1)';
+    const params = [ownerScope(req)];
+    let pi = 2;
     if (active_only === 'true') { query += ` AND status = 'active'`; }
     if (category) { query += ` AND category = $${pi++}`; params.push(category); }
     query += ` ORDER BY name LIMIT $${pi++} OFFSET $${pi}`;
@@ -239,11 +261,14 @@ app.get('/api/products', requireAuth, async (req, res) => {
 
 app.get('/api/products/stats', requireAuth, async (req, res) => {
   try {
-    const active = await pool.query("SELECT COUNT(*) FROM products WHERE status = 'active'");
-    const total = await pool.query('SELECT COUNT(*) FROM products');
+    const owner = ownerScope(req);
+    const scope = ' WHERE ($1::uuid IS NULL OR owner_id = $1)';
+    const active = await pool.query(`SELECT COUNT(*) FROM products${scope} AND status = 'active'`, [owner]);
+    const total = await pool.query(`SELECT COUNT(*) FROM products${scope}`, [owner]);
     const byCategory = await pool.query(
       `SELECT COALESCE(category, 'Uncategorized') as category, COUNT(*) as count, COALESCE(SUM(price), 0) as total_value
-       FROM products GROUP BY category`
+       FROM products${scope} GROUP BY category`,
+      [owner]
     );
     const categoryCounts = {};
     byCategory.rows.forEach(r => { categoryCounts[r.category] = { count: parseInt(r.count), totalValue: parseFloat(r.total_value) }; });
@@ -256,7 +281,11 @@ app.get('/api/products/stats', requireAuth, async (req, res) => {
 
 app.get('/api/products/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM products WHERE id = $1', [req.params.id]);
+    const owner = ownerScope(req);
+    const result = await pool.query(
+      'SELECT * FROM products WHERE id = $1 AND ($2::uuid IS NULL OR owner_id = $2)',
+      [req.params.id, owner]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Product not found' });
     res.json(mapProduct(result.rows[0]));
   } catch (error) {
@@ -271,9 +300,9 @@ app.post('/api/products', requireAuth, validateBody(schemas.product), async (req
     const id = uuidv4();
     const status = rawStatus || (is_active === false ? 'inactive' : 'active');
     const result = await pool.query(
-      `INSERT INTO products (id, name, description, category, price, currency, status)
-       VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
-      [id, name, description, category, price, currency || 'EUR', status]
+      `INSERT INTO products (id, name, description, category, price, currency, status, owner_id)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
+      [id, name, description, category, price, currency || 'EUR', status, req.user.id]
     );
     res.status(201).json(mapProduct(result.rows[0]));
   } catch (error) {
@@ -287,11 +316,13 @@ app.put('/api/products/:id', requireAuth, validateUuidParam(), validateBody(upda
     const { id } = req.params;
     const { name, description, category, price, currency, is_active, status: rawStatus } = req.body;
     const status = rawStatus || (is_active === false ? 'inactive' : is_active === true ? 'active' : undefined);
+    const owner = ownerScope(req);
     const result = await pool.query(
       `UPDATE products SET name=COALESCE($1,name), description=COALESCE($2,description),
        category=COALESCE($3,category), price=COALESCE($4,price), currency=COALESCE($5,currency),
-       status=COALESCE($6,status), updated_at=NOW() WHERE id=$7 RETURNING *`,
-      [name, description, category, price, currency, status, id]
+       status=COALESCE($6,status), updated_at=NOW()
+       WHERE id=$7 AND ($8::uuid IS NULL OR owner_id = $8) RETURNING *`,
+      [name, description, category, price, currency, status, id, owner]
     );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Product not found' });
     res.json(mapProduct(result.rows[0]));
@@ -303,7 +334,11 @@ app.put('/api/products/:id', requireAuth, validateUuidParam(), validateBody(upda
 
 app.delete('/api/products/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
-    const result = await pool.query('DELETE FROM products WHERE id=$1 RETURNING *', [req.params.id]);
+    const owner = ownerScope(req);
+    const result = await pool.query(
+      'DELETE FROM products WHERE id=$1 AND ($2::uuid IS NULL OR owner_id = $2) RETURNING *',
+      [req.params.id, owner]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Product not found' });
     res.json({ message: 'Product deleted successfully' });
   } catch (error) {
@@ -550,9 +585,9 @@ app.delete('/api/tasks/:id', requireAuth, validateUuidParam(), async (req, res) 
 app.get('/api/contact-messages', requireAuth, async (req, res) => {
   try {
     const { status, search, limit = 100, offset = 0 } = req.query;
-    let query = 'SELECT * FROM contact_messages WHERE 1=1';
-    const params = [];
-    let pi = 1;
+    let query = 'SELECT * FROM contact_messages WHERE ($1::uuid IS NULL OR owner_id = $1)';
+    const params = [ownerScope(req)];
+    let pi = 2;
     if (status) { query += ` AND status = $${pi++}`; params.push(status); }
     if (search) {
       query += ` AND (name ILIKE $${pi} OR email ILIKE $${pi} OR company ILIKE $${pi} OR subject ILIKE $${pi} OR message ILIKE $${pi})`;
@@ -570,7 +605,11 @@ app.get('/api/contact-messages', requireAuth, async (req, res) => {
 
 app.get('/api/contact-messages/stats', requireAuth, async (req, res) => {
   try {
-    const result = await pool.query('SELECT status, COUNT(*) as count FROM contact_messages GROUP BY status');
+    const result = await pool.query(
+      `SELECT status, COUNT(*) as count FROM contact_messages
+       WHERE ($1::uuid IS NULL OR owner_id = $1) GROUP BY status`,
+      [ownerScope(req)]
+    );
     const stats = { total: 0, new: 0, read: 0, replied: 0, archived: 0 };
     result.rows.forEach(r => { stats[r.status] = parseInt(r.count); stats.total += parseInt(r.count); });
     res.json(stats);
@@ -582,7 +621,10 @@ app.get('/api/contact-messages/stats', requireAuth, async (req, res) => {
 
 app.get('/api/contact-messages/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM contact_messages WHERE id = $1', [req.params.id]);
+    const result = await pool.query(
+      'SELECT * FROM contact_messages WHERE id = $1 AND ($2::uuid IS NULL OR owner_id = $2)',
+      [req.params.id, ownerScope(req)]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Message not found' });
     res.json(result.rows[0]);
   } catch (error) {
@@ -595,9 +637,14 @@ app.post('/api/contact-messages', formLimiter, rejectHoneypot, validateBody(sche
   try {
     const { name, email, phone, company, subject, message, source } = req.body;
     const id = uuidv4();
+    // Endpoint public : le message appartient à l'administrateur, jamais au
+    // compte démo. Sans cela il naîtrait sans propriétaire et resterait
+    // invisible à tout le monde une fois le cloisonnement actif.
     const result = await pool.query(
-      `INSERT INTO contact_messages (id, name, email, phone, company, subject, message, source)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
+      `INSERT INTO contact_messages (id, name, email, phone, company, subject, message, source, owner_id)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,
+         (SELECT id FROM users WHERE email = 'admin@ainspiration.eu' LIMIT 1))
+       RETURNING *`,
       [id, name, email, phone || null, company || null, subject || null, message, source || 'website']
     );
     res.status(201).json(result.rows[0]);
@@ -612,8 +659,9 @@ app.put('/api/contact-messages/:id', requireAuth, validateUuidParam(), validateB
     const { id } = req.params;
     const { status, notes } = req.body;
     const result = await pool.query(
-      'UPDATE contact_messages SET status=$1, notes=$2, updated_at=NOW() WHERE id=$3 RETURNING *',
-      [status, notes, id]
+      `UPDATE contact_messages SET status=$1, notes=$2, updated_at=NOW()
+       WHERE id=$3 AND ($4::uuid IS NULL OR owner_id = $4) RETURNING *`,
+      [status, notes, id, ownerScope(req)]
     );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Message not found' });
     res.json(result.rows[0]);
@@ -625,7 +673,10 @@ app.put('/api/contact-messages/:id', requireAuth, validateUuidParam(), validateB
 
 app.delete('/api/contact-messages/:id', requireAuth, validateUuidParam(), async (req, res) => {
   try {
-    const result = await pool.query('DELETE FROM contact_messages WHERE id=$1 RETURNING *', [req.params.id]);
+    const result = await pool.query(
+      'DELETE FROM contact_messages WHERE id=$1 AND ($2::uuid IS NULL OR owner_id = $2) RETURNING *',
+      [req.params.id, ownerScope(req)]
+    );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Message not found' });
     res.json({ message: 'Message deleted successfully' });
   } catch (error) {
@@ -639,10 +690,14 @@ app.delete('/api/contact-messages/:id', requireAuth, validateUuidParam(), async 
 app.get('/api/access-logs', requireAuth, async (req, res) => {
   try {
     const { user_id, action, limit = 100, offset = 0 } = req.query;
-    let query = 'SELECT * FROM access_logs WHERE 1=1';
-    const params = [];
-    let pi = 1;
-    if (user_id) { query += ` AND user_id = $${pi++}`; params.push(user_id); }
+    // Un non-admin ne lit QUE ses propres journaux : le paramètre user_id de la
+    // requête est ignoré pour lui (il permettait de lire les connexions,
+    // adresses IP et agents d'un autre utilisateur).
+    const owner = ownerScope(req);
+    const effectiveUserId = owner !== null ? owner : (user_id || null);
+    let query = 'SELECT * FROM access_logs WHERE ($1::uuid IS NULL OR user_id = $1)';
+    const params = [effectiveUserId];
+    let pi = 2;
     if (action) { query += ` AND action = $${pi++}`; params.push(action); }
     query += ` ORDER BY created_at DESC LIMIT $${pi++} OFFSET $${pi}`;
     params.push(parseInt(limit), parseInt(offset));
@@ -657,8 +712,10 @@ app.get('/api/access-logs', requireAuth, async (req, res) => {
 app.get('/api/access-logs/stats', requireAuth, async (req, res) => {
   try {
     const { user_id } = req.query;
-    const where = user_id ? 'WHERE user_id = $1' : '';
-    const p = user_id ? [user_id] : [];
+    const owner = ownerScope(req);
+    const effectiveUserId = owner !== null ? owner : (user_id || null);
+    const where = effectiveUserId ? 'WHERE user_id = $1' : '';
+    const p = effectiveUserId ? [effectiveUserId] : [];
     const total = await pool.query(`SELECT COUNT(*) FROM access_logs ${where}`, p);
     const byAction = await pool.query(`SELECT action, COUNT(*) as count FROM access_logs ${where} GROUP BY action ORDER BY count DESC`, p);
     const recent = await pool.query(`SELECT * FROM access_logs ${where} ORDER BY created_at DESC LIMIT 10`, p);
@@ -711,11 +768,14 @@ app.get('/api/activities', requireAuth, async (req, res) => {
         if (cache[key] !== undefined) continue;
         try {
           let name = null;
-          if (act.entity_type === 'opportunity') { const r = await pool.query('SELECT name FROM opportunities WHERE id=$1', [act.entity_id]); name = r.rows[0]?.name; }
-          else if (act.entity_type === 'contact') { const r = await pool.query("SELECT TRIM(CONCAT(first_name,' ',last_name)) AS name FROM contacts WHERE id=$1", [act.entity_id]); name = r.rows[0]?.name; }
-          else if (act.entity_type === 'company') { const r = await pool.query('SELECT name FROM companies WHERE id=$1', [act.entity_id]); name = r.rows[0]?.name; }
-          else if (act.entity_type === 'product') { const r = await pool.query('SELECT name FROM products WHERE id=$1', [act.entity_id]); name = r.rows[0]?.name; }
-          else if (act.entity_type === 'task') { const r = await pool.query('SELECT title AS name FROM tasks WHERE id=$1', [act.entity_id]); name = r.rows[0]?.name; }
+          // L'enrichissement aussi doit être cloisonné : sans cela, un compte
+          // pouvait créer une activité pointant vers l'identifiant d'une fiche
+          // qui ne lui appartient pas et en récupérer le nom.
+          if (act.entity_type === 'opportunity') { const r = await pool.query('SELECT name FROM opportunities WHERE id=$1 AND ($2::uuid IS NULL OR owner_id = $2)', [act.entity_id, owner]); name = r.rows[0]?.name; }
+          else if (act.entity_type === 'contact') { const r = await pool.query("SELECT TRIM(CONCAT(first_name,' ',last_name)) AS name FROM contacts WHERE id=$1 AND ($2::uuid IS NULL OR owner_id = $2)", [act.entity_id, owner]); name = r.rows[0]?.name; }
+          else if (act.entity_type === 'company') { const r = await pool.query('SELECT name FROM companies WHERE id=$1 AND ($2::uuid IS NULL OR owner_id = $2)', [act.entity_id, owner]); name = r.rows[0]?.name; }
+          else if (act.entity_type === 'product') { const r = await pool.query('SELECT name FROM products WHERE id=$1 AND ($2::uuid IS NULL OR owner_id = $2)', [act.entity_id, owner]); name = r.rows[0]?.name; }
+          else if (act.entity_type === 'task') { const r = await pool.query('SELECT title AS name FROM tasks WHERE id=$1 AND ($2::uuid IS NULL OR assigned_to = $2)', [act.entity_id, owner]); name = r.rows[0]?.name; }
           cache[key] = name;
         } catch { cache[key] = null; }
       }

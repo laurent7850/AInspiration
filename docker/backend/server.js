@@ -170,28 +170,35 @@ async function resetDemoData() {
   demoResetInProgress = true;
   try {
     console.log('[DEMO] Resetting demo data after inactivity...');
-    // Delete all CRM data owned by or related to demo user, then re-seed
-    await pool.query(`
-      DELETE FROM activities WHERE user_id = $1;
-      DELETE FROM tasks WHERE assigned_to = $1;
-      DELETE FROM opportunities WHERE owner_id = $1;
-      DELETE FROM contact_messages WHERE id IN (SELECT id FROM contact_messages WHERE source = 'website');
-      DELETE FROM contacts WHERE id LIKE 'd0000000-%';
-      DELETE FROM products WHERE id LIKE 'e0000000-%';
-      DELETE FROM companies WHERE id LIKE 'c0000000-%';
-    `, [DEMO_USER_ID]).catch(() => {});
-
-    // Also clean up any user-created demo data (non-seed IDs)
-    await pool.query(`DELETE FROM tasks WHERE assigned_to = $1`, [DEMO_USER_ID]).catch(() => {});
-    await pool.query(`DELETE FROM opportunities WHERE owner_id = $1`, [DEMO_USER_ID]).catch(() => {});
-    await pool.query(`DELETE FROM activities WHERE user_id = $1`, [DEMO_USER_ID]).catch(() => {});
-
-    // Delete orphaned contacts/companies created during demo (not in seed)
-    await pool.query(`DELETE FROM contacts WHERE id NOT LIKE 'd0000000-%' AND company_id IN (SELECT id FROM companies WHERE id NOT LIKE 'c0000000-%')`).catch(() => {});
-    await pool.query(`DELETE FROM contacts WHERE id NOT LIKE 'd0000000-%'`).catch(() => {});
-    await pool.query(`DELETE FROM companies WHERE id NOT LIKE 'c0000000-%'`).catch(() => {});
-    await pool.query(`DELETE FROM products WHERE id NOT LIKE 'e0000000-%'`).catch(() => {});
-    await pool.query(`DELETE FROM contact_messages WHERE id NOT LIKE 'a1000000-%'`).catch(() => {});
+    // Nettoyage AVANT re-seed. Deux règles absolues :
+    //  1. NE JAMAIS supprimer « tout ce qui n'est pas du seed ». Ces requêtes visaient
+    //     les lignes créées pendant une session de démo, mais elles effaçaient TOUTES
+    //     les données réelles (contacts, sociétés, produits, messages du site) : le
+    //     compte démo est public et le reset se déclenche sur sa simple activité.
+    //     Le périmètre se borne aux plages d'IDs du seed et au propriétaire démo.
+    //  2. `id` est de type uuid : la comparaison LIKE exige `id::text`, sinon Postgres
+    //     lève « operator does not exist: uuid ~~ unknown ».
+    // Chaque instruction part dans son propre pool.query() : une requête paramétrée ne
+    // peut porter qu'une seule commande (protocole étendu), un bloc multi-instructions
+    // échouait donc systématiquement — sans bruit, à cause du catch muet d'origine.
+    const cleanup = [
+      ['activities', `DELETE FROM activities WHERE user_id = $1`, [DEMO_USER_ID]],
+      ['tasks', `DELETE FROM tasks WHERE assigned_to = $1`, [DEMO_USER_ID]],
+      ['opportunities', `DELETE FROM opportunities WHERE owner_id = $1`, [DEMO_USER_ID]],
+      ['contact_messages', `DELETE FROM contact_messages WHERE id::text LIKE 'a1000000-%'`, []],
+      ['contacts', `DELETE FROM contacts WHERE id::text LIKE 'd0000000-%'`, []],
+      ['products', `DELETE FROM products WHERE id::text LIKE 'e0000000-%'`, []],
+      ['companies', `DELETE FROM companies WHERE id::text LIKE 'c0000000-%'`, []]
+    ];
+    for (const [label, sql, params] of cleanup) {
+      try {
+        await pool.query(sql, params);
+      } catch (err) {
+        // Jamais de catch muet ici : c'est ce silence qui a laissé le re-seed échouer
+        // pendant des mois (tâches en retard, contacts sans société dans la démo).
+        console.error(`[DEMO] Nettoyage ${label} échoué:`, err.message);
+      }
+    }
 
     // Re-seed companies
     await pool.query(`
@@ -236,9 +243,6 @@ async function resetDemoData() {
         ('d0000000-0000-0000-0000-000000000020', NULL, 'Céline', 'Rousseau', 'celine.rousseau@hotmail.fr', '+33 6 78 90 12 34', 'Freelance marketing', 'Rencontrée à un meetup IA Lille.', 'active')
       ON CONFLICT (id) DO UPDATE SET company_id=EXCLUDED.company_id, first_name=EXCLUDED.first_name, last_name=EXCLUDED.last_name, email=EXCLUDED.email, phone=EXCLUDED.phone, job_title=EXCLUDED.job_title, notes=EXCLUDED.notes, status=EXCLUDED.status;
     `);
-
-    // Assign demo contacts to demo user (multi-tenant scoping)
-    await pool.query(`UPDATE contacts SET owner_id = $1 WHERE id LIKE 'd0000000-%'`, [DEMO_USER_ID]);
 
     // Re-seed products
     await pool.query(`
@@ -303,6 +307,25 @@ async function resetDemoData() {
         ('a1000000-0000-0000-0000-000000000005', 'David Hermans', 'david@hermans-transport.be', 'Hermans Transport', '+32 495 77 88 99', 'Partenariat logistique IA', 'Nous aimerions discuter d''optimisation de routes par IA.', 'website', 'new')
       ON CONFLICT (id) DO UPDATE SET name=EXCLUDED.name, email=EXCLUDED.email, company=EXCLUDED.company, subject=EXCLUDED.subject, message=EXCLUDED.message, status=EXCLUDED.status;
     `);
+
+    // Le jeu de démonstration appartient au compte démo — sur les quatre tables, pas
+    // seulement les contacts. Sans cela, une ligne re-créée par le seed naîtrait sans
+    // propriétaire et deviendrait invisible à tout le monde une fois le cloisonnement
+    // actif. Les opportunités, tâches et activités portent déjà leur propriétaire dans
+    // leur INSERT. `id::text` est obligatoire : la colonne id est de type uuid.
+    const ownership = [
+      ['companies', `UPDATE companies SET owner_id = $1 WHERE id::text LIKE 'c0000000-%'`],
+      ['contacts', `UPDATE contacts SET owner_id = $1 WHERE id::text LIKE 'd0000000-%'`],
+      ['products', `UPDATE products SET owner_id = $1 WHERE id::text LIKE 'e0000000-%'`],
+      ['contact_messages', `UPDATE contact_messages SET owner_id = $1 WHERE id::text LIKE 'a1000000-%'`]
+    ];
+    for (const [label, sql] of ownership) {
+      try {
+        await pool.query(sql, [DEMO_USER_ID]);
+      } catch (err) {
+        console.error(`[DEMO] Attribution ${label} échouée:`, err.message);
+      }
+    }
 
     // Re-seed activities
     await pool.query(`
