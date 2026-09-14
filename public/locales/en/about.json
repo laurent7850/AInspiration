@@ -32,21 +32,9 @@
   },
   "history": {
     "title": "Our History",
-    "m2019_title": "AInspiration Founded",
-    "m2019_desc": "The company was established with the mission of democratising AI for SMEs.",
-    "m2020_title": "First Products Launched",
-    "m2020_desc": "Development of automation and data analysis solutions.",
-    "m2021_title": "Expanded Offering",
-    "m2021_desc": "Introduction of virtual assistants and generative AI services.",
-    "m2022_title": "International Expansion",
-    "m2022_desc": "Opening to French-speaking European markets: Belgium, Luxembourg and Switzerland.",
-    "m2023_title": "Generative AI Revolution",
-    "m2023_desc": "Launch of our PromptMaster platform and integration of GPT and Claude models into our solutions.",
-    "m2024_title": "Intelligent CRM & Advanced Automation",
-    "m2024_desc": "Deployment of our AI-powered CRM solution and automation of complex business workflows.",
-    "m2025_title": "AI Agents & Personalisation",
-    "m2025_desc": "Launch of autonomous AI agents and tailor-made predictive analytics solutions for every sector.",
-    "m2026_title": "AInspiration — A New Era",
-    "m2026_desc": "Rebranding as AInspiration. Unified AI platform for SMEs with 360° support and certified training."
+    "m2025_title": "AInspiration founded",
+    "m2025_desc": "Distr'Action launches AInspiration with one idea: make AI usable by SMEs, with no technical skills required on their side.",
+    "m2026_title": "The first projects go live",
+    "m2026_desc": "Sixteen automations and applications delivered and running: invoicing, accounting, content, compliance."
   }
 }

@@ -32,21 +32,9 @@
   },
   "history": {
     "title": "Notre Histoire",
-    "m2019_title": "Création d'AInspiration",
-    "m2019_desc": "Fondation de l'entreprise avec pour mission de démocratiser l'IA pour les PME.",
-    "m2020_title": "Lancement des premiers produits",
-    "m2020_desc": "Développement de solutions d'automatisation et d'analyse de données.",
-    "m2021_title": "Élargissement de l'offre",
-    "m2021_desc": "Introduction des assistants virtuels et des services d'IA générative.",
-    "m2022_title": "Expansion internationale",
-    "m2022_desc": "Ouverture aux marchés francophones européens : Belgique, Luxembourg et Suisse.",
-    "m2023_title": "Révolution IA générative",
-    "m2023_desc": "Lancement de notre plateforme PromptMaster et intégration des modèles GPT et Claude dans nos solutions.",
-    "m2024_title": "CRM Intelligent & Automatisation avancée",
-    "m2024_desc": "Déploiement de notre solution CRM propulsée par l'IA et automatisation des workflows métier complexes.",
-    "m2025_title": "IA Agents & Personnalisation",
-    "m2025_desc": "Lancement des agents IA autonomes et solutions d'analyse prédictive sur mesure pour chaque secteur.",
-    "m2026_title": "AInspiration - Nouvelle ère",
-    "m2026_desc": "Rebranding en AInspiration. Plateforme unifiée d'IA pour PME avec accompagnement 360° et formation certifiante."
+    "m2025_title": "Création d'AInspiration",
+    "m2025_desc": "Distr'Action lance AInspiration avec une idée simple : rendre l'IA utilisable par les PME, sans compétence technique de leur côté.",
+    "m2026_title": "Les premières réalisations en service",
+    "m2026_desc": "Seize automatisations et applications livrées et en fonctionnement : facturation, comptabilité, contenu, conformité."
   }
 }

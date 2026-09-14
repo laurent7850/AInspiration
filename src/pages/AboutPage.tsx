@@ -56,13 +56,14 @@ const AboutPage: React.FC = () => {
     }
   ];
 
+  // Cette chronologie annoncait huit ans d'histoire — creation en 2019,
+  // expansion au Luxembourg et en Suisse en 2022, plateforme « PromptMaster »
+  // en 2023 — qui n'ont pas eu lieu, et qui contredisaient le foundingDate
+  // 2025 declare dans le JSON-LD de la meme page. Retiree le 2026-09-14, dans
+  // le prolongement de la purge du 2026-08-29 : ne subsiste que ce que le site
+  // peut etayer, la date de creation et les seize realisations de 2026
+  // (src/data/realisations.ts). N'ajouter une entree que pour un fait verifiable.
   const milestones = [
-    { year: "2019", title: t('history.m2019_title'), description: t('history.m2019_desc') },
-    { year: "2020", title: t('history.m2020_title'), description: t('history.m2020_desc') },
-    { year: "2021", title: t('history.m2021_title'), description: t('history.m2021_desc') },
-    { year: "2022", title: t('history.m2022_title'), description: t('history.m2022_desc') },
-    { year: "2023", title: t('history.m2023_title'), description: t('history.m2023_desc') },
-    { year: "2024", title: t('history.m2024_title'), description: t('history.m2024_desc') },
     { year: "2025", title: t('history.m2025_title'), description: t('history.m2025_desc') },
     { year: "2026", title: t('history.m2026_title'), description: t('history.m2026_desc') }
   ];
