@@ -422,7 +422,14 @@ const SERVICE_NS = {
 // Interface chrome (buttons, placeholders, form steps) and meta already emitted
 // in <title>/<meta description> — neither belongs in the page body.
 const SKIP_LOCALE_KEY = /(placeholder|button|submit|cancel|close|back|continue|next|prev|loading|error|success|required|step\d|stepOf|\bform\b|\bnav\b|menu|aria|alt$|badge|tag$|unit$|currency|^seo\.|\.seo\.|^meta\.|\.meta\.)/i;
-const LOCALE_HEADING_KEY = /(^|\.)(title|heading|name|q)$/i;
+// Le separateur `_` compte autant que le `.` : les bundles nomment leurs titres
+// `s1_title`, `m2025_title`, `val4_title`, et la forme `\.title` seule ne les
+// voyait pas. Consequence, mesuree le 2026-09-14 : /cgv servait 4 160 caracteres
+// sans un seul titre, et la chronologie d'/a-propos ses descriptions sans leurs
+// intitules. Un mur de paragraphes se resume mal — la structure est ce qu'un
+// moteur generatif cite. `subtitle` ne matche pas (la lettre avant `title` est
+// un `b`), les sous-titres restent donc des paragraphes, ce qui est voulu.
+const LOCALE_HEADING_KEY = /(^|\.|_)(title|heading|name|q)$/i;
 // « Dernière mise à jour : 17 mars 2026 » fait 35 caractères et tombait sous le
 // plancher des 40 : les CGV et les CGU servaient leur texte sans jamais servir
 // leur date, la seule que le site possède pour ces pages. Les moteurs
