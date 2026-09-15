@@ -11,15 +11,16 @@ module.exports = function register(ctx) {
     app,
     chatLimiter,
     formLimiter,
+    ingestLimiter,
     pool,
     rejectHoneypot,
     requireAuth,
     requireConsent,
-    uuidv4,
     webhookLimiter
   } = ctx;
 
   const nodeCrypto = require('crypto');
+  const { ingestContact, IngestError } = require('../ingest');
 
 // ==================== WEBHOOK PASSTHROUGH (n8n) ====================
 
@@ -80,17 +81,18 @@ app.post('/api/webhook/contact', webhookLimiter, formLimiter, rejectHoneypot, re
 
 // ==================== INGEST CRM (n8n → CRM) ====================
 //
-// Point d'entrée unique des prospects. Les formulaires de contact, le pipeline
-// d'audit gratuit et la newsletter écrivaient jusqu'ici dans Gmail : le prospect
-// n'existait nulle part et rien ne pouvait être relancé ni compté.
+// Point d'entrée des prospects venus des formulaires. Les formulaires de
+// contact et le pipeline d'audit gratuit écrivaient jusqu'ici dans Gmail : le
+// prospect n'existait nulle part et rien ne pouvait être relancé ni compté.
 //
 // Authentification par secret partagé (en-tête x-ingest-secret), pas par JWT :
 // l'appelant est un workflow n8n, pas un humain. Le secret vient de
 // INGEST_SECRET côté backend ; s'il n'est pas défini, l'endpoint refuse tout
 // (fermé par défaut — jamais ouvert par omission de configuration).
 //
-// Les fiches créées appartiennent TOUJOURS à l'administrateur, jamais au compte
-// démo : c'est ce qui les rend invisibles depuis la démo publique.
+// La création elle-même vit dans ingest.js, partagée avec la confirmation du
+// double opt-in newsletter. Les fiches appartiennent TOUJOURS à
+// l'administrateur, jamais au compte démo.
 
 function ingestAuthorized(req) {
   const expected = process.env.INGEST_SECRET;
@@ -102,7 +104,7 @@ function ingestAuthorized(req) {
   return nodeCrypto.timingSafeEqual(a, b);
 }
 
-app.post('/api/ingest/contact', webhookLimiter, async (req, res) => {
+app.post('/api/ingest/contact', ingestLimiter, async (req, res) => {
   if (!ingestAuthorized(req)) {
     if (!process.env.INGEST_SECRET) {
       console.error('[INGEST] INGEST_SECRET absent du backend — endpoint fermé.');
@@ -110,100 +112,17 @@ app.post('/api/ingest/contact', webhookLimiter, async (req, res) => {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  const {
-    first_name, last_name, email, phone,
-    job_title, company_name, source, notes
-  } = req.body || {};
-
-  if (!email || typeof email !== 'string' || !email.includes('@')) {
-    return res.status(400).json({ error: 'email requis' });
-  }
-
-  const client = await pool.connect();
   try {
-    await client.query('BEGIN');
-
-    const adminRes = await client.query(
-      `SELECT id FROM users WHERE email = 'admin@ainspiration.eu'
-       UNION ALL SELECT id FROM users WHERE role = 'admin' ORDER BY 1 LIMIT 1`
-    );
-    const adminId = adminRes.rows[0]?.id;
-    if (!adminId) {
-      await client.query('ROLLBACK');
+    const { created, contactId, companyId } = await ingestContact(pool, req.body || {});
+    res.status(created ? 201 : 200).json({ created, contact_id: contactId, company_id: companyId });
+  } catch (error) {
+    if (error instanceof IngestError) {
+      if (error.code === 'invalid_email') return res.status(400).json({ error: 'email requis' });
       console.error('[INGEST] Aucun utilisateur administrateur — fiche non créée.');
       return res.status(500).json({ error: 'No owner available' });
     }
-
-    // Société : réutilisée si elle existe déjà chez le même propriétaire.
-    let companyId = null;
-    if (company_name && String(company_name).trim()) {
-      const name = String(company_name).trim();
-      const found = await client.query(
-        'SELECT id FROM companies WHERE LOWER(name) = LOWER($1) AND owner_id = $2 LIMIT 1',
-        [name, adminId]
-      );
-      if (found.rows.length) {
-        companyId = found.rows[0].id;
-      } else {
-        companyId = uuidv4();
-        await client.query(
-          `INSERT INTO companies (id, name, status, owner_id) VALUES ($1,$2,'active',$3)`,
-          [companyId, name, adminId]
-        );
-      }
-    }
-
-    // Contact : idempotent sur l'email. Un même prospect qui remplit deux
-    // formulaires met sa fiche à jour, il n'en crée pas une deuxième.
-    const existing = await client.query(
-      'SELECT id FROM contacts WHERE LOWER(email) = LOWER($1) AND owner_id = $2 LIMIT 1',
-      [email, adminId]
-    );
-
-    let contactId;
-    let created;
-    if (existing.rows.length) {
-      contactId = existing.rows[0].id;
-      created = false;
-      await client.query(
-        `UPDATE contacts SET
-           first_name = COALESCE(NULLIF($1,''), first_name),
-           last_name  = COALESCE(NULLIF($2,''), last_name),
-           phone      = COALESCE(NULLIF($3,''), phone),
-           job_title  = COALESCE(NULLIF($4,''), job_title),
-           company_id = COALESCE($5, company_id),
-           notes      = CONCAT_WS(E'\\n', notes, NULLIF($6,'')),
-           updated_at = NOW()
-         WHERE id = $7`,
-        [first_name || '', last_name || '', phone || '', job_title || '', companyId, notes || '', contactId]
-      );
-    } else {
-      contactId = uuidv4();
-      created = true;
-      await client.query(
-        `INSERT INTO contacts (id, first_name, last_name, email, phone, job_title, company_id, notes, status, owner_id)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,'active',$9)`,
-        [contactId, first_name || null, last_name || null, email, phone || null,
-         job_title || null, companyId, notes || null, adminId]
-      );
-    }
-
-    await client.query(
-      `INSERT INTO activities (id, user_id, type, description, entity_type, entity_id)
-       VALUES ($1,$2,$3,$4,'contact',$5)`,
-      [uuidv4(), adminId, created ? 'contact_created' : 'contact_updated',
-       `${created ? 'Nouveau contact' : 'Contact mis à jour'} via ${source || 'ingest'} : ${email}`,
-       contactId]
-    );
-
-    await client.query('COMMIT');
-    res.status(created ? 201 : 200).json({ created, contact_id: contactId, company_id: companyId });
-  } catch (error) {
-    await client.query('ROLLBACK').catch(() => {});
     console.error('[INGEST] Échec de création du contact:', error.message);
     res.status(500).json({ error: 'Internal server error' });
-  } finally {
-    client.release();
   }
 });
 

@@ -21,6 +21,8 @@ module.exports = function register(ctx) {
     validateUuidParam
   } = ctx;
 
+  const { ingestContact } = require('../ingest');
+
 // ==================== NEWSLETTER SUBSCRIBERS ====================
 
 app.get('/api/newsletter-subscribers', requireAuth, async (req, res) => {
@@ -146,24 +148,47 @@ app.get('/api/newsletter-subscribers/confirm', async (req, res) => {
   const { token } = req.query;
   let status = 'invalid';
   let lang = 'fr';
+  let confirmed = null;
   try {
     if (token && typeof token === 'string' && token.length <= 100) {
       const r = await pool.query(
         `UPDATE newsletter_subscribers
          SET status='subscribed', subscribed_at=NOW(), confirmed_at=NOW(), confirm_token=NULL, unsubscribed_at=NULL
          WHERE confirm_token = $1 AND status = 'pending'
-         RETURNING language`,
+         RETURNING language, email, first_name, last_name`,
         [token]
       );
       if (r.rows.length > 0) {
         status = 'ok';
         if (['fr', 'en', 'nl'].includes(r.rows[0].language)) lang = r.rows[0].language;
+        confirmed = r.rows[0];
       }
     }
   } catch (error) {
     console.error('Error confirming subscriber:', error);
     status = 'error';
   }
+
+  // La fiche CRM naît ici et NULLE PART AILLEURS : le double opt-in n'a de sens
+  // que si rien n'est créé avant la confirmation. Le workflow n8n
+  // Mi8VlalnAIyx6bre s'exécute à l'inscription — il ne doit donc jamais porter
+  // cet appel.
+  //
+  // Hors du try : l'abonnement est déjà acquis et l'abonné attend sa page. Un
+  // CRM en panne ne doit ni perdre la confirmation, ni retarder la redirection.
+  if (confirmed) {
+    try {
+      await ingestContact(pool, {
+        email: confirmed.email,
+        first_name: confirmed.first_name,
+        last_name: confirmed.last_name,
+        source: 'newsletter'
+      });
+    } catch (e) {
+      console.error('[INGEST] Fiche CRM non créée pour un abonné confirmé:', e.message);
+    }
+  }
+
   res.redirect(302, `${langPrefix(lang)}/newsletter-confirmee?status=${status}`);
 });
 

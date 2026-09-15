@@ -106,6 +106,18 @@ const webhookLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+// Ingestion CRM : appelée par les workflows n8n, tous sortant de la MÊME IP
+// (le VPS). Le quota de webhookLimiter (10/min) serait partagé par les cinq
+// flux et sauterait sur une simple rafale. L'appelant est authentifié par
+// secret partagé, pas anonyme : une limite propre, plus large, mais bornée
+// pour qu'un secret fuité ne puisse pas inonder la base.
+const ingestLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 60,
+  message: { error: 'Too many ingest calls.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 // SECURITY: public form submissions (contact, audit, newsletter) get a strict
 // per-IP hourly cap on top of the per-minute limiters — a script must not be
 // able to fill contact_messages or burn n8n/LLM budget (baseline "Rate limiting").
@@ -921,6 +933,7 @@ const ctx = {
   formLimiter,
   getTokenFromRequest,
   helmet,
+  ingestLimiter,
   jwt,
   langPrefix,
   lastDemoActivity,
