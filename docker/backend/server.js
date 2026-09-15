@@ -606,10 +606,16 @@ function validateBody(schema) {
 }
 
 // UUID param check — apply on routes with :id (or :slug for blog).
+// `guid()` et non `uuid()` : depuis Zod 4, `uuid()` exige un UUID conforme à la
+// RFC (chiffre de version et variant corrects), et refuse donc tous les
+// identifiants « décoratifs » du jeu de démonstration — c0000000-…, d0000000-…,
+// f0000000-…. Toute fiche de la démo publique répondait 400, y compris depuis
+// l'interface. L'intention ici est de rejeter ce qui n'est pas un identifiant
+// bien formé, pas d'imposer la version 4 : c'est exactement `guid()`.
 function validateUuidParam(name = 'id') {
   return (req, res, next) => {
     const v = req.params[name];
-    if (!z.string().uuid().safeParse(v).success) {
+    if (!z.string().guid().safeParse(v).success) {
       return res.status(400).json({ error: `Invalid ${name} format (UUID expected)` });
     }
     next();
@@ -618,7 +624,9 @@ function validateUuidParam(name = 'id') {
 
 // Reusable building blocks
 const zEmail = z.string().email().max(254).transform(s => s.toLowerCase().trim());
-const zUuid = z.string().uuid();
+// Même raison que validateUuidParam : les identifiants du seed de démonstration
+// ne sont pas des UUID v4 conformes, et Zod 4 les refuserait.
+const zUuid = z.string().guid();
 const zUuidNullable = z.union([zUuid, z.literal(''), z.null()]).transform(v => v || null).optional().nullable();
 const zShortText = (max) => z.string().max(max).transform(s => s.trim());
 const zOptText = (max) => z.union([z.string().max(max), z.null(), z.literal('')]).transform(v => (v == null || v === '') ? null : v.trim()).optional().nullable();
