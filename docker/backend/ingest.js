@@ -105,6 +105,10 @@ async function ingestContact(pool, payload = {}) {
       created = false;
       // `source` garde la PREMIÈRE provenance connue : c'est celle qui répond à
       // « d'où vient ce prospect ». Les passages suivants n'écrasent rien.
+      //
+      // Les notes ne sont ajoutées que si elles n'y figurent pas déjà : l'endpoint
+      // est idempotent, un même formulaire renvoyé deux fois ne doit pas recopier
+      // son message à la suite. Un message réellement différent, lui, s'ajoute.
       await client.query(
         `UPDATE contacts SET
            first_name = COALESCE(NULLIF($1,''), first_name),
@@ -113,7 +117,12 @@ async function ingestContact(pool, payload = {}) {
            job_title  = COALESCE(NULLIF($4,''), job_title),
            company_id = COALESCE($5, company_id),
            source     = COALESCE(source, NULLIF($6,'')),
-           notes      = CONCAT_WS(E'\\n', notes, NULLIF($7,'')),
+           notes      = CASE
+                          WHEN NULLIF($7,'') IS NULL THEN notes
+                          WHEN notes IS NULL OR notes = '' THEN $7
+                          WHEN POSITION($7 IN notes) > 0 THEN notes
+                          ELSE CONCAT_WS(E'\\n', notes, $7)
+                        END,
            updated_at = NOW()
          WHERE id = $8`,
         [firstName, lastName, phone, jobTitle, companyId, source, notes, contactId]
