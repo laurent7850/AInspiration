@@ -54,7 +54,7 @@ const ContactsReport: React.FC = () => {
     { key: 'job_title', label: 'Fonction' },
     { key: 'company_name', label: 'Entreprise' },
     { key: 'status', label: 'Statut' },
-    { key: 'lead_source', label: 'Source' },
+    { key: 'source', label: 'Source' },
     { key: 'created_at', label: 'Date de création' }
   ];
   
@@ -171,8 +171,8 @@ const ContactsReport: React.FC = () => {
   // Group by lead source
   const leadSources: Record<string, number> = {};
   filteredContacts.forEach(contact => {
-    if (contact.lead_source) {
-      leadSources[contact.lead_source] = (leadSources[contact.lead_source] || 0) + 1;
+    if (contact.source) {
+      leadSources[contact.source] = (leadSources[contact.source] || 0) + 1;
     }
   });
   
@@ -322,7 +322,7 @@ const ContactsReport: React.FC = () => {
                     )}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{contact.lead_source || '-'}</div>
+                    <div className="text-sm text-gray-900">{contact.source || '-'}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-900">{formatDate(contact.created_at)}</div>

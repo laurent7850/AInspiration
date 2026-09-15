@@ -167,7 +167,7 @@ Composant React
 
 | Service | Endpoints API | Utilisé par |
 |---------|---------------|-------------|
-| contactService | `/contacts`, `/contacts/:id`, `/contacts/search`, `/contacts/stats` | ContactList, ContactDetail, ContactForm, DashboardView |
+| contactService | `/contacts`, `/contacts/:id` | ContactList, ContactDetail, ContactForm, DashboardView |
 | companyService | `/companies`, `/companies/:id`, `/companies/search`, `/companies/stats` | CompanyList, CompanyDetail, CompanyForm |
 | opportunityService | `/opportunities`, `/opportunities/:id` | OpportunityList, OpportunityKanban, OpportunityDetail |
 | productService | `/products`, `/products/:id` | ProductList, ProductDetail, ProductForm |
@@ -272,6 +272,35 @@ n'est pas cloisonné est donc lisible par n'importe quel visiteur.
   `owner_id` sur trois tables qui ne l'ont pas encore — déployer d'abord = 500 partout.
 - **Test de non-régression manuel :** créer une fiche depuis le compte admin, se
   connecter en démo, vérifier qu'elle est invisible.
+
+### Ingestion des prospects (15/09/2026)
+
+Avant cette date, les formulaires n'écrivaient que dans Gmail : le prospect n'existait
+nulle part et rien ne pouvait être relancé ni compté.
+
+- **`docker/backend/ingest.js`** porte la création de fiche, partagée par deux appelants.
+  Fichier backend, donc **présent dans `files.txt`** — sans quoi le conteneur ne démarre pas.
+- **`POST /api/ingest/contact`** (dans `routes/webhooks.js`) : authentifié par l'en-tête
+  `x-ingest-secret` comparé en temps constant, **fermé par défaut** si `INGEST_SECRET` est
+  absent de l'environnement. Idempotent sur l'email, insensible à la casse. 201 fiche créée,
+  200 fiche mise à jour, 400 email invalide, 401 secret absent ou faux. Quatre workflows n8n
+  l'appellent (formulaires AInspiration, Distr'Action, Audityo, audit gratuit).
+- **La newsletter n'y passe pas par n8n.** La fiche naît dans le handler
+  `GET /api/newsletter-subscribers/confirm`, jamais avant : le workflow n8n
+  `Mi8VlalnAIyx6bre` s'exécute à l'**inscription**, y placer l'appel créerait une fiche sur
+  un consentement non confirmé. L'appel est hors du `try` principal et dans le sien —
+  l'abonnement est déjà acquis, un CRM en panne ne doit ni le perdre ni retarder la
+  redirection.
+- **Les fiches appartiennent toujours à l'administrateur**, jamais au compte démo : c'est ce
+  qui les rend invisibles depuis la démo publique.
+- **`source` (migration-006) est la provenance**, affichée dans la liste et la fiche contact,
+  et alimentant `LeadSourceChart`. Sur une fiche existante, l'ingestion conserve la
+  **première** provenance connue ; `PUT /api/contacts/:id` la protège par `COALESCE`, un
+  client qui ne l'envoie pas ne l'efface pas. Elle s'appelait `lead_source` côté frontend,
+  sans colonne correspondante : le champ, le graphique et le rapport étaient morts depuis
+  toujours.
+- **Les notes ne sont ajoutées que si elles n'y figurent pas déjà.** Sans cela, un prospect
+  qui soumet trois fois le même formulaire voit son message recopié trois fois.
 
 ---
 

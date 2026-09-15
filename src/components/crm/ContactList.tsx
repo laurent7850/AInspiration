@@ -61,7 +61,8 @@ const ContactList: React.FC<ContactListProps> = ({ onCreateNew, onEditContact })
           (c.email?.toLowerCase() || '').includes(term) ||
           (c.phone?.toLowerCase() || '').includes(term) ||
           (c.job_title?.toLowerCase() || '').includes(term) ||
-          (c.company_name?.toLowerCase() || '').includes(term),
+          (c.company_name?.toLowerCase() || '').includes(term) ||
+          (c.source?.toLowerCase() || '').includes(term),
       );
     }
     return result;
@@ -246,6 +247,7 @@ const ContactList: React.FC<ContactListProps> = ({ onCreateNew, onEditContact })
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Téléphone</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Entreprise</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fonction</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Provenance</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
               </tr>
@@ -303,6 +305,15 @@ const ContactList: React.FC<ContactListProps> = ({ onCreateNew, onEditContact })
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-500">{contact.job_title || '-'}</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {contact.source ? (
+                      <span className="px-2 py-1 inline-flex text-xs leading-5 font-medium rounded-full bg-indigo-50 text-indigo-700">
+                        {contact.source}
+                      </span>
+                    ) : (
+                      <span className="text-sm text-gray-400">-</span>
+                    )}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {contact.status ? (

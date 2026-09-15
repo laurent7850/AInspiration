@@ -38,11 +38,11 @@ const DEFAULT_COLORS = [
 const LeadSourceChart: React.FC<LeadSourceChartProps> = ({ contacts }) => {
   // Derived from props, not stored in state
   const sourceData = useMemo<SourceData[]>(() => {
-    // Count contacts by lead_source
+    // Count contacts by source
     const sourceCounts: Record<string, number> = {};
 
     contacts.forEach(contact => {
-      const source = contact.lead_source || 'Unknown';
+      const source = contact.source || 'Unknown';
       sourceCounts[source] = (sourceCounts[source] || 0) + 1;
     });
 

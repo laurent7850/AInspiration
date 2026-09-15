@@ -191,12 +191,12 @@ app.get('/api/contacts/:id', requireAuth, validateUuidParam(), async (req, res) 
 
 app.post('/api/contacts', requireAuth, validateBody(schemas.contact), async (req, res) => {
   try {
-    const { first_name, last_name, email, phone, job_title, company_id, notes, status } = req.body;
+    const { first_name, last_name, email, phone, job_title, company_id, notes, source, status } = req.body;
     const id = uuidv4();
     const result = await pool.query(
-      `INSERT INTO contacts (id, first_name, last_name, email, phone, job_title, company_id, notes, status, owner_id)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
-      [id, first_name, last_name, email, phone, job_title, company_id, notes, status || 'active', req.user.id]
+      `INSERT INTO contacts (id, first_name, last_name, email, phone, job_title, company_id, notes, source, status, owner_id)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`,
+      [id, first_name, last_name, email, phone, job_title, company_id, notes, source || null, status || 'active', req.user.id]
     );
     res.status(201).json(result.rows[0]);
   } catch (error) {
@@ -208,13 +208,18 @@ app.post('/api/contacts', requireAuth, validateBody(schemas.contact), async (req
 app.put('/api/contacts/:id', requireAuth, validateUuidParam(), validateBody(updateSchemas.contact), async (req, res) => {
   try {
     const { id } = req.params;
-    const { first_name, last_name, email, phone, job_title, company_id, notes, status } = req.body;
+    const { first_name, last_name, email, phone, job_title, company_id, notes, source, status } = req.body;
     const owner = ownerScope(req);
+    // `source` est le seul champ protégé par COALESCE : un client qui ne l'envoie
+    // pas (l'API, un script) ne doit pas effacer en silence la provenance posée
+    // par l'ingestion, qui est irrécupérable une fois perdue. Une chaîne vide
+    // l'efface donc explicitement, son absence la conserve.
     const result = await pool.query(
       `UPDATE contacts SET first_name=$1, last_name=$2, email=$3, phone=$4, job_title=$5,
-       company_id=$6, notes=$7, status=$8, updated_at=NOW()
-       WHERE id=$9 AND ($10::uuid IS NULL OR owner_id = $10) RETURNING *`,
-      [first_name, last_name, email, phone, job_title, company_id, notes, status, id, owner]
+       company_id=$6, notes=$7, source=COALESCE($8, source), status=$9, updated_at=NOW()
+       WHERE id=$10 AND ($11::uuid IS NULL OR owner_id = $11) RETURNING *`,
+      [first_name, last_name, email, phone, job_title, company_id, notes,
+       source === undefined ? null : source, status, id, owner]
     );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Contact not found' });
     res.json(result.rows[0]);

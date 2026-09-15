@@ -37,7 +37,7 @@ const initialContact: Omit<Contact, 'id' | 'created_at' | 'updated_at' | 'user_i
   job_title: '',
   company_id: undefined,
   status: 'lead',
-  lead_source: undefined,
+  source: undefined,
   notes: undefined,
   assigned_to: undefined,
   address_street: undefined,
@@ -335,14 +335,14 @@ const ContactForm: React.FC<ContactFormProps> = ({ contactId, onClose, onSaved }
 
             {/* Lead Source */}
             <div>
-              <label htmlFor="lead_source" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="source" className="block text-sm font-medium text-gray-700 mb-1">
                 Source
               </label>
               <input
                 type="text"
-                id="lead_source"
-                name="lead_source"
-                value={contact.lead_source || ''}
+                id="source"
+                name="source"
+                value={contact.source || ''}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Ex: Site web, Référence, LinkedIn..."

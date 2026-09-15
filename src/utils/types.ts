@@ -30,7 +30,7 @@ export interface Contact {
   job_title?: string;
   company_id?: string;
   status?: string;
-  lead_source?: string;
+  source?: string;
   notes?: string;
   assigned_to?: string;
   created_at?: string;

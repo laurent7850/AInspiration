@@ -643,6 +643,9 @@ const schemas = {
     job_title: zOptText(150),
     company_id: zUuidNullable,
     notes: zOptText(5000),
+    // Provenance du prospect : saisie à la main dans le CRM, ou posée par
+    // l'ingestion (formulaire-*, audit-gratuit, newsletter). Voir ingest.js.
+    source: zOptText(100),
     status: z.enum(['active', 'inactive', 'archived']).optional(),
   }),
   company: z.object({
