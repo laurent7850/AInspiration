@@ -302,6 +302,48 @@ nulle part et rien ne pouvait être relancé ni compté.
 - **Les notes ne sont ajoutées que si elles n'y figurent pas déjà.** Sans cela, un prospect
   qui soumet trois fois le même formulaire voit son message recopié trois fois.
 
+### Surveillance des parcours métier (15/09/2026)
+
+Quatre pannes majeures ont été découvertes en deux jours, **toutes par hasard, aucune
+signalée par le système** : formulaire de contact d'Audityo muet depuis deux semaines,
+auto-blog et newsletter muets depuis une semaine (jeton invalidé par la rotation du 8/09),
+toutes les fiches de la démonstration en 400 après une montée de version de Zod,
+intégration continue rouge pendant 24 h. Le contrôle hebdomadaire existant ne vérifiait
+que la réponse des pages — un 200 ne prouve rien.
+
+Workflow n8n **« AInspiration — Surveillance parcours métier »** (`ydW4SMHaeQQ58O4v`),
+tous les jours à 6h15, rattaché à l'`Error trigger` (`qoHCxT04kuGtqRf7`).
+
+Six contrôles, en série, chacun en `continueRegularOutput` pour que le verdict voie tout :
+
+| Contrôle | Attendu | Détecte |
+|---|---|---|
+| Sonde d'ingestion | 200/201 | la chaîne d'écriture du CRM est rompue |
+| Relecture de la fiche | 200 + `updated_at` du jour | l'écriture n'a pas persisté |
+| Secret d'ingestion (corps invalide) | **400** | `INGEST_SECRET` tourné sans être propagé |
+| Jeton CRM | 200 | le jeton de l'auto-blog et de la newsletter est mort |
+| Fraîcheur du contenu | < 10 jours | la chaîne éditoriale est à l'arrêt |
+| Liens d'articles dans le **HTML brut** | ≥ 5 | régression SEO invisible en HTTP 200 |
+
+Points à ne pas défaire :
+
+- **La fiche de sonde ne doit pas être supprimée.** `sonde-parcours@surveillance.ainspiration.eu`,
+  `source = sonde-surveillance`. L'ingestion étant idempotente sur l'email, il n'y en aura
+  jamais qu'une : c'est elle qui prouve que la chaîne écrit réellement en base.
+- **Un 400 attendu vaut succès** sur le contrôle du secret : c'est la preuve que
+  l'authentification passe alors que le corps est refusé. Un 401 est l'alerte.
+- **Avec `responseFormat: 'text'`, n8n place le corps dans `data`, pas dans `body`.** Lire
+  la mauvaise clé donnait 0 lien et une fausse alerte SEO quotidienne.
+- **Silence quand tout va bien, sauf un signe de vie le lundi.** Un moniteur mort en
+  silence reproduit exactement le défaut qu'il est censé détecter — l'absence de message
+  le lundi est donc elle-même une alerte.
+- Le webhook de déclenchement manuel est **temporaire** : l'ajouter pour tester, le retirer
+  ensuite. Laissé en place, il permettrait à quiconque de déclencher la sonde et les mails.
+
+Pour ajouter un contrôle : un nœud HTTP avec `fullResponse` + `neverError` (pour lire le
+code de statut sans faire échouer la chaîne), inséré dans la série, puis une branche dans
+le nœud `Verdict` qui empile un message dans `echecs` ou dans `ok`.
+
 ---
 
 ## Analytics — trafic local envoyé en production (13/08/2026)

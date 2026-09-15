@@ -64,3 +64,4 @@ scripts/demo/out/
 # Local Claude Code permission settings are per machine, never shared
 .claude/settings.local.json
 **/.claude/settings.local.json
+.vitest/
