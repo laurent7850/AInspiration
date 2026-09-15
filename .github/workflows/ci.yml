@@ -92,7 +92,11 @@ jobs:
       - name: Schema — same sequence as the production bootstrap
         run: |
           sudo apt-get install -y -qq postgresql-client > /dev/null
-          for f in ../init.sql migration-001-align-schema.sql migration-002-linkedin.sql migration-003-multitenant.sql migration-004-newsletter-double-optin.sql; do
+          # Les migrations sont découvertes, jamais énumérées à la main : une liste
+          # en dur s'oublie, et le schéma du CI diverge alors de celui de la
+          # production en silence — c'est ce qui est arrivé aux migrations 005 et
+          # 006. L'ordre lexicographique est l'ordre d'application (migration-NNN-).
+          for f in ../init.sql $(ls migration-*.sql | LC_ALL=C sort); do
             echo "== $f"; psql -h 127.0.0.1 -U ainspiration -d ainspiration -v ON_ERROR_STOP=0 -q -f "$f" || true
           done
       - run: npm ci --omit=dev --no-audit --no-fund
