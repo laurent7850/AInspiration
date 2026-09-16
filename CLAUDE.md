@@ -358,6 +358,36 @@ nulle part et rien ne pouvait être relancé ni compté.
 - **Les notes ne sont ajoutées que si elles n'y figurent pas déjà.** Sans cela, un prospect
   qui soumet trois fois le même formulaire voit son message recopié trois fois.
 
+### Antislashes parasites — pourquoi les traductions EN/NL échouaient (16/09/2026)
+
+Le modèle échappe parfois ses guillemets et apostrophes **à l'intérieur du HTML** qu'il
+produit : `href=\"...\"`, `aujourd'hui`. Un seul défaut, deux dégâts :
+
+1. les antislashes s'affichent tels quels sur la page publiée ;
+2. recopiés dans le prompt de traduction, ils font produire au traducteur un **JSON
+   malformé** — `Parser EN` et `Parser NL` lèvent, et il n'y a plus ni version anglaise
+   ni version néerlandaise.
+
+**Ne pas confondre avec une troncature.** Le 16/09, la traduction était complète
+(`finish_reason: 'stop'`, 1915 tokens sur 8000 autorisés) et pourtant impossible à parser.
+Augmenter `max_tokens` — le réflexe, déjà appliqué le 01/09 — ne corrige rien ici.
+
+Correctif à la source dans `Parser FR` : `a.content.replace(/\+(["'])/g, '$1')`, avant
+tout autre traitement. Une seule fois, pour les trois langues.
+
+Deux articles sur 95 étaient touchés (un d'avril, un du 16/09), nettoyés en base.
+
+**Pour nettoyer ce genre de chose, utiliser `split/join`, jamais une expression régulière
+écrite au travers d'un tube shell.** Le motif `/\+(["'])/` traverse le heredoc local,
+ssh, le heredoc distant et `docker exec` : il y arrive mangé, et le script rapporte
+tranquillement « 0 nettoyé » alors que deux articles étaient à corriger. Voir aussi
+[[patch-scripts-dollar-trap]].
+
+**Et pour compter des balises dans le HTML brut : `grep -o '<h2' | wc -l`, pas
+`grep -c '<h2>'`.** Le second compte des LIGNES contenant exactement cette chaîne — sur un
+HTML d'une seule ligne avec des attributs, il renvoie 1 et fait croire à une régression SEO
+inexistante.
+
 ### Mesure du blog — ce que valent réellement les articles (16/09/2026)
 
 Pendant six mois, on a produit sans jamais mesurer. Le seul contrôle existant vérifiait
