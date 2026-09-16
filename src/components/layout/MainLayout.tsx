@@ -11,7 +11,6 @@ import WhatsAppButton from '../WhatsAppButton';
 
 // Deferred: not needed for initial render
 const ChatbotN8n = lazy(() => import('../ChatbotN8n'));
-const PopupNewsletter = lazy(() => import('../PopupNewsletter'));
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -56,9 +55,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <CookieBanner />
       <Suspense fallback={null}>
         <ChatbotN8n />
-      </Suspense>
-      <Suspense fallback={null}>
-        <PopupNewsletter />
       </Suspense>
       <WhatsAppButton />
       <NotificationToast />

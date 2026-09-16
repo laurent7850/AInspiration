@@ -2,7 +2,6 @@ import React from 'react';
 import { Mail, Phone, MapPin, CalendarDays } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import Newsletter from './Newsletter';
 import { env } from '../config/environment';
 import { useLocalizedPath } from '../hooks/useLocalizedPath';
 
@@ -128,11 +127,6 @@ export default function Footer() {
               )}
             </address>
           </div>
-        </div>
-
-        {/* Newsletter */}
-        <div className="max-w-md mx-auto mb-12">
-          <Newsletter />
         </div>
 
         <div className="border-t border-line pt-8">

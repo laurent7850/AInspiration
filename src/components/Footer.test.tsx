@@ -2,7 +2,10 @@ import { describe, it, expect, vi } from 'vitest';
 import { renderWithProviders, screen } from '../test/test-utils';
 import Footer from './Footer';
 
-// Mock Newsletter to isolate Footer tests
+// La newsletter a ete retiree du pied de page le 16/09/2026 : zero abonne actif
+// et zero envoi en neuf mois, face a un appel a l'action bien plus fort sur la
+// meme page (l'audit gratuit, qui alimente le CRM). Le mock reste en place pour
+// que le test ci-dessous constate une ABSENCE et non un import manquant.
 vi.mock('./Newsletter', () => ({
   default: () => <div data-testid="newsletter-mock">Newsletter</div>,
 }));
@@ -46,9 +49,9 @@ describe('Footer', () => {
     expect(screen.getByText(new RegExp(`© ${year}`))).toBeInTheDocument();
   });
 
-  it('should render Newsletter component', () => {
+  it('ne propose plus la newsletter dans le pied de page', () => {
     renderWithProviders(<Footer />);
-    expect(screen.getByTestId('newsletter-mock')).toBeInTheDocument();
+    expect(screen.queryByTestId('newsletter-mock')).not.toBeInTheDocument();
   });
 
   it('should render feature links', () => {
