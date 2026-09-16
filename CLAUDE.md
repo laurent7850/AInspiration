@@ -358,6 +358,59 @@ nulle part et rien ne pouvait être relancé ni compté.
 - **Les notes ne sont ajoutées que si elles n'y figurent pas déjà.** Sans cela, un prospect
   qui soumet trois fois le même formulaire voit son message recopié trois fois.
 
+### Mesure du blog — ce que valent réellement les articles (16/09/2026)
+
+Pendant six mois, on a produit sans jamais mesurer. Le seul contrôle existant vérifiait
+qu'un article avait été **publié**, pas qu'il avait été **lu**.
+
+Les chiffres, lus dans la base SEOPilot (Search Console + GA4 y sont connectés pour
+`ainspiration.eu`, site `cmmci6qe70008yktie4k880i5`) :
+
+| | |
+|---|---|
+| Articles publiés (31 sujets × 3 langues) | 93 |
+| Mots-clés positionnés | 18 |
+| Impressions (fenêtre GSC) | 41 |
+| Clics | 1 |
+| Position moyenne | 41 |
+
+- **Les sujets du blog ne se positionnent pas** : « prompt ia », « ia prompts »,
+  « bibliothèque de prompts » sortaient en position 60 à 71.
+- **Les termes commerciaux, eux, sont en page 1-2** : « audit stratégie intelligence
+  artificielle pour pme » (9), « audit ia gratuit » (11), « audit ia pme » (11). Ce sont
+  les pages de service qui les portent, pas les articles.
+- **Le blog n'est indexable que depuis le 13/08/2026** (correctif du rendu serveur). Toute
+  donnée antérieure ne veut rien dire, et il n'a donc eu qu'un mois de chance réelle.
+
+Décisions prises le 16/09 :
+
+1. **Pool de sujets réécrit** dans `Jour de publication ?` de l'auto-blog, vers le terrain
+   gagnable : audit IA, PME, Hainaut, Bruxelles, Belgique, conformité EU AI Act. Fini les
+   généralités mondiales sur des termes sans autorité.
+2. **Fenêtre de décision datée : fin novembre 2026**, soit trois mois pleins
+   d'indexabilité. Critère fixé **d'avance** pour ne pas déplacer la barre après coup :
+   **500 impressions et 15 clics sur 28 jours**. En dessous, changer de format ou arrêter.
+3. **Trois langues conservées** (décision de Laurent), malgré des termes anglais accrochés
+   sans valeur commerciale (« ai aspiration », « automating your invoices in talentia »).
+
+**Rapport mensuel automatique** — workflow n8n « AInspiration — Rapport SEO mensuel »
+(`3q20oRVZK1YGGV6f`), alimenté par `/root/seo-monthly-report.sh` sur le VPS (cron le 1er du
+mois à 7h, log dans `/var/log/seo-monthly-report.log`).
+
+- **Pourquoi un script sur l'hôte et non un nœud n8n** : `seopilot-postgres` vit sur le
+  réseau `autoseo_seopilot_default`, n8n sur `root_default` — n8n ne peut pas le joindre.
+  Le `docker exec` depuis l'hôte n'exige aucun mot de passe, ce qui évite en prime de
+  recopier une credential de base dans n8n.
+- **Le secret d'authentification n'est stocké qu'à un seul endroit** : le script relit
+  `SEOPILOT_WEBHOOK_SECRET` dans le conteneur n8n **à l'exécution**. Il n'apparaît ni dans
+  le script, ni dans le cron, ni dans une credential dupliquée.
+- **Un secret faux arrête le workflow en silence (`return []`), il ne lève pas.** Le
+  webhook répond 200 avant que le contrôle ne tourne (`responseMode: onReceived`) : il est
+  donc appelable par n'importe qui. Si un secret faux levait une erreur, chaque appel
+  déclencherait l'`Error trigger` et donc un mail — la porte resterait fermée, mais la
+  sonnette deviendrait un outil de harcèlement. Un secret **absent de n8n**, en revanche,
+  lève : c'est une faute de configuration qu'il faut voir.
+
 ### Surveillance des parcours métier (15/09/2026)
 
 Quatre pannes majeures ont été découvertes en deux jours, **toutes par hasard, aucune
