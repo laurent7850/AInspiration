@@ -16,6 +16,7 @@ module.exports = function register(ctx) {
     pool,
     publicBlogRow,
     requireAuth,
+    requireAuthOrService,
     resolveBlogCategory,
     schemas,
     updateSchemas,
@@ -117,7 +118,10 @@ app.get('/api/publications/check', requireAuth, async (req, res) => {
   }
 });
 
-app.post('/api/blog-posts', requireAuth, validateBody(schemas.blogPost), async (req, res) => {
+// Publication : JWT (saisie humaine, AutoSEO) OU secret de service (auto-blog
+// n8n). Voir requireAuthOrService dans server.js — cette route n'est pas scopee
+// par proprietaire, le secret n'y gagne donc aucune portee implicite.
+app.post('/api/blog-posts', requireAuthOrService, validateBody(schemas.blogPost), async (req, res) => {
   try {
     const { title, slug, excerpt, content, status, language } = req.body;
     if (!slug) return res.status(400).json({ error: 'slug is required' });

@@ -8,6 +8,7 @@ const { v4: uuidv4 } = require('uuid');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { z } = require('zod');
+const nodeCrypto = require('crypto');
 require('dotenv').config();
 
 const app = express();
@@ -581,6 +582,45 @@ function requireAuth(req, res, next) {
   }
 }
 
+// ==================== AUTH DE SERVICE (n8n) ====================
+//
+// Les workflows n8n ne sont pas des humains. Leur donner un JWT revenait a
+// coller a la main, dans une credential n8n, un jeton admin valable un an.
+// Deux pannes en dix jours l'ont montre (08 et 15/09/2026) : toute rotation de
+// JWT_SECRET arretait en silence l'auto-blog ET la newsletter, et le mail de
+// surveillance ne disait « jeton invalide » que le lendemain. Accessoirement,
+// une fuite de cette credential donnait un acces CRM complet pendant un an.
+//
+// SERVICE_SECRET decouple les deux cycles de vie, sur la forme exacte
+// d'INGEST_SECRET : en-tete dedie, comparaison en temps constant, ferme par
+// defaut si la variable manque (jamais ouvert par omission de configuration).
+function serviceSecretValid(req) {
+  const expected = process.env.SERVICE_SECRET;
+  if (!expected) return false;
+  const given = req.get('x-service-secret') || '';
+  const a = Buffer.from(given);
+  const b = Buffer.from(expected);
+  if (a.length !== b.length) return false;
+  return nodeCrypto.timingSafeEqual(a, b);
+}
+
+// JWT (humain, via le site) OU secret de service (machine, via n8n).
+//
+// ATTENTION — a n'appliquer qu'a des routes qui ne filtrent PAS par
+// proprietaire. Un appelant porteur du secret n'a pas d'identite : `req.user`
+// reste absent, et `ownerScope()` rend alors `null`, c'est-a-dire « voit
+// tout », exactement comme pour un admin. Sur une route scopee, ce middleware
+// donnerait donc au secret la portee d'un admin, en silence. Les deux seules
+// routes concernees aujourd'hui (POST /api/blog-posts, GET
+// /api/newsletter-subscribers) ne lisent ni owner_id ni ownerScope.
+function requireAuthOrService(req, res, next) {
+  if (serviceSecretValid(req)) {
+    req.service = true;
+    return next();
+  }
+  return requireAuth(req, res, next);
+}
+
 // Returns null for admin (sees all rows), req.user.id otherwise.
 // Use in WHERE clauses as: ($N::uuid IS NULL OR owner_col = $N)
 function ownerScope(req) {
@@ -960,6 +1000,7 @@ const ctx = {
   recordAccessLog,
   rejectHoneypot,
   requireAuth,
+  requireAuthOrService,
   requireConsent,
   resetDemoData,
   resolveBlogCategory,

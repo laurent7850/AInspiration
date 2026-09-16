@@ -126,6 +126,31 @@ app.post('/api/ingest/contact', ingestLimiter, async (req, res) => {
   }
 });
 
+// Relecture de la fiche de sonde, pour le workflow de surveillance.
+//
+// La surveillance doit prouver que l'ingestion a REELLEMENT persiste : un 201
+// ne dit rien de ce qui est en base. Elle le faisait par GET /api/contacts/:id
+// avec le jeton admin de n8n — exiger un acces CRM complet pour lire une date.
+// Cette route rend les deux seuls champs utiles, sur une adresse figee dans le
+// code, sous le secret d'ingestion que la sonde porte deja. Aucune donnee
+// personnelle : la fiche lue est celle du moniteur lui-meme.
+const PROBE_EMAIL = 'sonde-parcours@surveillance.ainspiration.eu';
+
+app.get('/api/ingest/probe', ingestLimiter, async (req, res) => {
+  if (!ingestAuthorized(req)) return res.status(401).json({ error: 'Unauthorized' });
+  try {
+    const result = await pool.query(
+      'SELECT updated_at FROM contacts WHERE LOWER(email) = LOWER($1) ORDER BY updated_at DESC LIMIT 1',
+      [PROBE_EMAIL]
+    );
+    if (!result.rows.length) return res.json({ exists: false, updated_at: null });
+    res.json({ exists: true, updated_at: result.rows[0].updated_at });
+  } catch (error) {
+    console.error('[INGEST] Relecture de la fiche de sonde impossible:', error.message);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.post('/api/webhook/newsletter-send', webhookLimiter, requireAuth, async (req, res) => {
   try {
     const n8nUrl = `${N8N_BASE}/newsletter-send`;

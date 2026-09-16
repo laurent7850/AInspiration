@@ -14,6 +14,7 @@ module.exports = function register(ctx) {
     pool,
     rejectHoneypot,
     requireAuth,
+    requireAuthOrService,
     schemas,
     updateSchemas,
     uuidv4,
@@ -25,7 +26,10 @@ module.exports = function register(ctx) {
 
 // ==================== NEWSLETTER SUBSCRIBERS ====================
 
-app.get('/api/newsletter-subscribers', requireAuth, async (req, res) => {
+// Lecture des abonnes : JWT (page d'administration) OU secret de service
+// (workflow n8n d'envoi). La requete ne filtre pas par proprietaire, le secret
+// n'y gagne donc aucune portee implicite — voir requireAuthOrService.
+app.get('/api/newsletter-subscribers', requireAuthOrService, async (req, res) => {
   try {
     const { status, limit = 100, offset = 0 } = req.query;
     let query = 'SELECT * FROM newsletter_subscribers';

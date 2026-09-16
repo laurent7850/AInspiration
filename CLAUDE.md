@@ -273,6 +273,48 @@ n'est pas cloisonné est donc lisible par n'importe quel visiteur.
 - **Test de non-régression manuel :** créer une fiche depuis le compte admin, se
   connecter en démo, vérifier qu'elle est invisible.
 
+### Les workflows n8n ne portent plus de JWT (15/09/2026)
+
+Le blog est resté muet 18 jours sans que personne le voie. Cause unique : la
+credential n8n « AInspiration - Blog API Key » contenait un **jeton admin JWT
+valable un an, collé à la main**. La rotation de `JWT_SECRET` du 08/09 s'est
+terminée à moitié — le jeton reposé était signé avec un autre secret que celui
+que le conteneur faisait tourner — et `POST /api/blog-posts` a répondu 401 dès
+le lendemain. L'auto-blog (09/09 et 15/09) et la newsletter (10/09) sont tombés
+ensemble, les articles étant générés puis perdus à l'étape de publication.
+
+Le défaut n'était pas la rotation, c'était le couplage : **un workflow n'est pas
+un humain et n'a rien à faire avec un JWT.**
+
+- **`SERVICE_SECRET`** porte désormais l'authentification machine, sur la forme
+  exacte d'`INGEST_SECRET` : en-tête `x-service-secret`, comparaison en temps
+  constant, **fermé par défaut** si la variable manque. Une rotation de
+  `JWT_SECRET` ne casse plus ni l'auto-blog ni la newsletter, et il n'y a plus
+  d'expiration à surveiller.
+- **Il n'ouvre que deux routes** : `POST /api/blog-posts` et
+  `GET /api/newsletter-subscribers` — les seules dont n8n a besoin. `PUT` et
+  `DELETE` sur un article restent réservés à un humain authentifié : la relecture
+  éditoriale de `/blog-admin` n'est pas une opération de machine.
+- **`requireAuthOrService` ne doit JAMAIS être posé sur une route scopée par
+  propriétaire.** Un appelant porteur du secret n'a pas d'identité : `req.user`
+  reste absent, et `ownerScope()` rend alors `null`, c'est-à-dire « voit tout »,
+  exactement comme pour un admin. Sur une route scopée, le secret gagnerait donc
+  silencieusement la portée d'un admin. Les deux routes ouvertes ne lisent ni
+  `owner_id` ni `ownerScope`.
+- **`GET /api/ingest/probe`** remplace la relecture de la fiche de sonde par
+  `GET /api/contacts/:id` : la surveillance exigeait un accès CRM complet pour
+  lire une date. La route rend `{ exists, updated_at }` pour une adresse figée
+  dans le code, sous le secret d'ingestion que la sonde porte déjà.
+- Verrouillé par `docker/backend/test/service-auth.test.mjs` (`npm test`) :
+  le secret ouvre les deux routes, n'ouvre pas le CRM, et une variable absente
+  ferme la porte au lieu de l'ouvrir.
+
+**Ordre de déploiement :** le code accepte JWT **ou** secret, il est donc
+rétrocompatible et peut partir en premier. Ensuite `SERVICE_SECRET` dans le
+`.env` du VPS **et** dans le compose, recreate, puis seulement après le
+basculement des credentials n8n. Tant que la variable n'est pas dans
+l'environnement du conteneur, le secret est refusé — c'est voulu.
+
 ### Ingestion des prospects (15/09/2026)
 
 Avant cette date, les formulaires n'écrivaient que dans Gmail : le prospect n'existait
@@ -460,6 +502,8 @@ Le container télécharge le frontend depuis Netlify au démarrage selon `docker
 - `DATABASE_URL` ou `DB_HOST` + `DB_PORT` + `DB_NAME` + `DB_USER` + `DB_PASSWORD`
 - `JWT_SECRET`
 - `PORT` (3001)
+- `INGEST_SECRET` — ingestion des prospects et sonde de surveillance
+- `SERVICE_SECRET` — publication de l'auto-blog et lecture des abonnés par n8n
 
 ---
 
