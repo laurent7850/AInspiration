@@ -12,8 +12,7 @@ import {
   X,
   DollarSign,
   Brain,
-  MessageSquare,
-  Mail
+  MessageSquare
 } from 'lucide-react';
 import { Newspaper } from 'lucide-react';
 import Linkedin from '../ui/icons/LinkedinIcon';
@@ -69,13 +68,6 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
       labelKey: 'menu.messages',
       label: 'Messages',
       icon: MessageSquare,
-      disabled: false
-    },
-    {
-      path: '/newsletter-admin',
-      labelKey: 'menu.newsletter',
-      label: 'Newsletter',
-      icon: Mail,
       disabled: false
     },
     {
