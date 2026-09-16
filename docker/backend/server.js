@@ -621,10 +621,26 @@ function requireAuthOrService(req, res, next) {
   return requireAuth(req, res, next);
 }
 
-// Returns null for admin (sees all rows), req.user.id otherwise.
+// Chaque compte ne voit que ses propres lignes, l'administrateur compris.
+//
+// Jusqu'au 16/09/2026, un admin recevait `null`, c'est-a-dire « voit tout » : son
+// CRM affichait donc les fiches de DEMONSTRATION melees aux siennes. Les donnees
+// de demo ne sont pas supprimees pour autant — le compte demo continue de les
+// voir, ce sont elles qui font vivre la demonstration publique de /login.
+//
+// Un appelant SANS identite (porteur du secret de service, voir
+// requireAuthOrService) recoit un identifiant qui ne correspond a aucune ligne :
+// il ne voit RIEN plutot que TOUT. C'est l'inverse exact de l'ancien
+// comportement, et c'est le sens sur — une route scopee posee par erreur
+// derriere requireAuthOrService ne s'ouvre plus toute seule.
+//
+// Les creations, elles, ecrivent `req.user.id` en direct : aucune ligne sans
+// proprietaire n'est fabriquee, et il n'en existe aucune en base.
+//
 // Use in WHERE clauses as: ($N::uuid IS NULL OR owner_col = $N)
+const NO_ROWS = '00000000-0000-0000-0000-000000000000';
 function ownerScope(req) {
-  return req.user && req.user.role === 'admin' ? null : (req.user ? req.user.id : null);
+  return req.user && req.user.id ? req.user.id : NO_ROWS;
 }
 
 // ==================== INPUT VALIDATION (zod) ====================

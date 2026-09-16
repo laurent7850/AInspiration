@@ -259,9 +259,23 @@ n'est pas cloisonné est donc lisible par n'importe quel visiteur.
   erreur. Avec les `.catch(() => {})` d'origine, le nettoyage échouait en silence et le
   re-seed n'aboutissait jamais — d'où des tâches en retard depuis mai et des contacts
   sans société dans la démo. Les catch loguent désormais.
-- **Le compte démo ne doit JAMAIS avoir `role = 'admin'`.** `ownerScope()` renvoie `NULL`
-  pour un admin, ce qui signifie « voit tout » : un démo admin annule tout le
-  cloisonnement, y compris celui des contacts. Forcé par `migration-005`.
+- **Le compte démo ne doit JAMAIS avoir `role = 'admin'`.** Forcé par `migration-005`.
+  (Historiquement, `ownerScope()` rendait `NULL` pour un admin — « voit tout » — et un
+  démo admin annulait donc tout le cloisonnement. Ce n'est plus le mécanisme depuis le
+  16/09/2026, voir ci-dessous, mais la règle reste : un compte public n'est pas admin.)
+- **Depuis le 16/09/2026, `ownerScope()` ne fait plus d'exception pour l'administrateur :
+  chaque compte ne voit que ses propres lignes.** L'admin voyait les fiches de
+  démonstration mêlées aux siennes. Rien n'a été supprimé — la démo publique continue de
+  voir les siennes, ce sont elles qui la font vivre.
+  - Un appelant **sans identité** (secret de service) reçoit désormais un identifiant qui
+    ne correspond à aucune ligne : il ne voit **rien** au lieu de **tout**. Une route
+    scopée posée par erreur derrière `requireAuthOrService` ne s'ouvre plus toute seule.
+  - Les créations écrivent `req.user.id` en direct, jamais `ownerScope()` : aucune ligne
+    sans propriétaire n'est fabriquée. **Si un jour il en existait une, plus personne ne
+    la verrait** — c'est le prix assumé du sens sûr.
+  - `tasks` n'a pas de colonne `owner_id` : elle se filtre par `assigned_to`.
+  - Les messages du site sont attribués à l'administrateur dès l'insertion
+    (`routes/crm.js`), ils restent donc visibles après ce changement.
 - **Chaque lecture ET chaque écriture porte `($N::uuid IS NULL OR owner_col = $N)`.** Un
   seul endpoint oublié suffit. `migration-005` ajoute `owner_id` à `companies`,
   `products` et `contact_messages` (la 003 ne couvrait que contacts/opportunités/
@@ -543,4 +557,14 @@ Le container télécharge le frontend depuis Netlify au démarrage selon `docker
 
 ### Admin CRM
 - Email : admin@ainspiration.eu
-- Mot de passe réinitialisé le 5 avril 2026
+- **Le compte n'a eu aucun mot de passe du 5 avril au 16 septembre 2026.** `init.sql`
+  crée l'administrateur **sans** `password_hash` (`ON CONFLICT (email) DO NOTHING`), et
+  rien ne lui en posait ensuite. `POST /api/auth/login` répondait donc
+  `Account not configured for password login` — aucun mot de passe n'aurait fonctionné,
+  et la note « réinitialisé le 5 avril » était fausse.
+- **Il n'existe aucune route de réinitialisation** (`routes/auth.js` n'expose que
+  `register`, `login`, `logout`, `me`). Pour poser un mot de passe : le hacher dans le
+  conteneur et écrire `users.password_hash` directement. Ne jamais faire transiter le mot
+  de passe par un chat, un log ou un argument de ligne de commande (visible dans `ps`) —
+  le passer par l'entrée standard.
+- Mot de passe posé le 16/09/2026, rangé dans 1Password. Jamais noté ici.
