@@ -277,7 +277,7 @@
         },
         "1": {
           "q": "Combien de temps faut-il pour mettre en place un assistant virtuel ?",
-          "a": "Un assistant basique est opérationnel en 5 jours ouvrés. Cela inclut la configuration du chatbot, l'intégration sur votre site web, le paramétrage des réponses personnalisées et les tests. Pour un assistant plus avancé avec intégration CRM, base de connaissances ou prise de rendez-vous automatique, comptez 2 à 3 semaines. Nous commençons toujours par un audit gratuit pour définir le périmètre exact."
+          "a": "Un assistant basique est opérationnel en cinq jours ouvrés. Cela inclut la configuration du chatbot, l'intégration sur votre site web, le paramétrage des réponses personnalisées et les tests. Pour un assistant plus avancé avec intégration CRM, base de connaissances ou prise de rendez-vous automatique, comptez deux à trois semaines. Le périmètre exact se fixe et s'écrit avant de commencer."
         },
         "2": {
           "q": "Mon assistant fonctionnera-t-il en néerlandais et en anglais ?",

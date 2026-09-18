@@ -248,7 +248,7 @@ export const sampleAuditData: AuditReportData = {
   ],
   proposedPackage: {
     name: 'Pack Automatisation Express',
-    price: 'À partir de 1 043 € HTVA (offre lancement) + 290 €/mois',
+    price: '2 400 € HTVA · deux jours · tarif fondateur −20 % pour les trois premiers clients',
     deliveryTime: '5 jours ouvrés',
     description: 'Automatisation complète de vos relances clients via un workflow n8n sur mesure, connecté à votre environnement existant. Inclut : développement, tests, mise en production et formation de votre équipe.'
   }

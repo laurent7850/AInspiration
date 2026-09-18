@@ -135,7 +135,7 @@
     "items": {
       "0": {
         "q": "Quels types de tâches peuvent être automatisées avec l'IA dans une PME ?",
-        "a": "Pratiquement toute tâche répétitive et basée sur des règles : traitement de factures et documents entrants, relances clients automatiques, génération de devis à partir de templates, publication de contenus sur les réseaux sociaux, synchronisation de données entre vos outils (CRM, comptabilité, email), qualification de leads entrants, et rapports hebdomadaires automatiques. Lors de notre audit gratuit, nous identifions les 3 tâches les plus chronophages dans votre activité spécifique."
+        "a": "Pratiquement toute tâche répétitive et basée sur des règles : traitement de factures et documents entrants, relances clients automatiques, génération de devis à partir de templates, publication de contenus sur les réseaux sociaux, synchronisation de données entre vos outils (CRM, comptabilité, email), qualification de leads entrants, et rapports hebdomadaires automatiques. Le Diagnostic IA identifie les trois tâches les plus chronophages dans votre activité spécifique."
       },
       "1": {
         "q": "Dois-je changer mes outils actuels pour bénéficier de l'automatisation ?",
@@ -151,7 +151,7 @@
       },
       "4": {
         "q": "L'automatisation IA est-elle accessible pour un indépendant ou une très petite entreprise ?",
-        "a": "Absolument. Notre offre est conçue pour les TPE et indépendants belges. Le Pack Express commence à 1 043 EUR HTVA (avec témoignage) pour une automatisation complète. C'est l'équivalent de 2-3 jours de prestation d'un consultant, mais le workflow tourne ensuite 24 heures sur 24, 7 jours sur 7. Un comptable indépendant, un restaurant, un e-commerce avec 2 employés — tous peuvent bénéficier de l'automatisation sans compétences techniques."
+        "a": "Absolument. L'offre est conçue pour les TPE et indépendants belges. Le Sprint d'automatisation va de 3 500 à 6 000 € HTVA selon le nombre d'intégrations, et le Diagnostic qui le précède est à 2 400 € HTVA. Un comptable indépendant, un restaurant, un e-commerce avec deux employés — tous peuvent en bénéficier sans compétences techniques."
       }
     }
   }

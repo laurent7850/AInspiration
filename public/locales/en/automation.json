@@ -135,7 +135,7 @@
     "items": [
       {
         "q": "What kinds of tasks can be automated with AI in an SME?",
-        "a": "Practically any repetitive, rule-based task: processing incoming invoices and documents, automatic customer reminders, generating quotes from templates, publishing content on social networks, syncing data between your tools (CRM, accounting, email), qualifying incoming leads, and automatic weekly reports. During our free audit we identify the 3 most time-consuming tasks in your specific activity."
+        "a": "Practically any repetitive, rule-based task: processing incoming invoices and documents, automatic customer follow-ups, generating quotes from templates, publishing content on social media, syncing data between your tools (CRM, accounting, email), qualifying inbound leads, and automatic weekly reports. The AI Diagnostic identifies the three most time-consuming tasks in your specific business."
       },
       {
         "q": "Do I have to change my current tools to benefit from automation?",
@@ -151,7 +151,7 @@
       },
       {
         "q": "Is AI automation accessible to a freelancer or a very small business?",
-        "a": "Absolutely. Our offer is designed for Belgian micro-businesses and freelancers. The Express Pack starts at EUR 1,043 excl. VAT (with a testimonial) for a complete automation. That is the equivalent of 2-3 days of consulting, but the workflow then runs 24/7. A freelance accountant, a restaurant, an online shop with 2 employees: all can benefit from automation without technical skills."
+        "a": "Absolutely. The offer is designed for Belgian small businesses and freelancers. The Automation sprint ranges from €3,500 to €6,000 excl. VAT depending on the number of integrations, and the Diagnostic that precedes it is €2,400 excl. VAT. A freelance accountant, a restaurant, an e-commerce with two employees — all can benefit, with no technical skills."
       }
     ]
   }

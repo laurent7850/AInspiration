@@ -329,7 +329,7 @@ export const auditLiveProtocol: AuditLiveProtocol = {
       trigger: 'Score satisfaction >= 4/5 ET réponse sat_07 = "Oui, c\'est exactement ce qu\'il me faut"',
       conversionScore: 9,
       recommendedAction: 'Appel de suivi prioritaire dans les 24h avec proposition Pack Express',
-      suggestedOffer: 'Pack Automatisation Express — 1 043 € HTVA (lancement) + 290 €/mois',
+      suggestedOffer: 'Diagnostic IA — 2 400 € HTVA, deux jours',
     },
     {
       id: 'ups_02',
@@ -337,7 +337,7 @@ export const auditLiveProtocol: AuditLiveProtocol = {
       trigger: 'Réponse sat_03 = "Oui" ET frein principal = "Manque de compétences techniques"',
       conversionScore: 8,
       recommendedAction: 'Proposer un appel technique gratuit de 30 min pour débloquer la situation',
-      suggestedOffer: 'Pack Automatisation Express — 1 043 € HTVA (lancement) + 290 €/mois',
+      suggestedOffer: 'Diagnostic IA — 2 400 € HTVA, deux jours',
     },
     {
       id: 'ups_03',
@@ -353,7 +353,7 @@ export const auditLiveProtocol: AuditLiveProtocol = {
       trigger: 'Réponse sat_07 = "Peut-être, j\'aimerais en savoir plus"',
       conversionScore: 5,
       recommendedAction: 'Envoyer un cas client du même secteur + proposer un appel sans engagement',
-      suggestedOffer: 'Pack Automatisation Express — 1 043 € HTVA (lancement) + 290 €/mois',
+      suggestedOffer: 'Diagnostic IA — 2 400 € HTVA, deux jours',
     },
     {
       id: 'ups_05',
@@ -369,7 +369,7 @@ export const auditLiveProtocol: AuditLiveProtocol = {
       trigger: 'Le prospect a visité ainspiration.eu >= 3 fois dans les 7 derniers jours (tracking analytics)',
       conversionScore: 7,
       recommendedAction: 'Email personnalisé avec rappel de l\'audit + proposition d\'appel',
-      suggestedOffer: 'Pack Automatisation Express — 1 043 € HTVA (lancement) + 290 €/mois',
+      suggestedOffer: 'Diagnostic IA — 2 400 € HTVA, deux jours',
     },
   ],
 

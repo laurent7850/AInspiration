@@ -131,7 +131,7 @@
       "metrics": {},
       "context": "Een bezoeker met een vraag om 22 u wacht niet tot morgen: die sluit het tabblad. Een site die automatisering verkoopt en zijn eigen bezoekers zonder antwoord laat, heeft een geloofwaardigheidsprobleem nog vóór een conversieprobleem.",
       "problem": "Vragen komen buiten de kantooruren binnen, en het zijn vaak de ernstigste — van iemand die 's avonds leveranciers vergelijkt.",
-      "solution": "Een gespreksassistent gekoppeld aan de inhoud van de site, met geheugen van het lopende gesprek. Hij beantwoordt gangbare vragen, verwijst naar de juiste pagina, en biedt de gratis audit aan wanneer de vraag duidelijk is.",
+      "solution": "Een gespreksassistent gekoppeld aan de inhoud van de site, met geheugen van het lopende gesprek. Hij beantwoordt gangbare vragen, verwijst naar de juiste pagina, en stelt voor een afspraak te maken wanneer de vraag duidelijk is.",
       "results": "Hij antwoordt 's nachts en in het weekend. Dat is hier het voordeel: geen gewonnen tijd, maar beschikbaarheid.",
       "howItWorks": "Een n8n-webhook ontvangt het bericht, een code-node bereidt de context voor, een LangChain-agent met geheugenvenster bevraagt een model via OpenRouter, en het antwoord keert via de webhook terug. Er wordt niets bewaard buiten het gesprek.",
       "transposition": "U test hem op dit moment — de meest directe demonstratie op deze pagina. Dezelfde opzet koppelt aan uw catalogus, uw openingsuren, uw leveringsvoorwaarden. De regel die wij op onszelf toepassen geldt ook bij u: een assistent die het niet weet, zegt dat, en geeft door."

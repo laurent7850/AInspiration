@@ -31,14 +31,14 @@ export const seoPages: Record<string, SEOPageConfig> = {
       keywords: 'intelligence artificielle PME, IA entreprise, automatisation IA, diagnostic IA, solutions IA Belgique, transformation digitale PME, conformité AI Act, outils IA'
     },
     en: {
-      title: 'AInspiration | AI Solutions for SMEs - Free Audit',
+      title: 'AInspiration | AI Solutions for SMEs in Belgium',
       description: 'Automate repetitive tasks and boost revenue with AI. Diagnostic, workshops, automation sprints and AI Act compliance. For SMEs in Belgium and France.',
-      keywords: 'artificial intelligence SME, business AI, AI automation, free AI audit, AI solutions Belgium, digital transformation SME, machine learning, deep learning, AI tools'
+      keywords: 'artificial intelligence SME, business AI, AI automation, AI diagnostic, AI solutions Belgium, digital transformation SME, machine learning, deep learning, AI tools'
     },
     nl: {
-      title: 'AInspiration | AI Oplossingen KMO - Gratis Audit',
+      title: "AInspiration | AI-oplossingen voor KMO's in België",
       description: 'Automatiseer repetitieve taken met AI. Diagnose, workshops, automatiseringssprints en AI Act-conformiteit. Voor KMO\'s in België en Frankrijk.',
-      keywords: 'kunstmatige intelligentie KMO, AI bedrijf, AI automatisering, gratis AI audit, AI oplossingen België, digitale transformatie KMO, machine learning, deep learning, AI tools'
+      keywords: 'kunstmatige intelligentie KMO, AI bedrijf, AI automatisering, AI-diagnose, AI oplossingen België, digitale transformatie KMO, machine learning, deep learning, AI tools'
     }
   },
   '/login': {
@@ -156,7 +156,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     nl: {
       title: "AI-automatisering voor kmo's in Henegouwen en Brussel | AInspiration",
-      description: "Vanuit Givry automatiseren we de repetitieve taken van kmo's in Henegouwen, Brussel en Waals-Brabant. Gratis audit in 24u, ter plaatse of op afstand.",
+      description: "Vanuit Givry automatiseer ik de repetitieve taken van kmo's in Henegouwen, Brussel en Waals-Brabant. Ter plaatse of op afstand.",
       keywords: 'AI automatisering Henegouwen, AI kmo Bergen, AI kmo Charleroi, AI kmo Brussel, AI bureau België'
     }
   },

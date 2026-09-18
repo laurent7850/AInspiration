@@ -91,9 +91,9 @@ export const postAuditEmails: PostAuditEmail[] = [
       <li>Formation de votre équipe (1 h)</li>
       <li>Support prioritaire pendant 30 jours</li>
     </ul>
-    <p style="margin: 16px 0 0; font-size: 16px; font-weight: 400; text-decoration: line-through; color: #999;">1 490 € HTVA</p>
-    <p style="margin: 4px 0 0; font-size: 22px; font-weight: 700;">1 043 € <span style="font-size: 14px; font-weight: 400;">HTVA (offre lancement)</span></p>
-    <p style="margin: 4px 0 0; font-size: 14px; color: #666;">puis 290 €/mois — hébergement, support & monitoring</p>
+    <p style="margin: 16px 0 0; font-size: 14px; color: #666;">Diagnostic IA · deux jours</p>
+    <p style="margin: 4px 0 0; font-size: 22px; font-weight: 700;">2 400 € <span style="font-size: 14px; font-weight: 400;">HTVA</span></p>
+    <p style="margin: 4px 0 0; font-size: 14px; color: #666;">Tarif fondateur −20 % pour les trois premiers clients, en échange d’un témoignage</p>
     <p style="margin: 4px 0 0; font-size: 13px; opacity: 0.7;">Livré en 5 jours ouvrés</p>
   </div>
 
@@ -175,9 +175,9 @@ export const postAuditEmails: PostAuditEmail[] = [
       <li>Formation de votre équipe (1 h)</li>
       <li>Support prioritaire pendant 30 jours</li>
     </ul>
-    <p style="margin: 16px 0 0; font-size: 16px; font-weight: 400; text-decoration: line-through; color: #999;">1 490 € HTVA</p>
-    <p style="margin: 4px 0 0; font-size: 22px; font-weight: 700;">1 043 € <span style="font-size: 14px; font-weight: 400;">HTVA (offre lancement)</span></p>
-    <p style="margin: 4px 0 0; font-size: 14px; color: #666;">puis 290 €/mois — hébergement, support & monitoring</p>
+    <p style="margin: 16px 0 0; font-size: 14px; color: #666;">Diagnostic IA · deux jours</p>
+    <p style="margin: 4px 0 0; font-size: 22px; font-weight: 700;">2 400 € <span style="font-size: 14px; font-weight: 400;">HTVA</span></p>
+    <p style="margin: 4px 0 0; font-size: 14px; color: #666;">Tarif fondateur −20 % pour les trois premiers clients, en échange d’un témoignage</p>
     <p style="margin: 4px 0 0; font-size: 13px; opacity: 0.7;">Livré en 5 jours ouvrés</p>
   </div>
 
@@ -259,9 +259,9 @@ export const postAuditEmails: PostAuditEmail[] = [
       <li>Formation pratique (1 h)</li>
       <li>Support prioritaire pendant 30 jours</li>
     </ul>
-    <p style="margin: 16px 0 0; font-size: 16px; font-weight: 400; text-decoration: line-through; color: #999;">1 490 € HTVA</p>
-    <p style="margin: 4px 0 0; font-size: 22px; font-weight: 700;">1 043 € <span style="font-size: 14px; font-weight: 400;">HTVA (offre lancement)</span></p>
-    <p style="margin: 4px 0 0; font-size: 14px; color: #666;">puis 290 €/mois — hébergement, support & monitoring</p>
+    <p style="margin: 16px 0 0; font-size: 14px; color: #666;">Diagnostic IA · deux jours</p>
+    <p style="margin: 4px 0 0; font-size: 22px; font-weight: 700;">2 400 € <span style="font-size: 14px; font-weight: 400;">HTVA</span></p>
+    <p style="margin: 4px 0 0; font-size: 14px; color: #666;">Tarif fondateur −20 % pour les trois premiers clients, en échange d’un témoignage</p>
     <p style="margin: 4px 0 0; font-size: 13px; opacity: 0.7;">Livré en 5 jours ouvrés</p>
   </div>
 

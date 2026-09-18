@@ -131,7 +131,7 @@
       "metrics": {},
       "context": "Un visiteur qui a une question à 22 h n'attend pas le lendemain : il ferme l'onglet. Un site qui vend de l'automatisation et laisse ses propres visiteurs sans réponse a un problème de crédibilité avant d'avoir un problème de conversion.",
       "problem": "Les questions arrivent en dehors des heures de bureau, et ce sont souvent les plus sérieuses — celles de quelqu'un qui compare des prestataires le soir.",
-      "solution": "Un agent conversationnel branché sur le contenu du site, avec mémoire de la conversation en cours. Il répond aux questions courantes, oriente vers la bonne page, et propose l'audit gratuit quand la demande est claire.",
+      "solution": "Un agent conversationnel branché sur le contenu du site, avec mémoire de la conversation en cours. Il répond aux questions courantes, oriente vers la bonne page, et propose de prendre rendez-vous quand la demande est claire.",
       "results": "Il répond la nuit et le week-end. C'est là l'avantage : pas du temps gagné, de la disponibilité.",
       "howItWorks": "Un webhook n8n reçoit le message, un nœud de code prépare le contexte, un agent LangChain avec fenêtre de mémoire interroge un modèle via OpenRouter, la réponse repart par le webhook. Rien n'est stocké au-delà de la conversation.",
       "transposition": "Vous le testez en ce moment même — c'est la démonstration la plus directe de cette page. Le même dispositif se branche sur votre catalogue, vos horaires, vos conditions de livraison. La règle que nous appliquons chez nous vaut aussi chez vous : un assistant qui ne sait pas dit qu'il ne sait pas, et passe la main."

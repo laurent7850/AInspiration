@@ -117,7 +117,7 @@
         },
         {
           "q": "How can I learn to write my own effective prompts?",
-          "a": "Our AI training includes a full module on prompt writing. You learn the CRISP structure (Context, Role, Instruction, Style, Parameters), chain-of-thought techniques and best practices by task type. After the training you get access to our prompt library and a quick reference guide. Start with our free audit to identify the tasks where AI prompts will have the most impact on your daily work."
+          "a": "The AI training includes a full module on prompt writing. You learn the CRISP structure (Context, Role, Instruction, Output, Parameters), chain-of-thought techniques, and good practice by type of task. After the session you get access to the prompt library and a quick reference guide. That is the Workshop (O2), €900 for a half day or €1,500 for a full day, excl. VAT."
         }
       ]
     }

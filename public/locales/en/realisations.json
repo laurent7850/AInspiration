@@ -131,7 +131,7 @@
       "metrics": {},
       "context": "A visitor with a question at 10 p.m. does not wait until tomorrow: they close the tab. A site that sells automation and leaves its own visitors unanswered has a credibility problem before it has a conversion problem.",
       "problem": "Questions arrive outside office hours, and they are often the serious ones — from someone comparing suppliers in the evening.",
-      "solution": "A conversational agent connected to the site's content, with memory of the conversation in progress. It answers common questions, points to the right page, and offers the free audit when the intent is clear.",
+      "solution": "A conversational agent connected to the site's content, with memory of the conversation in progress. It answers common questions, points to the right page, and offers to book a call when the intent is clear.",
       "results": "It answers at night and at weekends. That is the advantage here: not time saved, but availability.",
       "howItWorks": "An n8n webhook receives the message, a code node prepares the context, a LangChain agent with a memory window queries a model through OpenRouter, and the answer returns through the webhook. Nothing is stored beyond the conversation.",
       "transposition": "You are testing it right now — the most direct demonstration on this page. The same setup connects to your catalogue, your opening hours, your delivery terms. The rule we apply to ourselves applies to you too: an assistant that does not know says so, and hands over."
