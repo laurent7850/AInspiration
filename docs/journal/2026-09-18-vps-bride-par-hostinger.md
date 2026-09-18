@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Incident
 notion: non
-prochaine-action: Borner les reprises de /root/audityo/health-check.sh — sans compteur, la prochaine desynchronisation docker/containerd rejouera le meme incident
+prochaine-action: Faire remonter l ABANDON de health-check.sh vers un humain (webhook n8n, comme /opt/uptime-check.sh) — le log seul reste silencieux
 ---
 
 ## Fait
@@ -98,15 +98,16 @@ audityo.eu 200 en 0,39 s, distr-action.com 301 en 0,24 s.
 
 ## Cassé
 
-- **`/root/audityo/health-check.sh` n'a toujours aucune borne de reprise.** La prochaine
-  désynchronisation rejouera exactement le même incident. C'est le seul reste.
+- **L'alerte n'atteint toujours personne.** L'`ABANDON` du script borné ne va que dans
+  `/var/log/audityo-health.log`. C'est la leçon de fond de l'incident — personne n'a rien
+  vu pendant 27 h — et elle n'est pas encore tirée. `/opt/uptime-check.sh` sait appeler un
+  webhook n8n : c'est le modèle à reprendre.
 - **La base SQLite de n8n fait 993 Mo** (+13 Mo de WAL) pour 47 909 exécutions, sans réglage
   de rétention. Coût de fond réel, sans rapport avec cet incident.
 
 ## Reste
 
-- Borner `/root/audityo/health-check.sh` : compteur de tentatives, arrêt après N échecs,
-  et ne plus jeter la sortie d'erreur.
+- ~~Borner `/root/audityo/health-check.sh`~~ — **fait le 18/09** (voir ci-dessous).
 - Configurer la rétention des exécutions n8n.
 - Réduire le sondage `Chaque 5 min : vérifier file EN` de l'auto-blog Distr'Action
   (`QSzmS1gzyQjvCwtc`) à `*/30 * * * *`. 288 exécutions/jour pour constater une file vide —
@@ -114,6 +115,22 @@ audityo.eu 200 en 0,39 s, distr-action.com 301 en 0,24 s.
 - Surveiller : `sar` et `sar -w`. Empreintes — `user+sys` durablement au-dessus de 40 %, ou
   `cswch/s` au-dessus de 10 000. Le bridage datait du 17/09 et a été découvert le 18 par
   hasard ; c'est ce délai-là qui reste le vrai défaut.
+
+## Le garde-fou posé dans la foulée
+
+`/root/audityo/health-check.sh` réécrit et installé (sauvegarde `health-check.sh.bak-20260918`,
+cron inchangé). Deux règles, écrites en tête du script pour qu'on ne les défasse pas :
+
+1. **On ne retente jamais indéfiniment.** `MAX_TRIES=3` par cible, compteurs dans
+   `/var/lib/audityo-health/`, remis à zéro dès le retour à la normale. Au-delà, un unique
+   `ABANDON ... INTERVENTION MANUELLE REQUISE` avec la commande de réarmement, puis silence.
+2. **On ne jette jamais la sortie d'erreur d'une reprise.** C'est ce `2>/dev/null` qui a
+   coûté 27 heures.
+
+Vérifié sur une copie isolée où toutes les commandes `docker` étaient remplacées par un
+échec, sans rien toucher en production : sur 6 exécutions consécutives, chaque cible est
+tentée exactement 3 fois, puis un seul message d'abandon. Appliqué à l'incident réel :
+3 tentatives et une alerte explicite dans la demi-heure, au lieu de 324 tentatives muettes.
 
 ## Quatre erreurs commises en route, et ce qu'elles apprennent
 

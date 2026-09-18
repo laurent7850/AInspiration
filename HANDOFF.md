@@ -79,11 +79,19 @@ ou aux composants CRM.
   **un plafond masque le travail, il ne prouve pas son absence** ; **compare la somme des
   cgroups au total système**, c'est l'écart qui désigne un processus de l'hôte. Récit complet
   et erreurs commises dans `docs/journal/2026-09-18-vps-bride-par-hostinger.md`.
-- 🔴 **`/root/audityo/health-check.sh` n'a aucune borne de reprise.** En cron toutes les
-  5 minutes, il retente `docker restart` indéfiniment et jette la sortie d'erreur
-  (`2>/dev/null`) : 324 échecs consécutifs sans que personne ne voie rien, et un cœur brûlé
-  pendant 27 h. **C'est le seul reste de l'incident du 17/09**, et la prochaine
-  désynchronisation rejouera exactement la même partie.
+- *(Résolu le 18/09.)* **`/root/audityo/health-check.sh` borne désormais ses reprises.**
+  Il retentait `docker restart` indéfiniment en jetant la sortie d'erreur (`2>/dev/null`) :
+  324 échecs consécutifs invisibles, un cœur brûlé 27 h. Désormais **3 tentatives maximum**
+  par cible, compteurs dans `/var/lib/audityo-health/`, remis à zéro dès le retour à la
+  normale, puis un unique `ABANDON ... INTERVENTION MANUELLE REQUISE` avec la commande de
+  réarmement. La sortie d'erreur est journalisée. Vérifié sur copie isolée (6 exécutions,
+  tout en échec → 3 tentatives puis arrêt). Sauvegarde : `health-check.sh.bak-20260918`.
+  **Ne retire pas cette borne** : une reprise automatique qui ne converge pas est une panne
+  qui s'aggrave, pas une panne qui se répare.
+- ⚠️ **Il reste que l'alerte n'atteint personne.** L'`ABANDON` ne va que dans
+  `/var/log/audityo-health.log`. `/opt/uptime-check.sh` sait, lui, appeler un webhook n8n —
+  c'est le modèle à reprendre. Tant que ce n'est pas fait, la leçon de fond de l'incident
+  du 17/09 (**personne n'a rien vu pendant 27 h**) n'est pas tirée.
 
 - **Le CRM est quasiment vide** : une seule fiche, la sonde de surveillance. L'ingestion
   depuis les formulaires ne fonctionne que depuis le 15/09. Aucun prospect réel.
