@@ -4,6 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Avancée
 notion: https://app.notion.com/p/3dffb662f4aa81d59823d51424ae55e0
+synchro: 2026-09-18
 prochaine-action: Vérifier la publication du lundi 21/09 — les trois langues doivent sortir
 ---
 

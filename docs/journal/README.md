@@ -47,10 +47,19 @@ prochaine-action: Vérifier les positions GSC des trois langues sous 7 jours
 `Avancée` · `Incident` · `Décision` · `Point de situation` · `Abandon`
 — ce sont exactement les valeurs de la base Notion, ne pas en inventer d'autres.
 
-### Le champ `notion`
+### Les champs `notion` et `synchro`
 
-- `non` — pas encore remontée. La session Cowork la verra et la poussera.
-- une URL — déjà dans Notion. **C'est Cowork qui écrit cette URL, jamais Claude Code.**
+- `notion: non` — pas encore remontée. La session Cowork la verra et la poussera.
+- `notion: <URL>` + `synchro: <AAAA-MM-JJ>` — déjà dans Notion. **C'est Cowork qui écrit
+  ces deux lignes, jamais Claude Code.**
+
+**Tu peux compléter une note déjà remontée** — c'est légitime quand le travail du soir
+prolonge celui du matin, comme un incident et son correctif. Ne touche simplement pas à
+`notion:` ni à `synchro:` : le hook compare le dernier commit du fichier à celui qui a
+écrit `synchro:`, voit que la note a bougé depuis, et la signale à Cowork pour qu'il
+mette la page Notion à jour.
+
+Si le sujet est **différent**, écris une note neuve plutôt que d'allonger l'ancienne.
 
 ### Le champ `prochaine-action`
 

@@ -4,6 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Avancée
 notion: https://app.notion.com/p/3dffb662f4aa81569648c46c44b104aa
+synchro: 2026-09-18
 prochaine-action: Refaire le document SLA dans Notion — il décrit toujours l'ancienne offre
 ---
 

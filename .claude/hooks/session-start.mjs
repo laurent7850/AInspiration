@@ -34,15 +34,44 @@ if (existsSync(handoffPath)) {
 }
 
 // --- 2. Notes de journal pas encore remontées dans Notion ------------------
+// Deux cas, et le second a failli passer inaperçu le 18/09 : une note DÉJÀ
+// remontée puis complétée est invisible d'un simple test sur `notion: non`.
+// On compare donc le dernier commit touchant le fichier à celui qui y a écrit
+// l'URL Notion : s'ils diffèrent, la note a bougé depuis sa remontée.
 const journalDir = join(root, "docs", "journal");
 if (existsSync(journalDir)) {
-  const enAttente = readdirSync(journalDir)
-    .filter((f) => f.endsWith(".md") && f !== "README.md")
-    .filter((f) => /^notion:\s*non\s*$/m.test(readFileSync(join(journalDir, f), "utf8")));
-  if (enAttente.length) {
+  const notes = readdirSync(journalDir).filter((f) => f.endsWith(".md") && f !== "README.md");
+  const jamais = [];
+  const modifiees = [];
+
+  for (const f of notes) {
+    const chemin = `docs/journal/${f}`;
+    const texte = readFileSync(join(journalDir, f), "utf8");
+    const m = texte.match(/^notion:\s*(\S+)\s*$/m);
+    if (!m) continue;
+    if (m[1] === "non") { jamais.push(chemin); continue; }
+    // `synchro:` porte la date de la derniere remontee. Comme sa valeur change
+    // a chaque synchro, le commit qui l'a ecrite est retrouvable, et on peut
+    // dire si le fichier a bouge APRES.
+    const sync = texte.match(/^synchro:\s*(\S+)\s*$/m);
+    const dernier = git(`log -1 --format=%H -- "${chemin}"`);
+    const marquage = sync
+      ? git(`log -1 -S"synchro: ${sync[1]}" --format=%H -- "${chemin}"`)
+      : git(`log -1 -S"${m[1]}" --format=%H -- "${chemin}"`);
+    if (dernier && marquage && dernier !== marquage) modifiees.push(chemin);
+  }
+
+  if (jamais.length || modifiees.length) {
     out.push("\n---\n");
-    out.push(`## ${enAttente.length} note(s) de journal pas encore remontée(s) dans Notion\n`);
-    enAttente.forEach((f) => out.push(`- \`docs/journal/${f}\``));
+    out.push("## Notes de journal à remonter dans Notion\n");
+    if (jamais.length) {
+      out.push("**Jamais remontées :**");
+      jamais.forEach((f) => out.push(`- \`${f}\``));
+    }
+    if (modifiees.length) {
+      out.push("\n**Remontées puis complétées depuis** — la version Notion est incomplète :");
+      modifiees.forEach((f) => out.push(`- \`${f}\``));
+    }
     out.push("\nNe les remonte pas toi-même : c'est la session Cowork qui les pousse dans Notion.");
   }
 }

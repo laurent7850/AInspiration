@@ -4,6 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Incident
 notion: https://app.notion.com/p/3dffb662f4aa81ffb09bcf32879b5c1a
+synchro: 2026-09-18
 prochaine-action: Attendre le signe de vie du lundi 22/09 7h ; son absence prouverait que la veille est morte
 ---
 
