@@ -65,13 +65,14 @@ ou aux composants CRM.
   est sur un autre réseau Docker que n8n, d'où le script plutôt qu'un workflow).
 
 ### Ce qui est cassé, en pause, ou vide
-- **Le workflow n8n « Uptime Alert - Email Notification » (`gcfMHZw6zHxAUUmI`) est actif, orphelin
-  et cassé.** Son nœud Gmail lit `{{ $json.email }}` alors que la charge utile d'un webhook arrive
-  sous `$json.body` : le champ « À » est donc toujours vide, et l'envoi échoue systématiquement —
-  il n'a jamais pu fonctionner. Depuis la réécriture du 18/09, plus aucun script ne poste sur
-  `/webhook/uptime-alert` : tout passe par `/webhook/vps-alert` (workflow `cJP1FcQVkUwrBNht`,
-  qui fonctionne). **À désactiver ou archiver** : le laisser actif ne produit que des
-  notifications d'erreur n8n, exactement le bruit qui apprend à ignorer les alertes.
+- *(Retiré le 18/09.)* Le workflow n8n **« Uptime Alert - Email Notification »**
+  (`gcfMHZw6zHxAUUmI`) était actif, orphelin et cassé : son nœud Gmail lisait
+  `{{ $json.email }}` alors que la charge utile d'un webhook arrive sous **`$json.body`** — le
+  champ « À » restait vide, l'envoi échouait à tous les coups, et il n'avait **jamais** pu
+  fonctionner. Désactivé et renommé `[RETIRE 18/09/2026]`, conservé pour référence.
+  Tout passe désormais par `/webhook/vps-alert` (`cJP1FcQVkUwrBNht`).
+  **La règle qui en sort : dans un nœud n8n déclenché par webhook, la charge utile est sous
+  `$json.body`, jamais à la racine.** Ce seul niveau a rendu une chaîne d'alerte muette.
 
 - *(Résolu le 18/09 — conservé ici parce que la cause peut revenir.)* **Le VPS entier a été
   bridé par Hostinger du 17 au 18/09**, steal à 91 %, après que sa charge soit montée à 100 %.
