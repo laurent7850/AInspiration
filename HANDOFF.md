@@ -72,9 +72,19 @@ ou aux composants CRM.
   Quatre `ct_set_limits` le 17/09 entre 08:00 et 11:00 UTC, puis un `ct_restart` à 12:41, après
   que la charge soit montée à 100 %. **Ne conclus pas à une panne applicative** tant que ce
   bridage dure : un service lent ou un conteneur qui met des minutes à démarrer en est la
-  conséquence, pas la cause. Détail complet dans `docs/journal/2026-09-18-vps-bride-par-hostinger.md`.
-- **`audityo-postgres` est `Exited (128)` depuis le reboot du 17/09.** `audityo-web` est up et
-  healthy, mais sa base est à terre. Découvert en passant le 18/09, non traité.
+  conséquence, pas la cause. **Et ne lis pas la charge moyenne comme une consommation** —
+  sous plafond CPU elle compte les processus en attente, donc tes propres commandes de
+  diagnostic la font monter à 50 sans que rien ne consomme davantage. Regarde `%user` et
+  `%system`. Détail complet dans `docs/journal/2026-09-18-vps-bride-par-hostinger.md`.
+- 🔴 **`audityo-postgres` est à terre depuis le 17/09 13:27, avec une boucle de reprise
+  toujours active.** Arrêt propre, puis le `restart: always` a buté sur une tâche fantôme
+  containerd (`AlreadyExists`) — **les données sont intactes**, dans le volume nommé
+  `audityo_audityo-pgdata`. Mais `/root/audityo/health-check.sh`, en cron toutes les
+  5 minutes, retente un `docker restart` qui échoue à chaque fois, en silence (`2>/dev/null`),
+  depuis 27 heures. Le script n'a **ni recul ni compteur** : il rejouera la même boucle sur
+  n'importe quelle panne durable. La chaîne `audityo-web` → `audityo-pgbouncer` →
+  `audityo-postgres` est confirmée : la base est réellement injoignable, le « healthy » du
+  conteneur web ne la teste pas. **À régler avant de lever le bridage.**
 
 - **Le CRM est quasiment vide** : une seule fiche, la sonde de surveillance. L'ingestion
   depuis les formulaires ne fonctionne que depuis le 15/09. Aucun prospect réel.
@@ -116,7 +126,7 @@ ou aux composants CRM.
 | 3 | **Remplir le CRM** | Ingestion opérationnelle depuis le 15/09, mais aucun prospect réel. | Relève du GTM LinkedIn (grille O1–O5), pas du code. Côté dépôt : rien à faire tant que le flux entrant n'existe pas. |
 | 4 | **Newsletter** | Désactivée, tables conservées. | Aucune action. Décision de suppression définitive ou de relance à prendre plus tard. |
 | 5 | **Montées de dépendances — majeures restantes** | Mineures **faites le 18/09.** PR #34 fusionnée et déployée en production : react 19.3, vite 8.3, lucide 1.44, zod 4.6 backend. Conteneur recréé, 211/211 fichiers téléchargés, contrôle de santé à 25 vérifications vertes. Restent trois majeures : Tailwind 4 (#32), uuid 14 (#31), jsdom 30 (#33). | Tailwind 4 dans une session dédiée — c'est la plus lourde. uuid et jsdom peuvent partir ensemble dans une branche groupée, comme #34. |
-| 6 | **VPS bridé par Hostinger** — bloque tout le reste | Diagnostiqué le 18/09. Steal à 91 %, la machine tourne sur ~9 % de ses 4 cœurs depuis le 17/09 12:41. Deux contributeurs identifiés côté charge : le déclencheur `Chaque 5 min : vérifier file EN` de l'auto-blog Distr'Action (`QSzmS1gzyQjvCwtc`, 288 exécutions/jour pour constater une file vide) et un essaim de healthchecks (~45 conteneurs, dont 12 PostgreSQL, un `runc init` chacun toutes les 10-30 s). **Rien n'a été modifié** — désactiver un déclencheur ou toucher aux conteneurs de production demande l'arbitrage de Laurent. | Ouvrir le ticket Hostinger avec les quatre `ct_set_limits` et la courbe à 100 %. **Faire baisser la demande d'abord**, sinon ils rebrideront. |
+| 6 | **VPS bridé par Hostinger** — bloque tout le reste | Diagnostiqué le 18/09 grâce à `sysstat`, qui garde l'historique d'avant le reboot. Steal à 91 %, la machine tourne sur ~9 % de ses 4 cœurs depuis le 17/09 12:41. **Deux paliers nets** : 15/09 05:30 (user+sys 7 % → 32 %) puis 17/09 04:50 (→ 88 %). Le `proc/s` reste plat à 41 pendant toute la montée — ce n'est pas une création de processus, c'est le `cswch/s` qui triple (7 100 → 19 900) : des threads qui tournent à vide. **La cause est morte au reboot et n'est pas revenue en 27 h** (user+sys à 4,4 %, `cswch/s` à 2 116, sous la référence saine du 14/09). **Ce que c'était reste inconnu** — sysstat ne garde rien par processus. Laurent lève le bridage à la main. **Rien n'a été modifié en production.** | 1. Régler la boucle `audityo-postgres` (voir §3) — seule pathologie encore vivante. 2. Lever le bridage. 3. **Surveiller** : `sar -w` et `sar`, empreintes `cswch/s` > 10 000 ou `user+sys` > 40 %. |
 
 ---
 
