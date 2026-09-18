@@ -22,6 +22,12 @@ prochaine-action: Vérifier la publication du lundi 21/09 — les trois langues 
 - Vite 8.3 signalait `__dirname` dans `vitest.config.ts` comme incompatible avec
   le chargeur de configuration natif, futur défaut. Aligné sur `vite.config.ts`,
   qui utilise déjà `import.meta.dirname`.
+- **Le manifeste a été tenu hors de la PR, puis committé après le déploiement** (`9db1a5a`).
+  Ces montées changent 72 hachages de chunks : un manifeste décrivant un build absent de
+  Netlify casserait le site à la prochaine recréation du conteneur, exactement comme le 08/06.
+  L'ordre n'est donc pas une précaution de style, c'est le seul ordre sûr.
+- PR Dependabot #29 et #30 fermées d'elles-mêmes à la fusion, GitHub ayant reconnu leurs
+  commits dans #34.
 - **PR #34 fusionnée et déployée en production.** Dans l'ordre imposé : build (le hook
   `postbuild` régénère le manifeste, 211 entrées) → `netlify deploy --prod` → **vérification
   des 211 entrées une à une sur le CDN**, plus le contrôle que GitHub raw servait bien le
@@ -50,10 +56,6 @@ prochaine-action: Vérifier la publication du lundi 21/09 — les trois langues 
 
 ## Reste
 
-- **Le manifeste `docker/dist-manifest.txt` n'est volontairement pas dans la PR.**
-  Ces montées changent 72 hachages de chunks ; un manifeste décrivant un build
-  absent de Netlify casserait le site à la prochaine recréation du conteneur,
-  exactement comme le 08/06. Il se régénère et se commite au déploiement.
 - Trois majeures Dependabot laissées de côté, chacune méritant son passage :
   Tailwind 4 (#32, le plus lourd), uuid 14 (#31), jsdom 30 (#33).
 - La publication du lundi 21/09 reste le seul vrai test en attente : le correctif
