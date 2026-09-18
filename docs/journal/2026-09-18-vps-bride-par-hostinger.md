@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Incident
 notion: https://app.notion.com/p/3dffb662f4aa81ffb09bcf32879b5c1a
-prochaine-action: Faire remonter l ABANDON de health-check.sh vers un humain (webhook n8n, comme /opt/uptime-check.sh) — le log seul reste silencieux
+prochaine-action: Attendre le signe de vie du lundi 22/09 7h ; son absence prouverait que la veille est morte
 ---
 
 ## Fait
@@ -98,10 +98,14 @@ audityo.eu 200 en 0,39 s, distr-action.com 301 en 0,24 s.
 
 ## Cassé
 
-- **L'alerte n'atteint toujours personne.** L'`ABANDON` du script borné ne va que dans
-  `/var/log/audityo-health.log`. C'est la leçon de fond de l'incident — personne n'a rien
-  vu pendant 27 h — et elle n'est pas encore tirée. `/opt/uptime-check.sh` sait appeler un
-  webhook n8n : c'est le modèle à reprendre.
+- **`/opt/uptime-check.sh` n'a jamais envoyé une seule alerte de son existence.** Découvert
+  en branchant la notification : il postait sur `http://localhost:5678`, or **n8n ne publie
+  aucun port sur l'hôte**. La surveillance de 10 domaines était donc totalement muette
+  depuis sa création. Corrigé le 18/09.
+- **Sa liste de domaines était fausse** : `lartpero.be`, `seopilot.be`, `theevent-linkedin.be`
+  et `enghien-rag.be` ne résolvent pas (domaines publics jamais mis en service), et
+  `delijn.be` **appartient à un tiers**. Remplacée par les 17 domaines réellement déclarés
+  dans Traefik.
 - **La base SQLite de n8n fait 993 Mo** (+13 Mo de WAL) pour 47 909 exécutions, sans réglage
   de rétention. Coût de fond réel, sans rapport avec cet incident.
 
@@ -131,6 +135,37 @@ Vérifié sur une copie isolée où toutes les commandes `docker` étaient rempl
 échec, sans rien toucher en production : sur 6 exécutions consécutives, chaque cible est
 tentée exactement 3 fois, puis un seul message d'abandon. Appliqué à l'incident réel :
 3 tentatives et une alerte explicite dans la demi-heure, au lieu de 324 tentatives muettes.
+
+## La surveillance, mise en place dans la foulée
+
+Laurent : « je ne veux plus de panne silencieuse, je veux être prévenu ». Trois briques,
+toutes vérifiées de bout en bout (mails reçus).
+
+**Le canal** — nouveau workflow n8n « Distr'Action — Alerte VPS (générique) »
+(`cJP1FcQVkUwrBNht`), webhook `vps-alert` → Gmail. Créé à part plutôt que de détourner le
+workflow uptime existant, dont le corps de message est codé en dur pour les sites down.
+
+**`/opt/vps-watchdog.sh`** (cron `*/15`) — la veille qui manquait totalement. Surveille la
+**machine**, pas les sites : steal > 20 % (détecte un bridage hébergeur), user+sys > 50 %,
+un processus au-dessus de 80 % (aurait nommé `dockerd`), disque > 85 %, mémoire < 10 %, et
+tout conteneur à terre malgré un `restart=always` (aurait attrapé `audityo-postgres`).
+Chaque seuil est calé sur quelque chose qui s'est réellement produit.
+
+**`health-check.sh`** — son `ABANDON` envoie désormais un mail contenant la marche à suivre
+complète, y compris la commande de réarmement.
+
+**`/opt/uptime-check.sh`** — réécrit : URL corrigée, 17 vrais domaines, `401` et `307`
+reconnus comme sains, fenêtre de silence par domaine et message de retour à la normale.
+
+Copies de référence dans `docs/ops/vps/` — la baseline de sécurité exige qu'un runbook
+n'existe pas uniquement sur le serveur qu'il surveille.
+
+**Le piège rencontré en chemin** : bash ne développe pas les `
+` entre guillemets doubles,
+et `jq --arg` prend la valeur telle quelle — les mails affichaient des `
+` littéraux. La
+correction est `printf '%b'` **avant** `jq`, pas un `gsub` côté jq : les niveaux
+d'échappement bash/jq/regex ne s'alignent pas. Essayé, mesuré, corrigé.
 
 ## Quatre erreurs commises en route, et ce qu'elles apprennent
 

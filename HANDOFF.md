@@ -88,10 +88,18 @@ ou aux composants CRM.
   tout en échec → 3 tentatives puis arrêt). Sauvegarde : `health-check.sh.bak-20260918`.
   **Ne retire pas cette borne** : une reprise automatique qui ne converge pas est une panne
   qui s'aggrave, pas une panne qui se répare.
-- ⚠️ **Il reste que l'alerte n'atteint personne.** L'`ABANDON` ne va que dans
-  `/var/log/audityo-health.log`. `/opt/uptime-check.sh` sait, lui, appeler un webhook n8n —
-  c'est le modèle à reprendre. Tant que ce n'est pas fait, la leçon de fond de l'incident
-  du 17/09 (**personne n'a rien vu pendant 27 h**) n'est pas tirée.
+- *(Résolu le 18/09.)* **La surveillance prévient désormais par mail.** Canal : workflow n8n
+  « Distr'Action — Alerte VPS (générique) » (`cJP1FcQVkUwrBNht`), webhook `vps-alert`.
+  Trois émetteurs : `/opt/vps-watchdog.sh` (cron `*/15`, veille **machine** — steal, CPU,
+  processus emballé, disque, mémoire, conteneur à terre), `health-check.sh` (mail à l'abandon)
+  et `/opt/uptime-check.sh`. Copies de référence dans `docs/ops/vps/`, **le VPS fait foi**.
+  Signe de vie chaque **lundi 7h** : son absence est elle-même une alerte.
+- *(Découvert et corrigé le 18/09.)* **`/opt/uptime-check.sh` n'avait jamais envoyé une seule
+  alerte** : il postait sur `http://localhost:5678`, or **n8n ne publie aucun port sur
+  l'hôte**. La surveillance de 10 domaines était muette depuis sa création. Sa liste était
+  en outre fausse — quatre domaines qui ne résolvent pas, et `delijn.be` qui **appartient à
+  un tiers**. Remplacée par les 17 domaines réellement déclarés dans Traefik.
+  **N'écris jamais `localhost:5678` dans un script de l'hôte** : sors par Traefik.
 
 - **Le CRM est quasiment vide** : une seule fiche, la sonde de surveillance. L'ingestion
   depuis les formulaires ne fonctionne que depuis le 15/09. Aucun prospect réel.
