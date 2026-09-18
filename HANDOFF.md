@@ -60,13 +60,14 @@ ou aux composants CRM.
   est sur un autre réseau Docker que n8n, d'où le script plutôt qu'un workflow).
 
 ### Ce qui est cassé, en pause, ou vide
-- **Le site contredit encore l'offre O1–O5.** « Audit IA gratuit en 24h » dans le menu,
-  l'accueil, le contact, les CGV et la vie privée — offre abandonnée le 16/09. Prix
-  contradictoires, témoignages fictifs sur `/formation`, chiffres sans source, « notre équipe »
-  alors que Laurent est seul. **Rien de cela ne doit survivre au lancement de la campagne
-  LinkedIn.** Tout est inventorié dans `docs/chantiers/refonte-site-o1-o5.md`.
-- **La fiche playlists radio n'est anonymisée qu'à moitié** : le texte l'est, mais le slug,
-  la clé i18n et le nom de l'image portent encore le nom qui identifie la station.
+- **Les CGV et la politique de confidentialité** décrivent encore l'audit gratuit comme une
+  prestation contractuelle, avec une clause de responsabilité sur « les recommandations formulées
+  dans le rapport d'audit ». C'est le dernier endroit où l'offre abandonnée survit, et il est
+  contractuel : à réécrire avec l'arbitrage de Laurent, pas sans.
+- **L'article de blog « Thierry »** est construit de bout en bout sur le parcours audit gratuit
+  → Pack Express. À réécrire ou à retirer.
+- **Deux grilles tarifaires hors O1–O5** : l'essai gratuit de 14 jours du CRM (`crm.json`) et la
+  tarification de la création visuelle (`content.json`). À trancher avec Laurent.
 
 - **Le CRM est quasiment vide** : une seule fiche, la sonde de surveillance. L'ingestion
   depuis les formulaires ne fonctionne que depuis le 15/09. Aucun prospect réel.
