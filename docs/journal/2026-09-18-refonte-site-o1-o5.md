@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Avancée
 notion: non
-prochaine-action: Faire relire les nouveaux textes commerciaux par Laurent, puis déployer en bloc
+prochaine-action: Trancher le sort de legal.json, de l'article Thierry et des deux grilles hors O1–O5
 ---
 
 ## Fait
@@ -25,6 +25,10 @@ prochaine-action: Faire relire les nouveaux textes commerciaux par Laurent, puis
   « Gagnez 10h par semaine ». « Notre équipe » et « nos experts » passent à la première
   personne — en gardant le « notre équipe » de `crm.json`, qui désigne l'équipe du client.
 - Typecheck, lint `--max-warnings 0`, 84 tests front et build : verts.
+- **Déployé en production le 18/09**, après accord de Laurent. Vérifié sur le HTML brut :
+  **zéro mention de l'ancienne offre** sur treize URL des trois langues, titres corrigés dans
+  les trois langues, redirection 301 de l'ancienne fiche active, ancienne image en 404, et
+  « nostalgie » absent du site. `scripts/health-check.mjs` : 25 vérifications vertes.
 
 ## Cassé
 
@@ -33,6 +37,16 @@ prochaine-action: Faire relire les nouveaux textes commerciaux par Laurent, puis
   cadrage listait le slug, la clé i18n et le nom du fichier : renommer n'aurait rien caché,
   et la fiche serait restée publiquement attribuable. Le sous-titre a été remplacé dans
   l'image par la mention déjà utilisée dans le texte. Piège ajouté au handoff.
+- **Le déploiement a demandé quatre cycles au lieu d'un**, pour deux raisons qu'il faut retenir.
+  D'abord, **Netlify rejoue `npm run build` depuis le dépôt** : il ne se contente pas du `dist/`
+  poussé par `--dir=dist`. Mes corrections d'`index.html`, faites localement mais pas encore
+  committées, sont donc reparties en ligne dans leur ancienne version. Committer avant de
+  déployer, toujours. Ensuite, **le contenu que voient les robots vit à trois endroits** : les
+  locales servies à l'exécution, le bloc SEO écrit à la main dans `index.html`, et une carte SEO
+  **dupliquée** dans `docker/backend/routes/seo.js`. J'ai corrigé les locales en croyant en avoir
+  fini ; le `<title>` de l'accueil annonçait encore « Audit Gratuit ».
+- **« Free Audit » a survécu à deux passes** parce que je cherchais « free audit ». Chercher
+  insensible à la casse, sur le HTML brut.
 - Deux erreurs à corriger en chemin, sans conséquence : le sitemap se génère par
   `scripts/vite-plugin-sitemap.ts` et non par `public/sitemap.xml` que visait la note ; et
   trois apostrophes françaises introduites dans des chaînes TypeScript à guillemets simples
@@ -55,6 +69,6 @@ Trois blocs laissés dehors **volontairement**, chacun pour une raison :
   ni l'autre n'était dans l'inventaire de la note de cadrage. À trancher : relèvent-elles
   d'O1–O5, ou sont-ce des produits distincts qui gardent leur propre grille ?
 
-**Rien n'est en production.** Le manifeste n'est volontairement pas committé. Au
-déploiement : build → Netlify → vérification des entrées sur le CDN → commit du manifeste
-→ recréation du conteneur. Le renommage de l'image en fait partie.
+**Tout est en production depuis le 18/09.** Le seul échec restant du contrôle de santé est
+l'absence de hreflang sur l'article du 16/09, qui préexistait : c'est le chantier 2, et c'est
+la publication de lundi qui tranchera.

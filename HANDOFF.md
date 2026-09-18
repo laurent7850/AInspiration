@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (refonte O1–O5 exécutée, non déployée)
+**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (refonte O1–O5 **déployée**)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -100,7 +100,7 @@ ou aux composants CRM.
 
 | # | Chantier | Où ça en est | Prochaine action |
 |---|---|---|---|
-| 0 | **Aligner le site sur l'offre O1–O5** — le chantier prioritaire | **Exécuté le 18/09** (commit `9e54296`, 76 fichiers) : fiche playlists radio anonymisée **image comprise** (elle affichait le nom de la station en clair, ce que la note de cadrage n'avait pas vu), grille O1–O5 dans `pricing.json` et `Offers.tsx`, page `/audit` devenue le rendez-vous de découverte, témoignages fabriqués et chiffres sans source retirés, première personne partout. Tests, lint et build verts. **Rien n'est en production.** | Faire relire les nouveaux textes commerciaux par Laurent, **puis déployer en bloc**. Trois blocs restés dehors volontairement, voir la note du jour. |
+| 0 | **Aligner le site sur l'offre O1–O5** | **Fait et déployé le 18/09.** Fiche playlists anonymisée **image comprise**, grille O1–O5 en ligne, page `/audit` devenue le rendez-vous de découverte, témoignages fabriqués et chiffres sans source retirés, première personne partout. Vérifié sur le HTML brut : **zéro mention de l'ancienne offre** sur 13 URL des trois langues, contrôle de santé à 25 vérifications vertes. | Trois blocs restés dehors : `legal.json` (CGV section 3 et vie privée, contractuels), l'article Thierry du blog, et deux grilles hors O1–O5 à trancher (essai 14 jours du CRM, création visuelle). |
 | 1 | **Vitrine des réalisations** (`/realisations` + une fiche par projet) | **Construite et en production depuis le 04/09** — 16 fiches dans `src/data/realisations.ts`, `RealisationsPage.tsx` et `RealisationDetailPage.tsx`, branche `feat/realisations` fusionnée dans `main`. Vérifié le 18/09 : `/realisations` et `/realisations/facturation-automatisee` répondent 200. Matériel de cadrage dans `docs/audit-realisations.md`, `docs/realisations-chiffres.md`, `docs/PROMPT-realisations.md`. | Rien de bloquant. Si enrichissement il y a (captures, chiffres vérifiés), il se décide fiche par fiche — jamais de capture inventée. |
 | 2 | **Chaîne de publication** | Correctif antislashes posé à la source, 2 articles sur 95 nettoyés en base. | Vérifier la publication du **lundi 21/09** : les trois langues doivent sortir. Si EN/NL échouent encore, c'est que la cause n'était pas uniquement l'échappement. |
 | 3 | **Remplir le CRM** | Ingestion opérationnelle depuis le 15/09, mais aucun prospect réel. | Relève du GTM LinkedIn (grille O1–O5), pas du code. Côté dépôt : rien à faire tant que le flux entrant n'existe pas. |
@@ -129,6 +129,15 @@ ou aux composants CRM.
 - **Anonymiser un client ne s'arrête pas au slug et au nom de fichier.** La capture d'écran de la fiche
   playlists affichait « Radio Nostalgie Belgique » **dans l'image**, sous le titre : renommer le fichier
   n'aurait rien caché. Avant de déclarer une fiche anonyme, **ouvrir ses images et les regarder**.
+- **Netlify rejoue `npm run build` depuis le dépôt** — il ne se contente pas du `dist/` poussé par
+  `--dir=dist`. Un fichier modifié localement mais **non committé** est donc écrasé par la version du
+  dernier commit : `index.html` est reparti en ligne avec l'ancien contenu jusqu'à ce qu'il soit poussé.
+  Committer **avant** de déployer, toujours.
+- **Le contenu que voient les robots vit à trois endroits, pas un.** Les locales servies à l'exécution,
+  le bloc SEO écrit à la main dans `index.html` (titre, `<h1>`, liste des offres, FAQ, JSON-LD), et la
+  **carte SEO dupliquée** dans `docker/backend/routes/seo.js`. Corriger les locales seules ne change rien
+  pour un crawler. Vérifier les trois, et vérifier **en HTML brut, insensible à la casse** — « Free Audit »
+  a survécu à deux passes parce que je cherchais « free audit ».
 - **Le dépôt vit sous OneDrive.** Un fichier écrit depuis une autre session peut ne pas être
   encore synchronisé quand tu lis le dépôt. Vérifie la présence réelle d'un changement avant
   de conclure qu'il n'a pas été fait.
