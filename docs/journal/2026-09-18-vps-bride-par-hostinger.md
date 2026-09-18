@@ -4,81 +4,41 @@ projet: AInspiration
 ou: Claude Code
 type: Incident
 notion: non
-prochaine-action: Relancer audityo-postgres et borner les reprises de /root/audityo/health-check.sh, avant de lever le bridage
+prochaine-action: Borner les reprises de /root/audityo/health-check.sh — sans compteur, la prochaine desynchronisation docker/containerd rejouera le meme incident
 ---
 
 ## Fait
 
-Diagnostic parti d'un symptôme trompeur : « https://brasspat042026.distr-action.com/
-ne démarre plus ». Le conteneur n'était pas tombé, et le `401` de l'URL est la basic
-auth Traefik configurée sur ce domaine — pas une panne. La page était **lente**, pas
-éteinte.
+**Résolu le jour même.** Diagnostic parti d'un symptôme trompeur — « brasspat042026
+ne démarre plus » — qui a mené à un incident touchant tout le VPS.
 
-**Le VPS entier est bridé par Hostinger depuis le 17/09.**
+### Le symptôme n'était pas le problème
 
-Depuis la machine, au 18/09 16:32 UTC : steal **91,6 %**, user 2,7 %, sys 3,5 %,
-idle 0 %. Confirmé deux fois, par `vmstat` et par un delta de `/proc/stat`. RAM
-(3,1 Go sur 16), disque (50 %) et iowait (0 %) sont sains : c'est purement du CPU
-refusé par l'hyperviseur.
+Le conteneur `brasspat042026` n'était jamais tombé, et le `401` de son URL est la basic
+auth Traefik configurée sur ce domaine. La page était **lente**, pas éteinte.
 
-L'historique de l'API Hostinger donne la décision :
+### Cause réelle : `dockerd` tournait en rond sur un cœur entier
+
+Le VPS était bridé par Hostinger depuis le 17/09 (quatre `ct_set_limits` entre 08:00 et
+11:00 UTC, puis `ct_restart` à 12:41), après que sa charge soit montée à 100 %. Steal à
+91 % : la machine ne disposait plus que d'environ 9 % de ses 4 cœurs.
+
+La charge venait de **`dockerd` lui-même**, à **103 % de CPU en continu** — quatre threads
+en boucle. Les conteneurs, eux, ne consommaient que ~2 % de la machine à eux tous : c'est
+cet écart (1,2 cœur introuvable dans les cgroups) qui a mis sur la piste.
+
+Le déclencheur est une désynchronisation `dockerd` / `containerd` sur `audityo-postgres` :
 
 ```
-17/09 08:00 UTC   ct_set_limits
-17/09 09:00 UTC   ct_set_limits
-17/09 10:00 UTC   ct_set_limits
-17/09 11:00 UTC   ct_set_limits
-17/09 12:41 UTC   ct_restart     <- exactement le boot actuel (uptime -s = 12:42:02)
+Error setting up exec command: container <ID> is not running
+cleanup: failed to delete container from containerd: NotFound
+Cannot restart container: failed to create task: AlreadyExists: task <ID> already exists
 ```
 
-Ça touche **tout le VPS** — AInspiration, Audityo, CommunityOS, n8n, les 45 conteneurs.
-Pas seulement brasspat.
+Le démon croit que la tâche existe, containerd dit que le conteneur n'existe pas.
 
-### Ce que `sysstat` a permis d'établir
-
-`sysstat` tourne sur la machine et garde l'historique **d'avant le reboot**, que je
-croyais perdu. Les fichiers `/var/log/sysstat/sa10` à `sa18` couvrent le 10 au 18/09.
-C'est cette source qui a tout tranché, et qui a corrigé deux hypothèses fausses.
-
-Deux paliers, pas une dérive :
-
-| Moment | %user | %system | %idle |
-|---|---|---|---|
-| 15/09 jusqu'à 05:20 | 4 | 3 | 90 |
-| **15/09 05:30** | 13,6 | 13,3 | 70 |
-| 15/09 05:40 → 17/09 04:40 | **16** | **16** | 64 |
-| **17/09 04:50** | 37,7 | 37,8 | 19,6 |
-| 17/09 05:30 → 08:00 | **44** | **44,6** | 6,7 |
-| 17/09 08:10 (Hostinger pose les limites) | 36,6 | 35,7 | 6,1 — steal passe de 5 à 21 % |
-| **17/09 après le reboot, et 18/09** | **2,5** | **1,9** | — steal 81-93 % |
-
-La nature de la charge, via `sar -w` :
-
-| | proc/s | cswch/s |
-|---|---|---|
-| 14/09 (référence saine) | 41,3 | 4 032 |
-| 17/09 04:00 (avant le palier) | 41,1 | 7 100 |
-| 17/09 05:30 (palier haut) | 44,9 | **19 900** |
-| 18/09 (aujourd'hui) | 26,0 | **2 116** |
-
-**Le `proc/s` ne bouge pas.** Ce n'était donc pas une création massive de processus :
-c'est le **taux de changements de contexte** qui triple. Signature de threads qui
-tournent à vide ou se disputent un verrou, pas de forks.
-
-**La cause est morte au reboot du 17/09 12:42 et n'est pas revenue en 27 h**, y compris
-en retraversant ce matin les créneaux 04:50 et 05:30. Aucun conteneur n'a été créé aux
-heures des deux paliers, et tous les `RestartCount` sont à 0.
-
-**Ce que c'était reste inconnu.** sysstat ne garde pas d'historique par processus, et
-les compteurs internes ont été remis à zéro par le reboot.
-
-### La boucle Audityo
-
-`audityo-postgres` s'est arrêté proprement le 17/09 à 13:27. Le `restart: always` a
-ensuite buté sur `AlreadyExists: task already exists` — une tâche fantôme containerd,
-pas une corruption. Les données sont intactes dans le volume nommé `audityo_audityo-pgdata`.
-
-Mais `/root/audityo/health-check.sh`, en cron toutes les 5 minutes, contient :
+**Ce qui a transformé un incident ponctuel en 27 heures de cœur brûlé** :
+`/root/audityo/health-check.sh`, en cron toutes les 5 minutes, contient
 
 ```bash
 PG_OK=$(docker exec audityo-postgres pg_isready -U audityo 2>/dev/null | grep -c 'accepting')
@@ -87,54 +47,95 @@ if [ "$PG_OK" != "1" ]; then
 fi
 ```
 
-Depuis 27 heures il retente un `docker restart` **toutes les 5 minutes**, qui échoue à
-chaque fois. Le `2>/dev/null` fait que personne n'a rien vu. Le script n'a **aucun
-recul ni compteur** : il rejouera la même boucle sur n'importe quelle panne durable.
+Aucun recul, aucun compteur, et un `2>/dev/null` qui masque tout. Chaque tentative rejouait
+le conflit et laissait le démon un peu plus bloqué.
 
-Chaîne confirmée : `audityo-web` → `audityo-pgbouncer` → `audityo-postgres`. La base
-d'Audityo est donc réellement injoignable — le « healthy » du conteneur web ne la teste pas.
+### Ce que `sysstat` a montré
 
-### Deux hypothèses que j'ai émises puis retirées
+`sysstat` tournait déjà et garde l'historique **d'avant le reboot** (`/var/log/sysstat/sa10`
+à `sa18`). C'est cette source qui a tout tranché.
 
-- **« La charge s'aggrave en direct, load 20 → 49 »** : faux. C'étaient mes propres
-  commandes de diagnostic. Entre 16:10 et 16:20, `%user` n'a bougé que de 2,32 à 2,82 —
-  mais le steal a sauté de 82,9 à 92,1 et l'idle est tombé de 13 à 2,9. **Sous un plafond
-  dur, quelques processus suffisent à faire exploser la charge moyenne**, sans que la
-  consommation réelle augmente. La demande était plate toute la journée.
-- **« Essaim de healthchecks auto-amplifiant »** : démenti par le `proc/s` plat à 41.
-  Les `runc init` et `pg_isready` vus dans la file d'exécution étaient de l'activité
-  normale, sur-interprétée. Aucune recréation de conteneur n'est donc nécessaire.
+| Moment | %user | %system | %idle |
+|---|---|---|---|
+| 14/09 (référence saine) | 4 | 3 | 90 |
+| **15/09 05:30** — premier palier | 16 | 16 | 64 |
+| **17/09 04:50** — second palier | 44 | 44,6 | 6,7 |
+| 17/09 08:10 — Hostinger bride | 36,6 | 35,7 | steal 5 → 21 % |
+| **18/09 après correctif** | **2-6** | **2-5** | **91-96** |
+
+Et `sar -w` : le `proc/s` reste **plat à 41** pendant toute la montée, tandis que le
+`cswch/s` triple (7 100 → 19 900). Ce n'était donc pas une création de processus mais des
+threads tournant à vide — signature de `dockerd`, confirmée après coup.
+
+### Le correctif, en trois temps
+
+1. **Purger la tâche fantôme** : `docker rm -f audityo-postgres` puis `docker compose up -d`.
+   Le volume nommé `audityo_audityo-pgdata` est préservé — `rm` sans `-v` n'y touche pas.
+   **Nécessaire mais pas suffisant** : `dockerd` est resté à 103 % après, l'état bloqué
+   survit à la disparition de sa cause.
+2. **Activer `live-restore`** dans `/etc/docker/daemon.json` (sauvegarde en `.bak`), puis
+   `systemctl reload docker` pour l'armer **sans** redémarrer, et vérifier
+   `docker info --format '{{.LiveRestoreEnabled}}'` = `true` avant d'aller plus loin.
+3. **`systemctl restart docker`** — avec `live-restore` armé, les 43 conteneurs ont continué
+   de tourner. Filet de sécurité vérifié au préalable : tous ont une politique de
+   redémarrage, donc même un échec de `live-restore` les aurait fait revenir seuls.
+
+### Résultat
+
+| | avant | après |
+|---|---|---|
+| `dockerd` | 103 % | **1,7 %** |
+| `user + sys` | 32 % | **5-8 %** |
+| `idle` | 65 % | **91-96 %** |
+| load (1 min) | 2,03 | **0,28** |
+| brasspat042026 | 1,28 s | **0,165 s** |
+
+**Les deux paliers ont disparu**, y compris celui du 15/09 : `dockerd` était bien la cause
+des deux. Sites vérifiés : ainspiration.eu 200 en 0,17 s, son blog 200 en 0,16 s,
+audityo.eu 200 en 0,39 s, distr-action.com 301 en 0,24 s.
+
+`live-restore` reste activé : un futur redémarrage du démon ne coupera plus les conteneurs.
 
 ## Cassé
 
-- **Le VPS tourne à ~9 % de sa capacité nominale.** Tous les services y sont lents.
-- **`audityo-postgres` est à terre depuis le 17/09 13:27**, avec une boucle de reprise
-  qui tourne toujours toutes les 5 minutes.
-- **La base SQLite de n8n fait 993 Mo** (+13 Mo de WAL), sans aucun réglage de rétention
-  dans l'environnement du conteneur, pour 47 909 exécutions. Coût de fond réel, mais ce
-  n'est pas ce qui a provoqué le pic.
+- **`/root/audityo/health-check.sh` n'a toujours aucune borne de reprise.** La prochaine
+  désynchronisation rejouera exactement le même incident. C'est le seul reste.
+- **La base SQLite de n8n fait 993 Mo** (+13 Mo de WAL) pour 47 909 exécutions, sans réglage
+  de rétention. Coût de fond réel, sans rapport avec cet incident.
 
 ## Reste
 
-- **Avant de lever le bridage** : relancer `audityo-postgres` et **borner les reprises**
-  de `/root/audityo/health-check.sh`. C'est la seule pathologie encore vivante.
-- Lever le bridage (Laurent le fait à la main côté Hostinger).
-- **Surveiller après** : `sar -w` et `sar`. Empreintes à guetter — `cswch/s` durablement
-  au-dessus de ~10 000, ou `user+sys` au-dessus de 40 %. Ce sont les signatures exactes
-  des 15 et 17/09. sysstat collecte déjà, rien à installer. Le bridage date du 17/09 et
-  a été découvert le 18 par hasard : c'est ce délai-là qu'il faut supprimer.
-- Réduire le sondage `Chaque 5 min : vérifier file EN` de l'auto-blog Distr'Action
-  (`QSzmS1gzyQjvCwtc`) à `*/30 * * * *` — 288 exécutions/jour pour constater une file vide.
+- Borner `/root/audityo/health-check.sh` : compteur de tentatives, arrêt après N échecs,
+  et ne plus jeter la sortie d'erreur.
 - Configurer la rétention des exécutions n8n.
+- Réduire le sondage `Chaque 5 min : vérifier file EN` de l'auto-blog Distr'Action
+  (`QSzmS1gzyQjvCwtc`) à `*/30 * * * *`. 288 exécutions/jour pour constater une file vide —
+  inefficace, mais **ce n'était pas la cause**.
+- Surveiller : `sar` et `sar -w`. Empreintes — `user+sys` durablement au-dessus de 40 %, ou
+  `cswch/s` au-dessus de 10 000. Le bridage datait du 17/09 et a été découvert le 18 par
+  hasard ; c'est ce délai-là qui reste le vrai défaut.
+
+## Quatre erreurs commises en route, et ce qu'elles apprennent
+
+1. **« La charge s'aggrave en direct, load 20 → 49 »** — c'étaient mes propres commandes de
+   diagnostic. Sous plafond CPU, la charge moyenne compte les processus en attente : elle
+   monte sans que rien ne consomme davantage. **Regarder `%user`/`%system`, jamais le load seul.**
+2. **« Essaim de healthchecks auto-amplifiant »** — démenti par le `proc/s` plat à 41. Les
+   `runc init` vus dans la file d'exécution étaient de l'activité normale, sur-interprétée.
+3. **« La charge est retombée à 4,4 %, sous la référence saine »** — artefact du bridage.
+   Avec 91 % de steal, `user+sys` **ne peut pas** dépasser ~9 %, quelle que soit la demande.
+   **Un plafond masque le travail, il ne prouve pas son absence.** C'est cette erreur qui a
+   failli faire conclure trop tôt.
+4. **« La boucle Audityo pèse 0,25 % de la machine »** — estimé au nombre de tentatives, sans
+   voir que chacune laissait le démon en vrille. Elle était la source de charge principale.
 
 ## Note de méthode
 
-- **`docker stats` ment quand l'hôte est saturé** : il rapportait tous les conteneurs
-  entre 50 et 130 % de CPU, impossible sur 4 cœurs. La mesure fiable est un delta de
-  `cpu.stat` (`usage_usec`) par cgroup. De même, `ps %CPU` est cumulé sur la vie du
-  processus et ne vaut rien sur les processus courts.
-- **La charge moyenne n'est pas une mesure de consommation** sous plafond CPU. Elle
-  compte les processus en attente ; avec 91 % de steal, elle monte sans que rien ne
-  consomme davantage. Regarder `%user`/`%system`, jamais le load seul.
-- **`sysstat` était là depuis le début.** Réflexe à garder : avant de conclure qu'un
-  historique est perdu, vérifier `/var/log/sysstat/`.
+- **`docker stats` ment quand l'hôte est saturé** : il rapportait tous les conteneurs entre
+  50 et 130 % sur 4 cœurs. Mesure fiable : delta de `cpu.stat` (`usage_usec`) par cgroup.
+  `ps %CPU` est cumulé sur la vie du processus et ne vaut rien sur les processus courts.
+- **Comparer la somme des cgroups au total système.** C'est l'écart — 2 % côté conteneurs
+  contre 32 % côté machine — qui a désigné un processus de l'hôte, donc `dockerd`.
+- **`sysstat` était là depuis le début.** Avant de conclure qu'un historique est perdu,
+  vérifier `/var/log/sysstat/`.
+- **Un `2>/dev/null` dans un script de surveillance** a caché 324 échecs consécutifs.
