@@ -131,13 +131,13 @@ export const realisations: Realisation[] = [
     metrics: [],
   },
   {
-    slug: 'labo-nostalgie',
+    slug: 'playlists-auditeurs',
     categories: ['creer', 'exploiter'],
     year: 2026,
     status: 'production',
     format: 'complet',
     technologies: ['n8n', 'Claude', 'Google Sheets', 'Gmail'],
-    cover: '/images/realisations/labo-nostalgie.jpg',
+    cover: '/images/realisations/playlists-auditeurs.jpg',
     metrics: [
       { value: '1 h → 70 s', labelKey: 'composition' },
       { value: '5 / semaine', labelKey: 'listeners' },

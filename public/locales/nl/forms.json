@@ -9,9 +9,9 @@
     "select": "Selecteer"
   },
   "contact": {
-    "title": "Vraag een gratis AI-audit aan",
+    "title": "Een kennismakingsgesprek boeken",
     "pageTitle": "Neem contact op",
-    "pageSubtitle": "Vragen? Een offerte nodig? Ons team staat voor u klaar.",
+    "pageSubtitle": "Vragen? Een offerte nodig? Ik sta voor u klaar.",
     "sendMessage": "Stuur ons een bericht",
     "fullName": "Volledige naam*",
     "company": "Bedrijf*",
@@ -71,8 +71,8 @@
           "a": "We verbinden ons ertoe te antwoorden binnen 24 werkuren (maandag-vrijdag, 9u-18u). Voor aanvragen van een gratis AI-audit wordt het gepersonaliseerde rapport automatisch gegenereerd en per e-mail verstuurd binnen 24 uur na het indienen van uw formulier. Voor commerciële of technische vragen neemt ons team contact op per e-mail of telefoon, naar uw voorkeur."
         },
         {
-          "q": "Is de gratis AI-audit echt vrijblijvend?",
-          "a": "Ja, volledig. De AI-audit is een gratis dienst zonder enige aankoopverplichting. U ontvangt een gepersonaliseerd pdf-rapport met 3 concrete automatiseringsaanbevelingen voor uw activiteit. Als de aanbevelingen u interesseren, bespreken we ze in een gesprek van 30 minuten, eveneens gratis. Er wordt geen bankkaart gevraagd, er wordt geen engagement aangegaan."
+          "q": "Verbindt het kennismakingsgesprek mij tot iets?",
+          "a": "Neen. Dertig minuten om uw situatie te begrijpen en u te zeggen of ik kan helpen. Geen aankoopverplichting, en als er niets te doen valt, zeg ik dat."
         },
         {
           "q": "Waar bent u gevestigd en werkt u in heel België?",
@@ -91,7 +91,7 @@
   },
   "products": {
     "auditIA": {
-      "title": "Vraag een gratis AI-audit aan",
+      "title": "Een kennismakingsgesprek boeken",
       "description": "Vul het formulier in om van onze audit te profiteren en uw automatiseringspotentieel te ontdekken"
     },
     "packDemarrage": {

@@ -42,7 +42,7 @@
     "startAudit": "Start Audit",
     "requestDemo": "Request Demo",
     "discoverAI": "Discover AI",
-    "startFreeAudit": "Start Free Audit",
+    "startFreeAudit": "Book a call",
     "seeCaseStudies": "See Client Results",
     "signIn": "Sign In",
     "signOut": "Sign Out"
@@ -51,9 +51,9 @@
     "tagline": "AI Solutions for Businesses"
   },
   "hero": {
-    "title": "Save 10 Hours a Week with AI",
+    "title": "Put AI to work in your business",
     "subtitle": "Join the SMEs automating repetitive tasks and boosting revenue with our AI solutions — no technical skills required.",
-    "ctaSubtext": "Results in 24h — No commitment",
+    "ctaSubtext": "Thirty minutes · No commitment",
     "imageAlt": "Artificial Intelligence in business",
     "features": {
       "simple": "Up and running in 48h",
@@ -96,10 +96,10 @@
     "uptime": "24/7 Uptime",
     "accuracy": "GDPR compliant",
     "clients": "No commitment",
-    "acceleration": "Free audit in 24h"
+    "acceleration": "A 30-minute discovery call"
   },
   "animatedStats": {
-    "audit": "To receive the free audit",
+    "audit": "To talk it through for thirty minutes",
     "setup": "Typical setup time",
     "eu": "Data hosted in Europe",
     "target": "Typical target on repetitive tasks"
@@ -114,7 +114,7 @@
   },
   "testimonials": {
     "title": "What it changes, concretely",
-    "subtitle": "Three typical scenarios drawn from our areas of expertise. The figures are realistic targets — the free audit establishes yours.",
+    "subtitle": "Three typical scenarios drawn from the areas I work in. The figures are realistic targets — the diagnostic establishes yours.",
     "restaurant": {
       "sector": "Restaurants",
       "scenario": "Typical scenario — WhatsApp reservations",
@@ -138,11 +138,11 @@
       "timeSaving": "Immediate time savings"
     },
     "cta": {
-      "title": "Request a Free Audit",
-      "subtitle": "Response within 24h • No commitment • 100% personalized",
+      "title": "Book a discovery call",
+      "subtitle": "Thirty minutes · No commitment · On your own case",
       "button": "Discover My Opportunities",
       "badges": {
-        "freeAnalysis": "Free analysis of your case",
+        "freeAnalysis": "We look at your situation together",
         "customRecommendations": "Custom recommendations",
         "noCommitment": "No commitment"
       },
@@ -161,20 +161,20 @@
     "title": "Artificial Intelligence for Belgian and French SMEs",
     "p1": "In 2026, Artificial Intelligence is no longer reserved for large corporations. At AInspiration, we make AI accessible to all SMEs: restaurants, e-commerce businesses, consulting firms, marketing agencies, craftsmen and freelancers. Our mission is simple — save you time and money through intelligent automation solutions, with no technical skills required.",
     "subtitle1": "Concrete, measurable results from the first month",
-    "p2": "The automations we deploy target concrete orders of magnitude: up to 60% less time on repetitive tasks and measurable productivity gains from the first months. Whether it's automating booking management, generating marketing content, deploying a virtual assistant or optimizing your customer service, our solutions adapt to your industry and specific needs — and the free audit quantifies the potential of your case before any commitment.",
+    "p2": "The automations I deploy aim at time saved on repetitive tasks, measured on your own case rather than announced in advance. Whether it is automating bookings, generating marketing content, setting up a virtual assistant or improving your customer service, the solutions fit your trade and your specific needs.",
     "subtitle2": "Personalized end-to-end support",
-    "p3": "Everything starts with a free, no-obligation audit. Within 24 hours, we analyze your processes, identify automation opportunities and deliver a concrete action plan. Then, we deploy the solution within 48 hours maximum. Based in Givry, Hainaut (Belgium), we support businesses in Belgium and France with multilingual support in French, English and Dutch.",
+    "p3": "It all starts with a thirty-minute discovery call, with no commitment. If there is something to work on, the AI Diagnostic maps your processes over two days and returns three priority projects. Based in Givry, in Hainaut (Belgium), I support companies in Belgium and France in French, English and Dutch.",
     "subtitle3": "Security and GDPR compliance",
     "p4": "All your data is hosted in Europe and processed in strict compliance with GDPR. We use cutting-edge technologies — intelligent chatbots, AI data analysis, content generation, smart CRM — while guaranteeing the confidentiality and security of your business information."
   },
   "audit": {
     "badge": "Free Audit — Limited places this month",
-    "title": "Discover Your AI Potential in 24h",
-    "subtitle": "An expert analyses your business and delivers a concrete action plan, free of charge.",
-    "cta": "Request My Free Audit",
+    "title": "Thirty minutes to find out whether AI belongs in your business",
+    "subtitle": "We look at your activity together, and I tell you honestly whether I can help or not.",
+    "cta": "Book a call",
     "badges": {
-      "free": "100% free",
-      "fast": "Results within 24h",
+      "free": "No commitment",
+      "fast": "Thirty minutes",
       "noCommitment": "No commitment"
     },
     "steps": {
@@ -201,9 +201,9 @@
     "q1": "Do I need technical skills to use your solutions?",
     "a1": "Absolutely not! Our solutions are designed to be easy to use. We handle all the technical aspects.",
     "q2": "How long does it take to implement an AI solution?",
-    "a2": "Most of our solutions are operational within 48 hours. The free audit takes 24 hours.",
-    "q3": "Is the audit really free with no strings attached?",
-    "a3": "Yes, 100% free and no commitment. We analyze your business and deliver a concrete action plan.",
+    "a2": "Most solutions are running within a few working days once the scope is agreed. The discovery call itself lasts thirty minutes.",
+    "q3": "Does the discovery call commit me to anything?",
+    "a3": "No. Thirty minutes to understand your situation. If there is nothing to be done, I will say so — that is also what makes the opinion worth having.",
     "q4": "Is my data secure?",
     "a4": "Absolutely. We are GDPR compliant and all data is hosted in Europe.",
     "q5": "What type of business can benefit from your services?",
@@ -224,14 +224,14 @@
   "offers": {
     "eyebrow": "Offers",
     "title": "Three ways to start, each with a price",
-    "subtitle": "The audit is free. The Express Pack automates a first task at a fixed price. The subscription keeps your workflows running and evolving."
+    "subtitle": "Five services, each with a published price: diagnostic, workshop, automation sprint, ongoing support, AI Act compliance."
   },
   "relatedServices": {
     "title": "See also",
     "links": {
       "audit": {
-        "title": "Free AI audit",
-        "description": "Complete analysis of your activity in 24h"
+        "title": "Discovery call",
+        "description": "Thirty minutes on your business, no commitment"
       },
       "automatisation": {
         "title": "AI automation",

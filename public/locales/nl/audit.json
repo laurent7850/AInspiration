@@ -20,11 +20,11 @@
     }
   },
   "form": {
-    "title": "Uw gratis AI-audit",
+    "title": "Uw kennismakingsgesprek",
     "stepOf": "Stap {{step}} van {{total}}",
     "continue": "Doorgaan",
     "back": "Terug",
-    "submit": "Mijn gratis audit ontvangen",
+    "submit": "Het gesprek aanvragen",
     "submitting": "Verzenden...",
     "close": "Sluiten",
     "required": "*",
@@ -74,7 +74,7 @@
     "success": {
       "title": "Uw auditaanvraag is verzonden!",
       "analyzing": "Onze AI-expert analyseert uw situatie nu.",
-      "report": "U ontvangt uw <strong>gepersonaliseerd auditrapport per e-mail binnen 24 uur</strong>.",
+      "report": "Ik schrijf u om een moment van <strong>dertig minuten</strong> af te spreken.",
       "nextTitle": "Wat gebeurt er nu?",
       "nextStep1": "AI-analyse van uw bedrijf en behoeften",
       "nextStep2": "Gepersonaliseerd rapport per e-mail verzonden",
@@ -143,7 +143,7 @@
     "advanced": "Gevorderd — Ik heb al processen geautomatiseerd"
   },
   "budgets": {
-    "discovery": "Ik wil eerst mijn opties begrijpen (gratis audit)",
+    "discovery": "Ik wil eerst mijn opties begrijpen",
     "starter": "Minder dan € 2.000 voor een eerste project",
     "growth": "€ 2.000 – € 5.000 voor een complete oplossing",
     "enterprise": "Meer dan € 5.000 voor een diepgaande transformatie"
@@ -171,16 +171,16 @@
     "notSpecified": "Niet gespecificeerd"
   },
   "page": {
-    "badge": "Beperkte plaatsen — Gratis audit deze maand",
+    "badge": "Op afspraak",
     "heroTitle": "Ontdek uw AI-potentieel",
-    "heroHighlight": "in 24u",
-    "heroDescription": "Een expert analyseert uw bedrijf en levert een concreet actieplan, gratis. Een eerste concreet resultaat in 5 dagen, vanuit uw gratis audit.",
-    "ctaButton": "Mijn gratis audit aanvragen",
+    "heroHighlight": "in dertig minuten",
+    "heroDescription": "We bekijken uw activiteit samen en ik zeg u eerlijk of AI bij u thuishoort. Als er iets te doen valt, praten we over de Diagnose. Zo niet, dan zeg ik dat ook.",
+    "ctaButton": "Het gesprek aanvragen",
     "guarantees": {
-      "results": "Resultaten binnen 24u",
-      "free": "100% gratis, zonder verplichting",
-      "report": "Gepersonaliseerd PDF-rapport",
-      "expert": "Analyse door een AI-expert"
+      "results": "Dertig minuten",
+      "free": "Vrijblijvend",
+      "report": "Over uw situatie, niet algemeen",
+      "expert": "Rechtstreeks met mij"
     },
     "howTitle": "Hoe verloopt uw audit?",
     "howSubtitle": "Een eenvoudig 4-stappenproces om uw AI-kansen te identificeren",
@@ -212,13 +212,13 @@
       "Routekaart voor AI-integratie"
     ],
     "goFurtherTitle": "Wilt u verder gaan?",
-    "packTitle": "Express Automatiseringspakket",
-    "packLaunchBadge": "Lanceringsaanbieding — € 1.043 i.p.v. € 1.490",
+    "packTitle": "En daarna? De AI-diagnose",
+    "packLaunchBadge": "Oprichterstarief — −20% voor de eerste drie klanten",
     "packLaunchNote": "Voor de eerste 10 klanten (in ruil voor een getuigenis)",
-    "packPrice": "Vanaf € 1.043 excl. BTW · n8n workflow setup + 1e maand hosting inbegrepen",
-    "packPriceStandard": "€ 1.490 excl. BTW (standaardtarief)",
-    "packDescription": "Rechtstreeks vanuit uw audit automatiseren wij de taak die u de meeste tijd bespaart. Setup + 1e maand inbegrepen, daarna € 290/maand voor hosting en support van uw AI-workflow.",
-    "packSubscriptionNote": "Verplicht maandabonnement € 290/maand excl. BTW — uw workflows draaien op onze infrastructuur.",
+    "packPrice": "€ 2.400 excl. btw · twee dagen",
+    "packPriceStandard": "In ruil voor een getuigenis, voor het oprichterstarief",
+    "packDescription": "Twee dagen in uw werkelijke processen, om in kaart te brengen wat automatiseerbaar is en te becijferen wat handwerk u kost. U vertrekt met drie prioritaire projecten en, even nuttig, de lijst van wat niet geautomatiseerd moet worden.",
+    "packSubscriptionNote": "Geen verplicht abonnement. Wilt u daarna dat ik draaiende houd wat draait, dan kost de AI-piloot-begeleiding € 590/maand excl. btw over zes maanden — en dat is een keuze, geen voorwaarde.",
     "whoTitle": "Voor wie is deze audit?",
     "whoSectors": [
       "Vrije beroepen (advocaten, accountants, architecten)",
@@ -228,16 +228,16 @@
       "Ambachtslieden en zelfstandigen"
     ],
     "finalCtaTitle": "Klaar om te ontdekken wat AI voor u kan doen?",
-    "finalCtaSubtitle": "Vul het formulier in binnen 2 minuten. Ontvang uw gepersonaliseerde audit binnen 24u.",
+    "finalCtaSubtitle": "Het formulier neemt twee minuten. Ik schrijf u om een moment af te spreken.",
     "stats": {
       "delivery": "Levertijd",
       "noCommitment": "Zonder verplichting",
       "smeHelped": "KMO's begeleid"
     },
-    "seoTitle": "Gratis AI Audit in 24u | Gepersonaliseerde Diagnose | AInspiration",
-    "seoDescription": "Vraag uw gratis AI-audit aan. Een expert analyseert uw bedrijf en levert een concreet actieplan binnen 24u. Zonder verplichting. KMO's en zelfstandigen in België en Frankrijk.",
+    "seoTitle": "AI-kennismakingsgesprek | KMO-diagnose | AInspiration",
+    "seoDescription": "Dertig minuten om te weten of AI bij uw KMO thuishoort. Vrijblijvend. AI-diagnose aan € 2.400 als u verder gaat. KMO's en zelfstandigen in België en Frankrijk.",
     "faq": {
-      "title": "Veelgestelde vragen over de gratis AI-audit",
+      "title": "Veelgestelde vragen over het kennismakingsgesprek",
       "items": [
         {
           "q": "Wat bevat het AI-auditrapport precies?",
@@ -245,11 +245,11 @@
         },
         {
           "q": "Hoe verloopt het proces concreet?",
-          "a": "Heel eenvoudig: u vult een formulier in 4 stappen in (contactgegevens, activiteit, behoeften, context), wat 2 tot 5 minuten duurt. Onze AI-pipeline analyseert uw antwoorden in ongeveer 26 seconden en genereert een gepersonaliseerd rapport. U ontvangt het per e-mail binnen 24 werkuren. Als het rapport u interesseert, stellen we een gratis gesprek van 30 minuten voor. Nooit enige verplichting."
+          "a": "Het is eenvoudig: u vult een formulier in vier stappen in (contactgegevens, activiteit, noden, context), goed voor 2 tot 5 minuten. Ik lees het vóór ons gesprek, zodat u niet hoeft te herhalen wat u al hebt geschreven, en ik stel u een moment van dertig minuten voor."
         },
         {
-          "q": "Waarom is het gratis? Waar zit het addertje?",
-          "a": "Er is geen addertje. De gratis audit is ons instapproduct: zo tonen we onze expertise en vinden we de bedrijven waarvoor we waarde kunnen creëren. Als onze aanbevelingen u interesseren, kunt u kiezen voor ons Express Pack (vanaf 1.043 EUR excl. btw) om de geïdentificeerde prioritaire taak te automatiseren. Zo niet, dan houdt u het rapport en de aanbevelingen zonder iets verschuldigd te zijn. Zo bouwen wij vertrouwen op."
+          "q": "Waarom is het gesprek gratis? Waar zit het addertje?",
+          "a": "Er is geen addertje, en er is ook geen oplevering: dertig minuten gesprek, geen rapport. Dat is de tijd die ik nodig heb om te weten of ik u van nut kan zijn, en die u nodig hebt om te weten of u met mij wilt werken. Is het antwoord aan een van beide kanten neen, dan zijn we dertig minuten kwijt."
         },
         {
           "q": "Is de audit echt gepersonaliseerd of is het een generiek sjabloon?",

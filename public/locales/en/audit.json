@@ -20,11 +20,11 @@
     }
   },
   "form": {
-    "title": "Your free AI audit",
+    "title": "Your discovery call",
     "stepOf": "Step {{step}} of {{total}}",
     "continue": "Continue",
     "back": "Back",
-    "submit": "Get my free audit",
+    "submit": "Request the call",
     "submitting": "Sending...",
     "close": "Close",
     "required": "*",
@@ -74,7 +74,7 @@
     "success": {
       "title": "Your audit request has been sent!",
       "analyzing": "Our AI expert is analysing your situation right now.",
-      "report": "You will receive your <strong>personalised audit report by email within 24 hours</strong>.",
+      "report": "I will write to you to agree a <strong>thirty-minute</strong> slot.",
       "nextTitle": "What happens next?",
       "nextStep1": "AI analysis of your business and needs",
       "nextStep2": "Personalised report sent by email",
@@ -143,7 +143,7 @@
     "advanced": "Advanced — I've already automated processes"
   },
   "budgets": {
-    "discovery": "I want to understand my options first (free audit)",
+    "discovery": "I want to understand my options first",
     "starter": "Under €2,000 for a first project",
     "growth": "€2,000 – €5,000 for a complete solution",
     "enterprise": "Over €5,000 for a deep transformation"
@@ -171,16 +171,16 @@
     "notSpecified": "Not specified"
   },
   "page": {
-    "badge": "Limited spots — Free audit this month",
+    "badge": "By appointment",
     "heroTitle": "Discover your AI potential",
-    "heroHighlight": "in 24h",
-    "heroDescription": "An expert analyses your business and delivers a concrete action plan, for free. A first concrete result in 5 days, from your free audit.",
-    "ctaButton": "Request my free audit",
+    "heroHighlight": "in thirty minutes",
+    "heroDescription": "We look at your business together and I tell you honestly whether AI belongs there. If there is something to work on, we talk about the Diagnostic. If there is not, I will say that too.",
+    "ctaButton": "Request the call",
     "guarantees": {
-      "results": "Results within 24h",
-      "free": "100% free, no commitment",
-      "report": "Personalised PDF report",
-      "expert": "Analysis by an AI expert"
+      "results": "Thirty minutes",
+      "free": "No commitment",
+      "report": "On your case, not a generic one",
+      "expert": "Directly with me"
     },
     "howTitle": "How does your audit work?",
     "howSubtitle": "A simple 4-step process to identify your AI opportunities",
@@ -212,13 +212,13 @@
       "AI integration roadmap"
     ],
     "goFurtherTitle": "Want to go further?",
-    "packTitle": "Express Automation Pack",
-    "packLaunchBadge": "Launch offer — €1,043 instead of €1,490",
+    "packTitle": "And then? The AI Diagnostic",
+    "packLaunchBadge": "Founder rate — −20% for the first three clients",
     "packLaunchNote": "For the first 10 clients (in exchange for a testimonial)",
-    "packPrice": "From €1,043 excl. VAT · n8n workflow setup + 1st month hosting included",
-    "packPriceStandard": "€1,490 excl. VAT (standard price)",
-    "packDescription": "Directly from your audit, we automate the task that will save you the most time. Setup + 1st month included, then €290/month for hosting and support of your AI workflow.",
-    "packSubscriptionNote": "Mandatory monthly subscription €290/month excl. VAT — your workflows run on our infrastructure.",
+    "packPrice": "€2,400 excl. VAT · two days",
+    "packPriceStandard": "In exchange for a testimonial, for the founder rate",
+    "packDescription": "Two days inside your actual processes, to map what can be automated and put a figure on what doing it by hand costs. You leave with three priority projects and, just as usefully, the list of what should not be automated.",
+    "packSubscriptionNote": "No mandatory subscription. If you then want me to keep what runs alive, the AI Pilot support is €590/month excl. VAT over six months — and that is a choice, not a condition.",
     "whoTitle": "Who is this audit for?",
     "whoSectors": [
       "Liberal professions (lawyers, accountants, architects)",
@@ -228,16 +228,16 @@
       "Craftsmen and freelancers"
     ],
     "finalCtaTitle": "Ready to discover what AI can do for you?",
-    "finalCtaSubtitle": "Fill out the form in 2 minutes. Receive your personalised audit within 24h.",
+    "finalCtaSubtitle": "The form takes two minutes. I will write to you to agree a slot.",
     "stats": {
       "delivery": "Delivery time",
       "noCommitment": "No commitment",
       "smeHelped": "SMEs supported"
     },
-    "seoTitle": "Free AI Audit in 24h | Personalised Diagnostic | AInspiration",
-    "seoDescription": "Request your free AI audit. An expert analyses your business and delivers a concrete action plan within 24h. No commitment. SMEs and freelancers in Belgium and France.",
+    "seoTitle": "AI discovery call | SME diagnostic | AInspiration",
+    "seoDescription": "Thirty minutes to find out whether AI belongs in your business. No commitment. AI Diagnostic at €2,400 if you go further. SMEs and freelancers in Belgium and France.",
     "faq": {
-      "title": "Frequently asked questions about the free AI audit",
+      "title": "Frequently asked questions about the discovery call",
       "items": [
         {
           "q": "What exactly does the AI audit report contain?",
@@ -245,11 +245,11 @@
         },
         {
           "q": "How does the process work in practice?",
-          "a": "It is simple: you fill in a 4-step form (contact details, activity, needs, context) that takes 2 to 5 minutes. Our AI pipeline analyses your answers in about 26 seconds and generates a personalised report. You receive it by email within 24 working hours. If the report interests you, we offer a free 30-minute call to discuss it. No obligation at any point."
+          "a": "It is simple: you fill in a four-step form (contact details, business, needs, context) which takes 2 to 5 minutes. I read it before we speak, so you do not have to repeat what you have already written, and I offer you a thirty-minute slot."
         },
         {
-          "q": "Why is it free? Where is the catch?",
-          "a": "There is no catch. The free audit is our entry product: it lets us demonstrate our expertise and identify the companies for which we can create value. If our recommendations interest you, you can move on to our Express Pack (from EUR 1,043 excl. VAT) to automate the priority task identified. If not, you keep the report and the recommendations without owing anything. That is how we build trust."
+          "q": "Why is the call free? Where is the catch?",
+          "a": "There is no catch, and there is no deliverable either: thirty minutes of conversation, not a report. That is the time I need to know whether I can be useful to you, and the time you need to know whether you want to work with me. If the answer is no on either side, we have lost thirty minutes."
         },
         {
           "q": "Is the audit really personalised, or is it a generic template?",

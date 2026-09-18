@@ -9,7 +9,7 @@
     "highlight": "already",
     "titleSuffix": "built",
     "description": "Fifteen projects in service. For each one: what was built, what it replaces, and what it saves. The figures come from execution logs, not from a brochure.",
-    "cta": "Request my free audit",
+    "cta": "Book a call",
     "ctaSub": "Results within 24 h — no commitment",
     "secondary": "Talk about my case"
   },
@@ -45,7 +45,7 @@
     "title": "How it works",
     "description": "Three steps, and you decide at each one whether we carry on.",
     "step1Title": "Audit",
-    "step1Body": "We look at what you do by hand, and put a number on what it costs you. Free, within 24 hours.",
+    "step1Body": "We look at what you do by hand, and put a figure on what it costs you. That is the AI Diagnostic: two days, €2,400 excl. VAT.",
     "step2Title": "Prototype",
     "step2Body": "We build the smallest useful version, on your real data. You watch it run before committing to anything.",
     "step3Title": "Into production",
@@ -53,8 +53,8 @@
   },
   "cta": {
     "title": "And in your business, what takes an hour too many?",
-    "body": "The audit is free and takes no longer than a conversation. You leave with a costed list of what can be automated, whether you become a client or not.",
-    "button": "Request my free audit"
+    "body": "Thirty minutes is enough to know whether there is anything to be done in your business. If there is, the Diagnostic draws up the list of what can be automated, with figures. If there is not, I will say so.",
+    "button": "Book a call"
   },
   "detail": {
     "context": "The context",
@@ -149,7 +149,7 @@
       "howItWorks": "Next.js, Prisma on PostgreSQL, Auth.js authentication, Stripe payments, classification and document generation by Claude, PDF export. Multi-tenant isolation: one organisation's data is never visible from another.",
       "transposition": "If you use an AI tool in your business — and you probably do without having formalised it — the first step is knowing which one, for what, and with which data. For questions that go beyond the inventory you need a lawyer: we do not replace one."
     },
-    "labo-nostalgie": {
+    "playlists-auditeurs": {
       "title": "Personalised playlists for radio listeners",
       "summary": "An hour of curation per listener, down to seventy seconds.",
       "sector": "Media",

@@ -55,6 +55,8 @@ export default function App() {
             <Route path="/creativite" element={<Navigate to="/creation-ia" replace />} />
             {/* Études de cas (three illustrative scenarios) merged into Réalisations */}
             <Route path="/etudes-de-cas" element={<Navigate to="/realisations" replace />} />
+            {/* Fiche playlists radio : slug anonymisé le 18/09, ancienne URL indexée */}
+            <Route path="/realisations/labo-nostalgie" element={<Navigate to="/realisations/playlists-auditeurs" replace />} />
             {/* Default French routes (no prefix) */}
             {routes.map((route) => (
               <Route

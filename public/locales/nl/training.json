@@ -70,23 +70,6 @@
         }
       }
     },
-    "testimonials": {
-      "marie": {
-        "name": "Marie L.",
-        "role": "Marketingverantwoordelijke",
-        "text": "Ik bespaar 2 uur per dag dankzij de geleerde technieken!"
-      },
-      "thomas": {
-        "name": "Thomas D.",
-        "role": "Ondernemer",
-        "text": "Zeer praktische training, direct toepasbaar"
-      },
-      "sophie": {
-        "name": "Sophie M.",
-        "role": "Directiesecretaresse",
-        "text": "Eindelijk een AI-training zonder technisch jargon"
-      }
-    },
     "cta": {
       "title": "Klaar om AI te beheersen?",
       "subtitle": "Sluit u aan bij onze tevreden deelnemers",
@@ -117,7 +100,7 @@
         },
         {
           "q": "Wat kost een AI-opleiding voor mijn team?",
-          "a": "De prijs hangt af van de formule en het aantal deelnemers. Individuele opleiding op afstand: vanaf 490 EUR excl. btw voor één dag. Bedrijfsopleiding (tot 10 personen): vanaf 1.490 EUR excl. btw voor één dag. Programma op maat over 3 dagen: op offerte. Neem contact op voor een offerte op maat; de eerste evaluatie is gratis."
+          "a": "De Workshop (O2) kost € 900 excl. btw voor een halve dag en € 1.500 excl. btw voor een hele dag, tot tien deelnemers, ter plaatse of op afstand. We werken op uw eigen cases en uw eigen tools, niet op voorbeelden. Voor een programma over meerdere dagen: schrijf me, de offerte hangt af van het aantal sessies en de inhoud."
         }
       ]
     }

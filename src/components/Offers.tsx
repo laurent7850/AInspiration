@@ -7,19 +7,25 @@ import AuditForm from './AuditForm';
 import { useLocalizedPath } from '../hooks/useLocalizedPath';
 
 /**
- * Three packaged offers with prices, third screen of the homepage.
+ * The O1–O5 offer grid, third screen of the homepage.
  *
- * Copy and prices come from the `pricing` namespace (the source the FAQ
- * answers already quote: 0 €, 1 490 € HTVA, 290 €/mois) — one place to
- * change a price. Anchoring a price on the homepage was the audit's main
- * marketing recommendation: it filters the curious and reassures buyers.
+ * Copy and prices come from the `pricing` namespace — one place to change a
+ * price, and the source the FAQ answers quote. The grid replaced the free
+ * audit + Pack Express + managed subscription trio on 2026-09-18: that offer
+ * was dropped on the 16th, and a site that keeps advertising it sends
+ * prospects somewhere the sales conversation no longer goes.
+ *
+ * The only free thing left is the discovery call, which is a qualification
+ * conversation and not a deliverable.
  */
-type PlanKey = 'audit' | 'express' | 'managed';
+type PlanKey = 'diagnostic' | 'atelier' | 'sprint' | 'pilote' | 'aiact';
 
 const PLANS: Array<{ key: PlanKey; featured?: boolean }> = [
-  { key: 'audit' },
-  { key: 'express', featured: true },
-  { key: 'managed' },
+  { key: 'diagnostic', featured: true },
+  { key: 'atelier' },
+  { key: 'sprint' },
+  { key: 'pilote' },
+  { key: 'aiact' },
 ];
 
 export default function Offers() {
@@ -41,7 +47,7 @@ export default function Offers() {
           <p className="text-lg text-secondary leading-relaxed">{tc('offers.subtitle')}</p>
         </div>
 
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+        <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           {PLANS.map((plan, index) => {
             const features = t(`plans.${plan.key}.features`, { returnObjects: true }) as string[];
             const priceNote = t(`plans.${plan.key}.priceNote`, '');
@@ -84,28 +90,17 @@ export default function Offers() {
                     ))}
                   </ul>
                   <div className="mt-8">
-                    {plan.key === 'audit' ? (
-                      <button
-                        type="button"
-                        onClick={() => setShowAudit(true)}
-                        className="inline-flex w-full items-center justify-center gap-2 rounded-button bg-accent px-6 py-3.5 font-semibold text-white transition-colors hover:bg-accent-dark"
-                      >
-                        {t('cta.startFreeAudit')}
-                        <ArrowRight className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
-                      </button>
-                    ) : (
-                      <Link
-                        to={localizedPath('/contact')}
-                        className={`inline-flex w-full items-center justify-center gap-2 rounded-button px-6 py-3.5 font-semibold transition-colors ${
-                          plan.featured
-                            ? 'bg-accent text-white hover:bg-accent-dark'
-                            : 'border border-line text-ink hover:border-accent hover:text-accent-dark'
-                        }`}
-                      >
-                        {plan.key === 'express' ? t('cta.orderExpress') : t('cta.contactUs')}
-                        <ArrowRight className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
-                      </Link>
-                    )}
+                    <Link
+                      to={localizedPath('/contact')}
+                      className={`inline-flex w-full items-center justify-center gap-2 rounded-button px-6 py-3.5 font-semibold transition-colors ${
+                        plan.featured
+                          ? 'bg-accent text-white hover:bg-accent-dark'
+                          : 'border border-line text-ink hover:border-accent hover:text-accent-dark'
+                      }`}
+                    >
+                      {t('cta.askQuote')}
+                      <ArrowRight className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
+                    </Link>
                   </div>
                 </article>
               </Reveal>
@@ -113,7 +108,23 @@ export default function Offers() {
           })}
         </ul>
 
-        <p className="mt-8 max-w-3xl text-sm text-secondary leading-relaxed">{t('mandatorySubscription')}</p>
+        <div className="mt-10 rounded-card border border-line bg-canvas p-6 sm:flex sm:items-center sm:justify-between sm:gap-6">
+          <div>
+            <p className="font-semibold text-ink">{t('discovery.name')}</p>
+            <p className="mt-1 text-sm text-secondary leading-relaxed">{t('discovery.description')}</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowAudit(true)}
+            className="mt-4 inline-flex shrink-0 items-center justify-center gap-2 rounded-button bg-accent px-6 py-3.5 font-semibold text-white transition-colors hover:bg-accent-dark sm:mt-0"
+          >
+            {t('cta.bookDiscovery')}
+            <ArrowRight className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
+          </button>
+        </div>
+        <p className="mt-6 max-w-3xl text-sm text-secondary leading-relaxed">
+          {t('launchNote')} {t('vatNote')}
+        </p>
       </div>
 
       <AuditForm isOpen={showAudit} onClose={() => setShowAudit(false)} />

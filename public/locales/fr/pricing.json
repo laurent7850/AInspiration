@@ -1,71 +1,86 @@
 {
-  "title": "Tarifs transparents",
-  "subtitle": "Démarrez gratuitement. Passez à la vitesse supérieure quand vous êtes prêt.",
-  "popular": "Plus populaire",
+  "title": "Tarifs",
+  "subtitle": "Cinq prestations, un prix affiché pour chacune. Le seul temps offert est le rendez-vous de découverte.",
+  "popular": "Le plus demandé",
   "monthly": "/mois",
-  "launchBadge": "Offre lancement",
-  "launchNote": "Pour les 10 premiers clients — contre témoignage",
-  "mandatorySubscription": "L'abonnement mensuel est obligatoire. Vos workflows tournent sur l'infrastructure AInspiration (hébergement, monitoring, support inclus).",
+  "launchBadge": "Tarif fondateur",
+  "launchNote": "−20 % pour les trois premiers clients, en échange d'un témoignage.",
+  "vatNote": "Prix hors TVA.",
+  "discovery": {
+    "name": "Rendez-vous de découverte",
+    "description": "Trente minutes pour comprendre votre situation et vous dire si je peux aider.",
+    "price": "Offert"
+  },
   "plans": {
-    "audit": {
-      "name": "Audit IA Gratuit",
-      "description": "Rapport personnalisé sous 24h — sans engagement",
-      "price": "0 €",
+    "diagnostic": {
+      "name": "O1 — Diagnostic IA",
+      "description": "Deux jours pour savoir où l'IA a sa place chez vous, et où elle n'en a pas.",
+      "price": "2 400 €",
+      "priceNote": "HTVA · deux jours",
       "features": [
-        "Analyse de vos processus actuels",
-        "Identification des tâches automatisables",
-        "Estimation du temps gagné par semaine",
-        "3 recommandations prioritaires",
-        "Feuille de route IA personnalisée",
-        "Rapport PDF envoyé sous 24h"
+        "Deux jours d'immersion dans vos processus réels",
+        "Cartographie des tâches automatisables",
+        "Trois chantiers prioritaires, chiffrés en charge",
+        "Restitution en séance, document remis",
+        "Ce qu'il ne faut pas automatiser, et pourquoi"
       ]
     },
-    "express_launch": {
-      "name": "Pack Express — Offre lancement",
-      "description": "Pour les 10 premiers clients (contre témoignage)",
-      "price": "1 043 €",
-      "priceNote": "HTVA · au lieu de 1 490 €",
+    "atelier": {
+      "name": "O2 — Atelier",
+      "description": "Vos équipes, vos cas, vos outils — une demi-journée ou une journée.",
+      "price": "900 € / 1 500 €",
+      "priceNote": "HTVA · demi-journée / journée",
       "features": [
-        "Setup workflow n8n sur mesure",
-        "1er mois d'hébergement inclus",
-        "Configuration et tests complets",
-        "Formation de votre équipe (1h)",
-        "Support prioritaire 30 jours",
-        "Puis 290 €/mois (abonnement obligatoire)"
+        "Sur vos propres cas, pas sur des exemples",
+        "Prise en main des modèles et des prompts",
+        "Bibliothèque de prompts qui vous reste",
+        "Support écrit remis en fin de séance",
+        "Jusqu'à dix participants"
       ]
     },
-    "express": {
-      "name": "Pack Express",
-      "description": "Setup workflow n8n + 1er mois hébergement inclus",
-      "price": "1 490 €",
+    "sprint": {
+      "name": "O3 — Sprint automatisation",
+      "description": "Un workflow conçu, construit et mis en production.",
+      "price": "3 500 – 6 000 €",
+      "priceNote": "HTVA · selon le nombre d'intégrations",
+      "features": [
+        "Périmètre fixé et écrit avant de commencer",
+        "Un workflow livré en production",
+        "Intégrations à vos outils existants",
+        "Documentation et passation à vos équipes",
+        "La fourchette dépend des systèmes à relier"
+      ]
+    },
+    "pilote": {
+      "name": "O4 — Pilote IA",
+      "description": "Un accompagnement continu, pour que ce qui tourne continue de tourner.",
+      "price": "590 €",
+      "priceNote": "/mois HTVA · engagement six mois",
+      "features": [
+        "Un point mensuel, arbitrages compris",
+        "Évolutions et correctifs des workflows en place",
+        "Veille sur ce qui change et vous concerne",
+        "Accès direct, sans ticket ni intermédiaire",
+        "Engagement de six mois"
+      ]
+    },
+    "aiact": {
+      "name": "O5 — Check AI Act",
+      "description": "Où vous situez-vous face au règlement européen sur l'IA.",
+      "price": "990 €",
       "priceNote": "HTVA",
       "features": [
-        "Setup workflow n8n sur mesure",
-        "1er mois d'hébergement inclus",
-        "Configuration et tests complets",
-        "Formation de votre équipe (1h)",
-        "Support prioritaire 30 jours",
-        "Puis 290 €/mois (abonnement obligatoire)"
-      ]
-    },
-    "managed": {
-      "name": "Abonnement IA Managé",
-      "description": "Hébergement, monitoring, support et ajustements de vos workflows",
-      "price": "290 €",
-      "priceNote": "/mois HTVA",
-      "features": [
-        "Hébergement workflow sur infra AInspiration",
-        "Monitoring 24/7 et alertes",
-        "Support technique prioritaire",
-        "Ajustements et optimisations inclus",
-        "Mises à jour et maintenance",
-        "Abonnement obligatoire après le Pack Express"
+        "Inventaire de vos usages d'IA, déclarés et informels",
+        "Classification au sens du règlement européen",
+        "Les obligations qui s'appliquent, usage par usage",
+        "Base de registre et de documentation",
+        "Ce qui est à faire d'abord, et ce qui peut attendre"
       ]
     }
   },
   "cta": {
-    "startFreeAudit": "Demander mon audit gratuit",
-    "orderExpress": "Commander le Pack Express",
-    "contactUs": "Nous contacter"
+    "bookDiscovery": "Prendre le rendez-vous de découverte",
+    "askQuote": "Demander un devis",
+    "contactUs": "Me contacter"
   }
 }

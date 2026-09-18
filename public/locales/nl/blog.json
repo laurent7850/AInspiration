@@ -170,8 +170,8 @@
   "cta": {
     "audit": {
       "title": "Klaar om uw bedrijf te transformeren met AI?",
-      "description": "Ontdek hoe AI uw processen kan optimaliseren en uw productiviteit kan verbeteren. Begin met een gratis audit.",
-      "button": "Vraag een gratis audit aan",
+      "description": "Ontdek waar AI bij u echt van nut kan zijn. Het begint met een gesprek van dertig minuten.",
+      "button": "Een afspraak maken",
       "benefits": {
         "1": "Identificeer automatiseringsmogelijkheden",
         "2": "Krijg een gepersonaliseerd actieplan",
@@ -180,7 +180,7 @@
     },
     "consultation": {
       "title": "Behoefte aan persoonlijke begeleiding?",
-      "description": "Ons team van experts begeleidt u bij uw digitale transformatie, van strategie tot implementatie.",
+      "description": "Ik begeleid u bij uw digitale transformatie, van strategie tot implementatie.",
       "button": "Boek een consultatie",
       "benefits": {
         "1": "Op maat gemaakt strategisch advies",
@@ -200,7 +200,7 @@
     },
     "default": {
       "title": "Neem vandaag actie",
-      "description": "Transformeer uw bedrijf met AI. Onze experts staan klaar om u bij elke stap te ondersteunen.",
+      "description": "Transformeer uw bedrijf met AI. Ik sta klaar om u bij elke stap te ondersteunen.",
       "button": "Begin nu",
       "benefits": {
         "1": "Op maat gemaakte oplossingen voor uw bedrijf",
@@ -208,6 +208,6 @@
         "3": "Continue ondersteuning en begeleiding"
       }
     },
-    "footer": "Geen verplichting • Reactie binnen 24u • 100% gratis audit"
+    "footer": "Vrijblijvend · Dertig minuten · Over uw eigen situatie"
   }
 }

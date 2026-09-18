@@ -1,71 +1,86 @@
 {
-  "title": "Transparent Pricing",
-  "subtitle": "Start for free. Level up when you're ready.",
-  "popular": "Most Popular",
+  "title": "Pricing",
+  "subtitle": "Five services, a published price for each. The only thing given free is the discovery call.",
+  "popular": "Most requested",
   "monthly": "/month",
-  "launchBadge": "Launch offer",
-  "launchNote": "For the first 10 clients — in exchange for a testimonial",
-  "mandatorySubscription": "The monthly subscription is mandatory. Your workflows run on AInspiration's infrastructure (hosting, monitoring, support included).",
+  "launchBadge": "Founder rate",
+  "launchNote": "−20% for the first three clients, in exchange for a testimonial.",
+  "vatNote": "Prices exclude VAT.",
+  "discovery": {
+    "name": "Discovery call",
+    "description": "Thirty minutes to understand your situation and tell you whether I can help.",
+    "price": "Free"
+  },
   "plans": {
-    "audit": {
-      "name": "Free AI Audit",
-      "description": "Personalised report within 24h — no commitment",
-      "price": "€0",
+    "diagnostic": {
+      "name": "O1 — AI Diagnostic",
+      "description": "Two days to find where AI belongs in your business, and where it does not.",
+      "price": "€2,400",
+      "priceNote": "excl. VAT · two days",
       "features": [
-        "Analysis of your current processes",
-        "Identification of automatable tasks",
-        "Estimation of time saved per week",
-        "3 priority recommendations",
-        "Personalised AI roadmap",
-        "PDF report delivered within 24h"
+        "Two days inside your actual processes",
+        "A map of the tasks that can be automated",
+        "Three priority projects, sized in workload",
+        "Findings presented in person, document handed over",
+        "What should not be automated, and why"
       ]
     },
-    "express_launch": {
-      "name": "Express Pack — Launch Offer",
-      "description": "For the first 10 clients (in exchange for a testimonial)",
-      "price": "€1,043",
-      "priceNote": "excl. VAT · instead of €1,490",
+    "atelier": {
+      "name": "O2 — Workshop",
+      "description": "Your teams, your cases, your tools — half a day or a full day.",
+      "price": "€900 / €1,500",
+      "priceNote": "excl. VAT · half day / full day",
       "features": [
-        "Custom n8n workflow setup",
-        "1st month hosting included",
-        "Full configuration and testing",
-        "Team training (1h)",
-        "Priority support for 30 days",
-        "Then €290/month (mandatory subscription)"
+        "On your own cases, not on examples",
+        "Hands-on with the models and the prompts",
+        "A prompt library that stays with you",
+        "Written material handed over at the end",
+        "Up to ten participants"
       ]
     },
-    "express": {
-      "name": "Express Pack",
-      "description": "n8n workflow setup + 1st month hosting included",
-      "price": "€1,490",
+    "sprint": {
+      "name": "O3 — Automation sprint",
+      "description": "One workflow designed, built and put into production.",
+      "price": "€3,500 – €6,000",
+      "priceNote": "excl. VAT · depending on the number of integrations",
+      "features": [
+        "Scope fixed and written down before starting",
+        "One workflow delivered in production",
+        "Integrations with the tools you already use",
+        "Documentation and handover to your teams",
+        "The range depends on the systems to connect"
+      ]
+    },
+    "pilote": {
+      "name": "O4 — AI Pilot",
+      "description": "Ongoing support, so that what runs keeps running.",
+      "price": "€590",
+      "priceNote": "/month excl. VAT · six-month commitment",
+      "features": [
+        "A monthly review, decisions included",
+        "Changes and fixes to the workflows in place",
+        "Watch on what changes and concerns you",
+        "Direct access, no ticket, no intermediary",
+        "Six-month commitment"
+      ]
+    },
+    "aiact": {
+      "name": "O5 — AI Act check",
+      "description": "Where you stand against the European AI regulation.",
+      "price": "€990",
       "priceNote": "excl. VAT",
       "features": [
-        "Custom n8n workflow setup",
-        "1st month hosting included",
-        "Full configuration and testing",
-        "Team training (1h)",
-        "Priority support for 30 days",
-        "Then €290/month (mandatory subscription)"
-      ]
-    },
-    "managed": {
-      "name": "Managed AI Subscription",
-      "description": "Hosting, monitoring, support and adjustments for your workflows",
-      "price": "€290",
-      "priceNote": "/month excl. VAT",
-      "features": [
-        "Workflow hosting on AInspiration infrastructure",
-        "24/7 monitoring and alerts",
-        "Priority technical support",
-        "Adjustments and optimisations included",
-        "Updates and maintenance",
-        "Mandatory subscription after Express Pack"
+        "An inventory of your AI uses, declared and informal",
+        "Classification under the European regulation",
+        "The obligations that apply, use by use",
+        "A basis for your register and documentation",
+        "What to do first, and what can wait"
       ]
     }
   },
   "cta": {
-    "startFreeAudit": "Request my free audit",
-    "orderExpress": "Order the Express Pack",
-    "contactUs": "Contact Us"
+    "bookDiscovery": "Book the discovery call",
+    "askQuote": "Request a quote",
+    "contactUs": "Contact me"
   }
 }

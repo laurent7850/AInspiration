@@ -11,7 +11,7 @@ export const organizationSchema = {
     "height": 512
   },
   "image": "https://ainspiration.eu/og-image.png",
-  "description": "Solutions d'Intelligence Artificielle pour PME — automatisation, audit gratuit, conseil, formation et accompagnement IA en Belgique et France.",
+  "description": "Solutions d'Intelligence Artificielle pour PME — diagnostic, automatisation, formation et conformité AI Act en Belgique et France.",
   "email": "info@ainspiration.eu",
   "telephone": "+32477942865",
   "foundingDate": "2025",
@@ -79,7 +79,7 @@ export const localBusinessSchema = {
   "telephone": "+32477942865",
   "email": "info@ainspiration.eu",
   "priceRange": "€€-€€€",
-  "description": "Conseil et accompagnement en Intelligence Artificielle pour PME. Audit gratuit, formation, automatisation.",
+  "description": "Conseil et accompagnement en Intelligence Artificielle pour PME. Diagnostic, formation, automatisation, conformité AI Act.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Chaussee Brunehault 27",
@@ -107,7 +107,7 @@ export const localBusinessSchema = {
     "@type": "OfferCatalog",
     "name": "Solutions IA",
     "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Audit IA gratuit" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diagnostic IA" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Formation IA" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Accompagnement IA" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatisation IA" } }

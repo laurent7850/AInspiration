@@ -35,9 +35,21 @@
     ]
   },
   "metrics": [
-    { "value": "30+", "label": "Talen", "description": "Natuurlijke synthetische stemmen beschikbaar" },
-    { "value": "-70%", "label": "Productiekosten", "description": "t.o.v. een klassieke opnamestudio" },
-    { "value": "24u", "label": "Doorlooptijd", "description": "Van briefing tot finaal audiobestand" }
+    {
+      "value": "30+",
+      "label": "Talen",
+      "description": "Natuurlijke synthetische stemmen beschikbaar"
+    },
+    {
+      "value": "-70%",
+      "label": "Productiekosten",
+      "description": "t.o.v. een klassieke opnamestudio"
+    },
+    {
+      "value": "24u",
+      "label": "Doorlooptijd",
+      "description": "Van briefing tot finaal audiobestand"
+    }
   ],
   "useCases": {
     "title": "Concrete toepassingen voor uw kmo",
@@ -75,8 +87,8 @@
   },
   "cta": {
     "title": "Klaar om uw merk een stem te geven?",
-    "subtitle": "Laten we uw audioproject bespreken tijdens een gratis audit. We bepalen welke content u nodig hebt en de beste AI-workflow voor uw kmo.",
-    "button": "Mijn gratis audit aanvragen",
+    "subtitle": "Laten we dertig minuten over uw audioproject praten. We bepalen welke content er moet komen en welke workflow standhoudt, vrijblijvend.",
+    "button": "Een afspraak maken",
     "stat1Value": "24u",
     "stat1Label": "Eerste oplevering",
     "stat2Value": "-70%",

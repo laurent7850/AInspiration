@@ -70,23 +70,6 @@
         }
       }
     },
-    "testimonials": {
-      "marie": {
-        "name": "Marie L.",
-        "role": "Marketing Manager",
-        "text": "I saved 2 hours a day thanks to the techniques I learnt!"
-      },
-      "thomas": {
-        "name": "Thomas D.",
-        "role": "Entrepreneur",
-        "text": "Very practical training, immediately applicable"
-      },
-      "sophie": {
-        "name": "Sophie M.",
-        "role": "Executive Assistant",
-        "text": "Finally an AI training course without technical jargon"
-      }
-    },
     "cta": {
       "title": "Ready to master AI?",
       "subtitle": "Join our satisfied learners",
@@ -117,7 +100,7 @@
         },
         {
           "q": "How much does AI training cost for my team?",
-          "a": "The price depends on the format and the number of participants. Individual remote training: from EUR 490 excl. VAT for one day. In-company training (up to 10 people): from EUR 1,490 excl. VAT for one day. Customised 3-day programme: on quotation. Contact us for a quote tailored to your needs; the initial assessment is free."
+          "a": "The Workshop (O2) is €900 excl. VAT for a half day and €1,500 excl. VAT for a full day, up to ten participants, on site or remote. We work on your own cases and your own tools, not on examples. For a programme over several days, write to me: the quote depends on the number of sessions and the content."
         }
       ]
     }

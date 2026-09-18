@@ -35,9 +35,21 @@
     ]
   },
   "metrics": [
-    { "value": "10x", "label": "Faster", "description": "than traditional video production" },
-    { "value": "-80%", "label": "Filming costs", "description": "with no crew and no studio" },
-    { "value": "40+", "label": "Languages", "description": "for your subtitles and voices" }
+    {
+      "value": "10x",
+      "label": "Faster",
+      "description": "than traditional video production"
+    },
+    {
+      "value": "-80%",
+      "label": "Filming costs",
+      "description": "with no crew and no studio"
+    },
+    {
+      "value": "40+",
+      "label": "Languages",
+      "description": "for your subtitles and voices"
+    }
   ],
   "useCases": {
     "title": "Concrete use cases for your business",
@@ -75,8 +87,8 @@
   },
   "cta": {
     "title": "Ready to go video, without the complexity?",
-    "subtitle": "Let's talk about your video strategy during a free audit. We'll define the formats, volume and AI workflow that fit your business.",
-    "button": "Request my free audit",
+    "subtitle": "Let's talk about your video strategy for thirty minutes. We settle the formats, the volume and the workflow that suit your business, with no commitment.",
+    "button": "Book a call",
     "stat1Value": "48h",
     "stat1Label": "First video",
     "stat2Value": "-80%",

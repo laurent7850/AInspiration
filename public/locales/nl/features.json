@@ -75,7 +75,7 @@
     },
     "cta": {
       "title": "Klaar om uw AI-strategie te bepalen?",
-      "subtitle": "Boek een gratis strategische consultatiesessie",
+      "subtitle": "Dertig minuten om uw situatie te bekijken, vrijblijvend",
       "button": "Mijn consultatie plannen",
       "stats": {
         "expertise": "Jaar expertise",
@@ -186,14 +186,14 @@
         "2": "Train uw teams voor een succesvolle adoptie."
       },
       "contactTitle": "Contacteer Ons",
-      "contactDesc": "Voor een gepersonaliseerde demonstratie of een gratis diagnose kunt u ons vrijblijvend contacteren.",
+      "contactDesc": "Om er dertig minuten over te praten, vrijblijvend, schrijf me gerust.",
       "satisfactionLabel": "Tevredenheidsgraad",
       "installLabel": "Gemiddelde installatie"
     },
     "finalCta": {
       "title": "Laat uw concurrenten geen voorsprong nemen",
       "subtitle": "Sluit u aan bij de KMO's die hun activiteit al transformeerden dankzij AI",
-      "button": "Start mijn gratis diagnose"
+      "button": "Een afspraak maken"
     }
   },
   "assistants": {
@@ -289,7 +289,7 @@
         },
         {
           "q": "Wat kost een virtuele AI-assistent voor een kmo?",
-          "a": "Ons Express Pack begint bij 1.043 EUR excl. btw (lanceeraanbod met getuigenis) of 1.490 EUR excl. btw (standaardtarief) voor de installatie. Hosting en onderhoud zitten in het beheerde abonnement van 290 EUR per maand. Vergeleken met een toegewijde supportmedewerker (2.500-3.500 EUR/maand) is de terugverdientijd kort. Onze gratis audit geeft u een precieze raming van de besparing voor uw situatie."
+          "a": "Het opzetten van een assistent valt onder de Automatiseringssprint (O3), € 3.500 tot € 6.000 excl. btw afhankelijk van het aantal integraties. Wilt u daarna dat ik alles draaiende houd en laat meegroeien, dan is de AI-piloot-begeleiding (O4) € 590/maand excl. btw over zes maanden. De scope wordt vastgelegd en opgeschreven vóór de start."
         }
       ]
     }

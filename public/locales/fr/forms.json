@@ -9,9 +9,9 @@
     "select": "Sélectionnez"
   },
   "contact": {
-    "title": "Demander un audit IA gratuit",
+    "title": "Prendre un rendez-vous de découverte",
     "pageTitle": "Contactez-nous",
-    "pageSubtitle": "Des questions ? Besoin d'un devis ? Notre équipe est à votre écoute.",
+    "pageSubtitle": "Des questions ? Besoin d'un devis ? Je suis à votre écoute.",
     "sendMessage": "Envoyez-nous un message",
     "fullName": "Nom complet*",
     "company": "Entreprise*",
@@ -71,8 +71,8 @@
           "a": "Nous nous engageons à répondre sous 24 heures ouvrées (lundi-vendredi, 9h-18h). Pour les demandes d'audit IA gratuit, le rapport personnalisé est généré automatiquement et envoyé par email dans les 24 heures suivant la soumission de votre formulaire. Pour les questions commerciales ou techniques, notre équipe vous contacte par email ou téléphone selon votre préférence."
         },
         "1": {
-          "q": "L'audit IA gratuit est-il vraiment sans engagement ?",
-          "a": "Oui, totalement. L'audit IA est un service gratuit et sans aucune obligation d'achat. Vous recevez un rapport PDF personnalisé avec 3 recommandations concrètes d'automatisation pour votre activité. Si les recommandations vous intéressent, nous pouvons en discuter lors d'un call de 30 minutes, également gratuit. Aucune carte bancaire n'est demandée, aucun engagement n'est pris."
+          "q": "Le rendez-vous de découverte engage-t-il à quelque chose ?",
+          "a": "Non. Trente minutes pour comprendre votre situation et vous dire si je peux aider. Aucune obligation d'achat, et s'il n'y a rien à faire chez vous, je vous le dis."
         },
         "2": {
           "q": "Où êtes-vous situés et intervenez-vous dans toute la Belgique ?",
@@ -91,7 +91,7 @@
   },
   "products": {
     "auditIA": {
-      "title": "Demander un audit IA gratuit",
+      "title": "Prendre un rendez-vous de découverte",
       "description": "Complétez le formulaire pour bénéficier de notre audit et découvrir votre potentiel d'automatisation"
     },
     "packDemarrage": {

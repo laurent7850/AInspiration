@@ -19,32 +19,27 @@ export default function PromptOptimization() {
     {
       critere: t('optimization.comparison.rows.accuracy.criterion'),
       basique: t('optimization.comparison.rows.accuracy.basic'),
-      optimise: t('optimization.comparison.rows.accuracy.optimised'),
-      amelioration: t('optimization.comparison.rows.accuracy.improvement')
+      optimise: t('optimization.comparison.rows.accuracy.optimised')
     },
     {
       critere: t('optimization.comparison.rows.responseTime.criterion'),
       basique: t('optimization.comparison.rows.responseTime.basic'),
-      optimise: t('optimization.comparison.rows.responseTime.optimised'),
-      amelioration: t('optimization.comparison.rows.responseTime.improvement')
+      optimise: t('optimization.comparison.rows.responseTime.optimised')
     },
     {
       critere: t('optimization.comparison.rows.relevance.criterion'),
       basique: t('optimization.comparison.rows.relevance.basic'),
-      optimise: t('optimization.comparison.rows.relevance.optimised'),
-      amelioration: t('optimization.comparison.rows.relevance.improvement')
+      optimise: t('optimization.comparison.rows.relevance.optimised')
     },
     {
       critere: t('optimization.comparison.rows.userSatisfaction.criterion'),
       basique: t('optimization.comparison.rows.userSatisfaction.basic'),
-      optimise: t('optimization.comparison.rows.userSatisfaction.optimised'),
-      amelioration: t('optimization.comparison.rows.userSatisfaction.improvement')
+      optimise: t('optimization.comparison.rows.userSatisfaction.optimised')
     },
     {
       critere: t('optimization.comparison.rows.reuse.criterion'),
       basique: t('optimization.comparison.rows.reuse.basic'),
-      optimise: t('optimization.comparison.rows.reuse.optimised'),
-      amelioration: t('optimization.comparison.rows.reuse.improvement')
+      optimise: t('optimization.comparison.rows.reuse.optimised')
     }
   ];
 
@@ -111,6 +106,9 @@ export default function PromptOptimization() {
           <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
             {t('optimization.comparison.title')}
           </h3>
+          <p className="text-sm text-secondary mb-4 text-center max-w-[60ch] mx-auto">
+            {t('optimization.comparison.note')}
+          </p>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
@@ -118,7 +116,6 @@ export default function PromptOptimization() {
                   <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">{t('optimization.comparison.criterion')}</th>
                   <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">{t('optimization.comparison.basic')}</th>
                   <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">{t('optimization.comparison.optimised')}</th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">{t('optimization.comparison.improvement')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
@@ -127,7 +124,6 @@ export default function PromptOptimization() {
                     <td className="px-6 py-4 text-sm text-gray-900">{row.critere}</td>
                     <td className="px-6 py-4 text-sm text-gray-600">{row.basique}</td>
                     <td className="px-6 py-4 text-sm text-indigo-600 font-medium">{row.optimise}</td>
-                    <td className="px-6 py-4 text-sm text-green-600 font-medium">{row.amelioration}</td>
                   </tr>
                 ))}
               </tbody>

@@ -42,7 +42,7 @@
     "startAudit": "Démarrer l'audit",
     "requestDemo": "Demander une démo",
     "discoverAI": "Découvrir l'IA",
-    "startFreeAudit": "Démarrer l'audit gratuit",
+    "startFreeAudit": "Prendre rendez-vous",
     "seeCaseStudies": "Voir les résultats clients",
     "signIn": "Se connecter",
     "signOut": "Déconnexion"
@@ -51,9 +51,9 @@
     "tagline": "Solutions d'IA pour Entreprises"
   },
   "hero": {
-    "title": "Gagnez 10h par semaine grâce à l'IA",
+    "title": "Mettez l'IA au travail dans votre PME",
     "subtitle": "Rejoignez les PME qui automatisent leurs tâches répétitives et boostent leur chiffre d'affaires avec nos solutions d'Intelligence Artificielle — sans compétence technique requise.",
-    "ctaSubtext": "Résultats en 24h — Sans engagement",
+    "ctaSubtext": "Trente minutes · Sans engagement",
     "imageAlt": "Intelligence Artificielle en entreprise",
     "features": {
       "simple": "Mise en place en 48h",
@@ -96,10 +96,10 @@
     "uptime": "Disponibilité 24/7",
     "accuracy": "Conforme RGPD",
     "clients": "Sans engagement",
-    "acceleration": "Audit gratuit en 24h"
+    "acceleration": "Rendez-vous de découverte en 30 min"
   },
   "animatedStats": {
-    "audit": "Pour recevoir l'audit gratuit",
+    "audit": "Pour en parler trente minutes",
     "setup": "Mise en place type",
     "eu": "Données hébergées en Europe",
     "target": "Objectif type sur les tâches répétitives"
@@ -114,7 +114,7 @@
   },
   "testimonials": {
     "title": "Ce que ça change, concrètement",
-    "subtitle": "Trois scénarios types tirés de nos domaines d'intervention. Les chiffres sont des objectifs réalistes — l'audit gratuit établit les vôtres.",
+    "subtitle": "Trois scénarios types tirés de mes domaines d'intervention. Les chiffres sont des objectifs réalistes — le diagnostic établit les vôtres.",
     "restaurant": {
       "sector": "Restauration",
       "scenario": "Scénario type — réservations par WhatsApp",
@@ -138,11 +138,11 @@
       "timeSaving": "Gain de temps immédiat"
     },
     "cta": {
-      "title": "Demander un audit gratuit",
-      "subtitle": "Réponse sous 24h • Sans engagement • 100% personnalisé",
+      "title": "Prendre un rendez-vous de découverte",
+      "subtitle": "Trente minutes · Sans engagement · Sur votre cas",
       "button": "Découvrir mes opportunités",
       "badges": {
-        "freeAnalysis": "Analyse gratuite de votre cas",
+        "freeAnalysis": "On regarde votre situation ensemble",
         "customRecommendations": "Recommandations sur mesure",
         "noCommitment": "Aucun engagement"
       },
@@ -161,20 +161,20 @@
     "title": "L'Intelligence Artificielle au service des PME Belges et Françaises",
     "p1": "En 2026, l'Intelligence Artificielle n'est plus réservée aux grandes entreprises. Chez AInspiration, nous rendons l'IA accessible à toutes les PME : restaurants, e-commerces, cabinets de conseil, agences marketing, artisans et indépendants. Notre mission est simple — vous faire gagner du temps et de l'argent grâce à des solutions d'automatisation intelligentes, sans aucune compétence technique requise.",
     "subtitle1": "Des résultats concrets, mesurables dès le premier mois",
-    "p2": "Les automatisations que nous déployons visent des ordres de grandeur concrets : jusqu'à 60% de temps en moins sur les tâches répétitives et des gains de productivité mesurables dès les premiers mois. Que ce soit pour automatiser la gestion des réservations, générer du contenu marketing, mettre en place un assistant virtuel ou optimiser votre service client, nos solutions s'adaptent à votre métier et à vos besoins spécifiques — et l'audit gratuit chiffre le potentiel de votre cas avant tout engagement.",
+    "p2": "Les automatisations que je déploie visent des gains de temps sur les tâches répétitives, chiffrés sur votre cas plutôt qu'annoncés d'avance. Que ce soit pour automatiser la gestion des réservations, générer du contenu marketing, mettre en place un assistant virtuel ou optimiser votre service client, les solutions s'adaptent à votre métier et à vos besoins spécifiques.",
     "subtitle2": "Un accompagnement personnalisé de A à Z",
-    "p3": "Tout commence par un audit gratuit et sans engagement. En 24 heures, nous analysons vos processus, identifions les opportunités d'automatisation et vous livrons un plan d'action concret. Ensuite, nous déployons la solution en 48 heures maximum. Basés à Givry, dans le Hainaut (Belgique), nous accompagnons les entreprises en Belgique et en France avec un support multilingue en français, anglais et néerlandais.",
+    "p3": "Tout commence par un rendez-vous de découverte de trente minutes, sans engagement. S'il y a matière à travailler, le Diagnostic IA cartographie vos processus sur deux jours et rend trois chantiers prioritaires. Basé à Givry, dans le Hainaut (Belgique), j'accompagne les entreprises en Belgique et en France en français, anglais et néerlandais.",
     "subtitle3": "Sécurité et conformité RGPD",
     "p4": "Toutes vos données sont hébergées en Europe et traitées dans le strict respect du RGPD. Nous utilisons des technologies de pointe — chatbots intelligents, analyse de données par IA, génération de contenu, CRM intelligent — tout en garantissant la confidentialité et la sécurité de vos informations professionnelles."
   },
   "audit": {
     "badge": "Audit offert — Places limitées ce mois-ci",
-    "title": "Découvrez votre potentiel IA en 24h",
-    "subtitle": "Un expert analyse votre activité et vous livre un plan d'action concret, gratuitement.",
-    "cta": "Demander mon audit gratuit",
+    "title": "Trente minutes pour savoir si l'IA a sa place chez vous",
+    "subtitle": "On regarde votre activité ensemble, et je vous dis franchement si je peux aider ou non.",
+    "cta": "Prendre rendez-vous",
     "badges": {
-      "free": "100% gratuit",
-      "fast": "Résultats sous 24h",
+      "free": "Sans engagement",
+      "fast": "Trente minutes",
       "noCommitment": "Sans engagement"
     },
     "steps": {
@@ -201,9 +201,9 @@
     "q1": "Faut-il des compétences techniques pour utiliser vos solutions ?",
     "a1": "Absolument pas ! Nos solutions sont conçues pour être simples d'utilisation. Nous nous occupons de toute la partie technique.",
     "q2": "Combien de temps faut-il pour mettre en place une solution IA ?",
-    "a2": "La plupart de nos solutions sont opérationnelles en 48h. L'audit gratuit prend 24h.",
-    "q3": "L'audit est-il vraiment gratuit et sans engagement ?",
-    "a3": "Oui, 100% gratuit et sans engagement. Nous analysons votre activité et vous livrons un plan d'action concret.",
+    "a2": "La plupart des solutions sont opérationnelles en quelques jours ouvrés après validation du périmètre. Le rendez-vous de découverte, lui, dure trente minutes.",
+    "q3": "Le rendez-vous de découverte engage-t-il à quelque chose ?",
+    "a3": "Non. Trente minutes pour comprendre votre situation. S'il n'y a rien à faire chez vous, je vous le dis — c'est aussi ce qui rend l'avis utile.",
     "q4": "Mes données sont-elles en sécurité ?",
     "a4": "Absolument. Nous sommes conformes RGPD et toutes les données sont hébergées en Europe.",
     "q5": "Quel type d'entreprise peut bénéficier de vos services ?",
@@ -224,14 +224,14 @@
   "offers": {
     "eyebrow": "Offres",
     "title": "Trois façons de commencer, un prix pour chacune",
-    "subtitle": "L'audit est gratuit. Le Pack Express automatise une première tâche à prix fixe. L'abonnement fait tourner et évoluer vos workflows."
+    "subtitle": "Cinq prestations, un prix affiché pour chacune : diagnostic, atelier, sprint d'automatisation, accompagnement continu, conformité AI Act."
   },
   "relatedServices": {
     "title": "Découvrez aussi",
     "links": {
       "audit": {
-        "title": "Audit IA gratuit",
-        "description": "Analyse complète de votre activité en 24h"
+        "title": "Rendez-vous de découverte",
+        "description": "Trente minutes sur votre activité, sans engagement"
       },
       "automatisation": {
         "title": "Automatisation IA",

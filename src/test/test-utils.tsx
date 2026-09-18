@@ -37,7 +37,7 @@ i18nTest.use(initReactI18next).init({
         'hero.features.simple': 'Simple',
         'hero.features.secure': 'Sécurisé',
         'hero.features.support': 'Support 24/7',
-        'button.startFreeAudit': 'Audit Gratuit',
+        'button.startFreeAudit': 'Prendre rendez-vous',
         'button.seeCaseStudies': 'Études de cas',
       },
       forms: {

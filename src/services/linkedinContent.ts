@@ -64,7 +64,7 @@ En 48h, vous recevez un rapport clair :
 
 Pas de jargon technique. Pas d'engagement.
 
-🎯 Faites votre audit gratuit maintenant :
+🎯 Prenez un rendez-vous de découverte :
 👉 ainspiration.eu/audit
 
 Votre cabinet mérite de travailler plus intelligemment.`,
@@ -134,7 +134,7 @@ Notre audit IA gratuit vous donne en 48h :
 → Le ROI estimé de chaque automatisation
 → Un plan d'implémentation priorisé
 
-🎯 Demandez votre audit gratuit :
+🎯 Prenez un rendez-vous de découverte :
 👉 ainspiration.eu/audit
 
 Scalez sans multiplier les heures.`,

@@ -36,57 +36,40 @@
     },
     "whyTitle": "Why optimise your prompts?",
     "whyText1": "In a world where AI is becoming indispensable, the quality of your prompts makes all the difference. An optimised prompt is not just a simple question — it is a precise instruction that guides the AI towards exactly what you need.",
-    "whyText2": "Our experts have analysed more than 100,000 interactions to identify the patterns that work. The result? Prompts that generate relevant responses on the first attempt, saving you precious time.",
-    "testimonials": {
-      "sophie": {
-        "name": "Sophie M.",
-        "role": "Digital Marketing Director",
-        "quote": "Before using optimised prompts, I spent hours rephrasing my requests. Now I get exactly what I want in a few minutes. It's an incredible time saver!"
-      },
-      "marc": {
-        "name": "Marc L.",
-        "role": "Innovation Project Manager",
-        "quote": "The difference between a basic prompt and an optimised prompt is astonishing. We reduced by 60% the time spent interacting with AI while obtaining significantly superior results."
-      }
-    },
+    "whyText2": "A well-built prompt frames the model: it gives it the context, the expected format and the limits to respect. The result is answers you can use on the first attempt, instead of a series of rewordings.",
     "comparison": {
       "title": "Performance Comparison",
       "criterion": "Criterion",
       "basic": "Basic Prompt",
       "optimised": "Optimised Prompt",
-      "improvement": "Improvement",
       "rows": {
         "accuracy": {
-          "criterion": "Accuracy",
-          "basic": "45%",
-          "optimised": "85%",
-          "improvement": "+40%"
+          "criterion": "What you get",
+          "basic": "A plausible answer, still to be reworked",
+          "optimised": "An answer you can use as it is"
         },
         "responseTime": {
-          "criterion": "Response time",
-          "basic": "3–4 iterations",
-          "optimised": "1–2 iterations",
-          "improvement": "-60%"
+          "criterion": "Round trips",
+          "basic": "Three to four rewordings",
+          "optimised": "One or two"
         },
         "relevance": {
-          "criterion": "Relevance",
-          "basic": "50%",
-          "optimised": "90%",
-          "improvement": "+40%"
+          "criterion": "Framing",
+          "basic": "The model guesses the context",
+          "optimised": "Context, format and limits are given"
         },
         "userSatisfaction": {
-          "criterion": "User satisfaction",
-          "basic": "60%",
-          "optimised": "95%",
-          "improvement": "+35%"
+          "criterion": "What varies",
+          "basic": "The result changes with every attempt",
+          "optimised": "The result is reproducible"
         },
         "reuse": {
-          "criterion": "Reuse rate",
-          "basic": "30%",
-          "optimised": "80%",
-          "improvement": "+50%"
+          "criterion": "Reuse",
+          "basic": "Rewritten from scratch every time",
+          "optimised": "Filed in a library, reusable"
         }
-      }
+      },
+      "note": "This table describes a difference in method, not a measurement: no percentage appears here, for want of a publishable source."
     },
     "featureCards": {
       "contextualAI": {
@@ -103,7 +86,7 @@
       },
       "quality": {
         "title": "Guaranteed Quality",
-        "description": "Results validated by our experts"
+        "description": "Compared on your own cases, not on an average"
       }
     },
     "cta": {

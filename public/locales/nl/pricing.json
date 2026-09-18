@@ -1,71 +1,86 @@
 {
-  "title": "Transparante prijzen",
-  "subtitle": "Start gratis. Ga sneller wanneer u er klaar voor bent.",
-  "popular": "Meest populair",
+  "title": "Tarieven",
+  "subtitle": "Vijf diensten, met voor elk een gepubliceerde prijs. Het enige wat gratis is, is het kennismakingsgesprek.",
+  "popular": "Meest gevraagd",
   "monthly": "/maand",
-  "launchBadge": "Lanceringsaanbieding",
-  "launchNote": "Voor de eerste 10 klanten — in ruil voor een getuigenis",
-  "mandatorySubscription": "Het maandabonnement is verplicht. Uw workflows draaien op de infrastructuur van AInspiration (hosting, monitoring, support inbegrepen).",
+  "launchBadge": "Oprichterstarief",
+  "launchNote": "−20% voor de eerste drie klanten, in ruil voor een getuigenis.",
+  "vatNote": "Prijzen exclusief btw.",
+  "discovery": {
+    "name": "Kennismakingsgesprek",
+    "description": "Dertig minuten om uw situatie te begrijpen en u te zeggen of ik kan helpen.",
+    "price": "Gratis"
+  },
   "plans": {
-    "audit": {
-      "name": "Gratis AI Audit",
-      "description": "Gepersonaliseerd rapport binnen 24u — zonder verplichting",
-      "price": "€ 0",
+    "diagnostic": {
+      "name": "O1 — AI-diagnose",
+      "description": "Twee dagen om te bepalen waar AI bij u thuishoort, en waar niet.",
+      "price": "€ 2.400",
+      "priceNote": "excl. btw · twee dagen",
       "features": [
-        "Analyse van uw huidige processen",
-        "Identificatie van automatiseerbare taken",
-        "Schatting van gewonnen tijd per week",
-        "3 prioritaire aanbevelingen",
-        "Gepersonaliseerde AI-routekaart",
-        "PDF-rapport bezorgd binnen 24u"
+        "Twee dagen in uw werkelijke processen",
+        "Een kaart van de automatiseerbare taken",
+        "Drie prioritaire projecten, in werklast geraamd",
+        "Toelichting ter plaatse, document overhandigd",
+        "Wat niet geautomatiseerd moet worden, en waarom"
       ]
     },
-    "express_launch": {
-      "name": "Express Pakket — Lanceringsaanbieding",
-      "description": "Voor de eerste 10 klanten (in ruil voor een getuigenis)",
-      "price": "€ 1.043",
-      "priceNote": "excl. BTW · in plaats van € 1.490",
+    "atelier": {
+      "name": "O2 — Workshop",
+      "description": "Uw teams, uw cases, uw tools — een halve of een hele dag.",
+      "price": "€ 900 / € 1.500",
+      "priceNote": "excl. btw · halve dag / hele dag",
       "features": [
-        "Maatwerk n8n workflow setup",
-        "1e maand hosting inbegrepen",
-        "Volledige configuratie en tests",
-        "Training van uw team (1u)",
-        "Prioriteit support gedurende 30 dagen",
-        "Daarna € 290/maand (verplicht abonnement)"
+        "Op uw eigen cases, niet op voorbeelden",
+        "Praktisch werken met de modellen en de prompts",
+        "Een promptbibliotheek die bij u blijft",
+        "Schriftelijk materiaal na afloop overhandigd",
+        "Tot tien deelnemers"
       ]
     },
-    "express": {
-      "name": "Express Pakket",
-      "description": "n8n workflow setup + 1e maand hosting inbegrepen",
-      "price": "€ 1.490",
-      "priceNote": "excl. BTW",
+    "sprint": {
+      "name": "O3 — Automatiseringssprint",
+      "description": "Eén workflow ontworpen, gebouwd en in productie gezet.",
+      "price": "€ 3.500 – € 6.000",
+      "priceNote": "excl. btw · afhankelijk van het aantal integraties",
       "features": [
-        "Maatwerk n8n workflow setup",
-        "1e maand hosting inbegrepen",
-        "Volledige configuratie en tests",
-        "Training van uw team (1u)",
-        "Prioriteit support gedurende 30 dagen",
-        "Daarna € 290/maand (verplicht abonnement)"
+        "Scope vastgelegd en opgeschreven vóór de start",
+        "Eén workflow in productie geleverd",
+        "Integraties met de tools die u al gebruikt",
+        "Documentatie en overdracht aan uw teams",
+        "De marge hangt af van de te koppelen systemen"
       ]
     },
-    "managed": {
-      "name": "Beheerd AI Abonnement",
-      "description": "Hosting, monitoring, support en aanpassingen van uw workflows",
-      "price": "€ 290",
-      "priceNote": "/maand excl. BTW",
+    "pilote": {
+      "name": "O4 — AI-piloot",
+      "description": "Doorlopende begeleiding, zodat wat draait blijft draaien.",
+      "price": "€ 590",
+      "priceNote": "/maand excl. btw · zes maanden engagement",
       "features": [
-        "Workflow hosting op AInspiration infrastructuur",
-        "24/7 monitoring en meldingen",
-        "Prioriteit technische support",
-        "Aanpassingen en optimalisaties inbegrepen",
-        "Updates en onderhoud",
-        "Verplicht abonnement na Express Pakket"
+        "Een maandelijks overleg, beslissingen inbegrepen",
+        "Aanpassingen en correcties aan bestaande workflows",
+        "Opvolging van wat verandert en u aanbelangt",
+        "Rechtstreekse toegang, zonder ticket of tussenpersoon",
+        "Engagement van zes maanden"
+      ]
+    },
+    "aiact": {
+      "name": "O5 — AI Act-check",
+      "description": "Waar u staat tegenover de Europese AI-verordening.",
+      "price": "€ 990",
+      "priceNote": "excl. btw",
+      "features": [
+        "Een inventaris van uw AI-gebruik, formeel en informeel",
+        "Classificatie volgens de Europese verordening",
+        "De verplichtingen die gelden, gebruik per gebruik",
+        "Een basis voor uw register en documentatie",
+        "Wat eerst moet, en wat kan wachten"
       ]
     }
   },
   "cta": {
-    "startFreeAudit": "Mijn gratis audit aanvragen",
-    "orderExpress": "Bestel het Express Pakket",
-    "contactUs": "Neem contact op"
+    "bookDiscovery": "Het kennismakingsgesprek boeken",
+    "askQuote": "Een offerte aanvragen",
+    "contactUs": "Contact met mij opnemen"
   }
 }

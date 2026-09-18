@@ -26,18 +26,18 @@ export const defaultSEO = {
 export const seoPages: Record<string, SEOPageConfig> = {
   '/': {
     fr: {
-      title: 'AInspiration | Solutions IA pour PME - Audit Gratuit',
-      description: 'Automatisez vos tâches répétitives grâce à l\'IA. Un premier résultat concret en 5 jours, audit gratuit en 24h. PME de Belgique et de France.',
-      keywords: 'intelligence artificielle PME, IA entreprise, automatisation IA, audit IA gratuit, solutions IA Belgique, transformation digitale PME, machine learning, deep learning, outils IA'
+      title: 'AInspiration | Solutions IA pour PME en Belgique',
+      description: "Automatisez vos tâches répétitives grâce à l'IA. Diagnostic, ateliers, sprints d'automatisation et conformité AI Act. PME de Belgique et de France.",
+      keywords: 'intelligence artificielle PME, IA entreprise, automatisation IA, diagnostic IA, solutions IA Belgique, transformation digitale PME, conformité AI Act, outils IA'
     },
     en: {
       title: 'AInspiration | AI Solutions for SMEs - Free Audit',
-      description: 'Automate repetitive tasks and boost revenue with AI. First concrete results in 5 days. Free audit in 24h, no commitment. For SMEs in Belgium and France.',
+      description: 'Automate repetitive tasks and boost revenue with AI. Diagnostic, workshops, automation sprints and AI Act compliance. For SMEs in Belgium and France.',
       keywords: 'artificial intelligence SME, business AI, AI automation, free AI audit, AI solutions Belgium, digital transformation SME, machine learning, deep learning, AI tools'
     },
     nl: {
       title: 'AInspiration | AI Oplossingen KMO - Gratis Audit',
-      description: 'Automatiseer repetitieve taken met AI. Eerste concrete resultaat in 5 dagen, gratis audit in 24u. Voor KMO\'s in België en Frankrijk.',
+      description: 'Automatiseer repetitieve taken met AI. Diagnose, workshops, automatiseringssprints en AI Act-conformiteit. Voor KMO\'s in België en Frankrijk.',
       keywords: 'kunstmatige intelligentie KMO, AI bedrijf, AI automatisering, gratis AI audit, AI oplossingen België, digitale transformatie KMO, machine learning, deep learning, AI tools'
     }
   },
@@ -128,30 +128,30 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/produits': {
     fr: {
-      title: 'Offres IA PME | Audit Gratuit dès 490€ | AInspiration',
-      description: 'Consultez nos offres IA pour PME. Audit gratuit, formation IA, accompagnement premium. Solutions adaptées à chaque budget en Belgique et France.',
-      keywords: 'offres IA PME, tarifs IA Belgique, audit IA gratuit, formation IA prix, accompagnement IA'
+      title: 'Offres IA PME | Diagnostic dès 2 400 € | AInspiration',
+      description: "Cinq prestations à prix affiché : diagnostic, atelier, sprint d'automatisation, accompagnement continu, check AI Act. Belgique et France.",
+      keywords: 'offres IA PME, tarifs IA Belgique, diagnostic IA, formation IA prix, conformité AI Act'
     },
     en: {
       title: 'AI Products | Our Offers and Pricing | AInspiration',
-      description: 'Browse our range of AI products. Solutions adapted to every budget, from free audit to premium support.',
+      description: 'Browse our range of AI products. Five services with published prices: diagnostic, workshop, automation sprint, ongoing support, AI Act check.',
       keywords: 'AI products, AI pricing, artificial intelligence offers, AI solutions prices'
     },
     nl: {
       title: 'AI Producten | Onze Aanbiedingen en Prijzen | AInspiration',
-      description: 'Bekijk ons aanbod van AI-producten. Oplossingen aangepast aan elk budget, van gratis audit tot premium ondersteuning.',
+      description: 'Bekijk ons aanbod van AI-producten. Vijf diensten met gepubliceerde prijzen: diagnose, workshop, automatiseringssprint, doorlopende begeleiding, AI Act-check.',
       keywords: 'AI producten, AI prijzen, kunstmatige intelligentie aanbiedingen, AI oplossingen prijzen'
     }
   },
   '/pme-hainaut-bruxelles': {
     fr: {
       title: 'Automatisation IA pour les PME du Hainaut et de Bruxelles',
-      description: 'Basés à Givry, nous automatisons les tâches répétitives des PME du Hainaut, de Bruxelles et du Brabant wallon. Audit gratuit en 24h, sur place ou à distance.',
+      description: "Basé à Givry, j'automatise les tâches répétitives des PME du Hainaut, de Bruxelles et du Brabant wallon. Sur place ou à distance.",
       keywords: 'automatisation IA Hainaut, IA PME Mons, IA PME Charleroi, IA PME Bruxelles, agence IA Belgique'
     },
     en: {
       title: 'AI automation for SMEs in Hainaut and Brussels',
-      description: 'Based in Givry, we automate the repetitive tasks of SMEs in Hainaut, Brussels and Walloon Brabant. Free audit in 24h, on site or remote.',
+      description: 'Based in Givry, I automate the repetitive tasks of SMEs in Hainaut, Brussels and Walloon Brabant. On site or remote.',
       keywords: 'AI automation Hainaut, AI SME Mons, AI SME Charleroi, AI SME Brussels, AI agency Belgium'
     },
     nl: {
@@ -196,7 +196,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/audit': {
     fr: {
-      title: 'Audit IA gratuit en 24h | Diagnostic PME | AInspiration',
+      title: 'Rendez-vous de découverte | Diagnostic IA PME | AInspiration',
       description: 'Un expert analyse votre activité et vous livre un plan d\'action concret en 24h. Gratuit, sans engagement, pour PME et indépendants.',
       keywords: 'audit IA gratuit, diagnostic IA, audit intelligence artificielle, bilan IA PME, audit automatisation'
     },
@@ -220,12 +220,12 @@ export const seoPages: Record<string, SEOPageConfig> = {
     en: {
       title: 'Contact | Request Your Free AI Audit | AInspiration',
       description: 'Contact us for a free AI audit. Our team responds within 24 hours to discuss your projects and artificial intelligence needs.',
-      keywords: 'AI contact, free audit, AI quote request, AI appointment, free consultation'
+      keywords: 'AI contact, AI diagnostic, AI quote request, AI appointment, discovery call'
     },
     nl: {
       title: 'Contact | Vraag Uw Gratis AI Audit Aan | AInspiration',
       description: 'Neem contact met ons op voor een gratis AI-audit. Ons team reageert binnen 24 uur om uw projecten en AI-behoeften te bespreken.',
-      keywords: 'AI contact, gratis audit, AI offerte aanvraag, AI afspraak, gratis consultatie'
+      keywords: 'AI contact, AI-diagnose, AI offerte aanvraag, AI afspraak, kennismakingsgesprek'
     }
   },
   '/prompts': {
@@ -677,7 +677,7 @@ export const getOrganizationSchema = () => ({
     height: 512
   },
   image: `${defaultSEO.siteUrl}/og-image.png`,
-  description: 'Solutions d\'Intelligence Artificielle pour PME — automatisation, audit gratuit, conseil, formation et accompagnement IA en Belgique et France.',
+  description: 'Solutions d\'Intelligence Artificielle pour PME — diagnostic, automatisation, formation et conformité AI Act en Belgique et France.',
   email: 'info@ainspiration.eu',
   telephone: '+32477942865',
   address: {

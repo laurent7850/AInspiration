@@ -54,7 +54,7 @@ export default function AnimatedStats({ variant = 'light', className = '' }: Ani
     {
       end: 24,
       suffix: 'h',
-      label: t('animatedStats.audit', "Pour recevoir l'audit gratuit"),
+      label: t('animatedStats.audit', "Pour en parler trente minutes"),
       icon: <Clock className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
       delay: 0,
       color: isDark ? 'bg-white/10' : 'bg-indigo-50',

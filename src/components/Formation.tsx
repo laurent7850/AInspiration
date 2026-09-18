@@ -146,7 +146,7 @@ export default function Formation() {
           solid
           stats={[
             { value: "3 jours", label: t('formation.cta.stats.duration'), icon: Brain },
-            { value: "24h", label: t('animatedStats.audit'), icon: Users },
+            { value: "30 min", label: t('animatedStats.audit'), icon: Users },
           ]}
         />
       </div>

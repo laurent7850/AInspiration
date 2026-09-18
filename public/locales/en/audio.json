@@ -35,9 +35,21 @@
     ]
   },
   "metrics": [
-    { "value": "30+", "label": "Languages", "description": "Natural synthetic voices available" },
-    { "value": "-70%", "label": "Production costs", "description": "vs a traditional recording studio" },
-    { "value": "24h", "label": "Turnaround", "description": "From brief to final audio file" }
+    {
+      "value": "30+",
+      "label": "Languages",
+      "description": "Natural synthetic voices available"
+    },
+    {
+      "value": "-70%",
+      "label": "Production costs",
+      "description": "vs a traditional recording studio"
+    },
+    {
+      "value": "24h",
+      "label": "Turnaround",
+      "description": "From brief to final audio file"
+    }
   ],
   "useCases": {
     "title": "Concrete use cases for your business",
@@ -75,8 +87,8 @@
   },
   "cta": {
     "title": "Ready to give your brand a voice?",
-    "subtitle": "Let's discuss your audio project during a free audit. We'll identify the content to produce and the best AI workflow for your business.",
-    "button": "Request my free audit",
+    "subtitle": "Let's talk about your audio project for thirty minutes. We identify the content to produce and a workflow that holds up, with no commitment.",
+    "button": "Book a call",
     "stat1Value": "24h",
     "stat1Label": "First deliverable",
     "stat2Value": "-70%",

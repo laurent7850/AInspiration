@@ -42,7 +42,7 @@
     "startAudit": "Start Audit",
     "requestDemo": "Demo Aanvragen",
     "discoverAI": "Ontdek AI",
-    "startFreeAudit": "Start Gratis Audit",
+    "startFreeAudit": "Een afspraak maken",
     "seeCaseStudies": "Zie Klantresultaten",
     "signIn": "Inloggen",
     "signOut": "Uitloggen"
@@ -51,9 +51,9 @@
     "tagline": "AI Oplossingen voor Bedrijven"
   },
   "hero": {
-    "title": "Bespaar 10 uur per week dankzij AI",
+    "title": "Zet AI aan het werk in uw KMO",
     "subtitle": "Sluit u aan bij de KMO's die repetitieve taken automatiseren en hun omzet verhogen met onze AI-oplossingen — geen technische kennis vereist.",
-    "ctaSubtext": "Resultaten in 24u — Geen verplichting",
+    "ctaSubtext": "Dertig minuten · Vrijblijvend",
     "imageAlt": "Artificiële Intelligentie in het bedrijfsleven",
     "features": {
       "simple": "Operationeel in 48u",
@@ -96,10 +96,10 @@
     "uptime": "24/7 Beschikbaarheid",
     "accuracy": "AVG-conform",
     "clients": "Zonder verbintenis",
-    "acceleration": "Gratis audit in 24u"
+    "acceleration": "Kennismakingsgesprek van 30 min"
   },
   "animatedStats": {
-    "audit": "Om de gratis audit te ontvangen",
+    "audit": "Om er dertig minuten over te praten",
     "setup": "Typische opzettijd",
     "eu": "Gegevens gehost in Europa",
     "target": "Typisch doel voor repetitieve taken"
@@ -114,7 +114,7 @@
   },
   "testimonials": {
     "title": "Wat het concreet verandert",
-    "subtitle": "Drie typische scenario’s uit onze expertisedomeinen. De cijfers zijn realistische doelstellingen — de gratis audit bepaalt de uwe.",
+    "subtitle": "Drie typische scenario’s uit mijn werkdomeinen. De cijfers zijn realistische doelen — de diagnose bepaalt de uwe.",
     "restaurant": {
       "sector": "Horeca",
       "scenario": "Typisch scenario — reservaties via WhatsApp",
@@ -138,11 +138,11 @@
       "timeSaving": "Onmiddellijke tijdsbesparing"
     },
     "cta": {
-      "title": "Vraag een Gratis Audit aan",
-      "subtitle": "Antwoord binnen 24u • Geen verplichting • 100% gepersonaliseerd",
+      "title": "Een kennismakingsgesprek boeken",
+      "subtitle": "Dertig minuten · Vrijblijvend · Over uw eigen situatie",
       "button": "Ontdek Mijn Mogelijkheden",
       "badges": {
-        "freeAnalysis": "Gratis analyse van uw geval",
+        "freeAnalysis": "We bekijken uw situatie samen",
         "customRecommendations": "Aanbevelingen op maat",
         "noCommitment": "Geen verplichting"
       },
@@ -161,20 +161,20 @@
     "title": "Artificiële Intelligentie voor Belgische en Franse KMO's",
     "p1": "In 2026 is Artificiële Intelligentie niet langer voorbehouden aan grote bedrijven. Bij AInspiration maken we AI toegankelijk voor alle KMO's: restaurants, e-commercebedrijven, adviesbureaus, marketingbureaus, ambachtslieden en zelfstandigen. Onze missie is eenvoudig — u tijd en geld besparen dankzij intelligente automatiseringsoplossingen, zonder technische kennis vereist.",
     "subtitle1": "Concrete, meetbare resultaten vanaf de eerste maand",
-    "p2": "De automatiseringen die we uitrollen mikken op concrete grootteordes: tot 60% minder tijd aan repetitieve taken en meetbare productiviteitswinst vanaf de eerste maanden. Of het nu gaat om het automatiseren van reserveringsbeheer, het genereren van marketingcontent, het inzetten van een virtuele assistent of het optimaliseren van uw klantenservice — onze oplossingen passen zich aan uw sector en specifieke behoeften aan, en de gratis audit becijfert het potentieel van uw geval vóór enige verbintenis.",
+    "p2": "De automatiseringen die ik uitrol mikken op tijdwinst bij repetitieve taken, becijferd op uw eigen situatie in plaats van vooraf aangekondigd. Of het nu gaat om reserveringen automatiseren, marketingcontent genereren, een virtuele assistent opzetten of uw klantendienst verbeteren: de oplossingen passen zich aan uw vak en uw specifieke noden aan.",
     "subtitle2": "Persoonlijke begeleiding van A tot Z",
-    "p3": "Alles begint met een gratis en vrijblijvende audit. Binnen 24 uur analyseren we uw processen, identificeren we automatiseringsmogelijkheden en leveren we een concreet actieplan. Vervolgens implementeren we de oplossing binnen maximaal 48 uur. Gevestigd in Edingen, België, begeleiden we bedrijven in België en Frankrijk met meertalige ondersteuning in het Frans, Engels en Nederlands.",
+    "p3": "Alles begint met een kennismakingsgesprek van dertig minuten, vrijblijvend. Als er iets te doen valt, brengt de AI-diagnose uw processen in twee dagen in kaart en levert drie prioritaire projecten op. Vanuit Givry, in Henegouwen (België), begeleid ik bedrijven in België en Frankrijk in het Frans, Engels en Nederlands.",
     "subtitle3": "Beveiliging en AVG-conformiteit",
     "p4": "Al uw gegevens worden in Europa gehost en verwerkt in strikte naleving van de AVG. We gebruiken de nieuwste technologieën — intelligente chatbots, AI-data-analyse, contentgeneratie, slim CRM — en garanderen tegelijkertijd de vertrouwelijkheid en veiligheid van uw bedrijfsinformatie."
   },
   "audit": {
     "badge": "Gratis Audit — Beperkte plaatsen deze maand",
-    "title": "Ontdek uw AI-potentieel in 24u",
-    "subtitle": "Een expert analyseert uw activiteit en levert u gratis een concreet actieplan.",
-    "cta": "Mijn gratis audit aanvragen",
+    "title": "Dertig minuten om te weten of AI bij u thuishoort",
+    "subtitle": "We bekijken uw activiteit samen en ik zeg u eerlijk of ik kan helpen of niet.",
+    "cta": "Een afspraak maken",
     "badges": {
-      "free": "100% gratis",
-      "fast": "Resultaten binnen 24u",
+      "free": "Vrijblijvend",
+      "fast": "Dertig minuten",
       "noCommitment": "Geen verplichting"
     },
     "steps": {
@@ -201,9 +201,9 @@
     "q1": "Heb ik technische vaardigheden nodig om uw oplossingen te gebruiken?",
     "a1": "Absoluut niet! Onze oplossingen zijn ontworpen om eenvoudig te gebruiken. Wij zorgen voor alle technische aspecten.",
     "q2": "Hoe lang duurt het om een AI-oplossing te implementeren?",
-    "a2": "De meeste van onze oplossingen zijn operationeel binnen 48 uur. De gratis audit duurt 24 uur.",
-    "q3": "Is de audit echt gratis en vrijblijvend?",
-    "a3": "Ja, 100% gratis en vrijblijvend. We analyseren uw bedrijf en leveren een concreet actieplan.",
+    "a2": "De meeste oplossingen draaien binnen enkele werkdagen nadat de scope is vastgelegd. Het kennismakingsgesprek zelf duurt dertig minuten.",
+    "q3": "Verbindt het kennismakingsgesprek mij tot iets?",
+    "a3": "Neen. Dertig minuten om uw situatie te begrijpen. Als er niets te doen valt, zeg ik dat — ook dat maakt het advies bruikbaar.",
     "q4": "Zijn mijn gegevens veilig?",
     "a4": "Absoluut. We zijn AVG-conform en alle gegevens worden in Europa gehost.",
     "q5": "Welk type bedrijf kan profiteren van uw diensten?",
@@ -224,14 +224,14 @@
   "offers": {
     "eyebrow": "Aanbod",
     "title": "Drie manieren om te starten, elk met een prijs",
-    "subtitle": "De audit is gratis. Het Express Pack automatiseert een eerste taak tegen een vaste prijs. Het abonnement houdt uw workflows draaiend en laat ze evolueren."
+    "subtitle": "Vijf diensten, elk met een gepubliceerde prijs: diagnose, workshop, automatiseringssprint, doorlopende begeleiding, AI Act-conformiteit."
   },
   "relatedServices": {
     "title": "Ontdek ook",
     "links": {
       "audit": {
-        "title": "Gratis AI-audit",
-        "description": "Volledige analyse van uw activiteit in 24u"
+        "title": "Kennismakingsgesprek",
+        "description": "Dertig minuten over uw activiteit, vrijblijvend"
       },
       "automatisation": {
         "title": "AI-automatisering",

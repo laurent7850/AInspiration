@@ -65,14 +65,14 @@
   },
   "metrics": [
     {
-      "value": "-60%",
-      "label": "Time Saved",
-      "description": "On manual tasks"
+      "value": "Varies",
+      "label": "Time saved",
+      "description": "Measured on your case, not announced in advance"
     },
     {
-      "value": "+90%",
-      "label": "Accuracy",
-      "description": "In processing"
+      "value": "Constant",
+      "label": "Execution",
+      "description": "The same rules applied on every run"
     },
     {
       "value": "24/7",
@@ -143,7 +143,7 @@
       },
       {
         "q": "How long before I see the first results?",
-        "a": "You receive your first working workflow within 5 working days after the scope is validated. The typical target of a first automation is to free up to 10 hours a week; the free audit puts a figure on yours. We always start with the highest-impact task identified in the free audit, so the return is visible from the first month."
+        "a": "You get your first working workflow within five working days of agreeing the scope. We always start with the task that costs you the most time, so the effect shows in the first month. The actual gain is measured on your case: it is observed, not announced."
       },
       {
         "q": "What happens if the automation fails or produces an error?",

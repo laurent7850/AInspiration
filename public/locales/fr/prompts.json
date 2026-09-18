@@ -36,57 +36,40 @@
     },
     "whyTitle": "Pourquoi optimiser vos prompts ?",
     "whyText1": "Dans un monde où l'IA devient incontournable, la qualité de vos prompts fait toute la différence. Un prompt optimisé n'est pas qu'une simple question, c'est une instruction précise qui guide l'IA vers exactement ce dont vous avez besoin.",
-    "whyText2": "Nos experts ont analysé plus de 100 000 interactions pour identifier les patterns qui fonctionnent. Le résultat ? Des prompts qui génèrent des réponses pertinentes dès la première tentative, vous faisant gagner un temps précieux.",
-    "testimonials": {
-      "sophie": {
-        "name": "Sophie M.",
-        "role": "Directrice Marketing Digital",
-        "quote": "Avant d'utiliser les prompts optimisés, je passais des heures à reformuler mes demandes. Maintenant, j'obtiens exactement ce que je veux en quelques minutes. C'est un gain de temps incroyable !"
-      },
-      "marc": {
-        "name": "Marc L.",
-        "role": "Chef de Projet Innovation",
-        "quote": "La différence entre un prompt basique et un prompt optimisé est stupéfiante. Nous avons réduit de 60% le temps passé à interagir avec l'IA tout en obtenant des résultats nettement supérieurs."
-      }
-    },
+    "whyText2": "Un prompt travaillé encadre le modèle : il lui donne le contexte, le format attendu et les limites à respecter. Le résultat, ce sont des réponses exploitables dès la première tentative, au lieu d'une série de reformulations.",
     "comparison": {
       "title": "Comparaison des Performances",
       "criterion": "Critère",
       "basic": "Prompt Basique",
       "optimised": "Prompt Optimisé",
-      "improvement": "Amélioration",
       "rows": {
         "accuracy": {
-          "criterion": "Précision",
-          "basic": "45%",
-          "optimised": "85%",
-          "improvement": "+40%"
+          "criterion": "Ce qu'on obtient",
+          "basic": "Une réponse plausible, à retravailler",
+          "optimised": "Une réponse utilisable telle quelle"
         },
         "responseTime": {
-          "criterion": "Temps de réponse",
-          "basic": "3-4 itérations",
-          "optimised": "1-2 itérations",
-          "improvement": "-60%"
+          "criterion": "Nombre d'allers-retours",
+          "basic": "Trois à quatre reformulations",
+          "optimised": "Une à deux"
         },
         "relevance": {
-          "criterion": "Pertinence",
-          "basic": "50%",
-          "optimised": "90%",
-          "improvement": "+40%"
+          "criterion": "Cadrage",
+          "basic": "Le modèle devine le contexte",
+          "optimised": "Le contexte, le format et les limites sont donnés"
         },
         "userSatisfaction": {
-          "criterion": "Satisfaction utilisateur",
-          "basic": "60%",
-          "optimised": "95%",
-          "improvement": "+35%"
+          "criterion": "Ce qui varie",
+          "basic": "Le résultat change à chaque essai",
+          "optimised": "Le résultat est reproductible"
         },
         "reuse": {
-          "criterion": "Taux de réutilisation",
-          "basic": "30%",
-          "optimised": "80%",
-          "improvement": "+50%"
+          "criterion": "Réutilisation",
+          "basic": "À réécrire à chaque fois",
+          "optimised": "Rangé dans une bibliothèque, réutilisable"
         }
-      }
+      },
+      "note": "Ce tableau décrit une différence de méthode, pas une mesure : aucun pourcentage n'y figure faute de source publiable."
     },
     "featureCards": {
       "contextualAI": {
@@ -103,7 +86,7 @@
       },
       "quality": {
         "title": "Qualité Garantie",
-        "description": "Résultats validés par nos experts"
+        "description": "Comparé sur vos propres cas, pas sur une moyenne"
       }
     },
     "cta": {

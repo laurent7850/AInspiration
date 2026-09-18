@@ -9,7 +9,7 @@
     "highlight": "al",
     "titleSuffix": "gebouwd hebben",
     "description": "Vijftien realisaties in dienst. Voor elk daarvan: wat er gebouwd is, wat het vervangt, en wat het oplevert. De cijfers komen uit de uitvoeringslogs, niet uit een brochure.",
-    "cta": "Vraag mijn gratis audit aan",
+    "cta": "Een afspraak maken",
     "ctaSub": "Resultaat binnen 24 u — vrijblijvend",
     "secondary": "Over mijn situatie praten"
   },
@@ -45,7 +45,7 @@
     "title": "Hoe het verloopt",
     "description": "Drie stappen, en bij elke stap beslist u of we verdergaan.",
     "step1Title": "Audit",
-    "step1Body": "We bekijken wat u met de hand doet, en zetten er een cijfer op. Gratis, binnen 24 uur.",
+    "step1Body": "We bekijken wat u handmatig doet en zetten er een cijfer op. Dat is de AI-diagnose: twee dagen, € 2.400 excl. btw.",
     "step2Title": "Prototype",
     "step2Body": "We bouwen de kleinste bruikbare versie, op uw echte gegevens. U ziet ze draaien vóór u zich verbindt.",
     "step3Title": "In productie",
@@ -53,8 +53,8 @@
   },
   "cta": {
     "title": "En bij u, wat kost er een uur te veel?",
-    "body": "De audit is gratis en duurt niet langer dan een gesprek. U vertrekt met een becijferde lijst van wat automatiseerbaar is, of u nu klant wordt of niet.",
-    "button": "Vraag mijn gratis audit aan"
+    "body": "Dertig minuten volstaat om te weten of er bij u iets te doen valt. Zo ja, dan stelt de Diagnose de lijst op van wat automatiseerbaar is, met cijfers. Zo neen, dan zeg ik dat.",
+    "button": "Een afspraak maken"
   },
   "detail": {
     "context": "De context",
@@ -149,7 +149,7 @@
       "howItWorks": "Next.js, Prisma op PostgreSQL, authenticatie met Auth.js, betalingen via Stripe, classificatie en documentgeneratie door Claude, pdf-export. Multi-tenant isolatie: de gegevens van de ene organisatie zijn nooit zichtbaar vanuit een andere.",
       "transposition": "Als u een AI-tool in uw activiteit gebruikt — en dat is waarschijnlijk het geval zonder dat het geformaliseerd is — is de eerste stap weten welke, waarvoor, en met welke gegevens. Voor vragen die verder gaan dan de inventaris hebt u een jurist nodig: wij vervangen die niet."
     },
-    "labo-nostalgie": {
+    "playlists-auditeurs": {
       "title": "Gepersonaliseerde playlists voor radioluisteraars",
       "summary": "Een uur samenstellen per luisteraar, terug tot zeventig seconden.",
       "sector": "Media",

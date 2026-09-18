@@ -153,7 +153,7 @@ const KNOWN_ROUTE_PREFIXES = ['/contacts/', '/companies/', '/opportunities/', '/
 // crawler must see a real 404 for them too, not a served-then-redirected shell.
 const REALISATION_DETAIL_SLUGS = new Set([
   'facturation-automatisee', 'reconciliation-caisse', 'factures-fournisseurs',
-  'chat-ia-site', 'audityo', 'labo-nostalgie', 'autoseo', 'preparation-emission',
+  'chat-ia-site', 'audityo', 'playlists-auditeurs', 'autoseo', 'preparation-emission',
   'dreamoracle', 'artpero', 'tl-services', 'playlist-spotify', 'veille-youtube',
   'paperclip',
 ]);
@@ -637,6 +637,14 @@ app.get('/{*splat}', async (req, res) => {
     // Études de cas merged into Réalisations (2026-09-05): keep the indexed URL alive.
     if (rest === '/etudes-de-cas') {
       return res.redirect(301, `${langPrefix(lang)}/realisations`);
+    }
+
+    // La fiche playlists radio portait le nom de la station dans son slug, sa
+    // cle i18n et son image (2026-09-18). Le texte, lui, etait deja anonyme :
+    // c'est la technique qui identifiait le client. L'ancienne URL est indexee,
+    // on la redirige plutot que de la casser.
+    if (/^\/realisations\/labo-nostalgie$/.test(rest)) {
+      return res.redirect(301, `${langPrefix(lang)}/realisations/playlists-auditeurs`);
     }
     // Un article porte sa langue dans le slug (`-en`, `-nl`) : le sitemap ne
     // liste que la forme sans prefixe, et /en/blog comme /nl/blog pointent vers

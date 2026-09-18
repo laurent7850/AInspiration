@@ -313,7 +313,7 @@ export const menuItems: MenuSection[] = [
     items: [
       { label: 'Pourquoi l\'IA', path: '/pourquoi-ia' },
       { label: 'Pour qui l\'IA', path: '/pour-qui-ia' },
-      { label: 'Audit gratuit', path: '/audit' },
+      { label: 'Rendez-vous de découverte', path: '/audit' },
       { label: 'À propos', path: '/a-propos' }
     ]
   },

@@ -35,9 +35,21 @@
     ]
   },
   "metrics": [
-    { "value": "30+", "label": "Langues", "description": "Voix de synthèse naturelles disponibles" },
-    { "value": "-70%", "label": "Coûts de production", "description": "vs un studio d'enregistrement classique" },
-    { "value": "24h", "label": "Délai de livraison", "description": "Du brief au fichier audio final" }
+    {
+      "value": "30+",
+      "label": "Langues",
+      "description": "Voix de synthèse naturelles disponibles"
+    },
+    {
+      "value": "-70%",
+      "label": "Coûts de production",
+      "description": "vs un studio d'enregistrement classique"
+    },
+    {
+      "value": "24h",
+      "label": "Délai de livraison",
+      "description": "Du brief au fichier audio final"
+    }
   ],
   "useCases": {
     "title": "Des cas d'usage concrets pour votre PME",
@@ -75,8 +87,8 @@
   },
   "cta": {
     "title": "Prêt à donner de la voix à votre marque ?",
-    "subtitle": "Discutons de votre projet audio lors d'un audit gratuit. Nous identifions les contenus à produire et le meilleur workflow IA pour votre PME.",
-    "button": "Demander mon audit gratuit",
+    "subtitle": "Parlons de votre projet audio pendant trente minutes. On identifie les contenus à produire et le workflow qui tient la route, sans engagement.",
+    "button": "Prendre rendez-vous",
     "stat1Value": "24h",
     "stat1Label": "Premier livrable",
     "stat2Value": "-70%",

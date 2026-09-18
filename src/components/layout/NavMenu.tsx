@@ -181,7 +181,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ onAuditClick }) => {
             onClick={onAuditClick}
             className="bg-accent text-white px-5 py-2 rounded-button text-sm font-semibold hover:bg-accent-dark transition-colors duration-200 active:translate-y-px"
           >
-            {t('button.startAudit', 'Audit gratuit')}
+            {t('button.startAudit', 'Prendre rendez-vous')}
           </button>
 
           <div className="relative group">

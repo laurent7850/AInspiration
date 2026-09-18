@@ -20,11 +20,11 @@
     }
   },
   "form": {
-    "title": "Votre audit IA gratuit",
+    "title": "Votre rendez-vous de découverte",
     "stepOf": "Étape {{step}} sur {{total}}",
     "continue": "Continuer",
     "back": "Retour",
-    "submit": "Recevoir mon audit gratuit",
+    "submit": "Demander le rendez-vous",
     "submitting": "Envoi en cours...",
     "close": "Fermer",
     "required": "*",
@@ -74,7 +74,7 @@
     "success": {
       "title": "Votre demande d'audit est envoyée !",
       "analyzing": "Notre expert IA analyse votre situation dès maintenant.",
-      "report": "Vous recevrez votre <strong>rapport d'audit personnalisé par email sous 24h</strong>.",
+      "report": "Je vous écris pour convenir d'un créneau de <strong>trente minutes</strong>.",
       "nextTitle": "Que se passe-t-il ensuite ?",
       "nextStep1": "Analyse IA de votre activité et vos besoins",
       "nextStep2": "Rapport personnalisé envoyé par email",
@@ -143,7 +143,7 @@
     "advanced": "Avancée — J'ai déjà automatisé des processus"
   },
   "budgets": {
-    "discovery": "Je veux d'abord comprendre mes options (audit gratuit)",
+    "discovery": "Je veux d'abord comprendre mes options",
     "starter": "Moins de 2 000 € pour un premier projet",
     "growth": "2 000 € – 5 000 € pour une solution complète",
     "enterprise": "Plus de 5 000 € pour une transformation en profondeur"
@@ -171,16 +171,16 @@
     "notSpecified": "Non précisé"
   },
   "page": {
-    "badge": "Places limitées — Audit offert ce mois-ci",
+    "badge": "Sur rendez-vous",
     "heroTitle": "Découvrez votre potentiel IA",
-    "heroHighlight": "en 24h",
-    "heroDescription": "Un expert analyse votre activité et vous livre un plan d'action concret, gratuitement. Un premier résultat concret en 5 jours, à partir de votre audit gratuit.",
-    "ctaButton": "Demander mon audit gratuit",
+    "heroHighlight": "en trente minutes",
+    "heroDescription": "On regarde votre activité ensemble et je vous dis franchement si l'IA a sa place chez vous. S'il y a matière à travailler, on parle du Diagnostic. Sinon, je vous le dis aussi.",
+    "ctaButton": "Demander le rendez-vous",
     "guarantees": {
-      "results": "Résultats sous 24h",
-      "free": "100% gratuit, sans engagement",
-      "report": "Rapport PDF personnalisé",
-      "expert": "Analyse par un expert IA"
+      "results": "Trente minutes",
+      "free": "Sans engagement",
+      "report": "Sur votre cas, pas un générique",
+      "expert": "En direct avec moi"
     },
     "howTitle": "Comment se déroule votre audit ?",
     "howSubtitle": "Un processus simple en 4 étapes pour identifier vos opportunités IA",
@@ -212,13 +212,13 @@
       "Feuille de route d'intégration IA"
     ],
     "goFurtherTitle": "Et si vous souhaitez aller plus loin...",
-    "packTitle": "Pack Automatisation Express",
-    "packLaunchBadge": "Offre lancement — 1 043 € au lieu de 1 490 €",
+    "packTitle": "Et ensuite ? Le Diagnostic IA",
+    "packLaunchBadge": "Tarif fondateur — −20 % pour les trois premiers clients",
     "packLaunchNote": "Pour les 10 premiers clients (contre témoignage)",
-    "packPrice": "À partir de 1 043 € HTVA · Setup workflow n8n + 1er mois hébergement inclus",
-    "packPriceStandard": "1 490 € HTVA (tarif standard)",
-    "packDescription": "Issu directement de votre audit, nous automatisons la tâche qui vous fera gagner le plus de temps. Setup + 1er mois inclus, puis 290 €/mois pour l'hébergement et le support de votre workflow IA.",
-    "packSubscriptionNote": "Abonnement mensuel 290 €/mois HTVA obligatoire — vos workflows tournent sur notre infrastructure.",
+    "packPrice": "2 400 € HTVA · deux jours",
+    "packPriceStandard": "En échange d'un témoignage pour le tarif fondateur",
+    "packDescription": "Deux jours dans vos processus réels, pour cartographier ce qui est automatisable et chiffrer ce que la main coûte. Vous repartez avec trois chantiers prioritaires et, tout aussi utile, la liste de ce qu'il ne faut pas automatiser.",
+    "packSubscriptionNote": "Aucun abonnement obligatoire. Si vous voulez ensuite que je fasse vivre ce qui tourne, l'accompagnement Pilote IA est à 590 €/mois HTVA sur six mois — et c'est un choix, pas une condition.",
     "whoTitle": "Pour qui est cet audit ?",
     "whoSectors": [
       "Professions libérales (avocats, comptables, architectes)",
@@ -228,16 +228,16 @@
       "Artisans et indépendants"
     ],
     "finalCtaTitle": "Prêt à découvrir ce que l'IA peut faire pour vous ?",
-    "finalCtaSubtitle": "Remplissez le formulaire en 2 minutes. Recevez votre audit personnalisé sous 24h.",
+    "finalCtaSubtitle": "Le formulaire prend deux minutes. Je vous écris pour convenir d'un créneau.",
     "stats": {
       "delivery": "Délai de livraison",
       "noCommitment": "Sans engagement",
       "smeHelped": "PME accompagnées"
     },
-    "seoTitle": "Audit IA Gratuit en 24h | Diagnostic Personnalisé | AInspiration",
-    "seoDescription": "Demandez votre audit IA gratuit. Un expert analyse votre activité et vous livre un plan d'action concret en 24h. Sans engagement. PME et indépendants en Belgique et France.",
+    "seoTitle": "Rendez-vous de découverte IA | Diagnostic PME | AInspiration",
+    "seoDescription": "Trente minutes pour savoir si l'IA a sa place dans votre PME. Sans engagement. Diagnostic IA à 2 400 € si vous allez plus loin. PME et indépendants en Belgique et en France.",
     "faq": {
-      "title": "Questions fréquentes sur l'audit IA gratuit",
+      "title": "Questions fréquentes sur le rendez-vous de découverte",
       "items": {
         "0": {
           "q": "Que contient exactement le rapport d'audit IA ?",
@@ -245,11 +245,11 @@
         },
         "1": {
           "q": "Comment se passe le processus concrètement ?",
-          "a": "C'est simple : vous remplissez un formulaire en 4 étapes (coordonnées, activité, besoins, contexte) qui prend 2 à 5 minutes. Notre pipeline IA analyse vos réponses en environ 26 secondes et génère un rapport personnalisé. Vous recevez le rapport par email dans les 24 heures ouvrées. Si le rapport vous intéresse, nous vous proposons un call gratuit de 30 minutes pour en discuter. Aucune obligation à aucun moment."
+          "a": "C'est simple : vous remplissez un formulaire en 4 étapes (coordonnées, activité, besoins, contexte) qui prend 2 à 5 minutes. Je le lis avant notre échange, pour ne pas vous faire répéter ce que vous avez déjà écrit, et je vous propose un créneau de trente minutes."
         },
         "2": {
-          "q": "Pourquoi c'est gratuit ? Où est le piège ?",
-          "a": "Il n'y a pas de piège. L'audit gratuit est notre produit d'appel — il nous permet de démontrer notre expertise et d'identifier les entreprises pour lesquelles nous pouvons créer de la valeur. Si nos recommandations vous intéressent, vous pouvez choisir de passer à notre Pack Express (à partir de 1 043 EUR HTVA) pour automatiser la tâche prioritaire identifiée. Si non, vous gardez le rapport et les recommandations sans rien devoir. C'est notre façon de construire la confiance."
+          "q": "Pourquoi le rendez-vous est-il offert ? Où est le piège ?",
+          "a": "Il n'y a pas de piège, et il n'y a pas de livrable non plus : trente minutes de conversation, pas un rapport. C'est le temps qu'il me faut pour savoir si je peux vous être utile, et à vous pour savoir si vous avez envie de travailler avec moi. Si la réponse est non d'un côté ou de l'autre, on ne perd que trente minutes."
         },
         "3": {
           "q": "L'audit est-il vraiment personnalisé ou c'est un template générique ?",

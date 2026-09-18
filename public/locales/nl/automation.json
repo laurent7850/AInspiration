@@ -65,14 +65,14 @@
   },
   "metrics": [
     {
-      "value": "-60%",
+      "value": "Variabel",
       "label": "Tijd bespaard",
-      "description": "Op handmatige taken"
+      "description": "Becijferd op uw situatie, niet vooraf aangekondigd"
     },
     {
-      "value": "+90%",
-      "label": "Nauwkeurigheid",
-      "description": "In verwerking"
+      "value": "Constant",
+      "label": "Uitvoering",
+      "description": "Dezelfde regels bij elke doorloop"
     },
     {
       "value": "24/7",
@@ -143,7 +143,7 @@
       },
       {
         "q": "Hoe snel zie ik de eerste resultaten?",
-        "a": "U ontvangt uw eerste werkende workflow binnen 5 werkdagen na validatie van de scope. Het typische doel van een eerste automatisering is tot 10 uur per week vrijmaken; de gratis audit becijfert het voor u. We beginnen altijd met de taak met de grootste impact uit de gratis audit, zodat het rendement al in de eerste maand zichtbaar is."
+        "a": "U krijgt uw eerste werkende workflow binnen vijf werkdagen na het vastleggen van de scope. We beginnen altijd met de taak die u het meeste tijd kost, zodat het effect al in de eerste maand zichtbaar is. De werkelijke winst wordt op uw situatie gemeten: ze wordt vastgesteld, niet aangekondigd."
       },
       {
         "q": "Wat gebeurt er als de automatisering faalt of een fout maakt?",

@@ -75,7 +75,7 @@
     },
     "cta": {
       "title": "Prêt à définir votre stratégie IA ?",
-      "subtitle": "Réservez une session de consultation stratégique gratuite",
+      "subtitle": "Trente minutes pour regarder votre situation, sans engagement",
       "button": "Planifier ma consultation",
       "stats": {
         "expertise": "Années d'expertise",
@@ -186,14 +186,14 @@
         "2": "Formez vos équipes pour une adoption réussie."
       },
       "contactTitle": "Contactez-Nous",
-      "contactDesc": "Pour une démonstration personnalisée ou un diagnostic gratuit, n'hésitez pas à nous contacter.",
+      "contactDesc": "Pour en parler trente minutes, sans engagement, écrivez-moi.",
       "satisfactionLabel": "Taux de satisfaction",
       "installLabel": "Installation moyenne"
     },
     "finalCta": {
       "title": "Ne laissez pas vos concurrents prendre l'avantage",
       "subtitle": "Rejoignez les PME qui ont déjà transformé leur activité grâce à l'IA",
-      "button": "Démarrer mon diagnostic gratuit"
+      "button": "Prendre rendez-vous"
     }
   },
   "assistants": {
@@ -289,7 +289,7 @@
         },
         "4": {
           "q": "Combien coûte un assistant virtuel IA pour une PME ?",
-          "a": "Notre Pack Express démarre à 1 043 EUR HTVA (offre lancement avec témoignage) ou 1 490 EUR HTVA (tarif standard) pour la mise en place. L'hébergement et la maintenance sont inclus dans l'abonnement managé à 290 EUR par mois. Comparé à un employé dédié au support (2 500-3 500 EUR/mois), le retour sur investissement est rapide. Notre audit gratuit vous donne une estimation précise des économies pour votre cas spécifique."
+          "a": "La mise en place d'un assistant entre dans le Sprint automatisation (O3), de 3 500 à 6 000 € HTVA selon le nombre d'intégrations à réaliser. Si vous souhaitez ensuite que je fasse vivre et évoluer ce qui tourne, l'accompagnement Pilote IA (O4) est à 590 €/mois HTVA, sur six mois. Le périmètre est fixé et écrit avant de commencer."
         }
       }
     }

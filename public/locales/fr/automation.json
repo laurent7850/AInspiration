@@ -65,14 +65,14 @@
   },
   "metrics": [
     {
-      "value": "-60%",
+      "value": "Variable",
       "label": "Temps gagné",
-      "description": "Sur les tâches manuelles"
+      "description": "Chiffré sur votre cas, pas annoncé d'avance"
     },
     {
-      "value": "+90%",
-      "label": "Précision",
-      "description": "Dans le traitement"
+      "value": "Constante",
+      "label": "Exécution",
+      "description": "Mêmes règles appliquées à chaque passage"
     },
     {
       "value": "24/7",
@@ -143,7 +143,7 @@
       },
       "2": {
         "q": "Combien de temps faut-il pour voir les premiers résultats ?",
-        "a": "Vous recevez votre premier workflow fonctionnel en 5 jours ouvrés après validation du périmètre. Objectif type d'une première automatisation : libérer jusqu'à 10 heures par semaine — l'audit gratuit chiffre la vôtre. Nous commençons toujours par la tâche la plus impactante identifiée dans l'audit gratuit, pour que le ROI soit visible dès le premier mois."
+        "a": "Vous recevez votre premier workflow fonctionnel en cinq jours ouvrés après validation du périmètre. On commence toujours par la tâche la plus coûteuse en temps, pour que l'effet soit visible dès le premier mois. Le gain réel se mesure sur votre cas : il se constate, il ne s'annonce pas."
       },
       "3": {
         "q": "Que se passe-t-il si l'automatisation échoue ou produit une erreur ?",

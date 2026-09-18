@@ -70,23 +70,6 @@
         }
       }
     },
-    "testimonials": {
-      "marie": {
-        "name": "Marie L.",
-        "role": "Responsable Marketing",
-        "text": "J'ai gagné 2h par jour grâce aux techniques apprises !"
-      },
-      "thomas": {
-        "name": "Thomas D.",
-        "role": "Entrepreneur",
-        "text": "Formation très pratique, directement applicable"
-      },
-      "sophie": {
-        "name": "Sophie M.",
-        "role": "Assistante de Direction",
-        "text": "Enfin une formation IA sans jargon technique"
-      }
-    },
     "cta": {
       "title": "Prêt à maîtriser l'IA ?",
       "subtitle": "Rejoignez nos apprenants satisfaits",
@@ -117,7 +100,7 @@
         },
         "4": {
           "q": "Combien coûte une formation IA pour mon équipe ?",
-          "a": "Le tarif dépend du format et du nombre de participants. Formation individuelle à distance : à partir de 490 EUR HTVA pour une journée. Formation en entreprise (jusqu'à 10 personnes) : à partir de 1 490 EUR HTVA pour une journée. Programme personnalisé sur 3 jours : sur devis. Contactez-nous pour recevoir un devis adapté à vos besoins — l'évaluation initiale est gratuite."
+          "a": "L'Atelier (O2) est à 900 € HTVA la demi-journée et 1 500 € HTVA la journée, jusqu'à dix participants, dans vos locaux ou à distance. On travaille sur vos propres cas et vos propres outils, pas sur des exemples. Pour un programme sur plusieurs jours, écrivez-moi : le devis dépend du nombre de séances et du contenu."
         }
       }
     }

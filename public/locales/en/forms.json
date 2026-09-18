@@ -9,9 +9,9 @@
     "select": "Select"
   },
   "contact": {
-    "title": "Request a free AI audit",
+    "title": "Book a discovery call",
     "pageTitle": "Contact Us",
-    "pageSubtitle": "Have questions? Need a quote? Our team is ready to assist you.",
+    "pageSubtitle": "Have questions? Need a quote? I am ready to assist you.",
     "sendMessage": "Send us a message",
     "fullName": "Full Name*",
     "company": "Company*",
@@ -71,8 +71,8 @@
           "a": "We commit to replying within 24 working hours (Monday-Friday, 9am-6pm). For free AI audit requests, the personalised report is generated automatically and emailed within 24 hours of submitting your form. For sales or technical questions, our team contacts you by email or phone, as you prefer."
         },
         {
-          "q": "Is the free AI audit really without obligation?",
-          "a": "Yes, entirely. The AI audit is a free service with no purchase obligation whatsoever. You receive a personalised PDF report with 3 concrete automation recommendations for your business. If the recommendations interest you, we can discuss them in a 30-minute call, also free. No credit card is requested, no commitment is made."
+          "q": "Does the discovery call commit me to anything?",
+          "a": "No. Thirty minutes to understand your situation and tell you whether I can help. No obligation to buy, and if there is nothing to be done, I will say so."
         },
         {
           "q": "Where are you based, and do you work across Belgium?",
@@ -91,7 +91,7 @@
   },
   "products": {
     "auditIA": {
-      "title": "Request a free AI audit",
+      "title": "Book a discovery call",
       "description": "Complete the form to benefit from our audit and discover your automation potential"
     },
     "packDemarrage": {

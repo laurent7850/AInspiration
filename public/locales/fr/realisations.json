@@ -9,7 +9,7 @@
     "highlight": "déjà",
     "titleSuffix": "construit",
     "description": "Quinze réalisations en service. Pour chacune : ce qui a été construit, ce que ça remplace, et ce que ça fait gagner. Les chiffres viennent des journaux d'exécution, pas d'une brochure.",
-    "cta": "Demander mon audit gratuit",
+    "cta": "Prendre rendez-vous",
     "ctaSub": "Résultats en 24 h — sans engagement",
     "secondary": "Parler de mon cas"
   },
@@ -45,7 +45,7 @@
     "title": "Comment ça se passe",
     "description": "Trois étapes, et vous décidez à chacune si on continue.",
     "step1Title": "Audit",
-    "step1Body": "On regarde ce que vous faites à la main, et on chiffre ce que ça vous coûte. Gratuit, en 24 h.",
+    "step1Body": "On regarde ce que vous faites à la main, et on chiffre ce que ça vous coûte. C'est le Diagnostic IA, deux jours, 2 400 € HTVA.",
     "step2Title": "Prototype",
     "step2Body": "On construit la plus petite version utile, sur vos vraies données. Vous la voyez tourner avant de vous engager.",
     "step3Title": "Mise en production",
@@ -53,8 +53,8 @@
   },
   "cta": {
     "title": "Et chez vous, qu'est-ce qui prend une heure de trop ?",
-    "body": "L'audit est gratuit et ne dure pas plus d'une conversation. Vous repartez avec une liste de ce qui est automatisable, chiffrée, que vous soyez client ou non.",
-    "button": "Demander mon audit gratuit"
+    "body": "Trente minutes suffisent pour savoir s'il y a quelque chose à faire chez vous. Si oui, le Diagnostic établit la liste de ce qui est automatisable, chiffrée. Si non, je vous le dis.",
+    "button": "Prendre rendez-vous"
   },
   "detail": {
     "context": "Le contexte",
@@ -149,7 +149,7 @@
       "howItWorks": "Next.js, Prisma sur PostgreSQL, authentification Auth.js, paiement Stripe, classification et génération documentaire par Claude, export PDF. Isolation multi-tenant : les données d'une organisation ne sont jamais visibles d'une autre.",
       "transposition": "Si vous utilisez un outil d'IA dans votre activité — et c'est probablement le cas sans que ce soit formalisé —, la première étape est de savoir lequel, pour quoi, et avec quelles données. Pour les questions qui dépassent l'inventaire, il faut un juriste : nous ne le remplaçons pas."
     },
-    "labo-nostalgie": {
+    "playlists-auditeurs": {
       "title": "Playlists personnalisées pour auditeurs de radio",
       "summary": "Une heure de composition par auditeur, ramenée à soixante-dix secondes.",
       "sector": "Médias",

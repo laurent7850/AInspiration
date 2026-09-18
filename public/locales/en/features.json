@@ -75,7 +75,7 @@
     },
     "cta": {
       "title": "Ready to define your AI strategy?",
-      "subtitle": "Book a free strategic consultation session",
+      "subtitle": "Thirty minutes to look at your situation, no commitment",
       "button": "Schedule my consultation",
       "stats": {
         "expertise": "Years of expertise",
@@ -186,14 +186,14 @@
         "2": "Train your teams for a successful adoption."
       },
       "contactTitle": "Contact Us",
-      "contactDesc": "For a personalised demonstration or a free diagnostic, do not hesitate to contact us.",
+      "contactDesc": "To talk it through for thirty minutes, with no commitment, write to me.",
       "satisfactionLabel": "Satisfaction rate",
       "installLabel": "Average installation"
     },
     "finalCta": {
       "title": "Don't let your competitors gain the upper hand",
       "subtitle": "Join the SMEs that have already transformed their business with AI",
-      "button": "Start my free diagnostic"
+      "button": "Book a call"
     }
   },
   "assistants": {
@@ -289,7 +289,7 @@
         },
         {
           "q": "How much does an AI virtual assistant cost for an SME?",
-          "a": "Our Express Pack starts at EUR 1,043 excl. VAT (launch offer with a testimonial) or EUR 1,490 excl. VAT (standard rate) for the setup. Hosting and maintenance are included in the managed subscription at EUR 290 per month. Compared with a dedicated support employee (EUR 2,500-3,500/month), the return on investment is fast. Our free audit gives you a precise estimate of the savings for your specific case."
+          "a": "Setting up an assistant falls under the Automation sprint (O3), €3,500 to €6,000 excl. VAT depending on the number of integrations required. If you then want me to keep it running and evolving, the AI Pilot support (O4) is €590/month excl. VAT over six months. The scope is fixed and written down before we start."
         }
       ]
     }
