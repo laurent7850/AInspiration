@@ -3,7 +3,7 @@ date: 2026-09-18
 projet: AInspiration
 ou: Claude Code
 type: Avancée
-notion: non
+notion: https://app.notion.com/p/3dffb662f4aa8142b806c70dac915cad
 prochaine-action: Trancher le sort de legal.json, de l'article Thierry et des deux grilles hors O1–O5
 ---
 

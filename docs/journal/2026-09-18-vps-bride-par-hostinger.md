@@ -3,7 +3,7 @@ date: 2026-09-18
 projet: AInspiration
 ou: Claude Code
 type: Incident
-notion: non
+notion: https://app.notion.com/p/3dffb662f4aa81ffb09bcf32879b5c1a
 prochaine-action: Faire remonter l ABANDON de health-check.sh vers un humain (webhook n8n, comme /opt/uptime-check.sh) — le log seul reste silencieux
 ---
 
