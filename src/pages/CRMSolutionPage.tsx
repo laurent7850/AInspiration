@@ -60,14 +60,6 @@ const CRMSolutionPage: React.FC = () => {
     answer: string;
   }>).map((item, index) => ({ ...item, id: index + 1 }));
 
-  const pricingPlans = (t('page.pricing.plans', { returnObjects: true }) as Array<{
-    name: string;
-    price: string;
-    period: string;
-    features: string[];
-    cta: string;
-  }>).map((plan, index) => ({ ...plan, popular: index === 1 }));
-
   const deploySteps = t('page.deployProcess.steps', { returnObjects: true }) as Array<{
     title: string;
     description: string;
@@ -263,69 +255,15 @@ const CRMSolutionPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Pricing Section */}
-      <div className="container mx-auto px-4 py-20">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="text-indigo-600 font-semibold text-sm uppercase tracking-wide">
-            {t('page.pricing.badge')}
-          </span>
-          <h2 className="text-3xl font-bold text-gray-900 mt-2 mb-4">
-            {t('page.pricing.sectionTitle')}
-          </h2>
-          <p className="text-xl text-gray-600">
-            {t('page.pricing.sectionDescription')}
-          </p>
-        </div>
+      {/* La grille tarifaire du CRM a ete retiree le 18/09/2026 (decision de
+          Laurent). Elle vendait Essentiel 29 EUR, Business 49 EUR par
+          utilisateur et par mois et un Enterprise sur mesure, avec 150+
+          integrations et des applications mobiles : un produit qui n'est pas
+          en vente. Le CRM est l'outil interne du portefeuille, et cette page
+          en est la vitrine avec acces demo, pas une offre SaaS.
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {pricingPlans.map((plan, index) => (
-            <div
-              key={index}
-              className={`bg-canvas border border-line rounded-card p-8 relative hover:shadow-xl transition-all duration-300 flex flex-col ${
-                plan.popular ? 'ring-2 ring-indigo-600' : ''
-              }`}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-            >
-              {plan.popular && (
-                <div className="absolute top-0 right-0 bg-indigo-600 text-white px-4 py-1 rounded-bl-xl rounded-tr-xl text-sm font-medium">
-                  {t('page.pricing.popular')}
-                </div>
-              )}
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-              <div className="mb-6">
-                <span className="text-4xl font-bold text-indigo-600">{plan.price}</span>
-                {plan.period && <span className="text-gray-500">/{plan.period}</span>}
-              </div>
-              <ul className="mb-8 flex-grow space-y-4">
-                {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-gray-600">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <button
-                onClick={() => {
-                  if (index === 2) {
-                    navigate('/contact');
-                  } else {
-                    setShowStartForm(true);
-                  }
-                }}
-                className={`w-full py-3 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 ${
-                  plan.popular
-                    ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-                    : 'bg-white border border-indigo-600 text-indigo-600 hover:bg-indigo-50'
-                } transition-colors`}
-              >
-                {plan.cta}
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
+          La seule grille commerciale de reference est O1-O5 (pricing.json).
+          Ne pas reintroduire de tarif ici sans arbitrage. */}
 
       {/* FAQ Section */}
       <div className="bg-indigo-50 py-20">

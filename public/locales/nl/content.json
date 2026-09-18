@@ -115,7 +115,7 @@
       "titleHighlight": "uitzonderlijke",
       "titleSuffix": "content met AI",
       "description": "Krachtige teksten, professionele visuals, complete campagnes — alles in enkele minuten, zonder technische vaardigheden.",
-      "ctaTry": "Gratis uitproberen",
+      "ctaTry": "Bekijk het resultaat",
       "ctaExamples": "Voorbeelden bekijken"
     },
     "tabs": {
@@ -183,17 +183,32 @@
           {
             "title": "Digitale marketing",
             "description": "Boeiende afbeeldingen voor uw campagnes op sociale media en het web",
-            "examples": ["Instagram- en Facebookposts", "Reclamebanniers", "Visuals voor nieuwsbrieven", "Blogcovers"]
+            "examples": [
+              "Instagram- en Facebookposts",
+              "Reclamebanniers",
+              "Visuals voor nieuwsbrieven",
+              "Blogcovers"
+            ]
           },
           {
             "title": "E-commerce",
             "description": "Productplaatsingen en verpakkingsvariaties",
-            "examples": ["Professionele productfoto's", "Gebruiksplaatsingen", "Verpakkingsvariaties", "Lifestyle-afbeeldingen"]
+            "examples": [
+              "Professionele productfoto's",
+              "Gebruiksplaatsingen",
+              "Verpakkingsvariaties",
+              "Lifestyle-afbeeldingen"
+            ]
           },
           {
             "title": "Bedrijfscommunicatie",
             "description": "Illustraties en infografieken voor uw communicatiematerialen",
-            "examples": ["Conceptillustraties", "Verklarende infografieken", "Presentatievisuals", "Jaarverslagen"]
+            "examples": [
+              "Conceptillustraties",
+              "Verklarende infografieken",
+              "Presentatievisuals",
+              "Jaarverslagen"
+            ]
           }
         ]
       },
@@ -207,43 +222,14 @@
           "Een visueel concept dat kunstmatige intelligentie vertegenwoordigt met een gestileerd brein en lichtgevende verbindingen, donkere achtergrond, futuristische stijl"
         ]
       },
-      "pricing": {
-        "sectionTitle": "Een betaalbare oplossing zonder engagement",
-        "sectionDescription": "Flexibele tarieven afgestemd op uw behoeften",
-        "popular": "Meest populair",
-        "payg": {
-          "title": "Pay as you go",
-          "description": "Ideaal voor occasionele behoeften",
-          "price": "€1",
-          "priceUnit": "/ afbeelding",
-          "features": ["Hoge resolutie (4K)", "Commerciële rechten", "E-mailondersteuning"],
-          "button": "Gratis beginnen"
-        },
-        "pro": {
-          "title": "Pro Abonnement",
-          "description": "Voor regelmatig gebruik",
-          "price": "€49",
-          "priceUnit": "/ maand",
-          "features": ["100 afbeeldingen per maand", "Hoge resolutie (4K)", "Aangepaste stijlen", "Prioriteitsondersteuning", "Commerciële rechten"],
-          "button": "Gratis proefperiode starten"
-        },
-        "business": {
-          "title": "Business",
-          "description": "Voor teams",
-          "price": "€199",
-          "priceUnit": "/ maand",
-          "features": ["500 afbeeldingen per maand", "Ultra hoge definitie (8K)", "Meerdere gebruikers", "API voor integratie", "Dedicated support 24/7"],
-          "button": "Contact met het verkoopteam"
-        }
-      },
       "cta": {
         "title": "Versterk uw visuele communicatie",
         "description": "Geen designvaardigheden of budget voor professionele fotografen meer nodig. Maak uitzonderlijke visuals vanaf nu.",
         "bullet1": "Bespaar uren werk",
         "bullet2": "Verlaag uw productiekosten",
         "bullet3": "Creëer zonder creatieve grenzen",
-        "formTitle": "Begin gratis",
-        "check1": "5 gratis afbeeldingen om te testen",
+        "formTitle": "Laten we over uw project praten",
+        "check1": "Dertig minuten, vrijblijvend",
         "check2": "Toegang tot alle stijlen en formaten",
         "check3": "Download in hoge resolutie",
         "check4": "Ondersteuning voor uw eerste stappen",

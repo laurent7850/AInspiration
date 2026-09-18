@@ -123,7 +123,7 @@ describe('getBreadcrumbSchema', () => {
   });
 
   it('should handle multi-segment paths', () => {
-    const schema = getBreadcrumbSchema('/blog/thierry-facturation-ia', 'fr');
+    const schema = getBreadcrumbSchema('/blog/un-article-de-blog', 'fr');
     expect(schema.itemListElement).toHaveLength(3); // Home + Blog + article
     expect(schema.itemListElement[1].name).toBe('Blog');
   });

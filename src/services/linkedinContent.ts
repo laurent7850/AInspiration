@@ -1,5 +1,5 @@
 /**
- * Contenu LinkedIn — Promotion de l'audit IA gratuit — AInspiration
+ * Contenu LinkedIn — Promotion du rendez-vous de découverte — AInspiration
  *
  * 5 posts ciblant chacun un secteur différent du marché belge.
  * Chaque post redirige vers ainspiration.eu/audit.
@@ -55,9 +55,9 @@ Le résultat ?
 
 Chez AInspiration, nous aidons les cabinets comptables à identifier précisément quelles tâches automatiser en premier.
 
-Comment ? Avec un audit IA gratuit et personnalisé.
+Comment ? En trente minutes de conversation, sans engagement.
 
-En 48h, vous recevez un rapport clair :
+S'il y a matière à travailler, le Diagnostic IA (deux jours) établit :
 → Les processus à automatiser en priorité
 → Le temps que vous allez récupérer
 → Un plan d'action concret
@@ -90,9 +90,9 @@ Ce n'est pas de la science-fiction. C'est de l'automatisation intelligente, adap
 
 Chez AInspiration, nous comprenons la réalité du terrain. Pas de solutions génériques : des automatisations pensées pour votre établissement.
 
-Et tout commence par un audit IA gratuit.
+Et tout commence par trente minutes de conversation.
 
-En quelques questions, on analyse votre fonctionnement et vous recevez sous 48h :
+On regarde votre fonctionnement ensemble. Si le Diagnostic suit, il établit :
 → Vos 3 plus gros gaspillages de temps identifiés
 → Les automatisations adaptées à votre taille
 → Une estimation du temps récupéré chaque semaine
@@ -129,7 +129,7 @@ Résultat : vous passez moins de temps sur l'opérationnel et plus sur la strat�
 
 Chez AInspiration, nous aidons les e-commerçants belges à identifier les automatisations les plus rentables pour leur business.
 
-Notre audit IA gratuit vous donne en 48h :
+Le Diagnostic IA, deux jours dans vos processus réels, vous donne :
 → Une cartographie de vos processus automatisables
 → Le ROI estimé de chaque automatisation
 → Un plan d'implémentation priorisé
@@ -162,9 +162,9 @@ Les agences qui adoptent ces outils libèrent 10 à 15 heures par collaborateur 
 
 Chez AInspiration, nous travaillons spécifiquement avec des agences marketing en Belgique. On connaît vos outils, vos contraintes et vos objectifs.
 
-Notre audit IA gratuit vous montre exactement où agir en premier.
+Le Diagnostic IA vous montre exactement où agir en premier.
 
-En 48h, vous recevez :
+À l'issue des deux jours, vous repartez avec :
 → Les tâches à automatiser en priorité dans votre agence
 → Les outils IA adaptés à votre stack actuel
 → Un plan d'action réaliste
@@ -196,9 +196,9 @@ En 2026, l'automatisation n'est plus réservée aux grandes entreprises. Un arti
 
 Pas besoin d'être un expert en technologie. Il suffit de savoir où commencer.
 
-C'est exactement ce que notre audit IA gratuit vous apporte.
+C'est exactement ce que le Diagnostic IA vous apporte.
 
-En répondant à quelques questions simples, vous recevez sous 48h :
+Après deux jours dans vos processus réels, vous repartez avec :
 → Les 2-3 tâches qui vous font perdre le plus de temps
 → Des solutions concrètes adaptées à votre budget
 → Une estimation du temps que vous allez récupérer

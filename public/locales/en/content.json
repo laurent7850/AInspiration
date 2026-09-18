@@ -115,7 +115,7 @@
       "titleHighlight": "exceptional",
       "titleSuffix": "content with AI",
       "description": "Compelling texts, professional visuals, complete campaigns — all in minutes, with no technical skills required.",
-      "ctaTry": "Try for free",
+      "ctaTry": "See what it looks like",
       "ctaExamples": "See examples"
     },
     "tabs": {
@@ -183,17 +183,32 @@
           {
             "title": "Digital marketing",
             "description": "Captivating images for your social media and web campaigns",
-            "examples": ["Instagram and Facebook posts", "Advertising banners", "Newsletter visuals", "Blog covers"]
+            "examples": [
+              "Instagram and Facebook posts",
+              "Advertising banners",
+              "Newsletter visuals",
+              "Blog covers"
+            ]
           },
           {
             "title": "E-commerce",
             "description": "Product lifestyle shots and packaging variations",
-            "examples": ["Professional product photos", "Lifestyle usage shots", "Packaging variations", "Lifestyle images"]
+            "examples": [
+              "Professional product photos",
+              "Lifestyle usage shots",
+              "Packaging variations",
+              "Lifestyle images"
+            ]
           },
           {
             "title": "Corporate communications",
             "description": "Illustrations and infographics for your communication materials",
-            "examples": ["Concept illustrations", "Explanatory infographics", "Presentation visuals", "Annual reports"]
+            "examples": [
+              "Concept illustrations",
+              "Explanatory infographics",
+              "Presentation visuals",
+              "Annual reports"
+            ]
           }
         ]
       },
@@ -207,43 +222,14 @@
           "A visual concept representing artificial intelligence with a stylised brain and luminous connections, dark background, futuristic style"
         ]
       },
-      "pricing": {
-        "sectionTitle": "An affordable, no-commitment solution",
-        "sectionDescription": "Flexible pricing tailored to your needs",
-        "popular": "Most popular",
-        "payg": {
-          "title": "Pay as you go",
-          "description": "Ideal for occasional needs",
-          "price": "€1",
-          "priceUnit": "/ image",
-          "features": ["High resolution (4K)", "Commercial rights", "Email support"],
-          "button": "Start for free"
-        },
-        "pro": {
-          "title": "Pro Subscription",
-          "description": "For regular use",
-          "price": "€49",
-          "priceUnit": "/ month",
-          "features": ["100 images per month", "High resolution (4K)", "Custom styles", "Priority support", "Commercial rights"],
-          "button": "Start free trial"
-        },
-        "business": {
-          "title": "Business",
-          "description": "For teams",
-          "price": "€199",
-          "priceUnit": "/ month",
-          "features": ["500 images per month", "Ultra high definition (8K)", "Multiple users", "API for integration", "Dedicated 24/7 support"],
-          "button": "Contact the sales team"
-        }
-      },
       "cta": {
         "title": "Boost your visual communications",
         "description": "No more need for design skills or budget for professional photographers. Create exceptional visuals right now.",
         "bullet1": "Save hours of work",
         "bullet2": "Reduce your production costs",
         "bullet3": "Create without creative limits",
-        "formTitle": "Start for free",
-        "check1": "5 free images to test",
+        "formTitle": "Let's talk about your project",
+        "check1": "Thirty minutes, no commitment",
         "check2": "Access to all styles and formats",
         "check3": "High-resolution download",
         "check4": "Support for your first steps",

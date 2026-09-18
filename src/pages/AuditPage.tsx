@@ -24,14 +24,14 @@ export default function AuditPage() {
   const guaranteeKeys = ['results', 'free', 'report', 'expert'] as const;
 
   const auditFAQs = [
-    { question: "L'audit IA est-il vraiment gratuit ?", answer: "Oui, l'audit est 100% gratuit et sans engagement. Nous analysons votre activité et vous livrons un plan d'action concret avec les gains estimés." },
-    { question: "Combien de temps dure l'audit IA ?", answer: "L'audit complet est livré en 24h. Nous analysons vos processus, identifions les tâches automatisables et estimons le ROI potentiel." },
-    { question: "Que contient le rapport d'audit ?", answer: "Un diagnostic complet de vos processus, l'identification des tâches automatisables par l'IA, une estimation du ROI et un plan d'action détaillé." },
-    { question: "Faut-il des compétences techniques ?", answer: "Non, aucune compétence technique n'est requise. Nous nous occupons de tout et vous accompagnons à chaque étape." }
+    { question: "Le rendez-vous de découverte engage-t-il à quelque chose ?", answer: "Non. Trente minutes pour comprendre votre situation et vous dire si je peux aider. S'il n'y a rien à faire chez vous, je vous le dis — c'est aussi ce qui rend l'avis utile." },
+    { question: "Combien de temps dure le rendez-vous ?", answer: "Trente minutes. Je lis votre formulaire avant, pour ne pas vous faire répéter ce que vous avez déjà écrit." },
+    { question: "Et si je veux aller plus loin ?", answer: "C'est le Diagnostic IA : deux jours dans vos processus réels, 2 400 € HTVA. Vous repartez avec trois chantiers prioritaires, chiffrés en charge, et la liste de ce qu'il ne faut pas automatiser." },
+    { question: "Faut-il des compétences techniques ?", answer: "Non, aucune. Je m'occupe de la partie technique et vous accompagne à chaque étape." }
   ];
 
   const auditSchema = [
-    getServiceSchema("Audit IA Gratuit pour PME", "Analyse complète de votre activité en 24h : identification des processus automatisables, estimation du ROI et plan d'action personnalisé. 100% gratuit, sans engagement."),
+    getServiceSchema("Rendez-vous de découverte IA pour PME", "Trente minutes pour savoir si l'IA a sa place dans votre entreprise. Sans engagement et sans livrable : c'est une conversation de qualification, pas un rapport."),
     getFAQSchema(auditFAQs)
   ];
 

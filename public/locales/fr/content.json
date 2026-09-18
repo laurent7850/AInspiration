@@ -115,7 +115,7 @@
       "titleHighlight": "exceptionnel",
       "titleSuffix": "avec l'IA",
       "description": "Textes percutants, visuels professionnels, campagnes complètes — tout ça en quelques minutes, sans compétences techniques.",
-      "ctaTry": "Essayer gratuitement",
+      "ctaTry": "Voir ce que ça donne",
       "ctaExamples": "Voir des exemples"
     },
     "tabs": {
@@ -183,17 +183,32 @@
           {
             "title": "Marketing digital",
             "description": "Images captivantes pour vos campagnes sur les réseaux sociaux et le web",
-            "examples": ["Posts Instagram et Facebook", "Bannières publicitaires", "Visuels pour newsletters", "Couvertures de blogs"]
+            "examples": [
+              "Posts Instagram et Facebook",
+              "Bannières publicitaires",
+              "Visuels pour newsletters",
+              "Couvertures de blogs"
+            ]
           },
           {
             "title": "E-commerce",
             "description": "Mises en situation de produits et variations de packaging",
-            "examples": ["Photos produits professionnelles", "Mises en situation d'utilisation", "Variations de packaging", "Images lifestyle"]
+            "examples": [
+              "Photos produits professionnelles",
+              "Mises en situation d'utilisation",
+              "Variations de packaging",
+              "Images lifestyle"
+            ]
           },
           {
             "title": "Communication d'entreprise",
             "description": "Illustrations et infographies pour vos supports de communication",
-            "examples": ["Illustrations de concepts", "Infographies explicatives", "Visuels pour présentations", "Rapports annuels"]
+            "examples": [
+              "Illustrations de concepts",
+              "Infographies explicatives",
+              "Visuels pour présentations",
+              "Rapports annuels"
+            ]
           }
         ]
       },
@@ -207,43 +222,14 @@
           "Un concept visuel représentant l'intelligence artificielle avec un cerveau stylisé et des connexions lumineuses, fond sombre, style futuriste"
         ]
       },
-      "pricing": {
-        "sectionTitle": "Une solution abordable et sans engagement",
-        "sectionDescription": "Des tarifs flexibles adaptés à vos besoins",
-        "popular": "Le plus populaire",
-        "payg": {
-          "title": "Pay as you go",
-          "description": "Idéal pour les besoins ponctuels",
-          "price": "1€",
-          "priceUnit": "/ image",
-          "features": ["Haute résolution (4K)", "Droits commerciaux", "Assistance par email"],
-          "button": "Commencer gratuitement"
-        },
-        "pro": {
-          "title": "Abonnement Pro",
-          "description": "Pour un usage régulier",
-          "price": "49€",
-          "priceUnit": "/ mois",
-          "features": ["100 images par mois", "Haute résolution (4K)", "Styles personnalisés", "Support prioritaire", "Droits commerciaux"],
-          "button": "Démarrer l'essai gratuit"
-        },
-        "business": {
-          "title": "Business",
-          "description": "Pour les équipes",
-          "price": "199€",
-          "priceUnit": "/ mois",
-          "features": ["500 images par mois", "Ultra haute définition (8K)", "Utilisateurs multiples", "API pour intégration", "Support dédié 24/7"],
-          "button": "Contacter l'équipe commerciale"
-        }
-      },
       "cta": {
         "title": "Propulsez votre communication visuelle",
         "description": "Plus besoin de compétences en design ou de budget pour des photographes professionnels. Créez des visuels d'exception dès maintenant.",
         "bullet1": "Économisez des heures de travail",
         "bullet2": "Réduisez vos coûts de production",
         "bullet3": "Créez sans limites créatives",
-        "formTitle": "Commencez gratuitement",
-        "check1": "5 images gratuites pour tester",
+        "formTitle": "Parlons de votre projet",
+        "check1": "Trente minutes, sans engagement",
         "check2": "Accès à tous les styles et formats",
         "check3": "Téléchargement haute résolution",
         "check4": "Assistance pour vos premiers pas",

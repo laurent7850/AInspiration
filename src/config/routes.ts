@@ -157,11 +157,6 @@ const routes: RouteConfig[] = [
     exact: true
   },
   {
-    path: "/blog/thierry-facturation-ia",
-    component: lazy(() => import('../pages/ThierryBlogPage')),
-    exact: true
-  },
-  {
     path: "/blog/:slug",
     component: lazy(() => import('../pages/BlogPostPage')),
     exact: true

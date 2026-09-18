@@ -506,56 +506,6 @@
         }
       ]
     },
-    "pricing": {
-      "badge": "Tarification",
-      "sectionTitle": "Des forfaits adaptés à chaque besoin",
-      "sectionDescription": "Solutions flexibles qui évoluent avec votre entreprise",
-      "popular": "Le plus populaire",
-      "plans": [
-        {
-          "name": "Essentiel",
-          "price": "29€",
-          "period": "utilisateur / mois",
-          "features": [
-            "Gestion des contacts et entreprises",
-            "Pipeline de vente basique",
-            "Email et calendrier",
-            "Applications mobiles (iOS, Android)",
-            "5 Go de stockage / utilisateur",
-            "Support par email"
-          ],
-          "cta": "Commencer l'essai gratuit"
-        },
-        {
-          "name": "Business",
-          "price": "49€",
-          "period": "utilisateur / mois",
-          "features": [
-            "Toutes les fonctionnalités Essentiel",
-            "Automatisations avancées",
-            "Rapports et tableaux de bord personnalisés",
-            "Intégration avec 150+ applications",
-            "20 Go de stockage / utilisateur",
-            "Support prioritaire 24/5"
-          ],
-          "cta": "Commencer l'essai gratuit"
-        },
-        {
-          "name": "Enterprise",
-          "price": "Sur mesure",
-          "period": "",
-          "features": [
-            "Toutes les fonctionnalités Business",
-            "Sécurité renforcée et SSO",
-            "API complète et webhooks",
-            "Environnements de test",
-            "Stockage illimité",
-            "Support dédié 24/7 et SLA"
-          ],
-          "cta": "Contacter l'équipe commerciale"
-        }
-      ]
-    },
     "faq": {
       "badge": "FAQ",
       "sectionTitle": "Questions fréquemment posées",
@@ -583,7 +533,7 @@
         },
         {
           "question": "Puis-je essayer votre CRM avant de m'engager ?",
-          "answer": "Absolument ! Nous proposons une démo personnalisée suivie d'un essai gratuit de 14 jours avec accès à toutes les fonctionnalités. Vous pouvez également demander une preuve de concept (POC) pour tester la solution dans votre environnement spécifique avant tout engagement."
+          "answer": "Oui. Le compte de démonstration est ouvert à tous depuis la page de connexion : il contient des données fictives et donne accès à l'ensemble des écrans, sans inscription. Pour une mise en place chez vous, le périmètre se fixe au devis."
         }
       ]
     },
