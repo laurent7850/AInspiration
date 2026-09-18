@@ -198,33 +198,33 @@ export const seoPages: Record<string, SEOPageConfig> = {
     fr: {
       title: 'Rendez-vous de découverte | Diagnostic IA PME | AInspiration',
       description: 'Un expert analyse votre activité et vous livre un plan d\'action concret en 24h. Gratuit, sans engagement, pour PME et indépendants.',
-      keywords: 'audit IA gratuit, diagnostic IA, audit intelligence artificielle, bilan IA PME, audit automatisation'
+      keywords: 'rendez-vous d\u00e9couverte IA, diagnostic IA, audit intelligence artificielle, bilan IA PME, audit automatisation'
     },
     en: {
-      title: 'Free AI Audit in 24h | Personalized Diagnosis | AInspiration',
-      description: 'Request your free AI audit. An expert analyzes your business and delivers a concrete action plan in 24h. No commitment. SMEs in Belgium and France.',
-      keywords: 'free AI audit, AI diagnosis, artificial intelligence audit, SME AI assessment, automation audit'
+      title: 'AI discovery call | SME diagnostic | AInspiration',
+      description: 'Thirty minutes to find out whether AI belongs in your business. No commitment. AI Diagnostic at €2,400 if you go further. SMEs in Belgium and France.',
+      keywords: 'AI discovery call, AI diagnosis, artificial intelligence audit, SME AI assessment, automation audit'
     },
     nl: {
-      title: 'Gratis AI-audit in 24u | Diagnose voor KMO\'s | AInspiration',
-      description: 'Vraag uw gratis AI-audit aan. Een expert analyseert uw bedrijf en levert een concreet actieplan in 24u. Zonder verplichtingen. KMO\'s in België en Frankrijk.',
-      keywords: 'gratis AI audit, AI diagnose, kunstmatige intelligentie audit, KMO AI beoordeling, automatisering audit'
+      title: 'AI-kennismakingsgesprek | Diagnose voor KMO\'s | AInspiration',
+      description: 'Dertig minuten om te weten of AI bij uw KMO thuishoort. Vrijblijvend. AI-diagnose aan € 2.400 als u verder gaat. KMO\'s in België en Frankrijk.',
+      keywords: 'AI-kennismakingsgesprek, AI diagnose, kunstmatige intelligentie audit, KMO AI beoordeling, automatisering audit'
     }
   },
   '/contact': {
     fr: {
-      title: 'Contact | Audit IA Gratuit Belgique | AInspiration',
-      description: 'Demandez votre audit IA gratuit. Notre équipe basée en Belgique vous répond sous 24h. Sans engagement, 100% personnalisé pour votre PME.',
-      keywords: 'contact IA Belgique, audit IA gratuit, devis IA PME, consultation IA gratuite, rendez-vous IA'
+      title: 'Contact | AInspiration, Givry (Hainaut)',
+      description: 'Une question, un devis, ou trente minutes pour regarder votre situation ? Basé à Givry, dans le Hainaut, je réponds sous 24 heures ouvrées.',
+      keywords: 'contact IA Belgique, diagnostic IA, devis IA PME, rendez-vous d\u00e9couverte, IA Hainaut'
     },
     en: {
-      title: 'Contact | Request Your Free AI Audit | AInspiration',
-      description: 'Contact us for a free AI audit. Our team responds within 24 hours to discuss your projects and artificial intelligence needs.',
+      title: 'Contact | AInspiration, Givry (Hainaut)',
+      description: 'A question, a quote, or thirty minutes to look at your situation? Based in Givry, in Hainaut, I reply within 24 working hours.',
       keywords: 'AI contact, AI diagnostic, AI quote request, AI appointment, discovery call'
     },
     nl: {
-      title: 'Contact | Vraag Uw Gratis AI Audit Aan | AInspiration',
-      description: 'Neem contact met ons op voor een gratis AI-audit. Ons team reageert binnen 24 uur om uw projecten en AI-behoeften te bespreken.',
+      title: 'Contact | AInspiration, Givry (Henegouwen)',
+      description: 'Een vraag, een offerte, of dertig minuten om uw situatie te bekijken? Vanuit Givry, in Henegouwen, antwoord ik binnen 24 werkuren.',
       keywords: 'AI contact, AI-diagnose, AI offerte aanvraag, AI afspraak, kennismakingsgesprek'
     }
   },
@@ -362,23 +362,6 @@ export const seoPages: Record<string, SEOPageConfig> = {
       title: 'AI Blog | ML & Deep Learning Nieuws 2026 | AInspiration',
       description: 'AI-artikelen: praktische tips, use cases, machine learning trends, deep learning, NLP en laatste KI-nieuws voor KMO\'s.',
       keywords: 'AI blog, kunstmatige intelligentie nieuws, AI artikelen, AI trends 2026, machine learning, deep learning, NLP, AI ethiek, AI tools, AI startups'
-    }
-  },
-  '/blog/thierry-facturation-ia': {
-    fr: {
-      title: 'Cas Thierry | Facturation automatisée avec l\'IA',
-      description: 'Découvrez comment Thierry a automatisé sa facturation grâce à l\'IA et gagné 10 heures par semaine. Témoignage client inspirant.',
-      keywords: 'cas client IA, facturation automatisée, témoignage IA, automatisation PME, gain de temps IA'
-    },
-    en: {
-      title: 'Thierry Case | Automated Invoicing with AI | AInspiration',
-      description: 'Discover how Thierry automated his invoicing with AI and saved 10 hours per week. Inspiring customer testimonial.',
-      keywords: 'AI customer case, automated invoicing, AI testimonial, SME automation, AI time savings'
-    },
-    nl: {
-      title: 'Case Thierry | Geautomatiseerde facturatie met AI',
-      description: 'Ontdek hoe Thierry zijn facturatie automatiseerde met AI en zo tien uur per week bespaarde. Een concreet klantverhaal uit België.',
-      keywords: 'AI klantcase, geautomatiseerde facturatie, AI testimonial, KMO automatisering, AI tijdsbesparing'
     }
   },
   '/privacy': {

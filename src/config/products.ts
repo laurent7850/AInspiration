@@ -16,7 +16,7 @@ interface Product {
 export const products: Product[] = [
   {
     id: 'audit-ia',
-    title: 'Audit IA Gratuit',
+    title: 'Rendez-vous de d\u00e9couverte',
     description: 'Évaluez vos processus et identifiez les opportunités d\'automatisation',
     icon: FileText,
     features: [

@@ -2,7 +2,7 @@
  * Emails de conversion post-audit — AInspiration
  *
  * 3 templates d'emails de suivi personnalisés par segment,
- * envoyés après la livraison du rapport d'audit IA gratuit.
+ * envoyés après le rendez-vous de découverte.
  *
  * Objectif : convertir vers le "Pack Automatisation Express" (1490€ HTVA).
  */

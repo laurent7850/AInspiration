@@ -303,7 +303,7 @@ export const auditLiveProtocol: AuditLiveProtocol = {
     },
     {
       id: 'kpi_06',
-      name: 'Taux de conversion Pack Express',
+      name: 'Taux de conversion Diagnostic',
       description: 'Pourcentage de prospects J+30 convertis en clients Pack Automatisation Express',
       unit: '%',
       collectionMethod: 'manual_check',
@@ -328,7 +328,7 @@ export const auditLiveProtocol: AuditLiveProtocol = {
       name: 'Satisfaction élevée + intention forte',
       trigger: 'Score satisfaction >= 4/5 ET réponse sat_07 = "Oui, c\'est exactement ce qu\'il me faut"',
       conversionScore: 9,
-      recommendedAction: 'Appel de suivi prioritaire dans les 24h avec proposition Pack Express',
+      recommendedAction: 'Appel de suivi prioritaire dans les 24h avec proposition de Diagnostic IA',
       suggestedOffer: 'Diagnostic IA — 2 400 € HTVA, deux jours',
     },
     {
@@ -345,7 +345,7 @@ export const auditLiveProtocol: AuditLiveProtocol = {
       trigger: 'Score NPS >= 9/10',
       conversionScore: 7,
       recommendedAction: 'Demander un témoignage + proposer le programme de parrainage (10 % de réduction)',
-      suggestedOffer: 'Pack Express avec réduction parrainage',
+      suggestedOffer: 'Diagnostic IA avec tarif fondateur',
     },
     {
       id: 'ups_04',
@@ -361,7 +361,7 @@ export const auditLiveProtocol: AuditLiveProtocol = {
       trigger: 'Frein principal = "Budget limité" ET satisfaction >= 3/5',
       conversionScore: 4,
       recommendedAction: 'Ajouter au nurturing long terme. Proposer le paiement en 3 fois si disponible.',
-      suggestedOffer: 'Pack Express avec facilités de paiement',
+      suggestedOffer: 'Diagnostic IA avec facilités de paiement',
     },
     {
       id: 'ups_06',

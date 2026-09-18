@@ -238,7 +238,7 @@ export default function BlogPost() {
               </Link>
               <Link to={localizedPath('/contact')} className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition-colors">
                 <ArrowRight className="w-4 h-4" />
-                Audit IA gratuit
+                Prendre rendez-vous
               </Link>
             </div>
           </nav>

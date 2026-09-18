@@ -506,56 +506,6 @@
         }
       ]
     },
-    "pricing": {
-      "badge": "Prijzen",
-      "sectionTitle": "Formules afgestemd op elke behoefte",
-      "sectionDescription": "Flexibele oplossingen die meegroeien met uw bedrijf",
-      "popular": "Meest populair",
-      "plans": [
-        {
-          "name": "Essentieel",
-          "price": "€29",
-          "period": "gebruiker / maand",
-          "features": [
-            "Contacten- en bedrijvenbeheer",
-            "Basisverkooppijplijn",
-            "E-mail en agenda",
-            "Mobiele apps (iOS, Android)",
-            "5 GB opslag / gebruiker",
-            "E-mailsupport"
-          ],
-          "cta": "Gratis proefperiode starten"
-        },
-        {
-          "name": "Business",
-          "price": "€49",
-          "period": "gebruiker / maand",
-          "features": [
-            "Alle Essentieel-functies",
-            "Geavanceerde automatiseringen",
-            "Aangepaste rapporten en dashboards",
-            "Integratie met 150+ applicaties",
-            "20 GB opslag / gebruiker",
-            "Prioriteitssupport 24/5"
-          ],
-          "cta": "Gratis proefperiode starten"
-        },
-        {
-          "name": "Enterprise",
-          "price": "Op maat",
-          "period": "",
-          "features": [
-            "Alle Business-functies",
-            "Versterkte beveiliging en SSO",
-            "Volledige API en webhooks",
-            "Testomgevingen",
-            "Onbeperkte opslag",
-            "Dedicated support 24/7 en SLA"
-          ],
-          "cta": "Contact met het verkoopteam"
-        }
-      ]
-    },
     "faq": {
       "badge": "FAQ",
       "sectionTitle": "Veelgestelde vragen",
@@ -583,7 +533,7 @@
         },
         {
           "question": "Kan ik uw CRM uitproberen voor ik me engageer?",
-          "answer": "Absoluut! We bieden een gepersonaliseerde demo gevolgd door een gratis proefperiode van 14 dagen met toegang tot alle functies."
+          "answer": "Ja. Het demonstratieaccount staat open voor iedereen via de inlogpagina: het bevat fictieve gegevens en geeft toegang tot alle schermen, zonder registratie. Voor een implementatie bij u wordt de scope in de offerte vastgelegd."
         }
       ]
     },

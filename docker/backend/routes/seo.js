@@ -91,11 +91,11 @@ function readIndexHtml() {
 readIndexHtml();
 
 const routeSEO = {
-  '/audit': { title: 'Audit IA gratuit en 24h | Diagnostic PME | AInspiration', description: 'Un expert analyse votre activit\u00e9 et vous livre un plan d\'action concret en 24h. Gratuit, sans engagement, pour PME et ind\u00e9pendants.' },
+  '/audit': { title: 'Rendez-vous de d\u00e9couverte | Diagnostic IA PME | AInspiration', description: 'Trente minutes pour savoir si l\'IA a sa place dans votre PME. Sans engagement. Diagnostic IA \u00e0 2 400 \u20ac si vous allez plus loin.' },
   '/assistants': { title: 'Assistants virtuels IA et chatbots | AInspiration', description: 'D\u00e9ployez des assistants virtuels IA pour votre service client. Chatbots intelligents disponibles 24/7 pour r\u00e9pondre \u00e0 vos clients.' },
   '/automatisation': { title: 'Automatisation IA | Workflows Intelligents | AInspiration', description: 'Automatisez vos t\u00e2ches r\u00e9p\u00e9titives avec l\'IA. Workflows intelligents, int\u00e9grations et gain de productivit\u00e9 pour votre \u00e9quipe.' },
   '/formation': { title: 'Formation IA pour entreprises et ind\u00e9pendants', description: 'Formez vos \u00e9quipes \u00e0 l\'IA. Programmes adapt\u00e9s \u00e0 tous niveaux : initiation, perfectionnement, certifications pour ma\u00eetriser l\'IA.' },
-  '/contact': { title: 'Contact | Audit IA Gratuit Belgique | AInspiration', description: 'Demandez votre audit IA gratuit. Notre \u00e9quipe bas\u00e9e en Belgique vous r\u00e9pond sous 24h. Sans engagement, 100% personnalis\u00e9 pour votre PME.' },
+  '/contact': { title: 'Contact | AInspiration, Givry (Hainaut)', description: 'Une question, un devis, ou trente minutes pour regarder votre situation ? \u00c9crivez-moi, je r\u00e9ponds sous 24 heures ouvr\u00e9es.' },
   '/prompts': { title: 'Prompts IA | Biblioth\u00e8que ChatGPT & Claude | AInspiration', description: 'Acc\u00e9dez \u00e0 notre biblioth\u00e8que de prompts optimis\u00e9s pour ChatGPT, Claude et autres IA. Gagnez du temps avec des prompts professionnels test\u00e9s.' },
   '/blog': { title: 'Blog IA | Actualit\u00e9s & Tendances ML 2026 | AInspiration', description: 'Articles IA : conseils pratiques, cas d\'usage, tendances machine learning, deep learning, NLP et actualit\u00e9s intelligence artificielle pour PME.' },
   '/solutions': { title: 'Solutions IA pour PME en Belgique | AInspiration', description: 'Automatisation, CRM intelligent, chatbots, machine learning : nos solutions IA pour PME, avec un premier r\u00e9sultat concret en 5 jours.' },
@@ -134,8 +134,6 @@ const KNOWN_ROUTES = new Set([
   '/opportunities', '/contacts', '/companies', '/products', '/tasks', '/reports', '/messages',
   // Client-side redirects (App.tsx) \u2014 must stay 200 so the redirect can run.
   '/pourquoi-ia', '/pour-qui-ia', '/creation-visuelle', '/creativite',
-  // Hand-built article page, not a blog_posts row.
-  '/blog/thierry-facturation-ia',
 ]);
 
 // CRM detail routes (/contacts/:id \u2026) \u2014 known, but with a variable segment.
@@ -500,9 +498,9 @@ function getLocaleBlocks(lang, ns) {
 // Cross-links appended to service pages — in the visitor's language, with the
 // language prefix on every href so /en pages link to /en pages.
 const SERVICE_LINK_LABELS = {
-  fr: { audit: 'Audit IA gratuit', automatisation: 'Automatisation', solutions: 'Solutions IA', formation: 'Formation', blog: 'Blog', contact: 'Contact' },
-  en: { audit: 'Free AI audit', automatisation: 'Automation', solutions: 'AI solutions', formation: 'Training', blog: 'Blog', contact: 'Contact' },
-  nl: { audit: 'Gratis AI-audit', automatisation: 'Automatisering', solutions: 'AI-oplossingen', formation: 'Opleiding', blog: 'Blog', contact: 'Contact' },
+  fr: { audit: 'Rendez-vous de d\u00e9couverte', automatisation: 'Automatisation', solutions: 'Solutions IA', formation: 'Formation', blog: 'Blog', contact: 'Contact' },
+  en: { audit: 'Discovery call', automatisation: 'Automation', solutions: 'AI solutions', formation: 'Training', blog: 'Blog', contact: 'Contact' },
+  nl: { audit: 'Kennismakingsgesprek', automatisation: 'Automatisering', solutions: 'AI-oplossingen', formation: 'Opleiding', blog: 'Blog', contact: 'Contact' },
 };
 // (langPrefix moved to core on 2026-09-05)
 function serviceLinks(lang) {
@@ -646,6 +644,14 @@ app.get('/{*splat}', async (req, res) => {
     if (/^\/realisations\/labo-nostalgie$/.test(rest)) {
       return res.redirect(301, `${langPrefix(lang)}/realisations/playlists-auditeurs`);
     }
+
+    // L'article « Thierry » etait une page ecrite a la main, batie de bout en
+    // bout sur le parcours audit gratuit -> Pack Express, abandonne le 16/09.
+    // Retire le 18/09 plutot que reecrit : ce tunnel n'a jamais converti. Son
+    // URL etait indexee, on la redirige vers les realisations reelles.
+    if (/^\/blog\/thierry-facturation-ia$/.test(rest)) {
+      return res.redirect(301, `${langPrefix(lang)}/realisations`);
+    }
     // Un article porte sa langue dans le slug (`-en`, `-nl`) : le sitemap ne
     // liste que la forme sans prefixe, et /en/blog comme /nl/blog pointent vers
     // cette meme forme. Mais splitLang retire le prefixe et sert ce qui suit,
@@ -668,10 +674,7 @@ app.get('/{*splat}', async (req, res) => {
     let post = null;
     let notFound = false;
 
-    // /blog/thierry-facturation-ia is a hand-built page, not a blog_posts row.
-    const blogMatch = rest === '/blog/thierry-facturation-ia'
-      ? null
-      : rest.match(/^\/blog\/([a-z0-9-]+)$/i);
+    const blogMatch = rest.match(/^\/blog\/([a-z0-9-]+)$/i);
 
     if (blogMatch) {
       // Un article retire comme doublon redirige en 301 vers celui qu'on a

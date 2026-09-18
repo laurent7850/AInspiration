@@ -57,6 +57,8 @@ export default function App() {
             <Route path="/etudes-de-cas" element={<Navigate to="/realisations" replace />} />
             {/* Fiche playlists radio : slug anonymisé le 18/09, ancienne URL indexée */}
             <Route path="/realisations/labo-nostalgie" element={<Navigate to="/realisations/playlists-auditeurs" replace />} />
+            {/* Article « Thierry » retiré le 18/09 : bâti sur le parcours audit gratuit → Pack Express, abandonné le 16/09 */}
+            <Route path="/blog/thierry-facturation-ia" element={<Navigate to="/realisations" replace />} />
             {/* Default French routes (no prefix) */}
             {routes.map((route) => (
               <Route

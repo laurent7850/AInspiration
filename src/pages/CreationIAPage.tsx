@@ -372,100 +372,13 @@ const CreationIAPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Pricing Overview */}
-          <div className="container mx-auto px-4 py-16">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="font-display font-bold text-3xl sm:text-5xl text-ink mb-4">
-                {t('page.visualTab.pricing.sectionTitle')}
-              </h2>
-              <p className="text-lg text-gray-600">
-                {t('page.visualTab.pricing.sectionDescription')}
-              </p>
-            </div>
+          {/* La grille tarifaire de la creation visuelle a ete retiree le
+              18/09/2026, pour la meme raison que celle du CRM : elle vendait
+              1 EUR l'image, 49 EUR et 199 EUR par mois, avec un essai gratuit,
+              pour un produit qui n'est pas en vente.
 
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <div className="bg-canvas border border-line rounded-card p-8 border border-transparent hover:border-indigo-100 transition-all">
-                <div className="flex items-center gap-3 mb-5">
-                  <CircleDollarSign className="w-7 h-7 text-indigo-600" />
-                  <h3 className="text-2xl font-bold text-gray-900">{t('page.visualTab.pricing.payg.title')}</h3>
-                </div>
-                <p className="text-gray-600 mb-5">{t('page.visualTab.pricing.payg.description')}</p>
-                <div className="text-3xl font-bold text-indigo-600 mb-5">
-                  {t('page.visualTab.pricing.payg.price')} <span className="text-base font-normal text-gray-600">{t('page.visualTab.pricing.payg.priceUnit')}</span>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  {(t('page.visualTab.pricing.payg.features', { returnObjects: true }) as string[]).map((item, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-gray-600">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  type="button"
-                  onClick={() => setShowStartForm(true)}
-                  className="w-full py-2.5 px-4 bg-white border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors"
-                >
-                  {t('page.visualTab.pricing.payg.button')}
-                </button>
-              </div>
-
-              <div className="bg-canvas border border-line rounded-card p-8 border-2 border-indigo-600 relative transform scale-105">
-                <div className="absolute -top-4 right-8 bg-indigo-600 text-white px-4 py-1 rounded-full text-sm font-medium">
-                  {t('page.visualTab.pricing.popular')}
-                </div>
-                <div className="flex items-center gap-3 mb-5">
-                  <Image className="w-7 h-7 text-indigo-600" />
-                  <h3 className="text-2xl font-bold text-gray-900">{t('page.visualTab.pricing.pro.title')}</h3>
-                </div>
-                <p className="text-gray-600 mb-5">{t('page.visualTab.pricing.pro.description')}</p>
-                <div className="text-3xl font-bold text-indigo-600 mb-5">
-                  {t('page.visualTab.pricing.pro.price')} <span className="text-base font-normal text-gray-600">{t('page.visualTab.pricing.pro.priceUnit')}</span>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  {(t('page.visualTab.pricing.pro.features', { returnObjects: true }) as string[]).map((item, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-gray-600">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  type="button"
-                  onClick={() => setShowStartForm(true)}
-                  className="w-full py-2.5 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
-                >
-                  {t('page.visualTab.pricing.pro.button')}
-                </button>
-              </div>
-
-              <div className="bg-canvas border border-line rounded-card p-8 border border-transparent hover:border-indigo-100 transition-all">
-                <div className="flex items-center gap-3 mb-5">
-                  <Layers className="w-7 h-7 text-indigo-600" />
-                  <h3 className="text-2xl font-bold text-gray-900">{t('page.visualTab.pricing.business.title')}</h3>
-                </div>
-                <p className="text-gray-600 mb-5">{t('page.visualTab.pricing.business.description')}</p>
-                <div className="text-3xl font-bold text-indigo-600 mb-5">
-                  {t('page.visualTab.pricing.business.price')} <span className="text-base font-normal text-gray-600">{t('page.visualTab.pricing.business.priceUnit')}</span>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  {(t('page.visualTab.pricing.business.features', { returnObjects: true }) as string[]).map((item, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-gray-600">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  type="button"
-                  onClick={() => setShowStartForm(true)}
-                  className="w-full py-2.5 px-4 bg-white border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors"
-                >
-                  {t('page.visualTab.pricing.business.button')}
-                </button>
-              </div>
-            </div>
-          </div>
+              Ce travail entre dans le Sprint d'automatisation (O3) quand il est
+              commande. La seule grille de reference est O1-O5 (pricing.json). */}
 
           {/* CTA visuel */}
           <div className="bg-accent py-16">
