@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (CGV et dernières traces **déployées** ; bridage du VPS **résolu**, `dockerd` en cause)
+**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (CGV déployées ; bridage VPS résolu ; **PR #36 en attente**)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -148,7 +148,7 @@ ou aux composants CRM.
 | 2 | **Chaîne de publication** | Correctif antislashes posé à la source, 2 articles sur 95 nettoyés en base. | Vérifier la publication du **lundi 21/09** : les trois langues doivent sortir. Si EN/NL échouent encore, c'est que la cause n'était pas uniquement l'échappement. |
 | 3 | **Remplir le CRM** | Ingestion opérationnelle depuis le 15/09, mais aucun prospect réel. | Relève du GTM LinkedIn (grille O1–O5), pas du code. Côté dépôt : rien à faire tant que le flux entrant n'existe pas. |
 | 4 | **Newsletter** | Désactivée, tables conservées. | Aucune action. Décision de suppression définitive ou de relance à prendre plus tard. |
-| 5 | **Montées de dépendances — majeures restantes** | Mineures **faites le 18/09.** PR #34 fusionnée et déployée en production : react 19.3, vite 8.3, lucide 1.44, zod 4.6 backend. Conteneur recréé, 211/211 fichiers téléchargés, contrôle de santé à 25 vérifications vertes. Restent trois majeures : Tailwind 4 (#32), uuid 14 (#31), jsdom 30 (#33). | Tailwind 4 dans une session dédiée — c'est la plus lourde. uuid et jsdom peuvent partir ensemble dans une branche groupée, comme #34. |
+| 5 | **Montées de dépendances — majeures restantes** | Mineures faites et déployées le 18/09 (PR #34). **PR #36 ouverte, CI verte, non fusionnée** : uuid 11→14 et jsdom 27→30, groupées comme l'avaient été les mineures. uuid était moins risqué qu'il n'en avait l'air — le backend tourne **déjà** en 14 en production et y appelle `v4` (`ingest.js`, `content-generator.js`), et côté front il n'a qu'un consommateur, `ChatbotN8n.tsx`. Vérifié à l'exécution que `v4()` rend toujours un UUID conforme RFC. Reste **Tailwind 4 (#32), dont la CI échoue**. | Fusionner #36 puis déployer en bloc. Tailwind 4 dans une session dédiée : c'est une refonte de thème, pas une montée de version. |
 | 6 | **Bridage du VPS — résolu, reste un garde-fou à poser** | Incident clos le 18/09. `dockerd` tournait en rond sur un cœur entier (désynchronisation avec containerd sur `audityo-postgres`, entretenue par un cron sans borne). Tâche fantôme purgée puis démon redémarré avec `live-restore` armé : aucun des 43 conteneurs coupé. `dockerd` 103 % → 1,7 %, idle 65 % → 91-96 %, brasspat 1,28 s → 0,165 s. Les **deux** paliers (15/09 et 17/09) ont disparu. Laurent a levé le bridage à la main côté Hostinger. | Borner les reprises de `/root/audityo/health-check.sh` — compteur de tentatives et arrêt après N échecs, sans jeter la sortie d'erreur. Puis surveiller : `user+sys` > 40 % ou `cswch/s` > 10 000 sont les empreintes de la récidive. |
 
 ---
