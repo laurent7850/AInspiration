@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (refonte O1–O5 **déployée**)
+**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (VPS **bridé par Hostinger** — tout est lent)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -60,6 +60,16 @@ ou aux composants CRM.
   est sur un autre réseau Docker que n8n, d'où le script plutôt qu'un workflow).
 
 ### Ce qui est cassé, en pause, ou vide
+
+- 🔴 **Le VPS entier est bridé par Hostinger depuis le 17/09** — et donc tout ce qui tourne
+  dessus, AInspiration compris. Steal time à **91 %** : la machine dispose d'environ **9 % de
+  ses 4 cœurs**. RAM, disque et I/O sont sains, c'est purement du CPU refusé par l'hyperviseur.
+  Quatre `ct_set_limits` le 17/09 entre 08:00 et 11:00 UTC, puis un `ct_restart` à 12:41, après
+  que la charge soit montée à 100 %. **Ne conclus pas à une panne applicative** tant que ce
+  bridage dure : un service lent ou un conteneur qui met des minutes à démarrer en est la
+  conséquence, pas la cause. Détail complet dans `docs/journal/2026-09-18-vps-bride-par-hostinger.md`.
+- **`audityo-postgres` est `Exited (128)` depuis le reboot du 17/09.** `audityo-web` est up et
+  healthy, mais sa base est à terre. Découvert en passant le 18/09, non traité.
 - **Les CGV et la politique de confidentialité** décrivent encore l'audit gratuit comme une
   prestation contractuelle, avec une clause de responsabilité sur « les recommandations formulées
   dans le rapport d'audit ». C'est le dernier endroit où l'offre abandonnée survit, et il est
@@ -107,6 +117,7 @@ ou aux composants CRM.
 | 3 | **Remplir le CRM** | Ingestion opérationnelle depuis le 15/09, mais aucun prospect réel. | Relève du GTM LinkedIn (grille O1–O5), pas du code. Côté dépôt : rien à faire tant que le flux entrant n'existe pas. |
 | 4 | **Newsletter** | Désactivée, tables conservées. | Aucune action. Décision de suppression définitive ou de relance à prendre plus tard. |
 | 5 | **Montées de dépendances — majeures restantes** | Mineures **faites le 18/09.** PR #34 fusionnée et déployée en production : react 19.3, vite 8.3, lucide 1.44, zod 4.6 backend. Conteneur recréé, 211/211 fichiers téléchargés, contrôle de santé à 25 vérifications vertes. Restent trois majeures : Tailwind 4 (#32), uuid 14 (#31), jsdom 30 (#33). | Tailwind 4 dans une session dédiée — c'est la plus lourde. uuid et jsdom peuvent partir ensemble dans une branche groupée, comme #34. |
+| 6 | **VPS bridé par Hostinger** — bloque tout le reste | Diagnostiqué le 18/09. Steal à 91 %, la machine tourne sur ~9 % de ses 4 cœurs depuis le 17/09 12:41. Deux contributeurs identifiés côté charge : le déclencheur `Chaque 5 min : vérifier file EN` de l'auto-blog Distr'Action (`QSzmS1gzyQjvCwtc`, 288 exécutions/jour pour constater une file vide) et un essaim de healthchecks (~45 conteneurs, dont 12 PostgreSQL, un `runc init` chacun toutes les 10-30 s). **Rien n'a été modifié** — désactiver un déclencheur ou toucher aux conteneurs de production demande l'arbitrage de Laurent. | Ouvrir le ticket Hostinger avec les quatre `ct_set_limits` et la courbe à 100 %. **Faire baisser la demande d'abord**, sinon ils rebrideront. |
 
 ---
 
