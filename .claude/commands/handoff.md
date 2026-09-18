@@ -7,6 +7,29 @@ allowed-tools: Read, Edit, Write, Bash(git status:*), Bash(git log:*), Bash(git 
 Exécute le rituel de fin de session pour ce dépôt. Fais-le sérieusement : c'est ce
 fichier qui portera tout le contexte à la prochaine session, la tienne ou celle de Cowork.
 
+**0. Dépose dans le CRM ce qui dépasse la session.**
+
+Une décision à trancher, un texte à valider, une démarche hors dépôt : ce sont des tâches
+de **Laurent**, elles vont dans le CRM. Ce que tu peux faire seul reste dans `HANDOFF.md`.
+
+```
+POST https://ainspiration.eu/api/service/tasks
+en-tête : x-task-secret (voir .env.local)
+{ "ref": "handoff:ainspiration:<identifiant-stable>", "titre": "...",
+  "detail": "pourquoi, et ce qui est attendu", "priorite": "high|medium|low",
+  "echeance": "AAAA-MM-JJ", "source": "claude-code", "lien": "..." }
+```
+
+Le `ref` est la clé de dédoublonnage : **stable**, sinon la même action crée cinq tâches.
+Une tâche par action.
+
+**En cas d'hésitation, écris la ligne dans `HANDOFF.md` et dis-le.** N'envoie pas au CRM
+« pour ne rien perdre » : un CRM qui se remplit de lignes qu'on ne traite pas est un CRM
+qu'on n'ouvre plus, et on retombe sur le problème du départ.
+
+Tu ne clôtures une tâche (`POST /api/service/tasks/close`) que sur **preuve** qu'elle est
+faite, ou sur **ordre de Laurent**. Le `motif` est obligatoire et s'inscrit dans la tâche.
+
 **1. Mets `HANDOFF.md` à jour.**
 
 - Section 3 « État » : ce qui tourne, ce qui est cassé, ce qui est vide. Sois factuel.

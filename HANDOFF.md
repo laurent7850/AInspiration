@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (uuid 14 et jsdom 30 **déployés**)
+**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (les tâches de Laurent arrivent dans le CRM)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -61,6 +61,11 @@ ou aux composants CRM.
   vidée de ses engagements chiffrés (99 %, 24h, 5 jours ouvrés, 4h) ainsi que du renvoi au
   document SLA. Article « Thierry » retiré, 301 vers `/realisations`. Vérifié en HTML brut sur
   quinze URL des trois langues, motif large : **zéro occurrence**. 23 vérifications vertes.
+- **Les tâches de Laurent vivent dans le CRM** depuis le 18/09 (PR #37). Trois routes sous
+  `TASK_SECRET`, secret dédié et cloisonné de `SERVICE_SECRET`, propriétaire assigné
+  explicitement depuis `TASK_OWNER_EMAIL` — jamais `ownerScope()`. Le hook `SessionStart` les
+  affiche à l'ouverture, **en échec ouvert**. Vérifié en production : création, dédoublonnage,
+  clôture tracée, recréation après clôture, et **le compte démo ne les voit pas**.
 - Rapport SEO mensuel automatique : le 1er du mois à 7h, script sur le VPS (la base SEOPilot
   est sur un autre réseau Docker que n8n, d'où le script plutôt qu'un workflow).
 
@@ -143,7 +148,7 @@ ou aux composants CRM.
 
 | # | Chantier | Où ça en est | Prochaine action |
 |---|---|---|---|
-| 0 | **Les tâches de Laurent arrivent dans le CRM** | Cadré le 18/09 dans `docs/chantiers/taches-crm.md`. Le module de tâches du CRM existe et ne sert pas ; ce que Laurent doit faire lui-même est dispersé entre handoff, notes et Notion. | Exécuter la note. **Le piège central y est écrit** : ne pas brancher `requireAuthOrService` sur `POST /api/tasks`, qui filtre par propriétaire — route dédiée avec propriétaire explicite. |
+| 0 | **Les tâches de Laurent arrivent dans le CRM** | **Fait et déployé le 18/09** (PR #37). `migration-007` jouée et **vérifiée par requête** — le service de migration avale ses erreurs, on ne s'y fie pas. `TASK_SECRET` généré sur le VPS, dans le `.env` et le compose, jamais affiché. Huit vérifications passées en production. Première tâche réelle déposée. | Rien. Les sessions déposent désormais au rituel (section 6). |
 | 0 | **Les dernières traces de l'offre abandonnée** | **Fait et déployé le 18/09** (PR #35) : CGV, politique de confidentialité, article Thierry, grilles du CRM et de la création visuelle. Trouvés en chemin et supprimés : `CreationVisuellePage.tsx`, orpheline avec une troisième grille morte, et `public/sitemap.xml`, écrasé à chaque build et qui listait encore Thierry sans aucune réalisation. | **Hors dépôt :** le document SLA dans Notion décrit toujours l'ancienne offre. Le renvoi vers lui a été retiré des CGV, le document reste à refaire. |
 | 1 | **Vitrine des réalisations** (`/realisations` + une fiche par projet) | **Construite et en production depuis le 04/09** — 16 fiches dans `src/data/realisations.ts`, `RealisationsPage.tsx` et `RealisationDetailPage.tsx`, branche `feat/realisations` fusionnée dans `main`. Vérifié le 18/09 : `/realisations` et `/realisations/facturation-automatisee` répondent 200. Matériel de cadrage dans `docs/audit-realisations.md`, `docs/realisations-chiffres.md`, `docs/PROMPT-realisations.md`. | Rien de bloquant. Si enrichissement il y a (captures, chiffres vérifiés), il se décide fiche par fiche — jamais de capture inventée. |
 | 2 | **Chaîne de publication** | Correctif antislashes posé à la source, 2 articles sur 95 nettoyés en base. | Vérifier la publication du **lundi 21/09** : les trois langues doivent sortir. Si EN/NL échouent encore, c'est que la cause n'était pas uniquement l'échappement. |
@@ -203,6 +208,15 @@ ou aux composants CRM.
 - **`npm ci` échoue parfois en `EBUSY` à cause d'OneDrive**, qui tient un fichier de `node_modules`
   pendant sa synchronisation. Ce n'est pas un problème de dépendances : `rm -rf node_modules` puis
   relancer. Vu deux fois le 18/09, toujours sur `lucide-react`.
+- **Un fichier de test non listé dans `package.json` ne tourne jamais, en silence.** Le script
+  `test` de `docker/backend/package.json` énumère les fichiers un par un. Un nouveau test y est
+  invisible tant qu'on ne l'ajoute pas : même classe de panne muette que `files.txt`, qui liste
+  les fichiers que le conteneur télécharge au boot. Vérifier que le **nombre de tests augmente**
+  après avoir ajouté un fichier.
+- **Le frontend ne connaît que cinq statuts de tâche** : `not_started`, `in_progress`, `waiting`,
+  `deferred`, `completed` (`getTaskStatuses`). La base en accepte deux de plus, `pending` et
+  `cancelled`, hérités de `migration-001`. Une tâche écrite dans un statut que l'interface ignore
+  s'affiche sans état lisible. Écrire `not_started` à l'ouverture.
 - **Le dépôt vit sous OneDrive.** Un fichier écrit depuis une autre session peut ne pas être
   encore synchronisé quand tu lis le dépôt. Vérifie la présence réelle d'un changement avant
   de conclure qu'il n'a pas été fait.
@@ -219,6 +233,16 @@ laisse un handoff → Cowork reprend le raisonnement.** Ce fichier est la moiti�
 de cette boucle. S'il n'est pas à jour, la boucle est rompue.
 
 Quand tu as fait du vrai travail, avant de rendre la main :
+
+0. **Ce qui dépasse la session part dans le CRM.** Une décision à trancher, un texte à
+   valider, une démarche hors dépôt : `POST /api/service/tasks` avec un `ref` stable, une
+   tâche par action. Ce que tu peux faire seul reste ici et n'encombre pas le CRM.
+   **En cas d'hésitation, écris la ligne dans ce fichier et dis-le** — n'envoie pas au CRM
+   « pour ne rien perdre ». Un CRM qui se remplit de lignes qu'on ne traite pas est un CRM
+   qu'on n'ouvre plus.
+
+   Tu ne clôtures une tâche que sur **preuve** qu'elle est faite, ou sur **ordre de Laurent**.
+   Le motif est obligatoire et s'inscrit dans la tâche : la route refuse sans lui.
 
 1. **Mets à jour ce fichier** — section 3 (état), tableau de la section 4 (chantiers),
    section 5 si tu es tombé dans un piège que personne n'avait noté, et la date en tête.
