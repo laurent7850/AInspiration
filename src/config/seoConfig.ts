@@ -163,17 +163,17 @@ export const seoPages: Record<string, SEOPageConfig> = {
   '/realisations': {
     fr: {
       title: 'Réalisations | Ce que nous avons construit | AInspiration',
-      description: 'Seize automatisations et applications en service : facturation, comptabilité, contenu, conformité. Ce qui a été construit, pour qui, et ce que ça a changé.',
+      description: 'Quinze automatisations et applications en service : facturation, comptabilité, contenu, conformité. Ce qui a été construit, pour qui, et ce que ça a changé.',
       keywords: 'réalisations IA, cas concrets automatisation, projets n8n, exemples IA PME, portfolio intelligence artificielle'
     },
     en: {
       title: 'Our Work | What We Actually Built | AInspiration',
-      description: 'Sixteen automations and applications in service: invoicing, accounting, content, compliance. What was built, for whom, and what changed.',
+      description: 'Fifteen automations and applications in service: invoicing, accounting, content, compliance. What was built, for whom, and what changed.',
       keywords: 'AI projects, automation case studies, n8n projects, AI examples SME, artificial intelligence portfolio'
     },
     nl: {
       title: 'Realisaties | Wat wij echt gebouwd hebben | AInspiration',
-      description: 'Zestien automatiseringen en toepassingen in dienst: facturatie, boekhouding, content, conformiteit. Wat gebouwd is, voor wie, en wat het veranderde.',
+      description: 'Vijftien automatiseringen en toepassingen in dienst: facturatie, boekhouding, content, conformiteit. Wat gebouwd is, voor wie, en wat het veranderde.',
       keywords: 'AI realisaties, automatisering praktijkvoorbeelden, n8n projecten, AI voorbeelden kmo, portfolio kunstmatige intelligentie'
     }
   },

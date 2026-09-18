@@ -148,7 +148,7 @@ const KNOWN_ROUTES = new Set([
 const KNOWN_ROUTE_PREFIXES = ['/contacts/', '/companies/', '/opportunities/', '/products/', '/tasks/'];
 
 // KEEP IN SYNC with the `format: 'complet'` entries in src/data/realisations.ts.
-// The two `reduit` slugs (enghien, rampa) own no detail page \u2014 the frontend
+// The `reduit` slug (enghien) owns no detail page \u2014 the frontend
 // itself redirects them to the index (see RealisationDetailPage.tsx), so a
 // crawler must see a real 404 for them too, not a served-then-redirected shell.
 const REALISATION_DETAIL_SLUGS = new Set([

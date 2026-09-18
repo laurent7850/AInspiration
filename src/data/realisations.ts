@@ -10,7 +10,7 @@
  * Why a TypeScript module rather than JSON in `public/`: `public/robots.txt`
  * disallows `/*.json$`, so a runtime-fetched data file would be invisible to
  * crawlers. Compiling the data into the bundle avoids that, and avoids a server
- * dependency for sixteen entries that change twice a year.
+ * dependency for fifteen entries that change twice a year.
  *
  * NEVER add a real client name here. Anonymisation is decided per project in
  * docs/audit-realisations-addendum-local.md; the showcase names only TL Services
@@ -40,7 +40,7 @@ export type RealisationStatus = 'production' | 'prototype' | 'interne';
 /**
  * `complet` — index card + detail page.
  * `reduit`  — index card only: one image and an explanation, no detail page,
- *             no metrics, no outbound link. Decided for Rampa and Enghien.
+ *             no metrics, no outbound link. Decided for Enghien.
  */
 export type RealisationFormat = 'complet' | 'reduit';
 
@@ -241,23 +241,6 @@ export const realisations: Realisation[] = [
     technologies: ['Claude', 'Markdown'],
     cover: '/images/realisations/paperclip.jpg',
     metrics: [{ value: '10', labelKey: 'agents' }],
-  },
-  {
-    slug: 'rampa',
-    categories: ['exploiter'],
-    year: 2026,
-    status: 'production',
-    format: 'reduit',
-    technologies: ['Next.js', 'pgvector', 'Claude'],
-    // The real capture exists (scripts/captures/capture.mjs rampa) but is NOT
-    // wired: ~30 interface strings on that site have lost their accents, and
-    // they are legible in the shot ("le Troisieme Oeil", "la meditation
-    // tibetaine"). A showcase selling rigour cannot publish that. Fix the
-    // strings in the Rampa project first, re-run the capture, then swap this
-    // for it. Stock photo meanwhile — old leather-bound books, no
-    // identifiable location — stands in for "a document corpus". Free tier.
-    cover: 'https://images.unsplash.com/photo-1595123550441-d377e017de6a',
-    metrics: [],
   },
 ];
 

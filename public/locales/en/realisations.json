@@ -1,14 +1,14 @@
 {
   "seo": {
     "title": "Our Work | What We Actually Built — AInspiration",
-    "description": "Sixteen automations and applications in service: invoicing, accounting, content, compliance. What was built, for whom, and what it changed.",
+    "description": "Fifteen automations and applications in service: invoicing, accounting, content, compliance. What was built, for whom, and what it changed.",
     "keywords": "AI projects, automation case studies, n8n projects, AI examples SME, artificial intelligence portfolio"
   },
   "hero": {
     "title": "What we have",
     "highlight": "already",
     "titleSuffix": "built",
-    "description": "Sixteen projects in service. For each one: what was built, what it replaces, and what it saves. The figures come from execution logs, not from a brochure.",
+    "description": "Fifteen projects in service. For each one: what was built, what it replaces, and what it saves. The figures come from execution logs, not from a brochure.",
     "cta": "Request my free audit",
     "ctaSub": "Results within 24 h — no commitment",
     "secondary": "Talk about my case"
@@ -287,14 +287,6 @@
       "results": "An internal research setup, used on real commercial decisions.",
       "howItWorks": "Ten profiles described in Markdown, each with its domain, seniority and context. Three commands drive a session: general consultation, briefing with task allocation, or a progress round.",
       "transposition": "This is research, not an offering. We show it because it is what we test on ourselves before proposing it — and because organised contradiction beats a single opinion, including when the single opinion is ours."
-    },
-    "rampa": {
-      "title": "Hybrid search over a document corpus",
-      "summary": "Nineteen books searchable, with the retrieval to match.",
-      "sector": "Internal research",
-      "client": "Personal project",
-      "metrics": {},
-      "shortDescription": "A corpus of nineteen books, searchable in plain language. The interesting part is not the corpus but the retrieval: it is hybrid, both semantic and keyword-based. The reason is measured rather than theoretical — on short questions in French, semantic search alone misses obvious passages, and keyword search catches what it drops. That is the kind of correction you only find by testing."
     }
   }
 }

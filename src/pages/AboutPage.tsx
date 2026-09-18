@@ -61,7 +61,7 @@ const AboutPage: React.FC = () => {
   // en 2023 — qui n'ont pas eu lieu, et qui contredisaient le foundingDate
   // 2025 declare dans le JSON-LD de la meme page. Retiree le 2026-09-14, dans
   // le prolongement de la purge du 2026-08-29 : ne subsiste que ce que le site
-  // peut etayer, la date de creation et les seize realisations de 2026
+  // peut etayer, la date de creation et les quinze realisations de 2026
   // (src/data/realisations.ts). N'ajouter une entree que pour un fait verifiable.
   const milestones = [
     { year: "2025", title: t('history.m2025_title'), description: t('history.m2025_desc') },

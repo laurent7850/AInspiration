@@ -1,14 +1,14 @@
 {
   "seo": {
     "title": "Realisaties | Wat wij echt gebouwd hebben — AInspiration",
-    "description": "Zestien automatiseringen en toepassingen in dienst: facturatie, boekhouding, content, conformiteit. Wat gebouwd is, voor wie, en wat het veranderde.",
+    "description": "Vijftien automatiseringen en toepassingen in dienst: facturatie, boekhouding, content, conformiteit. Wat gebouwd is, voor wie, en wat het veranderde.",
     "keywords": "AI realisaties, automatisering praktijkvoorbeelden, n8n projecten, AI voorbeelden kmo, portfolio kunstmatige intelligentie"
   },
   "hero": {
     "title": "Wat wij",
     "highlight": "al",
     "titleSuffix": "gebouwd hebben",
-    "description": "Zestien realisaties in dienst. Voor elk daarvan: wat er gebouwd is, wat het vervangt, en wat het oplevert. De cijfers komen uit de uitvoeringslogs, niet uit een brochure.",
+    "description": "Vijftien realisaties in dienst. Voor elk daarvan: wat er gebouwd is, wat het vervangt, en wat het oplevert. De cijfers komen uit de uitvoeringslogs, niet uit een brochure.",
     "cta": "Vraag mijn gratis audit aan",
     "ctaSub": "Resultaat binnen 24 u — vrijblijvend",
     "secondary": "Over mijn situatie praten"
@@ -287,14 +287,6 @@
       "results": "Een intern onderzoeksopzet, gebruikt bij echte commerciële afwegingen.",
       "howItWorks": "Tien profielen beschreven in Markdown, elk met zijn domein, ervaringsniveau en context. Drie commando's sturen de zitting: algemene raadpleging, briefing met verdeling van de opdrachten, of een stand van zaken.",
       "transposition": "Dit is onderzoek, geen aanbod. We tonen het omdat het laat zien wat we op onszelf testen vóór we het voorstellen — en omdat georganiseerde tegenspraak beter is dan één enkele mening, ook wanneer die ene mening de onze is."
-    },
-    "rampa": {
-      "title": "Hybride zoekfunctie op een documentcorpus",
-      "summary": "Negentien werken doorzoekbaar, met de zoekfunctie die erbij hoort.",
-      "sector": "Intern onderzoek",
-      "client": "Persoonlijk project",
-      "metrics": {},
-      "shortDescription": "Een corpus van negentien werken, doorzoekbaar in gewone taal. Het interessante zit niet in het corpus maar in de zoekfunctie: die is hybride, zowel semantisch als op trefwoorden. De reden is gemeten en niet theoretisch — bij korte vragen in het Frans mist een louter semantische zoekfunctie voor de hand liggende passages, en de zoekfunctie op trefwoorden vangt op wat ze laat vallen. Dat is het soort correctie dat u alleen al testend vindt."
     }
   }
 }

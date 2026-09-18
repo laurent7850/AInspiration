@@ -9,7 +9,7 @@ import { realisations } from '../data/realisations';
 /**
  * Homepage proof block — four real builds, second screen after the hero.
  *
- * The audit of 2026-09-05 found the only real proof the site has (sixteen
+ * The audit of 2026-09-05 found the only real proof the site has (fifteen
  * shipped automations and apps) buried in the menu, while the homepage showed
  * self-declared engagements. This puts the proof where the promise is.
  * Cards and copy come from the same data/i18n as /realisations, so nothing

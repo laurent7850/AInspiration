@@ -1,14 +1,14 @@
 {
   "seo": {
     "title": "Réalisations | Ce que nous avons construit — AInspiration",
-    "description": "Seize automatisations et applications livrées : facturation, comptabilité, contenu, conformité. Ce qui a été construit, pour qui, et ce que ça a changé.",
+    "description": "Quinze automatisations et applications livrées : facturation, comptabilité, contenu, conformité. Ce qui a été construit, pour qui, et ce que ça a changé.",
     "keywords": "réalisations IA, cas concrets automatisation, projets n8n, exemples IA PME, portfolio intelligence artificielle"
   },
   "hero": {
     "title": "Ce que nous avons",
     "highlight": "déjà",
     "titleSuffix": "construit",
-    "description": "Seize réalisations en service. Pour chacune : ce qui a été construit, ce que ça remplace, et ce que ça fait gagner. Les chiffres viennent des journaux d'exécution, pas d'une brochure.",
+    "description": "Quinze réalisations en service. Pour chacune : ce qui a été construit, ce que ça remplace, et ce que ça fait gagner. Les chiffres viennent des journaux d'exécution, pas d'une brochure.",
     "cta": "Demander mon audit gratuit",
     "ctaSub": "Résultats en 24 h — sans engagement",
     "secondary": "Parler de mon cas"
@@ -287,14 +287,6 @@
       "results": "Un dispositif de recherche interne, utilisé sur des arbitrages commerciaux réels.",
       "howItWorks": "Dix profils décrits en Markdown, chacun avec son domaine, son niveau d'expérience et son contexte. Trois commandes pilotent la séance : consultation générale, briefing avec répartition des missions, ou point d'avancement.",
       "transposition": "C'est de la recherche, pas une offre. Nous le présentons parce qu'il montre ce que nous testons sur nous-mêmes avant de le proposer — et parce qu'un dispositif de contradiction organisée vaut mieux qu'un avis unique, y compris quand l'avis unique est le nôtre."
-    },
-    "rampa": {
-      "title": "Recherche hybride sur un corpus documentaire",
-      "summary": "Dix-neuf ouvrages interrogeables, avec la recherche qui va avec.",
-      "sector": "Recherche interne",
-      "client": "Projet personnel",
-      "metrics": {},
-      "shortDescription": "Un corpus de dix-neuf ouvrages, interrogeable en langage naturel. L'intérêt du projet est ailleurs que dans le corpus : la recherche y est hybride, à la fois sémantique et par mots-clés. La raison est mesurée, pas théorique — sur des questions courtes en français, la recherche sémantique seule passe à côté de passages évidents, et la recherche par mots-clés rattrape ce qu'elle manque. C'est le genre de correction qu'on ne trouve qu'en testant."
     }
   }
 }
