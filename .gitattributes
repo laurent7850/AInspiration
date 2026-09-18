@@ -1,0 +1,21 @@
+# Normalisation des fins de ligne — posé le 18/09/2026
+# L'index du dépôt est en LF. Git convertit à l'écriture comme à la lecture,
+# quel que soit l'éditeur ou le système qui a écrit le fichier.
+* text=auto eol=lf
+
+# Binaires : aucune conversion, jamais
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.webp binary
+*.pdf  binary
+*.woff  binary
+*.woff2 binary
+*.ttf  binary
+*.eot  binary
+*.mp3  binary
+*.mp4  binary
+*.zip  binary
+*.gz   binary
