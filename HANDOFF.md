@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (VPS **bridé par Hostinger** — tout est lent)
+**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (CGV et dernières traces **déployées** ; VPS toujours **bridé par Hostinger**)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -56,6 +56,11 @@ ou aux composants CRM.
 - Dépendances mineures à jour en production depuis le 18/09 (react 19.3, vite 8.3, zod 4.6 backend).
   Déploiement fait dans l'ordre : build → Netlify → **vérification des 211 entrées du manifeste sur le CDN**
   → commit du manifeste → recréation du conteneur.
+- **L'offre abandonnée a disparu partout, textes contractuels compris** (18/09, PR #35).
+  CGV section 3 réécrite pour le rendez-vous de découverte — sans renuméroter — et section 11
+  vidée de ses engagements chiffrés (99 %, 24h, 5 jours ouvrés, 4h) ainsi que du renvoi au
+  document SLA. Article « Thierry » retiré, 301 vers `/realisations`. Vérifié en HTML brut sur
+  quinze URL des trois langues, motif large : **zéro occurrence**. 23 vérifications vertes.
 - Rapport SEO mensuel automatique : le 1er du mois à 7h, script sur le VPS (la base SEOPilot
   est sur un autre réseau Docker que n8n, d'où le script plutôt qu'un workflow).
 
@@ -70,14 +75,6 @@ ou aux composants CRM.
   conséquence, pas la cause. Détail complet dans `docs/journal/2026-09-18-vps-bride-par-hostinger.md`.
 - **`audityo-postgres` est `Exited (128)` depuis le reboot du 17/09.** `audityo-web` est up et
   healthy, mais sa base est à terre. Découvert en passant le 18/09, non traité.
-- **Les CGV et la politique de confidentialité** décrivent encore l'audit gratuit comme une
-  prestation contractuelle, avec une clause de responsabilité sur « les recommandations formulées
-  dans le rapport d'audit ». C'est le dernier endroit où l'offre abandonnée survit, et il est
-  contractuel : à réécrire avec l'arbitrage de Laurent, pas sans.
-- **L'article de blog « Thierry »** est construit de bout en bout sur le parcours audit gratuit
-  → Pack Express. À réécrire ou à retirer.
-- **Deux grilles tarifaires hors O1–O5** : l'essai gratuit de 14 jours du CRM (`crm.json`) et la
-  tarification de la création visuelle (`content.json`). À trancher avec Laurent.
 
 - **Le CRM est quasiment vide** : une seule fiche, la sonde de surveillance. L'ingestion
   depuis les formulaires ne fonctionne que depuis le 15/09. Aucun prospect réel.
@@ -104,6 +101,8 @@ ou aux composants CRM.
 | 16/09 | Blog conservé en trois langues. **Fenêtre de décision : fin novembre 2026.** Critère fixé d'avance : **500 impressions et 15 clics sur 28 jours**. En dessous, changer de format ou arrêter. Ce critère ne se renégocie pas après coup. |
 | 16/09 | Pool de sujets du blog réorienté vers le terrain gagnable : audit IA, PME, Hainaut, Bruxelles, Belgique, conformité EU AI Act. |
 | 14/09 | Un seul CRM pour tout le portefeuille, démo publique conservée et cloisonnée. |
+| 18/09 | **Le CRM n'est pas un produit en vente.** Sa grille publique (29/49 € par utilisateur et par mois, Enterprise sur mesure) et son essai gratuit de 14 jours sont retirés : le compte de démonstration remplit ce rôle, et lui existe. Même traitement pour la tarification de la création visuelle — ce travail entre dans O3. |
+| 18/09 | **Aucun engagement de niveau de service par défaut.** Délais, support et disponibilité se fixent au devis, prestation par prestation. À rouvrir seulement si Laurent veut tenir des niveaux chiffrés sur O4. |
 
 ---
 
@@ -111,7 +110,7 @@ ou aux composants CRM.
 
 | # | Chantier | Où ça en est | Prochaine action |
 |---|---|---|---|
-| 0 | **Les dernières traces de l'offre abandonnée** — le chantier prioritaire | La refonte O1–O5 est **déployée et vérifiée** : zéro occurrence de l'ancienne offre dans le HTML brut, carte SEO backend comprise. Ce qui reste est dans les **textes contractuels** (CGV section 3, SLA, politique de confidentialité) et dans **l'article de blog « Thierry »**. Inventaire clé par clé dans `docs/chantiers/cgv-et-dernieres-traces.md`. | Exécuter cette note. **Aucun texte contractuel ne se publie sans validation de Laurent.** |
+| 0 | **Les dernières traces de l'offre abandonnée** | **Fait et déployé le 18/09** (PR #35) : CGV, politique de confidentialité, article Thierry, grilles du CRM et de la création visuelle. Trouvés en chemin et supprimés : `CreationVisuellePage.tsx`, orpheline avec une troisième grille morte, et `public/sitemap.xml`, écrasé à chaque build et qui listait encore Thierry sans aucune réalisation. | **Hors dépôt :** le document SLA dans Notion décrit toujours l'ancienne offre. Le renvoi vers lui a été retiré des CGV, le document reste à refaire. |
 | 1 | **Vitrine des réalisations** (`/realisations` + une fiche par projet) | **Construite et en production depuis le 04/09** — 16 fiches dans `src/data/realisations.ts`, `RealisationsPage.tsx` et `RealisationDetailPage.tsx`, branche `feat/realisations` fusionnée dans `main`. Vérifié le 18/09 : `/realisations` et `/realisations/facturation-automatisee` répondent 200. Matériel de cadrage dans `docs/audit-realisations.md`, `docs/realisations-chiffres.md`, `docs/PROMPT-realisations.md`. | Rien de bloquant. Si enrichissement il y a (captures, chiffres vérifiés), il se décide fiche par fiche — jamais de capture inventée. |
 | 2 | **Chaîne de publication** | Correctif antislashes posé à la source, 2 articles sur 95 nettoyés en base. | Vérifier la publication du **lundi 21/09** : les trois langues doivent sortir. Si EN/NL échouent encore, c'est que la cause n'était pas uniquement l'échappement. |
 | 3 | **Remplir le CRM** | Ingestion opérationnelle depuis le 15/09, mais aucun prospect réel. | Relève du GTM LinkedIn (grille O1–O5), pas du code. Côté dépôt : rien à faire tant que le flux entrant n'existe pas. |
@@ -150,6 +149,16 @@ ou aux composants CRM.
   **carte SEO dupliquée** dans `docker/backend/routes/seo.js`. Corriger les locales seules ne change rien
   pour un crawler. Vérifier les trois, et vérifier **en HTML brut, insensible à la casse** — « Free Audit »
   a survécu à deux passes parce que je cherchais « free audit ».
+- **Chercher « audit gratuit » ne trouve pas « audit IA gratuit ».** Trois formes ont traversé toutes
+  les passes du 18/09 pour cette seule raison : `audit IA gratuit`, `Free AI audit`, `Gratis AI-audit`.
+  Elles vivaient dans la **seconde carte SEO du backend** (`routeSEO` dans `seo.js`, distincte de
+  `seo-routes.json`), dans les liens de service injectés dans le HTML brut de chaque page, et dans les
+  gabarits de posts LinkedIn. Chercher par **expression régulière large et insensible à la casse**,
+  du type `(audit[^.]{0,14}(gratuit|free|gratis)|(gratuit|free|gratis)[^.]{0,14}audit)`.
+- **Des pages orphelines portent du contenu qui paraît mort et ne l'est pas.** `CreationVisuellePage.tsx`
+  n'avait ni route ni import, mais portait une grille tarifaire complète ; `public/sitemap.xml` était
+  écrasé à chaque build et a fait viser le mauvais fichier à une note de cadrage. Avant de corriger un
+  fichier, vérifier qu'il est **réellement celui qui est servi**.
 - **Le dépôt vit sous OneDrive.** Un fichier écrit depuis une autre session peut ne pas être
   encore synchronisé quand tu lis le dépôt. Vérifie la présence réelle d'un changement avant
   de conclure qu'il n'a pas été fait.
