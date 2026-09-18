@@ -120,23 +120,30 @@ ou aux composants CRM.
 
 ## 6. Rituel de fin de session — obligatoire
 
-Avant de rendre la main :
+La boucle de travail est : **Cowork réfléchit et laisse une note → Claude Code exécute et
+laisse un handoff → Cowork reprend le raisonnement.** Ce fichier est la moitié Claude Code
+de cette boucle. S'il n'est pas à jour, la boucle est rompue.
 
-1. Mets à jour la section **3** (état) et le tableau de la section **4** (chantiers) ci-dessus.
-2. Change la date de « Dernière mise à jour » en tête de fichier.
-3. Commite ce fichier avec le reste de ton travail.
-4. Produis, en fin de réponse, un **bloc de note de journal** prêt à coller dans Notion,
-   au format suivant :
+Quand tu as fait du vrai travail, avant de rendre la main :
 
-```
-Titre    : <projet> — <ce qui a été fait, en une ligne>
-Date     : AAAA-MM-JJ
-Où       : Claude Code
-Type     : Avancée | Incident | Décision | Point de situation | Abandon
-Fait     : - ...
-Cassé    : - ...   (ou « rien »)
-Reste    : - ...
-Prochaine action : <une seule action, concrète>
-```
+1. **Mets à jour ce fichier** — section 3 (état), tableau de la section 4 (chantiers),
+   section 5 si tu es tombé dans un piège que personne n'avait noté, et la date en tête.
+2. **Écris une note** dans `docs/journal/AAAA-MM-JJ-sujet-court.md`, au format exact de
+   `docs/journal/README.md`, avec `notion: non`.
+3. **Commite les deux** avec ton travail.
 
-C'est Laurent (ou la session Cowork) qui dépose ce bloc dans la base **Journal de bord**.
+La commande `/handoff` fait les trois.
+
+**Tu ne remontes rien dans Notion toi-même.** Ce dépôt n'a pas de connecteur Notion, et
+c'est volontaire : chaque connecteur chargé pèse sur le contexte. La session Cowork lit les
+notes marquées `notion: non`, les pousse dans la base *Journal de bord*, et remplace le
+`non` par l'URL. Écris le fichier, c'est tout.
+
+### Ce qui est automatique
+
+| Quand | Ce qui se passe |
+|---|---|
+| Ouverture de session | Un hook `SessionStart` injecte ce fichier dans ton contexte, signale les notes pas encore remontées, et donne l'état du dépôt. |
+| Fin de tour | Un hook `Stop` vérifie que le rituel est fait **si du vrai travail a eu lieu**. Il ne parle qu'une fois par session — s'il te rappelle à l'ordre et que tu juges le travail trop mince pour mériter une note, dis-le en une ligne et arrête-toi. |
+
+Les deux hooks vivent dans `.claude/hooks/`, leur configuration dans `.claude/settings.json`.

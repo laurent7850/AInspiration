@@ -1,3 +1,29 @@
+# À lire en premier
+
+**Le contexte de ce projet vit dans `HANDOFF.md`**, à la racine du dépôt : état réel,
+décisions déjà tranchées, chantiers ouverts, pièges connus. Un hook l'injecte
+automatiquement à l'ouverture de la session — si tu ne l'as pas vu passer, lis-le.
+
+Le fichier ci-dessous est l'arbre de dépendances technique. Il dit *comment le code
+est fait*. `HANDOFF.md` dit *où on en est*. Les deux sont nécessaires.
+
+## Avant de rendre la main
+
+Quand tu as fait du vrai travail, trois gestes, dans cet ordre :
+
+1. Mettre `HANDOFF.md` à jour (état, chantiers, date en tête).
+2. Écrire une note dans `docs/journal/AAAA-MM-JJ-sujet.md`, format dans
+   `docs/journal/README.md`, champ `notion: non`.
+3. Commiter les deux.
+
+La commande `/handoff` fait le tour de la question. Un hook te le rappelle une fois
+si tu l'oublies.
+
+**Tu ne remontes jamais rien dans Notion toi-même** — c'est la session Cowork qui lit
+les notes `notion: non` et les pousse. Écris le fichier, c'est tout.
+
+---
+
 # AInspiration - Arbre de dépendances
 
 ## Architecture globale
