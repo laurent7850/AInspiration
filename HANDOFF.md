@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (montées mineures fusionnées et **déployées**, chantier 1 corrigé)
+**Dernière mise à jour :** 18 septembre 2026 · session Cowork (SRL, retrait de Rampa, chantier de refonte cadré)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -60,6 +60,13 @@ ou aux composants CRM.
   est sur un autre réseau Docker que n8n, d'où le script plutôt qu'un workflow).
 
 ### Ce qui est cassé, en pause, ou vide
+- **Le site contredit encore l'offre O1–O5.** « Audit IA gratuit en 24h » dans le menu,
+  l'accueil, le contact, les CGV et la vie privée — offre abandonnée le 16/09. Prix
+  contradictoires, témoignages fictifs sur `/formation`, chiffres sans source, « notre équipe »
+  alors que Laurent est seul. **Rien de cela ne doit survivre au lancement de la campagne
+  LinkedIn.** Tout est inventorié dans `docs/chantiers/refonte-site-o1-o5.md`.
+- **La fiche playlists radio n'est anonymisée qu'à moitié** : le texte l'est, mais le slug,
+  la clé i18n et le nom de l'image portent encore le nom qui identifie la station.
 
 - **Le CRM est quasiment vide** : une seule fiche, la sonde de surveillance. L'ingestion
   depuis les formulaires ne fonctionne que depuis le 15/09. Aucun prospect réel.
@@ -93,6 +100,7 @@ ou aux composants CRM.
 
 | # | Chantier | Où ça en est | Prochaine action |
 |---|---|---|---|
+| 0 | **Aligner le site sur l'offre O1–O5** — le chantier prioritaire | Cadré le 18/09 dans `docs/chantiers/refonte-site-o1-o5.md`. Deux morceaux déjà faits (commit `50665e4`) : `SPRL` → `SRL` partout, et Rampa sorti de la vitrine (15 réalisations). | Lire la note de cadrage et l'exécuter. **Commencer par jouer les tests** : ils n'ont pas pu l'être depuis Cowork. Rien de tout ça n'est en production tant qu'un déploiement n'a pas eu lieu. |
 | 1 | **Vitrine des réalisations** (`/realisations` + une fiche par projet) | **Construite et en production depuis le 04/09** — 16 fiches dans `src/data/realisations.ts`, `RealisationsPage.tsx` et `RealisationDetailPage.tsx`, branche `feat/realisations` fusionnée dans `main`. Vérifié le 18/09 : `/realisations` et `/realisations/facturation-automatisee` répondent 200. Matériel de cadrage dans `docs/audit-realisations.md`, `docs/realisations-chiffres.md`, `docs/PROMPT-realisations.md`. | Rien de bloquant. Si enrichissement il y a (captures, chiffres vérifiés), il se décide fiche par fiche — jamais de capture inventée. |
 | 2 | **Chaîne de publication** | Correctif antislashes posé à la source, 2 articles sur 95 nettoyés en base. | Vérifier la publication du **lundi 21/09** : les trois langues doivent sortir. Si EN/NL échouent encore, c'est que la cause n'était pas uniquement l'échappement. |
 | 3 | **Remplir le CRM** | Ingestion opérationnelle depuis le 15/09, mais aucun prospect réel. | Relève du GTM LinkedIn (grille O1–O5), pas du code. Côté dépôt : rien à faire tant que le flux entrant n'existe pas. |
@@ -114,6 +122,10 @@ ou aux composants CRM.
   le compte sans `password_hash`. Un mot de passe a été posé et rangé dans 1Password. Si tu
   touches à `init.sql`, ne recrée pas le trou.
 - **`git fetch origin main` ne met pas à jour `origin/main`.** Il ne bouge que `FETCH_HEAD`. Sur ce dépôt où plusieurs sessions poussent, une référence de suivi périmée fait croire à des commits non poussés qui le sont depuis longtemps — erreur commise le 18/09, quatre commits annoncés à tort comme en attente. Avant toute conclusion sur l'état de synchronisation : `git fetch origin` **sans argument de branche**, puis `git rev-list --left-right --count origin/main...main`.
+- **Les tests ne tournent pas depuis une session Cowork.** `node_modules` contient des binaires
+  natifs Windows (rolldown) ; le shell distant est sous Linux. `type-check` et `lint` passent,
+  `vitest` non. Une modification écrite depuis Cowork n'est donc **jamais** entièrement vérifiée :
+  rejoue les tests en session Claude Code avant tout déploiement.
 - **Le dépôt vit sous OneDrive.** Un fichier écrit depuis une autre session peut ne pas être
   encore synchronisé quand tu lis le dépôt. Vérifie la présence réelle d'un changement avant
   de conclure qu'il n'a pas été fait.
