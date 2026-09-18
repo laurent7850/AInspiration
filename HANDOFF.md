@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 18 septembre 2026 · session Cowork
+**Dernière mise à jour :** 18 septembre 2026 · session Cowork (hygiène du dépôt réglée)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -67,12 +67,11 @@ ou aux composants CRM.
 - **Versions EN et NL du dernier article** : échouées. Cause trouvée (voir pièges), correctif
   posé à la source, **pas encore vérifié en conditions réelles** — la prochaine publication
   est prévue lundi 21 septembre et c'est elle qui fait la preuve.
-- **321 fichiers apparaissent modifiés dans `git status`** sans qu'aucune modification réelle
-  n'ait été faite : fins de ligne CRLF dans l'arbre de travail contre LF dans l'index.
-  Conséquence directe : `git status` et `git diff` sont inutilisables pour savoir ce que tu as
-  changé. **Ne commite jamais avec `git add .` tant que ce n'est pas réglé.** Correctif proposé
-  (à faire valider avant exécution) : poser un `.gitattributes` avec `* text=auto eol=lf`,
-  puis `git add --renormalize .` en un commit dédié qui ne touche à rien d'autre.
+- *(Réglé le 18/09 — conservé ici parce que le symptôme peut revenir.)* Le dépôt affichait
+  **321 fichiers modifiés** sans qu'aucune modification réelle n'existe : arbre de travail en
+  CRLF, index en LF, `core.autocrlf` à `false`. Un `.gitattributes` avec `* text=auto eol=lf`
+  a été posé (commit `174afba`) et `git status` est repassé à zéro. **Ne supprime pas ce
+  fichier** : c'est lui seul qui tient la normalisation.
 
 ### Décisions déjà tranchées — ne pas rouvrir sans raison neuve
 
@@ -93,9 +92,8 @@ ou aux composants CRM.
 |---|---|---|---|
 | 1 | **Vitrine des réalisations** (`/realisations` + une fiche par projet, 15 retenues) | Cadré : architecture, angle éditorial (résultats business d'abord), périmètre. Matériel de travail dans `docs/audit-realisations.md`, `docs/realisations-chiffres.md`, `docs/PROMPT-realisations.md`. | Construire la page `/realisations` et la première fiche détaillée, dans le design existant. Captures d'écran produites par pilotage de navigateur, jamais inventées. |
 | 2 | **Chaîne de publication** | Correctif antislashes posé à la source, 2 articles sur 95 nettoyés en base. | Vérifier la publication du **lundi 21/09** : les trois langues doivent sortir. Si EN/NL échouent encore, c'est que la cause n'était pas uniquement l'échappement. |
-| 3 | **Hygiène du dépôt** | 321 fichiers fantômes dans `git status`. | Faire valider le correctif `.gitattributes` + `--renormalize`, puis l'appliquer en un commit isolé. |
-| 4 | **Remplir le CRM** | Ingestion opérationnelle depuis le 15/09, mais aucun prospect réel. | Relève du GTM LinkedIn (grille O1–O5), pas du code. Côté dépôt : rien à faire tant que le flux entrant n'existe pas. |
-| 5 | **Newsletter** | Désactivée, tables conservées. | Aucune action. Décision de suppression définitive ou de relance à prendre plus tard. |
+| 3 | **Remplir le CRM** | Ingestion opérationnelle depuis le 15/09, mais aucun prospect réel. | Relève du GTM LinkedIn (grille O1–O5), pas du code. Côté dépôt : rien à faire tant que le flux entrant n'existe pas. |
+| 4 | **Newsletter** | Désactivée, tables conservées. | Aucune action. Décision de suppression définitive ou de relance à prendre plus tard. |
 
 ---
 
