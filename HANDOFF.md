@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (montées de dépendances mineures, chantier 1 corrigé)
+**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (montées mineures fusionnées et **déployées**, chantier 1 corrigé)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -53,6 +53,9 @@ ou aux composants CRM.
 - Surveillance quotidienne des parcours métier (écriture + relecture d'une fiche sonde,
   secret d'ingestion, jeton CRM, liens d'articles dans le HTML brut, fraîcheur du contenu
   à 15 jours). Tous les contrôles étaient OK au 16/09.
+- Dépendances mineures à jour en production depuis le 18/09 (react 19.3, vite 8.3, zod 4.6 backend).
+  Déploiement fait dans l'ordre : build → Netlify → **vérification des 211 entrées du manifeste sur le CDN**
+  → commit du manifeste → recréation du conteneur.
 - Rapport SEO mensuel automatique : le 1er du mois à 7h, script sur le VPS (la base SEOPilot
   est sur un autre réseau Docker que n8n, d'où le script plutôt qu'un workflow).
 
@@ -94,7 +97,7 @@ ou aux composants CRM.
 | 2 | **Chaîne de publication** | Correctif antislashes posé à la source, 2 articles sur 95 nettoyés en base. | Vérifier la publication du **lundi 21/09** : les trois langues doivent sortir. Si EN/NL échouent encore, c'est que la cause n'était pas uniquement l'échappement. |
 | 3 | **Remplir le CRM** | Ingestion opérationnelle depuis le 15/09, mais aucun prospect réel. | Relève du GTM LinkedIn (grille O1–O5), pas du code. Côté dépôt : rien à faire tant que le flux entrant n'existe pas. |
 | 4 | **Newsletter** | Désactivée, tables conservées. | Aucune action. Décision de suppression définitive ou de relance à prendre plus tard. |
-| 5 | **Montées de dépendances** | PR #34 ouverte et **CI verte** : react 19.3, vite 8.3, lucide 1.44, zod 4.6 backend. Remplace les PR Dependabot #29 et #30. Restent trois majeures non traitées : Tailwind 4 (#32), uuid 14 (#31), jsdom 30 (#33). | Fusionner #34, **puis déployer en bloc** (build → Netlify → commit du manifeste → recréation du conteneur) : ces montées changent 72 hachages de chunks. Tailwind 4 mérite sa propre session. |
+| 5 | **Montées de dépendances** | **Fait le 18/09.** PR #34 fusionnée et déployée en production : react 19.3, vite 8.3, lucide 1.44, zod 4.6 backend. Conteneur recréé, 211/211 fichiers téléchargés, contrôle de santé à 25 vérifications vertes. Restent trois majeures : Tailwind 4 (#32), uuid 14 (#31), jsdom 30 (#33). | Tailwind 4 dans une session dédiée — c'est la plus lourde. uuid et jsdom peuvent partir ensemble dans une branche groupée, comme #34. |
 
 ---
 

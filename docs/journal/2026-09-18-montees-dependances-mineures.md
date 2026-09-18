@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Avancée
 notion: non
-prochaine-action: Fusionner la PR #34 puis déployer en bloc (build → Netlify → commit du manifeste → recréation du conteneur)
+prochaine-action: Vérifier la publication du lundi 21/09 — les trois langues doivent sortir
 ---
 
 ## Fait
@@ -22,13 +22,28 @@ prochaine-action: Fusionner la PR #34 puis déployer en bloc (build → Netlify 
 - Vite 8.3 signalait `__dirname` dans `vitest.config.ts` comme incompatible avec
   le chargeur de configuration natif, futur défaut. Aligné sur `vite.config.ts`,
   qui utilise déjà `import.meta.dirname`.
+- **PR #34 fusionnée et déployée en production.** Dans l'ordre imposé : build (le hook
+  `postbuild` régénère le manifeste, 211 entrées) → `netlify deploy --prod` → **vérification
+  des 211 entrées une à une sur le CDN**, plus le contrôle que GitHub raw servait bien le
+  nouveau manifeste → commit du manifeste → `docker compose up -d --force-recreate web`.
+  Le conteneur a téléchargé 16 fichiers backend et 211 fichiers frontend, serveur démarré.
+- Vérifié en production **sur le HTML brut, pas sur les codes de retour** : 8 liens d'articles
+  sur l'accueil, 8 `<h2>` dans un article, `id="seo-fallback"` sans attribut de masquage,
+  404 sur route inconnue et sur asset manquant (les deux garde-fous tiennent).
+  `scripts/health-check.mjs` : 25 vérifications vertes.
 - Chantier 1 du handoff corrigé : il annonçait « construire `/realisations` »
   alors que la page existe depuis le 04/09 — 16 fiches, pages détail comprises,
   et `/realisations/facturation-automatisee` répond 200 en production.
 
 ## Cassé
 
-- Rien de cassé. Une erreur de lecture de ma part, corrigée dans l'heure :
+- **502 pendant environ trois minutes** après la recréation du conteneur, le temps que
+  Traefik re-résolve la nouvelle adresse. Le serveur répondait 200 en interne pendant ce
+  temps. Ce n'est pas une panne, c'est le coût normal d'un `--force-recreate` : le conteneur
+  retélécharge 16 fichiers backend puis 211 fichiers frontend, **compter cinq à six minutes
+  d'indisponibilité** et ne pas conclure à l'échec avant. Un `docker cp` du `dist/` évite
+  cette fenêtre si un jour elle coûte trop cher.
+- Une erreur de lecture de ma part, corrigée dans l'heure :
   j'ai annoncé quatre commits non poussés alors qu'ils l'étaient. La cause est
   que `git fetch origin main` ne met à jour que `FETCH_HEAD`, pas la référence
   de suivi `origin/main` — qui datait du 12/09. Piège ajouté au handoff.
@@ -43,3 +58,5 @@ prochaine-action: Fusionner la PR #34 puis déployer en bloc (build → Netlify 
   Tailwind 4 (#32, le plus lourd), uuid 14 (#31), jsdom 30 (#33).
 - La publication du lundi 21/09 reste le seul vrai test en attente : le correctif
   des antislashes n'a jamais été éprouvé, l'article du 16/09 n'a toujours ni EN ni NL.
+  Le contrôle de santé le dit à sa façon — **0 hreflang** sur cet article, contre 4 sur un
+  article qui a bien ses trois langues. C'est le seul échec restant, et il préexistait.
