@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (CGV déployées ; bridage VPS résolu ; **PR #36 en attente**)
+**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (uuid 14 et jsdom 30 **déployés**)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -148,7 +148,7 @@ ou aux composants CRM.
 | 2 | **Chaîne de publication** | Correctif antislashes posé à la source, 2 articles sur 95 nettoyés en base. | Vérifier la publication du **lundi 21/09** : les trois langues doivent sortir. Si EN/NL échouent encore, c'est que la cause n'était pas uniquement l'échappement. |
 | 3 | **Remplir le CRM** | Ingestion opérationnelle depuis le 15/09, mais aucun prospect réel. | Relève du GTM LinkedIn (grille O1–O5), pas du code. Côté dépôt : rien à faire tant que le flux entrant n'existe pas. |
 | 4 | **Newsletter** | Désactivée, tables conservées. | Aucune action. Décision de suppression définitive ou de relance à prendre plus tard. |
-| 5 | **Montées de dépendances — majeures restantes** | Mineures faites et déployées le 18/09 (PR #34). **PR #36 ouverte, CI verte, non fusionnée** : uuid 11→14 et jsdom 27→30, groupées comme l'avaient été les mineures. uuid était moins risqué qu'il n'en avait l'air — le backend tourne **déjà** en 14 en production et y appelle `v4` (`ingest.js`, `content-generator.js`), et côté front il n'a qu'un consommateur, `ChatbotN8n.tsx`. Vérifié à l'exécution que `v4()` rend toujours un UUID conforme RFC. Reste **Tailwind 4 (#32), dont la CI échoue**. | Fusionner #36 puis déployer en bloc. Tailwind 4 dans une session dédiée : c'est une refonte de thème, pas une montée de version. |
+| 5 | **Montées de dépendances — majeures restantes** | **PR #36 fusionnée et déployée le 18/09** : uuid 11→14, jsdom 27→30. Conteneur recréé, 209/209 fichiers, contrôle de santé à 24 vérifications vertes. uuid était moins risqué qu'il n'en avait l'air : le backend tournait déjà en 14 en production. Reste **Tailwind 4 (#32), dont la CI échoue**. | Tailwind 4 dans une session dédiée : c'est une refonte de thème, pas une montée de version. |
 | 6 | **Bridage du VPS — résolu, reste un garde-fou à poser** | Incident clos le 18/09. `dockerd` tournait en rond sur un cœur entier (désynchronisation avec containerd sur `audityo-postgres`, entretenue par un cron sans borne). Tâche fantôme purgée puis démon redémarré avec `live-restore` armé : aucun des 43 conteneurs coupé. `dockerd` 103 % → 1,7 %, idle 65 % → 91-96 %, brasspat 1,28 s → 0,165 s. Les **deux** paliers (15/09 et 17/09) ont disparu. Laurent a levé le bridage à la main côté Hostinger. | Borner les reprises de `/root/audityo/health-check.sh` — compteur de tentatives et arrêt après N échecs, sans jeter la sortie d'erreur. Puis surveiller : `user+sys` > 40 % ou `cswch/s` > 10 000 sont les empreintes de la récidive. |
 
 ---
@@ -192,6 +192,16 @@ ou aux composants CRM.
   n'avait ni route ni import, mais portait une grille tarifaire complète ; `public/sitemap.xml` était
   écrasé à chaque build et a fait viser le mauvais fichier à une note de cadrage. Avant de corriger un
   fichier, vérifier qu'il est **réellement celui qui est servi**.
+- **Le sitemap se dégrade en silence si l'API des articles est injoignable au build.**
+  `scripts/vite-plugin-sitemap.ts` va chercher les articles publiés sur `/api/blog-posts` **pendant**
+  le build ; en cas d'échec il émet un simple `console.warn` et produit le sitemap sans eux. Le 18/09,
+  un build Netlify n'a pas joint l'API : le sitemap servi est passé de **89 à 39 URL**, les 50 articles
+  disparus, sans qu'aucune étape n'échoue. Rejouer le déploiement a suffi, l'API répondant à nouveau.
+  **Après chaque déploiement, compter les `<loc>` du sitemap servi**, ne pas se contenter d'un 200.
+  C'est `scripts/health-check.mjs` qui l'a vu, par son avertissement sur les `lastmod` tous identiques.
+- **`npm ci` échoue parfois en `EBUSY` à cause d'OneDrive**, qui tient un fichier de `node_modules`
+  pendant sa synchronisation. Ce n'est pas un problème de dépendances : `rm -rf node_modules` puis
+  relancer. Vu deux fois le 18/09, toujours sur `lucide-react`.
 - **Le dépôt vit sous OneDrive.** Un fichier écrit depuis une autre session peut ne pas être
   encore synchronisé quand tu lis le dépôt. Vérifie la présence réelle d'un changement avant
   de conclure qu'il n'a pas été fait.
