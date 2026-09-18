@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (les tâches de Laurent arrivent dans le CRM)
+**Dernière mise à jour :** 18 septembre 2026 · session Claude Code (alertes VPS : format et spam corrigés)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -66,6 +66,11 @@ ou aux composants CRM.
   explicitement depuis `TASK_OWNER_EMAIL` — jamais `ownerScope()`. Le hook `SessionStart` les
   affiche à l'ouverture, **en échec ouvert**. Vérifié en production : création, dédoublonnage,
   clôture tracée, recréation après clôture, et **le compte démo ne les voit pas**.
+- **Les alertes VPS sont lisibles et ne se répètent plus** (18/09). Le nœud Gmail lisait un
+  niveau trop haut (`[object Object]`), et `clear_alert()` annulait la fenêtre de silence dès
+  que la condition retombait une fois — le steal oscillant autour de 20 %, Laurent recevait une
+  alerte toutes les 15 minutes. Hystérésis de 3 passages sur les deux bords, éprouvée sur copie
+  isolée. **Le seuil de 20 % n'a pas bougé** : le défaut était la nervosité, pas la sensibilité.
 - Rapport SEO mensuel automatique : le 1er du mois à 7h, script sur le VPS (la base SEOPilot
   est sur un autre réseau Docker que n8n, d'où le script plutôt qu'un workflow).
 
@@ -78,6 +83,12 @@ ou aux composants CRM.
   Tout passe désormais par `/webhook/vps-alert` (`cJP1FcQVkUwrBNht`).
   **La règle qui en sort : dans un nœud n8n déclenché par webhook, la charge utile est sous
   `$json.body`, jamais à la racine.** Ce seul niveau a rendu une chaîne d'alerte muette.
+
+  *(Complété le 18/09.)* **Et quand la charge utile contient elle-même un champ `body`, l'erreur
+  devient invisible.** `{{ $json.body }}` ne rend alors pas « indéfini » mais **l'objet entier**,
+  affiché `[object Object]`. Les autres champs, eux, tombent en silence sur leurs valeurs par
+  défaut — d'où un mail qui part, avec un sujet générique et « Source : inconnue ». Les trois
+  émetteurs postent `{email, subject, body, source, log}` : lire `$json.body.<champ>`.
 
 - *(Résolu le 18/09 — conservé ici parce que la cause peut revenir.)* **Le VPS entier a été
   bridé par Hostinger du 17 au 18/09**, steal à 91 %, après que sa charge soit montée à 100 %.
@@ -217,6 +228,16 @@ ou aux composants CRM.
   `deferred`, `completed` (`getTaskStatuses`). La base en accepte deux de plus, `pending` et
   `cancelled`, hérités de `migration-001`. Une tâche écrite dans un statut que l'interface ignore
   s'affiche sans état lisible. Écrire `not_started` à l'ouverture.
+- **Une temporisation d'alerte que le retour à la normale efface ne temporise rien.**
+  `clear_alert()` supprimait l'horodatage de la fenêtre de silence au premier passage sous le
+  seuil. Une grandeur qui oscille autour de son seuil — le steal, typiquement — réarmait donc la
+  sonnette à chaque bascule, malgré une temporisation de 6 h correctement écrite. **Toute alerte
+  sur une mesure continue a besoin d'hystérésis sur les DEUX bords** : N passages pour alerter,
+  N passages pour déclarer la fin. Ici N = 3, soit 45 minutes soutenues.
+- **Les scripts d'exploitation du VPS ont une copie de référence dans `docs/ops/vps/`, et elle
+  dérive.** Elle avait déjà divergé le 18/09 au soir. **Le VPS fait foi** : après toute
+  modification sur la machine, reprendre la copie par `scp` et la commiter, sans quoi le dépôt
+  décrit un script qui n'existe plus.
 - **Le dépôt vit sous OneDrive.** Un fichier écrit depuis une autre session peut ne pas être
   encore synchronisé quand tu lis le dépôt. Vérifie la présence réelle d'un changement avant
   de conclure qu'il n'a pas été fait.

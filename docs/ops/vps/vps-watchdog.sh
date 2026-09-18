@@ -26,6 +26,12 @@ STATE="/var/lib/vps-watchdog"
 LOG="/var/log/vps-watchdog.log"
 COOLDOWN=21600          # 6 h entre deux alertes d'une meme condition
 
+# Hysteresis, ajoutee le 18/09/2026 apres une alerte toutes les 15 minutes : le
+# steal oscillait autour du seuil et chaque bascule rearmait la sonnette. Avec
+# le cron toutes les 15 min, 3 passages = 45 minutes soutenues.
+HITS_BEFORE_ALERT=3     # passages consecutifs au-dessus du seuil avant d'alerter
+MISSES_BEFORE_CLEAR=3   # passages consecutifs en dessous avant de dire que c'est fini
+
 # Seuils, tous cales sur l'incident du 17/09
 STEAL_MAX=20            # steal > 20 % = l'hebergeur nous bride (il etait a 91 %)
 BUSY_MAX=50             # user+sys soutenu (le pic du 17/09 etait a 88 %)
@@ -65,11 +71,38 @@ notify() {
 }
 
 # Alerte avec fenetre de silence. Ne renvoie rien tant que COOLDOWN n'est pas ecoule.
+# Lit un compteur, en tolerant un fichier absent ou abime.
+compteur() {
+  _v=$(cat "$1" 2>/dev/null || echo 0)
+  case "$_v" in *[!0-9]*|'') _v=0 ;; esac
+  echo "$_v"
+}
+
+# Alerte avec DEUX garde-fous, et ils traitent deux problemes differents.
+#
+#  1. Hysteresis : la condition doit tenir HITS_BEFORE_ALERT passages
+#     consecutifs. Un pic isole ne reveille personne. C'est ce qui manquait le
+#     18/09, ou le steal oscillait autour du seuil et produisait une alerte
+#     toutes les 15 minutes.
+#  2. Fenetre de silence : une fois alertee, une condition se tait pendant
+#     COOLDOWN. Une sonnette qui hurle en boucle devient une sonnette qu'on
+#     ignore.
 alert() {
   _key="$1"; _subject="$2"; _body="$3"
   _stamp="$STATE/$_key.last"
-  _last=$(cat "$_stamp" 2>/dev/null || echo 0)
-  case "$_last" in *[!0-9]*|'') _last=0 ;; esac
+  _hits="$STATE/$_key.hits"
+  _misses="$STATE/$_key.misses"
+
+  rm -f "$_misses"
+  _n=$(( $(compteur "$_hits") + 1 ))
+  echo "$_n" > "$_hits"
+
+  if [ "$_n" -lt "$HITS_BEFORE_ALERT" ]; then
+    logline "$_key au-dessus du seuil ($_n/$HITS_BEFORE_ALERT) — on attend confirmation"
+    return
+  fi
+
+  _last=$(compteur "$_stamp")
   if [ "$_last" -ne 0 ] && [ $((NOW - _last)) -lt "$COOLDOWN" ]; then
     logline "$_key toujours en alerte, notification differee (fenetre de silence)"
     return
@@ -79,16 +112,38 @@ alert() {
 }
 
 # Retour a la normale : ne previent que si une alerte avait ete envoyee.
+# Retour a la normale, lui aussi soumis a hysteresis.
+#
+# Supprimer l'horodatage des le premier passage sous le seuil annulait la
+# fenetre de silence, et c'est ce qui a produit le spam du 18/09 : une seule
+# mesure en dessous suffisait a rearmer l'alerte suivante. Il faut desormais
+# MISSES_BEFORE_CLEAR passages consecutifs pour declarer que c'est fini.
 clear_alert() {
   _key="$1"; _label="$2"
   _stamp="$STATE/$_key.last"
-  if [ -f "$_stamp" ]; then
-    rm -f "$_stamp"
-    logline "$_key revenu a la normale"
-    notify "[VPS OK] $_label : retour a la normale" \
-           "La condition suivante n'est plus remplie :\n\n  $_label\n\nAucune action requise." \
-           "$_key"
+  _hits="$STATE/$_key.hits"
+  _misses="$STATE/$_key.misses"
+
+  rm -f "$_hits"
+
+  # Jamais alertee : rien a annoncer, on nettoie et on se tait.
+  if [ ! -f "$_stamp" ]; then
+    rm -f "$_misses"
+    return
   fi
+
+  _n=$(( $(compteur "$_misses") + 1 ))
+  echo "$_n" > "$_misses"
+  if [ "$_n" -lt "$MISSES_BEFORE_CLEAR" ]; then
+    logline "$_key sous le seuil ($_n/$MISSES_BEFORE_CLEAR) — retour a la normale non confirme"
+    return
+  fi
+
+  rm -f "$_stamp" "$_misses"
+  logline "$_key revenu a la normale"
+  notify "[VPS OK] $_label : retour a la normale" \
+         "La condition suivante n'est plus remplie :\n\n  $_label\n\nAucune action requise." \
+         "$_key"
 }
 
 contexte_cpu() {
