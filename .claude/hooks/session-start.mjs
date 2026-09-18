@@ -86,6 +86,59 @@ out.push(`- Branche : \`${branche || "?"}\``);
 out.push(`- HEAD : \`${head.slice(0, 7) || "?"}\``);
 out.push(`- Arbre de travail : ${sales ? `${sales.split("\n").length} fichier(s) modifié(s)` : "propre"}`);
 
+// --- 3 bis. Les tâches ouvertes de Laurent dans le CRM ---------------------
+// Ce que Laurent doit faire lui-même vit dans le module de tâches du CRM
+// depuis le 18/09/2026, plus dans un coin de handoff. La session les lit à
+// l'ouverture ; elle n'en ferme aucune sans preuve ou sans ordre de sa part.
+//
+// ÉCHEC OUVERT, délibérément : si le CRM ne répond pas, on affiche une ligne
+// et on continue. Une session bloquée parce que le CRM tousse serait pire que
+// le problème résolu. Le secret vit dans `.env.local`, non suivi par git.
+async function tachesOuvertes() {
+  let secret = process.env.TASK_SECRET || "";
+  if (!secret) {
+    try {
+      const envLocal = readFileSync(join(root, ".env.local"), "utf8");
+      const m = envLocal.match(/^TASK_SECRET\s*=\s*(.+)$/m);
+      if (m) secret = m[1].trim().replace(/^["']|["']$/g, "");
+    } catch {}
+  }
+  if (!secret) {
+    return ["_TASK_SECRET absent de l'environnement et de `.env.local` — tâches non lues._"];
+  }
+
+  const base = process.env.CRM_BASE || "https://ainspiration.eu";
+  try {
+    const ctl = new AbortController();
+    const minuteur = setTimeout(() => ctl.abort(), 5000);
+    const r = await fetch(`${base}/api/service/tasks`, {
+      headers: { "x-task-secret": secret },
+      signal: ctl.signal,
+    });
+    clearTimeout(minuteur);
+    if (!r.ok) {
+      return [`_Lecture des tâches CRM impossible (HTTP ${r.status}) — on continue sans._`];
+    }
+    const taches = await r.json();
+    if (!Array.isArray(taches) || taches.length === 0) {
+      return ["_Aucune tâche ouverte._"];
+    }
+    return taches.map((t) => {
+      const ech = t.due_date ? ` — échéance ${String(t.due_date).slice(0, 10)}` : "";
+      const pri = t.priority === "high" ? " **[haute]**" : "";
+      return `- ${t.title}${pri}${ech}`;
+    });
+  } catch (e) {
+    const cause = e.name === "AbortError" ? "délai dépassé" : e.message;
+    return [`_Lecture des tâches CRM impossible (${cause}) — on continue sans._`];
+  }
+}
+
+out.push("\n---\n");
+out.push("## Tâches ouvertes de Laurent (CRM)\n");
+out.push("Ce que **Laurent** doit faire lui-même. Tu n'en clôtures aucune sans preuve, ou sans son ordre.\n");
+for (const ligne of await tachesOuvertes()) out.push(ligne);
+
 // --- 4. Le rituel ----------------------------------------------------------
 out.push("\n---\n");
 out.push("## Rituel de fin de session — non négociable\n");
