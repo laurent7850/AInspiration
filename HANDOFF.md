@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (le hook d'ouverture compte et liste les commits non poussés ; la note du jour dit que cette session a débordé sur AutoSEO)
+**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (Tailwind 4 migré, PR #38 ouverte ; hook d'ouverture pour les commits non poussés)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -170,7 +170,7 @@ ou aux composants CRM.
 | 2 | **Chaîne de publication** | Correctif antislashes posé à la source, 2 articles sur 95 nettoyés en base. | Vérifier la publication du **lundi 21/09** : les trois langues doivent sortir. Si EN/NL échouent encore, c'est que la cause n'était pas uniquement l'échappement. |
 | 3 | **Remplir le CRM** | Ingestion opérationnelle depuis le 15/09, mais aucun prospect réel. | Relève du GTM LinkedIn (grille O1–O5), pas du code. Côté dépôt : rien à faire tant que le flux entrant n'existe pas. |
 | 4 | **Newsletter** | Désactivée, tables conservées. | Aucune action. Décision de suppression définitive ou de relance à prendre plus tard. |
-| 5 | **Montées de dépendances — majeures restantes** | **PR #36 fusionnée et déployée le 18/09** : uuid 11→14, jsdom 27→30. Conteneur recréé, 209/209 fichiers, contrôle de santé à 24 vérifications vertes. uuid était moins risqué qu'il n'en avait l'air : le backend tournait déjà en 14 en production. Reste **Tailwind 4 (#32), dont la CI échoue**. | Tailwind 4 dans une session dédiée : c'est une refonte de thème, pas une montée de version. |
+| 5 | **Montées de dépendances — majeures restantes** | **PR #36 fusionnée et déployée le 18/09** : uuid 11→14, jsdom 27→30. Conteneur recréé, 209/209 fichiers, contrôle de santé à 24 vérifications vertes. uuid était moins risqué qu'il n'en avait l'air : le backend tournait déjà en 14 en production. **Tailwind 4 migré le 19/09** : branche `chore/tailwind-4`, [#38](https://github.com/laurent7850/AInspiration/pull/38), qui remplace #32. `tailwind.config.js` supprimé, thème dans un bloc `@theme` de `src/index.css`, `autoprefixer` retiré. Rendu vérifié en comparant la **production en v3** à la branche : empreinte des styles calculés identique sur `/` et `/realisations`. | **Fusionner #38 dans une séance qui va jusqu'au déploiement** : le nom du fichier CSS change, donc build → Netlify → commit du manifeste → `--force-recreate`. Le manifeste n'est pas dans la PR (convention du dépôt). Restent non vérifiés au même crible : le CRM, le blog, EN/NL. |
 | 6 | **Bridage du VPS — résolu, reste un garde-fou à poser** | Incident clos le 18/09. `dockerd` tournait en rond sur un cœur entier (désynchronisation avec containerd sur `audityo-postgres`, entretenue par un cron sans borne). Tâche fantôme purgée puis démon redémarré avec `live-restore` armé : aucun des 43 conteneurs coupé. `dockerd` 103 % → 1,7 %, idle 65 % → 91-96 %, brasspat 1,28 s → 0,165 s. Les **deux** paliers (15/09 et 17/09) ont disparu. Laurent a levé le bridage à la main côté Hostinger. | **La borne est posée** (18/09, commit `fc00702`) : 3 tentatives par cible, sortie d'erreur journalisée, puis un `ABANDON` qui part maintenant par mail. Reste à **surveiller la récidive** — `user+sys` > 40 % ou `cswch/s` > 10 000 en sont les empreintes — et à construire une **fenêtre de maintenance déclarée** : la veille ne distingue toujours pas un déploiement d'une panne. |
 
 ---
@@ -253,6 +253,18 @@ ou aux composants CRM.
 - **Les pannes ici sont silencieuses.** Tout répondait 200 pendant que deux chaînes de
   publication étaient mortes depuis huit jours. Un test qui vérifie qu'une page répond ne
   vérifie rien. Vérifie le parcours, pas le code de retour.
+- **Un codemod qui réécrit des classes réécrit aussi ce qui leur ressemble.** Celui de
+  Tailwind 4 a renommé `'rounded'` en `'rounded-sm'` dans une **union de types**
+  TypeScript de `Skeleton.tsx` : le type ne correspondait plus à aucun appelant. `tsc` l'a
+  vu ; sans typage strict, la classe serait devenue `undefined` en silence. Il a aussi
+  laissé passer les classes écrites dans des gabarits dynamiques. **Relire le diff d'un
+  codemod sur ce qui n'est pas une classe**, et faire tourner `type-check` avant tout le reste.
+- **Une mesure prise avant la fin du rendu d'une SPA fabrique des régressions imaginaires.**
+  Le 19/09, une empreinte de styles relevée 3 secondes après la navigation portait sur une
+  page à moitié montée — le titre du document était encore celui de l'accueil — et annonçait
+  une douzaine d'écarts inexistants. Vérifier que la page est bien celle qu'on croit (titre,
+  nombre de nœuds) **avant** de croire à l'écart. Pour comparer un avant/après de style, le
+  témoin le plus sûr reste **la production**, qui porte encore l'ancienne version.
 - **Une session ne commite que dans le dépôt où elle est enracinée.** Le 19/09, la session
   qui a écrit le hook `SessionStart` l'a reporté dans AutoSEO et y a inscrit les URL Notion
   du jour : deux commits écrits depuis ici, dans le dépôt voisin, dont le raisonnement
