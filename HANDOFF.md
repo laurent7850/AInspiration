@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 19 septembre 2026 · session Cowork (dépôt public signalé ; deux lignes périmées corrigées)
+**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (Cowork n'écrit plus dans le dépôt ; pousser entre dans le rituel)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -188,6 +188,10 @@ ou aux composants CRM.
   le compte sans `password_hash`. Un mot de passe a été posé et rangé dans 1Password. Si tu
   touches à `init.sql`, ne recrée pas le trou.
 - **`git fetch origin main` ne met pas à jour `origin/main`.** Il ne bouge que `FETCH_HEAD`. Sur ce dépôt où plusieurs sessions poussent, une référence de suivi périmée fait croire à des commits non poussés qui le sont depuis longtemps — erreur commise le 18/09, quatre commits annoncés à tort comme en attente. Avant toute conclusion sur l'état de synchronisation : `git fetch origin` **sans argument de branche**, puis `git rev-list --left-right --count origin/main...main`.
+- **Avant de déplacer `main` — réalignement, `reset`, `rebase`, bascule de branche — lance
+  `git log origin/main..main` et pousse ce qui s'y trouve.** Ce qui y apparaît n'existe nulle
+  part ailleurs : c'est souvent du travail écrit par une session Cowork, qui ne peut pas
+  pousser elle-même. Une remise à plat de `main` l'effacerait sans un mot.
 - **Les tests ne tournent pas depuis une session Cowork.** `node_modules` contient des binaires
   natifs Windows (rolldown) ; le shell distant est sous Linux. `type-check` et `lint` passent,
   `vitest` non. Une modification écrite depuis Cowork n'est donc **jamais** entièrement vérifiée :
@@ -258,6 +262,12 @@ La boucle de travail est : **Cowork réfléchit et laisse une note → Claude Co
 laisse un handoff → Cowork reprend le raisonnement.** Ce fichier est la moitié Claude Code
 de cette boucle. S'il n'est pas à jour, la boucle est rompue.
 
+**Cowork n'écrit plus dans ce dépôt** (décision du 19/09/2026). Il n'a pas d'identifiants
+GitHub : ses commits restent dans le clone local, sans jamais partir, et seraient effacés au
+premier réalignement de `main` — trois commits du 18/09 ont vécu ainsi une journée en sursis.
+Cowork réfléchit, laisse ses notes dans Notion et dicte ce qu'il y a à faire ; **c'est Claude
+Code qui écrit dans le dépôt, commite et pousse.**
+
 Quand tu as fait du vrai travail, avant de rendre la main :
 
 0. **Ce qui dépasse la session part dans le CRM.** Une décision à trancher, un texte à
@@ -275,8 +285,11 @@ Quand tu as fait du vrai travail, avant de rendre la main :
 2. **Écris une note** dans `docs/journal/AAAA-MM-JJ-sujet-court.md`, au format exact de
    `docs/journal/README.md`, avec `notion: non`.
 3. **Commite les deux** avec ton travail.
+4. **Pousse** — `git push origin main`. Un commit non poussé n'est pas une trace, c'est une
+   trace en sursis : personne d'autre ne le voit, et le prochain réalignement de `main`
+   l'emporte.
 
-La commande `/handoff` fait les trois.
+La commande `/handoff` fait les quatre.
 
 **Tu ne remontes rien dans Notion toi-même.** Ce dépôt n'a pas de connecteur Notion, et
 c'est volontaire : chaque connecteur chargé pèse sur le contexte. La session Cowork lit les

@@ -1,7 +1,7 @@
 ---
 name: handoff
 description: Exécute le rituel de fin de session (HANDOFF.md + note de journal)
-allowed-tools: Read, Edit, Write, Bash(git status:*), Bash(git log:*), Bash(git add:*), Bash(git commit:*), Bash(git diff:*)
+allowed-tools: Read, Edit, Write, Bash(git status:*), Bash(git log:*), Bash(git add:*), Bash(git commit:*), Bash(git diff:*), Bash(git push:*)
 ---
 
 Exécute le rituel de fin de session pour ce dépôt. Fais-le sérieusement : c'est ce
@@ -53,6 +53,12 @@ Règles pour la note :
 **3. Commite.**
 
 `HANDOFF.md` et la note dans le même commit que ton travail, ou dans un commit
-`docs:` séparé si le travail était déjà commité. Ne pousse pas sans qu'on te le demande.
+`docs:` séparé si le travail était déjà commité.
 
-**4. Termine** par trois lignes maximum : ce qui a été fait, ce qui reste, la prochaine action.
+**4. Pousse.**
+
+`git push origin main`. Un commit non poussé n'est pas une trace, c'est une trace en sursis :
+personne d'autre ne le voit, et le prochain réalignement de `main` l'emporte. Vérifie
+qu'il ne reste rien : `git log origin/main..main` doit être vide.
+
+**5. Termine** par trois lignes maximum : ce qui a été fait, ce qui reste, la prochaine action.

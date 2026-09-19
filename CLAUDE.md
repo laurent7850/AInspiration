@@ -9,12 +9,13 @@ est fait*. `HANDOFF.md` dit *où on en est*. Les deux sont nécessaires.
 
 ## Avant de rendre la main
 
-Quand tu as fait du vrai travail, trois gestes, dans cet ordre :
+Quand tu as fait du vrai travail, quatre gestes, dans cet ordre :
 
 1. Mettre `HANDOFF.md` à jour (état, chantiers, date en tête).
 2. Écrire une note dans `docs/journal/AAAA-MM-JJ-sujet.md`, format dans
    `docs/journal/README.md`, champ `notion: non`.
 3. Commiter les deux.
+4. Pousser. Un commit non poussé n'est pas une trace, c'est une trace en sursis.
 
 La commande `/handoff` fait le tour de la question. Un hook te le rappelle une fois
 si tu l'oublies.
