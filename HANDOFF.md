@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (Cowork n'écrit plus dans le dépôt ; pousser entre dans le rituel)
+**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (le hook d'ouverture compte et liste les commits non poussés)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -300,7 +300,7 @@ notes marquées `notion: non`, les pousse dans la base *Journal de bord*, et rem
 
 | Quand | Ce qui se passe |
 |---|---|
-| Ouverture de session | Un hook `SessionStart` injecte ce fichier dans ton contexte, signale les notes pas encore remontées, et donne l'état du dépôt. |
+| Ouverture de session | Un hook `SessionStart` injecte ce fichier dans ton contexte, signale les notes pas encore remontées, et donne l'état du dépôt — **y compris les commits non poussés vers l'amont, listés s'il y en a**. Il ne fait aucun `git fetch` : si la référence distante manque ou date, il le dit et continue, il ne bloque pas l'ouverture. |
 | Fin de tour | Un hook `Stop` vérifie que le rituel est fait **si du vrai travail a eu lieu**. Il ne parle qu'une fois par session — s'il te rappelle à l'ordre et que tu juges le travail trop mince pour mériter une note, dis-le en une ligne et arrête-toi. |
 
 Les deux hooks vivent dans `.claude/hooks/`, leur configuration dans `.claude/settings.json`.

@@ -7,7 +7,7 @@
  *
  * Tout ce qui est écrit sur la sortie standard devient du contexte visible.
  */
-import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync, statSync } from "node:fs";
 import { execSync } from "node:child_process";
 import { join } from "node:path";
 
@@ -85,6 +85,79 @@ out.push("## État du dépôt à l'ouverture\n");
 out.push(`- Branche : \`${branche || "?"}\``);
 out.push(`- HEAD : \`${head.slice(0, 7) || "?"}\``);
 out.push(`- Arbre de travail : ${sales ? `${sales.split("\n").length} fichier(s) modifié(s)` : "propre"}`);
+
+// Un commit non poussé n'est pas une trace, c'est une trace en sursis : la
+// session doit savoir dès l'ouverture ce qui dort en local.
+//
+// ÉCHEC OUVERT, délibérément : pas de `git fetch` ici. Le réseau au démarrage,
+// c'est une session qui n'ouvre pas quand le remote tousse. On lit la
+// référence telle qu'elle est sur le disque ; si elle manque ou si elle date,
+// on le DIT et on continue — jamais taire le doute, jamais bloquer.
+
+// Depuis quand la référence distante n'a-t-elle pas bougé ? Trois traces sur
+// le disque peuvent l'avoir rafraîchie : un fetch (`FETCH_HEAD`), un push (le
+// fichier de la ref distante), un clone (`packed-refs`). On prend la plus
+// récente des trois — ne regarder que `FETCH_HEAD` criait « périmée » sur un
+// clone tout neuf, et une alerte qui se trompe est une alerte qu'on n'écoute
+// plus.
+function fraicheurReference(amont) {
+  const gitDir = git("rev-parse --absolute-git-dir");
+  if (!gitDir) return "";
+  const traces = [
+    join(gitDir, "FETCH_HEAD"),
+    join(gitDir, "refs", "remotes", ...amont.split("/")),
+    join(gitDir, "packed-refs"),
+  ];
+  let recent = 0;
+  for (const p of traces) {
+    try {
+      recent = Math.max(recent, statSync(p).mtimeMs);
+    } catch {}
+  }
+  if (!recent) return " — ⚠️ fraîcheur inconnue, la référence peut être périmée";
+  const jours = Math.floor((Date.now() - recent) / 86400000);
+  return jours >= 1
+    ? ` — ⚠️ référence non rafraîchie depuis ${jours} j, elle peut être périmée`
+    : "";
+}
+
+function commitsNonPousses() {
+  // L'amont configuré d'abord : c'est lui qui dit la vérité quand on travaille
+  // sur une autre branche que `main`. `origin/main` n'est que le dernier repli.
+  const amont =
+    git("rev-parse --abbrev-ref --symbolic-full-name @{upstream}") ||
+    (branche && git(`rev-parse --verify --quiet origin/${branche}`) ? `origin/${branche}` : "") ||
+    (git("rev-parse --verify --quiet origin/main") ? "origin/main" : "");
+
+  if (!amont) {
+    return [
+      "- Commits non poussés : _référence distante introuvable (ni amont configuré, ni `origin/main`) — non vérifié, on continue._",
+    ];
+  }
+
+  const compte = git(`rev-list --count ${amont}..HEAD`);
+  if (!/^\d+$/.test(compte)) {
+    return [
+      `- Commits non poussés : _comparaison avec \`${amont}\` impossible — non vérifié, on continue._`,
+    ];
+  }
+
+  const nb = Number(compte);
+  const fraicheur = fraicheurReference(amont);
+  if (nb === 0) {
+    return [`- Commits non poussés vers \`${amont}\` : aucun${fraicheur}`];
+  }
+
+  const lignes = [`- Commits non poussés vers \`${amont}\` : **${nb}**${fraicheur}`];
+  const journal = git(`log --format="%h %s" --max-count=10 ${amont}..HEAD`);
+  journal.split("\n").filter(Boolean).forEach((l) => lignes.push(`  - \`${l}\``));
+  if (nb > 10) lignes.push(`  - … et ${nb - 10} de plus`);
+  lignes.push("  Pousse-les avant de rendre la main.");
+  return lignes;
+}
+
+for (const ligne of commitsNonPousses()) out.push(ligne);
+
 
 // --- 3 bis. Les tâches ouvertes de Laurent dans le CRM ---------------------
 // Ce que Laurent doit faire lui-même vit dans le module de tâches du CRM
