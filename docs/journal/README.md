@@ -50,8 +50,12 @@ prochaine-action: Vérifier les positions GSC des trois langues sous 7 jours
 ### Les champs `notion` et `synchro`
 
 - `notion: non` — pas encore remontée. La session Cowork la verra et la poussera.
-- `notion: <URL>` + `synchro: <AAAA-MM-JJ>` — déjà dans Notion. **C'est Cowork qui écrit
-  ces deux lignes, jamais Claude Code.**
+- `notion: <URL>` + `synchro: <AAAA-MM-JJ>` — déjà dans Notion. **Ces deux lignes ne
+  s'écrivent que sur remontée constatée**, jamais d'avance : elles disent qu'une page existe,
+  et une page qui n'existe pas rend la note invisible au hook comme à Cowork.
+  Depuis le 19/09/2026, c'est **Claude Code qui les écrit, sous la dictée de Laurent** —
+  Cowork n'a pas d'identifiants GitHub, ses commits ne partiraient jamais. Il remonte la
+  note dans Notion et donne l'URL ; Claude Code l'inscrit, commite et pousse.
 
 **Tu peux compléter une note déjà remontée** — c'est légitime quand le travail du soir
 prolonge celui du matin, comme un incident et son correctif. Ne touche simplement pas à

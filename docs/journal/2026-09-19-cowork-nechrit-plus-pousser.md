@@ -3,7 +3,8 @@ date: 2026-09-19
 projet: AInspiration
 ou: Claude Code
 type: Décision
-notion: non
+notion: https://app.notion.com/p/3e0fb662f4aa81a8a713c18346825dbd
+synchro: 2026-09-19
 prochaine-action: Vérifier en fin de prochaine session que `git log origin/main..main` est bien vide avant de rendre la main
 ---
 

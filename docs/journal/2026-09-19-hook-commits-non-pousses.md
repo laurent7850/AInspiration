@@ -3,7 +3,8 @@ date: 2026-09-19
 projet: AInspiration
 ou: Claude Code
 type: Avancée
-notion: non
+notion: https://app.notion.com/p/3e0fb662f4aa819d8f7cecb7eb15ae62
+synchro: 2026-09-19
 prochaine-action: À la prochaine ouverture de session, vérifier que la ligne « Commits non poussés » apparaît bien dans le contexte injecté
 ---
 
