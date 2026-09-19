@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (le hook d'ouverture compte et liste les commits non poussés)
+**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (le hook d'ouverture compte et liste les commits non poussés ; la note du jour dit que cette session a débordé sur AutoSEO)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -253,6 +253,14 @@ ou aux composants CRM.
 - **Les pannes ici sont silencieuses.** Tout répondait 200 pendant que deux chaînes de
   publication étaient mortes depuis huit jours. Un test qui vérifie qu'une page répond ne
   vérifie rien. Vérifie le parcours, pas le code de retour.
+- **Une session ne commite que dans le dépôt où elle est enracinée.** Le 19/09, la session
+  qui a écrit le hook `SessionStart` l'a reporté dans AutoSEO et y a inscrit les URL Notion
+  du jour : deux commits écrits depuis ici, dans le dépôt voisin, dont le raisonnement
+  n'était retrouvable que dans le journal d'AInspiration. Un travail à porter d'un dépôt à
+  l'autre se porte en **deux sessions**, chacune écrivant sa propre note ; termine ici, puis
+  rends la main avec la consigne prête à coller. Provenance inscrite des deux côtés
+  (`docs/journal/2026-09-19-hook-commits-non-pousses.md` ici,
+  `docs/journal/2026-09-19-provenance-des-deux-commits.md` là-bas).
 
 ---
 
