@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (Tailwind 4 déployé ; incident « nom du client en production », garde-fou de build posé)
+**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (Tailwind 4 déployé ; incident « nom du client en production », garde-fou de build posé ; sonde du parcours de contact Audityo)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -53,6 +53,11 @@ ou aux composants CRM.
 - Surveillance quotidienne des parcours métier (écriture + relecture d'une fiche sonde,
   secret d'ingestion, jeton CRM, liens d'articles dans le HTML brut, fraîcheur du contenu
   à 15 jours). Tous les contrôles étaient OK au 16/09.
+- **Le parcours de contact d'Audityo est surveillé depuis le 19/09**, par l'effet réel :
+  la sonde poste au webhook, puis relit la ligne écrite dans `contacts` et l'efface. Le
+  code de statut de ce webhook ne prouve rien — son `responseMode` est posé dans `options`
+  au lieu du premier niveau, il est donc ignoré et le 200 part avant toute exécution.
+  C'est ce 200 qui est parti pendant six jours pendant que le formulaire était muet.
 - Dépendances mineures à jour en production depuis le 18/09 (react 19.3, vite 8.3, zod 4.6 backend).
   Déploiement fait dans l'ordre : build → Netlify → **vérification des 211 entrées du manifeste sur le CDN**
   → commit du manifeste → recréation du conteneur.
@@ -166,6 +171,7 @@ ou aux composants CRM.
 |---|---|---|---|
 | 0 | **Les tâches de Laurent arrivent dans le CRM** | **Fait et déployé le 18/09** (PR #37). `migration-007` jouée et **vérifiée par requête** — le service de migration avale ses erreurs, on ne s'y fie pas. `TASK_SECRET` généré sur le VPS, dans le `.env` et le compose, jamais affiché. Huit vérifications passées en production. Première tâche réelle déposée. | Rien. Les sessions déposent désormais au rituel (section 6). |
 | 0 | **Les dernières traces de l'offre abandonnée** | **Fait et déployé le 18/09** (PR #35) : CGV, politique de confidentialité, article Thierry, grilles du CRM et de la création visuelle. Trouvés en chemin et supprimés : `CreationVisuellePage.tsx`, orpheline avec une troisième grille morte, et `public/sitemap.xml`, écrasé à chaque build et qui listait encore Thierry sans aucune réalisation. | **Hors dépôt :** le document SLA dans Notion décrit toujours l'ancienne offre. Le renvoi vers lui a été retiré des CGV, le document reste à refaire. |
+| 0b | **La sonde Audityo écrit dans la boîte d'Audityo** | Les quatre nœuds de sonde sont posés et actifs dans `ydW4SMHaeQQ58O4v` (19/09), et les deux routes backend sont en production. Mais la sonde traverse le workflow Audityo **en entier**, boîte comprise : `info@audityo.eu` recevra un « [Audityo] Message de Sonde Surveillance » par jour. Un canal qu'on apprend à ignorer ne signale plus rien — c'est la panne même qu'on cherche à éviter. | **Ajouter un nœud `IF` « Sonde ? »** dans `PeZexnxVbueaKV81`, entre `Message valide ?` et `Relayer vers la boîte`, laissant passer tout ce dont l'e-mail n'est pas `sonde-audityo@surveillance.ainspiration.eu`. La branche CRM reste inchangée : c'est elle qu'on surveille. `typeVersion: 2` **et** `conditions.options.version: 2`, sinon l'IF laisse tout passer sans avertissement. La modification de ce workflow a été refusée dans la session du 19/09. |
 | 1 | **Vitrine des réalisations** (`/realisations` + une fiche par projet) | **Construite et en production depuis le 04/09** — **15** fiches dans `src/data/realisations.ts` (Rampa retiré le 18/09), `RealisationsPage.tsx` et `RealisationDetailPage.tsx`, branche `feat/realisations` fusionnée dans `main`. Vérifié le 18/09 : `/realisations` et `/realisations/facturation-automatisee` répondent 200. Matériel de cadrage dans `docs/audit-realisations.md`, `docs/realisations-chiffres.md`, `docs/PROMPT-realisations.md`. | Rien de bloquant. Si enrichissement il y a (captures, chiffres vérifiés), il se décide fiche par fiche — jamais de capture inventée. |
 | 2 | **Chaîne de publication** | Correctif antislashes posé à la source, 2 articles sur 95 nettoyés en base. | Vérifier la publication du **lundi 21/09** : les trois langues doivent sortir. Si EN/NL échouent encore, c'est que la cause n'était pas uniquement l'échappement. |
 | 2b | **L'article du 16/09 n'a pas ses versions EN et NL** | Trouvé par le contrôle de santé après le déploiement du 19/09 : zéro lien `hreflang` sur cette page, quatre sur toutes les autres. Séquelle de l'incident des antislashes — le correctif est posé pour les articles suivants, celui-là n'a jamais été regénéré. | Relancer la traduction de cet article seul, puis revérifier que `node scripts/health-check.mjs` ne compte plus aucun échec. |

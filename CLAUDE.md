@@ -480,7 +480,7 @@ que la réponse des pages — un 200 ne prouve rien.
 Workflow n8n **« AInspiration — Surveillance parcours métier »** (`ydW4SMHaeQQ58O4v`),
 tous les jours à 6h15, rattaché à l'`Error trigger` (`qoHCxT04kuGtqRf7`).
 
-Six contrôles, en série, chacun en `continueRegularOutput` pour que le verdict voie tout :
+Sept contrôles, en série, chacun en `continueRegularOutput` pour que le verdict voie tout :
 
 | Contrôle | Attendu | Détecte |
 |---|---|---|
@@ -490,10 +490,33 @@ Six contrôles, en série, chacun en `continueRegularOutput` pour que le verdict
 | Jeton CRM | 200 | le jeton de l'auto-blog et de la newsletter est mort |
 | Fraîcheur du contenu | < 10 jours | la chaîne éditoriale est à l'arrêt |
 | Liens d'articles dans le **HTML brut** | ≥ 5 | régression SEO invisible en HTTP 200 |
+| Parcours de contact Audityo (19/09) | ligne en base < 2 min, `source = formulaire-audityo` | le formulaire d'Audityo est muet |
 
 Points à ne pas défaire :
 
-- **La fiche de sonde ne doit pas être supprimée.** `sonde-parcours@surveillance.ainspiration.eu`,
+- **Le 200 du webhook `audityo-contact` ne prouve RIEN, et ne doit jamais entrer dans le
+  verdict autrement qu'en complément.** Son paramètre `responseMode` est posé à
+  l'intérieur de `options`, alors que le nœud le lit au premier niveau : il est ignoré, le
+  mode effectif reste `onReceived`, et la réponse part avant la moindre exécution. Ce 200
+  est arrivé pendant six jours pendant que le formulaire était muet. Seule la relecture en
+  base compte — `GET /api/ingest/probe/audityo`, sous `INGEST_SECRET`.
+- **La fiche de sonde Audityo, elle, se PURGE** (`DELETE /api/ingest/probe/audityo`), à
+  l'inverse de celle du parcours prospect. Elle porte `source = 'formulaire-audityo'`,
+  exactement ce qu'écrit le vrai formulaire — c'est tout l'intérêt — et compterait donc
+  comme un prospect Audityo réel dans `LeadSourceChart` et dans les rapports. La purge
+  efface aussi les lignes d'`activities` qui la visent : `entity_id` n'a pas de clé
+  étrangère, elles resteraient orphelines et le flux d'activité de l'administrateur
+  recevrait un « Nouveau contact via formulaire-audityo » par jour.
+- **L'adresse purgée est figée dans le code du backend, jamais prise dans la requête.**
+  C'est ce qui permet de confier un `DELETE` au secret d'ingestion plutôt qu'à un compte
+  Postgres : la route ne peut viser que cette fiche-là, quoi qu'on lui envoie. Verrouillé
+  par `docker/backend/test/audityo-probe.test.mjs`. **Ne jamais donner à n8n une
+  credential Postgres pour surveiller un formulaire** — ce serait rouvrir exactement ce
+  que la décision du 16/09 avait fermé.
+- **La sonde n'envoie pas de `company_name`.** Il ferait naître une ligne dans `companies`
+  que la purge ne couvre pas. Et son `message` fait plus de 20 caractères, sans quoi le
+  garde `Message valide ?` du workflow Audityo le rejette en silence.
+- **La fiche de sonde du parcours prospect, elle, ne doit pas être supprimée.** `sonde-parcours@surveillance.ainspiration.eu`,
   `source = sonde-surveillance`. L'ingestion étant idempotente sur l'email, il n'y en aura
   jamais qu'une : c'est elle qui prouve que la chaîne écrit réellement en base.
 - **Un 400 attendu vaut succès** sur le contrôle du secret : c'est la preuve que
@@ -626,7 +649,7 @@ Le container télécharge le frontend depuis Netlify au démarrage selon `docker
 - `DATABASE_URL` ou `DB_HOST` + `DB_PORT` + `DB_NAME` + `DB_USER` + `DB_PASSWORD`
 - `JWT_SECRET`
 - `PORT` (3001)
-- `INGEST_SECRET` — ingestion des prospects et sonde de surveillance
+- `INGEST_SECRET` — ingestion des prospects, sonde de surveillance, relecture et purge de la sonde Audityo
 - `SERVICE_SECRET` — publication de l'auto-blog et lecture des abonnés par n8n
 
 ---
