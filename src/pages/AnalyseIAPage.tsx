@@ -62,7 +62,7 @@ const AnalyseIAPage: React.FC = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white">
+    <section className="bg-linear-to-b from-gray-50 to-white">
       <SEOHead
         title={t('seo.title')}
         description={t('seo.description')}
@@ -109,7 +109,7 @@ const AnalyseIAPage: React.FC = () => {
               <ul className="space-y-2">
                 {feature.benefits.map((benefit, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                     <span className="text-gray-700">{benefit}</span>
                   </li>
                 ))}
@@ -167,7 +167,7 @@ const AnalyseIAPage: React.FC = () => {
                   <ul className="space-y-2">
                     {useCase.examples.map((example, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                         <span className="text-gray-700">{example}</span>
                       </li>
                     ))}
@@ -255,19 +255,19 @@ const AnalyseIAPage: React.FC = () => {
 
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                   <span className="text-gray-700">{t('cta.check1')}</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                   <span className="text-gray-700">{t('cta.check2')}</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                   <span className="text-gray-700">{t('cta.check3')}</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                   <span className="text-gray-700">{t('cta.check4')}</span>
                 </div>
               </div>

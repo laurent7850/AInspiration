@@ -87,8 +87,8 @@ export default function SignInForm() {
         <div className="mt-6 p-4 bg-indigo-50 border border-indigo-200 rounded-lg">
           <p className="text-sm font-medium text-indigo-800 mb-2">Accès démo</p>
           <div className="space-y-1 text-sm text-indigo-700">
-            <p>Email : <code className="bg-indigo-100 px-1.5 py-0.5 rounded font-mono text-xs">demo@ainspiration.eu</code></p>
-            <p>Mot de passe : <code className="bg-indigo-100 px-1.5 py-0.5 rounded font-mono text-xs">Demo2026!</code></p>
+            <p>Email : <code className="bg-indigo-100 px-1.5 py-0.5 rounded-sm font-mono text-xs">demo@ainspiration.eu</code></p>
+            <p>Mot de passe : <code className="bg-indigo-100 px-1.5 py-0.5 rounded-sm font-mono text-xs">Demo2026!</code></p>
           </div>
           <button
             type="button"

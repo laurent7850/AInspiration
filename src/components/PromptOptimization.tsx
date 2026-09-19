@@ -67,7 +67,7 @@ export default function PromptOptimization() {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white">
+    <section className="bg-linear-to-b from-gray-50 to-white">
       {/* Hero — Aurora declension */}
       <div className="relative bg-canvas text-ink pt-28 lg:pt-32 pb-12 lg:pb-16 mb-16">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -167,12 +167,12 @@ export default function PromptOptimization() {
               </button>
             </div>
             <div className="grid grid-cols-2 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs">
                 <Clock className="w-8 h-8 text-white mx-auto mb-2" />
                 <div className="text-3xl font-bold mb-1">-60%</div>
                 <div className="text-indigo-100">{t('optimization.cta.timeSavedLabel')}</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs">
                 <Users className="w-8 h-8 text-white mx-auto mb-2" />
                 <div className="text-3xl font-bold mb-1">100%</div>
                 <div className="text-indigo-100">{t('animatedStats.eu')}</div>

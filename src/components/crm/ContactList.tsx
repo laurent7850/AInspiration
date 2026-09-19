@@ -134,12 +134,12 @@ const ContactList: React.FC<ContactListProps> = ({ onCreateNew, onEditContact })
   if (query.isError) {
     return (
       <div className="bg-red-50 text-red-600 p-4 rounded-lg flex items-start gap-3">
-        <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+        <AlertCircle className="w-5 h-5 mt-0.5 shrink-0" />
         <div className="flex-1">
           <p>Impossible de charger les contacts.</p>
           <button
             onClick={() => query.refetch()}
-            className="mt-2 text-white bg-red-600 px-4 py-2 rounded hover:bg-red-700"
+            className="mt-2 text-white bg-red-600 px-4 py-2 rounded-sm hover:bg-red-700"
           >
             Réessayer
           </button>
@@ -175,7 +175,7 @@ const ContactList: React.FC<ContactListProps> = ({ onCreateNew, onEditContact })
       </div>
 
       <div className="mb-6 flex flex-col md:flex-row gap-4">
-        <div className="relative flex-grow">
+        <div className="relative grow">
           <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <input
             type="text"
@@ -239,7 +239,7 @@ const ContactList: React.FC<ContactListProps> = ({ onCreateNew, onEditContact })
                     type="checkbox"
                     checked={selectedContacts.size === filteredContacts.length && filteredContacts.length > 0}
                     onChange={handleSelectAll}
-                    className="w-4 h-4 text-indigo-600 rounded focus:ring-indigo-500"
+                    className="w-4 h-4 text-indigo-600 rounded-sm focus:ring-indigo-500"
                   />
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom</th>
@@ -264,12 +264,12 @@ const ContactList: React.FC<ContactListProps> = ({ onCreateNew, onEditContact })
                       type="checkbox"
                       checked={selectedContacts.has(contact.id)}
                       onChange={() => handleSelectContact(contact.id)}
-                      className="w-4 h-4 text-indigo-600 rounded focus:ring-indigo-500"
+                      className="w-4 h-4 text-indigo-600 rounded-sm focus:ring-indigo-500"
                     />
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10 bg-indigo-100 rounded-full flex items-center justify-center">
+                      <div className="shrink-0 h-10 w-10 bg-indigo-100 rounded-full flex items-center justify-center">
                         <span className="text-indigo-600 font-medium">
                           {getFullName(contact).substring(0, 2).toUpperCase()}
                         </span>

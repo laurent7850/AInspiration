@@ -109,7 +109,7 @@ const LeadSourceChart: React.FC<LeadSourceChartProps> = ({ contacts }) => {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex flex-grow items-center justify-center">
+      <div className="flex grow items-center justify-center">
         <div className="relative" style={{ width: `${size}px`, height: `${size}px` }}>
           <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
             {segments.map((segment, i) => (
@@ -146,7 +146,7 @@ const LeadSourceChart: React.FC<LeadSourceChartProps> = ({ contacts }) => {
         {sourceData.map((source, i) => (
           <div key={i} className="flex items-center gap-2">
             <div 
-              className="w-3 h-3 rounded-full flex-shrink-0" 
+              className="w-3 h-3 rounded-full shrink-0" 
               style={{ backgroundColor: source.color }}
             />
             <div className="flex justify-between w-full">

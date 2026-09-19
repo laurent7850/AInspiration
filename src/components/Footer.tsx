@@ -98,7 +98,7 @@ export default function Footer() {
             <h3 className="text-xs font-semibold text-secondary uppercase tracking-[0.15em] mb-5">{t('footer.sections.contact')}</h3>
             <address className="not-italic space-y-3">
               <div className="flex items-start gap-3 text-sm text-secondary">
-                <MapPin className="w-4 h-4 flex-shrink-0 text-accent mt-0.5" />
+                <MapPin className="w-4 h-4 shrink-0 text-accent mt-0.5" />
                 <div>
                   <p>{t('footer.address.street')}</p>
                   <p>{t('footer.address.city')}</p>

@@ -241,14 +241,14 @@ const LinkedinPage: React.FC = () => {
           {/* Messages */}
           {error && (
             <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-700">
-              <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+              <AlertTriangle className="w-4 h-4 shrink-0" />
               <span className="text-sm">{error}</span>
               <button onClick={clearMessages} className="ml-auto"><X className="w-4 h-4" /></button>
             </div>
           )}
           {success && (
             <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg flex items-center gap-2 text-green-700">
-              <CheckCircle className="w-4 h-4 flex-shrink-0" />
+              <CheckCircle className="w-4 h-4 shrink-0" />
               <span className="text-sm">{success}</span>
               <button onClick={clearMessages} className="ml-auto"><X className="w-4 h-4" /></button>
             </div>
@@ -360,7 +360,7 @@ const LinkedinPage: React.FC = () => {
                 const StatusIcon = statusConf.icon;
 
                 return (
-                  <div key={post.id} className="bg-white border rounded-lg hover:shadow-sm transition-shadow">
+                  <div key={post.id} className="bg-white border rounded-lg hover:shadow-xs transition-shadow">
                     <div className="p-4">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1 min-w-0">
@@ -383,7 +383,7 @@ const LinkedinPage: React.FC = () => {
                           {post.hashtags?.length > 0 && (
                             <div className="flex flex-wrap gap-1 mt-2">
                               {post.hashtags.slice(0, 5).map((tag, i) => (
-                                <span key={i} className="text-xs text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">
+                                <span key={i} className="text-xs text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded-sm">
                                   {tag.startsWith('#') ? tag : `#${tag}`}
                                 </span>
                               ))}
@@ -391,7 +391,7 @@ const LinkedinPage: React.FC = () => {
                           )}
                         </div>
 
-                        <div className="flex items-center gap-1 flex-shrink-0">
+                        <div className="flex items-center gap-1 shrink-0">
                           <button
                             onClick={() => setSelectedPost(selectedPost?.id === post.id ? null : post)}
                             className="p-2 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg"

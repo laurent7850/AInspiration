@@ -150,7 +150,7 @@ export default function PopupNewsletter() {
 
   return (
     <div
-      className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 p-4"
+      className="fixed inset-0 z-999 flex items-center justify-center bg-black/60 p-4"
       onClick={(e) => { if (e.target === e.currentTarget) close(); }}
     >
       <div
@@ -165,7 +165,7 @@ export default function PopupNewsletter() {
           type="button"
           onClick={close}
           aria-label={t('newsletter.close', 'Fermer')}
-          className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+          className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-500"
         >
           <X className="h-6 w-6" aria-hidden="true" />
         </button>

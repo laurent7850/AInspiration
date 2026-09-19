@@ -31,7 +31,7 @@ export default function ConsentCheckbox({ id, checked, onChange, error }: Consen
           onChange={(e) => onChange(e.target.checked)}
           aria-invalid={error ? true : undefined}
           aria-describedby={error ? errorId : undefined}
-          className="mt-1 h-4 w-4 shrink-0 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+          className="mt-1 h-4 w-4 shrink-0 rounded-sm border-gray-300 text-indigo-600 focus:ring-indigo-500"
         />
         <span>
           {t('consent.label')}{' '}

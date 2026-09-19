@@ -67,7 +67,7 @@ const CRMSolutionPage: React.FC = () => {
   }>;
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white">
+    <section className="bg-linear-to-b from-gray-50 to-white">
       <SEOHead
         title={t('page.seo.title')}
         description={t('page.seo.description')}
@@ -117,7 +117,7 @@ const CRMSolutionPage: React.FC = () => {
               </div>
             </div>
             <div className="lg:col-span-5 hidden md:block">
-              <div className="relative rounded-[2rem] overflow-hidden ring-1 ring-white/15 shadow-[0_45px_90px_-25px_rgba(6,6,25,0.85)]">
+              <div className="relative rounded-4xl overflow-hidden ring-1 ring-white/15 shadow-[0_45px_90px_-25px_rgba(6,6,25,0.85)]">
                 <OptimizedImage
                   src="https://images.unsplash.com/photo-1551434678-e076c223a692"
                   alt={t('page.hero.imageAlt')}
@@ -166,7 +166,7 @@ const CRMSolutionPage: React.FC = () => {
               <ul className="space-y-2">
                 {feature.benefits.map((benefit, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-gray-600">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                     <span>{benefit}</span>
                   </li>
                 ))}

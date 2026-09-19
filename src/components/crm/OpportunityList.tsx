@@ -123,7 +123,7 @@ const OpportunityList: React.FC<OpportunityListProps> = ({ onCreateNew, onEditOp
         <p>{error}</p>
         <button 
           onClick={() => window.location.reload()} 
-          className="mt-2 text-white bg-red-600 px-4 py-2 rounded hover:bg-red-700"
+          className="mt-2 text-white bg-red-600 px-4 py-2 rounded-sm hover:bg-red-700"
         >
           Réessayer
         </button>
@@ -149,7 +149,7 @@ const OpportunityList: React.FC<OpportunityListProps> = ({ onCreateNew, onEditOp
 
       <div className="mb-6 flex flex-col md:flex-row gap-4">
         {/* Search */}
-        <div className="relative flex-grow">
+        <div className="relative grow">
           <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <input
             type="text"

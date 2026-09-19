@@ -150,7 +150,7 @@ const FollowUpSuggestions: React.FC<FollowUpSuggestionsProps> = ({
 
   if (isLoading) {
     return (
-      <div className="bg-white rounded-xl shadow p-6">
+      <div className="bg-white rounded-xl shadow-sm p-6">
         <div className="flex items-center space-x-2 mb-4">
           <Bell className="w-6 h-6 text-indigo-600" />
           <h2 className="text-lg font-semibold text-gray-900">Suggestions de relance IA</h2>
@@ -164,7 +164,7 @@ const FollowUpSuggestions: React.FC<FollowUpSuggestionsProps> = ({
   }
 
   return (
-    <div className="bg-white rounded-xl shadow p-6">
+    <div className="bg-white rounded-xl shadow-sm p-6">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
           <Bell className="w-6 h-6 text-indigo-600" />

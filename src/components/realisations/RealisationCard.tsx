@@ -63,7 +63,7 @@ const RealisationCard: React.FC<RealisationCardProps> = ({ realisation }) => {
 
   const body = (
     <>
-      <div className="aspect-[16/10] overflow-hidden rounded-t-card">{media}</div>
+      <div className="aspect-16/10 overflow-hidden rounded-t-card">{media}</div>
 
       <div className="flex flex-1 flex-col p-6">
         <div className="mb-3 flex flex-wrap items-center gap-2">
@@ -112,7 +112,7 @@ const RealisationCard: React.FC<RealisationCardProps> = ({ realisation }) => {
 
   return (
     <article className={`${shell} hover:border-ink/25`}>
-      <Link to={to} className="flex h-full flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+      <Link to={to} className="flex h-full flex-col focus:outline-hidden focus-visible:ring-2 focus-visible:ring-accent">
         {body}
       </Link>
     </article>

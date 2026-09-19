@@ -140,7 +140,7 @@ const AdvancedStats: React.FC<AdvancedStatsProps> = ({ opportunities, tasks, con
       <h2 className="text-xl font-semibold text-gray-900 mb-4">Statistiques avancées</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, index) => (
-          <div key={index} className="bg-white rounded-xl shadow p-5">
+          <div key={index} className="bg-white rounded-xl shadow-sm p-5">
             <div className="flex justify-between items-start mb-3">
               <div className={`${stat.bgColor} p-2 rounded-lg`}>
                 <stat.icon className={`w-6 h-6 ${stat.iconColor}`} />
@@ -157,19 +157,19 @@ const AdvancedStats: React.FC<AdvancedStatsProps> = ({ opportunities, tasks, con
       </div>
 
       <div className="mt-6 grid md:grid-cols-3 gap-4">
-        <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-5 border border-indigo-200">
+        <div className="bg-linear-to-br from-indigo-50 to-indigo-100 rounded-xl p-5 border border-indigo-200">
           <h3 className="text-sm font-medium text-indigo-900 mb-2">Pipeline actif</h3>
           <p className="text-2xl font-bold text-indigo-600">{formatCurrency(pipelineValue)}</p>
           <p className="text-xs text-indigo-700 mt-1">{activeOpportunities.length} opportunités en cours</p>
         </div>
 
-        <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-5 border border-green-200">
+        <div className="bg-linear-to-br from-green-50 to-green-100 rounded-xl p-5 border border-green-200">
           <h3 className="text-sm font-medium text-green-900 mb-2">CA généré</h3>
           <p className="text-2xl font-bold text-green-600">{formatCurrency(totalWonValue)}</p>
           <p className="text-xs text-green-700 mt-1">Total des affaires gagnées</p>
         </div>
 
-        <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-5 border border-purple-200">
+        <div className="bg-linear-to-br from-purple-50 to-purple-100 rounded-xl p-5 border border-purple-200">
           <h3 className="text-sm font-medium text-purple-900 mb-2">Contacts actifs</h3>
           <p className="text-2xl font-bold text-purple-600">{contacts.length}</p>
           <p className="text-xs text-purple-700 mt-1">{contactCompanyRate.toFixed(0)}% liés à une entreprise</p>

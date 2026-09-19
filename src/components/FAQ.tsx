@@ -47,7 +47,7 @@ export default function FAQ() {
                   className="w-full flex items-center justify-between py-6 text-left group min-h-[44px]"
                 >
                   <span className="font-semibold text-ink pr-4 tracking-tight transition-colors">{question}</span>
-                  <ChevronDown className={`w-5 h-5 text-accent flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-5 h-5 text-accent shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
                 </button>
                 <div
                   className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-40 pb-6' : 'max-h-0'}`}

@@ -76,7 +76,7 @@ const ReportFilters: React.FC<ReportFiltersProps> = ({ filters, onFilterChange }
                       : 'hover:bg-gray-50 text-gray-700'
                   }`}
                 >
-                  <div className={`w-4 h-4 rounded border flex items-center justify-center ${
+                  <div className={`w-4 h-4 rounded-sm border flex items-center justify-center ${
                     isSelected(filterName, option.value)
                       ? 'bg-indigo-600 border-indigo-600'
                       : 'border-gray-300'

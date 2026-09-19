@@ -1,6 +1,86 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: Outfit, system-ui, -apple-system, sans-serif;
+  --font-display: Outfit, system-ui, -apple-system, sans-serif;
+  --font-mono: JetBrains Mono, Geist Mono, monospace;
+
+  --color-canvas: #ffffff;
+  --color-surface: #f8f8fa;
+  --color-ink: #1e293b;
+  --color-secondary: #6b7280;
+  --color-muted: #9aa1ac;
+  --color-line: #e4e4ea;
+
+  --color-accent: #4540d0;
+  --color-accent-light: #5f58da;
+  --color-accent-dark: #3a35b8;
+  --color-accent-wash: #eeedfc;
+
+  --color-indigo-50: #f1f0fd;
+  --color-indigo-100: #e5e3fb;
+  --color-indigo-200: #cdcaf6;
+  --color-indigo-300: #ada8ef;
+  --color-indigo-400: #837ce4;
+  --color-indigo-500: #5f58da;
+  --color-indigo-600: #4540d0;
+  --color-indigo-700: #3a35b8;
+  --color-indigo-800: #322e96;
+  --color-indigo-900: #2c2a77;
+  --color-indigo-950: #1b1946;
+
+  --radius-card: 1.375rem;
+  --radius-soft: 0.875rem;
+  --radius-button: 9999px;
+
+  --shadow-diffuse: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+/*
+  Deux autres défauts changent en v4, que le codemod ne compense pas — mesurés en
+  comparant la production (v3) à cette branche, sur /contact :
+
+  1. Le curseur des boutons. Preflight v4 laisse « cursor: default », là où v3 posait
+     « pointer ». Sur /contact, 24 boutons sur 26 perdaient le curseur main : rien ne
+     casse, rien ne se voit sur une capture, et pourtant tout le site paraît mort au
+     survol.
+  2. La couleur des placeholders. v3 : gris 400. v4 : la couleur du texte à 50 %, soit
+     de l'encre délavée. Aucun champ du dépôt ne porte de classe « placeholder-* » :
+     les dix champs à placeholder en dépendent tous.
+
+  Ces règles rétablissent le rendu v3. Les retirer un jour suppose de poser les classes
+  explicites sur chaque élément concerné.
+*/
+@layer base {
+  button:not(:disabled),
+  [role='button']:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-gray-400);
+  }
+}
 
 /* Self-hosted Outfit (variable font) — removes the Google Fonts round-trip so the
    LCP text can render with the brand font near FCP instead of swapping in late. */
@@ -24,26 +104,22 @@
 :root {
   /* Design tokens — Atelier clair, fond « Craie » (2026-09-10).
      Accent et encre sont les deux couleurs du logo, échantillonnées sur
-     public/logo-ainspiration.png : #4540D0 et #1E293B. */
-  --color-canvas: #FFFFFF;
-  --color-surface: #F8F8FA;
-  --color-ink: #1E293B;
-  --color-secondary: #6B7280;
-  --color-muted: #9AA1AC;
-  --color-line: #E4E4EA;
-  --color-accent: #4540D0;
-  --color-accent-light: #5F58DA;
-  --color-accent-dark: #3A35B8;
-  --color-accent-wash: #EEEDFC;
+     public/logo-ainspiration.png : #4540D0 et #1E293B.
+
+     Depuis Tailwind 4, ces jetons-là vivent dans le bloc « @theme » en tête de fichier :
+     Tailwind les émet lui-même dans :root ET en fait des utilitaires (bg-canvas,
+     text-ink, border-line…). Les redéclarer ici ferait deux sources de vérité dont la
+     seconde gagne en silence. Une couleur de marque ou l'ombre se modifient donc dans
+     « @theme », plus ici.
+
+     Ne reste ci-dessous que ce que « @theme » ne porte pas : les couleurs sémantiques,
+     lues en var() et dont on ne veut pas d'utilitaires, et le correctif de hauteur iOS. */
 
   /* Semantic */
   --color-success: #10B981;
   --color-error: #EF4444;
   --color-warning: #F59E0B;
   --color-info: #0EA5E9;
-
-  /* Ombre — uniquement pour ce qui flotte réellement (menus déroulants) */
-  --shadow-diffuse: 0 20px 40px -15px rgba(0,0,0,0.05);
 
   /* Viewport height fix pour iOS */
   --vh: 1vh;
@@ -487,7 +563,7 @@ a {
 
 /* Optimisation de la lisibilité des formulaires — focus dans l'accent, pas gris */
 input, select, textarea {
-  @apply focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 focus:outline-none;
+  @apply focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 focus:outline-hidden;
 }
 
 /* Fix for iOS Safari's 100vh issue */

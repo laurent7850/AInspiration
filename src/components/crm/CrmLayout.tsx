@@ -129,7 +129,7 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
       >
         <div className="p-6">
           <div className="flex items-center space-x-2 mb-6">
-            <div className="p-1.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg">
+            <div className="p-1.5 bg-linear-to-r from-indigo-500 to-purple-600 rounded-lg">
               <Brain className="w-5 h-5 text-white" />
             </div>
             <h2 className="text-xl font-bold text-gray-900">CRM Intelligent</h2>
@@ -159,7 +159,7 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
                   className={`flex items-center w-full px-3 py-2 rounded-lg transition-colors ${
                     isActivePath(item.path)
                       ? item.highlight
-                        ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white'
+                        ? 'bg-linear-to-r from-indigo-500 to-purple-600 text-white'
                         : 'bg-indigo-50 text-indigo-600'
                       : item.highlight
                         ? 'text-indigo-700 hover:bg-indigo-50'

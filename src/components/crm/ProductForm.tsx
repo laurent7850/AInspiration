@@ -304,7 +304,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ productId, onClose, onSaved }
                 type="checkbox"
                 checked={product.is_active}
                 onChange={handleChange}
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded-sm border-gray-300 text-indigo-600 focus:ring-indigo-500"
               />
             </div>
             <div className="ml-3 text-sm">

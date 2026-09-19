@@ -18,7 +18,7 @@ const Skeleton: React.FC<SkeletonProps> = ({
   const baseClasses = 'bg-gray-200';
 
   const variantClasses = {
-    text: 'rounded',
+    text: 'rounded-sm',
     circular: 'rounded-full',
     rectangular: '',
     rounded: 'rounded-lg'
@@ -46,7 +46,7 @@ const Skeleton: React.FC<SkeletonProps> = ({
 
 // Skeleton pour une carte
 export const CardSkeleton: React.FC<{ className?: string }> = ({ className = '' }) => (
-  <div className={`bg-white rounded-xl shadow p-6 ${className}`}>
+  <div className={`bg-white rounded-xl shadow-sm p-6 ${className}`}>
     <Skeleton variant="rounded" height={200} className="mb-4" />
     <Skeleton variant="text" width="60%" height={24} className="mb-2" />
     <Skeleton variant="text" width="100%" height={16} className="mb-1" />
@@ -56,7 +56,7 @@ export const CardSkeleton: React.FC<{ className?: string }> = ({ className = '' 
 
 // Skeleton pour le Hero
 export const HeroSkeleton: React.FC = () => (
-  <section className="relative overflow-hidden bg-gradient-to-b from-indigo-50 to-white pt-20 lg:pt-32 pb-12 lg:pb-20">
+  <section className="relative overflow-hidden bg-linear-to-b from-indigo-50 to-white pt-20 lg:pt-32 pb-12 lg:pb-20">
     <div className="container mx-auto px-4">
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div className="text-center lg:text-left">
@@ -114,7 +114,7 @@ export const TestimonialsSkeleton: React.FC = () => (
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {[1, 2, 3].map((i) => (
-          <div key={i} className="bg-white rounded-xl shadow p-6">
+          <div key={i} className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center gap-4 mb-4">
               <Skeleton variant="circular" width={48} height={48} />
               <div>
@@ -174,7 +174,7 @@ export const TableSkeleton: React.FC<{ rows?: number; cols?: number }> = ({
   rows = 5,
   cols = 4
 }) => (
-  <div className="bg-white rounded-lg shadow overflow-hidden">
+  <div className="bg-white rounded-lg shadow-sm overflow-hidden">
     <div className="bg-gray-50 px-6 py-3 border-b flex gap-4">
       {Array.from({ length: cols }).map((_, i) => (
         <Skeleton key={i} variant="text" width={100} height={16} />

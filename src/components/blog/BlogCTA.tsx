@@ -41,7 +41,7 @@ const BlogCTA: React.FC<BlogCTAProps> = ({ variant = 'default' }) => {
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             {[1, 2, 3].map((num) => (
               <div key={num} className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-white/70 flex-shrink-0 mt-0.5" />
+                <CheckCircle className="w-6 h-6 text-white/70 shrink-0 mt-0.5" />
                 <span className="text-white/90">{t(`cta.${variant}.benefits.${num}`)}</span>
               </div>
             ))}

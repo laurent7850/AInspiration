@@ -53,7 +53,7 @@ export default function BlogArticleLayout({
             alt={title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+          <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent flex items-end">
             <div className="p-8 text-white">
               <h1 className="text-4xl font-bold mb-2">{title}</h1>
               <p className="text-xl text-gray-200">{subtitle}</p>
@@ -90,7 +90,7 @@ export default function BlogArticleLayout({
                 <ul className="space-y-2">
                   {section.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-gray-600">
-                      <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2 flex-shrink-0" />
+                      <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2 shrink-0" />
                       <span>{feature}</span>
                     </li>
                   ))}

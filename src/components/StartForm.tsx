@@ -204,7 +204,7 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
 
   if (isSubmitted) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/60 modal-overlay">
+      <div className="fixed inset-0 flex items-center justify-center z-9999 bg-black/60 modal-overlay">
         <div className="bg-white rounded-2xl max-w-md mx-auto p-6 text-center shadow-2xl transform animate-fadeIn max-h-[90vh] overflow-auto">
           <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Mail className="w-6 h-6 text-green-500" />
@@ -227,7 +227,7 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/60 modal-overlay p-4 md:p-0">
+    <div className="fixed inset-0 flex items-center justify-center z-9999 bg-black/60 modal-overlay p-4 md:p-0">
       <div 
         ref={modalRef}
         className="bg-white rounded-2xl mx-auto shadow-2xl transform animate-fadeIn max-h-[90vh] overflow-auto w-full max-w-md"
@@ -235,7 +235,7 @@ export default function StartForm({ isOpen, onClose, productId }: StartFormProps
         <div className="relative p-5 md:p-6">
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 p-1 z-10 bg-white rounded-full shadow-sm"
+            className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 p-1 z-10 bg-white rounded-full shadow-xs"
             aria-label={t('contact.close')}
           >
             <X className="w-5 h-5" />

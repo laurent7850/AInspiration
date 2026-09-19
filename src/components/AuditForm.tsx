@@ -272,7 +272,7 @@ export default function AuditForm({ isOpen, onClose }: AuditFormProps) {
   };
 
 const inputClass = (field: string) =>
-    `w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all ${
+    `w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-hidden transition-all ${
       fieldErrors[field] ? 'border-red-400 bg-red-50' : 'border-gray-300'
     }`;
 
@@ -289,7 +289,7 @@ const inputClass = (field: string) =>
   if (isSubmitted) {
     return (
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs"
         onClick={handleClose}
       >
         <div
@@ -332,7 +332,7 @@ const inputClass = (field: string) =>
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs"
       onClick={handleClose}
     >
       <div
@@ -437,7 +437,7 @@ const inputClass = (field: string) =>
                   {SECTOR_KEYS.map(key => (
                     <label key={key} className={radioClass(formData.sector === key)}>
                       <input type="radio" name="sector" value={key} checked={formData.sector === key} onChange={() => updateField('sector', key)} className="sr-only" />
-                      <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${formData.sector === key ? 'border-indigo-500' : 'border-gray-300'}`}>
+                      <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${formData.sector === key ? 'border-indigo-500' : 'border-gray-300'}`}>
                         {formData.sector === key && <div className="w-2 h-2 rounded-full bg-indigo-500" />}
                       </div>
                       <span className="text-sm">{t(`sectors.${key}`)}</span>
@@ -461,7 +461,7 @@ const inputClass = (field: string) =>
                   {TEAM_SIZE_KEYS.map(key => (
                     <label key={key} className={radioClass(formData.teamSize === key)}>
                       <input type="radio" name="teamSize" value={key} checked={formData.teamSize === key} onChange={() => updateField('teamSize', key)} className="sr-only" />
-                      <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${formData.teamSize === key ? 'border-indigo-500' : 'border-gray-300'}`}>
+                      <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${formData.teamSize === key ? 'border-indigo-500' : 'border-gray-300'}`}>
                         {formData.teamSize === key && <div className="w-2 h-2 rounded-full bg-indigo-500" />}
                       </div>
                       <Users className="w-4 h-4 text-gray-400" />
@@ -495,7 +495,7 @@ const inputClass = (field: string) =>
                   {PROCESS_KEYS.map(key => (
                     <label key={key} className={checkboxClass(formData.processes.includes(key))}>
                       <input type="checkbox" name="processes" value={key} checked={formData.processes.includes(key)} onChange={() => toggleProcess(key)} className="sr-only" />
-                      <div className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 ${formData.processes.includes(key) ? 'border-indigo-500 bg-indigo-500' : 'border-gray-300'}`}>
+                      <div className={`w-5 h-5 rounded-sm border-2 flex items-center justify-center shrink-0 ${formData.processes.includes(key) ? 'border-indigo-500 bg-indigo-500' : 'border-gray-300'}`}>
                         {formData.processes.includes(key) && <CheckCircle className="w-3 h-3 text-white" />}
                       </div>
                       <span className="text-sm">{t(`processes.${key}`)}</span>
@@ -518,7 +518,7 @@ const inputClass = (field: string) =>
                   {WEEKLY_HOURS_KEYS.map(key => (
                     <label key={key} className={radioClass(formData.weeklyHoursWasted === key)}>
                       <input type="radio" name="weeklyHoursWasted" value={key} checked={formData.weeklyHoursWasted === key} onChange={() => updateField('weeklyHoursWasted', key)} className="sr-only" />
-                      <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${formData.weeklyHoursWasted === key ? 'border-indigo-500' : 'border-gray-300'}`}>
+                      <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${formData.weeklyHoursWasted === key ? 'border-indigo-500' : 'border-gray-300'}`}>
                         {formData.weeklyHoursWasted === key && <div className="w-2 h-2 rounded-full bg-indigo-500" />}
                       </div>
                       <Clock className="w-4 h-4 text-gray-400" />
@@ -555,7 +555,7 @@ const inputClass = (field: string) =>
                   {AI_EXPERIENCE_KEYS.map(key => (
                     <label key={key} className={radioClass(formData.aiExperience === key)}>
                       <input type="radio" name="aiExperience" value={key} checked={formData.aiExperience === key} onChange={() => updateField('aiExperience', key)} className="sr-only" />
-                      <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${formData.aiExperience === key ? 'border-indigo-500' : 'border-gray-300'}`}>
+                      <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${formData.aiExperience === key ? 'border-indigo-500' : 'border-gray-300'}`}>
                         {formData.aiExperience === key && <div className="w-2 h-2 rounded-full bg-indigo-500" />}
                       </div>
                       <span className="text-sm">{t(`aiExperience.${key}`)}</span>
@@ -570,7 +570,7 @@ const inputClass = (field: string) =>
                   {BUDGET_KEYS.map(key => (
                     <label key={key} className={radioClass(formData.budget === key)}>
                       <input type="radio" name="budget" value={key} checked={formData.budget === key} onChange={() => updateField('budget', key)} className="sr-only" />
-                      <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${formData.budget === key ? 'border-indigo-500' : 'border-gray-300'}`}>
+                      <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${formData.budget === key ? 'border-indigo-500' : 'border-gray-300'}`}>
                         {formData.budget === key && <div className="w-2 h-2 rounded-full bg-indigo-500" />}
                       </div>
                       <span className="text-sm">{t(`budgets.${key}`)}</span>

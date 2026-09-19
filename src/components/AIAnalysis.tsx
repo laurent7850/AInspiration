@@ -21,7 +21,7 @@ export default function AIAnalysis() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-20 bg-linear-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -66,12 +66,12 @@ export default function AIAnalysis() {
               </button>
             </div>
             <div className="grid grid-cols-2 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs">
                 <Clock className="w-8 h-8 text-white mx-auto mb-2" />
                 <div className="text-3xl font-bold mb-1">24h</div>
                 <div className="text-indigo-100">{t('animatedStats.audit')}</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs">
                 <ShieldCheck className="w-8 h-8 text-white mx-auto mb-2" />
                 <div className="text-3xl font-bold mb-1">100%</div>
                 <div className="text-indigo-100">{t('animatedStats.eu')}</div>

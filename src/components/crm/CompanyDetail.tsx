@@ -84,7 +84,7 @@ const CompanyDetail: React.FC<CompanyDetailProps> = ({ companyId, onBack, onEdit
         <p>{error || "Entreprise introuvable"}</p>
         <button 
           onClick={onBack} 
-          className="mt-2 text-white bg-red-600 px-4 py-2 rounded hover:bg-red-700 flex items-center gap-2"
+          className="mt-2 text-white bg-red-600 px-4 py-2 rounded-sm hover:bg-red-700 flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" />
           Retour à la liste
@@ -165,7 +165,7 @@ const CompanyDetail: React.FC<CompanyDetailProps> = ({ companyId, onBack, onEdit
             <div className="space-y-4">
               {company.website && (
                 <div className="flex items-start gap-3">
-                  <Globe className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Globe className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm text-gray-500">Site web</p>
                     <a 
@@ -183,7 +183,7 @@ const CompanyDetail: React.FC<CompanyDetailProps> = ({ companyId, onBack, onEdit
               
               {company.address && (
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <MapPin className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm text-gray-500">Adresse</p>
                     <p className="whitespace-pre-wrap">{company.address}</p>
@@ -192,7 +192,7 @@ const CompanyDetail: React.FC<CompanyDetailProps> = ({ companyId, onBack, onEdit
               )}
               
               <div className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                <Clock className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
                 <div>
                   <p className="text-sm text-gray-500">Date de création</p>
                   <p>{formatDate(company.created_at)}</p>
@@ -306,7 +306,7 @@ const CompanyDetail: React.FC<CompanyDetailProps> = ({ companyId, onBack, onEdit
                           type="checkbox"
                           checked={task.completed}
                           readOnly
-                          className="mt-1 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                          className="mt-1 h-4 w-4 text-indigo-600 border-gray-300 rounded-sm"
                         />
                         <div>
                           <h3 className={`text-base font-medium ${task.completed ? 'text-gray-500 line-through' : 'text-gray-900'}`}>

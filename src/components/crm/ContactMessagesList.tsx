@@ -115,7 +115,7 @@ export default function ContactMessagesList({ onSelectMessage, selectedId }: Con
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm">
+    <div className="bg-white rounded-lg shadow-xs">
       <div className="p-4 border-b border-gray-200">
         <h2 className="text-xl font-semibold text-gray-900 mb-4">Messages de contact</h2>
 

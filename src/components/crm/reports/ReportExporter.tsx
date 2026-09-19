@@ -152,7 +152,7 @@ const ReportExporter: React.FC<ReportExporterProps> = ({ reportName, data, colum
               {exportError && <p className="text-xs text-red-500">{exportError}</p>}
               <button
                 onClick={() => setIsOpen(false)}
-                className="mt-2 text-center w-full py-1.5 text-sm text-gray-600 hover:text-gray-900 rounded"
+                className="mt-2 text-center w-full py-1.5 text-sm text-gray-600 hover:text-gray-900 rounded-sm"
               >
                 Fermer
               </button>

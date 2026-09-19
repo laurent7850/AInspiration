@@ -101,7 +101,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ productId, onBack, onEdit
         <p>{error || "Produit introuvable"}</p>
         <button 
           onClick={onBack} 
-          className="mt-2 text-white bg-red-600 px-4 py-2 rounded hover:bg-red-700 flex items-center gap-2"
+          className="mt-2 text-white bg-red-600 px-4 py-2 rounded-sm hover:bg-red-700 flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" />
           Retour à la liste
@@ -163,7 +163,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ productId, onBack, onEdit
             
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <CircleDollarSign className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                <CircleDollarSign className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
                 <div>
                   <p className="text-sm text-gray-500">Prix</p>
                   <p className="text-xl font-semibold">{formatCurrency(product.price, product.currency)}</p>
@@ -172,7 +172,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ productId, onBack, onEdit
               
               {product.category && (
                 <div className="flex items-start gap-3">
-                  <Tag className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Tag className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm text-gray-500">Catégorie</p>
                     <p className="text-lg">{product.category}</p>

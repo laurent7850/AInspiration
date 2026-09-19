@@ -100,7 +100,7 @@ const CompanyList: React.FC<CompanyListProps> = ({ onCreateNew, onEditCompany })
         <p>{error}</p>
         <button 
           onClick={() => window.location.reload()} 
-          className="mt-2 text-white bg-red-600 px-4 py-2 rounded hover:bg-red-700"
+          className="mt-2 text-white bg-red-600 px-4 py-2 rounded-sm hover:bg-red-700"
         >
           Réessayer
         </button>
@@ -126,7 +126,7 @@ const CompanyList: React.FC<CompanyListProps> = ({ onCreateNew, onEditCompany })
 
       <div className="mb-6">
         {/* Search */}
-        <div className="relative flex-grow">
+        <div className="relative grow">
           <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <input
             type="text"
@@ -170,7 +170,7 @@ const CompanyList: React.FC<CompanyListProps> = ({ onCreateNew, onEditCompany })
                 >
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10 bg-indigo-100 rounded-full flex items-center justify-center">
+                      <div className="shrink-0 h-10 w-10 bg-indigo-100 rounded-full flex items-center justify-center">
                         <Building2 className="h-5 w-5 text-indigo-600" />
                       </div>
                       <div className="ml-4">
