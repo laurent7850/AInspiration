@@ -15,7 +15,7 @@
     "diagnostic": {
       "name": "O1 — AI-diagnose",
       "description": "Twee dagen om te bepalen waar AI bij u thuishoort, en waar niet.",
-      "price": "€ 2.400",
+      "price": "€ 2.400",
       "priceNote": "excl. btw · twee dagen",
       "features": [
         "Twee dagen in uw werkelijke processen",
@@ -28,7 +28,7 @@
     "atelier": {
       "name": "O2 — Workshop",
       "description": "Uw teams, uw cases, uw tools — een halve of een hele dag.",
-      "price": "€ 900 / € 1.500",
+      "price": "€ 900 / € 1.500",
       "priceNote": "excl. btw · halve dag / hele dag",
       "features": [
         "Op uw eigen cases, niet op voorbeelden",
@@ -41,7 +41,7 @@
     "sprint": {
       "name": "O3 — Automatiseringssprint",
       "description": "Eén workflow ontworpen, gebouwd en in productie gezet.",
-      "price": "€ 3.500 – € 6.000",
+      "price": "€ 3.500 – € 6.000",
       "priceNote": "excl. btw · afhankelijk van het aantal integraties",
       "features": [
         "Scope vastgelegd en opgeschreven vóór de start",
@@ -54,7 +54,7 @@
     "pilote": {
       "name": "O4 — AI-piloot",
       "description": "Doorlopende begeleiding, zodat wat draait blijft draaien.",
-      "price": "€ 590",
+      "price": "€ 590",
       "priceNote": "/maand excl. btw · zes maanden engagement",
       "features": [
         "Een maandelijks overleg, beslissingen inbegrepen",
@@ -67,7 +67,7 @@
     "aiact": {
       "name": "O5 — AI Act-check",
       "description": "Waar u staat tegenover de Europese AI-verordening.",
-      "price": "€ 990",
+      "price": "€ 990",
       "priceNote": "excl. btw",
       "features": [
         "Een inventaris van uw AI-gebruik, formeel en informeel",

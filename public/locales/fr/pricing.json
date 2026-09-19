@@ -15,7 +15,7 @@
     "diagnostic": {
       "name": "O1 — Diagnostic IA",
       "description": "Deux jours pour savoir où l'IA a sa place chez vous, et où elle n'en a pas.",
-      "price": "2 400 €",
+      "price": "2 400 €",
       "priceNote": "HTVA · deux jours",
       "features": [
         "Deux jours d'immersion dans vos processus réels",
@@ -28,7 +28,7 @@
     "atelier": {
       "name": "O2 — Atelier",
       "description": "Vos équipes, vos cas, vos outils — une demi-journée ou une journée.",
-      "price": "900 € / 1 500 €",
+      "price": "900 € / 1 500 €",
       "priceNote": "HTVA · demi-journée / journée",
       "features": [
         "Sur vos propres cas, pas sur des exemples",
@@ -41,7 +41,7 @@
     "sprint": {
       "name": "O3 — Sprint automatisation",
       "description": "Un workflow conçu, construit et mis en production.",
-      "price": "3 500 – 6 000 €",
+      "price": "3 500 – 6 000 €",
       "priceNote": "HTVA · selon le nombre d'intégrations",
       "features": [
         "Périmètre fixé et écrit avant de commencer",
@@ -54,7 +54,7 @@
     "pilote": {
       "name": "O4 — Pilote IA",
       "description": "Un accompagnement continu, pour que ce qui tourne continue de tourner.",
-      "price": "590 €",
+      "price": "590 €",
       "priceNote": "/mois HTVA · engagement six mois",
       "features": [
         "Un point mensuel, arbitrages compris",
@@ -67,7 +67,7 @@
     "aiact": {
       "name": "O5 — Check AI Act",
       "description": "Où vous situez-vous face au règlement européen sur l'IA.",
-      "price": "990 €",
+      "price": "990 €",
       "priceNote": "HTVA",
       "features": [
         "Inventaire de vos usages d'IA, déclarés et informels",
