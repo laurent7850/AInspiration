@@ -151,6 +151,73 @@ app.get('/api/ingest/probe', ingestLimiter, async (req, res) => {
   }
 });
 
+// Sonde du parcours de contact Audityo — relecture et purge.
+//
+// Le webhook n8n `audityo-contact` repond 200 AVANT d'executer quoi que ce
+// soit : son parametre responseMode est pose dans `options`, ou le noeud ne le
+// lit pas, et le mode effectif reste donc `onReceived`. Ce 200 est arrive
+// pendant six jours alors que plus rien ne partait. Le code de statut ne prouve
+// rien ; la seule preuve qui vaille est la ligne ecrite dans `contacts`.
+//
+// Contrairement a la fiche de sonde du parcours prospect, celle-ci ne se garde
+// PAS. Elle porte `source = 'formulaire-audityo'` — exactement ce qu'ecrit le
+// vrai formulaire, c'est tout l'interet — et compterait donc comme un prospect
+// Audityo reel dans LeadSourceChart et dans les rapports. Elle est relue puis
+// purgee a chaque passage.
+//
+// L'adresse est figee dans le code et n'est JAMAIS prise dans la requete :
+// quoi qu'on envoie a la route de purge, elle ne peut effacer que cette
+// fiche-la. C'est ce qui permet de confier la purge au secret d'ingestion
+// plutot qu'a un acces d'ecriture sur le CRM.
+const AUDITYO_PROBE_EMAIL = 'sonde-audityo@surveillance.ainspiration.eu';
+
+app.get('/api/ingest/probe/audityo', ingestLimiter, async (req, res) => {
+  if (!ingestAuthorized(req)) return res.status(401).json({ error: 'Unauthorized' });
+  try {
+    const result = await pool.query(
+      'SELECT source, updated_at FROM contacts WHERE LOWER(email) = LOWER($1) ORDER BY updated_at DESC LIMIT 1',
+      [AUDITYO_PROBE_EMAIL]
+    );
+    if (!result.rows.length) return res.json({ exists: false, source: null, updated_at: null });
+    // `source` est rendu pour que la surveillance puisse l'exiger : il prouve
+    // que c'est bien le noeud d'ingestion du workflow Audityo qui a ecrit, et
+    // pas un autre chemin.
+    res.json({ exists: true, source: result.rows[0].source, updated_at: result.rows[0].updated_at });
+  } catch (error) {
+    console.error('[INGEST] Relecture de la sonde Audityo impossible:', error.message);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.delete('/api/ingest/probe/audityo', ingestLimiter, async (req, res) => {
+  if (!ingestAuthorized(req)) return res.status(401).json({ error: 'Unauthorized' });
+  try {
+    // Un seul enonce, donc atomique sans BEGIN/COMMIT explicite. Le second
+    // effacement est indispensable : `ingestContact` ecrit une activite a
+    // chaque passage et `activities.entity_id` n'a pas de cle etrangere. Sans
+    // lui, le flux d'activite de l'administrateur recevrait un « Nouveau
+    // contact via formulaire-audityo » par jour, pointant vers une fiche qui
+    // n'existe plus.
+    const result = await pool.query(
+      `WITH fiche AS (
+         DELETE FROM contacts WHERE LOWER(email) = LOWER($1) RETURNING id
+       ), traces AS (
+         DELETE FROM activities
+          WHERE entity_type = 'contact' AND entity_id IN (SELECT id FROM fiche)
+          RETURNING id
+       )
+       SELECT (SELECT COUNT(*) FROM fiche)::int  AS contacts,
+              (SELECT COUNT(*) FROM traces)::int AS activites`,
+      [AUDITYO_PROBE_EMAIL]
+    );
+    const { contacts, activites } = result.rows[0];
+    res.json({ deleted: contacts, activities_deleted: activites });
+  } catch (error) {
+    console.error('[INGEST] Purge de la sonde Audityo impossible:', error.message);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.post('/api/webhook/newsletter-send', webhookLimiter, requireAuth, async (req, res) => {
   try {
     const n8nUrl = `${N8N_BASE}/newsletter-send`;
