@@ -75,6 +75,11 @@ ou aux composants CRM.
   est sur un autre réseau Docker que n8n, d'où le script plutôt qu'un workflow).
 
 ### Ce qui est cassé, en pause, ou vide
+- **Ce dépôt GitHub est public.** Constaté le 19/09 (`private: false` sur l'API GitHub, et
+  `git ls-remote` répond sans authentification). Aucun secret n'a jamais été committé — vérifié
+  sur l'arbre actuel et sur l'historique complet de `.env.production` et `.env.development`, qui
+  n'ont jamais porté que des variables `VITE_`. Mais le dépôt n'a aucune raison d'être public.
+  **À passer en privé**, comme `autoseo`. Détail du constat dans la note Notion du 19/09.
 - *(Retiré le 18/09.)* Le workflow n8n **« Uptime Alert - Email Notification »**
   (`gcfMHZw6zHxAUUmI`) était actif, orphelin et cassé : son nœud Gmail lisait
   `{{ $json.email }}` alors que la charge utile d'un webhook arrive sous **`$json.body`** — le
