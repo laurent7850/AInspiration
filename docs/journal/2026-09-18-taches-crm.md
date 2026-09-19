@@ -3,7 +3,8 @@ date: 2026-09-18
 projet: AInspiration
 ou: Claude Code
 type: Avancée
-notion: non
+notion: https://app.notion.com/p/3e0fb662f4aa817fb8f6c5f749984789
+synchro: 2026-09-19
 prochaine-action: Refaire le document SLA dans Notion — la tâche est déposée dans le CRM
 ---
 

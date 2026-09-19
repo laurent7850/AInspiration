@@ -3,7 +3,8 @@ date: 2026-09-18
 projet: AInspiration
 ou: Claude Code
 type: Incident
-notion: non
+notion: https://app.notion.com/p/3e0fb662f4aa8157ac1df6acfaeef794
+synchro: 2026-09-19
 prochaine-action: Vérifier lundi matin que le signe de vie hebdomadaire part et qu'aucune alerte parasite n'a été émise entre-temps
 ---
 

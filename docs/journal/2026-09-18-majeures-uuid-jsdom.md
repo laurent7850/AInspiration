@@ -3,7 +3,8 @@ date: 2026-09-18
 projet: AInspiration
 ou: Claude Code
 type: Avancée
-notion: non
+notion: https://app.notion.com/p/3e0fb662f4aa81ff9d40dd1523b83837
+synchro: 2026-09-19
 prochaine-action: Tailwind 4 (#32) dans une session dédiée — sa CI échoue, c'est une refonte de thème
 ---
 
