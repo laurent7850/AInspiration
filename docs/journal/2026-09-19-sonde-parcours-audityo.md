@@ -64,7 +64,9 @@ après vérification que les 209 entrées du manifeste étaient bien servies par
   entre `Message valide ?` et `Relayer vers la boîte`, laissant passer tout ce qui n'est
   pas `sonde-audityo@surveillance.ainspiration.eu` — mais la modification de ce workflow
   m'a été refusée dans cette session. Sans elle, le canal devient du bruit qu'on apprend
-  à ignorer, ce qui est précisément la panne qu'on cherche à éviter.
+  à ignorer, ce qui est précisément la panne qu'on cherche à éviter. **Déposé dans le CRM**
+  (`handoff:ainspiration:sonde-audityo-filtre-mail`, échéance 21/09) : les opérations
+  exactes y sont, Laurent le pose lui-même ou m'autorise à modifier ce workflow.
 - **Le `responseMode` mal placé n'a pas été corrigé, délibérément.** Le remettre au
   premier niveau ferait basculer un formulaire vivant en `lastNode` : la réponse HTTP
   deviendrait celle du dernier nœud et arriverait ~3 s plus tard. C'est une décision de

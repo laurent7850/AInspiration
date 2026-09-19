@@ -171,7 +171,7 @@ ou aux composants CRM.
 |---|---|---|---|
 | 0 | **Les tâches de Laurent arrivent dans le CRM** | **Fait et déployé le 18/09** (PR #37). `migration-007` jouée et **vérifiée par requête** — le service de migration avale ses erreurs, on ne s'y fie pas. `TASK_SECRET` généré sur le VPS, dans le `.env` et le compose, jamais affiché. Huit vérifications passées en production. Première tâche réelle déposée. | Rien. Les sessions déposent désormais au rituel (section 6). |
 | 0 | **Les dernières traces de l'offre abandonnée** | **Fait et déployé le 18/09** (PR #35) : CGV, politique de confidentialité, article Thierry, grilles du CRM et de la création visuelle. Trouvés en chemin et supprimés : `CreationVisuellePage.tsx`, orpheline avec une troisième grille morte, et `public/sitemap.xml`, écrasé à chaque build et qui listait encore Thierry sans aucune réalisation. | **Hors dépôt :** le document SLA dans Notion décrit toujours l'ancienne offre. Le renvoi vers lui a été retiré des CGV, le document reste à refaire. |
-| 0b | **La sonde Audityo écrit dans la boîte d'Audityo** | Les quatre nœuds de sonde sont posés et actifs dans `ydW4SMHaeQQ58O4v` (19/09), et les deux routes backend sont en production. Mais la sonde traverse le workflow Audityo **en entier**, boîte comprise : `info@audityo.eu` recevra un « [Audityo] Message de Sonde Surveillance » par jour. Un canal qu'on apprend à ignorer ne signale plus rien — c'est la panne même qu'on cherche à éviter. | **Ajouter un nœud `IF` « Sonde ? »** dans `PeZexnxVbueaKV81`, entre `Message valide ?` et `Relayer vers la boîte`, laissant passer tout ce dont l'e-mail n'est pas `sonde-audityo@surveillance.ainspiration.eu`. La branche CRM reste inchangée : c'est elle qu'on surveille. `typeVersion: 2` **et** `conditions.options.version: 2`, sinon l'IF laisse tout passer sans avertissement. La modification de ce workflow a été refusée dans la session du 19/09. |
+| 0b | **La sonde Audityo écrit dans la boîte d'Audityo** | Les quatre nœuds de sonde sont posés et actifs dans `ydW4SMHaeQQ58O4v` (19/09), et les deux routes backend sont en production. Mais la sonde traverse le workflow Audityo **en entier**, boîte comprise : `info@audityo.eu` recevra un « [Audityo] Message de Sonde Surveillance » par jour. Un canal qu'on apprend à ignorer ne signale plus rien — c'est la panne même qu'on cherche à éviter. | **Ajouter un nœud `IF` « Sonde ? »** dans `PeZexnxVbueaKV81`, entre `Message valide ?` et `Relayer vers la boîte`, laissant passer tout ce dont l'e-mail n'est pas `sonde-audityo@surveillance.ainspiration.eu`. La branche CRM reste inchangée : c'est elle qu'on surveille. `typeVersion: 2` **et** `conditions.options.version: 2`, sinon l'IF laisse tout passer sans avertissement. La modification de ce workflow a été refusée dans la session du 19/09. **Tâche déposée dans le CRM** (`handoff:ainspiration:sonde-audityo-filtre-mail`, échéance 21/09). |
 | 1 | **Vitrine des réalisations** (`/realisations` + une fiche par projet) | **Construite et en production depuis le 04/09** — **15** fiches dans `src/data/realisations.ts` (Rampa retiré le 18/09), `RealisationsPage.tsx` et `RealisationDetailPage.tsx`, branche `feat/realisations` fusionnée dans `main`. Vérifié le 18/09 : `/realisations` et `/realisations/facturation-automatisee` répondent 200. Matériel de cadrage dans `docs/audit-realisations.md`, `docs/realisations-chiffres.md`, `docs/PROMPT-realisations.md`. | Rien de bloquant. Si enrichissement il y a (captures, chiffres vérifiés), il se décide fiche par fiche — jamais de capture inventée. |
 | 2 | **Chaîne de publication** | Correctif antislashes posé à la source, 2 articles sur 95 nettoyés en base. | Vérifier la publication du **lundi 21/09** : les trois langues doivent sortir. Si EN/NL échouent encore, c'est que la cause n'était pas uniquement l'échappement. |
 | 2b | **L'article du 16/09 n'a pas ses versions EN et NL** | Trouvé par le contrôle de santé après le déploiement du 19/09 : zéro lien `hreflang` sur cette page, quatre sur toutes les autres. Séquelle de l'incident des antislashes — le correctif est posé pour les articles suivants, celui-là n'a jamais été regénéré. | Relancer la traduction de cet article seul, puis revérifier que `node scripts/health-check.mjs` ne compte plus aucun échec. |
@@ -188,6 +188,21 @@ ou aux composants CRM.
   antislashes s'affichent sur la page et, recopiés dans le prompt de traduction, font produire
   un JSON malformé au traducteur. Ce n'est **pas** une troncature : augmenter `max_tokens` ne
   corrige rien (réflexe appliqué à tort le 1er septembre).
+- **Un paramètre rangé dans `options` alors que le nœud le lit au premier niveau est ignoré
+  en silence.** Le webhook `audityo-contact` porte `responseMode: "lastNode"` **dans
+  `options`** : le nœud ne l'y lit pas, retombe sur son défaut `onReceived`, et répond 200
+  **avant** d'exécuter quoi que ce soit. Aucun avertissement, et un commentaire de nœud qui
+  affirmait le contraire. C'est ce 200 vide qui est parti pendant six jours pendant que le
+  formulaire d'Audityo était muet. **Ne jamais conclure d'un 2xx renvoyé par un webhook
+  n8n** — vérifier l'effet réel. Pour contrôler la place d'un paramètre :
+  `get_node` en mode `search_properties` donne sa `path` exacte.
+- **Surveiller quelque chose ne justifie pas d'élargir un accès.** `ainspiration-postgres`
+  et `root-n8n-1` sont tous deux sur le réseau `root_default` : un nœud Postgres dans n8n
+  était techniquement possible pour la sonde Audityo du 19/09. Il a été écarté quand même —
+  il aurait donné au moniteur un compte capable d'effacer n'importe quelle ligne de
+  `contacts` pour surveiller un formulaire. Deux routes sous `INGEST_SECRET`, sur une
+  adresse figée dans le code, font le même travail sans ce pouvoir. C'est la même décision
+  que le 16/09, quand `GET /api/contacts/:id` a été remplacé par `/api/ingest/probe`.
 - **Un appelant sans identité recevait `NULL`** dans `ownerScope()`, c'est-à-dire « voit tout ».
   Il reçoit désormais un identifiant qui ne correspond à aucune ligne. Si tu retouches cette
   fonction, garde ce comportement : sans identité, on ne voit **rien**.
