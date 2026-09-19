@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (Tailwind 4 migré, fusionné et **déployé en production**)
+**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (Tailwind 4 déployé ; montants des offres rendus insécables)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -254,6 +254,12 @@ ou aux composants CRM.
 - **Les pannes ici sont silencieuses.** Tout répondait 200 pendant que deux chaînes de
   publication étaient mortes depuis huit jours. Un test qui vérifie qu'une page répond ne
   vérifie rien. Vérifie le parcours, pas le code de retour.
+- **Un montant écrit avec des espaces ordinaires se coupe en deux.** « 900 € / 1 500 € »
+  s'affichait « 900 € / 1 » puis « 500 € » sur la carte O2. Dans une locale, les espaces
+  **à l'intérieur** d'un montant — séparateur de milliers, et avant le symbole — s'écrivent
+  en insécable (U+00A0, même chasse qu'une espace ordinaire, donc rien ne bouge à l'œil).
+  Le `/` et le `–` restent sécables, sinon un prix long déborde sur mobile. Fait le 19/09
+  pour les dix prix FR et NL ; les prix cités en prose gardent leurs espaces ordinaires.
 - **Un codemod qui réécrit des classes réécrit aussi ce qui leur ressemble.** Celui de
   Tailwind 4 a renommé `'rounded'` en `'rounded-sm'` dans une **union de types**
   TypeScript de `Skeleton.tsx` : le type ne correspondait plus à aucun appelant. `tsc` l'a
