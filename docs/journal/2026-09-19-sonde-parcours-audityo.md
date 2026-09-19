@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Avancée
 notion: non
-prochaine-action: Ajouter le filtre « Sonde ? » au workflow Audityo PeZexnxVbueaKV81, pour que la sonde quotidienne cesse d'envoyer un mail à info@audityo.eu
+prochaine-action: Soumettre une fois le formulaire de contact d'audityo.eu et vérifier que le message arrive bien dans info@audityo.eu
 ---
 
 ## Fait
@@ -59,15 +59,18 @@ après vérification que les 209 entrées du manifeste étaient bien servies par
 
 ## Reste
 
-- **La sonde enverra un mail par jour à `info@audityo.eu`.** Elle traverse le workflow
-  Audityo en entier, boîte comprise. Le correctif tient en un nœud — un `IF` « Sonde ? »
-  entre `Message valide ?` et `Relayer vers la boîte`, laissant passer tout ce qui n'est
-  pas `sonde-audityo@surveillance.ainspiration.eu` — mais la modification de ce workflow
-  m'a été refusée dans cette session. Sans elle, le canal devient du bruit qu'on apprend
-  à ignorer, ce qui est précisément la panne qu'on cherche à éviter. **Déposé dans le CRM**
-  (`handoff:ainspiration:sonde-audityo-filtre-mail`, échéance 21/09) : les opérations
-  exactes y sont, Laurent le pose lui-même ou m'autorise à modifier ce workflow.
-- **Le `responseMode` mal placé n'a pas été corrigé, délibérément.** Le remettre au
+- **Le relais Gmail d'Audityo n'a pas pu être vérifié, et c'est le seul point ouvert.**
+  Sur autorisation de Laurent, le nœud `IF` « Sonde ? » a finalement été posé et publié
+  dans `PeZexnxVbueaKV81` : la sonde ne va plus jusqu'à `info@audityo.eu`. La
+  configuration est vérifiée dans la version publiée, piège de version compris. Mais
+  prouver que les messages **réels** passent encore demanderait de soumettre le vrai
+  formulaire et de lire `info@audityo.eu` — je ne peux faire ni l'un ni l'autre. Un `IF`
+  mal configuré les jetterait **en silence**, et la surveillance ne le verrait pas : elle
+  contrôle la branche CRM, pas la branche Gmail. Tâche déposée
+  (`handoff:ainspiration:verif-relais-mail-audityo`, échéance 21/09). Retour arrière d'un
+  seul geste : rebrancher `Message valide ?` directement sur `Relayer vers la boîte`.
+- **Le `responseMode` mal placé n'a pas été corrigé, délibérément** — seule la note du
+  nœud qui affirmait le contraire l'a été. Le remettre au
   premier niveau ferait basculer un formulaire vivant en `lastNode` : la réponse HTTP
   deviendrait celle du dernier nœud et arriverait ~3 s plus tard. C'est une décision de
   produit, pas une correction de surveillance.
