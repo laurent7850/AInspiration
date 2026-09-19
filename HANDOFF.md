@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (Tailwind 4 déployé ; montants des offres rendus insécables)
+**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (Tailwind 4 déployé ; **incident : nom du client en production 30 min**, voir section 5)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -248,9 +248,18 @@ ou aux composants CRM.
   dérive.** Elle avait déjà divergé le 18/09 au soir. **Le VPS fait foi** : après toute
   modification sur la machine, reprendre la copie par `scp` et la commiter, sans quoi le dépôt
   décrit un script qui n'existe plus.
-- **Le dépôt vit sous OneDrive.** Un fichier écrit depuis une autre session peut ne pas être
-  encore synchronisé quand tu lis le dépôt. Vérifie la présence réelle d'un changement avant
-  de conclure qu'il n'a pas été fait.
+- **Le dépôt vit sous OneDrive, et OneDrive peut ressusciter un fichier périmé.** Un fichier
+  écrit depuis une autre session peut ne pas être encore synchronisé quand tu lis le dépôt.
+  Pire : en cas de conflit, OneDrive garde la version distante sous un **nouveau nom**
+  (`<fichier>-<MACHINE>.ext`) et **remet l'ancienne sous le nom d'origine**. Le 19/09, c'est
+  ainsi que la capture non anonymisée de la fiche playlists — « Radio Nostalgie Belgique »
+  en toutes lettres — est repartie en production pendant trente minutes, parce que trois
+  déploiements ont été lancés sur un arbre de travail non propre.
+- **On ne déploie pas sur un arbre de travail sale.** `git status` doit être vide avant un
+  build, ou alors chaque fichier qui s'y trouve doit avoir été **ouvert** — pas seulement
+  signalé. Un binaire modifié sur une fiche client se regarde, il ne se contourne pas d'un
+  « ce n'est pas le mien ». Et un décompte de manifeste qui change sans raison connue
+  (209 → 210) est une question à instruire, pas une ligne de rapport.
 - **Les pannes ici sont silencieuses.** Tout répondait 200 pendant que deux chaînes de
   publication étaient mortes depuis huit jours. Un test qui vérifie qu'une page répond ne
   vérifie rien. Vérifie le parcours, pas le code de retour.
