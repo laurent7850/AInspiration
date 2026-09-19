@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Incident
 notion: non
-prochaine-action: Décider du sort des deux permaliens Netlify qui hébergent encore l'image non anonymisée
+prochaine-action: Outiller la règle n° 2 — comparer les empreintes des images de dist/ à celles de HEAD avant tout déploiement
 ---
 
 ## Fait
@@ -46,11 +46,14 @@ prochaine-action: Décider du sort des deux permaliens Netlify qui hébergent en
   fichier s'ajoutait. Un décompte qui change sans raison connue est une question, pas une
   observation.
 
+- **Les deux déploiements Netlify qui hébergeaient encore l'image ont été supprimés**, sur
+  accord de Laurent : `6aae8f698aa7ec9f6eb3cd7a` (13 h 34) et `6aae937fa66ab6a979ad14a2`
+  (13 h 51). Les quatorze déploiements restants ont été resondés un à un : plus aucun ne
+  sert la version non anonymisée. Le déploiement publié (14 h 06) n'a pas été touché, et la
+  production répond toujours 200 sur l'accueil, la vitrine et la fiche.
+
 ## Reste
 
-- **Deux permaliens de déploiement Netlify hébergent encore l'image non anonymisée**
-  (13 h 34 et 13 h 51). Ce sont des URL publiques mais non listées. Les supprimer relève
-  de Laurent : c'est son compte et son historique de déploiements.
 - Rien ne protège la règle n° 2 côté outillage. Une piste : refuser de construire quand
   `git status` n'est pas propre sur `public/images/realisations/`, ou comparer l'empreinte
   des images de `dist/` à celles de HEAD avant tout déploiement.
