@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Incident
 notion: non
-prochaine-action: Outiller la règle n° 2 — comparer les empreintes des images de dist/ à celles de HEAD avant tout déploiement
+prochaine-action: Au prochain déploiement, vérifier que la ligne « [public-check] N fichiers conformes » apparaît bien avant le manifeste
 ---
 
 ## Fait
@@ -52,8 +52,21 @@ prochaine-action: Outiller la règle n° 2 — comparer les empreintes des image
   sert la version non anonymisée. Le déploiement publié (14 h 06) n'a pas été touché, et la
   production répond toujours 200 sur l'accueil, la vitrine et la fiche.
 
+- **Le garde-fou est posé** : `scripts/check-public-matches-head.mjs`, branché sur
+  `postbuild` et `postbuild:prod`. Un build de production **échoue** si `public/` n'est
+  pas propre, si un fichier commité de `public/` diffère de sa copie dans `dist/`, ou si
+  `dist/` porte un fichier qui ne vient d'aucun commit. Comparaison par empreinte de blob
+  git, 0,22 s sur les 129 fichiers. Le build de dev n'est pas touché : travailler sur une
+  image pas encore commitée reste libre.
+- **Vérifié sur les quatre défauts, pas seulement sur le cas passant** : copie non suivie
+  dans `public/`, fichier suivi modifié, intrus dans `dist/`, `dist/` périmé. Le build de
+  production sort en code 1 sur le scénario exact de l'incident. Un garde-fou qu'on n'a
+  jamais vu se déclencher n'est pas un garde-fou, c'est une décoration.
+- Un défaut trouvé en l'écrivant : `git status --porcelain` rend « ` M chemin` » avec une
+  espace de tête, et un `trim()` sur la sortie entière décalait tous les chemins d'un
+  caractère. L'alerte nommait `ublic/images/…`. **Une alerte qui se trompe de chemin est
+  une alerte qu'on ne suit pas.**
+
 ## Reste
 
-- Rien ne protège la règle n° 2 côté outillage. Une piste : refuser de construire quand
-  `git status` n'est pas propre sur `public/images/realisations/`, ou comparer l'empreinte
-  des images de `dist/` à celles de HEAD avant tout déploiement.
+- Rien pour l'instant sur ce sujet.

@@ -6,7 +6,7 @@
 >
 > **Et mets-le à jour avant de finir ta session.** Un handoff périmé est pire qu'absent.
 
-**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (Tailwind 4 déployé ; **incident : nom du client en production 30 min**, voir section 5)
+**Dernière mise à jour :** 19 septembre 2026 · session Claude Code (Tailwind 4 déployé ; incident « nom du client en production », garde-fou de build posé)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
 ---
@@ -255,11 +255,15 @@ ou aux composants CRM.
   ainsi que la capture non anonymisée de la fiche playlists — « Radio Nostalgie Belgique »
   en toutes lettres — est repartie en production pendant trente minutes, parce que trois
   déploiements ont été lancés sur un arbre de travail non propre.
-- **On ne déploie pas sur un arbre de travail sale.** `git status` doit être vide avant un
-  build, ou alors chaque fichier qui s'y trouve doit avoir été **ouvert** — pas seulement
-  signalé. Un binaire modifié sur une fiche client se regarde, il ne se contourne pas d'un
-  « ce n'est pas le mien ». Et un décompte de manifeste qui change sans raison connue
-  (209 → 210) est une question à instruire, pas une ligne de rapport.
+- **On ne déploie pas sur un arbre de travail sale — et depuis le 19/09, le build le refuse.**
+  `scripts/check-public-matches-head.mjs` (branché sur `postbuild` et `postbuild:prod`) fait
+  échouer un build de production si `public/` n'est pas propre, si un fichier commité diffère
+  de sa copie dans `dist/`, ou si `dist/` porte un fichier qui ne vient d'aucun commit.
+  Échappatoire explicite : `ALLOW_DIRTY_PUBLIC=1` — qui revient à déployer des fichiers que
+  personne ne peut rattacher à un commit. Le build de dev n'est pas concerné.
+  La règle humaine reste la même : un binaire modifié sur une fiche client **se regarde**, il
+  ne se contourne pas d'un « ce n'est pas le mien ». Et un décompte de manifeste qui change
+  sans raison connue (209 → 210) est une question à instruire, pas une ligne de rapport.
 - **Les pannes ici sont silencieuses.** Tout répondait 200 pendant que deux chaînes de
   publication étaient mortes depuis huit jours. Un test qui vérifie qu'une page répond ne
   vérifie rien. Vérifie le parcours, pas le code de retour.
