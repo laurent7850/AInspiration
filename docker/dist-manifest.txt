@@ -99,7 +99,6 @@ images/realisations/enghien.jpg
 images/realisations/factures-fournisseurs.jpg
 images/realisations/paperclip.jpg
 images/realisations/playlist-spotify.jpg
-images/realisations/playlists-auditeurs-MSI.jpg
 images/realisations/playlists-auditeurs.jpg
 images/realisations/preparation-emission.jpg
 images/realisations/reconciliation-caisse.jpg
