@@ -16,9 +16,10 @@ prochaine-action: À la prochaine ouverture de session, vérifier que la ligne �
   ligne affichée à chaque ouverture, dans la section « État du dépôt ». Zéro commit en
   attente : une ligne sobre. Des commits en attente : le nombre en gras, les dix derniers
   listés (`%h %s`), « … et N de plus » au-delà, et le rappel de pousser.
-- **Reporté à l'identique dans AutoSEO** (`.claude/hooks/session-start.mjs`). Les deux
-  hooks portent désormais le même bloc, au caractère près ; seule subsiste leur différence
-  antérieure sur la lecture de `TASK_SECRET` (`.env.local` seul ici, `.env.local` puis
+- **Reporté à l'identique dans AutoSEO** (`.claude/hooks/session-start.mjs`) — depuis
+  cette session, et c'était à tort, voir « Cassé ». Les deux hooks portent désormais le
+  même bloc, au caractère près ; seule subsiste leur différence antérieure sur la lecture
+  de `TASK_SECRET` (`.env.local` seul ici, `.env.local` puis
   `.env` là-bas). Le `CLAUDE.md` d'AutoSEO demandait explicitement un
   `git log origin/main..main` à la main avant de déplacer `main` : c'est fait pour soi
   désormais, à l'ouverture.
@@ -36,6 +37,16 @@ prochaine-action: À la prochaine ouverture de session, vérifier que la ligne �
 
 ## Cassé
 
+- **Cette session a débordé sur AutoSEO : deux commits écrits hors du dépôt où elle était
+  enracinée.** Le report du hook d'abord, puis l'inscription des URL Notion des deux notes
+  du jour. Les deux ont été faits d'ici, dans le dépôt voisin, contre la règle « une session
+  par dépôt — tout doit être distinct » : ni la session, ni le contexte, ni les fichiers
+  touchés, ni les commits, ni les notes ne doivent traverser. Ce qu'il fallait faire :
+  terminer ici, puis rendre la main avec la consigne prête à coller pour une session
+  AutoSEO, qui aurait écrit sa propre note. AutoSEO a inscrit la provenance de son côté
+  (`docs/journal/2026-09-19-provenance-des-deux-commits.md`, piège en section 5 de son
+  handoff) ; sans cela, deux commits y racontaient un travail dont aucune de ses notes ne
+  parlait, et le raisonnement n'était retrouvable que depuis ce dépôt-ci.
 - **Première version : fausse alerte « périmée » sur un clone neuf.** Elle ne regardait que
   la date de `FETCH_HEAD`, qu'un clone n'a pas encore — le cas 2 du banc d'essai l'a montré
   avant tout commit. La fraîcheur se lit maintenant sur la plus récente de trois traces :
