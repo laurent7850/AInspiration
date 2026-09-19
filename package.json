@@ -8,15 +8,16 @@
     "build": "tsc && vite build --mode production",
     "build:dev": "tsc && vite build --mode development",
     "build:prod": "tsc && vite build --mode production",
-    "postbuild": "node scripts/generate-dist-manifest.mjs",
-    "postbuild:prod": "node scripts/generate-dist-manifest.mjs",
+    "postbuild": "node scripts/check-public-matches-head.mjs && node scripts/generate-dist-manifest.mjs",
+    "postbuild:prod": "node scripts/check-public-matches-head.mjs && node scripts/generate-dist-manifest.mjs",
     "postbuild:dev": "node scripts/generate-dist-manifest.mjs",
     "preview": "vite preview",
     "preview:prod": "vite build --mode production && vite preview",
     "deploy": "npm run build:prod && echo '✅ Build production prêt dans dist/'",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "test": "vitest",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "check:public": "node scripts/check-public-matches-head.mjs"
   },
   "dependencies": {
     "@fontsource-variable/jost": "^5.3.0",
