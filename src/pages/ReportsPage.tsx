@@ -49,7 +49,7 @@ const ReportsPage: React.FC = () => {
                   onValueChange={setActiveTab}
                   className="w-full md:w-auto"
                 >
-                  <TabsList className="bg-white shadow-sm">
+                  <TabsList className="bg-white shadow-xs">
                     <TabsTrigger value="dashboard">
                       <BarChart className="w-4 h-4 mr-1 md:mr-2" />
                       <span className="hidden md:inline">{t('pages.reports.tabOverview')}</span>

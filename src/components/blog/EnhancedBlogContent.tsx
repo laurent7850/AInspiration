@@ -182,7 +182,7 @@ export default function EnhancedBlogContent({ content }: EnhancedBlogContentProp
       <div className="space-y-10">
         {/* Introduction */}
         {intro && (
-          <div className="bg-gradient-to-br from-primary-50 to-white rounded-2xl p-8 md:p-12 border border-primary-100">
+          <div className="bg-linear-to-br from-primary-50 to-white rounded-2xl p-8 md:p-12 border border-primary-100">
             <div
               className="blog-prose"
               dangerouslySetInnerHTML={{ __html: intro }}

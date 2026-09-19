@@ -71,7 +71,7 @@ const ContactDetail: React.FC<ContactDetailProps> = ({ contactId, onBack, onEdit
         <p>{error || "Contact introuvable"}</p>
         <button 
           onClick={onBack} 
-          className="mt-2 text-white bg-red-600 px-4 py-2 rounded hover:bg-red-700 flex items-center gap-2"
+          className="mt-2 text-white bg-red-600 px-4 py-2 rounded-sm hover:bg-red-700 flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" />
           Retour à la liste
@@ -154,7 +154,7 @@ const ContactDetail: React.FC<ContactDetailProps> = ({ contactId, onBack, onEdit
             <div className="space-y-4">
               {contact.status && (
                 <div className="flex items-start gap-3">
-                  <Tag className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Tag className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm text-gray-500">Statut</p>
                     <p>
@@ -168,7 +168,7 @@ const ContactDetail: React.FC<ContactDetailProps> = ({ contactId, onBack, onEdit
               
               {contact.email && (
                 <div className="flex items-start gap-3">
-                  <Mail className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Mail className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm text-gray-500">Email</p>
                     <a href={`mailto:${contact.email}`} className="text-indigo-600 hover:underline">
@@ -180,7 +180,7 @@ const ContactDetail: React.FC<ContactDetailProps> = ({ contactId, onBack, onEdit
               
               {contact.phone && (
                 <div className="flex items-start gap-3">
-                  <Phone className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Phone className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm text-gray-500">Téléphone</p>
                     <a href={`tel:${contact.phone}`} className="text-indigo-600 hover:underline">
@@ -192,7 +192,7 @@ const ContactDetail: React.FC<ContactDetailProps> = ({ contactId, onBack, onEdit
               
               {(contact.company_id || contact.company_name) && (
                 <div className="flex items-start gap-3">
-                  <Building className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Building className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm text-gray-500">Entreprise</p>
                     {contact.company_id ? (
@@ -206,7 +206,7 @@ const ContactDetail: React.FC<ContactDetailProps> = ({ contactId, onBack, onEdit
               
               {contact.source && (
                 <div className="flex items-start gap-3">
-                  <LinkIcon className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <LinkIcon className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm text-gray-500">Source</p>
                     <p>{contact.source}</p>
@@ -292,7 +292,7 @@ const ContactDetail: React.FC<ContactDetailProps> = ({ contactId, onBack, onEdit
                           type="checkbox"
                           checked={task.completed}
                           readOnly
-                          className="mt-1 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                          className="mt-1 h-4 w-4 text-indigo-600 border-gray-300 rounded-sm"
                         />
                         <div>
                           <h3 className={`text-base font-medium ${task.completed ? 'text-gray-500 line-through' : 'text-gray-900'}`}>

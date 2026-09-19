@@ -114,7 +114,7 @@ const RealisationsPage: React.FC = () => {
                 <Link
                   to={filterHref(null)}
                   aria-current={active === null ? 'true' : undefined}
-                  className={`inline-block rounded-full px-4 py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                  className={`inline-block rounded-full px-4 py-2 text-sm transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-accent ${
                     active === null
                       ? 'bg-accent text-white'
                       : 'bg-surface text-secondary border border-line hover:text-ink hover:border-ink/25'
@@ -128,7 +128,7 @@ const RealisationsPage: React.FC = () => {
                   <Link
                     to={filterHref(category)}
                     aria-current={active === category ? 'true' : undefined}
-                    className={`inline-block rounded-full px-4 py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                    className={`inline-block rounded-full px-4 py-2 text-sm transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-accent ${
                       active === category
                         ? 'bg-accent text-white'
                         : 'bg-surface text-secondary border border-line hover:text-ink hover:border-ink/25'

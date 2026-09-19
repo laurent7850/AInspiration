@@ -35,7 +35,7 @@ export default function Blog() {
   const dateLocale = i18n.language === 'nl' ? 'nl-NL' : i18n.language === 'en' ? 'en-US' : 'fr-FR';
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white">
+    <section className="bg-linear-to-b from-gray-50 to-white">
       <SEOHead
         title={t('pageTitle')}
         description={t('pageDescription')}
@@ -64,12 +64,12 @@ export default function Blog() {
             {[0, 1, 2].map((i) => (
               <div key={i} className="bg-canvas border border-line rounded-card overflow-hidden animate-pulse">
                 <div className="md:flex">
-                  <div className="md:w-1/3 aspect-[16/10] md:aspect-auto md:min-h-[16rem] bg-gray-200" />
+                  <div className="md:w-1/3 aspect-16/10 md:aspect-auto md:min-h-64 bg-gray-200" />
                   <div className="md:w-2/3 p-8 space-y-4">
-                    <div className="h-4 w-1/2 bg-gray-200 rounded" />
-                    <div className="h-7 w-5/6 bg-gray-200 rounded" />
-                    <div className="h-4 w-full bg-gray-200 rounded" />
-                    <div className="h-4 w-2/3 bg-gray-200 rounded" />
+                    <div className="h-4 w-1/2 bg-gray-200 rounded-sm" />
+                    <div className="h-7 w-5/6 bg-gray-200 rounded-sm" />
+                    <div className="h-4 w-full bg-gray-200 rounded-sm" />
+                    <div className="h-4 w-2/3 bg-gray-200 rounded-sm" />
                   </div>
                 </div>
               </div>
@@ -110,7 +110,7 @@ export default function Blog() {
                   className="bg-canvas border border-line rounded-card overflow-hidden hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="md:flex">
-                    <div className="md:w-1/3 aspect-[16/10] md:aspect-auto">
+                    <div className="md:w-1/3 aspect-16/10 md:aspect-auto">
                       <img
                         src={article.image_url || defaultImage}
                         alt={article.title}

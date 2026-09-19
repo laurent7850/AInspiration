@@ -241,7 +241,7 @@ export default function NewsletterAdminPage() {
     <div className="space-y-6">
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow-sm p-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-500">Abonnés actifs</p>
@@ -253,7 +253,7 @@ export default function NewsletterAdminPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow-sm p-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-500">Total abonnés</p>
@@ -265,7 +265,7 @@ export default function NewsletterAdminPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow-sm p-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-500">Newsletters envoyées</p>
@@ -277,7 +277,7 @@ export default function NewsletterAdminPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow-sm p-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-500">Désabonnements</p>
@@ -291,7 +291,7 @@ export default function NewsletterAdminPage() {
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white rounded-lg shadow p-6">
+      <div className="bg-white rounded-lg shadow-sm p-6">
         <h3 className="text-lg font-semibold mb-4">Actions rapides</h3>
         <div className="flex flex-wrap gap-4">
           <button
@@ -312,7 +312,7 @@ export default function NewsletterAdminPage() {
       </div>
 
       {/* Recent Newsletters */}
-      <div className="bg-white rounded-lg shadow p-6">
+      <div className="bg-white rounded-lg shadow-sm p-6">
         <h3 className="text-lg font-semibold mb-4">Newsletters récentes</h3>
         {newsletters.slice(0, 5).length > 0 ? (
           <div className="space-y-3">
@@ -336,7 +336,7 @@ export default function NewsletterAdminPage() {
   );
 
   const renderSubscribers = () => (
-    <div className="bg-white rounded-lg shadow">
+    <div className="bg-white rounded-lg shadow-sm">
       <div className="p-6 border-b">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <h3 className="text-lg font-semibold">Abonnés ({subscribers.length})</h3>
@@ -418,7 +418,7 @@ export default function NewsletterAdminPage() {
   );
 
   const renderNewsletters = () => (
-    <div className="bg-white rounded-lg shadow">
+    <div className="bg-white rounded-lg shadow-sm">
       <div className="p-6 border-b flex justify-between items-center">
         <h3 className="text-lg font-semibold">Newsletters ({newsletters.length})</h3>
         <button
@@ -484,7 +484,7 @@ export default function NewsletterAdminPage() {
   );
 
   const renderCreate = () => (
-    <div className="bg-white rounded-lg shadow p-6">
+    <div className="bg-white rounded-lg shadow-sm p-6">
       <h3 className="text-lg font-semibold mb-6">Créer une newsletter</h3>
 
       <div className="space-y-6">
@@ -493,7 +493,7 @@ export default function NewsletterAdminPage() {
           <button
             onClick={handleGenerateContent}
             disabled={isGenerating}
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:from-purple-700 hover:to-indigo-700 disabled:opacity-50"
+            className="flex items-center gap-2 px-4 py-2 bg-linear-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:from-purple-700 hover:to-indigo-700 disabled:opacity-50"
           >
             {isGenerating ? (
               <RefreshCw className="w-4 h-4 animate-spin" />
@@ -573,7 +573,7 @@ export default function NewsletterAdminPage() {
       <div className="space-y-6">
         {/* Summary Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-500">Newsletters envoyées</p>
@@ -584,7 +584,7 @@ export default function NewsletterAdminPage() {
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-500">Emails envoyés</p>
@@ -595,7 +595,7 @@ export default function NewsletterAdminPage() {
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-500">Destinataires uniques</p>
@@ -611,7 +611,7 @@ export default function NewsletterAdminPage() {
         </div>
 
         {/* Sent Newsletters with Full Content */}
-        <div className="bg-white rounded-lg shadow">
+        <div className="bg-white rounded-lg shadow-sm">
           <div className="p-6 border-b">
             <h3 className="text-lg font-semibold">Historique des newsletters envoyées</h3>
             <p className="text-sm text-gray-500">Cliquez sur une newsletter pour voir son contenu complet</p>
@@ -686,7 +686,7 @@ export default function NewsletterAdminPage() {
                         <div className="bg-gray-50 rounded-lg p-4">
                           <h5 className="text-sm font-medium text-gray-700 mb-2">Contenu de la newsletter:</h5>
                           <div className="prose prose-sm max-w-none">
-                            <pre className="whitespace-pre-wrap text-sm text-gray-800 font-sans bg-white p-4 rounded border">
+                            <pre className="whitespace-pre-wrap text-sm text-gray-800 font-sans bg-white p-4 rounded-sm border">
                               {nl.content}
                             </pre>
                           </div>
@@ -697,7 +697,7 @@ export default function NewsletterAdminPage() {
                           <div className="mt-4">
                             <h5 className="text-sm font-medium text-gray-700 mb-2">Aperçu HTML:</h5>
                             <div
-                              className="bg-white p-4 rounded border prose prose-sm max-w-none"
+                              className="bg-white p-4 rounded-sm border prose prose-sm max-w-none"
                               dangerouslySetInnerHTML={{ __html: sanitizeHtml(nl.html_content) }}
                             />
                           </div>
@@ -712,7 +712,7 @@ export default function NewsletterAdminPage() {
         </div>
 
         {/* Send Logs Table */}
-        <div className="bg-white rounded-lg shadow">
+        <div className="bg-white rounded-lg shadow-sm">
           <div className="p-6 border-b">
             <h3 className="text-lg font-semibold">Journal des envois</h3>
           </div>

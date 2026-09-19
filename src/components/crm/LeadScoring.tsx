@@ -106,7 +106,7 @@ const LeadScoring: React.FC<LeadScoringProps> = ({
 
   if (isLoading) {
     return (
-      <div className="bg-white rounded-xl shadow p-6">
+      <div className="bg-white rounded-xl shadow-sm p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-2">
             <TrendingUp className="w-6 h-6 text-indigo-600" />
@@ -122,7 +122,7 @@ const LeadScoring: React.FC<LeadScoringProps> = ({
   }
 
   return (
-    <div className="bg-white rounded-xl shadow p-6">
+    <div className="bg-white rounded-xl shadow-sm p-6">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
           <TrendingUp className="w-6 h-6 text-indigo-600" />

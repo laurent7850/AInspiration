@@ -61,7 +61,7 @@ const DashboardView: React.FC = () => {
         </div>
         <Skeleton variant="rounded" height={48} />
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {[1, 2, 3, 4].map((i) => <CardSkeleton key={i} className="!p-5" />)}
+          {[1, 2, 3, 4].map((i) => <CardSkeleton key={i} className="p-5!" />)}
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           <Skeleton variant="rounded" height={320} />
@@ -74,7 +74,7 @@ const DashboardView: React.FC = () => {
   if (error) {
     return (
       <div className="bg-red-50 text-red-600 p-4 rounded-lg flex items-start gap-3">
-        <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+        <AlertCircle className="w-5 h-5 mt-0.5 shrink-0" />
         <div className="flex-1">
           <p>Impossible de charger les données du tableau de bord.</p>
           <button
@@ -84,7 +84,7 @@ const DashboardView: React.FC = () => {
               contactsQuery.refetch();
               activitiesQuery.refetch();
             }}
-            className="mt-2 text-white bg-red-600 px-4 py-2 rounded hover:bg-red-700"
+            className="mt-2 text-white bg-red-600 px-4 py-2 rounded-sm hover:bg-red-700"
           >
             Réessayer
           </button>
@@ -168,7 +168,7 @@ const DashboardView: React.FC = () => {
       {/* Header with AI Badge */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div className="flex items-center space-x-3">
-          <div className="p-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg">
+          <div className="p-2 bg-linear-to-r from-indigo-500 to-purple-600 rounded-lg">
             <Brain className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -179,7 +179,7 @@ const DashboardView: React.FC = () => {
       </div>
 
       {/* Tab Navigation */}
-      <div className="bg-white rounded-xl shadow">
+      <div className="bg-white rounded-xl shadow-sm">
         <div className="flex border-b border-gray-200 overflow-x-auto">
           {tabs.map((tab) => (
             <button
@@ -220,7 +220,7 @@ const DashboardView: React.FC = () => {
 
       {/* KPI Cards */}
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <div className="flex justify-between items-start">
             <div>
               <p className="text-sm text-gray-500">Valeur du pipeline</p>
@@ -241,7 +241,7 @@ const DashboardView: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <div className="flex justify-between items-start">
             <div>
               <p className="text-sm text-gray-500">Chiffre gagné</p>
@@ -257,7 +257,7 @@ const DashboardView: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <div className="flex justify-between items-start">
             <div>
               <p className="text-sm text-gray-500">Tâches en attente</p>
@@ -287,7 +287,7 @@ const DashboardView: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <div className="flex justify-between items-start">
             <div>
               <p className="text-sm text-gray-500">Total contacts</p>
@@ -311,7 +311,7 @@ const DashboardView: React.FC = () => {
       
       {/* Charts */}
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Pipeline des ventes</h2>
             <button 
@@ -326,7 +326,7 @@ const DashboardView: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Performance des ventes</h2>
             <button 
@@ -344,7 +344,7 @@ const DashboardView: React.FC = () => {
       
       {/* Upcoming Tasks and Activities */}
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Tâches à venir</h2>
             <button 
@@ -393,7 +393,7 @@ const DashboardView: React.FC = () => {
           )}
         </div>
         
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Activité récente</h2>
           </div>
@@ -404,7 +404,7 @@ const DashboardView: React.FC = () => {
             <ul className="space-y-3">
               {activities.slice(0, 8).map(activity => (
                 <li key={activity.id} className="flex items-start space-x-3 text-sm">
-                  <div className="flex-shrink-0 mt-0.5">
+                  <div className="shrink-0 mt-0.5">
                     <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
                   </div>
                   <div className="flex-1 min-w-0">
@@ -444,7 +444,7 @@ const DashboardView: React.FC = () => {
 
           {/* Stats supplémentaires pour l'onglet IA */}
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-xl shadow p-6">
+            <div className="bg-white rounded-xl shadow-sm p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Statistiques clés</h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
@@ -473,7 +473,7 @@ const DashboardView: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-white rounded-xl shadow p-6">
+            <div className="bg-white rounded-xl shadow-sm p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Actions recommandées</h3>
               <ul className="space-y-3">
                 {opportunities.filter(o => o.stage === 'Négociation').length > 0 && (

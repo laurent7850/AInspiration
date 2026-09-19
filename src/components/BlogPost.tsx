@@ -49,7 +49,7 @@ export default function BlogPost() {
 
   if (loading) {
     return (
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-20 bg-linear-to-b from-gray-50 to-white">
         <SEOHead
           title={metaTitleFor(titleFromSlug)}
           description={`Article du blog AInspiration sur ${titleFromSlug.toLowerCase()}. Conseils, retours d'expérience et bonnes pratiques IA pour PME.`}
@@ -59,9 +59,9 @@ export default function BlogPost() {
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="sr-only">{titleFromSlug}</h1>
             <div className="animate-pulse">
-              <div className="h-8 bg-gray-200 rounded w-3/4 mx-auto mb-4"></div>
-              <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto mb-8"></div>
-              <div className="h-96 bg-gray-200 rounded mb-8"></div>
+              <div className="h-8 bg-gray-200 rounded-sm w-3/4 mx-auto mb-4"></div>
+              <div className="h-4 bg-gray-200 rounded-sm w-1/2 mx-auto mb-8"></div>
+              <div className="h-96 bg-gray-200 rounded-sm mb-8"></div>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@ export default function BlogPost() {
 
   if (error || !post) {
     return (
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-20 bg-linear-to-b from-gray-50 to-white">
         <SEOHead
           title={metaTitleFor(titleFromSlug)}
           description="Article non trouvé. Découvrez nos autres articles sur l'intelligence artificielle pour PME."
@@ -136,7 +136,7 @@ export default function BlogPost() {
   const articleDescription = metaDescriptionFor(post.excerpt, plainTextFrom(post.content) || post.title);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-20 bg-linear-to-b from-gray-50 to-white">
       <SEOHead
         title={metaTitleFor(post.title)}
         description={articleDescription}
@@ -216,7 +216,7 @@ export default function BlogPost() {
                 alt={post.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent" />
             </div>
           )}
 

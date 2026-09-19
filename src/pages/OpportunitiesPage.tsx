@@ -167,7 +167,7 @@ const OpportunitiesPage: React.FC = () => {
                     onEditOpportunity={handleViewOpportunity}
                   />
                 ) : (
-                  <div className="bg-white rounded-xl shadow p-6">
+                  <div className="bg-white rounded-xl shadow-sm p-6">
                     <OpportunityKanban />
                   </div>
                 )}

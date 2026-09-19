@@ -398,7 +398,7 @@ export default function ChatbotN8n() {
             <img
               src="/images/maud-avatar.webp"
               alt="Maud - Assistante IA"
-              className="w-8 h-8 rounded-full object-cover border border-gray-200 flex-shrink-0"
+              className="w-8 h-8 rounded-full object-cover border border-gray-200 shrink-0"
             />
             <span className="font-semibold text-sm sm:text-base">
               Maud - Assistante IA
@@ -460,13 +460,13 @@ export default function ChatbotN8n() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Tapez votre message..."
-                  className="flex-1 p-2 sm:p-2.5 border rounded-lg focus:outline-none focus:border-indigo-500 text-base"
+                  className="flex-1 p-2 sm:p-2.5 border rounded-lg focus:outline-hidden focus:border-indigo-500 text-base"
                   disabled={isLoading}
                   autoComplete="off"
                 />
                 <button
                   type="submit"
-                  className={`bg-indigo-600 text-white p-2.5 rounded-lg transition-colors flex-shrink-0 ${
+                  className={`bg-indigo-600 text-white p-2.5 rounded-lg transition-colors shrink-0 ${
                     isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-indigo-700'
                   }`}
                   aria-label="Envoyer"

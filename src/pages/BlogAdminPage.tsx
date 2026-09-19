@@ -153,7 +153,7 @@ export default function BlogAdminPage() {
             {groups.map(({ key, items }) => {
               const fr = items.find((p) => p.language === 'fr') || items[0];
               return (
-                <li key={key} className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+                <li key={key} className="rounded-xl border border-gray-200 bg-white p-5 shadow-xs">
                   <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                     <div className="min-w-0">
                       <h2 className="text-base font-semibold text-gray-900 leading-snug">{fr.title}</h2>

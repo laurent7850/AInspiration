@@ -185,28 +185,28 @@ const OpportunityKanban: React.FC = () => {
                     <div className="space-y-1 text-xs text-gray-500">
                       {opportunity.company_name && (
                         <div className="flex items-center">
-                          <Building2 className="w-3 h-3 mr-1 flex-shrink-0" />
+                          <Building2 className="w-3 h-3 mr-1 shrink-0" />
                           <span className="truncate">{opportunity.company_name}</span>
                         </div>
                       )}
 
                       {opportunity.contact_name && (
                         <div className="flex items-center">
-                          <User className="w-3 h-3 mr-1 flex-shrink-0" />
+                          <User className="w-3 h-3 mr-1 shrink-0" />
                           <span className="truncate">{opportunity.contact_name}</span>
                         </div>
                       )}
 
                       {opportunity.product_name && (
                         <div className="flex items-center">
-                          <Package className="w-3 h-3 mr-1 flex-shrink-0" />
+                          <Package className="w-3 h-3 mr-1 shrink-0" />
                           <span className="truncate">{opportunity.product_name}</span>
                         </div>
                       )}
 
                       {opportunity.close_date && (
                         <div className="flex items-center mt-2 pt-2 border-t border-gray-100">
-                          <Calendar className="w-3 h-3 mr-1 flex-shrink-0" />
+                          <Calendar className="w-3 h-3 mr-1 shrink-0" />
                           <span>Échéance: {formatDate(opportunity.close_date)}</span>
                         </div>
                       )}

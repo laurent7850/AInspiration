@@ -253,7 +253,7 @@ const ReportsDashboard: React.FC = () => {
 
       {/* KPIs summary */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <p className="text-sm text-gray-500">Valeur du pipeline</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">
             {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(totalEstimatedValue)}
@@ -265,7 +265,7 @@ const ReportsDashboard: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <p className="text-sm text-gray-500">Taux de conversion</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{winRate}%</p>
           <div className="mt-2 text-sm text-gray-600">
@@ -273,7 +273,7 @@ const ReportsDashboard: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <p className="text-sm text-gray-500">Valeur moyenne</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">
             {totalOpportunities ? 
@@ -286,7 +286,7 @@ const ReportsDashboard: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <p className="text-sm text-gray-500">Productivité</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{taskCompletionRate}%</p>
           <div className="mt-2 text-sm text-gray-600">
@@ -297,7 +297,7 @@ const ReportsDashboard: React.FC = () => {
 
       {/* Charts */}
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
             <PieChart className="w-5 h-5 text-indigo-600" />
             Pipeline commercial
@@ -307,7 +307,7 @@ const ReportsDashboard: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
             <LineChart className="w-5 h-5 text-indigo-600" />
             Performance des ventes
@@ -317,7 +317,7 @@ const ReportsDashboard: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
             <BarChart className="w-5 h-5 text-indigo-600" />
             Réalisation des tâches
@@ -327,7 +327,7 @@ const ReportsDashboard: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow-sm p-5">
           <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
             <PieChart className="w-5 h-5 text-indigo-600" />
             Sources des leads

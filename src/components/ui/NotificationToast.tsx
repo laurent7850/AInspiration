@@ -42,7 +42,7 @@ export default function NotificationToast() {
   if (visibleNotifications.length === 0) return null;
 
   return (
-    <div className="fixed top-20 right-4 z-[100] space-y-2 max-w-sm">
+    <div className="fixed top-20 right-4 z-100 space-y-2 max-w-sm">
       {visibleNotifications.map((notification, index) => (
         <div
           key={notification.id}
@@ -52,7 +52,7 @@ export default function NotificationToast() {
           }}
         >
           <div className="flex items-start gap-3">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               {getIcon(notification.type)}
             </div>
 
@@ -67,7 +67,7 @@ export default function NotificationToast() {
 
             <button
               onClick={() => clearNotification(notification.id)}
-              className="flex-shrink-0 p-1 hover:bg-white/20 rounded transition-colors"
+              className="shrink-0 p-1 hover:bg-white/20 rounded-sm transition-colors"
             >
               <X className="h-4 w-4" />
             </button>

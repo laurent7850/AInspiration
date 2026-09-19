@@ -65,7 +65,7 @@ const CreationIAPage: React.FC = () => {
   const samplePrompts = t('page.visualTab.prompts.items', { returnObjects: true }) as string[];
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white">
+    <section className="bg-linear-to-b from-gray-50 to-white">
       <SEOHead
         title={t('page.seo.title')}
         description={t('page.seo.description')}
@@ -90,7 +90,7 @@ const CreationIAPage: React.FC = () => {
             onClick={() => setActiveTab('contenu')}
             className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-sm font-semibold transition-all ${
               activeTab === 'contenu'
-                ? 'bg-white text-indigo-700 shadow'
+                ? 'bg-white text-indigo-700 shadow-sm'
                 : 'text-gray-500 hover:text-gray-700'
             }`}
           >
@@ -102,7 +102,7 @@ const CreationIAPage: React.FC = () => {
             onClick={() => setActiveTab('visuel')}
             className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-sm font-semibold transition-all ${
               activeTab === 'visuel'
-                ? 'bg-white text-indigo-700 shadow'
+                ? 'bg-white text-indigo-700 shadow-sm'
                 : 'text-gray-500 hover:text-gray-700'
             }`}
           >
@@ -202,17 +202,17 @@ const CreationIAPage: React.FC = () => {
                   </button>
                 </div>
                 <div className="grid grid-cols-3 gap-4 text-center">
-                  <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                  <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs">
                     <Image className="w-8 h-8 text-white mx-auto mb-2" />
                     <div className="text-3xl font-bold mb-1">4K</div>
                     <div className="text-indigo-100">{t('page.textTab.cta.stat1Label')}</div>
                   </div>
-                  <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                  <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs">
                     <FileText className="w-8 h-8 text-white mx-auto mb-2" />
                     <div className="text-3xl font-bold mb-1">10+</div>
                     <div className="text-indigo-100">{t('page.textTab.cta.stat2Label')}</div>
                   </div>
-                  <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                  <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs">
                     <Brain className="w-8 h-8 text-white mx-auto mb-2" />
                     <div className="text-3xl font-bold mb-1">IA</div>
                     <div className="text-indigo-100">{t('page.textTab.cta.stat3Label')}</div>
@@ -319,7 +319,7 @@ const CreationIAPage: React.FC = () => {
                       <ul className="space-y-2">
                         {useCase.examples.map((example, idx) => (
                           <li key={idx} className="flex items-start gap-2">
-                            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                            <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                             <span className="text-gray-700">{example}</span>
                           </li>
                         ))}
@@ -364,7 +364,7 @@ const CreationIAPage: React.FC = () => {
 
               <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                 {samplePrompts.map((prompt, index) => (
-                  <div key={index} className="bg-white rounded-xl p-6 shadow">
+                  <div key={index} className="bg-white rounded-xl p-6 shadow-sm">
                     <p className="text-gray-700 italic">"{prompt}"</p>
                   </div>
                 ))}
@@ -419,7 +419,7 @@ const CreationIAPage: React.FC = () => {
                       t('page.visualTab.cta.check4')
                     ]).map((item, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                         <span className="text-gray-700">{item}</span>
                       </div>
                     ))}

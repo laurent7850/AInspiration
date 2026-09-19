@@ -89,7 +89,7 @@ const OpportunityDetail: React.FC<OpportunityDetailProps> = ({ opportunityId, on
         <p>{error || "Opportunité introuvable"}</p>
         <button 
           onClick={onBack} 
-          className="mt-2 text-white bg-red-600 px-4 py-2 rounded hover:bg-red-700 flex items-center gap-2"
+          className="mt-2 text-white bg-red-600 px-4 py-2 rounded-sm hover:bg-red-700 flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" />
           Retour à la liste
@@ -153,7 +153,7 @@ const OpportunityDetail: React.FC<OpportunityDetailProps> = ({ opportunityId, on
           
           <div className="space-y-4">
             <div className="flex items-start gap-3">
-              <DollarSign className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+              <DollarSign className="w-5 h-5 text-indigo-600 shrink-0" />
               <div>
                 <p className="text-sm font-medium text-gray-700">Valeur estimée</p>
                 <p className="text-lg">{formatCurrency(opportunity.estimated_value)}</p>
@@ -161,7 +161,7 @@ const OpportunityDetail: React.FC<OpportunityDetailProps> = ({ opportunityId, on
             </div>
             
             <div className="flex items-start gap-3">
-              <Calendar className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+              <Calendar className="w-5 h-5 text-indigo-600 shrink-0" />
               <div>
                 <p className="text-sm font-medium text-gray-700">Date de clôture prévue</p>
                 <p className="text-lg">{formatDate(opportunity.close_date)}</p>
@@ -169,7 +169,7 @@ const OpportunityDetail: React.FC<OpportunityDetailProps> = ({ opportunityId, on
             </div>
             
             <div className="flex items-start gap-3">
-              <Package className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+              <Package className="w-5 h-5 text-indigo-600 shrink-0" />
               <div>
                 <p className="text-sm font-medium text-gray-700">Produit/Service</p>
                 <p className="text-lg">{opportunity.product_name || '-'}</p>
@@ -183,7 +183,7 @@ const OpportunityDetail: React.FC<OpportunityDetailProps> = ({ opportunityId, on
           
           <div className="space-y-4">
             <div className="flex items-start gap-3">
-              <Building className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+              <Building className="w-5 h-5 text-indigo-600 shrink-0" />
               <div>
                 <p className="text-sm font-medium text-gray-700">Entreprise</p>
                 {opportunity.company_id ? (
@@ -200,7 +200,7 @@ const OpportunityDetail: React.FC<OpportunityDetailProps> = ({ opportunityId, on
             </div>
             
             <div className="flex items-start gap-3">
-              <User className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+              <User className="w-5 h-5 text-indigo-600 shrink-0" />
               <div>
                 <p className="text-sm font-medium text-gray-700">Contact principal</p>
                 {opportunity.contact_id ? (
@@ -268,7 +268,7 @@ const OpportunityDetail: React.FC<OpportunityDetailProps> = ({ opportunityId, on
                       type="checkbox"
                       checked={task.completed}
                       readOnly
-                      className="mt-1 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                      className="mt-1 h-4 w-4 text-indigo-600 border-gray-300 rounded-sm"
                     />
                     <div>
                       <h3 className={`text-base font-medium ${task.completed ? 'text-gray-500 line-through' : 'text-gray-900'}`}>

@@ -74,7 +74,7 @@ export default function ContactMessageDetail({ message, onBack, onStatusChange }
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm">
+    <div className="bg-white rounded-lg shadow-xs">
       <div className="p-6 border-b border-gray-200">
         <button
           onClick={onBack}

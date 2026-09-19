@@ -148,7 +148,7 @@ export default function NotificationCenter() {
                       </div>
 
                       {!notification.read && (
-                        <div className="flex-shrink-0 w-2 h-2 bg-blue-600 rounded-full"></div>
+                        <div className="shrink-0 w-2 h-2 bg-blue-600 rounded-full"></div>
                       )}
                     </div>
                   </div>

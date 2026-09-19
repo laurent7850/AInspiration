@@ -107,7 +107,7 @@ export default function WhyAI() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-20 bg-linear-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto text-center mb-16">
@@ -183,7 +183,7 @@ export default function WhyAI() {
                   <ul className="space-y-2 mb-6">
                     {useCase.examples.map((example, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-gray-700">
-                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-green-500 shrink-0" />
                         <span>{example}</span>
                       </li>
                     ))}
@@ -212,7 +212,7 @@ export default function WhyAI() {
               <ul className="space-y-4">
                 {nextSteps.map((step, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <div className="bg-white/20 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
+                    <div className="bg-white/20 rounded-full w-8 h-8 flex items-center justify-center shrink-0">
                       <span className="font-bold">{index + 1}</span>
                     </div>
                     <span className="text-indigo-50">{step}</span>
@@ -222,7 +222,7 @@ export default function WhyAI() {
             </>
           }
           rightContent={
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <div className="bg-white/10 backdrop-blur-xs rounded-xl p-6">
               <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
                 <Zap className="w-6 h-6" />
                 {t('whyai.cta.contactTitle')}

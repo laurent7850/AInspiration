@@ -70,7 +70,7 @@ const CrmQuickLinks: React.FC = () => {
             key={index}
             onClick={link.onClick}
             disabled={link.disabled}
-            className={`flex flex-col items-center justify-center p-4 rounded-lg transition-colors hover:shadow ${
+            className={`flex flex-col items-center justify-center p-4 rounded-lg transition-colors hover:shadow-sm ${
               link.disabled 
                 ? 'opacity-50 cursor-not-allowed' 
                 : 'hover:bg-gray-50 cursor-pointer'
@@ -83,7 +83,7 @@ const CrmQuickLinks: React.FC = () => {
               {link.title}
             </span>
             {link.disabled && (
-              <span className="text-xs bg-gray-200 px-2 py-0.5 rounded mt-1">Bientôt</span>
+              <span className="text-xs bg-gray-200 px-2 py-0.5 rounded-sm mt-1">Bientôt</span>
             )}
           </button>
         ))}

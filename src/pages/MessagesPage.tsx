@@ -60,7 +60,7 @@ export default function MessagesPage() {
                     onStatusChange={handleStatusChange}
                   />
                 ) : (
-                  <div className="bg-white rounded-lg shadow-sm p-12 text-center text-gray-500">
+                  <div className="bg-white rounded-lg shadow-xs p-12 text-center text-gray-500">
                     <p className="text-lg">{t('pages.messages.selectMessage')}</p>
                   </div>
                 )}

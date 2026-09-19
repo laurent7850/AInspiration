@@ -77,7 +77,7 @@ export const TabsTrigger: React.FC<TabsTriggerProps & TabsInjectedProps> = ({
       onClick={handleClick}
       className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
         isActive 
-          ? 'bg-white text-indigo-600 shadow'
+          ? 'bg-white text-indigo-600 shadow-sm'
           : 'text-gray-600 hover:text-indigo-600'
       }`}
       aria-selected={isActive}

@@ -34,7 +34,7 @@ const CallToAction: React.FC<CTAProps> = ({
 }) => {
   const bgClass = solid
     ? "bg-indigo-600"
-    : `bg-gradient-to-r ${gradientFrom} ${gradientTo}`;
+    : `bg-linear-to-r ${gradientFrom} ${gradientTo}`;
 
   return (
     <div className={`${bgClass} rounded-2xl p-8 lg:p-12 text-white ${className}`}>
@@ -65,7 +65,7 @@ const CallToAction: React.FC<CTAProps> = ({
             {stats.map((stat, index) => {
               const StatIcon = stat.icon;
               return (
-                <div key={index} className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                <div key={index} className="bg-white/10 rounded-lg p-4 backdrop-blur-xs">
                   {StatIcon && <StatIcon className="w-8 h-8 text-white mx-auto mb-2" />}
                   <div className="text-3xl font-bold mb-1">{stat.value}</div>
                   <div className="text-indigo-100">{stat.label}</div>

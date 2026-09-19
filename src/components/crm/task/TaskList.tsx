@@ -209,7 +209,7 @@ const TaskList: React.FC<TaskListProps> = ({
         <p>{error}</p>
         <button 
           onClick={() => window.location.reload()} 
-          className="mt-2 text-white bg-red-600 px-4 py-2 rounded hover:bg-red-700"
+          className="mt-2 text-white bg-red-600 px-4 py-2 rounded-sm hover:bg-red-700"
         >
           Réessayer
         </button>
@@ -235,7 +235,7 @@ const TaskList: React.FC<TaskListProps> = ({
 
       <div className="mb-6 flex flex-col md:flex-row gap-4">
         {/* Search */}
-        <div className="relative flex-grow">
+        <div className="relative grow">
           <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <input
             type="text"
@@ -303,11 +303,11 @@ const TaskList: React.FC<TaskListProps> = ({
                     type="checkbox"
                     checked={task.completed}
                     onChange={() => handleCompleteToggle(task.id, task.completed)}
-                    className="h-5 w-5 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded cursor-pointer"
+                    className="h-5 w-5 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded-sm cursor-pointer"
                   />
                 </div>
                 
-                <div className="flex-grow" onClick={() => onEditTask(task.id)}>
+                <div className="grow" onClick={() => onEditTask(task.id)}>
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                     <h3 className={`text-base font-medium ${task.completed ? 'text-gray-500 line-through' : 'text-gray-900'}`}>
                       {task.title}
@@ -315,7 +315,7 @@ const TaskList: React.FC<TaskListProps> = ({
                     
                     <div className="flex flex-wrap gap-2 mt-2 sm:mt-0">
                       {task.due_date && (
-                        <span className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${
+                        <span className={`inline-flex items-center px-2 py-1 rounded-sm text-xs font-medium ${
                           isOverdue(task) ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800'
                         }`}>
                           <Calendar className="w-3 h-3 mr-1" />
@@ -323,11 +323,11 @@ const TaskList: React.FC<TaskListProps> = ({
                         </span>
                       )}
                       
-                      <span className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${getStatusColor(task.status, task.completed)}`}>
+                      <span className={`inline-flex items-center px-2 py-1 rounded-sm text-xs font-medium ${getStatusColor(task.status, task.completed)}`}>
                         {task.completed ? 'Terminée' : statuses.find(s => s.value === task.status)?.label || task.status}
                       </span>
                       
-                      <span className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${getPriorityColor(task.priority)}`}>
+                      <span className={`inline-flex items-center px-2 py-1 rounded-sm text-xs font-medium ${getPriorityColor(task.priority)}`}>
                         <Flag className="w-3 h-3 mr-1" />
                         {priorities.find(p => p.value === task.priority)?.label || task.priority}
                       </span>

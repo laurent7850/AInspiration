@@ -146,7 +146,7 @@ const AIInsights: React.FC<AIInsightsProps> = ({ opportunities, tasks, contacts 
 
       {/* AI Generated Insights */}
       {aiInsights.length > 0 && (
-        <div className="mb-4 p-3 bg-white/10 rounded-lg backdrop-blur-sm">
+        <div className="mb-4 p-3 bg-white/10 rounded-lg backdrop-blur-xs">
           <div className="flex items-center space-x-2 mb-2">
             <Lightbulb className="w-4 h-4" />
             <span className="text-sm font-medium opacity-90">Analyse IA</span>
@@ -154,7 +154,7 @@ const AIInsights: React.FC<AIInsightsProps> = ({ opportunities, tasks, contacts 
           <ul className="space-y-2">
             {aiInsights.map((insight, index) => (
               <li key={index} className="flex items-start space-x-2 text-sm">
-                <ChevronRight className="w-4 h-4 mt-0.5 flex-shrink-0 opacity-70" />
+                <ChevronRight className="w-4 h-4 mt-0.5 shrink-0 opacity-70" />
                 <span>{insight}</span>
               </li>
             ))}
@@ -168,7 +168,7 @@ const AIInsights: React.FC<AIInsightsProps> = ({ opportunities, tasks, contacts 
           {insights.slice(0, 4).map((insight) => (
             <div
               key={insight.id}
-              className={`p-3 rounded-lg border ${getPriorityColor(insight.priority)} bg-white/90 backdrop-blur-sm`}
+              className={`p-3 rounded-lg border ${getPriorityColor(insight.priority)} bg-white/90 backdrop-blur-xs`}
             >
               <div className="flex items-start justify-between">
                 <div className="flex items-start space-x-3">
@@ -185,7 +185,7 @@ const AIInsights: React.FC<AIInsightsProps> = ({ opportunities, tasks, contacts 
                     )}
                   </div>
                 </div>
-                <div className="flex-shrink-0 ml-2">
+                <div className="shrink-0 ml-2">
                   {getPriorityBadge(insight.priority)}
                 </div>
               </div>

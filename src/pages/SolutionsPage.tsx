@@ -88,7 +88,7 @@ const SolutionsPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-gray-50 to-white pt-12">
+      <section className="bg-linear-to-b from-gray-50 to-white pt-12">
         <div className="container mx-auto px-4">
           {/* Category filter */}
           <div className="flex flex-wrap justify-center gap-3 mb-12" role="group" aria-label={t('categories.all')}>
@@ -122,11 +122,11 @@ const SolutionsPage: React.FC = () => {
                     <solution.icon className="w-6 h-6 text-indigo-600" />
                   </div>
                   <h2 className="text-xl font-semibold text-gray-900 mb-2">{t(`solutions.${solution.key}.title`)}</h2>
-                  <p className="text-gray-600 mb-4 flex-grow">{t(`solutions.${solution.key}.description`)}</p>
+                  <p className="text-gray-600 mb-4 grow">{t(`solutions.${solution.key}.description`)}</p>
                   <ul className="space-y-2 mb-6">
                     {(Array.isArray(benefits) ? benefits : []).map((benefit) => (
                       <li key={benefit} className="flex items-center gap-2 text-gray-600 text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" aria-hidden="true" />
+                        <CheckCircle className="w-4 h-4 text-green-600 shrink-0" aria-hidden="true" />
                         <span>{benefit}</span>
                       </li>
                     ))}
@@ -189,7 +189,7 @@ const SolutionsPage: React.FC = () => {
             <p className="text-lg text-gray-600 mb-8">{t('guidance.body')}</p>
             <ol className="grid md:grid-cols-3 gap-6">
               {GUIDANCE_STEPS.map((step, index) => (
-                <li key={step} className="bg-white p-6 rounded-xl shadow">
+                <li key={step} className="bg-white p-6 rounded-xl shadow-sm">
                   <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-xl font-bold text-indigo-600 mx-auto mb-4">
                     {index + 1}
                   </div>

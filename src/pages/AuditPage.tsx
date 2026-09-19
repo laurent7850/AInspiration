@@ -126,7 +126,7 @@ export default function AuditPage() {
                   <ul className="space-y-3">
                     {(t('page.reportItems', { returnObjects: true }) as string[]).map((item: string, i: number) => (
                       <li key={i} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                         <span className="text-gray-700">{item}</span>
                       </li>
                     ))}
@@ -165,7 +165,7 @@ export default function AuditPage() {
             <ul className="space-y-3">
               {(t('page.whoSectors', { returnObjects: true }) as string[]).map((sector: string, i: number) => (
                 <li key={i} className="flex items-start gap-3 text-lg">
-                  <CheckCircle className="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-6 h-6 text-indigo-600 shrink-0 mt-0.5" />
                   <span className="text-gray-700">{sector}</span>
                 </li>
               ))}
@@ -185,17 +185,17 @@ export default function AuditPage() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-6 mb-8">
-            <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm text-center min-w-[120px]">
+            <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs text-center min-w-[120px]">
               <Zap className="w-8 h-8 text-white mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">24h</div>
               <div className="text-indigo-100 text-sm">{t('page.stats.delivery')}</div>
             </div>
-            <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm text-center min-w-[120px]">
+            <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs text-center min-w-[120px]">
               <Shield className="w-8 h-8 text-white mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">0 €</div>
               <div className="text-indigo-100 text-sm">{t('page.stats.noCommitment')}</div>
             </div>
-            <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm text-center min-w-[120px]">
+            <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs text-center min-w-[120px]">
               <Users className="w-8 h-8 text-white mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">50+</div>
               <div className="text-indigo-100 text-sm">{t('page.stats.smeHelped')}</div>

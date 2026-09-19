@@ -18,7 +18,7 @@ export default function HomeButton() {
       aria-label="Retour à l'accueil"
     >
       <Home className="w-6 h-6 text-indigo-600" />
-      <span className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-2 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+      <span className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-2 py-1 rounded-sm text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
         Retour à l'accueil
       </span>
     </button>

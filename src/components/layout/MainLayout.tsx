@@ -28,7 +28,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       {/* Skip to content - Accessibilité */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-indigo-600 focus:text-white focus:rounded-lg"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-100 focus:px-4 focus:py-2 focus:bg-indigo-600 focus:text-white focus:rounded-lg"
       >
         Aller au contenu principal
       </a>
@@ -38,7 +38,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <HomeButton />
 
       {/* Contenu principal */}
-      <main id="main-content" role="main" className="flex-grow pt-16">
+      <main id="main-content" role="main" className="grow pt-16">
         {!isHomePage && (
           <nav aria-label="Fil d'Ariane" className="bg-surface border-b border-line">
             <div className="container mx-auto px-4 py-3">

@@ -162,7 +162,7 @@ export default function Hero() {
                     className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 cursor-pointer ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}
                     onClick={handlePlayPause}
                   >
-                    <div className="bg-canvas/95 backdrop-blur-sm rounded-full p-4 border border-line transition-transform duration-200 hover:scale-110 active:scale-95">
+                    <div className="bg-canvas/95 backdrop-blur-xs rounded-full p-4 border border-line transition-transform duration-200 hover:scale-110 active:scale-95">
                       {isPlaying ? (
                         <Pause className="w-6 h-6 text-indigo-600" />
                       ) : (

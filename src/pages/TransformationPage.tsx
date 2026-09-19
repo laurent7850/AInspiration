@@ -65,7 +65,7 @@ const TransformationPage: React.FC = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white">
+    <section className="bg-linear-to-b from-gray-50 to-white">
       <SEOHead
         title={t('seo.title')}
         description={t('seo.description')}
@@ -112,7 +112,7 @@ const TransformationPage: React.FC = () => {
               <ul className="space-y-2">
                 {phase.activities.map((activity, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                     <span className="text-gray-700">{activity}</span>
                   </li>
                 ))}
@@ -136,7 +136,7 @@ const TransformationPage: React.FC = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
-              <div key={index} className="bg-white rounded-xl shadow p-8 text-center">
+              <div key={index} className="bg-white rounded-xl shadow-sm p-8 text-center">
                 <div className="text-3xl font-bold text-indigo-600 mb-3">{benefit.value}</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
                   {benefit.title}
@@ -179,7 +179,7 @@ const TransformationPage: React.FC = () => {
               <ul className="space-y-2">
                 {solution.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                     <span className="text-gray-700">{feature}</span>
                   </li>
                 ))}
@@ -232,7 +232,7 @@ const TransformationPage: React.FC = () => {
                       <ul className="space-y-1">
                         {story.results.map((result, idx) => (
                           <li key={idx} className="flex items-start gap-2">
-                            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                            <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                             <span className="text-gray-700">{result}</span>
                           </li>
                         ))}
@@ -290,19 +290,19 @@ const TransformationPage: React.FC = () => {
 
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                   <span className="text-gray-700">{t('cta.check1')}</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                   <span className="text-gray-700">{t('cta.check2')}</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                   <span className="text-gray-700">{t('cta.check3')}</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                   <span className="text-gray-700">{t('cta.check4')}</span>
                 </div>
               </div>

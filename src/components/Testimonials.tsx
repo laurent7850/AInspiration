@@ -135,7 +135,7 @@ const Testimonials: React.FC = () => {
 
           <button
             onClick={() => setShowStartForm(true)}
-            className="group inline-flex items-center gap-3 bg-white text-accent-dark px-8 py-4 rounded-button font-semibold text-lg hover:bg-indigo-50 transition-colors duration-200 active:translate-y-px flex-shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            className="group inline-flex items-center gap-3 bg-white text-accent-dark px-8 py-4 rounded-button font-semibold text-lg hover:bg-indigo-50 transition-colors duration-200 active:translate-y-px shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
           >
             {t('testimonials.cta.button')}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
