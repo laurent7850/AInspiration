@@ -14,6 +14,10 @@
 #     la normale. Une sonnette qui hurle en boucle devient une sonnette qu'on ignore.
 #  3. Chaque seuil correspond a quelque chose qui s'est REELLEMENT produit. On
 #     n'ajoute pas un seuil "au cas ou" : on ajoute un seuil quand une panne l'a merite.
+#  4. Une mesure se prend a un moment CHOISI, et jamais avec un outil qui cumule
+#     depuis le demarrage du processus. Les deux defauts corriges le 21/09/2026
+#     etaient des defauts de mesure, pas des pannes : la machine allait bien.
+#     Voir les commentaires des sections "mesure CPU" et "contexte_cpu".
 #
 # ATTENTION : n8n ne publie AUCUN port sur l'hote. Passer par localhost:5678 ne
 # fonctionne pas et n'a jamais fonctionne. L'appel doit sortir par Traefik.
@@ -34,6 +38,7 @@ MISSES_BEFORE_CLEAR=3   # passages consecutifs en dessous avant de dire que c'es
 
 # Seuils, tous cales sur l'incident du 17/09
 STEAL_MAX=20            # steal > 20 % = l'hebergeur nous bride (il etait a 91 %)
+STEAL_SAR_MIN=10        # corroboration sar : moyenne 10 min a depasser aussi (cf. controle 1)
 BUSY_MAX=50             # user+sys soutenu (le pic du 17/09 etait a 88 %)
 PROC_MAX=80             # un seul processus au-dessus de 80 % (dockerd etait a 103 %)
 DISK_MAX=85             # % d'occupation de /
@@ -146,27 +151,102 @@ clear_alert() {
          "$_key"
 }
 
+# Le tableau vient de la SECONDE iteration de top (variable TOPRAW, plus bas),
+# jamais de "ps --sort=-pcpu".
+#
+# POURQUOI - mails d'alerte du 20/09/2026. Le %CPU de "ps" est cumule sur la VIE
+# du processus : pour un processus ne pendant la mesure (ELAPSED 0), c'est une
+# division par presque zero. Les mails designaient donc des coupables
+# imaginaires - "x2golistsession 90 %", "runc:[2:INIT] 100 %", et "ps" lui-meme
+# a 200 % en tete de sa propre liste. Tous avaient ELAPSED 0. Cette liste a fait
+# chercher du cote de x2go, dont le seul vrai processus est a 0,2 %.
+#
+# La seconde iteration de top, elle, est un delta sur l'intervalle : une mesure.
 contexte_cpu() {
-  echo "Processus les plus consommateurs :"
-  LC_ALL=C ps -eo pcpu,pmem,etimes,comm --sort=-pcpu 2>/dev/null | head -6 | sed 's/^/  /'
+  echo "Processus les plus consommateurs (delta sur 3 s, pas un cumul) :"
+  if [ -n "${TOPRAW:-}" ]; then
+    echo "$TOPRAW" | head -5 | awk '{printf "  %6s %%  %s\n", $9, $12}'
+  else
+    echo "  (instantane indisponible)"
+  fi
   echo
   echo "Charge : $(cat /proc/loadavg)"
+  echo
+  echo "Rappel de lecture : la charge moyenne n est PAS une consommation, et"
+  echo "sous bridage user+sys est plafonne. Comparer la somme des cgroups Docker"
+  echo "au total systeme : si les conteneurs ne rendent pas compte de la charge,"
+  echo "le coupable est un processus de l hote."
 }
 
 # ---------------------------------------------------------------- mesure CPU
-# Moyenne sur 10 s. On ignore la premiere ligne de vmstat : c'est un cumul depuis
+#
+# DECALAGE OBLIGATOIRE - mesure du 21/09/2026, ne pas le retirer.
+#
+# Le steal de cette machine n'est pas continu : il est confine aux secondes 01 a
+# 05 de CHAQUE minute. 0 a 2 % le reste du temps, 5 a 64 % pendant ces quatre
+# secondes. Verifie seconde par seconde sur plusieurs frontieres de minute.
+# La contention vient de l'hote partage, pas de nous : la meme charge lancee
+# hors frontiere n'en produit aucune (uptime-check.sh a la main a 06:52:15 ->
+# us=22 sy=11, steal=4 %).
+#
+# Or cron lance ce script a :00:00, et "vmstat 5 3" retenait comme premier
+# echantillon les secondes 0 a 5 - exactement la fenetre du pic. Le watchdog
+# echantillonnait donc les 5 pires secondes de la minute, puis les moyennait
+# avec 5 secondes calmes : (45+2)/2 = 23 %, juste au-dessus du seuil de 20.
+# D'ou "steal 29 %" toute la nuit du 20 au 21/09, sur une machine dont sar
+# mesure 3 % de moyenne journaliere et qui est a 90 % idle.
+#
+# On attend donc la seconde 15, et on mesure de 15 a 45. Ne jamais ramener
+# cette fenetre au debut de la minute : ce serait reintroduire le defaut.
+_s=$(date +%-S)
+if   [ "$_s" -lt 15 ]; then sleep $((15 - _s))
+elif [ "$_s" -gt 15 ]; then sleep $((75 - _s))
+fi
+
+# Moyenne sur 30 s. On ignore la premiere ligne de vmstat : c'est un cumul depuis
 # le boot, pas un instantane. Colonnes : 13=us 14=sy 15=id 16=wa 17=st
-CPU=$(LC_ALL=C vmstat 5 3 2>/dev/null | tail -2 \
+CPU=$(LC_ALL=C vmstat 10 4 2>/dev/null | tail -3 \
       | awk '{u+=$13; s+=$14; st+=$17; n++} END {if(n>0) printf "%d %d %d", u/n, s/n, st/n; else print "0 0 0"}')
 US=$(echo "$CPU" | cut -d' ' -f1)
 SY=$(echo "$CPU" | cut -d' ' -f2)
 ST=$(echo "$CPU" | cut -d' ' -f3)
 BUSY=$((US + SY))
 
+# Instantane des processus, pris UNE fois et reutilise par contexte_cpu et par
+# le controle 3. "top -b -n 2" : la premiere iteration est un cumul depuis le
+# demarrage de chaque processus, la seconde est un delta sur l'intervalle. On
+# ne garde que la seconde. Colonnes : 9=%CPU 12=COMMAND.
+TOPRAW=$(LC_ALL=C top -b -n 2 -d 3 -w 200 2>/dev/null \
+         | awk '/^ *PID/{n++} n==2 && $1 ~ /^[0-9]+$/')
+
 # 1. L'hebergeur nous bride
-if [ "$ST" -gt "$STEAL_MAX" ]; then
+#
+# DEUX barrieres, parce qu'elles disent deux choses differentes : la fenetre de
+# 30 s dit "maintenant", sar dit "sur la derniere tranche de 10 minutes". Le
+# bridage qu'on veut attraper a tenu 27 heures (26 % puis 59 % de moyenne
+# JOURNALIERE les 17 et 18/09) : il franchit les deux sans difficulte. Un pic
+# de quatre secondes ne franchit ni l'une ni l'autre.
+#
+# Pas de LC_ALL=C sur sar : il le fait basculer en format AM/PM, ce qui ajoute
+# un champ et decale les colonnes. On repere la ligne par le champ "all" et on
+# lit depuis la fin (NF-1 = %steal, NF = %idle). La ligne "Average:" est
+# ecartee : c'est la moyenne depuis minuit, pas la derniere tranche.
+#
+# Si sar est muet (sysstat arrete, fichier du jour absent), son silence ne doit
+# PAS etouffer l'alerte : la mesure vmstat decide alors seule. Une donnee
+# manquante ne ferme pas la bouche du moniteur.
+ST_SAR=$(sar -u 2>/dev/null | awk '$1 ~ /^[0-9]/ && $0 ~ /[ \t]all[ \t]/ {v=$(NF-1)} END {if(v!="") printf "%d", v}')
+case "${ST_SAR:-}" in ''|*[!0-9]*) ST_SAR=-1 ;; esac
+
+if [ "$ST_SAR" -ge 0 ]; then
+  ST_SAR_TXT="Moyenne sar sur la derniere tranche de 10 min : ${ST_SAR}% (seuil de corroboration ${STEAL_SAR_MIN}%)."
+else
+  ST_SAR_TXT="Moyenne sar indisponible (sysstat muet) : alerte sur la seule mesure instantanee."
+fi
+
+if [ "$ST" -gt "$STEAL_MAX" ] && { [ "$ST_SAR" -lt 0 ] || [ "$ST_SAR" -gt "$STEAL_SAR_MIN" ]; }; then
   alert steal "[VPS ALERTE] L hebergeur bride la machine (steal ${ST}%)" \
-    "Le steal time est a ${ST}% (seuil ${STEAL_MAX}%).\n\nCela signifie que l hyperviseur Hostinger refuse du CPU a la machine. Tout ce qui tourne dessus est ralenti, quelle que soit la sante des applications.\n\nC est exactement ce qui s est produit du 17 au 18/09/2026, ou la machine a tourne a 9 % de ses 4 coeurs pendant 27 heures sans que personne ne le sache.\n\nA faire : identifier ce qui consomme (voir ci-dessous), corriger, puis demander a Hostinger de lever la limite.\n\n$(contexte_cpu)"
+    "Le steal time est a ${ST}% (seuil ${STEAL_MAX}%), moyenne sur 30 s prise entre les secondes 15 et 45 de la minute.\n${ST_SAR_TXT}\n\nCela signifie que l hyperviseur Hostinger refuse du CPU a la machine. Tout ce qui tourne dessus est ralenti, quelle que soit la sante des applications.\n\nC est exactement ce qui s est produit du 17 au 18/09/2026, ou la machine a tourne a 9 % de ses 4 coeurs pendant 27 heures sans que personne ne le sache.\n\nA faire : identifier ce qui consomme (voir ci-dessous), corriger, puis demander a Hostinger de lever la limite.\n\n$(contexte_cpu)"
 else
   clear_alert steal "steal time eleve"
 fi
@@ -179,11 +259,14 @@ else
   clear_alert busy "charge CPU soutenue"
 fi
 
-# 3. Un processus emballe
-TOP=$(LC_ALL=C top -b -n 2 -d 3 2>/dev/null | awk '/^ *PID/{n++} n==2 && $1 ~ /^[0-9]+$/ {print int($9)" "$12; exit}')
+# 3. Un processus emballe - lu dans le meme instantane que contexte_cpu, au lieu
+# de relancer un top a soi. Une seule mesure, donc le seuil et le mail parlent
+# forcement du meme moment.
+TOP=$(echo "${TOPRAW:-}" | awk 'NR==1 {print int($9)" "$12}')
 TOP_PCT=$(echo "$TOP" | cut -d' ' -f1)
 TOP_CMD=$(echo "$TOP" | cut -d' ' -f2-)
 case "${TOP_PCT:-}" in ''|*[!0-9]*) TOP_PCT=0 ;; esac
+[ -n "$TOP_CMD" ] || TOP_CMD="(inconnu)"
 
 if [ "$TOP_PCT" -gt "$PROC_MAX" ]; then
   alert runaway "[VPS ALERTE] Processus emballe : $TOP_CMD (${TOP_PCT}%)" \
