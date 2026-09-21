@@ -91,6 +91,49 @@ Sauvegarde de l'ancien script sur le VPS : `/opt/vps-watchdog.sh.bak-2026-09-21`
 Miroir du dépôt (`docs/ops/vps/vps-watchdog.sh`) mis à jour — il était en phase
 avant modification.
 
+### `x2goserver` désactivé — et il brûlait vraiment du CPU
+
+La fausse piste du matin a fini par désigner quelque chose de réel, mais pour une
+tout autre raison que celle que j'avais avancée. J'avais parlé de « surface
+d'attaque » : c'était mal dit. `x2go` n'ouvre **aucun port** (il passe par SSH),
+n'a **aucun binaire setuid**, et `sshd` n'y fait aucune référence. L'argument de
+sécurité ne tenait pas.
+
+Le vrai argument est ailleurs, et il était dans le journal systemd du service :
+
+```
+Sep 18 07:30:25 x2goserver.service: Consumed 7h 39min 18.429s CPU time
+```
+
+Sept heures trente-neuf de CPU entre le 17/09 12h43 et le 18/09 07h30, soit
+**41 % d'un cœur en continu** — pendant la fenêtre exacte du bridage attribué à
+`dockerd` seul. Mesure du jour par delta de cgroup (`CPUUsageNSec`, la méthode
+fiable) : **8,2 % d'un cœur à l'instant**, **14,1 % en moyenne depuis le 18/09**,
+soit 10 heures de CPU en trois jours. Sur une machine dont le `user+sys` total
+tourne autour de 7 %, ce service en représentait environ la moitié.
+
+Pour un service dont **aucune session n'a jamais été ouverte** : pas de `.x2go`
+dans le moindre répertoire personnel, base de sessions `/var/lib/x2go/x2go_sessions`
+inchangée depuis le 22/05/2025, date de l'image Hostinger d'origine.
+
+`systemctl disable --now x2goserver`. Vérifié après coup : connexion SSH **neuve**
+fonctionnelle (le point critique), 43 conteneurs debout, `ainspiration.eu` à 200 en
+41 ms, cgroup vide, aucun lien de démarrage `S` dans les runlevels 0 à 6 — seulement
+des `K01`, qui sont des liens d'arrêt. Les paquets sont conservés : réversible d'un
+geste par `systemctl enable --now x2goserver`.
+
+La liste des processus donnée par la sonde corrigée, juste après :
+
+```
+   2.6 %  containerd
+   2.6 %  dockerd
+   1.0 %  python
+   0.7 %  containerd-shim
+   0.7 %  redis-server
+```
+
+Plus de `ps` à 200 %, plus de `x2golistsession` fantôme.
+
 ## Cassé
 
 Rien. Le script tourne (exécution réelle vérifiée, 1 min 08 s, bien en deçà du
@@ -98,10 +141,14 @@ cron de 15 min) et le signe de vie hebdomadaire du lundi 7h est parti normalemen
 
 ## Reste
 
-- **`x2goserver` est `enabled` et actif** sur une machine sans usage bureau, avec
-  une douzaine de paquets installés. Surface d'attaque gratuite au sens de la
-  baseline, et source du bruit dans les listes de processus. Décision à prendre :
-  désinstaller ou justifier sa présence. Rien ne l'utilise aujourd'hui.
+- **Confirmer le gain CPU de la désactivation d'`x2goserver` sur `sar`** dans
+  quelques jours. La mesure par cgroup est formelle (8,2 % d'un cœur supprimés),
+  mais l'effet au niveau système — environ 2 points sur 4 cœurs — se noie dans le
+  bruit d'un échantillon de 30 s. Seule la moyenne journalière le montrera.
+- **Les paquets `x2go*` sont toujours installés** (une douzaine). Le service est
+  désactivé, donc ils ne coûtent plus rien en CPU ; reste à décider si on les purge
+  pour ne plus avoir à les mettre à jour. Non fait volontairement : la désactivation
+  seule est réversible d'un geste.
 - **43 conteneurs, tous porteurs d'un healthcheck**, plusieurs à 5 s d'intervalle
   (`ainspiration-postgres`, `dreamoracle-postgres-1`, `seopilot-postgres`,
   `theevent-postgres`, `seopilot-redis`). Chacun crée un `runc exec`. Ce n'est pas
