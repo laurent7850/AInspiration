@@ -48,6 +48,21 @@ prochaine-action: Supprimer la fiche et la société de test depuis /contacts, c
   même travail : `contacts` porte le prospect relançable, `contact_messages` porte le
   message et son cycle de vie.
 
+- **Un badge rouge sur l'entrée « Messages » du menu CRM, déployé.** Le compteur existait
+  depuis toujours — `NotificationContext` interroge `/contact-messages/stats` toutes les
+  30 s, déclenche une notification navigateur et un son — mais **rien ne l'affichait dans le
+  menu, et il valait zéro** puisque la table était vide. `CrmLayout.tsx` consomme désormais
+  `newMessagesCount` : badge `bg-red-500` avec le nombre (`99+` au-delà), qui **remplace** le
+  chevron quand il est présent pour ne pas encombrer la ligne, et porte un `aria-label`.
+  Aucun appel réseau supplémentaire : seulement l'affichage d'une donnée déjà chargée.
+  Déployé dans l'ordre : build (209 entrées) → **push du manifeste avant tout** →
+  `netlify deploy --prod` → **209/209 entrées vérifiées une à une sur le CDN** →
+  `--force-recreate`, conteneur reparti sur « Frontend: 209 files downloaded », 209 fichiers
+  sur disque. `bg-red-500` et `99+` retrouvés dans le chunk `CrmLayout-CKAMp7Qg.js` servi en
+  production. Un asset absent renvoie toujours 404 `text/plain` — le garde-fou du 8 juin est
+  intact. Contrôle de santé : **24 vérifications passées, 1 échec, celui déjà connu** (article
+  du 16/09 sans `hreflang`, chantier 2b).
+
 - **Vérifié par le parcours réel, jamais par le code de retour du webhook.** Cinq
   soumissions, dix messages relus en boîte (uid 35 à 44), et pour les deux derniers la
   relecture du corps rendu, texte et HTML. Contrôles complémentaires : une soumission sans
