@@ -51,13 +51,18 @@ Constat au 22/09/2026, relevé dans le HTML servi :
 | Fiche | Publié | Accord |
 |---|---|---|
 | `facturation-automatisee`, `playlists-auditeurs`, `preparation-emission` | **Nostalgie** | décision de Laurent, ADR-006 |
-| `tl-services` | **TL Services** | **aucun — publié depuis le 04/09** |
-| `artpero` | **L'Artpéro** | **aucun — publié depuis le 04/09**, et le nom est aussi dans le titre de la fiche |
+| `tl-services` | **TL Services** | **aucun — publié depuis le 04/09**, accord attendu sous peu |
+| `artpero` | **L'Artpéro** | **aucun accord requis**, décision de Laurent du 22/09 : rien n'a été déposé et il n'y a personne à qui le demander. Le nom figure aussi dans le titre de la fiche. |
 | `reconciliation-caisse`, `factures-fournisseurs`, `enghien` | anonymisé | sans objet |
 
-Les deux lignes sans accord ne viennent pas de cette décision : elles la précèdent de
-deux semaines et personne ne les avait vues. Laurent obtient l'accord de TL Services dans
-les jours qui viennent ; celui de L'Artpéro reste à demander.
+Ces deux publications ne viennent pas de la présente décision : elles la précèdent de deux
+semaines et personne ne les avait vues.
+
+*Note de méthode, consignée parce qu'elle resservira* : un **dépôt de marque n'est pas ce
+qui gouverne la citation d'un client**. Citer le nom d'une société comme référence est
+licite en soi ; ce qui crée un risque, c'est un client qui ne voulait pas l'être. Le motif
+retenu pour L'Artpéro est donc « personne n'a de raison d'objecter », pas « la marque n'est
+pas déposée » — c'est le premier qui tient.
 
 `clientUrl` garde son rôle, plus modeste et qui reste utile : il rend le nom **cliquable**
 dans l'interface. Il ne décide de rien.

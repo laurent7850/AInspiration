@@ -36,9 +36,10 @@ ou aux composants CRM.
    le nom que **cliquable** dans l'interface — il ne décide de rien. Ne pas se fier au
    composant React pour juger de ce qui est publié : **vérifier le HTML servi.**
    État au 22/09/2026 : **Nostalgie** nommée sur ses trois fiches sur décision de Laurent
-   (`ops/decisions/ADR-006-nommer-nostalgie.md`), **sans logo** ; **TL Services** et
-   **L'Artpéro** nommés depuis le 04/09 **sans accord**, accords en cours. Les restaurants
-   et le cercle d'histoire restent anonymisés. N'ajoute aucun nom sans décision explicite
+   (`ops/decisions/ADR-006-nommer-nostalgie.md`), **sans logo** ; **L'Artpéro** nommé, aucun
+   accord requis (arbitrage du 22/09) ; **TL Services** nommé depuis le 04/09 **sans
+   accord**, régularisation en cours. Les restaurants et le cercle d'histoire restent
+   anonymisés. N'ajoute aucun nom sans décision explicite
    de Laurent, et note-la dans l'ADR.
 3. **Pas de Supabase** pour les nouveaux développements, autant que possible.
 4. **Pas de secret recopié à la main.** L'incident du 16/09 vient de là. Tout secret vit en
