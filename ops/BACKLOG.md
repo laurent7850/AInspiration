@@ -37,7 +37,6 @@
 | C14 | Construire une **fenêtre de maintenance déclarée** : la veille VPS ne distingue toujours pas un déploiement d'une panne. Surveiller la récidive du bridage (`user+sys` > 40 % ou `cswch/s` > 10 000). | Dev | P2 | todo | — | non |
 | C15 | Vérifier que `/var/log/vps-watchdog.log` ne porte plus de ligne « steal au-dessus du seuil » depuis le correctif du 21/09. Reste ouvert : les trois cron sont alignés sur la minute ronde, c'est-à-dire sur le pire moment du CPU de l'hôte. | Dev | P2 | todo | 2026-09-23 | non |
 | C16 | Confirmer sur la moyenne `sar` le gain de la désactivation de `x2goserver` (14 % d'un cœur), puis décider si on purge les paquets `x2go*`. Réversible par `systemctl enable --now x2goserver`. | Dev | P3 | todo | — | non |
-| C18 | **`VITE_BOOKING_URL` est vide en production** : les boutons de rendez-vous sont masqués dans le hero, le footer et `/pme-hainaut-bruxelles`. Le RDV de découverte est pourtant **le seul tunnel d'entrée** de la grille O1–O5. Il faut le lien de Laurent, puis rebuild et redéploiement. | Ventes | P1 | blocked | — | non |
 | C19 | **GA4 — désactiver « Modifications de page basées sur les événements de l'historique »** (Admin → Flux de données → Mesure améliorée). Tant que c'est actif, chaque navigation SPA compte **deux** vues et toute lecture d'audience est faussée. Ouvert depuis le 13/08/2026. | Marketing | P2 | todo | — | non |
 | C20 | **Une clé OpenRouter par projet.** `Maudios` est une clé maîtresse partagée par **sept conteneurs**, et **15 des 17 clés n'ont aucun plafond** — aucune rotation n'est possible sans tout casser, et attribuer une dépense à un projet demande une enquête. Cartographie et plafonds décidés le 17/09 (exposition cible 11 $/jour) ; restent à créer. **Laurent crée les clés et colle les valeurs**, jamais Claude. | Dev | P2 | todo | — | non |
 | C21 | **Le pool de sujets du blog s'épuise vers février 2027** : la garde 409 bloquera la republication sans remplir le pool, et ces semaines-là ne publieront **rien**. À traiter avant, ou à faire tomber avec la décision de fin novembre (C22). | Marketing | P3 | todo | 2027-02 | non |
@@ -51,4 +50,4 @@
 
 | ID | Chantier | Responsable | Clos le |
 |----|----------|-------------|---------|
-| — | *(carnet amorcé le 22/09/2026 ; l'historique d'avant cette date vit dans `HANDOFF.md` et `docs/journal/`)* | | |
+| C18 | Le lien de réservation Cal.com ouvre les boutons de rendez-vous, et le libellé annonce enfin trente minutes | Ventes | 2026-09-22 |
