@@ -33,6 +33,21 @@ prochaine-action: Supprimer la fiche et la société de test depuis /contacts, c
   littéralement. Tous les emails sortants du formulaire commençaient donc par un `=` isolé,
   depuis toujours. Invisible dans l'éditeur n8n — seule la relecture du corps reçu l'a montré.
 
+- **La section « Messages » du CRM n'était alimentée par rien — branchée.** La table
+  `contact_messages` était **vide, zéro ligne**, pas même le jeu de démonstration. La route
+  `POST /api/contact-messages` existe pourtant, publique et faite pour ça (`formLimiter`,
+  piège à robots, validation Zod, message attribué à l'administrateur), mais personne ne
+  l'appelait : le service frontend sait lire, mettre à jour et supprimer mais **n'a pas de
+  méthode de création**, et le workflow n'écrivait que dans `contacts`. **Le dégât n'était
+  pas la page vide** : `NotificationContext` compte les messages `new` via
+  `/contact-messages/stats`, donc le compteur de notifications du CRM ne pouvait jamais
+  sonner. Nœud `CRM — Message de contact` ajouté sur la branche valide de `IF Valid`, en
+  parallèle des envois, `onError: continueRegularOutput` et timeout de 5 s — sur le modèle
+  exact du nœud d'ingestion. Vérifié en base : `status: new`, propriétaire
+  `admin@ainspiration.eu`, `source: formulaire-ainspiration`. Les deux tables ne font pas le
+  même travail : `contacts` porte le prospect relançable, `contact_messages` porte le
+  message et son cycle de vie.
+
 - **Vérifié par le parcours réel, jamais par le code de retour du webhook.** Cinq
   soumissions, dix messages relus en boîte (uid 35 à 44), et pour les deux derniers la
   relecture du corps rendu, texte et HTML. Contrôles complémentaires : une soumission sans
@@ -53,7 +68,8 @@ prochaine-action: Supprimer la fiche et la société de test depuis /contacts, c
 
 - **Une fiche et une société de test à supprimer** : `test-relais-info-22092026@ainspiration.eu`,
   contact `7cd4e873-a85f-4753-ad9f-ec31ebf91065`, société `185f4cb1-f51a-4706-a149-f38db83e18a8`
-  (« Distr-Action SRL »), source `formulaire-ainspiration`. Les cinq soumissions n'ont produit
+  (« Distr-Action SRL »), et le message `9e200a9e-8938-43cf-9134-aa3fc3111f8a` dans la section
+  Messages, source `formulaire-ainspiration`. Les cinq soumissions n'ont produit
   qu'une fiche — l'ingestion est idempotente sur l'email. Il n'existe pas de route de purge
   pour une fiche arbitraire, seule celle de la sonde Audityo l'est, et par conception.
 
