@@ -673,9 +673,24 @@ Le container télécharge le frontend depuis Netlify au démarrage selon `docker
 - **LinkedIn client_secret** : secret expiré remplacé dans la config Docker (.env)
 
 ### Documents légaux créés
-- **SLA v1.0** : `Paperclip/legal/SLA-AInspiration-v1.0-2026-04-04.md` + page Notion
-- **DPA v1.0** : `Paperclip/legal/DPA-AInspiration-v1.0-2026-04-04.md` + page Notion
-- **CGV** : sections 11 (SLA) et 12 (DPA) ajoutées dans `public/locales/fr/legal.json`
+- **SLA v1.0** : `Paperclip/legal/SLA-AInspiration-v1.0-2026-04-04.md` + page Notion.
+  **Obsolète depuis le 22/09/2026, archivé sans successeur.** Il décrit l'offre abandonnée
+  le 16/09 (audit gratuit, Pack Express, 99 % de disponibilité, 24 h de délai) et contredit
+  la grille O1–O5. Surtout : un document SLA autonome **est** un engagement qui s'applique
+  par défaut, ce que la section 11 des CGV a explicitement retiré le 18/09. Le refaire
+  rouvrirait cette décision — ne pas en rédiger un nouveau sans arbitrage de Laurent, et
+  seulement pour O4, seule prestation où une disponibilité chiffrée veut dire quelque chose.
+  **Le fichier vit dans le dépôt Paperclip : il ne se touche pas depuis une session
+  AInspiration.** Consigne prête dans `docs/chantiers/sla-obsolete-paperclip.md`.
+- **DPA v1.0** : `Paperclip/legal/DPA-AInspiration-v1.0-2026-04-04.md` + page Notion.
+  **Toujours en vigueur et toujours référencé** par la section 12 des CGV (« disponible sur
+  demande à info@ainspiration.eu ») — contrairement au SLA, ce renvoi n'a pas été retiré.
+  Il porte sur l'article 28 du RGPD, pas sur l'offre commerciale, donc l'abandon du Pack
+  Express ne le périme pas *a priori* — mais personne ne l'a relu depuis avril. À vérifier
+  dans la même session Paperclip.
+- **CGV** : sections 11 (SLA) et 12 (DPA) ajoutées dans `public/locales/fr/legal.json`.
+  La 11 ne porte plus aucun chiffre depuis le 18/09 : *« Aucun engagement de niveau de
+  service ne s'applique par défaut en dehors de ce qui est écrit au devis. »*
 
 ### Paperclip
 - 10 agents comité de direction configurés avec AGENTS.md personnalisés
