@@ -88,6 +88,13 @@ prochaine-action: Supprimer la fiche et la société de test depuis /contacts, c
   qu'une fiche — l'ingestion est idempotente sur l'email. Il n'existe pas de route de purge
   pour une fiche arbitraire, seule celle de la sonde Audityo l'est, et par conception.
 
+- **⚠️ La collecte POP3 de Gmail est CASSÉE — confirmé à 11h00 UTC.** Journal d'accès :
+  `2026-09-22T10:51:36Z · pop3 · 2001:4860:4864:21::7 (Google) · result: "Incorrect password"`,
+  alors que les cinq relèves précédentes de la journée (05:39, 06:49, 08:00, 09:06, 10:08)
+  étaient toutes en succès. Le nouveau mot de passe n'a pas été reporté dans Gmail →
+  *Paramètres* → *Comptes et importation* → *Consulter d'autres comptes*. **Gmail désactive
+  la collecte après une série d'échecs**, il faut donc agir sans attendre.
+
 - **Le mot de passe de la boîte a changé aujourd'hui** (l'ancien était faux, prouvé par un
   `result: "Incorrect password"` en SMTP depuis l'IP du VPS dans les journaux d'accès
   Hostinger). **Gmail relève `info@ainspiration.eu` en POP3 toutes les heures** — les
