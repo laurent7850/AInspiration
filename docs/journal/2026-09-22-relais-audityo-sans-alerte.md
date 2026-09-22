@@ -44,6 +44,14 @@ parmi ceux sans gestion d'erreur.
 Hostinger en crée un nouveau **sans retirer l'ancien**. Contrôle après coup : 5 jetons → 4,
 et le connecteur `distr-action.com` répond toujours 200.
 
+**Les trois autres workflows Audityo actifs ont été rattachés dans la même foulée**, sur
+accord de Laurent : `Password Reset`, `Waitlist Welcome`, `Stripe Payment Alert Relay`. Même
+réglage, en conservant les réglages propres à chacun — celui de Stripe portait un
+`callerPolicy` et un `availableInMCP` qu'il aurait été facile d'écraser en recopiant le jeu
+de valeurs du formulaire de contact. Vérifié par l'audit d'instance : 5 workflows sans
+gestion d'erreur → 2, et **les deux restants sont inactifs** (`Anthropic Healthcheck`, la
+copie archivée `Luckybirdy`). Tous les workflows actifs de l'instance alertent désormais.
+
 ## Cassé
 
 Rien. Le seul changement en production est un réglage de workflow n8n, sans toucher aux
@@ -62,12 +70,30 @@ nœuds ni aux connexions : le retour arrière est le réglage inverse.
   recréer le bruit que le filtre du 19/09 avait précisément supprimé. **Prérequis : un token
   de l'API Email d'audityo.eu en credential n8n** — à créer par Laurent dans hPanel, un token
   créé par API renverrait sa valeur dans une conversation.
-- **Trois autres workflows Audityo ACTIFS n'ont aucune gestion d'erreur** (audit d'instance) :
-  `Audityo — Password Reset`, `Audityo — Waitlist Welcome`,
-  `Audityo - Stripe Payment Alert Relay`. Même défaut, même correctif d'une ligne. Le premier
-  est le plus coûteux : un utilisateur qui ne peut pas réinitialiser son mot de passe, et
-  personne ne le sait. **Non corrigés, en attente de l'accord de Laurent** — c'était hors du
-  périmètre demandé. Les formulaires AInspiration et Distr'Action, eux, sont bien rattachés.
+- **Les gardes `IF` de ces trois workflows sont probablement inertes, et il ne faut PAS les
+  « réparer » tels quels.** Leurs nœuds portent `typeVersion: 2` mais leur objet `conditions`
+  **n'a aucun bloc `options`**, donc pas de `version: 2` : c'est exactement le piège documenté
+  en section 5 du HANDOFF, où un `IF` v2 avec des conditions v1 laisse tout passer sans
+  avertissement. Le `Sonde ?` du formulaire de contact, lui, porte bien les deux versions —
+  d'où le contraste.
+  - **`Password Reset` est le cas à ne surtout pas corriger à l'aveugle.** Sa condition sur le
+    jeton est `^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$`, soit **deux** segments séparés par un point,
+    alors qu'un JWT en compte **trois**. Si le garde se mettait à fonctionner, il rejetterait
+    donc toutes les réinitialisations légitimes. Autrement dit : la fonction marche
+    vraisemblablement *parce que* le garde est inerte. Corriger la version **sans** corriger la
+    regex casserait la réinitialisation de mot de passe en production.
+  - **`Stripe Payment Alert Relay` enverrait alors une alerte « Paiement échoué » pour
+    n'importe quel événement Stripe**, et sa branche `Mark Received` ne tournerait jamais.
+    Non observé : le workflow n'a **aucune exécution enregistrée**, le webhook n'a donc
+    apparemment jamais été appelé. Test décisif désormais disponible, les exécutions en erreur
+    étant conservées.
+- **Le webhook Stripe n'a aucune authentification**, contrairement aux deux autres webhooks
+  Audityo qui portent une `headerAuth`. Son champ `authentication` est simplement absent :
+  quiconque connaît l'URL peut déclencher un mail d'alerte vers `divers@distr-action.com`.
+  La baseline exige par ailleurs une **signature HMAC vérifiée** sur les webhooks Stripe
+  entrants — il n'y a ni l'une ni l'autre. Non corrigé : cela demande un arbitrage, pas un
+  réglage.
+- Les formulaires AInspiration et Distr'Action, eux, sont bien rattachés à l'`Error trigger`.
 - **Piège relevé :** le compteur `messages_used` de l'API d'administration mail est
   périodiquement synchronisé (`synced_at`) et **retarde**. Il annonçait 1 message là où la
   boîte en contenait 3. Pour un compte réel, lire les dossiers, pas l'usage.
