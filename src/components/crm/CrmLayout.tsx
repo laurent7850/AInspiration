@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { Newspaper } from 'lucide-react';
 import Linkedin from '../ui/icons/LinkedinIcon';
+import { useNotifications } from '../../hooks/useNotifications';
 
 interface CrmLayoutProps {
   children: ReactNode;
@@ -25,6 +26,7 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
   const { t } = useTranslation('crm');
+  const { newMessagesCount } = useNotifications();
 
   const menuItems = [
     {
@@ -151,6 +153,10 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
                   </span>
                 );
               }
+              // Le compteur vient de NotificationContext, qui interroge
+              // /contact-messages/stats toutes les 30 s. Il est reste a zero
+              // jusqu'au 22/09/2026 : rien n'alimentait `contact_messages`.
+              const showBadge = item.path === '/messages' && newMessagesCount > 0;
               return (
                 <Link
                   key={item.path}
@@ -168,7 +174,15 @@ const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
                 >
                   <item.icon className="w-5 h-5 mr-3" />
                   <span>{item.label || t(item.labelKey)}</span>
-                  {isActivePath(item.path) && !item.highlight && (
+                  {showBadge && (
+                    <span
+                      className="ml-auto inline-flex items-center justify-center min-w-5 h-5 px-1.5 rounded-full bg-red-500 text-white text-xs font-semibold"
+                      aria-label={`${newMessagesCount} ${t('menu.unreadMessages', 'message(s) non lu(s)')}`}
+                    >
+                      {newMessagesCount > 99 ? '99+' : newMessagesCount}
+                    </span>
+                  )}
+                  {isActivePath(item.path) && !item.highlight && !showBadge && (
                     <ChevronRight className="w-4 h-4 ml-auto" />
                   )}
                 </Link>
