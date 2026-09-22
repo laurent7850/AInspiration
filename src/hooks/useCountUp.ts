@@ -91,7 +91,11 @@ export function useCountUp({
   }, [animate, threshold]);
 
   const displayed = decimals > 0 ? value.toFixed(decimals) : Math.round(value);
-  const formattedValue = `${prefix}${displayed}${suffix}`;
+  // A signed counter reads `-0%` for as long as the value sits at zero — before the
+  // observer fires, during `delay`, and at the start of the ramp. The sign only means
+  // something once there is a number to sign.
+  const signed = Number(displayed) !== 0 ? prefix : '';
+  const formattedValue = `${signed}${displayed}${suffix}`;
 
   return { ref, value, formattedValue, hasAnimated };
 }

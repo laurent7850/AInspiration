@@ -27,6 +27,19 @@ prochaine-action: Trancher les deux chaînes laissées en l'état — le délai 
   responsive, et finit **177 px** au-dessus du premier badge pour une fenêtre de 812 px :
   les deux tiennent ensemble à l'écran sur mobile. Condition remplie, donc rien touché.
 
+## Fait — second passage, sur consigne de Laurent
+
+- **`-0%` corrigé.** Le quatrième compteur combinait `prefix: '-'` et `Math.round(0)` : il
+  affichait littéralement `-0%` tant que la valeur restait à zéro — avant que l'observateur
+  ne se déclenche, pendant le `delay`, et au début de la rampe. Le signe ne s'affiche plus
+  que lorsqu'il y a un nombre à signer. Une ligne dans `useCountUp.ts`, `tsc` propre, lint à
+  zéro avertissement, 84/84 tests, vérifié en préview : `0%` au lieu de `-0%`.
+- **Tâche CRM `handoff:ainspiration:sla-notion` corrigée puis clôturée sur ordre de Laurent.**
+  Son libellé disait encore « Refaire le document SLA », l'inverse de la décision. La
+  justification de clôture inscrite dans la tâche nomme les deux actions qui restent
+  matériellement à faire et que la clôture **ne couvre pas** : archiver la page Notion, et
+  traiter le dépôt Paperclip.
+
 ## Cassé
 
 - **J'ai affirmé qu'aucun chiffre n'était en dur dans les composants. C'était faux.**
@@ -47,9 +60,6 @@ prochaine-action: Trancher les deux chaînes laissées en l'état — le délai 
 - **Il y a un second « 100% », sur l'hébergement des données** : le troisième compteur animé
   affiche `100%` sous « Données hébergées en Europe » (`animatedStats.eu`). Même nature de
   garantie absolue, et c'est probablement celui-là que Laurent visait de mémoire.
-- **`-0%` est un vrai défaut d'affichage**, indépendant de tout environnement : le quatrième
-  compteur combine `prefix: '-'` et `Math.round(0)`. Correctif d'une ligne dans
-  `useCountUp.ts` — de la logique, donc hors du périmètre « texte seul » de ce chantier.
 - **Je n'ai PAS pu vérifier que les compteurs s'animent pour un humain**, et c'est la seule
   chose que je n'ai pas su établir. J'ai bien reproduit `0h 0h 0% -0%` plusieurs secondes
   après le montage — mais en sondant l'instrument, **`requestAnimationFrame` ne se déclenche
