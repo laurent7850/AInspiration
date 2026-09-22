@@ -40,6 +40,19 @@ prochaine-action: Trancher les deux chaînes laissées en l'état — le délai 
   matériellement à faire et que la clôture **ne couvre pas** : archiver la page Notion, et
   traiter le dépôt Paperclip.
 
+- **Déployé le 22/09**, dans l'ordre imposé par le dépôt : build (209 entrées, manifeste
+  régénéré par le hook `postbuild`) → commit **et push du manifeste avant tout le reste**,
+  puisque c'est sur GitHub raw que le conteneur va le lire au démarrage → `netlify deploy
+  --prod` → **209/209 entrées contrôlées une à une sur le CDN** → recréation du conteneur.
+  Netlify a **rejoué le build depuis le dépôt** (57,9 s) et aurait donc pu produire d'autres
+  empreintes que les miennes : c'est exactement ce que la vérification des 209 entrées sert à
+  attraper. Elles étaient identiques. Conteneur reparti sur « Frontend: 209 files downloaded ».
+- **Vérifié en production** : le sous-titre est servi dans les trois langues, un chunk du
+  nouveau build répond 200 en `text/javascript`, et un asset absent renvoie 404 `text/plain`
+  — le garde-fou posé après l'incident du 8 juin tient toujours. Contrôle de santé : 24
+  vérifications vertes, 1 échec, celui de l'article du 16/09 sans `hreflang`, antérieur à ce
+  déploiement et suivi au chantier 2b.
+
 ## Cassé
 
 - **J'ai affirmé qu'aucun chiffre n'était en dur dans les composants. C'était faux.**
