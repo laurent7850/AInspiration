@@ -71,14 +71,15 @@
     "status": "Statut",
     "previous": "Réalisation précédente",
     "next": "Réalisation suivante",
-    "backToIndex": "Toutes les réalisations"
+    "backToIndex": "Toutes les réalisations",
+    "client": "Commanditaire"
   },
   "items": {
     "facturation-automatisee": {
       "title": "Facturation mensuelle automatisée",
       "summary": "La facturation d'un mois : d'une heure à treize secondes.",
       "sector": "Médias",
-      "client": "Un groupe radio francophone",
+      "client": "Nostalgie",
       "metrics": {
         "billing": "Facturation d'un mois",
         "reentry": "Ressaisie manuelle"
@@ -153,7 +154,7 @@
       "title": "Playlists personnalisées pour auditeurs de radio",
       "summary": "Une heure de composition par auditeur, ramenée à soixante-dix secondes.",
       "sector": "Médias",
-      "client": "Une radio nationale francophone",
+      "client": "Nostalgie",
       "metrics": {
         "composition": "Composition d'une playlist",
         "listeners": "Auditeurs servis"
@@ -185,7 +186,7 @@
       "title": "Préparation d'émission hebdomadaire",
       "summary": "De deux heures de préparation à trois minutes.",
       "sector": "Médias",
-      "client": "Une radio francophone",
+      "client": "Nostalgie",
       "metrics": {
         "prep": "Préparation d'une émission"
       },

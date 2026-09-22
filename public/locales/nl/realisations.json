@@ -71,14 +71,15 @@
     "status": "Status",
     "previous": "Vorige realisatie",
     "next": "Volgende realisatie",
-    "backToIndex": "Alle realisaties"
+    "backToIndex": "Alle realisaties",
+    "client": "Opdrachtgever"
   },
   "items": {
     "facturation-automatisee": {
       "title": "Geautomatiseerde maandfacturatie",
       "summary": "Een maand factureren: van een uur naar dertien seconden.",
       "sector": "Media",
-      "client": "Een Franstalige radiogroep",
+      "client": "Nostalgie",
       "metrics": {
         "billing": "Een maand factureren",
         "reentry": "Manuele herinvoer"
@@ -153,7 +154,7 @@
       "title": "Gepersonaliseerde playlists voor radioluisteraars",
       "summary": "Een uur samenstellen per luisteraar, terug tot zeventig seconden.",
       "sector": "Media",
-      "client": "Een Franstalige nationale radiozender",
+      "client": "Nostalgie",
       "metrics": {
         "composition": "Eén playlist samenstellen",
         "listeners": "Bediende luisteraars"
@@ -185,7 +186,7 @@
       "title": "Wekelijkse programmavoorbereiding",
       "summary": "Van twee uur voorbereiding naar drie minuten.",
       "sector": "Media",
-      "client": "Een Franstalige radiozender",
+      "client": "Nostalgie",
       "metrics": {
         "prep": "Eén uitzending voorbereiden"
       },

@@ -71,14 +71,15 @@
     "status": "Status",
     "previous": "Previous project",
     "next": "Next project",
-    "backToIndex": "All projects"
+    "backToIndex": "All projects",
+    "client": "Client"
   },
   "items": {
     "facturation-automatisee": {
       "title": "Automated monthly invoicing",
       "summary": "A month of invoicing: from one hour to thirteen seconds.",
       "sector": "Media",
-      "client": "A French-language radio group",
+      "client": "Nostalgie",
       "metrics": {
         "billing": "Invoicing one month",
         "reentry": "Manual re-entry"
@@ -153,7 +154,7 @@
       "title": "Personalised playlists for radio listeners",
       "summary": "An hour of curation per listener, down to seventy seconds.",
       "sector": "Media",
-      "client": "A French-language national radio station",
+      "client": "Nostalgie",
       "metrics": {
         "composition": "Curating one playlist",
         "listeners": "Listeners served"
@@ -185,7 +186,7 @@
       "title": "Weekly show preparation",
       "summary": "From two hours of preparation to three minutes.",
       "sector": "Media",
-      "client": "A French-language radio station",
+      "client": "Nostalgie",
       "metrics": {
         "prep": "Preparing one show"
       },

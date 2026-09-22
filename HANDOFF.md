@@ -29,7 +29,13 @@ ou aux composants CRM.
 
 1. **Aucun chiffre inventé.** Rien ne se publie, ni sur le site ni dans un livrable, qui
    n'ait été vérifié dans une source réelle (GSC, GA4, base de données) ou validé par Laurent.
-2. **Clients anonymisés par défaut.** Le nom de la radio, en particulier, ne sort jamais.
+2. **Clients anonymisés par défaut — l'exception se nomme et se date.** Le défaut n'est pas
+   une consigne mais un mécanisme : une fiche n'affiche son commanditaire **que** si elle
+   porte un `clientUrl` dans `src/data/realisations.ts`. Sans ce champ, elle reste anonyme
+   sans qu'on ait à y penser. **Seule exception à ce jour : Nostalgie**, nommée sur ses trois
+   fiches avec un lien, **sans logo**, depuis le 22/09/2026 — voir
+   `ops/decisions/ADR-006-nommer-nostalgie.md`. N'en ajoute aucune autre sans décision
+   explicite de Laurent, et note-la au même endroit.
 3. **Pas de Supabase** pour les nouveaux développements, autant que possible.
 4. **Pas de secret recopié à la main.** L'incident du 16/09 vient de là. Tout secret vit en
    variable d'environnement, et une variable absente doit **fermer** la porte, jamais l'ouvrir.

@@ -62,6 +62,12 @@ export interface Realisation {
   technologies: string[];
   /** Cover image; absent until Phase 4 produces the captures. */
   cover?: string;
+  /**
+   * Commanditaire's own site. Present only when the client has agreed to be
+   * named — the name itself lives in the locales, the URL does not translate.
+   * Absent means the fiche stays anonymous, which is the default.
+   */
+  clientUrl?: string;
   /** At most three. Empty is a deliberate choice, not an omission. */
   metrics: RealisationMetric[];
 }
@@ -78,6 +84,7 @@ export const realisations: Realisation[] = [
     // invoice reviewed by hand next to an open invoicing screen — stands in
     // for the theme. Free tier, by Mediamodifier on Unsplash.
     cover: 'https://images.unsplash.com/photo-1735825764478-674bb8df9d4a',
+    clientUrl: 'https://www.nostalgie.be/',
     metrics: [
       { value: '1 h → 13 s', labelKey: 'billing' },
       { value: '0', labelKey: 'reentry' },
@@ -138,6 +145,7 @@ export const realisations: Realisation[] = [
     format: 'complet',
     technologies: ['n8n', 'Claude', 'Google Sheets', 'Gmail'],
     cover: '/images/realisations/playlists-auditeurs.jpg',
+    clientUrl: 'https://www.nostalgie.be/',
     metrics: [
       { value: '1 h → 70 s', labelKey: 'composition' },
       { value: '5 / semaine', labelKey: 'listeners' },
@@ -164,6 +172,7 @@ export const realisations: Realisation[] = [
     format: 'complet',
     technologies: ['n8n', 'Claude', 'Google Sheets'],
     cover: '/images/realisations/preparation-emission.jpg',
+    clientUrl: 'https://www.nostalgie.be/',
     metrics: [{ value: '2 h → 3 min', labelKey: 'prep' }],
   },
   {

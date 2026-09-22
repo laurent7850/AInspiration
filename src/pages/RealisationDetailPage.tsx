@@ -36,8 +36,30 @@ const RealisationDetailPage: React.FC = () => {
   const previous = position > 0 ? neighbours[position - 1] : null;
   const next = position < neighbours.length - 1 ? neighbours[position + 1] : null;
 
+  // The client is named only when it agreed to it — `clientUrl` is that
+  // agreement made explicit in the data. Without it the fiche stays anonymous,
+  // which remains the default.
+  const clientName = t(`${base}.client`);
+
   const meta = [
     { label: t('detail.sector'), value: t(`${base}.sector`) },
+    ...(realisation.clientUrl
+      ? [
+          {
+            label: t('detail.client'),
+            value: (
+              <a
+                href={realisation.clientUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 decoration-secondary hover:decoration-white transition-colors"
+              >
+                {clientName}
+              </a>
+            ),
+          },
+        ]
+      : []),
     { label: t('detail.year'), value: String(realisation.year) },
     ...(realisation.duration
       ? [{ label: t('detail.duration'), value: realisation.duration }]
