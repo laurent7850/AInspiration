@@ -35,10 +35,32 @@ offert, c'est sa relation commerciale la plus ancienne.
 **C.** Nostalgie est nommée sur ses trois fiches, avec un lien vers `nostalgie.be`, **sans
 logo** (restriction explicite de Laurent).
 
-**L'anonymat reste le défaut pour tous les autres.** Le mécanisme n'est pas déclaratif, il
-est technique : le champ `clientUrl` de `src/data/realisations.ts` matérialise l'accord, et
-l'interface n'affiche le commanditaire **que** s'il est présent. Une fiche sans ce champ
-reste anonyme sans qu'on ait à y penser.
+**Où se prend réellement la décision de nommer — corrigé après vérification en production.**
+
+La première rédaction de cette ADR affirmait que le champ `clientUrl` tenait lieu de garde.
+**C'est faux, et la vérification l'a montré le jour même.** Ce champ ne gouverne que
+l'interface React. Le bloc SEO rendu par le serveur (`routes/seo.js`, ligne 554) imprime la
+clé `client` de **chaque** fiche sans filtre — et c'est lui que lisent les robots et les
+extracteurs des moteurs génératifs.
+
+La décision de nommer se prend donc à un seul endroit : **la valeur écrite dans la clé
+`client` des trois fichiers de locales.** Un nom réel y est un nom publié.
+
+Constat au 22/09/2026, relevé dans le HTML servi :
+
+| Fiche | Publié | Accord |
+|---|---|---|
+| `facturation-automatisee`, `playlists-auditeurs`, `preparation-emission` | **Nostalgie** | décision de Laurent, ADR-006 |
+| `tl-services` | **TL Services** | **aucun — publié depuis le 04/09** |
+| `artpero` | **L'Artpéro** | **aucun — publié depuis le 04/09**, et le nom est aussi dans le titre de la fiche |
+| `reconciliation-caisse`, `factures-fournisseurs`, `enghien` | anonymisé | sans objet |
+
+Les deux lignes sans accord ne viennent pas de cette décision : elles la précèdent de
+deux semaines et personne ne les avait vues. Laurent obtient l'accord de TL Services dans
+les jours qui viennent ; celui de L'Artpéro reste à demander.
+
+`clientUrl` garde son rôle, plus modeste et qui reste utile : il rend le nom **cliquable**
+dans l'interface. Il ne décide de rien.
 
 ## Pourquoi
 
@@ -49,9 +71,15 @@ sur parole, ce qui est exactement ce qu'ADR-001 voulait éviter.
 Et parce que le risque n'est pas symétrique ici : Nostalgie est un client de vingt-cinq ans,
 pas un inconnu. Laurent connaît la maison et en assume la décision.
 
-Le choix de faire porter l'accord par un **champ de données** plutôt que par une consigne
-écrite est délibéré : la règle précédente était « non négociable » et a quand même été
-enfreinte le 19/09. Une garde qu'on peut oublier n'est pas une garde.
+Je voulais faire porter l'accord par un **champ de données** plutôt que par une consigne
+écrite, au motif qu'une garde qu'on peut oublier n'en est pas une — la règle précédente
+était « non négociable » et a quand même été enfreinte le 19/09.
+
+**La vérification a montré que je m'étais trompé de garde.** Le seul endroit qui décide est
+la clé `client` des locales, et rien ne la contrôle. La leçon est celle du projet tout
+entier, et elle s'est appliquée à moi : *un mécanisme qu'on n'a pas vu s'exécuter n'est pas
+un mécanisme.* J'avais lu le composant React et conclu ; c'est le HTML servi qui disait le
+vrai, comme pour le blog invisible du 13/08 et le formulaire muet de septembre.
 
 ## Positions minoritaires
 
