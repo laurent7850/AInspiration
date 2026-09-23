@@ -197,7 +197,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
   '/audit': {
     fr: {
       title: 'Rendez-vous de découverte | Diagnostic IA PME | AInspiration',
-      description: 'Un expert analyse votre activité et vous livre un plan d\'action concret en 24h. Gratuit, sans engagement, pour PME et indépendants.',
+      description: 'Trente minutes pour savoir si l\'IA a sa place chez vous. Sans engagement. Diagnostic IA à 2 400 € si vous allez plus loin. PME en Belgique et en France.',
       keywords: 'rendez-vous d\u00e9couverte IA, diagnostic IA, audit intelligence artificielle, bilan IA PME, audit automatisation'
     },
     en: {
