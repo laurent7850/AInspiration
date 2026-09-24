@@ -9,6 +9,18 @@
 **Dernière mise à jour :** 22 septembre 2026 · session Claude Code (**le rendez-vous de découverte est enfin réservable** — `VITE_BOOKING_URL` était vide depuis toujours, les quatre boutons étaient masqués, et c'est pourtant le seul tunnel d'entrée d'O1–O5. Cal.com hébergé, `cal.com/ainspiration/30min`, déployé et vérifié dans les trois langues. Défaut trouvé **en production seulement** : le bouton annonçait « 20 min » quand les CGV et la grille disent trente — six chaînes de locales corrigées et redéployées. Et avant cela : **carnet de bord `ops/` posé dans le dépôt** et fusionné dans `main` (PR #43) : l'équipe des dix spécialistes est passée d'un dépôt voisin à un plugin utilisateur, ses fiches sont génériques, et c'est désormais `ops/CONTEXTE.md` qui porte les chiffres d'AInspiration. Trouvé en chemin : une **clé OpenRouter en clair** dans `n8n-workflows/README.md`, dépôt public. Session précédente : **n8n monté de 2.35.4 à 2.40.5** sur le VPS, après sauvegarde à chaud de la base SQLite d'1 Go. Migrations passées sans erreur, 32 workflows actifs et 22 webhooks retrouvés debout, éditeur en 200. `latest` valait 2.40.5 ce jour-là — c'est précisément ce qui reste à corriger : l'image n'est pas épinglée, et le prochain recreate, fait pour une tout autre raison, ramassera ce que `latest` vaudra alors. Et avant : le formulaire de contact part désormais sur `info@ainspiration.eu` en SMTP Hostinger, et la section Messages du CRM est enfin alimentée — voir le chantier 0c.)
 **Journal complet :** Notion → Distr'Action — Poste de pilotage → Journal de bord
 
+> **⚠️ Depuis le 22/09, l'état courant vit dans `ops/`, pas ici.** `ops/BACKLOG.md` porte les
+> chantiers ouverts, `ops/journal/` le récit jour par jour, `ops/decisions/` les ADR. Ce fichier
+> garde l'architecture, les pièges et les décisions de fond — **son tableau de chantiers (§4) est
+> figé au 22/09 et plusieurs lignes y sont périmées.** En cas de désaccord entre les deux, le
+> carnet a raison.
+>
+> Périmés sciemment, pour que personne ne les rouvre : la collecte POP3 de Gmail n'est plus « à
+> réparer », **elle a été retirée le 24/09 à la demande de Laurent** — `info@` est relevée trois
+> fois par jour par la tâche `releve-emails`, la collecte faisait doublon. Et les gardes `IF`
+> d'Audityo (§0b) ont avancé d'un cran le 24/09 : la trace des succès est activée, les gardes
+> restent désarmés, et la suite appartient à une **session Audityo** (voir C7).
+
 ---
 
 ## 1. Le projet en trois lignes
