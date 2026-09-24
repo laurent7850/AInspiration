@@ -9,7 +9,7 @@
 
 | Demandé le | Chantier | Action attendue | Pourquoi ça ne peut pas être automatique | Statut |
 |---|---|---|---|---|
-| 2026-09-22 | C3 | **Révoquer la clé OpenRouter en clair dans `n8n-workflows/README.md`** (4 occurrences, fichier suivi par git, dépôt **public**), en créer une neuve côté OpenRouter, la reporter en credential n8n, puis retirer la valeur du fichier. | Révoquer une clé coupe tout workflow n8n qui s'en sert encore : il faut savoir lesquels avant, et la remplacer dans le même geste. Et la rotation seule ne suffit pas — la valeur reste dans l'historique git d'un dépôt public, la réécriture d'historique est une décision qui appartient à Laurent. | en attente |
+| 2026-09-22 | C3 | **Revoquer la cle « Chat distr'action 2026 »** dans OpenRouter (un clic, Delete sur la ligne), puis je retire ses trois occurrences de `n8n-workflows/README.md`. | **Mesure le 24/09 : la revocation ne casse rien.** Aucun des 13 conteneurs porteurs d'une cle OpenRouter ne l'utilise, ni le shell de Laurent, ni le bundle de production ; dernier usage il y a 8 mois. La reserve d'origine — « revoquer coupe les workflows qui s'en servent » — est levee. Reste que supprimer une cle est irreversible et appartient au titulaire du compte. | **en attente d'un clic** |
 
 **Statuts** : `en attente` · `validé le AAAA-MM-JJ` · `refusé le AAAA-MM-JJ (raison)`
 
