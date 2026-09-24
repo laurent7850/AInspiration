@@ -27,6 +27,7 @@ set -u
 WEBHOOK="https://n8n.srv767464.hstgr.cloud/webhook/vps-alert"
 EMAIL="divers@distr-action.com"
 STATE="/var/lib/vps-watchdog"
+MAINT_FILE="/var/lib/vps-watchdog/maintenance"   # fenetre de maintenance declaree (epoch de fin)
 LOG="/var/log/vps-watchdog.log"
 COOLDOWN=21600          # 6 h entre deux alertes d'une meme condition
 
@@ -110,6 +111,11 @@ alert() {
   _last=$(compteur "$_stamp")
   if [ "$_last" -ne 0 ] && [ $((NOW - _last)) -lt "$COOLDOWN" ]; then
     logline "$_key toujours en alerte, notification differee (fenetre de silence)"
+    return
+  fi
+  _fin=$(compteur "$MAINT_FILE")
+  if [ "$_fin" -gt "$NOW" ]; then
+    logline "$_key : alerte supprimee, fenetre de maintenance (fin dans $(( (_fin - NOW) / 60 )) min)"
     return
   fi
   echo "$NOW" > "$_stamp"

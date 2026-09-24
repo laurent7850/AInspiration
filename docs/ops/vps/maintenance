@@ -1,0 +1,56 @@
+#!/bin/sh
+# Fenetre de maintenance declaree — neutralise les alertes du watchdog VPS.
+#
+# La veille ne sait pas distinguer un deploiement d'une panne : un build a
+# 335 % de CPU ressemble a un processus emballe. On le lui dit.
+#
+# La fenetre est BORNEE : 4 h au maximum, et elle porte toujours une echeance.
+# Une fenetre laissee ouverte rendrait la machine aveugle sans que rien ne le
+# signale — exactement ce qu'on cherche a eviter.
+#
+# Le signe de vie du lundi n'est PAS neutralise.
+set -eu
+MAINT_FILE="/var/lib/vps-watchdog/maintenance"
+LOG="/var/log/vps-watchdog.log"
+MAX_MIN=240
+
+trace() { printf '[%s] maintenance: %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$1" >> "$LOG"; }
+
+case "${1:-status}" in
+  start)
+    MIN="${2:-60}"
+    case "$MIN" in *[!0-9]*|'') echo "duree invalide : $MIN" >&2; exit 1 ;; esac
+    [ "$MIN" -ge 1 ] || { echo "duree minimale : 1 minute" >&2; exit 1; }
+    if [ "$MIN" -gt "$MAX_MIN" ]; then
+      echo "duree plafonnee a $MAX_MIN minutes (demande : $MIN)" >&2
+      MIN="$MAX_MIN"
+    fi
+    mkdir -p "$(dirname "$MAINT_FILE")"
+    FIN=$(( $(date +%s) + MIN * 60 ))
+    echo "$FIN" > "$MAINT_FILE"
+    trace "ouverte pour $MIN min (fin $(date -d "@$FIN" '+%H:%M'))"
+    echo "Fenetre de maintenance ouverte pour $MIN min — fin a $(date -d "@$FIN" '+%H:%M')."
+    ;;
+  stop)
+    rm -f "$MAINT_FILE"
+    trace "fermee a la main"
+    echo "Fenetre de maintenance fermee. La veille alerte a nouveau."
+    ;;
+  status)
+    if [ ! -f "$MAINT_FILE" ]; then
+      echo "Aucune fenetre ouverte. La veille alerte normalement."
+      exit 0
+    fi
+    FIN=$(cat "$MAINT_FILE" 2>/dev/null || echo 0)
+    NOW=$(date +%s)
+    if [ "$FIN" -gt "$NOW" ]; then
+      echo "Fenetre OUVERTE — fin a $(date -d "@$FIN" '+%H:%M') (dans $(( (FIN - NOW) / 60 )) min)."
+    else
+      echo "Fenetre expiree a $(date -d "@$FIN" '+%H:%M'). La veille alerte a nouveau."
+    fi
+    ;;
+  *)
+    echo "usage: maintenance start [minutes] | stop | status" >&2
+    exit 1
+    ;;
+esac
