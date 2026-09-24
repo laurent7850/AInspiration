@@ -102,6 +102,29 @@ qu'au moment où l'on croira faire une opération anodine. La clé réelle vit a
 Vérifié au passage, et rassurant : `/root/audityo-dev/.env.example` est en 644 mais ne
 contient qu'un gabarit de **12 caractères** — pas une vraie clé. Le fichier ne fuit rien.
 
+## ⚠️ Vérifier la périodicité, et ne pas se fier au formulaire (24/09)
+
+Les sept clés ont été créées avec leur montant **mais sans périodicité** : `Reset limit` est
+resté sur `N/A`, donc **plafonds à vie**. `n8n-prod` aurait cessé de fonctionner pour toujours
+après 3 $ cumulés.
+
+Le réglage s'édite sur une clé existante, sans rien recréer : ligne → **⋮ → Edit** →
+*Reset limit* → **Daily** → **le ✓ vert à droite du champ**. Sans ce ✓, rien n'est enregistré.
+
+**Le contrôle qui ne ment pas**, et qui ne demande pas de lire la valeur :
+
+```bash
+k=$(grep -m1 '^OPENROUTER_API_KEY=' /chemin/vers/.env | cut -d= -f2-)
+curl -s -H "Authorization: Bearer $k" https://openrouter.ai/api/v1/key
+```
+
+- `"limit_reset": "daily"` → plafond journalier, c'est ce qu'on veut ;
+- `"limit_reset": null` → **plafond à vie**, à corriger ;
+- HTTP 401 → la clé est morte (supprimée ou révoquée).
+
+Étalonner sur une clé dont on connaît déjà la réponse avant de conclure — c'est ce qui a évité
+une fausse alerte.
+
 ## Étape 3 — ne révoquer qu'après la preuve
 
 Ne supprimer `Maudios` qu'après **24 à 48 h de trafic nul** sur elle dans *Activity*. C'est
