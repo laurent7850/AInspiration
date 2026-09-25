@@ -1,0 +1,91 @@
+#!/bin/bash
+# compose-exact — rejoue la commande docker compose EXACTE qui a cree un conteneur.
+#
+# Pourquoi ce script existe (24-25/09/2026).
+#
+# Sur ce VPS, trois piles sur cinq ne se recreent pas avec la commande qu'on taperait
+# de tete :
+#   - audityo       : deux fichiers de compose (docker-compose.yml + docker-compose.prod.yml)
+#   - audityo-dev   : docker-compose.dev.yml, nom non standard
+#   - communityos   : docker-compose.staging.yml + un .env deux niveaux plus haut
+#
+# Le cas de communityos etait le pire. Un `docker compose up` lance dans son repertoire
+# ne rate pas le redemarrage : Compose remonte d'un cran, trouve un AUTRE fichier
+# (/docker/communityos/src/docker-compose.yml, une reference de developpement) et monte
+# une pile PARALLELE sous le projet « src ». Rien n'avertit.
+#
+# Docker, lui, sait tout : il ecrit le projet, les fichiers et le fichier d'environnement
+# dans les labels du conteneur. Ce script les relit et reconstruit l'invocation.
+# La source de verite devient le conteneur qui tourne, pas la memoire de celui qui tape.
+#
+# Usage :
+#   compose-exact <conteneur> [arguments docker compose...]
+#   compose-exact communityos-web up -d --force-recreate web
+#   compose-exact communityos-web --show      # affiche la commande sans rien executer
+#
+# Sans argument docker compose, il affiche la commande et s'arrete.
+
+set -u
+
+C=${1:-}
+if [ -z "$C" ]; then
+  echo "usage : compose-exact <conteneur> [arguments docker compose...]" >&2
+  echo "        compose-exact <conteneur> --show" >&2
+  exit 2
+fi
+shift
+
+if ! docker inspect "$C" >/dev/null 2>&1; then
+  echo "compose-exact : conteneur introuvable : $C" >&2
+  echo "  conteneurs actifs : $(docker ps --format '{{.Names}}' | tr '\n' ' ')" >&2
+  exit 1
+fi
+
+lab() { docker inspect "$C" --format "{{index .Config.Labels \"$1\"}}" 2>/dev/null; }
+
+PROJET=$(lab com.docker.compose.project)
+FICHIERS=$(lab com.docker.compose.project.config_files)
+ENVF=$(lab com.docker.compose.project.environment_file)
+DIR=$(lab com.docker.compose.project.working_dir)
+
+if [ -z "$PROJET" ] || [ -z "$FICHIERS" ]; then
+  echo "compose-exact : $C n'a pas ete cree par docker compose (pas de labels)." >&2
+  exit 1
+fi
+
+# Les fichiers de compose sont separes par des virgules, il peut y en avoir plusieurs.
+ARGS=(-p "$PROJET")
+OIFS=$IFS; IFS=','
+for f in $FICHIERS; do
+  [ -n "$f" ] || continue
+  if [ ! -f "$f" ]; then
+    echo "compose-exact : fichier de compose absent : $f" >&2
+    echo "  la pile ne peut pas etre recreee en l'etat." >&2
+    exit 1
+  fi
+  ARGS+=(-f "$f")
+done
+IFS=$OIFS
+
+if [ -n "$ENVF" ]; then
+  if [ ! -f "$ENVF" ]; then
+    echo "compose-exact : fichier d'environnement absent : $ENVF" >&2
+    echo "  la pile ne peut pas etre recreee en l'etat." >&2
+    exit 1
+  fi
+  ARGS+=(--env-file "$ENVF")
+fi
+
+if [ $# -eq 0 ] || [ "${1:-}" = "--show" ]; then
+  echo "conteneur         : $C"
+  echo "projet            : $PROJET"
+  echo "repertoire        : ${DIR:-<non renseigne>}"
+  echo "fichiers          : $FICHIERS"
+  echo "environnement     : ${ENVF:-<aucun>}"
+  echo
+  echo "docker compose ${ARGS[*]} <votre commande>"
+  exit 0
+fi
+
+echo "> docker compose ${ARGS[*]} $*"
+exec docker compose "${ARGS[@]}" "$@"

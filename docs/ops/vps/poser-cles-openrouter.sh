@@ -12,7 +12,7 @@
 # Entree vide = on saute cette cle, rien n'est touche.
 #
 # Usage :
-#   poser-cles-openrouter.sh              -> demande les six
+#   poser-cles-openrouter.sh              -> demande les sept
 #   poser-cles-openrouter.sh brasspat-prod -> ne demande que celle-la
 
 set -u
@@ -25,6 +25,7 @@ audityo-prod:/root/audityo/.env
 communityos-staging:/docker/communityos/.env
 theevent-prod:/docker/the-event/.env
 brasspat-prod:/docker/brasspat042026/.env
+audityo-dev:/root/audityo-dev/.env.dev
 "
 
 DATE=$(date +%Y%m%d-%H%M)
@@ -36,9 +37,9 @@ echo "=== Pose des cles OpenRouter — $DATE ==="
 echo "Colle la valeur puis Entree. Rien ne s'affiche, c'est voulu."
 echo "Entree vide = passer cette cle."
 echo
-echo "NOTE : audityo-dev n'est pas dans la liste. Son fichier .env n'existe plus"
-echo "       (chantier C29) — le conteneur ne redemarrerait pas. Garde sa cle"
-echo "       dans 1Password, elle sera posee depuis une session Audityo."
+echo "NOTE : audityo-dev ecrit dans .env.dev, pas .env — c est le fichier que"
+echo "       docker-compose.dev.yml declare reellement. Le .env absent etait"
+echo "       une fausse alerte (C29, levee le 25/09)."
 echo
 
 FILTRE=${1:-}
