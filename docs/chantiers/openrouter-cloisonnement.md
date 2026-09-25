@@ -144,9 +144,66 @@ dans l'heure.
 Même prudence ensuite pour `Seo` (3 conteneurs **et** le shell local de Laurent : tout test
 local en hérite) et `Oracle` (2 conteneurs).
 
-## Reste à identifier
+## Étape 4 — la seconde clé maîtresse : la credential n8n (C31)
 
-**`distraction2026`** : 39,96 $ dépensés, **utilisée il y a un jour**, et absente de
-l'environnement de tous les conteneurs. Vraisemblablement une credential n8n — tous les
-workflows ne lisent pas `$env`. À identifier **avant** de cloisonner, sinon on refait la
-carte sans la case qui dépense.
+`distraction2026` n'était dans l'environnement d'aucun conteneur **parce qu'elle n'y est
+pas** : c'est la credential n8n `gtjfsOGk7WrWy7p3` (« OpenRouter account »), stockée chiffrée
+dans la base de n8n. Une cartographie par `printenv` ne pouvait pas la voir.
+
+**12 nœuds, 9 workflows, 4 projets** la partagent. Tous portent la même clé de credential
+(`openRouterApi`), les nœuds HTTP via `authentication: predefinedCredentialType` — le
+repointage est donc uniforme.
+
+| Projet | Workflow (id) | Nœud | Actif |
+|---|---|---|---|
+| Radio | `120 min 2026` (`bWQJiJlSMXQeMyyE`) | `OpenRouter Chat Model` | oui |
+| Radio | `120 min 2026` (`bWQJiJlSMXQeMyyE`) | `OpenRouter Chat Model1` | oui |
+| Radio | `Génération Playlist — CLASSIQUE` (`8N7Vb3R8mrBK6DLl`) | `5. OpenRouter Claude` | oui |
+| Radio | `Génération Playlist — CLASSIQUE` (`8N7Vb3R8mrBK6DLl`) | `6b. Corriger Playlist` | oui |
+| Radio | `Générateur playlist Spotify` (`lwTH2RIV2QmyTlLX`) | `Générer tracklist (Claude)` | oui |
+| Radio | `Génération Playlist — ÉTÉ` (`Mrvg6cCeYZEcpv1y`) | `5. OpenRouter Claude` | non |
+| Radio | `AUDIT Langue FR-INT` (`RYWMDjWiSoK8C72O`) | `3. Classer les artistes (Claude)` | non |
+| AInspiration | `Audit IA Pipeline` (`C8SIVfn0ELbrXDzy`) | `OpenRouter` | oui |
+| AInspiration | `chat Ainspiration - TEXT ONLY` (`oz9stSLsjRtRFA8F`) | `OpenRouter Chat Model1` | oui |
+| AInspiration | `Newsletter Automation` (`36K717g1IpDdihEQ`) | `Générer Contenu (OpenRouter)` | non |
+| AInspiration | `Newsletter Automation` (`36K717g1IpDdihEQ`) | `Générer Contenu Manuel (OpenRouter)` | non |
+| Distr'Action | `chat distr'action V4` (`ZroPJAjhPmWkj2sI`) | `OpenRouter Chat Model` | oui |
+
+### Ce que Laurent fait
+
+**1. Trois clés dans OpenRouter** — même formulaire que l'étape 1, et **`Reset limit` = `Daily`
+avec le ✓ vert**.
+
+| Name | Montant |
+|---|---|
+| `n8n-radio` | 1 |
+| `n8n-ainspiration` | 1 |
+| `n8n-distraction` | 1 |
+
+*Pourquoi 1 $ chacune et non un partage des 2 $ actuels.* La dépense réelle est de **0,14 $ par
+jour toutes confondues** : 1 $ par projet laisse sept fois la marge observée. Et deux de ces
+workflows sont des **chatbots publics** — une enveloppe trop juste ne protège rien, elle coupe
+le chatbot en milieu de journée. L'exposition théorique passe de 2 à 3 $/jour ; le bénéfice est
+qu'une dérive se voit enfin sur le projet qui la cause.
+
+**2. Trois credentials dans n8n** (Credentials → New → *OpenRouter*), en collant chaque valeur.
+Nommer **exactement** :
+
+- `OpenRouter — Radio`
+- `OpenRouter — AInspiration`
+- `OpenRouter — Distr'Action`
+
+Puis me dire que c'est fait : je retrouve les identifiants dans la base, je repointe les douze
+nœuds et je vérifie.
+
+**Ne pas supprimer `OpenRouter account` ni `distraction2026`** tant que les douze nœuds ne sont
+pas repointés et qu'un cycle complet n'a pas tourné — les playlists sont quotidiennes, l'audit
+et les chats sont à la demande.
+
+### Ce que Claude fait ensuite
+
+Repointage par `updateNode` (forme validée : `credentials.openRouterApi = {id, name}`), puis
+contrôle que la **version publiée** de chaque workflow actif porte bien la nouvelle credential
+— n8n 2.x distingue brouillon et publié, et un repointage qui ne serait resté qu'au brouillon
+ne changerait rien en production.
+
