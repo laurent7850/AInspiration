@@ -186,19 +186,32 @@ workflows sont des **chatbots publics** — une enveloppe trop juste ne protège
 le chatbot en milieu de journée. L'exposition théorique passe de 2 à 3 $/jour ; le bénéfice est
 qu'une dérive se voit enfin sur le projet qui la cause.
 
-**2. Trois credentials dans n8n** (Credentials → New → *OpenRouter*), en collant chaque valeur.
-Nommer **exactement** :
+**2. Trois credentials dans n8n** — menu de gauche → **Credentials** → **Add credential** →
+chercher `OpenRouter` → type **OpenRouter API**.
 
-- `OpenRouter — Radio`
-- `OpenRouter — AInspiration`
-- `OpenRouter — Distr'Action`
+| Champ | Valeur |
+|---|---|
+| **API Key** | la valeur de la clé, collée. Seul champ obligatoire du schéma. |
+| **Nom de la credential** | en haut à gauche, cliquer sur le titre pour l'éditer |
+| **Allowed HTTP Request Domains** | **ne pas y toucher**, laisser ce que n8n propose |
 
-Puis me dire que c'est fait : je retrouve les identifiants dans la base, je repointe les douze
-nœuds et je vérifie.
+| Clé OpenRouter | Nom de la credential n8n |
+|---|---|
+| `n8n-radio` | `OpenRouter-Radio-Prod` |
+| `n8n-ainspiration` | `OpenRouter-AInspiration-Prod` |
+| `n8n-distraction` | `OpenRouter-DistrAction-Prod` |
 
-**Ne pas supprimer `OpenRouter account` ni `distraction2026`** tant que les douze nœuds ne sont
-pas repointés et qu'un cycle complet n'a pas tourné — les playlists sont quotidiennes, l'audit
-et les chats sont à la demande.
+Nommage scopé sans accent ni tiret cadratin, conforme à la baseline *Secrets et accès*
+(`Stripe-Audityo-Prod`) et sans piège de saisie.
+
+⚠️ **Le troisième champ n'est pas cosmétique.** Sept des douze nœuds sont des `HTTP Request`
+qui consomment la credential en `predefinedCredentialType` : si `allowedHttpRequestDomains`
+est posé à `none`, ces sept-là cessent de fonctionner. La credential actuelle ne porte **que**
+`apiKey` — le champ est absent, donc le défaut de n8n s'applique, et les sept nœuds marchent.
+Reproduire ce comportement en ne touchant à rien. Vérification faite ensuite par export des
+champs **non secrets** des trois nouvelles, comparés à l'actuelle.
+
+**Ne pas supprimer `OpenRouter account`** : les douze nœuds pointent encore dessus.
 
 ### Ce que Claude fait ensuite
 
