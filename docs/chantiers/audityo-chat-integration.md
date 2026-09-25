@@ -101,3 +101,186 @@ intentionné peut aujourd'hui consommer le plafond journalier de la clé en bouc
 
 Le plafond de 1 $/jour borne la casse — c'est exactement à cela qu'il sert — mais il borne en
 coupant le service. À arbitrer avant d'ouvrir commercialement.
+
+---
+
+## Le composant, prêt à coller
+
+> Écrit ici et **non dans le dépôt Audityo** : une session ne travaille que dans le dépôt où
+> elle est enracinée. À coller dans `Audityo/` depuis une session Audityo, puis à habiller
+> selon le design du site — la logique, elle, est complète et respecte le contrat ci-dessus.
+
+`components/ChatAudityo.tsx` :
+
+```tsx
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+
+const WEBHOOK = 'https://n8n.srv767464.hstgr.cloud/webhook/audityo-chat';
+
+type Bouton = { type: string; label: string; url: string };
+type Message = { role: 'moi' | 'elle'; texte: string; boutons?: Bouton[] };
+
+// L'identifiant de session porte la mémoire conversationnelle côté n8n.
+// sessionStorage suffit : il meurt avec l'onglet, ce qui est le bon périmètre
+// pour une conversation, et n'a pas besoin de consentement cookie.
+function identifiantSession() {
+  try {
+    const cle = 'audityo-chat-session';
+    let v = sessionStorage.getItem(cle);
+    if (!v) {
+      v = crypto.randomUUID();
+      sessionStorage.setItem(cle, v);
+    }
+    return v;
+  } catch {
+    return 'anon-' + Math.random().toString(36).slice(2);
+  }
+}
+
+export default function ChatAudityo() {
+  const [ouvert, setOuvert] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [saisie, setSaisie] = useState('');
+  const [enCours, setEnCours] = useState(false);
+  const [erreur, setErreur] = useState<string | null>(null);
+  const finRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    finRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, enCours]);
+
+  async function envoyer(e?: React.FormEvent) {
+    e?.preventDefault();
+    const texte = saisie.trim();
+    if (!texte || enCours) return;
+
+    setMessages((m) => [...m, { role: 'moi', texte }]);
+    setSaisie('');
+    setEnCours(true);
+    setErreur(null);
+
+    // Le webhook est derrière un rate limiting Traefik (20 req/min par IP).
+    // Un 429 n'est pas une panne : c'est la protection qui fait son travail.
+    const minuteur = AbortSignal.timeout(30000);
+    try {
+      const r = await fetch(WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chatInput: texte, sessionId: identifiantSession() }),
+        signal: minuteur,
+      });
+
+      if (r.status === 429) {
+        setErreur('Un peu trop de messages d’un coup. Réessayez dans une minute.');
+        return;
+      }
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+
+      const d = await r.json();
+      setMessages((m) => [
+        ...m,
+        {
+          role: 'elle',
+          texte: d.message || 'Je n’ai pas pu répondre. Reformulez-vous ?',
+          boutons: d.action_buttons || undefined,
+        },
+      ]);
+    } catch {
+      setErreur('La réponse n’est pas arrivée. Réessayez, ou écrivez-nous.');
+    } finally {
+      setEnCours(false);
+    }
+  }
+
+  if (!ouvert) {
+    return (
+      <button
+        onClick={() => setOuvert(true)}
+        aria-label="Ouvrir l’assistant Audityo"
+        className="fixed bottom-6 right-6 rounded-full px-5 py-3 shadow-lg"
+      >
+        Une question sur l’AI Act ?
+      </button>
+    );
+  }
+
+  return (
+    <div
+      role="dialog"
+      aria-label="Assistant Audityo"
+      className="fixed bottom-6 right-6 flex h-[32rem] w-[22rem] flex-col rounded-2xl border shadow-xl"
+    >
+      <header className="flex items-center justify-between border-b px-4 py-3">
+        <span className="font-medium">Assistant Audityo</span>
+        <button onClick={() => setOuvert(false)} aria-label="Fermer">×</button>
+      </header>
+
+      <div className="flex-1 space-y-3 overflow-y-auto p-4 text-sm">
+        {messages.length === 0 && (
+          <p className="opacity-70">
+            Posez votre question sur le règlement européen sur l’IA, ou sur ce que produit
+            Audityo.
+          </p>
+        )}
+        {messages.map((m, i) => (
+          <div key={i} className={m.role === 'moi' ? 'text-right' : ''}>
+            <p className="inline-block whitespace-pre-wrap rounded-xl px-3 py-2">{m.texte}</p>
+            {m.boutons?.map((b) => (
+              <a
+                key={b.url}
+                href={b.url}
+                className="mt-2 block rounded-lg border px-3 py-2 text-center"
+              >
+                {b.label}
+              </a>
+            ))}
+          </div>
+        ))}
+        {enCours && <p className="opacity-60">…</p>}
+        {erreur && <p role="alert">{erreur}</p>}
+        <div ref={finRef} />
+      </div>
+
+      <form onSubmit={envoyer} className="flex gap-2 border-t p-3">
+        <input
+          value={saisie}
+          onChange={(e) => setSaisie(e.target.value)}
+          placeholder="Votre question…"
+          aria-label="Votre question"
+          className="flex-1 rounded-lg border px-3 py-2 text-sm"
+          disabled={enCours}
+        />
+        <button type="submit" disabled={enCours || !saisie.trim()} aria-label="Envoyer">
+          →
+        </button>
+      </form>
+
+      <p className="px-4 pb-3 text-xs opacity-60">
+        Informations fournies à titre indicatif ; elles ne constituent pas un conseil juridique.
+      </p>
+    </div>
+  );
+}
+```
+
+### Trois points à ne pas retirer en l'habillant
+
+1. **La mention de bas de bloc** — *« ne constituent pas un conseil juridique »*. Elle reprend
+   le pied de page du site et couvre l'usage conversationnel, où le visiteur pose des
+   questions bien plus précises que sur une page.
+2. **Le traitement du 429.** Le webhook est derrière un rate limiting Traefik (20 requêtes par
+   minute et par IP, C37). Un 429 n'est pas une panne, c'est la protection qui agit — le dire
+   au visiteur plutôt que lui montrer une erreur technique.
+3. **`sessionStorage`, pas `localStorage`.** La conversation meurt avec l'onglet : c'est le
+   bon périmètre, et ça évite la question du consentement cookie sur un site qui parle de
+   conformité.
+
+### Vérification une fois posé
+
+- une conversation complète, avec une question de suivi, pour éprouver la mémoire ;
+- un lien d'article cliqué, pour vérifier qu'il ouvre bien une page existante ;
+- la console réseau : `Access-Control-Allow-Origin` doit valoir `https://audityo.eu`. Si le
+  widget est servi depuis un autre domaine, ajouter cette origine au nœud
+  `Respond to Webhook` du workflow.
