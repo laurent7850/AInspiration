@@ -1,49 +1,66 @@
-# Audityo — il n'y a pas de chatbot public à enrichir
+# Audityo — aucun chatbot trouvé, et ce qu'on peut affirmer sans se tromper
 
 > Constat du 25/09/2026, fait depuis une session AInspiration. **Rien n'a été modifié.**
-> Si une suite est décidée, elle appartient à une session Audityo : le chat vit dans
-> l'application Next.js, pas dans n8n.
+> Cette note a été **corrigée le jour même** : sa première version affirmait qu'un assistant
+> existait dans le produit. C'était faux — voir « la fausse piste » plus bas.
 
-## Ce qui a été cherché, et ce qui a été trouvé
+## Ce qui est établi
 
 **Aucun chatbot Audityo dans n8n.** Recherche portée sur les **41 workflows**, par nom
 (`chat`, `bot`, `assistant`, `audityo`) *et* par type de nœud (`agent`, `chatTrigger`).
 Trois workflows seulement portent un agent conversationnel : `chat Ainspiration - TEXT ONLY`,
 `chat distr'action V4` et `120 min 2026`.
 
-**Il existe bien un assistant, mais il est dans le produit.** `POST https://audityo.eu/api/chat`
-répond **307** vers `/auth/login?callbackUrl=/api/chat` : c'est un assistant réservé aux
-utilisateurs connectés, servi par le conteneur `audityo-web`. Ce n'est pas un widget de site
-vitrine, et son contexte utile n'est pas le blog : ce sont les systèmes d'IA déclarés par le
-client et leur conformité.
+**Le site vitrine n'annonce aucun chat.** Dix pages publiques au sitemap : accueil, contact,
+textes-officiels, blog, connexion, inscription et quatre pages légales. Pas de page
+fonctionnalités. Le mot « assistant » n'apparaît qu'une fois sur l'accueil, et c'est un exemple
+réglementaire : *« Un assistant conversationnel utilisé par vos équipes suffit à vous faire
+entrer dans le champ du règlement. »* Ce n'est pas une description de produit.
 
-Les mentions d'« assistant » sur la page d'accueil sont du texte marketing
-(« Un assistant conversationnel utilisé par vos équipes suffit à vous faire entrer dans le
-champ du règlement »), pas un composant.
+## La fausse piste, et pourquoi elle était convaincante
 
-## Une chose vérifiée au passage, et qui évite une fausse alerte
+`POST https://audityo.eu/api/chat` répond **307** vers `/auth/login?callbackUrl=/api/chat`.
+J'en avais conclu que la route existait et qu'elle était protégée.
 
-Contrairement à `distr-action.com`, **Audityo ne souffre pas du défaut du SPA-fallback** :
+Calibrage :
+
+```
+POST /api/chat                307 -> /auth/login?callbackUrl=%2Fapi%2Fchat
+POST /api/chemin-invente-xyz  307 -> /auth/login?callbackUrl=%2Fapi%2Fchemin-invente-xyz
+POST /api/zzz-nawak           307 -> /auth/login?callbackUrl=%2Fapi%2Fzzz-nawak
+```
+
+Le middleware renvoie **toute** route `/api/` non authentifiée vers la connexion, qu'elle
+existe ou non. Le 307 ne prouve donc rien, et le `callbackUrl` qui reprend le chemin demandé
+donnait l'illusion d'une route reconnue.
+
+## Ce qu'on ne peut pas savoir de l'extérieur
+
+Si l'application propose un assistant **derrière la connexion**, aucune sonde publique ne le
+dira : les bundles de la page vitrine ne chargent pas le code de l'application. Le savoir
+suppose de regarder dans le dépôt Audityo — **donc depuis une session Audityo**, pas d'ici.
+Laurent, lui, connaît son produit : la question se règle en une phrase.
+
+## Vérifié au passage — Audityo ne souffre pas du défaut de Distr'Action
 
 | URL | audityo.eu | distr-action.com |
 |---|---|---|
 | `/blog/article-invente-xyz` | **404** | 200 + page d'accueil |
 | `/page-inventee-xyz-12345` | **307** → login | 200 + page d'accueil |
 
-J'ai failli l'annoncer comme défaut : mes premiers appels utilisaient `curl -sL`, qui suit les
-redirections et rend donc `200` là où le serveur répond `307`. **Mesurer sans `-L` avant de
-conclure.**
+Là aussi j'ai failli annoncer un défaut inexistant : mes premiers appels utilisaient
+`curl -sL`, qui suit les redirections et rend donc `200` là où le serveur répond `307`.
+**Mesurer sans `-L` avant de conclure.**
 
-## Si l'assistant du produit doit un jour citer le blog
+## Si un assistant existe et doit un jour citer le blog
 
-Les ingrédients existent déjà, publics et sans authentification :
+L'ingrédient est prêt, public et sans authentification :
 
 - `GET https://audityo.eu/api/blog` → **18 articles**, avec `title`, `slug`, `metaDescription`,
   `content`, `publishedAt`.
 
-La méthode appliquée aux deux autres chatbots se transpose telle quelle : sélectionner les
-articles proches de la question, les injecter avec leur URL, et interdire au modèle d'en citer
-un qui ne figure pas dans la liste. Voir la note du 25/09 dans `ops/journal/`.
-
-**Mais c'est une décision produit**, pas une correction : l'assistant d'Audityo parle à des
-clients connectés d'un sujet réglementaire, pas à des visiteurs qu'on cherche à convertir.
+La méthode appliquée aux chatbots d'AInspiration et de Distr'Action se transpose telle quelle :
+sélectionner les articles proches de la question, les injecter avec leur URL, interdire d'en
+citer un absent de la liste. Mais ce serait une **décision produit** — un assistant de
+conformité qui parle à des clients connectés n'a pas les mêmes besoins qu'un chatbot de
+conversion.
