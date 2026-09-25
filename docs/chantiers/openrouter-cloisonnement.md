@@ -127,10 +127,22 @@ une fausse alerte.
 
 ## Étape 3 — ne révoquer qu'après la preuve
 
-Ne supprimer `Maudios` qu'après **24 à 48 h de trafic nul** sur elle dans *Activity*. C'est
-la seule preuve que plus rien ne l'utilise. Même règle pour `Seo` et `Oracle` — et se
-souvenir que `Seo` vit aussi dans l'environnement shell de Laurent : tout test local en
-hérite.
+**État au 25/09/2026 : les sept projets sont cloisonnés, `Maudios` ne porte plus aucun
+conteneur.** Relevé de référence pris à midi — 0,00 $ le jour même, 0,29 $ sur la semaine
+(trafic antérieur).
+
+Ne pas supprimer avant **le 27/09**, et seulement si `usage_daily` reste à zéro :
+
+```bash
+curl -s -H "Authorization: Bearer <Maudios>" https://openrouter.ai/api/v1/key
+```
+
+Le compteur à zéro le jour même ne prouve rien — il prouve qu'on vient de débrancher. Un cron
+hebdomadaire, un workflow n8n rarement déclenché ou un script oublié ne se manifestent pas
+dans l'heure.
+
+Même prudence ensuite pour `Seo` (3 conteneurs **et** le shell local de Laurent : tout test
+local en hérite) et `Oracle` (2 conteneurs).
 
 ## Reste à identifier
 
