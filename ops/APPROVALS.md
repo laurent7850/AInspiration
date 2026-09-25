@@ -9,8 +9,9 @@
 
 | Demandé le | Chantier | Action attendue | Pourquoi ça ne peut pas être automatique | Statut |
 |---|---|---|---|---|
-| 2026-09-22 | C3 | **Revoquer la cle « Chat distr'action 2026 »** dans OpenRouter (un clic, Delete sur la ligne), puis je retire ses trois occurrences de `n8n-workflows/README.md`. | **Mesure le 24/09 : la revocation ne casse rien.** Aucun des 13 conteneurs porteurs d'une cle OpenRouter ne l'utilise, ni le shell de Laurent, ni le bundle de production ; dernier usage il y a 8 mois. La reserve d'origine — « revoquer coupe les workflows qui s'en servent » — est levee. Reste que supprimer une cle est irreversible et appartient au titulaire du compte. | **en attente d'un clic** |
 
 **Statuts** : `en attente` · `validé le AAAA-MM-JJ` · `refusé le AAAA-MM-JJ (raison)`
 
 Une ligne validée puis exécutée se déplace dans le journal du jour, pas ici.
+
+> **2026-09-25** — la seule ligne de ce registre, la revocation de la cle « Chat distr'action 2026 » (C3), a ete validee par Laurent et executee. Le registre est vide : aucune action irreversible n'attend d'arbitrage.

@@ -118,7 +118,7 @@ Le prompt varie automatiquement les thèmes chaque semaine et mentionne les serv
 4. Configurer :
    - **Credential Name**: `OpenRouter API Key`
    - **Name**: `Authorization`
-   - **Value**: `Bearer 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`
+   - **Value**: `Bearer <VOTRE_CLE_OPENROUTER>`  ← à prendre dans 1Password
 
 ### Étape 2 : Importer le workflow
 
@@ -149,7 +149,7 @@ Le prompt varie automatiquement les thèmes chaque semaine et mentionne les serv
 3. Chercher **OpenAI**
 4. Configurer :
    - **Credential Name**: `OpenRouter`
-   - **API Key**: `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`
+   - **API Key**: `<VOTRE_CLE_OPENROUTER>`
    - **Base URL**: `https://openrouter.ai/api/v1`
 
 ### Étape 2 : Importer et configurer
@@ -267,7 +267,7 @@ Pour la production, ajouter ces variables dans Netlify :
 
 ```
 VITE_N8N_WEBHOOK_URL=https://n8n.srv767464.hstgr.cloud/webhook/crm-ai
-VITE_OPENROUTER_API_KEY=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
+VITE_OPENROUTER_API_KEY=<VOTRE_CLE_OPENROUTER>
 ```
 
 ## Modèles IA
