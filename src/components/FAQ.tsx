@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { faqFallback } from '../data/faq';
 
 const faqItems = [
   { questionKey: 'faq.q1', answerKey: 'faq.a1' },
@@ -8,14 +9,6 @@ const faqItems = [
   { questionKey: 'faq.q3', answerKey: 'faq.a3' },
   { questionKey: 'faq.q4', answerKey: 'faq.a4' },
   { questionKey: 'faq.q5', answerKey: 'faq.a5' },
-];
-
-const fallbackFaq = [
-  { question: "Faut-il des compétences techniques pour utiliser vos solutions ?", answer: "Absolument pas ! Nos solutions sont conçues pour être simples d'utilisation. Nous nous occupons de toute la partie technique." },
-  { question: "Combien de temps faut-il pour mettre en place une solution IA ?", answer: "La plupart des solutions sont opérationnelles en quelques jours ouvrés après validation du périmètre. Le rendez-vous de découverte, lui, dure trente minutes." },
-  { question: "L'audit est-il vraiment gratuit et sans engagement ?", answer: "Oui, 100% gratuit et sans engagement. Nous analysons votre activité et vous livrons un plan d'action concret." },
-  { question: "Mes données sont-elles en sécurité ?", answer: "Absolument. Nous sommes conformes RGPD et toutes les données sont hébergées en Europe." },
-  { question: "Quel type d'entreprise peut bénéficier de vos services ?", answer: "Toute PME peut en bénéficier ! Restaurants, e-commerces, agences marketing, cabinets de conseil, artisans..." },
 ];
 
 export default function FAQ() {
@@ -36,8 +29,8 @@ export default function FAQ() {
         </div>
         <div className="divide-y divide-line border-t border-line">
           {faqItems.map((item, idx) => {
-            const question = t(item.questionKey, { defaultValue: fallbackFaq[idx]?.question });
-            const answer = t(item.answerKey, { defaultValue: fallbackFaq[idx]?.answer });
+            const question = t(item.questionKey, { defaultValue: faqFallback[idx]?.question });
+            const answer = t(item.answerKey, { defaultValue: faqFallback[idx]?.answer });
             const isOpen = openIndex === idx;
 
             return (

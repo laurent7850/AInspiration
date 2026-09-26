@@ -112,7 +112,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
   '/solutions': {
     fr: {
       title: 'Solutions IA pour PME en Belgique | AInspiration',
-      description: 'Automatisation, CRM intelligent, chatbots, machine learning : nos solutions IA pour PME, avec un premier résultat concret en 5 jours.',
+      description: 'Automatisation, CRM intelligent, chatbots, machine learning : nos solutions IA pour PME, du périmètre au déploiement.',
       keywords: 'solutions IA PME, services intelligence artificielle Belgique, automatisation IA, CRM IA, chatbot entreprise, machine learning applications, deep learning, NLP, outils IA startups'
     },
     en: {

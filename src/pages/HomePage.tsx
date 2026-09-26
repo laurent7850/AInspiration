@@ -3,6 +3,7 @@ import SEOHead from '../components/SEOHead';
 import Hero from '../components/Hero';
 import { CardSkeleton } from '../components/ui/Skeleton';
 import { getOrganizationSchema, getFAQSchema } from '../config/seoConfig';
+import { faqFallback } from '../data/faq';
 
 /**
  * Homepage — six screens, one thread (redesign of 2026-09-05).
@@ -37,17 +38,9 @@ const SectionSkeleton = () => (
   </section>
 );
 
-const faqData = [
-  { question: "Faut-il des compétences techniques pour utiliser vos solutions ?", answer: "Absolument pas ! Nos solutions sont conçues pour être simples d'utilisation. Nous nous occupons de toute la partie technique." },
-  { question: "Combien de temps faut-il pour mettre en place une solution IA ?", answer: "La plupart des solutions sont opérationnelles en quelques jours ouvrés après validation du périmètre. Le rendez-vous de découverte, lui, dure trente minutes." },
-  { question: "L'audit est-il vraiment gratuit et sans engagement ?", answer: "Oui, 100% gratuit et sans engagement. Nous analysons votre activité et vous livrons un plan d'action concret." },
-  { question: "Mes données sont-elles en sécurité ?", answer: "Absolument. Nous sommes conformes RGPD et toutes les données sont hébergées en Europe." },
-  { question: "Quel type d'entreprise peut bénéficier de vos services ?", answer: "Toute PME peut en bénéficier ! Restaurants, e-commerces, agences marketing, cabinets de conseil, artisans..." }
-];
-
 const combinedSchema = [
   getOrganizationSchema(),
-  getFAQSchema(faqData)
+  getFAQSchema(faqFallback)
 ];
 
 export default function HomePage() {

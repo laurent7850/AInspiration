@@ -44,7 +44,7 @@
       "benefits": [
         "Custom n8n workflows",
         "Connects to your current tools",
-        "First workflow in 5 working days",
+        "A workflow designed, built and put into production",
         "Built-in error handling and alerts"
       ]
     },
@@ -137,7 +137,7 @@
   "related": {
     "audit": {
       "title": "Discovery call",
-      "description": "Complete analysis of your activity in 24h"
+      "description": "Thirty minutes to find out whether AI belongs in your business"
     },
     "automation": {
       "title": "AI automation",

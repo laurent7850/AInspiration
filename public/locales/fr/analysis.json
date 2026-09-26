@@ -74,14 +74,14 @@
   ],
   "metrics": [
     {
-      "value": "24h",
-      "label": "Audit livré",
-      "description": "Analyse complète de votre activité"
+      "value": "30 min",
+      "label": "Rendez-vous de découverte",
+      "description": "Pour savoir si l'IA a sa place chez vous"
     },
     {
-      "value": "48h",
-      "label": "Mise en place type",
-      "description": "Pour une première solution opérationnelle"
+      "value": "2 400 €",
+      "label": "Diagnostic IA",
+      "description": "Deux jours d'analyse, plan d'action priorisé"
     },
     {
       "value": "100%",
@@ -154,7 +154,7 @@
     "check1": "Présentation personnalisée de la solution",
     "check2": "Analyse de vos besoins spécifiques",
     "check3": "Exemple concret avec vos données",
-    "check4": "Proposition sur mesure en 48h",
+    "check4": "Proposition écrite après le rendez-vous",
     "button": "Planifier ma démo",
     "subtitle": "Commencez votre analyse gratuite dès maintenant",
     "startButton": "Démarrer l'analyse"

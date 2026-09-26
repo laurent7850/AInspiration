@@ -10,11 +10,11 @@
     "titleSuffix": "construit",
     "description": "Quinze réalisations en service. Pour chacune : ce qui a été construit, ce que ça remplace, et ce que ça fait gagner. Les chiffres viennent des journaux d'exécution, pas d'une brochure.",
     "cta": "Prendre rendez-vous",
-    "ctaSub": "Résultats en 24 h — sans engagement",
+    "ctaSub": "Trente minutes pour en parler — sans engagement",
     "secondary": "Parler de mon cas"
   },
   "band": {
-    "count": "16",
+    "count": "14",
     "countLabel": "réalisations en service",
     "families": "6",
     "familiesLabel": "familles de besoins couvertes",

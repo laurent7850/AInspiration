@@ -52,8 +52,8 @@ export default function AnimatedStats({ variant = 'light', className = '' }: Ani
 
   const stats: StatItemProps[] = [
     {
-      end: 24,
-      suffix: 'h',
+      end: 30,
+      suffix: ' min',
       label: t('animatedStats.audit', "Pour en parler trente minutes"),
       icon: <Clock className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
       delay: 0,
@@ -61,9 +61,9 @@ export default function AnimatedStats({ variant = 'light', className = '' }: Ani
       isDark,
     },
     {
-      end: 48,
-      suffix: 'h',
-      label: t('animatedStats.setup', 'Mise en place type'),
+      end: 14,
+      suffix: '',
+      label: t('animatedStats.live', 'Réalisations en service'),
       icon: <Zap className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
       delay: 150,
       color: isDark ? 'bg-white/10' : 'bg-indigo-50',

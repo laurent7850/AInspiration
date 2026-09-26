@@ -55,8 +55,8 @@
     "ctaSubtext": "Thirty minutes · No commitment",
     "imageAlt": "Artificial Intelligence in business",
     "features": {
-      "simple": "Up and running in 48h",
-      "secure": "100% secure data",
+      "simple": "A first scope in thirty minutes",
+      "secure": "Data hosted in Europe",
       "support": "Personalised support"
     },
     "bookCall": "Book a 30-minute call",
@@ -92,16 +92,16 @@
     "bookCall": "Book a call"
   },
   "stats": {
-    "uptime": "24/7 Uptime",
+    "uptime": "One single contact",
     "accuracy": "GDPR compliant",
     "clients": "No commitment",
     "acceleration": "A 30-minute discovery call"
   },
   "animatedStats": {
     "audit": "To talk it through for thirty minutes",
-    "setup": "Typical setup time",
     "eu": "Data hosted in Europe",
-    "target": "Typical target on repetitive tasks"
+    "target": "Typical target on repetitive tasks",
+    "live": "Projects in service"
   },
   "cookies": {
     "title": "We respect your privacy",

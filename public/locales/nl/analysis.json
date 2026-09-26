@@ -74,14 +74,14 @@
   ],
   "metrics": [
     {
-      "value": "24u",
-      "label": "Audit geleverd",
-      "description": "Volledige analyse van uw activiteit"
+      "value": "30 min",
+      "label": "Kennismakingsgesprek",
+      "description": "Om te weten of AI bij u thuishoort"
     },
     {
-      "value": "48u",
-      "label": "Typische opzet",
-      "description": "Voor een eerste operationele oplossing"
+      "value": "€ 2.400",
+      "label": "AI-diagnose",
+      "description": "Twee dagen analyse, geprioriteerd actieplan"
     },
     {
       "value": "100%",
@@ -154,7 +154,7 @@
     "check1": "Gepersonaliseerde presentatie van de oplossing",
     "check2": "Analyse van uw specifieke behoeften",
     "check3": "Concreet voorbeeld met uw gegevens",
-    "check4": "Op maat gemaakt voorstel binnen 48 uur",
+    "check4": "Schriftelijk voorstel na het gesprek",
     "button": "Mijn demo plannen",
     "subtitle": "Start nu uw gratis analyse",
     "startButton": "Start analyse"

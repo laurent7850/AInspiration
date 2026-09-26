@@ -241,16 +241,6 @@ export const realisations: Realisation[] = [
     cover: 'https://images.unsplash.com/photo-1579362243176-b746a02bc030',
     metrics: [],
   },
-  {
-    slug: 'paperclip',
-    categories: ['exploiter'],
-    year: 2026,
-    status: 'interne',
-    format: 'complet',
-    technologies: ['Claude', 'Markdown'],
-    cover: '/images/realisations/paperclip.jpg',
-    metrics: [{ value: '10', labelKey: 'agents' }],
-  },
 ];
 
 export const getRealisation = (slug: string): Realisation | undefined =>

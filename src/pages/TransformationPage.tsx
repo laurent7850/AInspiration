@@ -55,12 +55,12 @@ const TransformationPage: React.FC = () => {
 
   const transformationFAQs = [
     { question: "Qu'est-ce que la transformation digitale par l'IA ?", answer: "La transformation digitale par l'IA consiste à intégrer l'intelligence artificielle dans vos processus métier pour automatiser les tâches répétitives, améliorer la prise de décision et augmenter votre productivité." },
-    { question: "Combien de temps prend une transformation IA ?", answer: "Les premiers résultats sont visibles en 5 jours. La transformation complète se fait de manière progressive, avec un accompagnement personnalisé à chaque étape." },
+    { question: "Combien de temps prend une transformation IA ?", answer: "Le périmètre se fixe en trente minutes, puis le Diagnostic IA prend deux jours. Ce qu'il faut ensuite pour mettre en production dépend de ce qui est retenu — c'est le diagnostic qui le chiffre, pas une moyenne." },
     { question: "Quel est le ROI d'une transformation IA pour PME ?", answer: "Cela dépend de vos processus. Le gain se chiffre sur votre cas, pas sur une moyenne : c'est le Diagnostic IA (deux jours) qui établit ce que vous coûtent réellement les tâches répétitives, avant tout engagement." }
   ];
 
   const transformationSchema = [
-    getServiceSchema("Transformation Digitale IA pour PME", "Accompagnement complet pour intégrer l'IA dans votre entreprise : diagnostic, stratégie, déploiement et formation. Premiers résultats en 5 jours."),
+    getServiceSchema("Transformation Digitale IA pour PME", "Accompagnement complet pour intégrer l'IA dans votre entreprise : diagnostic, stratégie, déploiement et formation. Du périmètre au déploiement."),
     getFAQSchema(transformationFAQs)
   ];
 

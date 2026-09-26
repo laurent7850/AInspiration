@@ -70,7 +70,7 @@
       "risk": {
         "title": "Risques maîtrisés",
         "description": "Approche sécurisée et conforme",
-        "stats": "100% conformité RGPD"
+        "stats": "Hébergement en Europe"
       }
     },
     "cta": {
@@ -244,7 +244,7 @@
       },
       "security": {
         "title": "Sécurité maximale",
-        "description": "Protection des données garantie"
+        "description": "Données hébergées en Europe"
       }
     },
     "metrics": {

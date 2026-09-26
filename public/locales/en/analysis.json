@@ -74,14 +74,14 @@
   ],
   "metrics": [
     {
-      "value": "24h",
-      "label": "Audit delivered",
-      "description": "Full analysis of your business"
+      "value": "30 min",
+      "label": "Discovery call",
+      "description": "To find out whether AI belongs in your business"
     },
     {
-      "value": "48h",
-      "label": "Typical setup",
-      "description": "For a first operational solution"
+      "value": "€2,400",
+      "label": "AI Diagnostic",
+      "description": "Two days of analysis, prioritised action plan"
     },
     {
       "value": "100%",
@@ -154,7 +154,7 @@
     "check1": "Personalised presentation of the solution",
     "check2": "Analysis of your specific needs",
     "check3": "Concrete example with your data",
-    "check4": "Bespoke proposal within 48 hours",
+    "check4": "Written proposal after the call",
     "button": "Schedule my demo",
     "subtitle": "Start your free analysis now",
     "startButton": "Start Analysis"

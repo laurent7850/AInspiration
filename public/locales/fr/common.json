@@ -55,8 +55,8 @@
     "ctaSubtext": "Trente minutes · Sans engagement",
     "imageAlt": "Intelligence Artificielle en entreprise",
     "features": {
-      "simple": "Mise en place en 48h",
-      "secure": "Données 100% sécurisées",
+      "simple": "Un premier périmètre en trente minutes",
+      "secure": "Données hébergées en Europe",
       "support": "Accompagnement personnalisé"
     },
     "bookCall": "Réserver un appel de 30 min",
@@ -92,16 +92,16 @@
     "bookCall": "Réserver un appel"
   },
   "stats": {
-    "uptime": "Disponibilité 24/7",
+    "uptime": "Un seul interlocuteur",
     "accuracy": "Conforme RGPD",
     "clients": "Sans engagement",
     "acceleration": "Rendez-vous de découverte en 30 min"
   },
   "animatedStats": {
     "audit": "Pour en parler trente minutes",
-    "setup": "Mise en place type",
     "eu": "Données hébergées en Europe",
-    "target": "Objectif type sur les tâches répétitives"
+    "target": "Objectif type sur les tâches répétitives",
+    "live": "Réalisations en service"
   },
   "cookies": {
     "title": "Nous respectons votre vie privée",

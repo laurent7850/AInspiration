@@ -55,8 +55,8 @@
     "ctaSubtext": "Dertig minuten · Vrijblijvend",
     "imageAlt": "Artificiële Intelligentie in het bedrijfsleven",
     "features": {
-      "simple": "Operationeel in 48u",
-      "secure": "100% beveiligde gegevens",
+      "simple": "Een eerste scope in dertig minuten",
+      "secure": "Gegevens gehost in Europa",
       "support": "Persoonlijke begeleiding"
     },
     "bookCall": "Een gesprek van 30 min boeken",
@@ -92,16 +92,16 @@
     "bookCall": "Een gesprek boeken"
   },
   "stats": {
-    "uptime": "24/7 Beschikbaarheid",
+    "uptime": "Eén aanspreekpunt",
     "accuracy": "AVG-conform",
     "clients": "Zonder verbintenis",
     "acceleration": "Kennismakingsgesprek van 30 min"
   },
   "animatedStats": {
     "audit": "Om er dertig minuten over te praten",
-    "setup": "Typische opzettijd",
     "eu": "Gegevens gehost in Europa",
-    "target": "Typisch doel voor repetitieve taken"
+    "target": "Typisch doel voor repetitieve taken",
+    "live": "Realisaties in dienst"
   },
   "cookies": {
     "title": "We respecteren uw privacy",
