@@ -153,7 +153,6 @@ const REALISATION_DETAIL_SLUGS = new Set([
   'facturation-automatisee', 'reconciliation-caisse', 'factures-fournisseurs',
   'chat-ia-site', 'audityo', 'playlists-auditeurs', 'autoseo', 'preparation-emission',
   'dreamoracle', 'artpero', 'tl-services', 'playlist-spotify', 'veille-youtube',
-  'paperclip',
 ]);
 
 // escHtml + the article-body sanitizer live in ../sanitize.js (unit-tested,

@@ -273,21 +273,6 @@
       "results": "Monitoring that runs every hour unattended, and degrades gracefully: if a video has no subtitles, the audio is downloaded and transcribed.",
       "howItWorks": "A twenty-six-node n8n workflow: playlist read, deduplication against what is already filed, transcription by a dedicated service, fallback to audio transcription when subtitles are missing, text cleanup, and a write to Google Sheets. The list of channels followed is driven from the table itself.",
       "transposition": "The fallback is the important part: an automation that gives up at the first edge case is only a demo. This one runs every hour without being watched."
-    },
-    "paperclip": {
-      "title": "Paperclip — an assisted leadership meeting",
-      "summary": "Ten specialists consulted in parallel on one decision.",
-      "sector": "Internal research",
-      "client": "AInspiration",
-      "metrics": {
-        "agents": "Specialists consulted"
-      },
-      "context": "A small business has no board. It has one person deciding alone, with their blind spots.",
-      "problem": "Bad decisions do not come from missing information but from missing contradiction. Nobody tells the founder what they would rather not hear.",
-      "solution": "Ten specialist profiles — leadership, sales, finance, legal, technical, marketing, operations — consulted on the same question, each with their own frame and priorities. They are allowed to disagree: that is the point. A synthesis decides.",
-      "results": "An internal research setup, used on real commercial decisions.",
-      "howItWorks": "Ten profiles described in Markdown, each with its domain, seniority and context. Three commands drive a session: general consultation, briefing with task allocation, or a progress round.",
-      "transposition": "This is research, not an offering. We show it because it is what we test on ourselves before proposing it — and because organised contradiction beats a single opinion, including when the single opinion is ours."
     }
   }
 }

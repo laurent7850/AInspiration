@@ -273,21 +273,6 @@
       "results": "Une veille qui tourne toutes les heures sans surveillance, et qui dégrade proprement : si une vidéo n'a pas de sous-titres, l'audio est téléchargé et transcrit.",
       "howItWorks": "Un workflow n8n de vingt-six nœuds : lecture de la playlist, déduplication contre l'existant, transcription par service dédié, repli sur une transcription audio quand les sous-titres manquent, nettoyage du texte, écriture dans Google Sheets. La liste des chaînes suivies se pilote depuis le tableau lui-même.",
       "transposition": "Le repli est le point important : un automate qui abandonne au premier cas particulier n'est qu'une démonstration. Celui-ci tourne toutes les heures sans qu'on le regarde."
-    },
-    "paperclip": {
-      "title": "Paperclip — comité de direction assisté",
-      "summary": "Dix spécialistes consultés en parallèle sur une même décision.",
-      "sector": "Recherche interne",
-      "client": "AInspiration",
-      "metrics": {
-        "agents": "Spécialistes consultés"
-      },
-      "context": "Une petite structure n'a pas de comité de direction. Elle a un dirigeant qui décide seul, avec ses angles morts.",
-      "problem": "Les mauvaises décisions ne viennent pas d'un manque d'information mais d'un manque de contradiction. Personne ne dit au dirigeant ce qu'il ne veut pas entendre.",
-      "solution": "Dix profils spécialisés — direction, commercial, financier, juridique, technique, marketing, opérations — consultés sur une même question, chacun avec son cadre et ses priorités. Ils peuvent se contredire : c'est l'intérêt. Une synthèse tranche.",
-      "results": "Un dispositif de recherche interne, utilisé sur des arbitrages commerciaux réels.",
-      "howItWorks": "Dix profils décrits en Markdown, chacun avec son domaine, son niveau d'expérience et son contexte. Trois commandes pilotent la séance : consultation générale, briefing avec répartition des missions, ou point d'avancement.",
-      "transposition": "C'est de la recherche, pas une offre. Nous le présentons parce qu'il montre ce que nous testons sur nous-mêmes avant de le proposer — et parce qu'un dispositif de contradiction organisée vaut mieux qu'un avis unique, y compris quand l'avis unique est le nôtre."
     }
   }
 }

@@ -273,21 +273,6 @@
       "results": "Monitoring die elk uur draait zonder toezicht, en die netjes terugvalt: heeft een video geen ondertitels, dan wordt de audio gedownload en getranscribeerd.",
       "howItWorks": "Een n8n-workflow van zesentwintig nodes: playlist uitlezen, ontdubbeling tegenover wat er al is, transcriptie door een gespecialiseerde dienst, terugval op audiotranscriptie wanneer ondertitels ontbreken, tekstopschoning, en wegschrijven naar Google Sheets. De lijst van gevolgde kanalen wordt vanuit de tabel zelf gestuurd.",
       "transposition": "De terugval is het belangrijke punt: een automatisering die bij het eerste bijzondere geval opgeeft is niet meer dan een demo. Deze draait elk uur zonder dat er iemand naar kijkt."
-    },
-    "paperclip": {
-      "title": "Paperclip — ondersteund directiecomité",
-      "summary": "Tien specialisten tegelijk geraadpleegd over één beslissing.",
-      "sector": "Intern onderzoek",
-      "client": "AInspiration",
-      "metrics": {
-        "agents": "Geraadpleegde specialisten"
-      },
-      "context": "Een kleine structuur heeft geen directiecomité. Ze heeft één zaakvoerder die alleen beslist, met zijn blinde vlekken.",
-      "problem": "Slechte beslissingen komen niet voort uit een gebrek aan informatie maar uit een gebrek aan tegenspraak. Niemand zegt de zaakvoerder wat hij liever niet hoort.",
-      "solution": "Tien gespecialiseerde profielen — directie, verkoop, financieel, juridisch, technisch, marketing, operations — geraadpleegd over dezelfde vraag, elk met zijn eigen kader en prioriteiten. Ze mogen elkaar tegenspreken: dat is net de bedoeling. Een synthese hakt de knoop door.",
-      "results": "Een intern onderzoeksopzet, gebruikt bij echte commerciële afwegingen.",
-      "howItWorks": "Tien profielen beschreven in Markdown, elk met zijn domein, ervaringsniveau en context. Drie commando's sturen de zitting: algemene raadpleging, briefing met verdeling van de opdrachten, of een stand van zaken.",
-      "transposition": "Dit is onderzoek, geen aanbod. We tonen het omdat het laat zien wat we op onszelf testen vóór we het voorstellen — en omdat georganiseerde tegenspraak beter is dan één enkele mening, ook wanneer die ene mening de onze is."
     }
   }
 }

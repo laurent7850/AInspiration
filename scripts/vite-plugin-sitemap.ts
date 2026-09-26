@@ -57,7 +57,6 @@ const staticRoutes: SitemapRoute[] = [
   { path: '/realisations/tl-services', changefreq: 'yearly', priority: 0.7, sources: REALISATIONS },
   { path: '/realisations/playlist-spotify', changefreq: 'yearly', priority: 0.7, sources: REALISATIONS },
   { path: '/realisations/veille-youtube', changefreq: 'yearly', priority: 0.7, sources: REALISATIONS },
-  { path: '/realisations/paperclip', changefreq: 'yearly', priority: 0.7, sources: REALISATIONS },
   { path: '/conseil', changefreq: 'monthly', priority: 0.7, sources: [page('ConsultingPage'), L('common')] },
   { path: '/formation', changefreq: 'monthly', priority: 0.7, sources: [page('FormationPage'), L('training'), L('common')] },
   { path: '/accompagnement', changefreq: 'monthly', priority: 0.7, sources: [page('CustomSupportPage'), L('support'), L('common')] },
