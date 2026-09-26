@@ -265,6 +265,34 @@ else
   clear_alert busy "charge CPU soutenue"
 fi
 
+# Quand le coupable est dockerd, nommer ce qui le tient. Un client de log
+# accroche fait tourner le suiveur du demon en boucle : le 25/09/2026, un
+# « docker logs » oublie a brule 1 a 2 coeurs pendant 17 heures, et l alerte
+# se contentait de dire « dockerd 104% ». Tuer le client suffit, sans toucher
+# au demon. Verifier apres : le compte de descripteurs supprimes tombe a 0.
+contexte_dockerd() {
+  DPID=$(pgrep -x dockerd 2>/dev/null | head -1)
+  [ -n "$DPID" ] || return 0
+  # Discriminer sur le nom du binaire (comm), pas sur la ligne de commande :
+  # un shell qui *mentionne* « docker logs » porte comm=bash, le client
+  # porte comm=docker. Sans cela le diagnostic se denonce lui-meme.
+  CLIENTS=$(ps -eo etimes,pid,comm,args --no-headers 2>/dev/null | awk '$1>300 && $3=="docker" { for (i=4; i<=NF; i++) if ($i=="logs" || $i=="attach" || $i=="events" || $i=="stats" || $i=="wait") { a=int($1/60); q=$2; $1=""; $2=""; $3=""; printf "     %d min  pid %s %s\n", a, q, $0; break } }')
+  DELFD=$(ls -l /proc/$DPID/fd 2>/dev/null | grep -c 'json.log (deleted)')
+  printf 'PISTE DOCKERD\n'
+  printf '  Descripteurs de log supprimes encore ouverts par dockerd : %s\n' "${DELFD:-0}"
+  if [ -n "$CLIENTS" ]; then
+    printf '  Clients docker accroches depuis plus de 5 min :\n%s\n' "$CLIENTS"
+    printf '  Un seul « docker logs » oublie suffit a emballer le demon : son\n'
+    printf '  suiveur relit le fichier de log en boucle, des milliers de fois\n'
+    printf '  par seconde. Tuer le client (kill <pid>) suffit — ne PAS\n'
+    printf '  redemarrer dockerd. Le compte ci-dessus doit ensuite tomber a 0.\n'
+  else
+    printf '  Aucun client docker accroche : chercher ailleurs (desynchronisation\n'
+    printf '  containerd, cron sans borne de reprise). Le 17/09/2026 un redemarrage\n'
+    printf '  du demon avait suffi, live-restore etant arme.\n'
+  fi
+}
+
 # 3. Un processus emballe - lu dans le meme instantane que contexte_cpu, au lieu
 # de relancer un top a soi. Une seule mesure, donc le seuil et le mail parlent
 # forcement du meme moment.
@@ -274,9 +302,14 @@ TOP_CMD=$(echo "$TOP" | cut -d' ' -f2-)
 case "${TOP_PCT:-}" in ''|*[!0-9]*) TOP_PCT=0 ;; esac
 [ -n "$TOP_CMD" ] || TOP_CMD="(inconnu)"
 
+case "$TOP_CMD" in
+  dockerd) DOCK_TXT="\n\n$(contexte_dockerd)" ;;
+  *)       DOCK_TXT="" ;;
+esac
+
 if [ "$TOP_PCT" -gt "$PROC_MAX" ]; then
   alert runaway "[VPS ALERTE] Processus emballe : $TOP_CMD (${TOP_PCT}%)" \
-    "Le processus \"$TOP_CMD\" consomme ${TOP_PCT}% d un coeur (seuil ${PROC_MAX}%).\n\nLe 17/09, c etait dockerd a 103 %, bloque sur une desynchronisation avec containerd, entretenue par un cron sans borne de reprise. Un redemarrage du demon (avec live-restore arme, deja configure) avait suffi.\n\n$(contexte_cpu)"
+    "Le processus \"$TOP_CMD\" consomme ${TOP_PCT}% d un coeur (seuil ${PROC_MAX}%).\n\nLe 17/09, c etait dockerd a 103 %, bloque sur une desynchronisation avec containerd, entretenue par un cron sans borne de reprise. Un redemarrage du demon (avec live-restore arme, deja configure) avait suffi.${DOCK_TXT}\n\n$(contexte_cpu)"
 else
   clear_alert runaway "processus emballe"
 fi
