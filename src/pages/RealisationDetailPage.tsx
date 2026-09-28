@@ -40,6 +40,10 @@ const RealisationDetailPage: React.FC = () => {
   // agreement made explicit in the data. Without it the fiche stays anonymous,
   // which remains the default.
   const clientName = t(`${base}.client`);
+  // A fiche without a single measured figure can still have something to say
+  // about what changed (scope in service, first real use). Hide the block
+  // only when there is neither a metric nor a sentence.
+  const resultsText = t(`${base}.results`, { defaultValue: '' });
 
   const meta = [
     { label: t('detail.sector'), value: t(`${base}.sector`) },
@@ -139,30 +143,34 @@ const RealisationDetailPage: React.FC = () => {
             ))}
           </div>
 
-          {/* Results — at most three, each one measured or stated. */}
-          {realisation.metrics.length > 0 && (
+          {/* Results — at most three metrics, each one measured or stated. */}
+          {(realisation.metrics.length > 0 || resultsText) && (
             <Reveal className="mt-16">
               <h2 className="font-display font-bold text-2xl sm:text-3xl text-ink leading-tight mb-8 max-w-[55ch]">
                 {t('detail.results')}
               </h2>
-              <dl className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl">
-                {realisation.metrics.map((metric) => (
-                  <div key={metric.labelKey}>
-                    <dt className="sr-only">{t(`${base}.metrics.${metric.labelKey}`)}</dt>
-                    <dd>
-                      <span className="block font-display font-bold text-4xl sm:text-5xl text-ink tabular-nums leading-none">
-                        {metric.value}
-                      </span>
-                      <span className="mt-2 block text-sm text-secondary">
-                        {t(`${base}.metrics.${metric.labelKey}`)}
-                      </span>
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-              <p className="mt-6 max-w-[55ch] text-lg text-secondary leading-relaxed">
-                {t(`${base}.results`)}
-              </p>
+              {realisation.metrics.length > 0 && (
+                <dl className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl">
+                  {realisation.metrics.map((metric) => (
+                    <div key={metric.labelKey}>
+                      <dt className="sr-only">{t(`${base}.metrics.${metric.labelKey}`)}</dt>
+                      <dd>
+                        <span className="block font-display font-bold text-4xl sm:text-5xl text-ink tabular-nums leading-none">
+                          {metric.value}
+                        </span>
+                        <span className="mt-2 block text-sm text-secondary">
+                          {t(`${base}.metrics.${metric.labelKey}`)}
+                        </span>
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+              {resultsText && (
+                <p className="mt-6 max-w-[55ch] text-lg text-secondary leading-relaxed">
+                  {resultsText}
+                </p>
+              )}
             </Reveal>
           )}
 
