@@ -53,6 +53,15 @@ prochaine-action: Vérifier le 29/09 que le post du guide est bien parti de Comm
   CI verte sur les deux pushs, **contrôle de santé 27/27**. Asset absent toujours en 404
   `text/plain`.
 
+- **`paperclip.jpg` supprimé et redéployé** (sur instruction de Laurent, même soir) : l'image
+  de la fiche retirée le 26/09 était restée dans `public/` et dans le manifeste, donc servie.
+  Aucune référence ailleurs (grep sur `src`, locales, backend, scripts). Troisième déploiement,
+  même ordre : manifeste à 214 entrées poussé d'abord, 214/214 sur le CDN, `--force-recreate`,
+  « Frontend: 214 files downloaded ». En production, `/images/realisations/paperclip.jpg` rend
+  **404 `text/plain`**. Le CDN Netlify, lui, répond 200 `text/html` — c'est son repli SPA vers
+  `index.html`, pas le fichier : il n'existe plus dans le déploiement. Contrôle de santé 27/27,
+  CI verte.
+
 ## Cassé
 
 - Rien. Le premier déploiement a rendu la fiche sans son paragraphe de résultats pendant
@@ -60,8 +69,6 @@ prochaine-action: Vérifier le 29/09 que le post du guide est bien parti de Comm
 
 ## Reste
 
-- **`paperclip.jpg`** traîne encore dans `public/images/realisations/` et dans le manifeste
-  (retrait de la fiche le 26/09, image oubliée) : à supprimer dans un prochain déploiement.
 - **Le post du 29/09 à 8 h 30** : la fiche affirme qu'il est planifié depuis CommunityOS.
   Si la publication n'a pas lieu, corriger la fiche — pas de fait invérifiable en ligne.
 - **La section « Ce que ça change » apparaît maintenant sur quatre autres fiches** (Audityo,
