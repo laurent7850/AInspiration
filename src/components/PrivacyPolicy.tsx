@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Lock, FileCheck, Users } from 'lucide-react';
+import { Shield, Lock, FileCheck, Users, Share2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SEOHead from './SEOHead';
 
@@ -26,6 +26,9 @@ export default function PrivacyPolicy() {
             </h2>
             <p className="text-gray-600 mb-4">
               {t('privacy.s1_body')}
+            </p>
+            <p className="text-gray-600 mb-4">
+              {t('privacy.s1_controller')}
             </p>
           </section>
 
@@ -57,6 +60,19 @@ export default function PrivacyPolicy() {
             </ul>
             <p className="text-gray-600 mt-4">
               {t('privacy.s3_body')}
+            </p>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <Share2 className="w-6 h-6 text-indigo-600" />
+              {t('privacy.linkedin_title')}
+            </h2>
+            <p className="text-gray-600 mb-4">
+              {t('privacy.linkedin_body')}
+            </p>
+            <p className="text-gray-600">
+              {t('privacy.linkedin_basis')}
             </p>
           </section>
 
