@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Avancée
 notion: non
-prochaine-action: Faire relire la section « Publication sur LinkedIn » de /privacy par un juriste ou un DPO
+prochaine-action: Répondre à l'e-mail de Microsoft Vetting Services sur divers@distr-action.com
 ---
 
 ## Fait
@@ -34,9 +34,13 @@ prochaine-action: Faire relire la section « Publication sur LinkedIn » de /pri
 
 - Rien.
 
+- Dans la foulée, sur instruction de Laurent : page LinkedIn distr'action SRL complétée
+  (présentation, siège de Givry, domaine distr-action.com), e-mail développeur
+  `divers@distr-action.com` vérifié, et **formulaire d'accès soumis le 28/09/2026**
+  (Direct Advertiser + Page management). Détail dans `ops/journal/2026-09-28.md`.
+
 ## Reste
 
 - **Relecture juridique** (base légale, durées) : le texte a été rédigé sans DPO.
-- Côté LinkedIn, à Laurent : compléter la page distr'action SRL (site, lieu, domaine
-  e-mail), poser et vérifier info@ainspiration.eu comme e-mail de l'application, puis
-  soumettre le formulaire — réponses prêtes dans le dossier CommunityOS.
+- Vérification de **Microsoft Vetting Services** à venir sur divers@distr-action.com, puis
+  décision de LinkedIn par e-mail.
