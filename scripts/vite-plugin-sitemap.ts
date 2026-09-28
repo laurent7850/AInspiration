@@ -41,6 +41,7 @@ const staticRoutes: SitemapRoute[] = [
   { path: '/produits', changefreq: 'weekly', priority: 0.8, sources: [page('ProductsPage'), L('common')] },
   { path: '/realisations', changefreq: 'monthly', priority: 0.9, sources: [page('RealisationsPage'), 'src/data/realisations.ts', L('realisations')] },
   { path: '/pme-hainaut-bruxelles', changefreq: 'monthly', priority: 0.8, sources: [page('LocalPage'), L('local')] },
+  { path: '/guide', changefreq: 'monthly', priority: 0.7, sources: [page('GuidePage'), L('guide')] },
   // Detail pages, one per réalisation with a `complet` format. Kept in sync by
   // hand: src/data/realisations.ts is a TS module and this plugin runs before
   // the bundle exists, so it cannot import it.

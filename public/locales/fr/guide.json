@@ -1,0 +1,35 @@
+{
+  "seo": {
+    "title": "Dix questions à se poser avant d'automatiser | Guide gratuit | AInspiration",
+    "description": "Les dix questions que je pose lors d'un diagnostic, dans l'ordre où je les pose. Un guide de trois pages, gratuit, sans formulaire ni adresse à laisser."
+  },
+  "hero": {
+    "eyebrow": "Guide gratuit · PDF, 3 pages",
+    "title": "Dix questions à se poser avant d'automatiser quoi que ce soit",
+    "intro": "La plupart des automatisations qui échouent n'échouent pas pour des raisons techniques : elles échouent parce qu'on a automatisé un processus que personne n'avait pris la peine de décrire. Ces dix questions ne parlent pas de technologie, elles parlent de votre organisation — vous pouvez les poser vous-même, à vos équipes, et faire le tri sans moi.",
+    "download": "Télécharger le guide (PDF, 3 pages)",
+    "note": "Sans formulaire, sans adresse à laisser.",
+    "lang": ""
+  },
+  "list": {
+    "title": "Les dix questions",
+    "items": [
+      { "q": "La tâche revient-elle souvent, et combien de temps prend-elle à chaque fois ?" },
+      { "q": "La règle qui gouverne cette tâche est-elle écrite quelque part ?" },
+      { "q": "Où l'information est-elle ressaisie ?" },
+      { "q": "Que se passe-t-il quand ça rate aujourd'hui, et comment vous en apercevez-vous ?" },
+      { "q": "Qui décide, dans cette chaîne, et sur quoi ?" },
+      { "q": "Vos données sont-elles regardables ?" },
+      { "q": "Avez-vous déjà essayé, et pourquoi cela n'a-t-il pas marché ?" },
+      { "q": "Qu'est-ce qui ne doit surtout pas changer ?" },
+      { "q": "Des données personnelles entrent-elles dans le processus, et sortent-elles de l'Union européenne ?" },
+      { "q": "À quoi verrez-vous, dans six mois, que ça valait la peine — et l'avez-vous mesuré avant ?" }
+    ],
+    "more": "Le guide explique, pour chaque question, ce que la réponse vous apprend."
+  },
+  "call": {
+    "title": "Et si les réponses vous manquent",
+    "body": "Si vous préférez qu'on les prenne ensemble : un appel de trente minutes, gratuit et sans engagement. On regarde vos processus et je vous dis franchement ce qui est jouable, ce qui ne l'est pas, et par quoi commencer.",
+    "cta": "Réserver 30 minutes"
+  }
+}

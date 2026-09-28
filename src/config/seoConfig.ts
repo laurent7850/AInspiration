@@ -143,6 +143,23 @@ export const seoPages: Record<string, SEOPageConfig> = {
       keywords: 'AI producten, AI prijzen, kunstmatige intelligentie aanbiedingen, AI oplossingen prijzen'
     }
   },
+  '/guide': {
+    fr: {
+      title: "Dix questions à se poser avant d'automatiser | Guide gratuit | AInspiration",
+      description: "Les dix questions que je pose lors d'un diagnostic, dans l'ordre où je les pose. Un guide de trois pages, gratuit, sans formulaire ni adresse à laisser.",
+      keywords: 'automatisation PME, avant d automatiser, diagnostic automatisation, guide automatisation gratuit'
+    },
+    en: {
+      title: 'Ten questions to ask before automating anything | Free guide | AInspiration',
+      description: 'The ten questions I ask during a diagnostic, in the order I ask them. A free three-page guide (in French), no form, no email address required.',
+      keywords: 'SME automation, before automating, automation diagnostic, free automation guide'
+    },
+    nl: {
+      title: 'Tien vragen voor u iets automatiseert | Gratis gids | AInspiration',
+      description: "De tien vragen die ik tijdens een diagnose stel, in de volgorde waarin ik ze stel. Een gratis gids van drie pagina's (in het Frans), zonder formulier of e-mailadres.",
+      keywords: 'automatisering kmo, voor u automatiseert, diagnose automatisering, gratis gids automatisering'
+    }
+  },
   '/pme-hainaut-bruxelles': {
     fr: {
       title: 'Automatisation IA pour les PME du Hainaut et de Bruxelles',

@@ -1,0 +1,35 @@
+{
+  "seo": {
+    "title": "Tien vragen voor u iets automatiseert | Gratis gids | AInspiration",
+    "description": "De tien vragen die ik tijdens een diagnose stel, in de volgorde waarin ik ze stel. Een gratis gids van drie pagina's (in het Frans), zonder formulier of e-mailadres."
+  },
+  "hero": {
+    "eyebrow": "Gratis gids · pdf, 3 pagina's",
+    "title": "Tien vragen die u zich stelt voor u ook maar iets automatiseert",
+    "intro": "De meeste automatiseringen die mislukken, mislukken niet om technische redenen: ze mislukken omdat men een proces heeft geautomatiseerd dat niemand ooit de moeite had genomen te beschrijven. Deze tien vragen gaan niet over technologie, maar over uw organisatie — u kunt ze zelf stellen, aan uw teams, en zonder mij de knoop doorhakken.",
+    "download": "Download de gids (pdf, 3 pagina's)",
+    "note": "Zonder formulier, zonder e-mailadres.",
+    "lang": "De gids is in het Frans geschreven."
+  },
+  "list": {
+    "title": "De tien vragen",
+    "items": [
+      { "q": "Komt de taak vaak terug, en hoelang duurt ze telkens?" },
+      { "q": "Staat de regel die deze taak bepaalt ergens op papier?" },
+      { "q": "Waar wordt informatie opnieuw ingetikt?" },
+      { "q": "Wat gebeurt er vandaag als het misloopt, en hoe merkt u dat?" },
+      { "q": "Wie beslist er in deze keten, en waarover?" },
+      { "q": "Zijn uw gegevens werkelijk te bekijken?" },
+      { "q": "Hebt u het al eens geprobeerd, en waarom werkte het niet?" },
+      { "q": "Wat mag in geen geval veranderen?" },
+      { "q": "Komen er persoonsgegevens in het proces, en verlaten ze de Europese Unie?" },
+      { "q": "Waaraan ziet u over zes maanden dat het de moeite waard was — en hebt u het vooraf gemeten?" }
+    ],
+    "more": "De gids legt per vraag uit wat het antwoord u vertelt."
+  },
+  "call": {
+    "title": "Als de antwoorden ontbreken",
+    "body": "Liever samen doorlopen? Een gesprek van dertig minuten, gratis en vrijblijvend. We bekijken uw processen en ik zeg u eerlijk wat haalbaar is, wat niet, en waar u best begint.",
+    "cta": "30 minuten reserveren"
+  }
+}

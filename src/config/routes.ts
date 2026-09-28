@@ -100,6 +100,13 @@ const routes: RouteConfig[] = [
     exact: true
   },
   {
+    // Free guide (PDF). Linked from LinkedIn: the URL must never move.
+    // Server: KNOWN_ROUTES + SERVICE_NS.
+    path: "/guide",
+    component: lazy(() => import('../pages/GuidePage')),
+    exact: true
+  },
+  {
     // Local landing page (Hainaut / Bruxelles). Server: KNOWN_ROUTES + SERVICE_NS.
     path: "/pme-hainaut-bruxelles",
     component: lazy(() => import('../pages/LocalPage')),

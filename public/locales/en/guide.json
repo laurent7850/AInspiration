@@ -1,0 +1,35 @@
+{
+  "seo": {
+    "title": "Ten questions to ask before automating anything | Free guide | AInspiration",
+    "description": "The ten questions I ask during a diagnostic, in the order I ask them. A free three-page guide (in French), no form, no email address required."
+  },
+  "hero": {
+    "eyebrow": "Free guide · PDF, 3 pages",
+    "title": "Ten questions to ask before automating anything",
+    "intro": "Most automations that fail do not fail for technical reasons: they fail because someone automated a process nobody had taken the trouble to describe. These ten questions are not about technology, they are about your organisation — you can ask them yourself, ask your teams, and sort things out without me.",
+    "download": "Download the guide (PDF, 3 pages)",
+    "note": "No form, no email address required.",
+    "lang": "The guide is written in French."
+  },
+  "list": {
+    "title": "The ten questions",
+    "items": [
+      { "q": "Does the task come up often, and how long does it take each time?" },
+      { "q": "Is the rule that governs this task written down anywhere?" },
+      { "q": "Where is information typed in again?" },
+      { "q": "What happens when it goes wrong today, and how do you find out?" },
+      { "q": "Who decides, along this chain, and on what basis?" },
+      { "q": "Can your data actually be looked at?" },
+      { "q": "Have you tried before, and why did it not work?" },
+      { "q": "What must not change under any circumstances?" },
+      { "q": "Does personal data enter the process, and does it leave the European Union?" },
+      { "q": "How will you know, six months from now, that it was worth it — and did you measure it beforehand?" }
+    ],
+    "more": "For each question, the guide explains what the answer tells you."
+  },
+  "call": {
+    "title": "If the answers are missing",
+    "body": "If you would rather go through them together: a thirty-minute call, free and with no commitment. We look at your processes and I tell you frankly what is feasible, what is not, and where to start.",
+    "cta": "Book 30 minutes"
+  }
+}
