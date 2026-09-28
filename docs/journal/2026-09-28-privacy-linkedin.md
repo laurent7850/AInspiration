@@ -29,15 +29,15 @@ prochaine-action: Répondre à l'e-mail de Microsoft Vetting Services sur divers
   **214/214 vérifiées sur le CDN**, `--force-recreate` (« Frontend: 214 files
   downloaded »). Vérifié en production dans les trois langues, HTML brut **et** rendu
   navigateur. 84/84 tests, CI verte, contrôle de santé 27/27.
+- Dans la foulée, sur instruction de Laurent : page LinkedIn distr'action SRL complétée
+  (présentation, siège de Givry, domaine distr-action.com), e-mail développeur
+  `divers@distr-action.com` vérifié, et **formulaire d'accès soumis le 28/09/2026**
+  (Direct Advertiser + Page management). Détail dans `ops/journal/2026-09-28.md`.
 
 ## Cassé
 
 - Rien.
 
-- Dans la foulée, sur instruction de Laurent : page LinkedIn distr'action SRL complétée
-  (présentation, siège de Givry, domaine distr-action.com), e-mail développeur
-  `divers@distr-action.com` vérifié, et **formulaire d'accès soumis le 28/09/2026**
-  (Direct Advertiser + Page management). Détail dans `ops/journal/2026-09-28.md`.
 
 ## Reste
 
