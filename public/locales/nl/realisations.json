@@ -14,7 +14,7 @@
     "secondary": "Over mijn situatie praten"
   },
   "band": {
-    "count": "14",
+    "count": "15",
     "countLabel": "realisaties in dienst",
     "families": "6",
     "familiesLabel": "soorten behoeften gedekt",
@@ -72,7 +72,8 @@
     "previous": "Vorige realisatie",
     "next": "Volgende realisatie",
     "backToIndex": "Alle realisaties",
-    "client": "Opdrachtgever"
+    "client": "Opdrachtgever",
+    "projectUrl": "Openbare pagina"
   },
   "items": {
     "facturation-automatisee": {
@@ -149,6 +150,19 @@
       "results": "Een product van de groep, in dienst. Een tool helpt classificeren en documenteren — hij maakt niemand conform, en dat beloven we ook niet.",
       "howItWorks": "Next.js, Prisma op PostgreSQL, authenticatie met Auth.js, betalingen via Stripe, classificatie en documentgeneratie door Claude, pdf-export. Multi-tenant isolatie: de gegevens van de ene organisatie zijn nooit zichtbaar vanuit een andere.",
       "transposition": "Als u een AI-tool in uw activiteit gebruikt — en dat is waarschijnlijk het geval zonder dat het geformaliseerd is — is de eerste stap weten welke, waarvoor, en met welke gegevens. Voor vragen die verder gaan dan de inventaris hebt u een jurist nodig: wij vervangen die niet."
+    },
+    "communityos": {
+      "title": "CommunityOS — communitybeheer met menselijke goedkeuring",
+      "summary": "Publicaties voor sociale netwerken schrijven, laten goedkeuren en inplannen. Niets vertrekt zonder menselijke goedkeuring.",
+      "sector": "Onze producten",
+      "client": "Distr'Action SRL (intern gebruik)",
+      "metrics": {},
+      "context": "Regelmatig publiceren op sociale netwerken vraagt schrijven, laten nalezen en dan posten op het geplande uur. Voor een klein team raken die drie stappen verspreid over een tekstverwerker, een berichtenapp en de interface van het netwerk zelf.",
+      "problem": "Tools die het publiceren automatiseren, publiceren. Een concept dat te vroeg vertrekt, een uur dat verschuift door de zomertijd, een toegangstoken dat in een bestand wordt gekopieerd: risico’s die een kleine organisatie zich niet kan veroorloven achteraf te ontdekken.",
+      "solution": "Een interne tool die schrijven, goedkeuren en inplannen samenbrengt. Niets wordt gepubliceerd zonder menselijke goedkeuring: vieroogprincipe als standaard, de auteur keurt nooit zijn eigen inhoud goed. Inplanning in Brusselse tijd, zomer- en wintertijd inbegrepen. Geketend auditlogboek, tweestapsverificatie voor verantwoordelijken, versleutelde netwerktokens, noodstop voor alle publicaties. Mediabibliotheek met gebruiksrechten en alternatieve tekst. Door AI voorgestelde concepten worden altijd nagelezen voor verzending.",
+      "results": "Eerste echte gebruik: de post over de gids “Tien vragen voor u automatiseert”, vanuit CommunityOS ingepland voor 29 september 2026 om 08.30 uur op het LinkedIn-profiel van Laurent Marechal. Vandaag beschikbaar: publiceren op een LinkedIn-profiel. In uitvoering: LinkedIn-bedrijfspagina’s, toegang aangevraagd bij LinkedIn op 28 september 2026. Gepland: Facebook en Instagram, inbox, statistieken. Geen gebruikscijfers: de tool is pas in dienst genomen.",
+      "howItWorks": "Next.js en PostgreSQL, een aparte worker voor de geplande verzendingen, Docker-containers achter Traefik, gehost op een Hostinger-VPS in de Europese Unie. Openbare pagina: communityos.srv767464.hstgr.cloud.",
+      "transposition": "Als iemand bij u namens het bedrijf publiceert, is de vraag niet welke publicatietool: het is wie naleest voor verzending, en welk spoor er overblijft. CommunityOS is een interne tool, eerst gebruikt voor onze eigen publicaties."
     },
     "playlists-auditeurs": {
       "title": "Gepersonaliseerde playlists voor radioluisteraars",

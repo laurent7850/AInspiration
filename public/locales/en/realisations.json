@@ -14,7 +14,7 @@
     "secondary": "Talk about my case"
   },
   "band": {
-    "count": "14",
+    "count": "15",
     "countLabel": "projects in service",
     "families": "6",
     "familiesLabel": "families of needs covered",
@@ -72,7 +72,8 @@
     "previous": "Previous project",
     "next": "Next project",
     "backToIndex": "All projects",
-    "client": "Client"
+    "client": "Client",
+    "projectUrl": "Public page"
   },
   "items": {
     "facturation-automatisee": {
@@ -149,6 +150,19 @@
       "results": "A group product, in service. A tool helps you classify and document — it does not make anyone compliant, and we do not promise that.",
       "howItWorks": "Next.js, Prisma on PostgreSQL, Auth.js authentication, Stripe payments, classification and document generation by Claude, PDF export. Multi-tenant isolation: one organisation's data is never visible from another.",
       "transposition": "If you use an AI tool in your business — and you probably do without having formalised it — the first step is knowing which one, for what, and with which data. For questions that go beyond the inventory you need a lawyer: we do not replace one."
+    },
+    "communityos": {
+      "title": "CommunityOS — community management with human approval",
+      "summary": "Write, approve and schedule social media posts. Nothing goes out without human approval.",
+      "sector": "Our products",
+      "client": "Distr'Action SRL (internal use)",
+      "metrics": {},
+      "context": "Posting regularly on social networks means writing, getting a review, then publishing at the planned time. For a small team, those three steps scatter across a word processor, a messaging app and the network’s own interface.",
+      "problem": "Tools that automate publishing publish. A draft sent too early, a time shifted by a daylight-saving change, an access token copied into a file: risks a small organisation cannot afford to discover after the fact.",
+      "solution": "An internal tool that brings writing, approval and scheduling together. Nothing is published without human approval: four-eyes review by default, the author never approves their own content. Scheduling in Brussels time, daylight-saving changes included. Chained audit log, two-factor authentication for managers, encrypted network tokens, emergency stop for all publications. Media library with usage rights and alt text. AI-suggested drafts are always reviewed before they are sent.",
+      "results": "First real use: the post for the guide “Ten questions before you automate”, scheduled from CommunityOS for 29 September 2026 at 08:30 on Laurent Marechal’s LinkedIn profile. Available today: publishing to a LinkedIn profile. In progress: LinkedIn company pages, access requested from LinkedIn on 28 September 2026. Planned: Facebook and Instagram, inbox, statistics. No usage figures: the tool has only just entered service.",
+      "howItWorks": "Next.js and PostgreSQL, a separate worker for scheduled sends, Docker containers behind Traefik, hosted on a Hostinger VPS in the European Union. Public page: communityos.srv767464.hstgr.cloud.",
+      "transposition": "If someone in your organisation posts on its behalf, the question is not the publishing tool: it is who reviews before sending, and what trace is left. CommunityOS is an internal tool, used first for our own publications."
     },
     "playlists-auditeurs": {
       "title": "Personalised playlists for radio listeners",

@@ -186,7 +186,7 @@ export default function Consulting() {
           solid
           stats={[
             { value: "30 min", label: t('animatedStats.audit'), icon: Zap },
-            { value: "14", label: t('animatedStats.live'), icon: Users },
+            { value: "15", label: t('animatedStats.live'), icon: Users },
           ]}
         />
       </div>

@@ -60,6 +60,23 @@ const RealisationDetailPage: React.FC = () => {
           },
         ]
       : []),
+    ...(realisation.projectUrl
+      ? [
+          {
+            label: t('detail.projectUrl'),
+            value: (
+              <a
+                href={realisation.projectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 decoration-secondary hover:decoration-white transition-colors"
+              >
+                {realisation.projectUrl.replace('https://', '')}
+              </a>
+            ),
+          },
+        ]
+      : []),
     { label: t('detail.year'), value: String(realisation.year) },
     ...(realisation.duration
       ? [{ label: t('detail.duration'), value: realisation.duration }]

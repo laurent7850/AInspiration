@@ -50,6 +50,7 @@ const staticRoutes: SitemapRoute[] = [
   { path: '/realisations/factures-fournisseurs', changefreq: 'yearly', priority: 0.7, sources: REALISATIONS },
   { path: '/realisations/chat-ia-site', changefreq: 'yearly', priority: 0.7, sources: REALISATIONS },
   { path: '/realisations/audityo', changefreq: 'yearly', priority: 0.7, sources: REALISATIONS },
+  { path: '/realisations/communityos', changefreq: 'yearly', priority: 0.7, sources: REALISATIONS },
   { path: '/realisations/playlists-auditeurs', changefreq: 'yearly', priority: 0.7, sources: REALISATIONS },
   { path: '/realisations/autoseo', changefreq: 'yearly', priority: 0.7, sources: REALISATIONS },
   { path: '/realisations/preparation-emission', changefreq: 'yearly', priority: 0.7, sources: REALISATIONS },

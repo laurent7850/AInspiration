@@ -14,7 +14,7 @@
     "secondary": "Parler de mon cas"
   },
   "band": {
-    "count": "14",
+    "count": "15",
     "countLabel": "réalisations en service",
     "families": "6",
     "familiesLabel": "familles de besoins couvertes",
@@ -72,7 +72,8 @@
     "previous": "Réalisation précédente",
     "next": "Réalisation suivante",
     "backToIndex": "Toutes les réalisations",
-    "client": "Commanditaire"
+    "client": "Commanditaire",
+    "projectUrl": "Page publique"
   },
   "items": {
     "facturation-automatisee": {
@@ -149,6 +150,19 @@
       "results": "Un produit du groupe, en service. Un outil aide à classer et à documenter — il ne rend personne conforme, et nous ne le promettons pas.",
       "howItWorks": "Next.js, Prisma sur PostgreSQL, authentification Auth.js, paiement Stripe, classification et génération documentaire par Claude, export PDF. Isolation multi-tenant : les données d'une organisation ne sont jamais visibles d'une autre.",
       "transposition": "Si vous utilisez un outil d'IA dans votre activité — et c'est probablement le cas sans que ce soit formalisé —, la première étape est de savoir lequel, pour quoi, et avec quelles données. Pour les questions qui dépassent l'inventaire, il faut un juriste : nous ne le remplaçons pas."
+    },
+    "communityos": {
+      "title": "CommunityOS — gestion de communauté avec validation humaine",
+      "summary": "Rédiger, faire valider et planifier les publications sur les réseaux sociaux. Rien ne part sans approbation humaine.",
+      "sector": "Nos produits",
+      "client": "Distr'Action SRL (usage interne)",
+      "metrics": {},
+      "context": "Publier régulièrement sur les réseaux sociaux demande de rédiger, de faire relire, puis de poster à l'heure prévue. Pour une petite équipe, ces trois gestes se dispersent entre un traitement de texte, une messagerie et l'interface du réseau.",
+      "problem": "Les outils qui automatisent la publication publient. Un brouillon parti trop tôt, une heure décalée par un changement d'heure, un jeton d'accès copié dans un fichier : autant de risques qu'une petite structure ne peut pas se permettre de découvrir après coup.",
+      "solution": "Un outil interne qui réunit la rédaction, la validation et la planification. Rien ne se publie sans approbation humaine : validation à quatre yeux par défaut, l'auteur ne valide pas son propre contenu. Planification à l'heure de Bruxelles, changements d'heure compris. Journal d'audit chaîné, double authentification pour les responsables, jetons des réseaux chiffrés, arrêt d'urgence de toutes les publications. Médiathèque avec droits d'usage et texte alternatif. Les brouillons proposés par l'IA sont toujours relus avant envoi.",
+      "results": "Première utilisation réelle : le post du guide « Dix questions avant d'automatiser », planifié depuis CommunityOS pour le 29 septembre 2026 à 8 h 30 sur le profil LinkedIn de Laurent Marechal. Disponible aujourd'hui : la publication sur un profil LinkedIn. En cours : les pages entreprise LinkedIn, accès demandé à LinkedIn le 28 septembre 2026. Prévu : Facebook et Instagram, boîte de réception, statistiques. Aucun chiffre d'usage : l'outil vient d'entrer en service.",
+      "howItWorks": "Next.js et PostgreSQL, un worker séparé pour les envois planifiés, conteneurs Docker derrière Traefik, hébergés sur un VPS Hostinger dans l'Union européenne. Page publique : communityos.srv767464.hstgr.cloud.",
+      "transposition": "Si quelqu'un chez vous publie au nom de l'entreprise, la question n'est pas l'outil de publication : c'est qui relit avant l'envoi, et quelle trace il en reste. CommunityOS est un outil interne, utilisé d'abord pour nos propres publications."
     },
     "playlists-auditeurs": {
       "title": "Playlists personnalisées pour auditeurs de radio",

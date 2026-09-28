@@ -103,7 +103,7 @@ const routeSEO = {
   '/guide': { title: 'Dix questions \u00e0 se poser avant d\u2019automatiser | Guide gratuit | AInspiration', description: 'Les dix questions que je pose lors d\u2019un diagnostic, dans l\u2019ordre o\u00f9 je les pose. Un guide de trois pages, gratuit, sans formulaire ni adresse \u00e0 laisser.' },
   '/pme-hainaut-bruxelles': { title: 'Automatisation IA pour les PME du Hainaut et de Bruxelles', description: 'Bas\u00e9 \u00e0 Givry, j\u2019automatise les t\u00e2ches r\u00e9p\u00e9titives des PME du Hainaut, de Bruxelles et du Brabant wallon. Sur place ou \u00e0 distance.' },
   '/newsletter-confirmee': { title: 'Newsletter | AInspiration', description: 'Confirmation de votre inscription \u00e0 la newsletter AInspiration.' },
-  '/realisations': { title: 'R\u00e9alisations | Ce que nous avons construit | AInspiration', description: 'Seize automatisations et applications en service : facturation, comptabilit\u00e9, contenu, conformit\u00e9. Ce qui a \u00e9t\u00e9 construit, pour qui, et ce que \u00e7a a chang\u00e9.' },
+  '/realisations': { title: 'R\u00e9alisations | Ce que nous avons construit | AInspiration', description: 'Quinze automatisations et applications en service : facturation, comptabilit\u00e9, contenu, conformit\u00e9. Ce qui a \u00e9t\u00e9 construit, pour qui, et ce que \u00e7a a chang\u00e9.' },
   '/creation-ia': { title: 'Cr\u00e9ation de Contenu IA | AInspiration', description: 'G\u00e9n\u00e9rez du contenu professionnel avec l\'IA : articles, visuels, newsletters, posts r\u00e9seaux sociaux.' },
   '/analyse-ia': { title: 'Analyse de Donn\u00e9es IA | Business Intelligence | AInspiration', description: 'Exploitez vos donn\u00e9es avec l\'IA. Analyses pr\u00e9dictives, tableaux de bord intelligents et insights actionnables pour des d\u00e9cisions \u00e9clair\u00e9es.' },
   '/cgv': { title: 'Conditions G\u00e9n\u00e9rales de Vente | AInspiration', description: 'Consultez nos conditions g\u00e9n\u00e9rales de vente. Modalit\u00e9s de paiement, livraison et garanties pour nos services IA.' },
@@ -152,7 +152,7 @@ const KNOWN_ROUTE_PREFIXES = ['/contacts/', '/companies/', '/opportunities/', '/
 // crawler must see a real 404 for them too, not a served-then-redirected shell.
 const REALISATION_DETAIL_SLUGS = new Set([
   'facturation-automatisee', 'reconciliation-caisse', 'factures-fournisseurs',
-  'chat-ia-site', 'audityo', 'playlists-auditeurs', 'autoseo', 'preparation-emission',
+  'chat-ia-site', 'audityo', 'communityos', 'playlists-auditeurs', 'autoseo', 'preparation-emission',
   'dreamoracle', 'artpero', 'tl-services', 'playlist-spotify', 'veille-youtube',
 ]);
 

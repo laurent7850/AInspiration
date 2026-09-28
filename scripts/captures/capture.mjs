@@ -68,6 +68,13 @@ const targets = [
     dismiss: ['button:has-text("Accepter")', 'button:has-text("Accept")'],
   },
   {
+    slug: 'communityos',
+    // The tool's public landing page, no sign-in needed. Not a permanent
+    // domain (see src/data/realisations.ts).
+    url: 'https://communityos.srv767464.hstgr.cloud/',
+    settle: 2500,
+  },
+  {
     slug: 'artpero',
     url: 'https://lartpero.ainspiration.eu',
     settle: 3000,

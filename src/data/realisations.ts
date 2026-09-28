@@ -68,6 +68,12 @@ export interface Realisation {
    * Absent means the fiche stays anonymous, which is the default.
    */
   clientUrl?: string;
+  /**
+   * The réalisation's own public page, when it has one that is not the
+   * client's site (an internal product, a demo). Shown as a link in the
+   * detail header. Absent means there is nothing public to point at.
+   */
+  projectUrl?: string;
   /** At most three. Empty is a deliberate choice, not an omission. */
   metrics: RealisationMetric[];
 }
@@ -135,6 +141,18 @@ export const realisations: Realisation[] = [
     format: 'complet',
     technologies: ['Next.js', 'Prisma', 'PostgreSQL', 'Auth.js', 'Stripe'],
     cover: '/images/realisations/audityo.jpg',
+    metrics: [],
+  },
+  {
+    slug: 'communityos',
+    categories: ['creer', 'visible'],
+    year: 2026,
+    status: 'interne',
+    format: 'complet',
+    technologies: ['Next.js', 'PostgreSQL', 'Docker', 'Traefik'],
+    cover: '/images/realisations/communityos.jpg',
+    // The tool's own landing page. Not a permanent domain — do not promise one.
+    projectUrl: 'https://communityos.srv767464.hstgr.cloud',
     metrics: [],
   },
   {
