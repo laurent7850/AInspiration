@@ -100,7 +100,6 @@ images/realisations/communityos.jpg
 images/realisations/dreamoracle.jpg
 images/realisations/enghien.jpg
 images/realisations/factures-fournisseurs.jpg
-images/realisations/paperclip.jpg
 images/realisations/playlist-spotify.jpg
 images/realisations/playlists-auditeurs.jpg
 images/realisations/preparation-emission.jpg
