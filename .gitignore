@@ -68,3 +68,6 @@ scripts/demo/out/
 
 # Etat de session des hooks (local, jamais versionne)
 .claude/state/
+
+# Python bytecode (scripts/guides)
+__pycache__/
