@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Avancée
 notion: non
-prochaine-action: Trancher « les trois marques du groupe » dans le contexte de la fiche AutoSEO (même imprécision qu'Audityo, non corrigée)
+prochaine-action: Décider si l'article de blog du 25/09 sur l'automatisation SEO doit perdre « les trois marques du groupe Distr'Action », comme les fiches
 ---
 
 ## Fait
@@ -49,13 +49,24 @@ prochaine-action: Trancher « les trois marques du groupe » dans le contexte de
   brut des neuf pages (nouvelle phrase présente, ancienne absente) et au navigateur.
   Contrôle de santé 27/27, CI verte.
 
+- **Fiche AutoSEO** : « les trois marques du groupe » devient « les trois marques de
+  Distr'Action », en fr, en et nl, sur décision de Laurent ; l'accord fautif de la phrase
+  anglaise est corrigé au passage. Plus aucune occurrence de « groupe » dans les locales, le
+  code ni le backend. Même chaîne de déploiement, manifeste inchangé (214), 214/214 sur le
+  CDN, vérifié dans le HTML brut des trois langues et au navigateur, contrôle de santé
+  27/27, CI verte.
+
 ## Cassé
 
 - Rien.
 
 ## Reste
 
-- **« Les trois marques du groupe »** figure aussi dans le contexte de la fiche AutoSEO, en
-  fr, en et nl : même imprécision, pas dans la demande du jour, non corrigée.
+- **L'article de blog du 25/09** (`automatisation-seo-trois-marques-distr-action-2026-09-25`,
+  et ses versions en et nl) parle encore des « trois marques du groupe Distr'Action », et
+  son extrait s'affiche sur l'accueil. C'est du contenu en base, pas une locale : non
+  touché.
+- **Le fil d'Ariane reste en français sur les pages anglaises** (« Accueil »,
+  « Réalisations » sur `/en/realisations/autoseo`). Défaut antérieur, vu en relisant.
 - **Le chat affirme « Rien n'est stocké au-delà de la conversation »** : à confronter au
   réglage de conservation des exécutions du workflow n8n, qui peut garder les messages.
