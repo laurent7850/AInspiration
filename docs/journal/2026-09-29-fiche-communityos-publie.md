@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Avancée
 notion: non
-prochaine-action: Relire en production les paragraphes « Ce que ça change » d'Audityo, DreamOracle, du chat du site et de L'Artpéro, visibles depuis le 28/09
+prochaine-action: Laurent tranche trois formulations des fiches réalisations (Audityo « du groupe », L'Artpéro « paiement encaissé », DreamOracle vide)
 ---
 
 ## Fait
@@ -30,7 +30,18 @@ prochaine-action: Relire en production les paragraphes « Ce que ça change » d
 
 - Rien.
 
+- **Relecture des quatre paragraphes « Ce que ça change »** visibles depuis le 28/09
+  (Audityo, DreamOracle, chat du site, L'Artpéro), lus tels que la production les sert,
+  en fr, en et nl, et vérifiés dans le navigateur. Aucun chiffre, aucune promesse de
+  conformité. Le chat : rien à redire. Trois points à trancher, **rien modifié** :
+  - Audityo dit « un produit **du groupe** » (EN « group product », NL « van de groep ») :
+    Distr'Action est une seule SRL, pas un groupe.
+  - L'Artpéro dit « jusqu'au **paiement encaissé** » : le paiement Stripe est câblé dans
+    l'application, mais rien de visible depuis l'extérieur ne prouve qu'il tourne en mode
+    réel ni qu'un paiement a été encaissé. L'anglais « the payment landing » est maladroit.
+  - DreamOracle ne dit rien de vérifiable (« la démonstration d'une capacité ») ; le
+    néerlandais dit « het bewijs », plus fort que le français.
+
 ## Reste
 
-- Relire en production les quatre paragraphes de résultats rendus visibles le 28/09
-  (Audityo, DreamOracle, chat du site, L'Artpéro).
+- Les trois arbitrages ci-dessus, puis la correction dans les trois langues.
