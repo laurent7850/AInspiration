@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Avancée
 notion: non
-prochaine-action: Décider si l'article de blog du 25/09 sur l'automatisation SEO doit perdre « les trois marques du groupe Distr'Action », comme les fiches
+prochaine-action: Vérifier la conservation des exécutions du workflow n8n du chat, avant de laisser « Rien n'est stocké au-delà de la conversation » en ligne
 ---
 
 ## Fait
@@ -56,16 +56,24 @@ prochaine-action: Décider si l'article de blog du 25/09 sur l'automatisation SE
   CDN, vérifié dans le HTML brut des trois langues et au navigateur, contrôle de santé
   27/27, CI verte.
 
+- **Article de blog du 25/09 sur l'automatisation SEO, en base** (trois lignes fr, en, nl) :
+  Distr'Action n'y est plus « un groupe », sur décision de Laurent. Dix remplacements, en
+  texte littéral (`replace()`, jamais d'expression régulière), dans une seule transaction qui
+  refusait tout si une phrase d'origine n'apparaissait pas exactement une fois :
+  « groupe spécialisé » → « société spécialisée » (et « a company », « een bedrijf »),
+  « marque du groupe » → « marque de Distr'Action », « groupes multi-marques » →
+  « structures multi-marques », et l'extrait français affiché sur l'accueil. « Doelgroepen »
+  (publics cibles) laissé tel quel. Sauvegarde des trois lignes avant modification :
+  `/root/backups/blog-seo-25-09-before-20260929_113427.csv` sur le VPS, lisible par root
+  seulement. Vérifié : HTML brut des trois articles à leur adresse canonique, extrait de
+  l'accueil, API publique, rendu navigateur ; contrôle de santé 27/27.
+
 ## Cassé
 
 - Rien.
 
 ## Reste
 
-- **L'article de blog du 25/09** (`automatisation-seo-trois-marques-distr-action-2026-09-25`,
-  et ses versions en et nl) parle encore des « trois marques du groupe Distr'Action », et
-  son extrait s'affiche sur l'accueil. C'est du contenu en base, pas une locale : non
-  touché.
 - **Le fil d'Ariane reste en français sur les pages anglaises** (« Accueil »,
   « Réalisations » sur `/en/realisations/autoseo`). Défaut antérieur, vu en relisant.
 - **Le chat affirme « Rien n'est stocké au-delà de la conversation »** : à confronter au
