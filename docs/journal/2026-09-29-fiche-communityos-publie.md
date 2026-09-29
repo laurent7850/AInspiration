@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Avancée
 notion: non
-prochaine-action: Laurent tranche trois formulations des fiches réalisations (Audityo « du groupe », L'Artpéro « paiement encaissé », DreamOracle vide)
+prochaine-action: Trancher « les trois marques du groupe » dans le contexte de la fiche AutoSEO (même imprécision qu'Audityo, non corrigée)
 ---
 
 ## Fait
@@ -38,10 +38,24 @@ prochaine-action: Laurent tranche trois formulations des fiches réalisations (A
   - DreamOracle ne dit rien de vérifiable (« la démonstration d'une capacité ») ; le
     néerlandais dit « het bewijs », plus fort que le français.
 
+- **Les trois formulations corrigées et déployées**, sur décision de Laurent, dans les
+  trois langues :
+  - Audityo : « un produit **de Distr'Action**, en service ».
+  - L'Artpéro : « jusqu'au **paiement en ligne** » ; l'anglais devient « to paying online ».
+  - DreamOracle : « En ligne, installable sur téléphone, ouvert au public. » Les trois faits
+    vérifiés sur le site : il répond, son manifeste déclare une application autonome,
+    l'inscription est ouverte avec un essai gratuit.
+  Même chaîne de déploiement, manifeste de nouveau inchangé (214). Vérifié dans le HTML
+  brut des neuf pages (nouvelle phrase présente, ancienne absente) et au navigateur.
+  Contrôle de santé 27/27, CI verte.
+
 ## Cassé
 
 - Rien.
 
 ## Reste
 
-- Les trois arbitrages ci-dessus, puis la correction dans les trois langues.
+- **« Les trois marques du groupe »** figure aussi dans le contexte de la fiche AutoSEO, en
+  fr, en et nl : même imprécision, pas dans la demande du jour, non corrigée.
+- **Le chat affirme « Rien n'est stocké au-delà de la conversation »** : à confronter au
+  réglage de conservation des exécutions du workflow n8n, qui peut garder les messages.
