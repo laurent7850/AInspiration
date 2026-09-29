@@ -147,7 +147,7 @@
       "context": "De Europese verordening over kunstmatige intelligentie is van toepassing. De vraag is niet langer wanneer u in orde moet zijn, maar waar u staat.",
       "problem": "De meeste kmo's weten niet welke AI-systemen ze al gebruiken. De chatbot van de site, de tool die cv's sorteert, de klantenscoring, de assistent die een medewerker alleen heeft aangesloten: het is een inventaris vóór het een conformiteitsoefening is.",
       "solution": "Software die de AI-systemen van een organisatie in kaart brengt, ze indeelt volgens de categorieën van de verordening, en het bijbehorende dossier opmaakt. Ze houdt de inventaris actueel in plaats van een bevroren rapport af te leveren.",
-      "results": "Een product van de groep, in dienst. Een tool helpt classificeren en documenteren — hij maakt niemand conform, en dat beloven we ook niet.",
+      "results": "Een product van Distr'Action, in dienst. Een tool helpt classificeren en documenteren — hij maakt niemand conform, en dat beloven we ook niet.",
       "howItWorks": "Next.js, Prisma op PostgreSQL, authenticatie met Auth.js, betalingen via Stripe, classificatie en documentgeneratie door Claude, pdf-export. Multi-tenant isolatie: de gegevens van de ene organisatie zijn nooit zichtbaar vanuit een andere.",
       "transposition": "Als u een AI-tool in uw activiteit gebruikt — en dat is waarschijnlijk het geval zonder dat het geformaliseerd is — is de eerste stap weten welke, waarvoor, en met welke gegevens. Voor vragen die verder gaan dan de inventaris hebt u een jurist nodig: wij vervangen die niet."
     },
@@ -220,7 +220,7 @@
       "context": "Een consumentenplatform voor droomduiding, met een persoonlijk dagboek en een app die op de telefoon te installeren is.",
       "problem": "Een consumentenproduct helemaal afwerken vraagt meer dan code: een visuele identiteit, een mobiele ervaring, een acquisitiekanaal.",
       "solution": "Ontwerp, ontwikkeling, een volledige visuele identiteit, een installeerbare webapp, en een acquisitiecampagne. Het product bestaat en draait.",
-      "results": "Het bewijs van een aanpak van begin tot eind, op een product dat zich tot het brede publiek richt en niet tot bedrijven.",
+      "results": "Online, installeerbaar op een telefoon, open voor het publiek.",
       "howItWorks": "Next.js, Prisma op PostgreSQL, een progressieve webapp installeerbaar op iOS en Android, een SVG-identiteitsreeks, en een beeldgenerator.",
       "transposition": "Als uw project een product vraagt en niet enkel een interne tool, is dat de volledige keten die u nodig hebt: ontwerp, vormgeving, ontwikkeling, marktintroductie. De laatste drie worden het vaakst onderschat."
     },
@@ -233,7 +233,7 @@
       "context": "Een organisator van culturele evenementen beheerde inschrijvingen en betalingen buiten de eigen website.",
       "problem": "Inschrijvingen verspreid over een formulier, e-mails en manuele overschrijvingen: verloren tijd, en plaatsen die twee keer verkocht raken.",
       "solution": "Een volledig platform: voorstelling van de evenementen, online inschrijving, betaling, en een beheerruimte voor de organisator.",
-      "results": "Eén enkele keten, van de ontdekking van het evenement tot de geïnde betaling.",
+      "results": "Eén enkele keten, van de ontdekking van het evenement tot de online betaling.",
       "howItWorks": "React en Supabase voor gegevens en authenticatie, Stripe voor de betalingen.",
       "transposition": "Alles wat gereserveerd of ingeschreven wordt volgt hetzelfde schema: workshops, opleidingen, consultaties, verhuur. De grootste winst is niet de online betaling, het is het einde van de dubbele invoer."
     },

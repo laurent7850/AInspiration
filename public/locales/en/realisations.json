@@ -147,7 +147,7 @@
       "context": "The European regulation on artificial intelligence applies. The question is no longer when to get compliant, but where you stand.",
       "problem": "Most small businesses do not know which AI systems they already use. The site chatbot, the CV screening tool, the customer scoring, the assistant a colleague plugged in alone: it is an inventory before it is a compliance exercise.",
       "solution": "Software that lists an organisation's AI systems, classifies them against the categories in the regulation, and produces the matching documentation. It keeps the inventory current rather than producing a frozen report.",
-      "results": "A group product, in service. A tool helps you classify and document — it does not make anyone compliant, and we do not promise that.",
+      "results": "A Distr'Action product, in service. A tool helps you classify and document — it does not make anyone compliant, and we do not promise that.",
       "howItWorks": "Next.js, Prisma on PostgreSQL, Auth.js authentication, Stripe payments, classification and document generation by Claude, PDF export. Multi-tenant isolation: one organisation's data is never visible from another.",
       "transposition": "If you use an AI tool in your business — and you probably do without having formalised it — the first step is knowing which one, for what, and with which data. For questions that go beyond the inventory you need a lawyer: we do not replace one."
     },
@@ -220,7 +220,7 @@
       "context": "A consumer platform for dream interpretation, with a personal journal and an app installable on a phone.",
       "problem": "Carrying a consumer product all the way takes more than code: a visual identity, a mobile experience, an acquisition channel.",
       "solution": "Design, development, a complete visual identity, an installable web app, and an acquisition campaign. The product exists and runs.",
-      "results": "A demonstration of end-to-end capability, on a product aimed at the public rather than at businesses.",
+      "results": "Live, installable on a phone, open to the public.",
       "howItWorks": "Next.js, Prisma on PostgreSQL, a progressive web app installable on iOS and Android, an SVG identity suite, and a visual generator.",
       "transposition": "If your project needs a product and not just an internal tool, this is the full chain you need: design, brand, build, go to market. The last three are the ones people underestimate."
     },
@@ -233,7 +233,7 @@
       "context": "A cultural events organiser handled registrations and payments outside their own website.",
       "problem": "Registrations scattered across a form, emails and manual transfers: lost time, and seats sold twice.",
       "solution": "A complete platform: event listings, online registration, payment, and a management area for the organiser.",
-      "results": "A single chain, from discovering the event to the payment landing.",
+      "results": "A single chain, from discovering the event to paying online.",
       "howItWorks": "React and Supabase for data and authentication, Stripe for payments.",
       "transposition": "Anything that is booked or signed up for follows the same pattern: workshops, training, consultations, rentals. The main gain is not online payment, it is the end of double entry."
     },

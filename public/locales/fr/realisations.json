@@ -147,7 +147,7 @@
       "context": "Le règlement européen sur l'intelligence artificielle s'applique. La question n'est plus de savoir quand se mettre en règle, mais où l'on en est.",
       "problem": "La plupart des PME ne savent pas quels systèmes d'IA elles utilisent déjà. Le chatbot du site, l'outil de tri de candidatures, le scoring client, l'assistant qu'un collaborateur a branché seul : c'est un inventaire avant d'être une mise en conformité.",
       "solution": "Un logiciel qui recense les systèmes d'IA d'une organisation, les classe selon les catégories du règlement, et produit le dossier documentaire correspondant. Il tient l'inventaire à jour plutôt que de produire un rapport figé.",
-      "results": "Un produit du groupe, en service. Un outil aide à classer et à documenter — il ne rend personne conforme, et nous ne le promettons pas.",
+      "results": "Un produit de Distr'Action, en service. Un outil aide à classer et à documenter — il ne rend personne conforme, et nous ne le promettons pas.",
       "howItWorks": "Next.js, Prisma sur PostgreSQL, authentification Auth.js, paiement Stripe, classification et génération documentaire par Claude, export PDF. Isolation multi-tenant : les données d'une organisation ne sont jamais visibles d'une autre.",
       "transposition": "Si vous utilisez un outil d'IA dans votre activité — et c'est probablement le cas sans que ce soit formalisé —, la première étape est de savoir lequel, pour quoi, et avec quelles données. Pour les questions qui dépassent l'inventaire, il faut un juriste : nous ne le remplaçons pas."
     },
@@ -220,7 +220,7 @@
       "context": "Une plateforme grand public d'interprétation de rêves, avec journal personnel et application installable sur téléphone.",
       "problem": "Mener un produit grand public jusqu'au bout demande autre chose que du code : une identité visuelle, une expérience mobile, une acquisition.",
       "solution": "Conception, développement, identité visuelle complète, application web installable, et campagne d'acquisition. Le produit existe et tourne.",
-      "results": "La démonstration d'une capacité de bout en bout, sur un produit qui s'adresse au grand public et non à des entreprises.",
+      "results": "En ligne, installable sur téléphone, ouvert au public.",
       "howItWorks": "Next.js, Prisma sur PostgreSQL, application web progressive installable sur iOS et Android, suite d'identité visuelle en SVG, générateur de visuels.",
       "transposition": "Si votre projet suppose un produit et pas seulement un outil interne, c'est cette chaîne complète qu'il faut : conception, design, développement, mise en marché. Les trois dernières sont celles qu'on sous-estime."
     },
@@ -233,7 +233,7 @@
       "context": "Un organisateur d'événements culturels gérait ses inscriptions et ses paiements en dehors de son site.",
       "problem": "Les inscriptions éparpillées entre un formulaire, des emails et des virements manuels : c'est du temps perdu et des places vendues deux fois.",
       "solution": "Une plateforme complète : présentation des événements, inscription en ligne, paiement, et espace de gestion pour l'organisateur.",
-      "results": "Une chaîne unique, de la découverte de l'événement au paiement encaissé.",
+      "results": "Une chaîne unique, de la découverte de l'événement jusqu'au paiement en ligne.",
       "howItWorks": "React et Supabase pour les données et l'authentification, Stripe pour les paiements.",
       "transposition": "Tout ce qui se réserve ou s'inscrit relève du même schéma : ateliers, formations, consultations, locations. Le gain principal n'est pas le paiement en ligne, c'est la disparition du double encodage."
     },
