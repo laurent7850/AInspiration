@@ -26,10 +26,6 @@ prochaine-action: Laurent tranche trois formulations des fiches réalisations (A
   downloaded ». Vérifié en production : HTML brut des trois langues (nouvelle phrase
   présente, ancienne heure absente) et rendu navigateur. Contrôle de santé 27/27, CI verte.
 
-## Cassé
-
-- Rien.
-
 - **Relecture des quatre paragraphes « Ce que ça change »** visibles depuis le 28/09
   (Audityo, DreamOracle, chat du site, L'Artpéro), lus tels que la production les sert,
   en fr, en et nl, et vérifiés dans le navigateur. Aucun chiffre, aucune promesse de
@@ -41,6 +37,10 @@ prochaine-action: Laurent tranche trois formulations des fiches réalisations (A
     réel ni qu'un paiement a été encaissé. L'anglais « the payment landing » est maladroit.
   - DreamOracle ne dit rien de vérifiable (« la démonstration d'une capacité ») ; le
     néerlandais dit « het bewijs », plus fort que le français.
+
+## Cassé
+
+- Rien.
 
 ## Reste
 
