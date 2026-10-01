@@ -75,6 +75,13 @@ const targets = [
     settle: 2500,
   },
   {
+    slug: 'autoseo',
+    // SEOPilot's public hero page (01/10/2026). The dashboard behind the
+    // sign-in shows real positions and traffic — only the landing page is shot.
+    url: 'https://seopilot.srv767464.hstgr.cloud/',
+    settle: 2500,
+  },
+  {
     slug: 'artpero',
     url: 'https://lartpero.ainspiration.eu',
     settle: 3000,
