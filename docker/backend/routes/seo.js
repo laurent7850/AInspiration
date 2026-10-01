@@ -33,8 +33,15 @@ const distPath = path.join(__dirname, '..', 'dist');
 app.use(express.static(distPath, {
   index: false,
   setHeaders: (res, filePath) => {
-    if (filePath.match(/\.(js|css|woff2?|png|jpg|jpeg|svg|webp|avif|ico|gif)$/)) {
+    // immutable only where Vite puts a content hash in the name (dist/assets/).
+    // Files copied from public/ (images/, guides/, favicons) keep their name
+    // when replaced: a year of immutable kept the old AutoSEO cover in browsers
+    // after it was swapped on 01/10/2026. Those revalidate hourly via ETag.
+    const isHashedAsset = filePath.startsWith(path.join(distPath, 'assets') + path.sep);
+    if (isHashedAsset) {
       res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    } else if (filePath.match(/\.(js|css|woff2?|png|jpg|jpeg|svg|webp|avif|ico|gif|pdf)$/)) {
+      res.setHeader('Cache-Control', 'public, max-age=3600');
     } else if (filePath.endsWith('.xml') || filePath.endsWith('.txt')) {
       res.setHeader('Cache-Control', 'public, max-age=3600');
     }

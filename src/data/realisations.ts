@@ -176,7 +176,9 @@ export const realisations: Realisation[] = [
     status: 'production',
     format: 'complet',
     technologies: ['n8n', 'Claude', 'PostgreSQL'],
-    cover: '/images/realisations/autoseo.jpg',
+    // ?v= busts browsers that cached the old cover under the former year-long
+    // immutable header (01/10/2026). Bump it whenever this file is replaced.
+    cover: '/images/realisations/autoseo.jpg?v=20261001',
     metrics: [
       { value: '50', labelKey: 'articles' },
       { value: '3', labelKey: 'brands' },
