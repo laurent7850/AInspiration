@@ -2,6 +2,7 @@ import React from 'react';
 import { TrendingDown, ShieldCheck, Zap, Clock } from 'lucide-react';
 import { useCountUp } from '../hooks/useCountUp';
 import { useTranslation } from 'react-i18next';
+import { realisations } from '../data/realisations';
 
 interface StatItemProps {
   end: number;
@@ -61,7 +62,9 @@ export default function AnimatedStats({ variant = 'light', className = '' }: Ani
       isDark,
     },
     {
-      end: 14,
+      // Derived from the data, never typed: a hard-coded 14 survived the
+      // fifteenth card and contradicted /realisations on the homepage.
+      end: realisations.length,
       suffix: '',
       label: t('animatedStats.live', 'Réalisations en service'),
       icon: <Zap className={`w-6 h-6 ${isDark ? 'text-indigo-100' : 'text-indigo-600'}`} />,
