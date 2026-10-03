@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Avancée
 notion: non
-prochaine-action: Déployer le frontend (build, Netlify, manifeste, conteneur) puis vérifier « 15 » sur l'accueil
+prochaine-action: Aucune — reprendre band.count et les « quinze » à la prochaine fiche ajoutée ou retirée
 ---
 
 ## Fait
@@ -19,13 +19,17 @@ prochaine-action: Déployer le frontend (build, Netlify, manifeste, conteneur) p
 - Le compteur dérive maintenant de `realisations.length` — il ne peut plus décaler.
   tsc, lint et 84 tests au vert.
 
+- **Déployé le 03/10** : build, Netlify, manifeste (`7c0e341`), `dist/` copié dans le
+  conteneur. Le bundle servi `index-BiJDy3xj.js` contient `end:Ot.length`, et `Ot` compte
+  bien les 15 slugs. Contrôle de santé 27/27. Vérification visuelle impossible : le panneau
+  du navigateur était masqué, l'animation `requestAnimationFrame` restait à 0.
+
 ## Cassé
 
 - rien
 
 ## Reste
 
-- Déploiement frontend non fait.
 - Restent en dur : `band.count` « 15 » des trois `realisations.json`, et les mots
   « quinze / fifteen / vijftien » (locales `common`, `about`, `realisations`, `seoConfig.ts`,
   `routes/seo.js`). Justes aujourd'hui ; à reprendre à chaque ajout ou retrait de fiche.
