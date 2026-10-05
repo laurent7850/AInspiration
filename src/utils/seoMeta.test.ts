@@ -113,3 +113,13 @@ describe('extrait trop court', () => {
     expect(paragraphTextFrom('Pas de paragraphe')).toBe('Pas de paragraphe');
   });
 });
+
+// Same cases as docker/backend/test/seo-meta.test.mjs (crawl of 2026-10-05).
+describe('coupe des titres', () => {
+  it('ne coupe qu\'à une frontière de phrase', () => {
+    expect(metaTitleFor("L'IA dans les PME du Hainaut : par où commencer quand on est une petite structure")).toBe("L'IA dans les PME du Hainaut : par où commencer");
+    expect(metaTitleFor("AI in Hainaut SMEs: where to start when you are a small structure")).toBe("AI in Hainaut SMEs | Blog AInspiration");
+    expect(metaTitleFor("Creating High-Performing Marketing Content with Generative AI in 2026")).toBe("Creating High-Performing Marketing Content");
+    expect(metaTitleFor("Créer des Workflows d'Automatisation Puissants avec n8n : Guide Complet")).toBe("Créer des Workflows d'Automatisation Puissants avec n8n");
+  });
+});

@@ -101,3 +101,11 @@ test('ne lit que les paragraphes et decode les entites', () => {
   );
   assert.equal(paragraphTextFrom('Pas de paragraphe'), 'Pas de paragraphe');
 });
+
+// Crawl of 2026-10-05: titles cut mid-phrase ("… quand on est", "… with Generative").
+test('ne coupe un titre qu\'a une frontiere de phrase', () => {
+  assert.equal(metaTitleFor("L'IA dans les PME du Hainaut : par où commencer quand on est une petite structure"), "L'IA dans les PME du Hainaut : par où commencer");
+  assert.equal(metaTitleFor("AI in Hainaut SMEs: where to start when you are a small structure"), "AI in Hainaut SMEs | Blog AInspiration");
+  assert.equal(metaTitleFor("Creating High-Performing Marketing Content with Generative AI in 2026"), "Creating High-Performing Marketing Content");
+  assert.equal(metaTitleFor("Créer des Workflows d'Automatisation Puissants avec n8n : Guide Complet"), "Créer des Workflows d'Automatisation Puissants avec n8n");
+});

@@ -17,14 +17,32 @@ export const DESC_MAX = 160;
 export const DESC_MIN = 120;
 const BRAND_SUFFIX = ' | Blog AInspiration';
 
-const SUBTITLE_SEPARATORS = [' : ', ' — ', ' – ', ' | ', ' - '];
+// ': ' too: English and Dutch titles put no space before the colon.
+const SUBTITLE_SEPARATORS = [' : ', ': ', ' — ', ' – ', ' | ', ' - '];
 
-const TRAILING_STOPWORDS = new Set([
+// Words that open a new group: a cut just before one ends on a whole phrase.
+const PHRASE_BOUNDARIES = new Set([
   'a', 'à', 'au', 'aux', 'avec', 'dans', 'de', 'des', 'du', 'en', 'et', 'la',
   'le', 'les', 'par', 'pour', 'sans', 'sur', 'un', 'une', 'ou', 'chez', 'vers',
+  'quand', 'lorsque', 'si', 'comme', 'grâce', 'afin', 'parce', 'mais',
   'and', 'at', 'by', 'for', 'from', 'in', 'of', 'on', 'the', 'to', 'with', 'your',
+  'an', 'or', 'when', 'if', 'as', 'while', 'because',
   'aan', 'bij', 'het', 'met', 'naar', 'om', 'op', 'te', 'van', 'voor', 'zonder',
+  'een', 'als', 'wanneer', 'omdat', 'terwijl',
 ]);
+
+// Words that must not end a title: the boundaries, plus stranded pronouns,
+// auxiliaries and possessives ("… quand on est").
+const TRAILING_STOPWORDS = new Set([
+  ...PHRASE_BOUNDARIES,
+  'est', 'sont', 'on', 'qui', 'que', 'son', 'sa', 'ses', 'vos', 'votre', 'nos', 'notre',
+  'leur', 'leurs', 'ce', 'cette', 'ces', 'se', 'ne', 'il', 'elle',
+  'is', 'are', 'be', 'it', 'its', 'our', 'you', 'we', 'how', 'why', 'what', 'that', 'this', 'their',
+  'zijn', 'u', 'uw', 'je', 'jouw', 'die', 'dat', 'hoe', 'waarom', 'wat', 'hun', 'ons', 'onze',
+]);
+
+const bare = (word: string | undefined): string =>
+  String(word || '').toLowerCase().replace(/[^\p{L}\p{N}'-]/gu, '');
 
 function trimTrailing(text: string): string {
   const out = text.replace(/[\s,;:–—-]+$/u, '');
@@ -51,12 +69,33 @@ export function metaTitleFor(rawTitle: string | null | undefined): string {
   if (withBrand.length <= TITLE_MAX) return withBrand;
   if (title.length <= TITLE_MAX) return title;
 
-  for (const separator of SUBTITLE_SEPARATORS) {
-    const index = title.lastIndexOf(separator);
-    if (index >= 30 && index <= TITLE_MAX) return title.slice(0, index).trim();
+  // A word cut is kept when it falls on a phrase boundary (punctuation counts);
+  // otherwise the headline before the subtitle says more than half a phrase.
+  const cut = cutToWords(title, TITLE_MAX);
+  const firstRemoved = bare(title.slice(cut.length).trim().split(' ')[0]);
+  const onBoundary = !firstRemoved || PHRASE_BOUNDARIES.has(firstRemoved) || /^\d+$/.test(firstRemoved);
+
+  const separator = SUBTITLE_SEPARATORS
+    .map((s) => ({ index: title.indexOf(s), length: s.length }))
+    .filter(({ index }) => index >= 15 && index < cut.length)
+    .sort((a, b) => a.index - b.index)[0];
+  if (!separator) {
+    if (onBoundary) return cut;
+    // No headline to fall back on: step back to the last boundary word.
+    const words = cut.split(' ');
+    for (let i = words.length - 1; i >= 3; i--) {
+      if (!PHRASE_BOUNDARIES.has(bare(words[i]))) continue;
+      const shorter = trimTrailing(words.slice(0, i).join(' '));
+      return shorter.length >= 30 ? shorter : cut;
+    }
+    return cut;
   }
 
-  return cutToWords(title, TITLE_MAX);
+  // A subtitle reduced to one or two words reads as cut, so it needs three to stay.
+  const keptSubtitle = cut.slice(separator.index + separator.length).trim().split(' ').filter(Boolean);
+  if (onBoundary && keptSubtitle.length >= 3) return cut;
+  const headline = title.slice(0, separator.index).trim();
+  return `${headline}${BRAND_SUFFIX}`.length <= TITLE_MAX ? `${headline}${BRAND_SUFFIX}` : headline;
 }
 
 // Accent- and punctuation-blind form, to tell an excerpt that merely repeats the title.
