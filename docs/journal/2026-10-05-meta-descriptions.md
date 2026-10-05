@@ -29,6 +29,16 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
 - Déployé dans l'ordre : build (215 entrées) → manifeste poussé → Netlify → 215/215 vérifiées
   sur le CDN → `--force-recreate`. Contrôle de santé 27/27, asset absent toujours en 404.
 
+- Second passage, à la demande de Laurent, déployé et vérifié (contrôle de santé 27/27) :
+  - plus aucune page publique hors 120–160 caractères : 15 descriptions EN/NL réécrites
+    dans `seoConfig.ts`, plus les textes de locales que certaines pages imposent après
+    chargement (`analysis`, `local`, `guide`, `crm`) ; 18 URL relues en production, de 125
+    à 159 caractères ;
+  - les deux extraits d'articles qui recopiaient le titre sans accents, réécrits en base
+    après sauvegarde (`/root/backups/blog-excerpts-before-20261005_134817.csv`) ;
+  - l'article sur les stocks avait aussi son titre sans accents, donc son `<title>` et son
+    `<h1>` : corrigé, slug inchangé.
+
 ## Cassé
 
 - Rien en production. Mais deux surprises :
@@ -38,6 +48,12 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
   le JavaScript. Supprimée, source unique.
 - Le build a refusé de partir tant que `public/` n'était pas commité (garde-fou du 19/09) :
   il a fait son travail.
+- La description de `/crm` affirmait une « augmentation prouvée des conversions » dans les
+  trois langues, sans aucune preuve derrière : retirée.
+- Un script de remplacement a écrit le texte néerlandais du guide dans la description
+  anglaise de `/pme-hainaut-bruxelles`, parce que `seoConfig.ts` mélange guillemets simples
+  et doubles. Une autre ligne du même script l'a réécrite juste après : aucun dégât, mais
+  par chance. Noté en piège.
 - Les heredocs de Git Bash ont dénaturé les antislashes de deux scripts et d'un test,
   sans erreur à l'écriture — repris par l'outil Write. Noté en piège.
 
@@ -45,7 +61,6 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
 
 - Validation par Laurent du texte juridique ajouté aux mentions légales. Tâche CRM non
   déposée : `.env.local` était illisible depuis la session.
-- Deux extraits d'articles en base sont une copie du titre sans accents, encore affichés
-  sous le titre de l'article (la meta, elle, est réparée).
-- Une trentaine de descriptions encore sous 120 dans `seoConfig.ts`, surtout EN/NL de pages
-  de service, hors du périmètre crawlé.
+- Le `<title>` de l'article Hainaut est coupé en « …quand on est » : la règle de coupe ne
+  retire pas `est`, `on`, `quand` en fin de titre.
+- Les pages CRM (noindex) gardent des descriptions sous 120, sans enjeu.
