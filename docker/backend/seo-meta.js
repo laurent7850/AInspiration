@@ -69,13 +69,36 @@ function metaTitleFor(rawTitle) {
   return cutToWords(title, TITLE_MAX);
 }
 
+// Accent- and punctuation-blind form, to tell an excerpt that merely repeats
+// the title (the auto-blog wrote "L IA dans les PME du Hainaut : par ou
+// commencer" under "L'IA dans les PME du Hainaut : par où commencer").
+function fold(text) {
+  return String(text || '')
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+/**
+ * The excerpt leads; when it is too short to fill a result snippet, the body
+ * completes it. 23 of 102 articles had an excerpt under 120 characters, and
+ * the crawler flagged every one of them.
+ */
+function composeSource(excerpt, fallbackText, title) {
+  let lead = String(excerpt || '').trim().replace(/\s+/g, ' ');
+  const rest = String(fallbackText || '').trim().replace(/\s+/g, ' ');
+  if (lead && title && fold(lead) === fold(title)) lead = '';
+  if (!lead) return rest;
+  if (lead.length >= DESC_MIN || !rest) return lead;
+  if (fold(rest).startsWith(fold(lead))) return rest;
+  return `${/[.!?…]$/.test(lead) ? lead : `${lead}.`} ${rest}`;
+}
+
 /**
  * A description that stops at a full stop reads as written; one cut mid-clause
  * needs the ellipsis to say it was cut.
  */
-function metaDescriptionFor(excerpt, fallbackText) {
-  const source = String(excerpt || '').trim() || String(fallbackText || '').trim();
-  const text = source.replace(/\s+/g, ' ');
+function metaDescriptionFor(excerpt, fallbackText, title) {
+  const text = composeSource(excerpt, fallbackText, title);
   if (!text || text.length <= DESC_MAX) return text;
 
   const sentenceEnd = /[.!?](\s|$)/g;
@@ -91,4 +114,24 @@ function metaDescriptionFor(excerpt, fallbackText) {
   return `${cutToWords(text, DESC_MAX - 1)}…`;
 }
 
-module.exports = { metaTitleFor, metaDescriptionFor, TITLE_MAX, DESC_MAX, DESC_MIN };
+const ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', rsquo: '’', lsquo: '‘', hellip: '…' };
+
+/**
+ * Paragraph text only, for a description. Stripping every tag ran the headings
+ * into the prose: "LinkedIn + IA = prospection surpuissante LinkedIn compte…".
+ * Falls back to the whole body when the article has no <p>.
+ */
+function paragraphTextFrom(html) {
+  const source = String(html || '');
+  const paragraphs = source.match(/<p[\s>][\s\S]*?<\/p>/gi);
+  const text = (paragraphs ? paragraphs.join(' ') : source)
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (m, code) => {
+      if (code[0] !== '#') return ENTITIES[code.toLowerCase()] ?? m;
+      const n = code[1].toLowerCase() === 'x' ? parseInt(code.slice(2), 16) : parseInt(code.slice(1), 10);
+      return n > 0 && n <= 0x10ffff ? String.fromCodePoint(n) : m;
+    });
+  return text.replace(/\s+/g, ' ').trim();
+}
+
+module.exports = { metaTitleFor, metaDescriptionFor, paragraphTextFrom, TITLE_MAX, DESC_MAX, DESC_MIN };

@@ -6,6 +6,7 @@ import SEOHead from '../components/SEOHead';
 import Reveal from '../components/ui/Reveal';
 import { useLocalizedPath } from '../hooks/useLocalizedPath';
 import { getRealisation, realisations } from '../data/realisations';
+import { metaDescriptionFor } from '../utils/seoMeta';
 
 /**
  * One réalisation, in full.
@@ -93,7 +94,12 @@ const RealisationDetailPage: React.FC = () => {
       <SEOHead
         canonical={`/realisations/${slug}`}
         title={`${t(`${base}.title`)} | ${t('seo.title')}`}
-        description={t(`${base}.summary`)}
+        // Same composition as the server: the card summary is too short for a
+        // snippet on its own, the results and solution complete it.
+        description={metaDescriptionFor(
+          t(`${base}.summary`),
+          [t(`${base}.results`, ''), t(`${base}.solution`, ''), t(`${base}.shortDescription`, '')].filter(Boolean).join(' ')
+        )}
       />
 
       {/* Header */}

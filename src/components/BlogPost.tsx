@@ -6,7 +6,7 @@ import BlogCTA from './blog/BlogCTA';
 import EnhancedBlogContent from './blog/EnhancedBlogContent';
 import SEOHead from './SEOHead';
 import { getBlogPostSchema } from '../config/seoConfig';
-import { metaTitleFor, metaDescriptionFor, plainTextFrom } from '../utils/seoMeta';
+import { metaTitleFor, metaDescriptionFor, paragraphTextFrom } from '../utils/seoMeta';
 import { useLocalizedPath } from '../hooks/useLocalizedPath';
 
 export default function BlogPost() {
@@ -131,9 +131,9 @@ export default function BlogPost() {
   };
 
   // Same rules as the server injection, and the same source order: the
-  // excerpt when the author wrote one, the body otherwise. The two used to
-  // disagree on every article.
-  const articleDescription = metaDescriptionFor(post.excerpt, plainTextFrom(post.content) || post.title);
+  // excerpt when the author wrote one, completed by the body when it is too
+  // short. The two used to disagree on every article.
+  const articleDescription = metaDescriptionFor(post.excerpt, paragraphTextFrom(post.content) || post.title, post.title);
 
   return (
     <section className="py-20 bg-linear-to-b from-gray-50 to-white">

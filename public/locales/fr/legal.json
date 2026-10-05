@@ -1,8 +1,7 @@
 {
   "cgu": {
     "seo": {
-      "title": "Conditions Générales d'Utilisation | AInspiration",
-      "description": "CGU - Conditions générales d'utilisation du site ainspiration.eu."
+      "title": "Conditions Générales d'Utilisation | AInspiration"
     },
     "pageTitle": "Conditions Générales d'Utilisation",
     "lastUpdated": "Dernière mise à jour : 26 février 2026",
@@ -37,8 +36,7 @@
   },
   "cgv": {
     "seo": {
-      "title": "Conditions Générales de Vente | AInspiration",
-      "description": "CGV - Conditions générales de vente des services AInspiration par Distr'Action SRL."
+      "title": "Conditions Générales de Vente | AInspiration"
     },
     "pageTitle": "Conditions Générales de Vente",
     "lastUpdated": "Dernière mise à jour : 17 mars 2026",
@@ -76,8 +74,7 @@
   },
   "mentions": {
     "seo": {
-      "title": "Mentions Légales | AInspiration",
-      "description": "Mentions légales du site ainspiration.eu - Distr'Action SRL, éditeur et hébergeur."
+      "title": "Mentions Légales | AInspiration"
     },
     "pageTitle": "Mentions Légales",
     "s1_title": "1. Éditeur du site",
@@ -99,12 +96,19 @@
     "s6_title": "6. Cookies",
     "s6_body": "Ce site utilise des cookies essentiels au fonctionnement et, avec votre consentement, des cookies d'analyse pour améliorer votre expérience. Vous pouvez gérer vos préférences via la bannière de cookies.",
     "s7_title": "7. Litiges",
-    "s7_body": "En cas de litige, le droit belge est applicable. Les tribunaux compétents sont ceux de l'arrondissement judiciaire du siège social de Distr'Action SRL."
+    "s7_body": "En cas de litige, le droit belge est applicable. Les tribunaux compétents sont ceux de l'arrondissement judiciaire du siège social de Distr'Action SRL.",
+    "s8_title": "8. Limitation de responsabilité",
+    "s8_body": "Distr'Action SRL veille à l'exactitude des informations publiées sur ce site, sans pouvoir garantir qu'elles soient complètes ni à jour en permanence. Les contenus, y compris les articles du blog, sont fournis à titre d'information générale : ils ne constituent pas un conseil juridique, fiscal ou technique adapté à une situation particulière. Distr'Action SRL ne peut être tenue responsable d'un dommage résultant de leur utilisation ou d'une interruption momentanée du site.",
+    "s9_title": "9. Liens hypertextes",
+    "s9_body": "Le site contient des liens vers des sites tiers, dont Distr'Action SRL ne contrôle ni le contenu ni les pratiques en matière de données personnelles. Leur présence n'implique aucune approbation. Un lien vers ainspiration.eu peut être créé librement, à condition de ne pas présenter le site de manière trompeuse et de ne pas l'afficher à l'intérieur d'un autre site.",
+    "s10_title": "10. Contenus produits avec l'intelligence artificielle",
+    "s10_body": "Une partie des articles du blog est rédigée avec l'aide d'outils d'intelligence artificielle, puis publiée sous la responsabilité de Distr'Action SRL. L'assistant conversationnel du site est un programme automatisé : ses réponses peuvent contenir des erreurs et ne remplacent pas un échange avec nous.",
+    "s11_title": "11. Contact",
+    "s11_body": "Pour toute question relative à ces mentions légales, pour signaler un contenu inexact ou pour exercer vos droits sur vos données personnelles, écrivez à info@ainspiration.eu. Les demandes relatives aux données personnelles reçoivent une réponse dans le délai d'un mois prévu par le RGPD."
   },
   "privacy": {
     "seo": {
-      "title": "Politique de Confidentialité | AInspiration",
-      "description": "Politique de confidentialité et protection des données personnelles - AInspiration."
+      "title": "Politique de Confidentialité | AInspiration"
     },
     "pageTitle": "Politique de Confidentialité",
     "s1_title": "Protection de vos données",

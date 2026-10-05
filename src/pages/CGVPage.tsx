@@ -8,7 +8,6 @@ export default function CGVPage() {
     <>
       <SEOHead
         title={t('cgv.seo.title')}
-        description={t('cgv.seo.description')}
         noindex
       />
       <div className="relative bg-surface text-ink pt-28 lg:pt-32 pb-10 lg:pb-14">

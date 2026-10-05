@@ -1,8 +1,7 @@
 {
   "cgu": {
     "seo": {
-      "title": "Terms of Use | AInspiration",
-      "description": "Terms of Use - General terms of use for the ainspiration.eu website."
+      "title": "Terms of Use | AInspiration"
     },
     "pageTitle": "Terms of Use",
     "lastUpdated": "Last updated: 26 February 2026",
@@ -37,8 +36,7 @@
   },
   "cgv": {
     "seo": {
-      "title": "General Terms and Conditions of Sale | AInspiration",
-      "description": "General Terms and Conditions of Sale for AInspiration services by Distr'Action SRL."
+      "title": "General Terms and Conditions of Sale | AInspiration"
     },
     "pageTitle": "General Terms and Conditions of Sale",
     "lastUpdated": "Last updated: 17 March 2026",
@@ -76,8 +74,7 @@
   },
   "mentions": {
     "seo": {
-      "title": "Legal Notice | AInspiration",
-      "description": "Legal notice for the ainspiration.eu website - Distr'Action SRL, publisher and host."
+      "title": "Legal Notice | AInspiration"
     },
     "pageTitle": "Legal Notice",
     "s1_title": "1. Website Publisher",
@@ -99,12 +96,19 @@
     "s6_title": "6. Cookies",
     "s6_body": "This site uses cookies essential to its operation and, with your consent, analytics cookies to improve your experience. You may manage your preferences via the cookie banner.",
     "s7_title": "7. Disputes",
-    "s7_body": "In the event of a dispute, Belgian law shall apply. The competent courts are those of the judicial district of Distr'Action SRL's registered office."
+    "s7_body": "In the event of a dispute, Belgian law shall apply. The competent courts are those of the judicial district of Distr'Action SRL's registered office.",
+    "s8_title": "8. Limitation of liability",
+    "s8_body": "Distr'Action SRL takes care that the information published on this site is accurate, but cannot guarantee that it is always complete or up to date. The content, including the blog articles, is provided for general information: it is not legal, tax or technical advice tailored to a particular situation. Distr'Action SRL cannot be held liable for any damage resulting from its use or from a temporary interruption of the site.",
+    "s9_title": "9. Hyperlinks",
+    "s9_body": "The site contains links to third-party sites whose content and personal data practices Distr'Action SRL does not control. Their presence implies no endorsement. A link to ainspiration.eu may be created freely, provided the site is not presented in a misleading way and is not displayed inside another site.",
+    "s10_title": "10. Content produced with artificial intelligence",
+    "s10_body": "Some of the blog articles are written with the help of artificial intelligence tools, then published under the responsibility of Distr'Action SRL. The site's conversational assistant is an automated program: its answers may contain errors and do not replace a conversation with us.",
+    "s11_title": "11. Contact",
+    "s11_body": "For any question about this legal notice, to report inaccurate content or to exercise your rights over your personal data, write to info@ainspiration.eu. Requests concerning personal data are answered within the one-month period set by the GDPR."
   },
   "privacy": {
     "seo": {
-      "title": "Privacy Policy | AInspiration",
-      "description": "Privacy policy and personal data protection - AInspiration."
+      "title": "Privacy Policy | AInspiration"
     },
     "pageTitle": "Privacy Policy",
     "s1_title": "Protection of Your Data",

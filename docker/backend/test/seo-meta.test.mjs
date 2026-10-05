@@ -68,3 +68,36 @@ test('retombe sur le corps de l\'article quand l\'extrait manque', () => {
   assert.equal(description, 'Le texte complet de l\'article sert de secours.');
   assert.equal(metaDescriptionFor('', ''), '');
 });
+
+// Cases from the 2026-10-05 crawl: 23 of 102 articles had an excerpt under
+// 120 characters, two of them a bare copy of the title without its accents.
+const { paragraphTextFrom } = require('../seo-meta.js');
+const BODY = '<h2>LinkedIn + IA</h2><p>LinkedIn compte plus de 5 millions d&#39;utilisateurs en Belgique.</p>'
+  + '<h3>G&eacute;n&eacute;ration</h3><p>L&rsquo;IA cr&eacute;e des posts adapt&eacute;s &agrave; votre audience, et analyse le profil de chaque prospect pour personnaliser le message envoy&eacute;.</p>';
+
+test('complete un extrait trop court par le corps de l\'article', () => {
+  const description = metaDescriptionFor(
+    'LinkedIn est le réseau B2B par excellence. Voici comment l\'IA peut automatiser votre prospection.',
+    paragraphTextFrom(BODY)
+  );
+  assert.ok(description.startsWith('LinkedIn est le réseau B2B par excellence.'));
+  assert.ok(description.length >= 120 && description.length <= DESC_MAX, `${description.length}`);
+});
+
+test('ecarte un extrait qui ne fait que recopier le titre', () => {
+  const description = metaDescriptionFor(
+    'L IA dans les PME du Hainaut : par ou commencer',
+    'Intelligence artificielle PME Hainaut : le sujet revient dans toutes les conversations économiques de la région. Chambres de commerce, réseaux d\'entrepreneurs, fédérations sectorielles, tout le monde en parle.',
+    'L\'IA dans les PME du Hainaut : par où commencer'
+  );
+  assert.ok(description.startsWith('Intelligence artificielle PME Hainaut'));
+  assert.ok(description.length >= 120 && description.length <= DESC_MAX);
+});
+
+test('ne lit que les paragraphes et decode les entites', () => {
+  assert.equal(
+    paragraphTextFrom('<h2>Titre</h2><p>Un&nbsp;texte d&#39;essai &amp; plus</p><pre>code</pre>'),
+    'Un texte d\'essai & plus'
+  );
+  assert.equal(paragraphTextFrom('Pas de paragraphe'), 'Pas de paragraphe');
+});

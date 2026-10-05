@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { metaTitleFor, metaDescriptionFor, plainTextFrom, TITLE_MAX, DESC_MAX } from './seoMeta';
+import { metaTitleFor, metaDescriptionFor, plainTextFrom, paragraphTextFrom, TITLE_MAX, DESC_MAX } from './seoMeta';
 
 /**
  * The same cases are pinned in docker/backend/test/seo-meta.test.mjs. Both
@@ -77,5 +77,39 @@ describe('plainTextFrom', () => {
   it('retire le balisage et normalise les espaces', () => {
     expect(plainTextFrom('<p>Un <strong>test</strong></p>\n<p>simple</p>')).toBe('Un test simple');
     expect(plainTextFrom(null)).toBe('');
+  });
+});
+
+// Same cases as docker/backend/test/seo-meta.test.mjs (crawl of 2026-10-05).
+describe('extrait trop court', () => {
+  const body = '<h2>LinkedIn + IA</h2><p>LinkedIn compte plus de 5 millions d&#39;utilisateurs en Belgique.</p>'
+    + '<h3>G&eacute;n&eacute;ration</h3><p>L&rsquo;IA cr&eacute;e des posts adapt&eacute;s &agrave; votre audience, et analyse le profil de chaque prospect pour personnaliser le message envoy&eacute;.</p>';
+
+  it("complète l'extrait par le corps de l'article", () => {
+    const description = metaDescriptionFor(
+      "LinkedIn est le réseau B2B par excellence. Voici comment l'IA peut automatiser votre prospection.",
+      paragraphTextFrom(body)
+    );
+    expect(description.startsWith('LinkedIn est le réseau B2B par excellence.')).toBe(true);
+    expect(description.length).toBeGreaterThanOrEqual(120);
+    expect(description.length).toBeLessThanOrEqual(DESC_MAX);
+  });
+
+  it('écarte un extrait qui ne fait que recopier le titre', () => {
+    const description = metaDescriptionFor(
+      'L IA dans les PME du Hainaut : par ou commencer',
+      "Intelligence artificielle PME Hainaut : le sujet revient dans toutes les conversations économiques de la région. Chambres de commerce, réseaux d'entrepreneurs, fédérations sectorielles, tout le monde en parle.",
+      "L'IA dans les PME du Hainaut : par où commencer"
+    );
+    expect(description.startsWith('Intelligence artificielle PME Hainaut')).toBe(true);
+    expect(description.length).toBeGreaterThanOrEqual(120);
+    expect(description.length).toBeLessThanOrEqual(DESC_MAX);
+  });
+
+  it('ne lit que les paragraphes et décode les entités', () => {
+    expect(paragraphTextFrom('<h2>Titre</h2><p>Un&nbsp;texte d&#39;essai &amp; plus</p><pre>code</pre>')).toBe(
+      "Un texte d'essai & plus"
+    );
+    expect(paragraphTextFrom('Pas de paragraphe')).toBe('Pas de paragraphe');
   });
 });

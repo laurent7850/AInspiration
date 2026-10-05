@@ -1,3 +1,4 @@
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import SEOHead from '../components/SEOHead';
 
@@ -8,7 +9,6 @@ export default function MentionsLegalesPage() {
     <>
       <SEOHead
         title={t('mentions.seo.title')}
-        description={t('mentions.seo.description')}
         noindex
       />
       <div className="relative bg-surface text-ink pt-28 lg:pt-32 pb-10 lg:pb-14">
@@ -63,6 +63,13 @@ export default function MentionsLegalesPage() {
             <p className="text-gray-600">
               {t('mentions.s7_body')}
             </p>
+
+            {(['s8', 's9', 's10', 's11'] as const).map((section) => (
+              <React.Fragment key={section}>
+                <h2 className="text-xl font-semibold text-gray-900">{t(`mentions.${section}_title`)}</h2>
+                <p className="text-gray-600">{t(`mentions.${section}_body`)}</p>
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </section>

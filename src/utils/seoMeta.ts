@@ -59,13 +59,35 @@ export function metaTitleFor(rawTitle: string | null | undefined): string {
   return cutToWords(title, TITLE_MAX);
 }
 
+// Accent- and punctuation-blind form, to tell an excerpt that merely repeats the title.
+function fold(text: string | null | undefined): string {
+  return String(text || '')
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+/** The excerpt leads; when it is too short to fill a snippet, the body completes it. */
+function composeSource(
+  excerpt: string | null | undefined,
+  fallbackText: string | null | undefined,
+  title: string | null | undefined
+): string {
+  let lead = String(excerpt || '').trim().replace(/\s+/g, ' ');
+  const rest = String(fallbackText || '').trim().replace(/\s+/g, ' ');
+  if (lead && title && fold(lead) === fold(title)) lead = '';
+  if (!lead) return rest;
+  if (lead.length >= DESC_MIN || !rest) return lead;
+  if (fold(rest).startsWith(fold(lead))) return rest;
+  return `${/[.!?…]$/.test(lead) ? lead : `${lead}.`} ${rest}`;
+}
+
 /** A description stops at a full stop when one falls in range, else it says it was cut. */
 export function metaDescriptionFor(
   excerpt: string | null | undefined,
-  fallbackText?: string | null
+  fallbackText?: string | null,
+  title?: string | null
 ): string {
-  const source = String(excerpt || '').trim() || String(fallbackText || '').trim();
-  const text = source.replace(/\s+/g, ' ');
+  const text = composeSource(excerpt, fallbackText, title);
   if (!text || text.length <= DESC_MAX) return text;
 
   const sentenceEnd = /[.!?](\s|$)/g;
@@ -84,4 +106,22 @@ export function metaDescriptionFor(
 /** Article body as plain text, for when the excerpt is missing. */
 export function plainTextFrom(html: string | null | undefined): string {
   return String(html || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+const ENTITIES: Record<string, string> = {
+  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', rsquo: '’', lsquo: '‘', hellip: '…',
+};
+
+/** Paragraph text only, so headings do not run into the prose of a description. */
+export function paragraphTextFrom(html: string | null | undefined): string {
+  const source = String(html || '');
+  const paragraphs = source.match(/<p[\s>][\s\S]*?<\/p>/gi);
+  const text = (paragraphs ? paragraphs.join(' ') : source)
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (m, code: string) => {
+      if (code[0] !== '#') return ENTITIES[code.toLowerCase()] ?? m;
+      const n = code[1].toLowerCase() === 'x' ? parseInt(code.slice(2), 16) : parseInt(code.slice(1), 10);
+      return n > 0 && n <= 0x10ffff ? String.fromCodePoint(n) : m;
+    });
+  return text.replace(/\s+/g, ' ').trim();
 }

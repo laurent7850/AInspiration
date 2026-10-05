@@ -1,8 +1,7 @@
 {
   "cgu": {
     "seo": {
-      "title": "Gebruiksvoorwaarden | AInspiration",
-      "description": "Gebruiksvoorwaarden - Algemene gebruiksvoorwaarden van de website ainspiration.eu."
+      "title": "Gebruiksvoorwaarden | AInspiration"
     },
     "pageTitle": "Gebruiksvoorwaarden",
     "lastUpdated": "Laatste update: 26 februari 2026",
@@ -37,8 +36,7 @@
   },
   "cgv": {
     "seo": {
-      "title": "Algemene Verkoopvoorwaarden | AInspiration",
-      "description": "Algemene Verkoopvoorwaarden voor diensten van AInspiration door Distr'Action SRL."
+      "title": "Algemene Verkoopvoorwaarden | AInspiration"
     },
     "pageTitle": "Algemene Verkoopvoorwaarden",
     "lastUpdated": "Laatste update: 17 maart 2026",
@@ -76,8 +74,7 @@
   },
   "mentions": {
     "seo": {
-      "title": "Wettelijke Vermeldingen | AInspiration",
-      "description": "Wettelijke vermeldingen van de website ainspiration.eu - Distr'Action SRL, uitgever en host."
+      "title": "Wettelijke Vermeldingen | AInspiration"
     },
     "pageTitle": "Wettelijke Vermeldingen",
     "s1_title": "1. Uitgever van de website",
@@ -99,12 +96,19 @@
     "s6_title": "6. Cookies",
     "s6_body": "Deze website maakt gebruik van cookies die essentieel zijn voor de werking ervan en, met uw toestemming, analytische cookies om uw ervaring te verbeteren. U kunt uw voorkeuren beheren via de cookiebanner.",
     "s7_title": "7. Geschillen",
-    "s7_body": "In geval van een geschil is het Belgisch recht van toepassing. De bevoegde rechtbanken zijn die van het gerechtelijk arrondissement van de maatschappelijke zetel van Distr'Action SRL."
+    "s7_body": "In geval van een geschil is het Belgisch recht van toepassing. De bevoegde rechtbanken zijn die van het gerechtelijk arrondissement van de maatschappelijke zetel van Distr'Action SRL.",
+    "s8_title": "8. Beperking van aansprakelijkheid",
+    "s8_body": "Distr'Action SRL waakt over de juistheid van de informatie op deze site, maar kan niet garanderen dat ze altijd volledig en actueel is. De inhoud, inclusief de blogartikels, dient als algemene informatie: ze vormt geen juridisch, fiscaal of technisch advies op maat van een specifieke situatie. Distr'Action SRL kan niet aansprakelijk worden gesteld voor schade die voortvloeit uit het gebruik ervan of uit een tijdelijke onderbreking van de site.",
+    "s9_title": "9. Hyperlinks",
+    "s9_body": "De site bevat links naar sites van derden, waarvan Distr'Action SRL de inhoud en de omgang met persoonsgegevens niet controleert. Hun aanwezigheid houdt geen goedkeuring in. Een link naar ainspiration.eu mag vrij worden geplaatst, op voorwaarde dat de site niet misleidend wordt voorgesteld en niet binnen een andere site wordt weergegeven.",
+    "s10_title": "10. Inhoud gemaakt met artificiële intelligentie",
+    "s10_body": "Een deel van de blogartikels wordt geschreven met behulp van AI-tools en daarna gepubliceerd onder de verantwoordelijkheid van Distr'Action SRL. De chatassistent van de site is een geautomatiseerd programma: de antwoorden kunnen fouten bevatten en vervangen geen gesprek met ons.",
+    "s11_title": "11. Contact",
+    "s11_body": "Voor vragen over deze juridische vermeldingen, om onjuiste inhoud te melden of om uw rechten op uw persoonsgegevens uit te oefenen, schrijft u naar info@ainspiration.eu. Verzoeken over persoonsgegevens worden beantwoord binnen de termijn van één maand die de AVG voorschrijft."
   },
   "privacy": {
     "seo": {
-      "title": "Privacybeleid | AInspiration",
-      "description": "Privacybeleid en bescherming van persoonsgegevens - AInspiration."
+      "title": "Privacybeleid | AInspiration"
     },
     "pageTitle": "Privacybeleid",
     "s1_title": "Bescherming van uw gegevens",

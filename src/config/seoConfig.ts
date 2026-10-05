@@ -112,7 +112,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
   '/solutions': {
     fr: {
       title: 'Solutions IA pour PME en Belgique | AInspiration',
-      description: 'Automatisation, CRM intelligent, chatbots, machine learning : nos solutions IA pour PME, du périmètre au déploiement.',
+      description: 'Automatisation, CRM intelligent, chatbots et analyse de données : les solutions IA d\'AInspiration pour les PME belges, du cadrage du périmètre au déploiement.',
       keywords: 'solutions IA PME, services intelligence artificielle Belgique, automatisation IA, CRM IA, chatbot entreprise, machine learning applications, deep learning, NLP, outils IA startups'
     },
     en: {
@@ -389,63 +389,63 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     en: {
       title: 'Privacy Policy | GDPR | AInspiration',
-      description: 'View our privacy policy and GDPR compliance. Protection of your personal data at AInspiration.',
+      description: 'Privacy policy and GDPR compliance at AInspiration: the data collected through the site and its forms, how cookies are used, and how to exercise your rights.',
       keywords: 'privacy policy, GDPR, data protection, privacy, personal data'
     },
     nl: {
       title: 'Privacybeleid | AVG | AInspiration',
-      description: 'Bekijk ons privacybeleid en AVG-naleving. Bescherming van uw persoonlijke gegevens bij AInspiration.',
+      description: 'Privacybeleid en AVG-naleving van AInspiration: welke gegevens de site en de formulieren verzamelen, hoe cookies worden gebruikt en hoe u uw rechten uitoefent.',
       keywords: 'privacybeleid, AVG, gegevensbescherming, privacy, persoonlijke gegevens'
     }
   },
   '/mentions-legales': {
     fr: {
       title: 'Mentions Légales | AInspiration',
-      description: 'Mentions légales du site ainspiration.eu. Informations sur l\'éditeur, l\'hébergeur et les conditions d\'utilisation.',
+      description: 'Mentions légales d\'ainspiration.eu : éditeur Distr\'Action SRL à Givry, hébergeur, propriété intellectuelle, données personnelles, cookies et droit applicable.',
       keywords: 'mentions légales, éditeur, hébergeur, conditions'
     },
     en: {
       title: 'Legal Notice | AInspiration',
-      description: 'Legal notice for ainspiration.eu. Information about the publisher, host and terms of use.',
+      description: 'Legal notice for ainspiration.eu: publisher Distr\'Action SRL in Givry, hosting provider, intellectual property, personal data, cookies and governing law.',
       keywords: 'legal notice, publisher, host, terms'
     },
     nl: {
       title: 'Juridische Vermeldingen | AInspiration',
-      description: 'Juridische vermeldingen van ainspiration.eu. Informatie over de uitgever, host en gebruiksvoorwaarden.',
+      description: 'Juridische vermeldingen van ainspiration.eu: uitgever Distr\'Action SRL, hosting, intellectuele eigendom, persoonsgegevens, cookies en toepasselijk recht.',
       keywords: 'juridische vermeldingen, uitgever, host, voorwaarden'
     }
   },
   '/cgv': {
     fr: {
       title: 'Conditions Générales de Vente | AInspiration',
-      description: 'Consultez nos conditions générales de vente. Modalités de paiement, livraison et garanties pour nos services IA.',
+      description: 'Conditions générales de vente d\'AInspiration : services proposés, rendez-vous de découverte, tarifs, commande, paiement, rétractation et responsabilité.',
       keywords: 'CGV, conditions générales de vente, paiement, garanties'
     },
     en: {
       title: 'Terms of Sale | AInspiration',
-      description: 'View our general terms of sale. Payment terms, delivery and guarantees for our AI services.',
+      description: 'AInspiration terms of sale: services offered, discovery call, pricing, ordering, payment, right of withdrawal, liability, confidentiality and governing law.',
       keywords: 'terms of sale, payment terms, guarantees'
     },
     nl: {
       title: 'Algemene Verkoopsvoorwaarden | AInspiration',
-      description: 'Bekijk onze algemene verkoopsvoorwaarden. Betalingsvoorwaarden, levering en garanties voor onze AI-diensten.',
+      description: 'Algemene verkoopsvoorwaarden van AInspiration: diensten, kennismakingsgesprek, tarieven, bestelling, betaling, herroeping en aansprakelijkheid.',
       keywords: 'algemene verkoopsvoorwaarden, betalingsvoorwaarden, garanties'
     }
   },
   '/cgu': {
     fr: {
       title: 'Conditions Générales d\'Utilisation | AInspiration',
-      description: 'Consultez nos conditions générales d\'utilisation du site ainspiration.eu et de nos services IA.',
+      description: 'Conditions générales d\'utilisation d\'ainspiration.eu : accès au site, propriété intellectuelle, chatbot IA, données, cookies, liens et responsabilité.',
       keywords: 'CGU, conditions générales d\'utilisation, règles'
     },
     en: {
       title: 'Terms of Use | AInspiration',
-      description: 'View our terms of use for ainspiration.eu and our AI services.',
+      description: 'Terms of use for ainspiration.eu: site access, intellectual property, AI chatbot, personal data, cookies, external links and liability.',
       keywords: 'terms of use, rules, conditions'
     },
     nl: {
       title: 'Gebruiksvoorwaarden | AInspiration',
-      description: 'Bekijk onze gebruiksvoorwaarden voor ainspiration.eu en onze AI-diensten.',
+      description: 'Gebruiksvoorwaarden van ainspiration.eu: toegang tot de site, intellectuele eigendom, AI-chatbot, persoonsgegevens, cookies, links en aansprakelijkheid.',
       keywords: 'gebruiksvoorwaarden, regels, voorwaarden'
     }
   },

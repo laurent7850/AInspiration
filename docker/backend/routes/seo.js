@@ -22,7 +22,7 @@ module.exports = function register(ctx) {
 // ==================== STATIC FILES + SPA FALLBACK ====================
 
 const path = require('path');
-const { metaTitleFor, metaDescriptionFor } = require('../seo-meta.js');
+const { metaTitleFor, metaDescriptionFor, paragraphTextFrom } = require('../seo-meta.js');
 // routes/ lives one level below server.js: dist/ is next to server.js
 const distPath = path.join(__dirname, '..', 'dist');
 
@@ -105,7 +105,7 @@ const routeSEO = {
   '/contact': { title: 'Contact | AInspiration, Givry (Hainaut)', description: 'Une question, un devis, ou trente minutes pour regarder votre situation ? \u00c9crivez-moi, je r\u00e9ponds sous 24 heures ouvr\u00e9es.' },
   '/prompts': { title: 'Prompts IA | Biblioth\u00e8que ChatGPT & Claude | AInspiration', description: 'Acc\u00e9dez \u00e0 notre biblioth\u00e8que de prompts optimis\u00e9s pour ChatGPT, Claude et autres IA. Gagnez du temps avec des prompts professionnels test\u00e9s.' },
   '/blog': { title: 'Blog IA | Actualit\u00e9s & Tendances ML 2026 | AInspiration', description: 'Articles IA : conseils pratiques, cas d\'usage, tendances machine learning, deep learning, NLP et actualit\u00e9s intelligence artificielle pour PME.' },
-  '/solutions': { title: 'Solutions IA pour PME en Belgique | AInspiration', description: 'Automatisation, CRM intelligent, chatbots, machine learning : nos solutions IA pour PME, du p\u00e9rim\u00e8tre au d\u00e9ploiement.' },
+  '/solutions': { title: 'Solutions IA pour PME en Belgique | AInspiration', description: 'Automatisation, CRM intelligent, chatbots et analyse de donn\u00e9es : les solutions IA d\'AInspiration pour les PME belges, du cadrage du p\u00e9rim\u00e8tre au d\u00e9ploiement.' },
   '/a-propos': { title: '\u00c0 Propos | Notre \u00c9quipe et Mission | AInspiration', description: 'D\u00e9couvrez l\'\u00e9quipe AInspiration. Notre mission : d\u00e9mocratiser l\'IA pour les entreprises belges et europ\u00e9ennes avec un accompagnement humain.' },
   '/guide': { title: 'Dix questions \u00e0 se poser avant d\u2019automatiser | Guide gratuit | AInspiration', description: 'Les dix questions que je pose lors d\u2019un diagnostic, dans l\u2019ordre o\u00f9 je les pose. Un guide de trois pages, gratuit, sans formulaire ni adresse \u00e0 laisser.' },
   '/pme-hainaut-bruxelles': { title: 'Automatisation IA pour les PME du Hainaut et de Bruxelles', description: 'Bas\u00e9 \u00e0 Givry, j\u2019automatise les t\u00e2ches r\u00e9p\u00e9titives des PME du Hainaut, de Bruxelles et du Brabant wallon. Sur place ou \u00e0 distance.' },
@@ -113,10 +113,10 @@ const routeSEO = {
   '/realisations': { title: 'R\u00e9alisations | Ce que nous avons construit | AInspiration', description: 'Quinze automatisations et applications en service : facturation, comptabilit\u00e9, contenu, conformit\u00e9. Ce qui a \u00e9t\u00e9 construit, pour qui, et ce que \u00e7a a chang\u00e9.' },
   '/creation-ia': { title: 'Cr\u00e9ation de Contenu IA | AInspiration', description: 'G\u00e9n\u00e9rez du contenu professionnel avec l\'IA : articles, visuels, newsletters, posts r\u00e9seaux sociaux.' },
   '/analyse-ia': { title: 'Analyse de Donn\u00e9es IA | Business Intelligence | AInspiration', description: 'Exploitez vos donn\u00e9es avec l\'IA. Analyses pr\u00e9dictives, tableaux de bord intelligents et insights actionnables pour des d\u00e9cisions \u00e9clair\u00e9es.' },
-  '/cgv': { title: 'Conditions G\u00e9n\u00e9rales de Vente | AInspiration', description: 'Consultez nos conditions g\u00e9n\u00e9rales de vente. Modalit\u00e9s de paiement, livraison et garanties pour nos services IA.' },
-  '/cgu': { title: 'Conditions G\u00e9n\u00e9rales d\'Utilisation | AInspiration', description: 'Consultez nos conditions g\u00e9n\u00e9rales d\'utilisation du site ainspiration.eu et de nos services IA.' },
+  '/cgv': { title: 'Conditions G\u00e9n\u00e9rales de Vente | AInspiration', description: 'Conditions g\u00e9n\u00e9rales de vente d\'AInspiration : services propos\u00e9s, rendez-vous de d\u00e9couverte, tarifs, commande, paiement, r\u00e9tractation et responsabilit\u00e9.' },
+  '/cgu': { title: 'Conditions G\u00e9n\u00e9rales d\'Utilisation | AInspiration', description: 'Conditions g\u00e9n\u00e9rales d\'utilisation d\'ainspiration.eu : acc\u00e8s au site, propri\u00e9t\u00e9 intellectuelle, chatbot IA, donn\u00e9es, cookies, liens et responsabilit\u00e9.' },
   '/privacy': { title: 'Politique de Confidentialit\u00e9 | RGPD | AInspiration', description: 'Consultez notre politique de confidentialit\u00e9 et notre conformit\u00e9 RGPD. Protection de vos donn\u00e9es personnelles chez AInspiration.' },
-  '/mentions-legales': { title: 'Mentions L\u00e9gales | AInspiration', description: 'Mentions l\u00e9gales du site ainspiration.eu. Informations sur l\'\u00e9diteur, l\'h\u00e9bergeur et les conditions d\'utilisation.' },
+  '/mentions-legales': { title: 'Mentions L\u00e9gales | AInspiration', description: 'Mentions l\u00e9gales d\'ainspiration.eu : \u00e9diteur Distr\'Action SRL \u00e0 Givry, h\u00e9bergeur, propri\u00e9t\u00e9 intellectuelle, donn\u00e9es personnelles, cookies et droit applicable.' },
   '/login': { title: 'Connexion | AInspiration', description: 'Connectez-vous \u00e0 votre espace client AInspiration pour acc\u00e9der \u00e0 votre tableau de bord et g\u00e9rer vos projets IA.' },
   '/transformation': { title: 'Transformation Digitale IA | PME Belgique | AInspiration', description: 'Acc\u00e9l\u00e9rez votre transformation digitale gr\u00e2ce \u00e0 l\'IA. Modernisez vos processus, optimisez vos op\u00e9rations et pr\u00e9parez l\'avenir de votre entreprise.' },
   '/produits': { title: 'Offres IA PME | Diagnostic d\u00e8s 2 400 \u20ac | AInspiration', description: 'Cinq prestations à prix affiché. Diagnostic, atelier, sprint, formation IA, accompagnement premium. Solutions adapt\u00e9es \u00e0 chaque budget en Belgique et France.' },
@@ -202,7 +202,7 @@ async function getBlogPost(slug) {
       // Bounded: the raw title plus the brand suffix reached 94 characters on
       // one article, and an excerpt 239. Google cut both. See seo-meta.js.
       title: metaTitleFor(p.title),
-      description: metaDescriptionFor(p.excerpt, plain),
+      description: metaDescriptionFor(p.excerpt, paragraphTextFrom(p.content), p.title),
       h1: p.title,
       body: sanitizeArticleHtml(p.content),
       language: p.language || 'fr',
@@ -374,7 +374,12 @@ function getRealisationSeo(lang, slug) {
       );
       const item = json.items && json.items[slug];
       if (item && item.title && item.summary) {
-        result = { title: `${item.title} | AInspiration`, description: item.summary };
+        // The summary is a card punchline (38 to 118 characters); the results
+        // and solution complete it to a full snippet, as the React page does.
+        result = {
+          title: `${item.title} | AInspiration`,
+          description: metaDescriptionFor(item.summary, [item.results, item.solution, item.shortDescription].filter(Boolean).join(' ')),
+        };
         break;
       }
     } catch (e) { /* try the next candidate */ }
