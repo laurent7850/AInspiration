@@ -44,17 +44,17 @@ export const seoPages: Record<string, SEOPageConfig> = {
   '/login': {
     fr: {
       title: 'Connexion | AInspiration',
-      description: 'Connectez-vous à votre espace client AInspiration pour accéder à votre tableau de bord et gérer vos projets IA.',
+      description: 'Connectez-vous à votre espace client AInspiration pour accéder à votre tableau de bord, suivre vos projets IA et retrouver vos contacts et opportunités.',
       keywords: 'connexion, espace client, login AInspiration'
     },
     en: {
       title: 'Login | AInspiration',
-      description: 'Log in to your AInspiration client area to access your dashboard and manage your AI projects.',
+      description: 'Log in to your AInspiration client area to access your dashboard, follow your AI projects and find your contacts, opportunities and tasks in one place.',
       keywords: 'login, client area, AInspiration login'
     },
     nl: {
       title: 'Inloggen | AInspiration',
-      description: 'Log in op uw AInspiration klantenzone om toegang te krijgen tot uw dashboard en uw AI-projecten te beheren.',
+      description: 'Log in op uw AInspiration-klantenzone voor uw dashboard, de opvolging van uw AI-projecten en al uw contacten, kansen en taken op één plek.',
       keywords: 'inloggen, klantenzone, AInspiration login'
     }
   },
@@ -470,153 +470,153 @@ export const seoPages: Record<string, SEOPageConfig> = {
   '/crm-dashboard': {
     fr: {
       title: 'Tableau de Bord CRM | AInspiration',
-      description: 'Accédez à votre tableau de bord CRM AInspiration. Vue d\'ensemble de vos opportunités, contacts et performances commerciales.',
+      description: 'Votre tableau de bord CRM AInspiration : vue d\'ensemble des opportunités, contacts, tâches et performances commerciales, avec scoring des prospects.',
       keywords: 'tableau de bord CRM, dashboard ventes, analytics commercial'
     },
     en: {
       title: 'CRM Dashboard | AInspiration',
-      description: 'Access your AInspiration CRM dashboard. Overview of your opportunities, contacts and sales performance.',
+      description: 'Your AInspiration CRM dashboard: an overview of your opportunities, contacts, tasks and sales performance, with lead scoring and follow-up suggestions.',
       keywords: 'CRM dashboard, sales dashboard, commercial analytics'
     },
     nl: {
       title: 'CRM Dashboard | AInspiration',
-      description: 'Toegang tot uw AInspiration CRM-dashboard. Overzicht van uw kansen, contacten en verkoopprestaties.',
+      description: 'Uw AInspiration CRM-dashboard: een overzicht van uw kansen, contacten, taken en verkoopprestaties, met leadscoring en suggesties voor opvolging.',
       keywords: 'CRM dashboard, verkoop dashboard, commerciële analytics'
     }
   },
   '/opportunities': {
     fr: {
       title: 'Opportunités | CRM AInspiration',
-      description: 'Gérez vos opportunités commerciales. Pipeline de ventes, suivi des deals et prévisions avec l\'IA.',
+      description: 'Gérez vos opportunités commerciales : pipeline de ventes en liste ou en kanban, suivi de chaque affaire, montants, étapes et statistiques de conversion.',
       keywords: 'opportunités commerciales, pipeline ventes, gestion deals'
     },
     en: {
       title: 'Opportunities | AInspiration CRM',
-      description: 'Manage your business opportunities. Sales pipeline, deal tracking and forecasts with AI.',
+      description: 'Manage your business opportunities: sales pipeline as a list or a kanban board, follow-up of every deal, amounts, stages and conversion statistics.',
       keywords: 'business opportunities, sales pipeline, deal management'
     },
     nl: {
       title: 'Kansen | AInspiration CRM',
-      description: 'Beheer uw zakelijke kansen. Verkooppijplijn, dealopvolging en voorspellingen met AI.',
+      description: 'Beheer uw zakelijke kansen: verkooppijplijn als lijst of kanbanbord, opvolging van elke deal, bedragen, fases en conversiestatistieken.',
       keywords: 'zakelijke kansen, verkooppijplijn, dealbeheer'
     }
   },
   '/contacts': {
     fr: {
       title: 'Contacts | CRM AInspiration',
-      description: 'Gérez votre base de contacts clients et prospects. Historique des interactions et segmentation intelligente.',
+      description: 'Gérez vos contacts clients et prospects : fiches détaillées, société associée, provenance du contact, historique des interactions et segmentation.',
       keywords: 'gestion contacts, base clients, CRM contacts'
     },
     en: {
       title: 'Contacts | AInspiration CRM',
-      description: 'Manage your customer and prospect contact base. Interaction history and smart segmentation.',
+      description: 'Manage your customer and prospect contacts: detailed records, linked company, lead source, interaction history and segmentation, all in one place.',
       keywords: 'contact management, customer base, CRM contacts'
     },
     nl: {
       title: 'Contacten | AInspiration CRM',
-      description: 'Beheer uw klant- en prospect contactbasis. Interactiegeschiedenis en slimme segmentatie.',
+      description: 'Beheer uw klant- en prospectcontacten: gedetailleerde fiches, gekoppeld bedrijf, herkomst van de lead, interactiegeschiedenis en segmentatie.',
       keywords: 'contactbeheer, klantenbasis, CRM contacten'
     }
   },
   '/companies': {
     fr: {
       title: 'Entreprises | CRM AInspiration',
-      description: 'Gérez vos comptes entreprises. Fiche complète, contacts associés et historique des interactions.',
+      description: 'Gérez vos comptes entreprises : fiche complète, contacts associés, opportunités en cours et historique des interactions avec chaque société.',
       keywords: 'gestion entreprises, comptes clients, CRM entreprises'
     },
     en: {
       title: 'Companies | AInspiration CRM',
-      description: 'Manage your company accounts. Complete profile, associated contacts and interaction history.',
+      description: 'Manage your company accounts: complete profile, associated contacts, open opportunities and the history of your interactions with each company.',
       keywords: 'company management, customer accounts, CRM companies'
     },
     nl: {
       title: 'Bedrijven | AInspiration CRM',
-      description: 'Beheer uw bedrijfsaccounts. Volledig profiel, gekoppelde contacten en interactiegeschiedenis.',
+      description: 'Beheer uw bedrijfsaccounts: volledig profiel, gekoppelde contacten, lopende kansen en de geschiedenis van uw interacties met elk bedrijf.',
       keywords: 'bedrijfsbeheer, klantenaccounts, CRM bedrijven'
     }
   },
   '/products': {
     fr: {
       title: 'Produits | CRM AInspiration',
-      description: 'Gérez votre catalogue de produits et services. Prix, descriptions et association aux opportunités.',
+      description: 'Gérez votre catalogue de produits et services : prix, descriptions et association aux opportunités, pour chiffrer chaque proposition commerciale.',
       keywords: 'catalogue produits, gestion produits, CRM produits'
     },
     en: {
       title: 'Products | AInspiration CRM',
-      description: 'Manage your product and service catalog. Prices, descriptions and opportunity associations.',
+      description: 'Manage your product and service catalogue: prices, descriptions and links to opportunities, so that every sales proposal is priced correctly.',
       keywords: 'product catalog, product management, CRM products'
     },
     nl: {
       title: 'Producten | AInspiration CRM',
-      description: 'Beheer uw product- en dienstencatalogus. Prijzen, beschrijvingen en opportuniteitskoppelingen.',
+      description: 'Beheer uw product- en dienstencatalogus: prijzen, beschrijvingen en koppeling aan kansen, zodat elk commercieel voorstel correct geprijsd is.',
       keywords: 'productcatalogus, productbeheer, CRM producten'
     }
   },
   '/tasks': {
     fr: {
       title: 'Tâches | CRM AInspiration',
-      description: 'Gérez vos tâches et suivis commerciaux. Rappels, deadlines et priorisation intelligente.',
+      description: 'Gérez vos tâches et suivis commerciaux : rappels, échéances, priorités et liens vers le contact, la société ou l\'opportunité concernés.',
       keywords: 'gestion tâches, suivi commercial, CRM tâches'
     },
     en: {
       title: 'Tasks | AInspiration CRM',
-      description: 'Manage your tasks and commercial follow-ups. Reminders, deadlines and smart prioritization.',
+      description: 'Manage your tasks and sales follow-ups: reminders, deadlines, priorities and links to the contact, company or opportunity each task relates to.',
       keywords: 'task management, commercial follow-up, CRM tasks'
     },
     nl: {
       title: 'Taken | AInspiration CRM',
-      description: 'Beheer uw taken en commerciële opvolging. Herinneringen, deadlines en slimme prioritering.',
+      description: 'Beheer uw taken en commerciële opvolging: herinneringen, deadlines, prioriteiten en koppelingen naar het betrokken contact, bedrijf of de kans.',
       keywords: 'takenbeheer, commerciële opvolging, CRM taken'
     }
   },
   '/reports': {
     fr: {
       title: 'Rapports | CRM AInspiration',
-      description: 'Analysez vos performances commerciales. Rapports personnalisés, KPIs et tableaux de bord analytiques.',
+      description: 'Analysez vos performances commerciales : rapports sur les contacts, les opportunités, les produits et les tâches, filtrés par période et exportables.',
       keywords: 'rapports CRM, analytics ventes, KPI commerciaux'
     },
     en: {
       title: 'Reports | AInspiration CRM',
-      description: 'Analyze your commercial performance. Custom reports, KPIs and analytical dashboards.',
+      description: 'Analyse your sales performance: reports on contacts, opportunities, products and tasks, filtered by period and ready to export for your reviews.',
       keywords: 'CRM reports, sales analytics, commercial KPIs'
     },
     nl: {
       title: 'Rapporten | AInspiration CRM',
-      description: 'Analyseer uw commerciële prestaties. Aangepaste rapporten, KPI\'s en analytische dashboards.',
+      description: 'Analyseer uw commerciële prestaties: rapporten over contacten, kansen, producten en taken, gefilterd per periode en klaar om te exporteren.',
       keywords: 'CRM rapporten, verkoop analytics, commerciële KPI\'s'
     }
   },
   '/messages': {
     fr: {
       title: 'Messages | CRM AInspiration',
-      description: 'Gérez vos communications clients. Historique des messages et réponses assistées par IA.',
+      description: 'Retrouvez les messages envoyés depuis les formulaires du site : historique des échanges, statut de traitement et signalement des nouveaux messages.',
       keywords: 'messagerie CRM, communication clients, messages'
     },
     en: {
       title: 'Messages | AInspiration CRM',
-      description: 'Manage your customer communications. Message history and AI-assisted responses.',
+      description: 'Find the messages sent through the website\'s forms: history of exchanges, processing status and a notification for each new message received.',
       keywords: 'CRM messaging, customer communication, messages'
     },
     nl: {
       title: 'Berichten | AInspiration CRM',
-      description: 'Beheer uw klantcommunicatie. Berichtgeschiedenis en AI-ondersteunde antwoorden.',
+      description: 'Vind de berichten die via de formulieren van de site zijn verstuurd: geschiedenis, verwerkingsstatus en een melding bij elk nieuw bericht.',
       keywords: 'CRM berichten, klantcommunicatie, berichten'
     }
   },
   '/dashboard': {
     fr: {
       title: 'Mon Espace | Tableau de Bord Personnel | AInspiration',
-      description: 'Accédez à votre espace personnel AInspiration. Suivez vos projets IA et recommandations personnalisées.',
+      description: 'Accédez à votre espace personnel AInspiration : suivez l\'avancement de vos projets IA et retrouvez les recommandations adaptées à votre entreprise.',
       keywords: 'espace client, tableau de bord, mon compte'
     },
     en: {
       title: 'My Space | Personal Dashboard | AInspiration',
-      description: 'Access your personal AInspiration space. Track your AI projects and personalized recommendations.',
+      description: 'Access your personal AInspiration space: follow the progress of your AI projects and find the recommendations tailored to your own business.',
       keywords: 'client area, dashboard, my account'
     },
     nl: {
       title: 'Mijn Ruimte | Persoonlijk Dashboard | AInspiration',
-      description: 'Toegang tot uw persoonlijke AInspiration-ruimte. Volg uw AI-projecten en gepersonaliseerde aanbevelingen.',
+      description: 'Open uw persoonlijke AInspiration-ruimte: volg de voortgang van uw AI-projecten en vind de aanbevelingen op maat van uw eigen bedrijf.',
       keywords: 'klantenzone, dashboard, mijn account'
     }
   }

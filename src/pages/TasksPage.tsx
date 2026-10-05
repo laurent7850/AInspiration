@@ -111,7 +111,6 @@ const TasksPage: React.FC = () => {
         <section className="py-10 bg-gray-50 min-h-screen">
           <SEOHead
             title={t('pages.tasks.seoTitle')}
-            description={t('pages.tasks.seoDescription')}
           />
           
           <div className="container mx-auto px-4">

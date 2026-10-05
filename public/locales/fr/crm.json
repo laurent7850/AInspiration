@@ -156,34 +156,28 @@
   "pages": {
     "companies": {
       "seoTitle": "Gestion des entreprises | AInspiration CRM",
-      "seoDescription": "Gérez vos entreprises et clients professionnels et suivez toutes les interactions.",
       "heading": "Gestion des entreprises"
     },
     "contacts": {
       "seoTitle": "Gestion des contacts | AInspiration CRM",
-      "seoDescription": "Gérez vos contacts professionnels et suivez toutes les interactions.",
       "heading": "Gestion des contacts"
     },
     "opportunities": {
       "seoTitle": "Gestion des opportunités | AInspiration",
-      "seoDescription": "Gérez vos opportunités de vente et suivez votre pipeline commercial.",
       "heading": "Pipeline commercial",
       "viewList": "Liste",
       "viewKanban": "Kanban"
     },
     "products": {
       "seoTitle": "Gestion des produits | AInspiration CRM",
-      "seoDescription": "Gérez votre catalogue de produits et services dans le CRM.",
       "heading": "Gestion des produits"
     },
     "tasks": {
       "seoTitle": "Gestion des tâches | AInspiration CRM",
-      "seoDescription": "Gérez et organisez vos tâches, suivez leur avancement et ne manquez jamais une échéance.",
       "heading": "Gestion des tâches"
     },
     "reports": {
       "seoTitle": "Rapports et Analyses | AInspiration CRM",
-      "seoDescription": "Visualisez et analysez vos performances commerciales avec des rapports détaillés et personnalisables.",
       "heading": "Rapports et Analyses",
       "refresh": "Rafraîchir les données",
       "tabOverview": "Vue d'ensemble",

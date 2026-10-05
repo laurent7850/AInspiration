@@ -30,7 +30,6 @@ export default function MessagesPage() {
       <CrmLayout>
         <SEOHead
           title="Messages | AInspiration CRM"
-          description="Gestion des messages de contact - Espace CRM AInspiration"
           noindex={true}
         />
         <section className="py-10 bg-gray-50 min-h-screen">

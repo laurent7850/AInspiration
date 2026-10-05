@@ -99,7 +99,6 @@ const ContactsPage: React.FC = () => {
         <section className="py-10 bg-gray-50 min-h-screen">
           <SEOHead
             title={t('pages.contacts.seoTitle')}
-            description={t('pages.contacts.seoDescription')}
           />
 
           <div className="container mx-auto px-4">

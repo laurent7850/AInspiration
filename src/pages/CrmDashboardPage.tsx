@@ -11,7 +11,6 @@ const CrmDashboardPage: React.FC = () => {
       <div className="bg-gray-50 min-h-screen">
         <SEOHead
           title={t('dashboardView.title') + ' | AInspiration'}
-          description={t('dashboardView.subtitle')}
         />
 
         <section className="py-6 md:py-10">

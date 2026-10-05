@@ -156,34 +156,28 @@
   "pages": {
     "companies": {
       "seoTitle": "Company Management | AInspiration CRM",
-      "seoDescription": "Manage your companies and professional clients and track all interactions.",
       "heading": "Company Management"
     },
     "contacts": {
       "seoTitle": "Contact Management | AInspiration CRM",
-      "seoDescription": "Manage your professional contacts and track all interactions.",
       "heading": "Contact Management"
     },
     "opportunities": {
       "seoTitle": "Opportunity Management | AInspiration",
-      "seoDescription": "Manage your sales opportunities and track your commercial pipeline.",
       "heading": "Commercial Pipeline",
       "viewList": "List",
       "viewKanban": "Kanban"
     },
     "products": {
       "seoTitle": "Product Management | AInspiration CRM",
-      "seoDescription": "Manage your product and service catalogue in the CRM.",
       "heading": "Product Management"
     },
     "tasks": {
       "seoTitle": "Task Management | AInspiration CRM",
-      "seoDescription": "Manage and organise your tasks, track their progress and never miss a deadline.",
       "heading": "Task Management"
     },
     "reports": {
       "seoTitle": "Reports and Analysis | AInspiration CRM",
-      "seoDescription": "Visualise and analyse your commercial performance with detailed and customisable reports.",
       "heading": "Reports and Analysis",
       "refresh": "Refresh data",
       "tabOverview": "Overview",

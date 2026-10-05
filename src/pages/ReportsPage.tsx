@@ -26,7 +26,6 @@ const ReportsPage: React.FC = () => {
         <section className="py-10 bg-gray-50 min-h-screen">
           <SEOHead
             title={t('pages.reports.seoTitle')}
-            description={t('pages.reports.seoDescription')}
           />
 
           <div className="container mx-auto px-4">
