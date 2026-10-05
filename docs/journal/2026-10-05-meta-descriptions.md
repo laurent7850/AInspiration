@@ -38,6 +38,13 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
     après sauvegarde (`/root/backups/blog-excerpts-before-20261005_134817.csv`) ;
   - l'article sur les stocks avait aussi son titre sans accents, donc son `<title>` et son
     `<h1>` : corrigé, slug inchangé.
+- Troisième passage : la coupe des titres d'articles. Mesurée sur les 102 titres réels
+  avant de toucher au code : sur 60 titres raccourcis, une vingtaine finissaient en plein
+  groupe de mots (« …quand on est », « …when you are a small », « …with Generative »,
+  « …of Belgian »). Nouvelle règle : une coupe n'est gardée que si le premier mot retiré
+  ouvre un groupe ou est une ponctuation ; sinon repli sur la partie avant le « : ».
+  35 titres changent, comparés un à un avant/après ; front et serveur identiques sur les
+  102. Déployé, titres relus dans le HTML servi, contrôle de santé 27/27.
 
 ## Cassé
 
@@ -54,6 +61,11 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
   anglaise de `/pme-hainaut-bruxelles`, parce que `seoConfig.ts` mélange guillemets simples
   et doubles. Une autre ligne du même script l'a réécrite juste après : aucun dégât, mais
   par chance. Noté en piège.
+- La règle de sous-titre ne s'appliquait qu'au français depuis le début : elle cherchait
+  « : » avec une espace avant, que les titres anglais et néerlandais n'ont pas.
+- Trois essais de la règle des titres ont régressé avant la bonne version (sous-titres
+  complets sacrifiés, « : » collé pris pour un milieu de phrase) : c'est la comparaison
+  avant/après sur les titres réels qui les a montrés, pas les tests unitaires.
 - Les heredocs de Git Bash ont dénaturé les antislashes de deux scripts et d'un test,
   sans erreur à l'écriture — repris par l'outil Write. Noté en piège.
 
@@ -61,6 +73,6 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
 
 - Validation par Laurent du texte juridique ajouté aux mentions légales. Tâche CRM non
   déposée : `.env.local` était illisible depuis la session.
-- Le `<title>` de l'article Hainaut est coupé en « …quand on est » : la règle de coupe ne
-  retire pas `est`, `on`, `quand` en fin de titre.
+- Deux titres sortent plus courts qu'avant sans être fautifs (« Créer du contenu marketing
+  performant », « 5 cas d'usage concrets de l'IA ») : limite assumée d'une règle sans grammaire.
 - Les pages CRM (noindex) gardent des descriptions sous 120, sans enjeu.
