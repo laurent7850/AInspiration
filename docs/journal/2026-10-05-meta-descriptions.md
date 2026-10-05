@@ -52,6 +52,9 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
   « 5 usages concrets de l'IA pour les entreprises wallonnes » (56),
   « Create High-Performing Marketing Content with Generative AI » (59).
   Slugs inchangés ; titres et `<h1>` relus en production après expiration du cache.
+- Quatrième passage : les pages du CRM. 30 descriptions (10 routes × 3 langues, de 79 à
+  111 caractères) réécrites d'après ce que chaque page contient réellement ; 30/30 vérifiées
+  en production. Plus aucune route hors 120–160 dans `seo-routes.json`, toutes langues.
 
 ## Cassé
 
@@ -73,6 +76,8 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
 - Trois essais de la règle des titres ont régressé avant la bonne version (sous-titres
   complets sacrifiés, « : » collé pris pour un milieu de phrase) : c'est la comparaison
   avant/après sur les titres réels qui les a montrés, pas les tests unitaires.
+- Les 8 pages du CRM imposaient leur propre description après chargement, et `/messages`
+  servait une phrase française écrite en dur aux trois langues. Surcharges retirées.
 - Les heredocs de Git Bash ont dénaturé les antislashes de deux scripts et d'un test,
   sans erreur à l'écriture — repris par l'outil Write. Noté en piège.
 
@@ -80,4 +85,3 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
 
 - Validation par Laurent du texte juridique ajouté aux mentions légales. Tâche CRM non
   déposée : `.env.local` était illisible depuis la session.
-- Les pages CRM (noindex) gardent des descriptions sous 120, sans enjeu.
