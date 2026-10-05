@@ -156,7 +156,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     nl: {
       title: 'Tien vragen voor u iets automatiseert | Gratis gids | AInspiration',
-      description: "De tien vragen die ik tijdens een diagnose stel, in de volgorde waarin ik ze stel. Een gratis gids van drie pagina's (in het Frans), zonder formulier of e-mailadres.",
+      description: "De tien vragen die ik tijdens een diagnose stel, in de volgorde waarin ik ze stel. Een gratis gids van drie pagina's (in het Frans), zonder formulier.",
       keywords: 'automatisering kmo, voor u automatiseert, diagnose automatisering, gratis gids automatisering'
     }
   },
