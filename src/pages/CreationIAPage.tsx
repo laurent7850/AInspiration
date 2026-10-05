@@ -68,7 +68,6 @@ const CreationIAPage: React.FC = () => {
     <section className="bg-linear-to-b from-gray-50 to-white">
       <SEOHead
         title={t('page.seo.title')}
-        description={t('page.seo.description')}
         schema={getServiceSchema("Création de Contenu IA pour PME", "Génération de contenu marketing par IA : articles de blog, posts réseaux sociaux, newsletters, visuels. Contenu optimisé SEO et adapté à votre marque.")}
       />
 

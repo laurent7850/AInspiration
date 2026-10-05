@@ -26,7 +26,7 @@ export default function GuidePage() {
 
   return (
     <>
-      <SEOHead title={t('seo.title')} description={t('seo.description')} />
+      <SEOHead title={t('seo.title')} />
 
       <section className="bg-canvas text-ink pt-28 lg:pt-32 pb-14 lg:pb-16">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">

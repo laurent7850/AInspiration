@@ -61,7 +61,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
   '/analyse-ia': {
     fr: {
       title: 'Analyse de Données IA | Business Intelligence | AInspiration',
-      description: 'Exploitez vos données avec l\'IA. Analyses prédictives, tableaux de bord intelligents et insights actionnables pour des décisions éclairées.',
+      description: 'Transformez vos données en décisions avec l\'analyse IA : prédictions, détection d\'anomalies, segmentation et tableaux de bord personnalisés pour votre PME.',
       keywords: 'analyse données IA, business intelligence, analytics IA, prédictif, data science entreprise'
     },
     en: {
@@ -163,7 +163,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
   '/pme-hainaut-bruxelles': {
     fr: {
       title: 'Automatisation IA pour les PME du Hainaut et de Bruxelles',
-      description: "Basé à Givry, j'automatise les tâches répétitives des PME du Hainaut, de Bruxelles et du Brabant wallon. Sur place ou à distance.",
+      description: "Depuis Givry, j'automatise facturation, relances et service client des PME du Hainaut, de Bruxelles et du Brabant wallon. Sur place ou à distance.",
       keywords: 'automatisation IA Hainaut, IA PME Mons, IA PME Charleroi, IA PME Bruxelles, agence IA Belgique'
     },
     en: {
@@ -173,7 +173,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     nl: {
       title: "AI-automatisering voor kmo's in Henegouwen en Brussel | AInspiration",
-      description: "Vanuit Givry automatiseer ik de repetitieve taken van kmo's in Henegouwen, Brussel en Waals-Brabant. Ter plaatse of op afstand.",
+      description: "Vanuit Givry automatiseer ik repetitieve taken voor kmo's in Henegouwen, Brussel en Waals-Brabant: facturatie, opvolging, klantendienst. Ter plaatse of online.",
       keywords: 'AI automatisering Henegouwen, AI kmo Bergen, AI kmo Charleroi, AI kmo Brussel, AI bureau België'
     }
   },
@@ -449,20 +449,90 @@ export const seoPages: Record<string, SEOPageConfig> = {
       keywords: 'gebruiksvoorwaarden, regels, voorwaarden'
     }
   },
+  '/creation-ia': {
+    fr: {
+      title: 'Création IA — Contenu & Visuels | AInspiration',
+      description: 'Générez du contenu textuel et des images de qualité professionnelle grâce à l\'IA : articles, posts, newsletters, visuels marketing et communication.'
+    },
+    en: {
+      title: 'AI Creation — Content & Visuals | AInspiration',
+      description: 'Generate professional-quality text content and images with AI: articles, posts, newsletters, marketing visuals and communications.'
+    },
+    nl: {
+      title: 'AI Creatie — Content & Visuals | AInspiration',
+      description: 'Genereer professionele tekstcontent en afbeeldingen met AI: artikelen, posts, nieuwsbrieven, marketingvisuals en communicatie.'
+    }
+  },
+  '/audio': {
+    fr: {
+      title: 'Production Audio IA | Podcasts, Voix Off & Doublage | AInspiration',
+      description: 'Créez podcasts, voix off, doublages multilingues et transcriptions grâce à l\'IA. Production audio professionnelle, rapide et abordable pour votre PME.'
+    },
+    en: {
+      title: 'AI Audio Production | Podcasts, Voice-over & Dubbing | AInspiration',
+      description: 'Create podcasts, voice-overs, multilingual dubbing and transcriptions with AI. Professional, fast and affordable audio production for your SME.'
+    },
+    nl: {
+      title: 'AI Audioproductie | Podcasts, Voice-over & Nasynchronisatie | AInspiration',
+      description: 'Maak podcasts, voice-overs, meertalige nasynchronisatie en transcripties met AI. Professionele, snelle en betaalbare audioproductie voor uw kmo.'
+    }
+  },
+  '/video': {
+    fr: {
+      title: 'Production Vidéo IA | Avatars, Montage & Sous-titres | AInspiration',
+      description: 'Produisez des vidéos marketing, des avatars présentateurs et du montage automatique grâce à l\'IA. Vidéo professionnelle, rapide et abordable pour votre PME.'
+    },
+    en: {
+      title: 'AI Video Production | Avatars, Editing & Subtitles | AInspiration',
+      description: 'Produce marketing videos, AI presenters and automatic editing with AI. Professional, fast and affordable video for your SME.'
+    },
+    nl: {
+      title: 'AI Videoproductie | Avatars, Montage & Ondertitels | AInspiration',
+      description: 'Produceer marketingvideo\'s, AI-presentatoren en automatische montage met AI. Professionele, snelle en betaalbare video voor uw kmo.'
+    }
+  },
+  '/unsubscribe': {
+    fr: {
+      title: 'Désabonnement Newsletter - AInspiration',
+      description: 'Gérez votre abonnement à la newsletter AInspiration : la désinscription se fait en un clic depuis le lien reçu par email, sans aucune justification à donner.'
+    },
+    en: {
+      title: 'Newsletter Unsubscribe - AInspiration',
+      description: 'Manage your AInspiration newsletter subscription: unsubscribe in one click from the link in any of our emails, with no reason to give.'
+    },
+    nl: {
+      title: 'Uitschrijven Nieuwsbrief - AInspiration',
+      description: 'Beheer uw abonnement op de AInspiration-nieuwsbrief: uitschrijven gebeurt met één klik via de link in elke e-mail, zonder reden op te geven.'
+    }
+  },
+  '/newsletter-confirmee': {
+    fr: {
+      title: 'Inscription à la newsletter | AInspiration',
+      description: 'Inscription à la newsletter AInspiration confirmée : l\'IA pour les PME, des automatisations et des retours d\'expérience, avec un lien de désinscription.'
+    },
+    en: {
+      title: 'Newsletter subscription | AInspiration',
+      description: 'Your AInspiration newsletter subscription is confirmed: AI for SMEs, automations and lessons from real projects, with an unsubscribe link in every email.'
+    },
+    nl: {
+      title: 'Inschrijving nieuwsbrief | AInspiration',
+      description: 'Uw inschrijving op de AInspiration-nieuwsbrief is bevestigd: AI voor kmo\'s, automatiseringen en praktijkervaringen, met een uitschrijflink in elke e-mail.'
+    }
+  },
   '/crm': {
     fr: {
       title: 'CRM IA | Gestion Client Intelligente | AInspiration',
-      description: 'Optimisez votre relation client avec notre CRM propulsé par l\'IA. Automatisation, insights et suivi intelligent de vos opportunités.',
+      description: 'Transformez votre relation client avec un CRM nouvelle génération : automatisation intelligente, vision 360° de vos clients et suivi de chaque opportunité.',
       keywords: 'CRM IA, gestion relation client, CRM intelligent, automatisation ventes, pipeline commercial'
     },
     en: {
       title: 'AI CRM | Smart Customer Management | AInspiration',
-      description: 'Optimize your customer relationships with our AI-powered CRM. Automation, insights and intelligent tracking of your opportunities.',
+      description: 'Transform your client relationships with a next-generation CRM: intelligent automation, a 360° view of your clients and follow-up of every opportunity.',
       keywords: 'AI CRM, customer relationship management, intelligent CRM, sales automation, sales pipeline'
     },
     nl: {
       title: 'AI CRM | Slim Klantenbeheer | AInspiration',
-      description: 'Optimaliseer uw klantrelaties met onze AI-aangedreven CRM. Automatisering, inzichten en intelligente opvolging van uw kansen.',
+      description: 'Transformeer uw klantrelaties met een CRM van de nieuwe generatie: intelligente automatisering, een 360°-beeld van uw klanten en opvolging van elke kans.',
       keywords: 'AI CRM, klantrelatiebeheer, intelligente CRM, verkoopautomatisering, verkooppijplijn'
     }
   },

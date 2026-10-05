@@ -68,7 +68,6 @@ const TransformationPage: React.FC = () => {
     <section className="bg-linear-to-b from-gray-50 to-white">
       <SEOHead
         title={t('seo.title')}
-        description={t('seo.description')}
         schema={transformationSchema}
       />
 

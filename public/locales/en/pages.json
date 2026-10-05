@@ -12,8 +12,7 @@
   },
   "unsubscribe": {
     "seo": {
-      "title": "Newsletter Unsubscribe - AInspiration",
-      "description": "Manage your AInspiration newsletter subscription"
+      "title": "Newsletter Unsubscribe - AInspiration"
     },
     "loading": "Verifying...",
     "confirm_title": "Confirm Unsubscription",
