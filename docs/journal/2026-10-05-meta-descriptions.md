@@ -55,6 +55,11 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
 - Quatrième passage : les pages du CRM. 30 descriptions (10 routes × 3 langues, de 79 à
   111 caractères) réécrites d'après ce que chaque page contient réellement ; 30/30 vérifiées
   en production. Plus aucune route hors 120–160 dans `seo-routes.json`, toutes langues.
+- Cinquième passage : plus aucune page n'impose sa propre description après chargement
+  (sauf la 404, sans route). Onze pages corrigées, le meilleur texte de chaque paire gardé
+  dans `seoConfig.ts`, 42 clés de locales mortes retirées. Vérifié sur 36 URL côté serveur,
+  et dans un navigateur sur 5 pages : la description après chargement de React est
+  identique à celle du serveur.
 
 ## Cassé
 
@@ -78,10 +83,19 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
   avant/après sur les titres réels qui les a montrés, pas les tests unitaires.
 - Les 8 pages du CRM imposaient leur propre description après chargement, et `/messages`
   servait une phrase française écrite en dur aux trois langues. Surcharges retirées.
+- Cinq routes n'avaient aucune entrée dans `seoConfig` (`/creation-ia`, `/audio`,
+  `/video`, `/unsubscribe`, `/newsletter-confirmee`) : leurs versions anglaise et
+  néerlandaise recevaient du serveur la description française. Seule la surcharge de la
+  page rattrapait après chargement — la retirer sans créer l'entrée aurait été une
+  régression invisible. Entrées créées.
+- React 19 ajoute ses balises sans retirer celles du serveur : deux `<title>` et deux
+  `description` par page. Les descriptions concordent désormais ; les titres pas toujours.
 - Les heredocs de Git Bash ont dénaturé les antislashes de deux scripts et d'un test,
   sans erreur à l'écriture — repris par l'outil Write. Noté en piège.
 
 ## Reste
+
+- Les titres : mêmes surcharges par page, divergences avec `seoConfig` (ex. `/audit`).
 
 - Validation par Laurent du texte juridique ajouté aux mentions légales. Tâche CRM non
   déposée : `.env.local` était illisible depuis la session.
