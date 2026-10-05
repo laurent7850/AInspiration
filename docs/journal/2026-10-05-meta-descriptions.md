@@ -45,6 +45,13 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
   ouvre un groupe ou est une ponctuation ; sinon repli sur la partie avant le « : ».
   35 titres changent, comparés un à un avant/après ; front et serveur identiques sur les
   102. Déployé, titres relus dans le HTML servi, contrôle de santé 27/27.
+- Les deux titres que la nouvelle règle raccourcissait trop faisaient 61 caractères, un
+  de trop. Reformulés en base pour tenir en entier, plus la version anglaise du premier,
+  dans le même cas (sauvegarde préalable sur le VPS) :
+  « Créer du contenu marketing performant avec l'IA générative » (58),
+  « 5 usages concrets de l'IA pour les entreprises wallonnes » (56),
+  « Create High-Performing Marketing Content with Generative AI » (59).
+  Slugs inchangés ; titres et `<h1>` relus en production après expiration du cache.
 
 ## Cassé
 
@@ -73,6 +80,4 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
 
 - Validation par Laurent du texte juridique ajouté aux mentions légales. Tâche CRM non
   déposée : `.env.local` était illisible depuis la session.
-- Deux titres sortent plus courts qu'avant sans être fautifs (« Créer du contenu marketing
-  performant », « 5 cas d'usage concrets de l'IA ») : limite assumée d'une règle sans grammaire.
 - Les pages CRM (noindex) gardent des descriptions sous 120, sans enjeu.
