@@ -66,12 +66,12 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     en: {
       title: 'AI Data Analysis | Business Intelligence | AInspiration',
-      description: 'Leverage your data with AI. Predictive analytics, smart dashboards and actionable insights for informed decisions.',
+      description: 'Leverage your data with AI: predictive analytics, smart dashboards and actionable insights, so your SME decides on the basis of the data it already holds.',
       keywords: 'AI data analysis, business intelligence, AI analytics, predictive, enterprise data science'
     },
     nl: {
       title: 'AI Data-analyse | Business Intelligence | AInspiration',
-      description: 'Benut uw data met AI. Voorspellende analyses, slimme dashboards en bruikbare inzichten voor weloverwogen beslissingen.',
+      description: 'Benut uw data met AI: voorspellende analyses, slimme dashboards en bruikbare inzichten, zodat uw kmo beslist op basis van de gegevens die ze al heeft.',
       keywords: 'AI data-analyse, business intelligence, AI analytics, voorspellend, enterprise data science'
     }
   },
@@ -100,12 +100,12 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     en: {
       title: 'Personalized AI Recommendations | AInspiration',
-      description: 'Receive tailored AI recommendations for your business. Solutions adapted to your specific needs and industry.',
+      description: 'Receive AI recommendations tailored to your business: solutions matched to your specific needs, your sector and your budget, for SMEs in Belgium and France.',
       keywords: 'AI recommendations, personalized advice, custom solutions, AI audit'
     },
     nl: {
       title: 'Gepersonaliseerde AI Aanbevelingen | AInspiration',
-      description: 'Ontvang op maat gemaakte AI-aanbevelingen voor uw bedrijf. Oplossingen aangepast aan uw specifieke behoeften en sector.',
+      description: 'Ontvang AI-aanbevelingen op maat van uw bedrijf: oplossingen afgestemd op uw specifieke behoeften, uw sector en uw budget, voor kmo\'s in België en Frankrijk.',
       keywords: 'AI aanbevelingen, gepersonaliseerd advies, oplossingen op maat, AI audit'
     }
   },
@@ -168,7 +168,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     en: {
       title: 'AI automation for SMEs in Hainaut and Brussels',
-      description: 'Based in Givry, I automate the repetitive tasks of SMEs in Hainaut, Brussels and Walloon Brabant. On site or remote.',
+      description: 'Based in Givry, I automate the repetitive tasks of SMEs in Hainaut, Brussels and Walloon Brabant: invoicing, follow-ups, customer service. On site or remote.',
       keywords: 'AI automation Hainaut, AI SME Mons, AI SME Charleroi, AI SME Brussels, AI agency Belgium'
     },
     nl: {
@@ -202,7 +202,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     en: {
       title: 'About Us | Our Team and Mission | AInspiration',
-      description: 'Discover the AInspiration team. Our mission: democratize AI for Belgian and European businesses with human support.',
+      description: 'Discover AInspiration, based in Givry: the mission is to make AI accessible to Belgian and European SMEs, with human support from the first call to deployment.',
       keywords: 'about AInspiration, AI team, mission, values, AI company Belgium'
     },
     nl: {
@@ -253,7 +253,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     en: {
       title: 'AI Prompt Library | ChatGPT Optimization | AInspiration',
-      description: 'Access our library of optimized prompts for ChatGPT, Claude and other AI. Save time with tested professional prompts.',
+      description: 'Access our library of optimised prompts for ChatGPT, Claude and other AI tools. Save time with tested professional prompts, ready to adapt to your business.',
       keywords: 'AI prompts, ChatGPT prompts, prompt library, prompt optimization, prompt engineering'
     },
     nl: {
@@ -270,12 +270,12 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     en: {
       title: 'AI Automation | Smart Workflows | AInspiration',
-      description: 'Automate your repetitive tasks with AI. Smart workflows, integrations and productivity gains for your team.',
+      description: 'Automate your repetitive tasks with AI: smart workflows, integrations between your tools and productivity gains for your team, from diagnosis to deployment.',
       keywords: 'AI automation, automated workflows, RPA, automatic processes, AI productivity'
     },
     nl: {
       title: 'AI Automatisering | Slimme Workflows | AInspiration',
-      description: 'Automatiseer uw repetitieve taken met AI. Slimme workflows, integraties en productiviteitswinst voor uw team.',
+      description: 'Automatiseer uw repetitieve taken met AI: slimme workflows, koppelingen tussen uw tools en productiviteitswinst voor uw team, van diagnose tot ingebruikname.',
       keywords: 'AI automatisering, geautomatiseerde workflows, RPA, automatische processen, AI productiviteit'
     }
   },
@@ -287,7 +287,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     en: {
       title: 'AI Virtual Assistants | Smart Chatbots | AInspiration',
-      description: 'Deploy AI virtual assistants for your customer service. Smart chatbots available 24/7 to respond to your customers.',
+      description: 'Deploy AI virtual assistants for your customer service: smart chatbots available 24/7 to answer your customers\' questions, for SMEs in Belgium and France.',
       keywords: 'virtual assistants, AI chatbots, AI customer service, conversational agents, automated support'
     },
     nl: {
@@ -304,7 +304,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     en: {
       title: 'AI Creativity | Content Generation | AInspiration',
-      description: 'Boost your creativity with generative AI. Texts, images, videos: create unique and engaging content for your brand.',
+      description: 'Boost your creativity with generative AI. Texts, images and videos: create unique, engaging content for your brand, faster and in keeping with your identity.',
       keywords: 'AI creativity, content generation, generative AI, automatic creation, AI marketing content'
     },
     nl: {
@@ -321,12 +321,12 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     en: {
       title: 'AI Strategic Consulting | AI Advisory | AInspiration',
-      description: 'Benefit from our AI strategic consulting expertise. Audit, roadmap, support for successful AI integration.',
+      description: 'Benefit from our strategic AI consulting: audit, roadmap and support for a successful AI integration in your SME, from the first diagnosis to deployment.',
       keywords: 'AI consulting, artificial intelligence consulting, AI strategy, business audit, AI roadmap'
     },
     nl: {
       title: 'AI Strategisch Advies | KI Consulting | AInspiration',
-      description: 'Profiteer van onze expertise in AI strategisch advies. Audit, roadmap, begeleiding voor een succesvolle AI-integratie.',
+      description: 'Profiteer van onze expertise in strategisch AI-advies: audit, roadmap en begeleiding voor een geslaagde AI-integratie in uw kmo, van diagnose tot uitrol.',
       keywords: 'AI consulting, kunstmatige intelligentie advies, AI strategie, bedrijfsaudit, AI roadmap'
     }
   },
@@ -377,7 +377,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     },
     nl: {
       title: 'AI Blog | ML & Deep Learning Nieuws 2026 | AInspiration',
-      description: 'AI-artikelen: praktische tips, use cases, machine learning trends, deep learning, NLP en laatste KI-nieuws voor KMO\'s.',
+      description: 'AI-artikelen voor kmo\'s: praktische tips, concrete use cases, trends in machine learning, deep learning en NLP, en het laatste AI-nieuws voor uw bedrijf.',
       keywords: 'AI blog, kunstmatige intelligentie nieuws, AI artikelen, AI trends 2026, machine learning, deep learning, NLP, AI ethiek, AI tools, AI startups'
     }
   },
