@@ -1,8 +1,5 @@
 {
   "cgu": {
-    "seo": {
-      "title": "Conditions Générales d'Utilisation | AInspiration"
-    },
     "pageTitle": "Conditions Générales d'Utilisation",
     "lastUpdated": "Dernière mise à jour : 26 février 2026",
     "s1_title": "1. Objet",
@@ -35,9 +32,6 @@
     "s11_body": "Les présentes CGU sont soumises au droit belge. Tout litige relatif à l'utilisation du site relève de la compétence des tribunaux de l'arrondissement du siège social de Distr'Action SRL."
   },
   "cgv": {
-    "seo": {
-      "title": "Conditions Générales de Vente | AInspiration"
-    },
     "pageTitle": "Conditions Générales de Vente",
     "lastUpdated": "Dernière mise à jour : 17 mars 2026",
     "s1_title": "1. Objet",
@@ -73,9 +67,6 @@
     "s12_body": "Lorsqu'AInspiration traite des données personnelles pour le compte du client dans le cadre des workflows hébergés, un Accord de Traitement des Données (DPA) conforme à l'article 28 du RGPD est conclu entre les parties. Ce DPA détaille les types de données traitées, les mesures de sécurité, les sous-traitants ultérieurs et les conditions de suppression. Le DPA est disponible sur demande à info@ainspiration.eu."
   },
   "mentions": {
-    "seo": {
-      "title": "Mentions Légales | AInspiration"
-    },
     "pageTitle": "Mentions Légales",
     "s1_title": "1. Éditeur du site",
     "s1_intro": "Le site ainspiration.eu est édité par :",

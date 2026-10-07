@@ -1,3 +1,5 @@
+// Must stay first: it sets the server's <head> tags aside before React renders.
+import './utils/serverHead';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';

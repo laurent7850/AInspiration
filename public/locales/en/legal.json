@@ -1,8 +1,5 @@
 {
   "cgu": {
-    "seo": {
-      "title": "Terms of Use | AInspiration"
-    },
     "pageTitle": "Terms of Use",
     "lastUpdated": "Last updated: 26 February 2026",
     "s1_title": "1. Purpose",
@@ -35,9 +32,6 @@
     "s11_body": "These Terms of Use are governed by Belgian law. Any dispute relating to the use of the site falls under the jurisdiction of the courts of the district of Distr'Action SRL's registered office."
   },
   "cgv": {
-    "seo": {
-      "title": "General Terms and Conditions of Sale | AInspiration"
-    },
     "pageTitle": "General Terms and Conditions of Sale",
     "lastUpdated": "Last updated: 17 March 2026",
     "s1_title": "1. Purpose",
@@ -73,9 +67,6 @@
     "s12_body": "When AInspiration processes personal data on behalf of the customer as part of hosted workflows, a Data Processing Agreement (DPA) compliant with Article 28 of the GDPR is concluded between the parties. This DPA details the types of data processed, security measures, sub-processors and deletion conditions. The DPA is available on request at info@ainspiration.eu."
   },
   "mentions": {
-    "seo": {
-      "title": "Legal Notice | AInspiration"
-    },
     "pageTitle": "Legal Notice",
     "s1_title": "1. Website Publisher",
     "s1_intro": "The website ainspiration.eu is published by:",

@@ -145,17 +145,17 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/guide': {
     fr: {
-      title: "Dix questions à se poser avant d'automatiser | Guide gratuit | AInspiration",
+      title: "Dix questions avant d'automatiser | Guide gratuit",
       description: "Les dix questions que je pose lors d'un diagnostic, dans l'ordre où je les pose. Un guide de trois pages, gratuit, sans formulaire ni adresse à laisser.",
       keywords: 'automatisation PME, avant d automatiser, diagnostic automatisation, guide automatisation gratuit'
     },
     en: {
-      title: 'Ten questions to ask before automating anything | Free guide | AInspiration',
+      title: 'Ten questions before automating | Free guide | AInspiration',
       description: 'The ten questions I ask during a diagnostic, in the order I ask them. A free three-page guide (in French), no form, no email address required.',
       keywords: 'SME automation, before automating, automation diagnostic, free automation guide'
     },
     nl: {
-      title: 'Tien vragen voor u iets automatiseert | Gratis gids | AInspiration',
+      title: 'Tien vragen voor u automatiseert | Gratis gids',
       description: "De tien vragen die ik tijdens een diagnose stel, in de volgorde waarin ik ze stel. Een gratis gids van drie pagina's (in het Frans), zonder formulier.",
       keywords: 'automatisering kmo, voor u automatiseert, diagnose automatisering, gratis gids automatisering'
     }
@@ -172,7 +172,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
       keywords: 'AI automation Hainaut, AI SME Mons, AI SME Charleroi, AI SME Brussels, AI agency Belgium'
     },
     nl: {
-      title: "AI-automatisering voor kmo's in Henegouwen en Brussel | AInspiration",
+      title: "AI-automatisering voor kmo's in Henegouwen en Brussel",
       description: "Vanuit Givry automatiseer ik repetitieve taken voor kmo's in Henegouwen, Brussel en Waals-Brabant: facturatie, opvolging, klantendienst. Ter plaatse of online.",
       keywords: 'AI automatisering Henegouwen, AI kmo Bergen, AI kmo Charleroi, AI kmo Brussel, AI bureau België'
     }
@@ -410,7 +410,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
       keywords: 'legal notice, publisher, host, terms'
     },
     nl: {
-      title: 'Juridische Vermeldingen | AInspiration',
+      title: 'Wettelijke Vermeldingen | AInspiration',
       description: 'Juridische vermeldingen van ainspiration.eu: uitgever Distr\'Action SRL, hosting, intellectuele eigendom, persoonsgegevens, cookies en toepasselijk recht.',
       keywords: 'juridische vermeldingen, uitgever, host, voorwaarden'
     }
@@ -465,29 +465,29 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   '/audio': {
     fr: {
-      title: 'Production Audio IA | Podcasts, Voix Off & Doublage | AInspiration',
+      title: 'Audio IA | Podcasts, Voix Off & Doublage | AInspiration',
       description: 'Créez podcasts, voix off, doublages multilingues et transcriptions grâce à l\'IA. Production audio professionnelle, rapide et abordable pour votre PME.'
     },
     en: {
-      title: 'AI Audio Production | Podcasts, Voice-over & Dubbing | AInspiration',
+      title: 'AI Audio | Podcasts, Voice-over & Dubbing | AInspiration',
       description: 'Create podcasts, voice-overs, multilingual dubbing and transcriptions with AI. Professional, fast and affordable audio production for your SME.'
     },
     nl: {
-      title: 'AI Audioproductie | Podcasts, Voice-over & Nasynchronisatie | AInspiration',
+      title: 'AI-audio | Podcasts, Voice-over & Nasynchronisatie',
       description: 'Maak podcasts, voice-overs, meertalige nasynchronisatie en transcripties met AI. Professionele, snelle en betaalbare audioproductie voor uw kmo.'
     }
   },
   '/video': {
     fr: {
-      title: 'Production Vidéo IA | Avatars, Montage & Sous-titres | AInspiration',
+      title: 'Vidéo IA | Avatars, Montage & Sous-titres | AInspiration',
       description: 'Produisez des vidéos marketing, des avatars présentateurs et du montage automatique grâce à l\'IA. Vidéo professionnelle, rapide et abordable pour votre PME.'
     },
     en: {
-      title: 'AI Video Production | Avatars, Editing & Subtitles | AInspiration',
+      title: 'AI Video | Avatars, Editing & Subtitles | AInspiration',
       description: 'Produce marketing videos, AI presenters and automatic editing with AI. Professional, fast and affordable video for your SME.'
     },
     nl: {
-      title: 'AI Videoproductie | Avatars, Montage & Ondertitels | AInspiration',
+      title: 'AI-video | Avatars, Montage & Ondertitels | AInspiration',
       description: 'Produceer marketingvideo\'s, AI-presentatoren en automatische montage met AI. Professionele, snelle en betaalbare video voor uw kmo.'
     }
   },

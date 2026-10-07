@@ -174,7 +174,6 @@ const verifyToken = async () => {
   return (
     <>
       <SEOHead
-        title={t('unsubscribe.seo.title')}
         noindex={true}
       />
       <main className="min-h-screen bg-linear-to-b from-gray-50 to-white py-20">

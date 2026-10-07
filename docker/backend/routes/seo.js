@@ -773,7 +773,21 @@ app.get('/{*splat}', async (req, res) => {
       out = out.replace(/<meta name="description" content="[^"]*"/, literal(`<meta name="description" content="${description}"`));
       out = out.replace(/<meta property="og:title" content="[^"]*"/, literal(`<meta property="og:title" content="${title}"`));
       out = out.replace(/<meta property="og:description" content="[^"]*"/, literal(`<meta property="og:description" content="${description}"`));
+      // The Twitter pair was never rewritten: every page, in every language,
+      // served the homepage's French title and description (2026-10-07).
+      out = out.replace(/<meta name="twitter:title" content="[^"]*"/, literal(`<meta name="twitter:title" content="${title}"`));
+      out = out.replace(/<meta name="twitter:description" content="[^"]*"/, literal(`<meta name="twitter:description" content="${description}"`));
     }
+
+    // og:locale followed the built index.html, so /en and /nl pages declared
+    // fr_BE. Same mapping as SEOHead's getOgLocale.
+    const OG_LOCALES = { fr: 'fr_BE', en: 'en_US', nl: 'nl_BE' };
+    const ogLocale = OG_LOCALES[docLang] || OG_LOCALES.fr;
+    const ogAlternates = Object.values(OG_LOCALES).filter((l) => l !== ogLocale);
+    out = out.replace(/<meta property="og:locale" content="[^"]*"/, `<meta property="og:locale" content="${ogLocale}"`);
+    let alternateIndex = 0;
+    out = out.replace(/<meta property="og:locale:alternate" content="[^"]*"/g, (m) =>
+      alternateIndex < ogAlternates.length ? `<meta property="og:locale:alternate" content="${ogAlternates[alternateIndex++]}"` : m);
 
     // Article metadata for crawlers and link previews: og:type article, the
     // article's own cover, publication dates and a BlogPosting JSON-LD.

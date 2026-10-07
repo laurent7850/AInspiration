@@ -71,7 +71,6 @@ const MediaService: React.FC<MediaServiceProps> = ({
   return (
     <section className="bg-linear-to-b from-gray-50 to-white">
       <SEOHead
-        title={t('seo.title')}
         canonical={canonical}
         schema={getServiceSchema(schemaName, schemaDescription, { url: canonical })}
       />

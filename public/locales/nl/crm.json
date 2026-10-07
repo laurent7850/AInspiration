@@ -155,29 +155,23 @@
   },
   "pages": {
     "companies": {
-      "seoTitle": "Bedrijvenbeheer | AInspiration CRM",
       "heading": "Bedrijvenbeheer"
     },
     "contacts": {
-      "seoTitle": "Contactbeheer | AInspiration CRM",
       "heading": "Contactbeheer"
     },
     "opportunities": {
-      "seoTitle": "Opportuniteitenbeheer | AInspiration",
       "heading": "Commerciële pijplijn",
       "viewList": "Lijst",
       "viewKanban": "Kanban"
     },
     "products": {
-      "seoTitle": "Productbeheer | AInspiration CRM",
       "heading": "Productbeheer"
     },
     "tasks": {
-      "seoTitle": "Takenbeheer | AInspiration CRM",
       "heading": "Takenbeheer"
     },
     "reports": {
-      "seoTitle": "Rapporten en Analyses | AInspiration CRM",
       "heading": "Rapporten en Analyses",
       "refresh": "Gegevens vernieuwen",
       "tabOverview": "Overzicht",
@@ -371,7 +365,6 @@
   },
   "page": {
     "seo": {
-      "title": "Intelligente CRM-oplossing | AInspiration",
       "keywords": "CRM, klantrelatiebeheer, verkooppijplijn, automatisering, CRM-software"
     },
     "hero": {

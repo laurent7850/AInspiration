@@ -53,7 +53,7 @@ export default function LocalPage() {
 
   return (
     <>
-      <SEOHead title={t('seo.title')} schema={faqSchema} />
+      <SEOHead schema={faqSchema} />
 
       {/* Hero */}
       <section className="relative bg-canvas text-ink pt-28 lg:pt-32 pb-16 lg:pb-20">

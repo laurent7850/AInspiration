@@ -69,7 +69,6 @@ const CRMSolutionPage: React.FC = () => {
   return (
     <section className="bg-linear-to-b from-gray-50 to-white">
       <SEOHead
-        title={t('page.seo.title')}
         keywords={t('page.seo.keywords')}
       />
 

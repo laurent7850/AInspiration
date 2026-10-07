@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Calendar, User, Tag, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import SEOHead from './SEOHead';
 import { fetchPublishedPosts } from '../services/blogService';
 import type { BlogPost } from '../services/blogService';
 
@@ -36,10 +35,6 @@ export default function Blog() {
 
   return (
     <section className="bg-linear-to-b from-gray-50 to-white">
-      <SEOHead
-        title={t('pageTitle')}
-        description={t('pageDescription')}
-      />
 
       {/* Hero — Aurora declension (quiet ground: a Read surface) */}
       <div className="relative bg-surface text-ink pt-28 lg:pt-32 pb-12 lg:pb-16 mb-16">

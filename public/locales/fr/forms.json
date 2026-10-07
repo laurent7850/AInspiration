@@ -161,7 +161,6 @@
     },
     "close": "Fermer",
     "confirmPage": {
-      "seoTitle": "Inscription à la newsletter | AInspiration",
       "okTitle": "Inscription confirmée",
       "okBody": "Merci ! Vous recevrez désormais la newsletter AInspiration : IA pour les PME, automatisations, retours d'expérience. Chaque email contient un lien de désinscription.",
       "invalidTitle": "Lien invalide ou déjà utilisé",

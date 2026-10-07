@@ -38,7 +38,6 @@ export default function AuditPage() {
   return (
     <>
       <SEOHead
-        title={t('page.seoTitle')}
         schema={auditSchema}
       />
 

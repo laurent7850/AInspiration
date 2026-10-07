@@ -155,29 +155,23 @@
   },
   "pages": {
     "companies": {
-      "seoTitle": "Gestion des entreprises | AInspiration CRM",
       "heading": "Gestion des entreprises"
     },
     "contacts": {
-      "seoTitle": "Gestion des contacts | AInspiration CRM",
       "heading": "Gestion des contacts"
     },
     "opportunities": {
-      "seoTitle": "Gestion des opportunités | AInspiration",
       "heading": "Pipeline commercial",
       "viewList": "Liste",
       "viewKanban": "Kanban"
     },
     "products": {
-      "seoTitle": "Gestion des produits | AInspiration CRM",
       "heading": "Gestion des produits"
     },
     "tasks": {
-      "seoTitle": "Gestion des tâches | AInspiration CRM",
       "heading": "Gestion des tâches"
     },
     "reports": {
-      "seoTitle": "Rapports et Analyses | AInspiration CRM",
       "heading": "Rapports et Analyses",
       "refresh": "Rafraîchir les données",
       "tabOverview": "Vue d'ensemble",
@@ -371,7 +365,6 @@
   },
   "page": {
     "seo": {
-      "title": "Solution CRM Intelligente | AInspiration",
       "keywords": "CRM, gestion relation client, pipeline vente, automatisation, logiciel CRM"
     },
     "hero": {

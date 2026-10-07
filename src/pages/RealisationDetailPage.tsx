@@ -93,7 +93,7 @@ const RealisationDetailPage: React.FC = () => {
     <>
       <SEOHead
         canonical={`/realisations/${slug}`}
-        title={`${t(`${base}.title`)} | ${t('seo.title')}`}
+        title={`${t(`${base}.title`)} | AInspiration`}
         // Same composition as the server: the card summary is too short for a
         // snippet on its own, the results and solution complete it.
         description={metaDescriptionFor(

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
@@ -9,6 +10,7 @@ import {
   defaultSEO,
   type SupportedLanguage
 } from '../config/seoConfig';
+import { dropServerDuplicates } from '../utils/serverHead';
 
 interface SEOHeadProps {
   title?: string;
@@ -64,6 +66,19 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   const pageDescription = description || seoConfig.description;
   const pageKeywords = keywords || seoConfig.keywords;
   const pageImage = image || `${siteUrl}${defaultOgImage}`;
+
+  // A canonical given as a route path ('/audio') is resolved in the current
+  // language. Passed through as is, it pointed /en/audio at the French page.
+  const canonicalUrl = !canonical
+    ? currentUrl
+    : /^https?:\/\//.test(canonical)
+      ? canonical
+      : `${siteUrl}${langPrefix ?? ''}${langPrefix && canonical === '/' ? '' : canonical}`;
+
+  // Once React has rendered these tags, the server's copies are duplicates.
+  useEffect(() => {
+    dropServerDuplicates();
+  });
 
   const robotsContent = [
     noindex ? 'noindex' : 'index',
@@ -136,7 +151,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="googlebot" content={robotsContent} />
 
       {/* Canonical */}
-      <link rel="canonical" href={canonical || currentUrl} />
+      <link rel="canonical" href={canonicalUrl} />
 
       {/* Hreflang Tags for Multilingual SEO */}
       {hreflangTags.map((tag) => (
@@ -182,7 +197,6 @@ const SEOHead: React.FC<SEOHeadProps> = ({
 
       {/* Additional Meta Tags */}
       <meta name="author" content={siteName} />
-      <meta name="theme-color" content="#4f46e5" />
       <meta name="format-detection" content="telephone=no" />
       <meta name="geo.region" content="BE" />
       <meta name="geo.placename" content="Belgium" />

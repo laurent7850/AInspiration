@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { useHoneypot } from '../hooks/useHoneypot';
 import ConsentCheckbox from '../components/ui/ConsentCheckbox';
 import SEOHead from '../components/SEOHead';
-import { getSEOConfig } from '../config/seoConfig';
 import { validateContactForm, checkRateLimit } from '../utils/validation';
 
 // Proxy backend — le webhook n8n est appelé via le serveur Express
@@ -14,9 +13,8 @@ const CONTACT_EMAIL = 'divers@distr-action.com';
 const CONTACT_PHONE = '+32 477 94 28 65';
 
 const ContactPage: React.FC = () => {
-  const { t, i18n } = useTranslation('forms');
+  const { t } = useTranslation('forms');
   const { honeypotField, honeypotValue } = useHoneypot();
-  const seoConfig = getSEOConfig('/contact', i18n.language as 'fr' | 'en');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -144,11 +142,7 @@ const ContactPage: React.FC = () => {
 
   return (
     <>
-      <SEOHead
-        title={seoConfig.title}
-        description={seoConfig.description}
-        keywords={seoConfig.keywords}
-      />
+      <SEOHead />
       {/* Hero — Aurora declension (teal ground: an action page) */}
       <section className="relative bg-surface text-ink pt-28 lg:pt-32 pb-12 lg:pb-16">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">

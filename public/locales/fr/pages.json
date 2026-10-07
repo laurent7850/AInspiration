@@ -11,9 +11,6 @@
     "contact": "Contact"
   },
   "unsubscribe": {
-    "seo": {
-      "title": "Désabonnement Newsletter - AInspiration"
-    },
     "loading": "Vérification en cours...",
     "confirm_title": "Confirmer le désabonnement",
     "confirm_intro": "Vous êtes sur le point de vous désabonner de la newsletter AInspiration.",

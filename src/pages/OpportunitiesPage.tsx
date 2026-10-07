@@ -102,7 +102,6 @@ const OpportunitiesPage: React.FC = () => {
       <CrmLayout>
         <section className="py-10 bg-gray-50 min-h-screen">
           <SEOHead
-            title={t('pages.opportunities.seoTitle')}
           />
           
           <div className="container mx-auto px-4">

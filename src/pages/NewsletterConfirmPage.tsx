@@ -16,7 +16,7 @@ export default function NewsletterConfirmPage() {
 
   return (
     <>
-      <SEOHead title={t('newsletter.confirmPage.seoTitle')} noindex />
+      <SEOHead noindex />
       <section className="bg-canvas min-h-[60vh] pt-32 pb-20">
         <div className="max-w-xl mx-auto px-4 sm:px-6 text-center">
           <div

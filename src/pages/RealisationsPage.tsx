@@ -52,7 +52,6 @@ const RealisationsPage: React.FC = () => {
     <>
       <SEOHead
         canonical="/realisations"
-        title={t('seo.title')}
         keywords={t('seo.keywords')}
       />
 

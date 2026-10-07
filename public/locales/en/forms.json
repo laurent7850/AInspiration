@@ -161,7 +161,6 @@
     },
     "close": "Close",
     "confirmPage": {
-      "seoTitle": "Newsletter subscription | AInspiration",
       "okTitle": "Subscription confirmed",
       "okBody": "Thank you! You will now receive the AInspiration newsletter: AI for SMEs, automations, field notes. Every email carries an unsubscribe link.",
       "invalidTitle": "Invalid or already used link",

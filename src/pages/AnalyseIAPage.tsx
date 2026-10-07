@@ -64,7 +64,6 @@ const AnalyseIAPage: React.FC = () => {
   return (
     <section className="bg-linear-to-b from-gray-50 to-white">
       <SEOHead
-        title={t('seo.title')}
         schema={analyseSchema}
       />
 
