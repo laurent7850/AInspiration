@@ -34,6 +34,12 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
   contrôle `private` dans le contrôle de santé : 15 échecs contre la production avant le
   déploiement, 0 après (28/28). Pages publiques voisines vérifiées intactes (`/contact`,
   `/produits` : pas de `noindex`, 4 `hreflang`).
+- Quatrième passage : la liste des pages privées n'existe plus qu'à un endroit, le
+  marqueur `noindex: true` de `seoConfig.ts` (14 routes). `SEOHead` l'applique, le serveur
+  le lit dans `seo-routes.json`, `robots.txt` est généré au build ; `public/robots.txt` et
+  les 14 props `noindex` des pages sont supprimés. Un test exige que toute route protégée
+  par connexion soit marquée — vérifié qu'il échoue quand on retire le marqueur de
+  `/linkedin`. Déployé, 28/28, CI verte ; `/en/login` vérifié dans un navigateur.
 
 ## Cassé
 
@@ -62,10 +68,15 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
 - Aucune page privée ne portait de consigne de non-indexation dans le HTML servi, et
   `robots.txt` n'excluait que leurs formes françaises : `/en/contacts` ou `/nl/contacts`
   n'étaient exclues nulle part. `/dashboard` n'avait pas de `SEOHead`.
+- `robots.txt` avait trois groupes, et ceux de Googlebot et Bingbot avaient perdu `/api/`
+  et `/stats.html` : un robot qui trouve un groupe à son nom ignore le groupe `*`, Google et
+  Bing pouvaient donc explorer l'API. Le fichier généré n'a plus qu'un groupe.
+- La session s'est interrompue pendant les vérifications : relancées une à une avant de
+  commiter, rien n'a été perdu.
 - Mon propre piège du 05/10 m'a rattrapé : une correction de script passée par le shell
   a été dénaturée (antislashes mangés). Reprise par l'outil d'écriture.
 
 ## Reste
 
-- `PRIVATE_ROUTES` (serveur) et le bloc privé de `robots.txt` sont deux listes à tenir
-  alignées à la main ; le contrôle `private` n'en échantillonne que trois routes.
+- Les pages légales portent un `noindex` côté navigateur seulement, alors que le serveur
+  les sert indexables et que le sitemap les liste : signal contradictoire à trancher.
