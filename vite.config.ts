@@ -42,7 +42,7 @@ export default defineConfig(({ mode }): UserConfig => {
       ...(isProd ? [
         sitemapPlugin(env.VITE_SITE_URL || 'https://ainspiration.eu'),
         // Per-route fr/en/nl titles for the server-side SEO injection
-        seoRoutesPlugin(),
+        seoRoutesPlugin(env.VITE_SITE_URL || 'https://ainspiration.eu'),
       ] : []),
     ],
     build: {

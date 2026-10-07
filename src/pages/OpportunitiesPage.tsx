@@ -101,7 +101,7 @@ const OpportunitiesPage: React.FC = () => {
     <>
       <CrmLayout>
         <section className="py-10 bg-gray-50 min-h-screen">
-          <SEOHead noindex nofollow />
+          <SEOHead />
           
           <div className="container mx-auto px-4">
             {isCreatingNew ? (

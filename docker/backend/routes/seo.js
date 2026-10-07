@@ -144,14 +144,6 @@ const KNOWN_ROUTES = new Set([
   '/pourquoi-ia', '/pour-qui-ia', '/creation-visuelle', '/creativite',
 ]);
 
-// Pages behind a login, plus the two newsletter utility pages. robots.txt only
-// covered their French paths until 2026-10-07, and the served HTML carried no
-// robots tag at all: /en/contacts and /nl/contacts were excluded nowhere.
-// Same list as the private block of public/robots.txt.
-const PRIVATE_ROUTES = new Set([
-  '/dashboard', '/crm-dashboard', '/opportunities', '/contacts', '/companies', '/products', '/tasks',
-  '/reports', '/messages', '/login', '/newsletter-admin', '/blog-admin', '/linkedin', '/unsubscribe',
-]);
 
 // CRM detail routes (/contacts/:id \u2026) \u2014 known, but with a variable segment.
 // /realisations/:slug is NOT here: unlike the CRM prefixes (private, behind
@@ -539,7 +531,7 @@ function serviceLinks(lang) {
 // the French routeSEO map when the file or the language is missing.
 let seoRoutes = null;
 let seoRoutesMtime = 0;
-function getRouteSeo(lang, rest) {
+function loadSeoRoutes() {
   try {
     const p = path.join(distPath, 'seo-routes.json');
     const stat = fs.statSync(p);
@@ -548,7 +540,20 @@ function getRouteSeo(lang, rest) {
       seoRoutesMtime = stat.mtimeMs;
     }
   } catch (e) { seoRoutes = seoRoutes || null; }
-  const entry = seoRoutes && seoRoutes[rest];
+  return seoRoutes;
+}
+
+// Private pages (CRM, admin, login, unsubscribe): flagged `noindex` in
+// src/config/seoConfig.ts, the only list. The same flag drives SEOHead and the
+// generated robots.txt. Until 2026-10-07 this file kept a copy of the list, and
+// robots.txt a third one that covered only the French paths.
+function isPrivateRoute(rest) {
+  const routes = loadSeoRoutes();
+  return Boolean(routes && routes[rest] && routes[rest].noindex);
+}
+
+function getRouteSeo(lang, rest) {
+  const entry = loadSeoRoutes() && seoRoutes[rest];
   const localized = entry && (entry[lang] || entry.fr);
   const base = routeSEO[rest] ? { ...routeSEO[rest] } : null;
   if (!localized) return base;
@@ -756,7 +761,7 @@ app.get('/{*splat}', async (req, res) => {
     // (not blog posts: they get theirs from the translated rows below; not the
     // CRM: private).
     const isRealisationDetail = /^\/realisations\/[a-z0-9-]+$/i.test(rest);
-    if (!blogMatch && !notFound && !PRIVATE_ROUTES.has(rest) && (KNOWN_ROUTES.has(rest) || isRealisationDetail)) {
+    if (!blogMatch && !notFound && !isPrivateRoute(rest) && (KNOWN_ROUTES.has(rest) || isRealisationDetail)) {
       out = out.replace(canonicalTag, `${canonicalTag}\n    ${hreflangLinks(rest)}`);
     }
 
@@ -775,7 +780,7 @@ app.get('/{*splat}', async (req, res) => {
       return res.status(404).send(out);
     }
 
-    if (PRIVATE_ROUTES.has(rest)) {
+    if (isPrivateRoute(rest)) {
       out = out.replace(/<\/title>/, '</title>\n    <meta name="robots" content="noindex,nofollow" />');
     }
 

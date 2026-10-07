@@ -6,7 +6,7 @@ import SEOHead from '../components/SEOHead';
 export default function DashboardPage() {
   return (
     <>
-      <SEOHead noindex nofollow />
+      <SEOHead />
       <Dashboard />
     </>
   );

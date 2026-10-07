@@ -173,9 +173,7 @@ const verifyToken = async () => {
 
   return (
     <>
-      <SEOHead
-        noindex={true}
-      />
+      <SEOHead />
       <main className="min-h-screen bg-linear-to-b from-gray-50 to-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-lg mx-auto bg-canvas border border-line rounded-card p-8">

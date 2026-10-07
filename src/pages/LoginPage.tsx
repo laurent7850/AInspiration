@@ -24,7 +24,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-surface flex flex-col justify-center py-12 pt-24 sm:px-6 lg:px-8">
-      <SEOHead canonical="/login" noindex={true} />
+      <SEOHead canonical="/login" />
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="text-center font-display font-bold text-3xl sm:text-4xl text-white">
           {t('pages.login.heading')}

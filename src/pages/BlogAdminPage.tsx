@@ -103,7 +103,7 @@ export default function BlogAdminPage() {
 
   return (
     <CrmLayout>
-      <SEOHead noindex nofollow />
+      <SEOHead />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-6">
           <div>

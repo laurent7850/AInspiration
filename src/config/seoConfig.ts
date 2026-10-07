@@ -1,4 +1,10 @@
 interface SEOPageConfig {
+  /**
+   * Kept out of search engines: noindex,nofollow in the page (SEOHead), in the
+   * raw HTML (server, via dist/seo-routes.json), and a Disallow in robots.txt
+   * for fr/en/nl (generated at build). The only list of private pages.
+   */
+  noindex?: boolean;
   fr: {
     title: string;
     description: string;
@@ -42,6 +48,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     }
   },
   '/login': {
+    noindex: true,
     fr: {
       title: 'Connexion | AInspiration',
       description: 'Connectez-vous à votre espace client AInspiration pour accéder à votre tableau de bord, suivre vos projets IA et retrouver vos contacts et opportunités.',
@@ -492,6 +499,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     }
   },
   '/unsubscribe': {
+    noindex: true,
     fr: {
       title: 'Désabonnement Newsletter - AInspiration',
       description: 'Gérez votre abonnement à la newsletter AInspiration : la désinscription se fait en un clic depuis le lien reçu par email, sans aucune justification à donner.'
@@ -538,6 +546,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
   },
   // Pages CRM privées (SEO minimal car authentifiées)
   '/crm-dashboard': {
+    noindex: true,
     fr: {
       title: 'Tableau de Bord CRM | AInspiration',
       description: 'Votre tableau de bord CRM AInspiration : vue d\'ensemble des opportunités, contacts, tâches et performances commerciales, avec scoring des prospects.',
@@ -555,6 +564,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     }
   },
   '/opportunities': {
+    noindex: true,
     fr: {
       title: 'Opportunités | CRM AInspiration',
       description: 'Gérez vos opportunités commerciales : pipeline de ventes en liste ou en kanban, suivi de chaque affaire, montants, étapes et statistiques de conversion.',
@@ -572,6 +582,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     }
   },
   '/contacts': {
+    noindex: true,
     fr: {
       title: 'Contacts | CRM AInspiration',
       description: 'Gérez vos contacts clients et prospects : fiches détaillées, société associée, provenance du contact, historique des interactions et segmentation.',
@@ -589,6 +600,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     }
   },
   '/companies': {
+    noindex: true,
     fr: {
       title: 'Entreprises | CRM AInspiration',
       description: 'Gérez vos comptes entreprises : fiche complète, contacts associés, opportunités en cours et historique des interactions avec chaque société.',
@@ -606,6 +618,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     }
   },
   '/products': {
+    noindex: true,
     fr: {
       title: 'Produits | CRM AInspiration',
       description: 'Gérez votre catalogue de produits et services : prix, descriptions et association aux opportunités, pour chiffrer chaque proposition commerciale.',
@@ -623,6 +636,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     }
   },
   '/tasks': {
+    noindex: true,
     fr: {
       title: 'Tâches | CRM AInspiration',
       description: 'Gérez vos tâches et suivis commerciaux : rappels, échéances, priorités et liens vers le contact, la société ou l\'opportunité concernés.',
@@ -640,6 +654,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     }
   },
   '/reports': {
+    noindex: true,
     fr: {
       title: 'Rapports | CRM AInspiration',
       description: 'Analysez vos performances commerciales : rapports sur les contacts, les opportunités, les produits et les tâches, filtrés par période et exportables.',
@@ -657,6 +672,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     }
   },
   '/messages': {
+    noindex: true,
     fr: {
       title: 'Messages | CRM AInspiration',
       description: 'Retrouvez les messages envoyés depuis les formulaires du site : historique des échanges, statut de traitement et signalement des nouveaux messages.',
@@ -674,6 +690,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     }
   },
   '/linkedin': {
+    noindex: true,
     fr: {
       title: 'LinkedIn | CRM AInspiration',
       description: 'Préparez vos publications LinkedIn depuis le CRM : génération de posts par l\'IA, relecture, modification, planification et publication manuelle ou automatique.'
@@ -688,6 +705,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     }
   },
   '/blog-admin': {
+    noindex: true,
     fr: {
       title: 'Articles du blog | CRM AInspiration',
       description: 'File de relecture du blog automatique : brouillons retenus par le contrôle qualité, aperçu des trois langues, publication ou archivage de chaque article.'
@@ -702,6 +720,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     }
   },
   '/newsletter-admin': {
+    noindex: true,
     fr: {
       title: 'Newsletter | CRM AInspiration',
       description: 'Gérez la newsletter AInspiration depuis le CRM : abonnés, statistiques, rédaction assistée par l\'IA, envoi des campagnes et historique de chaque envoi.'
@@ -716,6 +735,7 @@ export const seoPages: Record<string, SEOPageConfig> = {
     }
   },
   '/dashboard': {
+    noindex: true,
     fr: {
       title: 'Mon Espace | Tableau de Bord Personnel | AInspiration',
       description: 'Accédez à votre espace personnel AInspiration : suivez l\'avancement de vos projets IA et retrouvez les recommandations adaptées à votre entreprise.',
@@ -736,18 +756,28 @@ export const seoPages: Record<string, SEOPageConfig> = {
 
 export type SupportedLanguage = 'fr' | 'en' | 'nl';
 
-export const getSEOConfig = (path: string, lang: SupportedLanguage = 'fr') => {
-  // Gestion des routes dynamiques (blog/:slug, contacts/:id, etc.)
-  // Attention : ces deux règles ne retirent qu'un UUID ou un suffixe numérique.
-  // Une route à slug (/realisations/facturation-automatisee) n'est PAS couverte
-  // et retomberait sur le titre générique — d'où la normalisation explicite
-  // ci-dessous. La page elle-même surcharge ensuite le titre par fiche.
+// Gestion des routes dynamiques (blog/:slug, contacts/:id, etc.)
+// Attention : ces deux règles ne retirent qu'un UUID ou un suffixe numérique.
+// Une route à slug (/realisations/facturation-automatisee) n'est PAS couverte
+// et retomberait sur le titre générique — d'où la normalisation explicite
+// ci-dessous. La page elle-même surcharge ensuite le titre par fiche.
+const configFor = (path: string): SEOPageConfig | undefined => {
   const slugSection = path.match(/^(\/realisations)\/[^/]+$/);
   const normalizedPath = slugSection
     ? slugSection[1]
     : path.replace(/\/[a-f0-9-]{36}$/i, '').replace(/\/\d+$/, '');
+  return seoPages[normalizedPath] || seoPages[path];
+};
 
-  const config = seoPages[normalizedPath] || seoPages[path];
+/** Routes flagged noindex, in seoPages order. */
+export const noindexRoutes = (): string[] =>
+  Object.entries(seoPages).filter(([, config]) => config.noindex).map(([route]) => route);
+
+/** True for a private page, a contact detail (/contacts/:id) included. Path without /en or /nl. */
+export const isNoindexRoute = (path: string): boolean => configFor(path)?.noindex === true;
+
+export const getSEOConfig = (path: string, lang: SupportedLanguage = 'fr') => {
+  const config = configFor(path);
 
   if (!config) {
     return {

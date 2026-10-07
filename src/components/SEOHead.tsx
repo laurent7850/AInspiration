@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import {
   getSEOConfig,
+  isNoindexRoute,
   getHreflangTags,
   getOrganizationSchema,
   getBreadcrumbSchema,
@@ -80,13 +81,16 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     dropServerDuplicates();
   });
 
+  // A route flagged in seoConfig is private whatever the page passes: the
+  // list lives there, not in each page.
+  const privateRoute = isNoindexRoute(routePath);
   const robotsContent = [
-    noindex ? 'noindex' : 'index',
-    nofollow ? 'nofollow' : 'follow'
+    noindex || privateRoute ? 'noindex' : 'index',
+    nofollow || privateRoute ? 'nofollow' : 'follow'
   ].join(', ');
 
   // Get hreflang tags
-  const hreflangTags = getHreflangTags(routePath);
+  const hreflangTags = privateRoute ? [] : getHreflangTags(routePath);
 
   // Get locale for Open Graph
   const getOgLocale = (lang: string) => {

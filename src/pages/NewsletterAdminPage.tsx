@@ -773,7 +773,7 @@ export default function NewsletterAdminPage() {
 
   return (
     <CrmLayout>
-      <SEOHead noindex nofollow />
+      <SEOHead />
       <div className="p-6">
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-gray-900">Gestion Newsletter</h1>

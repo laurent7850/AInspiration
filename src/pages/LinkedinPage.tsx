@@ -204,7 +204,7 @@ const LinkedinPage: React.FC = () => {
   return (
     <>
       <CrmLayout>
-        <SEOHead noindex nofollow />
+        <SEOHead />
 
         <div className="p-6 max-w-6xl mx-auto">
           {/* Header */}
