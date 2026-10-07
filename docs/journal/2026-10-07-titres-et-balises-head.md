@@ -27,6 +27,13 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
   navigateur les mots-clés de `/crm` et `/nl/realisations`. Les pages d'administration
   exigent une connexion : leur rendu après chargement n'a pas été vérifié dans un
   navigateur, seulement par le code, le typage et les tests.
+- Troisième passage : les 14 pages privées (CRM, administration, connexion,
+  désinscription) sortent de l'index dans les trois langues. `noindex, nofollow` dans le
+  HTML servi par le serveur et après chargement, 84 lignes `Disallow` ajoutées à
+  `robots.txt` pour les formes `/en` et `/nl`, plus de `hreflang` sur ces pages. Nouveau
+  contrôle `private` dans le contrôle de santé : 15 échecs contre la production avant le
+  déploiement, 0 après (28/28). Pages publiques voisines vérifiées intactes (`/contact`,
+  `/produits` : pas de `noindex`, 4 `hreflang`).
 
 ## Cassé
 
@@ -52,11 +59,13 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
   d'où l'on venait.
 - `/linkedin` n'avait ni `noindex` ni ligne `Disallow` dans `robots.txt`, contrairement à
   toutes les autres pages privées. Les deux ajoutés.
+- Aucune page privée ne portait de consigne de non-indexation dans le HTML servi, et
+  `robots.txt` n'excluait que leurs formes françaises : `/en/contacts` ou `/nl/contacts`
+  n'étaient exclues nulle part. `/dashboard` n'avait pas de `SEOHead`.
 - Mon propre piège du 05/10 m'a rattrapé : une correction de script passée par le shell
   a été dénaturée (antislashes mangés). Reprise par l'outil d'écriture.
 
 ## Reste
 
-- Les pages du CRM (`/contacts`, `/opportunities`…) n'ont pas de `noindex`, et `robots.txt`
-  n'exclut que leur forme française : `/en/contacts` et `/nl/contacts` ne le sont nulle part.
-  Exposition faible (connexion obligatoire), mais incohérent avec les autres pages privées.
+- `PRIVATE_ROUTES` (serveur) et le bloc privé de `robots.txt` sont deux listes à tenir
+  alignées à la main ; le contrôle `private` n'en échantillonne que trois routes.
