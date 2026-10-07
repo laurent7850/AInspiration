@@ -7,7 +7,7 @@ const CrmDashboardPage: React.FC = () => {
   return (
     <CrmLayout>
       <div className="bg-gray-50 min-h-screen">
-        <SEOHead />
+        <SEOHead noindex nofollow />
 
         <section className="py-6 md:py-10">
           <div className="container mx-auto px-4">

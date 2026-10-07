@@ -109,8 +109,7 @@ const TasksPage: React.FC = () => {
     <>
       <CrmLayout>
         <section className="py-10 bg-gray-50 min-h-screen">
-          <SEOHead
-          />
+          <SEOHead noindex nofollow />
           
           <div className="container mx-auto px-4">
             {isCreatingNew ? (

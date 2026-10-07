@@ -220,6 +220,25 @@ async function checkRobots() {
   else pass('robots.txt', 'present with Sitemap line');
 }
 
+// Private pages must stay out of the index in every language. Until
+// 2026-10-07 the raw HTML carried no robots tag and robots.txt covered only the
+// French paths: /en/contacts and /nl/contacts were excluded nowhere.
+async function checkPrivatePages() {
+  const scope = 'private';
+  const routes = ['/contacts', '/linkedin', '/newsletter-admin'];
+  const paths = routes.flatMap((r) => [r, `/en${r}`, `/nl${r}`]);
+  const robots = (await get(SITE + '/robots.txt')).text || '';
+  const before = failures.length;
+  await mapLimit(paths, CONCURRENCY, async (path) => {
+    const res = await get(SITE + path);
+    if (!/<meta name="robots" content="noindex/i.test(res.text || '')) fail(scope, `${path}: no noindex in raw HTML`);
+    if (!new RegExp(`^Disallow: ${path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`, 'm').test(robots)) {
+      fail(scope, `${path}: not disallowed in robots.txt`);
+    }
+  });
+  if (failures.length === before) pass(scope, `${paths.length} private URLs noindexed and disallowed`);
+}
+
 async function checkApi() {
   const scope = 'api';
   const status = await get(SITE + '/api/status');
@@ -289,6 +308,7 @@ async function main() {
     en[0] ? checkRedirect(`/en/blog/${en[0].slug}`, `/blog/${en[0].slug}`) : Promise.resolve(),
     checkHeaders().catch((err) => fail('headers', err.message)),
     checkRobots().catch((err) => fail('robots.txt', err.message)),
+    checkPrivatePages().catch((err) => fail('private', err.message)),
     checkTls(),
   ]);
   await checkSitemap().catch((err) => fail('sitemap', err.message));

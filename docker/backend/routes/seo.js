@@ -144,6 +144,15 @@ const KNOWN_ROUTES = new Set([
   '/pourquoi-ia', '/pour-qui-ia', '/creation-visuelle', '/creativite',
 ]);
 
+// Pages behind a login, plus the two newsletter utility pages. robots.txt only
+// covered their French paths until 2026-10-07, and the served HTML carried no
+// robots tag at all: /en/contacts and /nl/contacts were excluded nowhere.
+// Same list as the private block of public/robots.txt.
+const PRIVATE_ROUTES = new Set([
+  '/dashboard', '/crm-dashboard', '/opportunities', '/contacts', '/companies', '/products', '/tasks',
+  '/reports', '/messages', '/login', '/newsletter-admin', '/blog-admin', '/linkedin', '/unsubscribe',
+]);
+
 // CRM detail routes (/contacts/:id \u2026) \u2014 known, but with a variable segment.
 // /realisations/:slug is NOT here: unlike the CRM prefixes (private, behind
 // login, never crawled), it is public \u2014 a blanket prefix match would 200 any
@@ -747,7 +756,7 @@ app.get('/{*splat}', async (req, res) => {
     // (not blog posts: they get theirs from the translated rows below; not the
     // CRM: private).
     const isRealisationDetail = /^\/realisations\/[a-z0-9-]+$/i.test(rest);
-    if (!blogMatch && !notFound && (KNOWN_ROUTES.has(rest) || isRealisationDetail)) {
+    if (!blogMatch && !notFound && !PRIVATE_ROUTES.has(rest) && (KNOWN_ROUTES.has(rest) || isRealisationDetail)) {
       out = out.replace(canonicalTag, `${canonicalTag}\n    ${hreflangLinks(rest)}`);
     }
 
@@ -764,6 +773,10 @@ app.get('/{*splat}', async (req, res) => {
       out = out.replace(/<\/title>/, '</title>\n    <meta name="robots" content="noindex,follow" />');
       out = out.replace(/<main>[\s\S]*?<\/main>/, literal(main));
       return res.status(404).send(out);
+    }
+
+    if (PRIVATE_ROUTES.has(rest)) {
+      out = out.replace(/<\/title>/, '</title>\n    <meta name="robots" content="noindex,nofollow" />');
     }
 
     if (seo) {
