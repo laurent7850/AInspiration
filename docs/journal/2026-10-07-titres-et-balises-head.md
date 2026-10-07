@@ -20,6 +20,13 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
 - Déployé dans l'ordre habituel (215/215 sur le CDN, conteneur recréé), contrôle de santé
   27/27, CI verte. Vérifié dans un navigateur sur six pages, plus une navigation interne :
   un seul titre, un seul canonique dans la bonne langue, aucune balise en double.
+- Deuxième passage : plus aucune page n'impose ses mots-clés (`/crm`, `/realisations`) ;
+  `/linkedin`, `/blog-admin` et `/newsletter-admin` ont désormais leur entrée dans
+  `seoConfig`, en trois langues, et un `noindex, nofollow`. 12 clés de locales mortes
+  retirées. Vérifié en production : HTML servi des trois pages, `robots.txt`, et dans un
+  navigateur les mots-clés de `/crm` et `/nl/realisations`. Les pages d'administration
+  exigent une connexion : leur rendu après chargement n'a pas été vérifié dans un
+  navigateur, seulement par le code, le typage et les tests.
 
 ## Cassé
 
@@ -41,10 +48,15 @@ prochaine-action: Faire valider par Laurent les quatre sections ajoutées aux me
   n'était donc pas celle affichée.
 - `SEOHead` imposait une couleur de thème `#4f46e5` (l'ancien indigo) par-dessus celle
   d'`index.html` (`#10102A`) : retirée.
+- `/newsletter-admin` n'avait aucun `SEOHead` : la page gardait les balises de la page
+  d'où l'on venait.
+- `/linkedin` n'avait ni `noindex` ni ligne `Disallow` dans `robots.txt`, contrairement à
+  toutes les autres pages privées. Les deux ajoutés.
 - Mon propre piège du 05/10 m'a rattrapé : une correction de script passée par le shell
   a été dénaturée (antislashes mangés). Reprise par l'outil d'écriture.
 
 ## Reste
 
-- Les `keywords` imposés par `/crm` et `/realisations` (sans effet sur le référencement)
-  et les titres de `/linkedin` et `/blog-admin`, pages privées sans entrée de configuration.
+- Les pages du CRM (`/contacts`, `/opportunities`…) n'ont pas de `noindex`, et `robots.txt`
+  n'exclut que leur forme française : `/en/contacts` et `/nl/contacts` ne le sont nulle part.
+  Exposition faible (connexion obligatoire), mais incohérent avec les autres pages privées.
