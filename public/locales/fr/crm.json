@@ -186,7 +186,6 @@
       "selectMessage": "Sélectionnez un message pour voir les détails"
     },
     "linkedin": {
-      "seoTitle": "LinkedIn Auto-Publishing | AInspiration CRM",
       "subtitle": "Publication automatique de contenu IA",
       "generatePost": "Générer un post",
       "connected": "Connecté : {{name}}",
@@ -364,9 +363,6 @@
     "genericError": "Une erreur est survenue"
   },
   "page": {
-    "seo": {
-      "keywords": "CRM, gestion relation client, pipeline vente, automatisation, logiciel CRM"
-    },
     "hero": {
       "badge": "Solution CRM",
       "title": "Transformez chaque interaction en opportunité de croissance",
@@ -558,7 +554,6 @@
     }
   },
   "blogAdmin": {
-    "seoTitle": "Articles du blog | CRM AInspiration",
     "title": "Articles du blog",
     "subtitle": "File de relecture du blog automatique. Un article retenu par le contrôle qualité arrive ici en brouillon avec ses trois langues ; les motifs sont dans l'email « À relire ».",
     "refresh": "Actualiser",

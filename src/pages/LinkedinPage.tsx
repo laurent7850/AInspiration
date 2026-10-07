@@ -204,9 +204,7 @@ const LinkedinPage: React.FC = () => {
   return (
     <>
       <CrmLayout>
-        <SEOHead
-          title={t('pages.linkedin.seoTitle')}
-        />
+        <SEOHead noindex nofollow />
 
         <div className="p-6 max-w-6xl mx-auto">
           {/* Header */}

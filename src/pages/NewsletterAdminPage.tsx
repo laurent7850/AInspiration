@@ -18,6 +18,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import CrmLayout from '../components/crm/CrmLayout';
+import SEOHead from '../components/SEOHead';
 import {
   getSubscribers,
   getNewsletters,
@@ -772,6 +773,7 @@ export default function NewsletterAdminPage() {
 
   return (
     <CrmLayout>
+      <SEOHead noindex nofollow />
       <div className="p-6">
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-gray-900">Gestion Newsletter</h1>

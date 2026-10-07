@@ -186,7 +186,6 @@
       "selectMessage": "Selecteer een bericht om de details te bekijken"
     },
     "linkedin": {
-      "seoTitle": "LinkedIn Auto-Publishing | AInspiration CRM",
       "subtitle": "Automatische publicatie van AI-inhoud",
       "generatePost": "Bericht genereren",
       "connected": "Verbonden: {{name}}",
@@ -364,9 +363,6 @@
     "genericError": "Er is een fout opgetreden"
   },
   "page": {
-    "seo": {
-      "keywords": "CRM, klantrelatiebeheer, verkooppijplijn, automatisering, CRM-software"
-    },
     "hero": {
       "badge": "CRM-oplossing",
       "title": "Transformeer elke interactie in een groeikans",
@@ -558,7 +554,6 @@
     }
   },
   "blogAdmin": {
-    "seoTitle": "Blogartikels | AInspiration CRM",
     "title": "Blogartikels",
     "subtitle": "Nalezingswachtrij van de automatische blog. Een artikel dat door de kwaliteitscontrole wordt tegengehouden komt hier als concept aan met zijn drie talen; de redenen staan in de e-mail \"Na te lezen\".",
     "refresh": "Vernieuwen",

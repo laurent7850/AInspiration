@@ -673,6 +673,48 @@ export const seoPages: Record<string, SEOPageConfig> = {
       keywords: 'CRM berichten, klantcommunicatie, berichten'
     }
   },
+  '/linkedin': {
+    fr: {
+      title: 'LinkedIn | CRM AInspiration',
+      description: 'Préparez vos publications LinkedIn depuis le CRM : génération de posts par l\'IA, relecture, modification, planification et publication manuelle ou automatique.'
+    },
+    en: {
+      title: 'LinkedIn | AInspiration CRM',
+      description: 'Prepare your LinkedIn posts from the CRM: AI-generated drafts, review and editing, scheduling, and manual or automatic publishing to your profile.'
+    },
+    nl: {
+      title: 'LinkedIn | AInspiration CRM',
+      description: 'Bereid uw LinkedIn-posts voor vanuit het CRM: door AI gegenereerde concepten, nalezen en bewerken, planning en handmatige of automatische publicatie.'
+    }
+  },
+  '/blog-admin': {
+    fr: {
+      title: 'Articles du blog | CRM AInspiration',
+      description: 'File de relecture du blog automatique : brouillons retenus par le contrôle qualité, aperçu des trois langues, publication ou archivage de chaque article.'
+    },
+    en: {
+      title: 'Blog articles | AInspiration CRM',
+      description: 'Review queue for the automatic blog: drafts held back by the quality check, preview in all three languages, then publishing or archiving of each article.'
+    },
+    nl: {
+      title: 'Blogartikels | AInspiration CRM',
+      description: 'Naleeswachtrij van de automatische blog: concepten tegengehouden door de kwaliteitscontrole, voorbeeld in drie talen, publicatie of archivering per artikel.'
+    }
+  },
+  '/newsletter-admin': {
+    fr: {
+      title: 'Newsletter | CRM AInspiration',
+      description: 'Gérez la newsletter AInspiration depuis le CRM : abonnés, statistiques, rédaction assistée par l\'IA, envoi des campagnes et historique de chaque envoi.'
+    },
+    en: {
+      title: 'Newsletter | AInspiration CRM',
+      description: 'Manage the AInspiration newsletter from the CRM: subscribers, statistics, AI-assisted writing, sending campaigns and the history of every send.'
+    },
+    nl: {
+      title: 'Nieuwsbrief | AInspiration CRM',
+      description: 'Beheer de AInspiration-nieuwsbrief vanuit het CRM: abonnees, statistieken, schrijven met hulp van AI, campagnes versturen en de historiek van elke verzending.'
+    }
+  },
   '/dashboard': {
     fr: {
       title: 'Mon Espace | Tableau de Bord Personnel | AInspiration',

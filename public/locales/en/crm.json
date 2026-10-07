@@ -186,7 +186,6 @@
       "selectMessage": "Select a message to view the details"
     },
     "linkedin": {
-      "seoTitle": "LinkedIn Auto-Publishing | AInspiration CRM",
       "subtitle": "Automatic AI content publishing",
       "generatePost": "Generate a post",
       "connected": "Connected: {{name}}",
@@ -364,9 +363,6 @@
     "genericError": "An error occurred"
   },
   "page": {
-    "seo": {
-      "keywords": "CRM, client relationship management, sales pipeline, automation, CRM software"
-    },
     "hero": {
       "badge": "CRM Solution",
       "title": "Transform every interaction into a growth opportunity",
@@ -558,7 +554,6 @@
     }
   },
   "blogAdmin": {
-    "seoTitle": "Blog articles | AInspiration CRM",
     "title": "Blog articles",
     "subtitle": "Review queue of the auto-blog. An article held by the quality gate lands here as a draft with its three languages; the reasons are in the \"To review\" email.",
     "refresh": "Refresh",

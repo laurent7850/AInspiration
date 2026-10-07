@@ -68,9 +68,7 @@ const CRMSolutionPage: React.FC = () => {
 
   return (
     <section className="bg-linear-to-b from-gray-50 to-white">
-      <SEOHead
-        keywords={t('page.seo.keywords')}
-      />
+      <SEOHead />
 
       {/* Hero — Aurora declension */}
       <section className="relative bg-canvas text-ink pt-28 lg:pt-36 pb-16 lg:pb-20">

@@ -17,6 +17,7 @@ Disallow: /messages
 Disallow: /login
 Disallow: /newsletter-admin
 Disallow: /blog-admin
+Disallow: /linkedin
 Disallow: /unsubscribe
 
 # Disallow API and system files
@@ -45,6 +46,7 @@ Disallow: /messages
 Disallow: /login
 Disallow: /newsletter-admin
 Disallow: /blog-admin
+Disallow: /linkedin
 Disallow: /unsubscribe
 
 # Bing specific
@@ -62,4 +64,5 @@ Disallow: /messages
 Disallow: /login
 Disallow: /newsletter-admin
 Disallow: /blog-admin
+Disallow: /linkedin
 Disallow: /unsubscribe
