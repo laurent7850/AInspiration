@@ -220,3 +220,49 @@ contrôle que la **version publiée** de chaque workflow actif porte bien la nou
 — n8n 2.x distingue brouillon et publié, et un repointage qui ne serait resté qu'au brouillon
 ne changerait rien en production.
 
+## Étape 5 — `Seo` et `Oracle` (inventaire du 08/10/2026)
+
+Vérifié par empreinte sur les conteneurs en marche, et dans la console : **aucune clé propre
+n'existe pour ces quatre applications**, qui sont bien quatre projets distincts (chacune a
+son sous-domaine et son dépôt) :
+
+| Clé actuelle | Conteneur | Projet | Fichier `.env` | Compose (répertoire · service) |
+|---|---|---|---|---|
+| `Seo` | `seopilot-web`, `seopilot-worker` | SEOPilot | `/root/seopilot/Autoseo/.env` | `/root/seopilot/Autoseo` · `app`, `worker` |
+| `Seo` | `firecrawl-toolkit` | Firecrawl Toolkit (`firecrawl.srv767464…`) | `/opt/firecrawl-toolkit/.env` | `/opt/firecrawl-toolkit` · `firecrawl-toolkit` |
+| `Seo` | — | **variable d'environnement Windows** (compte utilisateur) de Laurent | — | — |
+| `Oracle` | `dreamoracle-dreamoracle-1` | DreamOracle | `/docker/dreamoracle/.env` | `/docker/dreamoracle` · `dreamoracle` |
+| `Oracle` | `rampa-web` | Rampa RAG (`rampa.srv767464…`) | `/opt/rampa-rag/.env` | `/opt/rampa-rag` · `web` |
+
+Consommation au 08/10 : `Seo` 2,32 $ au total, 0,0005 $ en octobre ; `Oracle` 6,29 $ au
+total, 0 $ en octobre. Toutes deux à 2 $/jour, remise à zéro quotidienne.
+
+Trouvé en chemin et **corrigé le 08/10** : `/opt/firecrawl-toolkit/.env` (et sa sauvegarde),
+`/opt/rampa-rag/.env` et `.env.local` étaient en **644**, lisibles par tout compte du VPS.
+Passés en 600, `docker compose config` valide ensuite.
+
+### Clés à créer (Laurent)
+
+Même formulaire qu'à l'étape 1. **Ordre impératif** : choisir *Reset limit* = **Daily**
+**avant** de valider le montant (coche verte) — sinon le plafond est à vie.
+
+| Name | Plafond | Destination |
+|---|---|---|
+| `seopilot-prod` | 2 $/j | `/root/seopilot/Autoseo/.env` |
+| `firecrawl-toolkit-prod` | 1 $/j | `/opt/firecrawl-toolkit/.env` |
+| `dreamoracle-prod` | 2 $/j | `/docker/dreamoracle/.env` |
+| `rampa-prod` | 1 $/j | `/opt/rampa-rag/.env` |
+| `poste-laurent` | 1 $/j | variable Windows `OPENROUTER_API_KEY` (compte utilisateur) |
+
+Reporter chaque valeur avec la commande de l'étape 2 (`read -rs`, la valeur ne passe ni par
+un argument ni par une conversation), puis `docker compose up -d --force-recreate <service>`.
+Pour le poste : *Paramètres Windows → Variables d'environnement → variables utilisateur*,
+puis rouvrir les terminaux. Si aucun usage local n'est prévu, **supprimer** la variable
+plutôt que la remplacer ([[openrouter-key-in-shell-env]]).
+
+### Ensuite (Claude)
+
+Contrôle par empreinte que chaque conteneur porte sa propre clé et qu'elle répond
+`limit_reset: daily` ; puis, après 24 à 48 h de `usage_daily` à zéro, suppression de `Seo`
+et `Oracle` dans la console.
+
