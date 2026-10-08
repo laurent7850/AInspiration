@@ -241,6 +241,13 @@ Trouvé en chemin et **corrigé le 08/10** : `/opt/firecrawl-toolkit/.env` (et s
 `/opt/rampa-rag/.env` et `.env.local` étaient en **644**, lisibles par tout compte du VPS.
 Passés en 600, `docker compose config` valide ensuite.
 
+### Lecture retenue (Laurent, 08/10)
+
+`Seo` **est** la clé de production de SEOPilot, et `Oracle` celle de DreamOracle : elles
+restent en place, sous leur nom. Il ne s'agit pas de les remplacer mais d'**en sortir les
+intrus**. Vérifié dans la console le même jour : 26 clés, aucune nommée `seo-prod` ni
+dédiée à Firecrawl Toolkit ou à Rampa.
+
 ### Clés à créer (Laurent)
 
 Même formulaire qu'à l'étape 1. **Ordre impératif** : choisir *Reset limit* = **Daily**
@@ -248,21 +255,18 @@ Même formulaire qu'à l'étape 1. **Ordre impératif** : choisir *Reset limit* 
 
 | Name | Plafond | Destination |
 |---|---|---|
-| `seopilot-prod` | 2 $/j | `/root/seopilot/Autoseo/.env` |
 | `firecrawl-toolkit-prod` | 1 $/j | `/opt/firecrawl-toolkit/.env` |
-| `dreamoracle-prod` | 2 $/j | `/docker/dreamoracle/.env` |
 | `rampa-prod` | 1 $/j | `/opt/rampa-rag/.env` |
-| `poste-laurent` | 1 $/j | variable Windows `OPENROUTER_API_KEY` (compte utilisateur) |
+| `poste-laurent` | 1 $/j | variable Windows `OPENROUTER_API_KEY` (compte utilisateur) — ou **suppression** de la variable si aucun usage local |
 
 Reporter chaque valeur avec la commande de l'étape 2 (`read -rs`, la valeur ne passe ni par
 un argument ni par une conversation), puis `docker compose up -d --force-recreate <service>`.
 Pour le poste : *Paramètres Windows → Variables d'environnement → variables utilisateur*,
-puis rouvrir les terminaux. Si aucun usage local n'est prévu, **supprimer** la variable
-plutôt que la remplacer ([[openrouter-key-in-shell-env]]).
+puis rouvrir les terminaux ([[openrouter-key-in-shell-env]]).
 
 ### Ensuite (Claude)
 
-Contrôle par empreinte que chaque conteneur porte sa propre clé et qu'elle répond
-`limit_reset: daily` ; puis, après 24 à 48 h de `usage_daily` à zéro, suppression de `Seo`
-et `Oracle` dans la console.
+Contrôle par empreinte : `seopilot-web` et `seopilot-worker` restent seuls sur `Seo`,
+`dreamoracle` seul sur `Oracle`, et les deux nouvelles clés répondent `limit_reset: daily`.
+**Aucune clé à supprimer** à la fin de cette étape.
 
