@@ -38,6 +38,7 @@ prochaine-action: Soumettre le formulaire d'accès Community Management de Linke
 
 ## Reste
 
-- Les « 24h » de **délai de livraison** de la page Audio (« Du brief au fichier audio
-  final », « Premier livrable ») n'ont pas été touchés : autre nature d'engagement, à
-  confirmer par Laurent s'il les tient.
+- **Pages `/audio` et `/video` conservées telles quelles, décision de Laurent** : ces
+  services existent, vendus via distr-action.com. Leurs chiffres (« 24h » de livraison,
+  « -70 % » vs studio) restent en place. Ne pas proposer à nouveau de les retirer ni de les
+  rediriger.
