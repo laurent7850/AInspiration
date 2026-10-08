@@ -68,7 +68,7 @@ export default function SmartRecommendations() {
             <div className="grid grid-cols-2 gap-4 text-center">
               <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs">
                 <Clock className="w-8 h-8 text-white mx-auto mb-2" />
-                <div className="text-3xl font-bold mb-1">24h</div>
+                <div className="text-3xl font-bold mb-1">30 min</div>
                 <div className="text-indigo-100">{t('animatedStats.audit')}</div>
               </div>
               <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs">

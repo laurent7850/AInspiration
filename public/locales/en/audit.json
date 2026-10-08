@@ -230,9 +230,10 @@
     "finalCtaTitle": "Ready to discover what AI can do for you?",
     "finalCtaSubtitle": "The form takes two minutes. I will write to you to agree a slot.",
     "stats": {
-      "delivery": "Delivery time",
+      "discovery": "Discovery call",
       "noCommitment": "No commitment",
-      "smeHelped": "SMEs supported"
+      "diagnosticPrice": "€2,400",
+      "diagnostic": "AI Diagnostic, if you go further"
     },
     "faq": {
       "title": "Frequently asked questions about the discovery call",

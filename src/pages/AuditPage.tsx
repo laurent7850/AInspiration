@@ -185,8 +185,8 @@ export default function AuditPage() {
           <div className="flex flex-wrap justify-center gap-6 mb-8">
             <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs text-center min-w-[120px]">
               <Zap className="w-8 h-8 text-white mx-auto mb-2" />
-              <div className="text-2xl font-bold text-white">24h</div>
-              <div className="text-indigo-100 text-sm">{t('page.stats.delivery')}</div>
+              <div className="text-2xl font-bold text-white">30 min</div>
+              <div className="text-indigo-100 text-sm">{t('page.stats.discovery')}</div>
             </div>
             <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs text-center min-w-[120px]">
               <Shield className="w-8 h-8 text-white mx-auto mb-2" />
@@ -195,8 +195,8 @@ export default function AuditPage() {
             </div>
             <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs text-center min-w-[120px]">
               <Users className="w-8 h-8 text-white mx-auto mb-2" />
-              <div className="text-2xl font-bold text-white">50+</div>
-              <div className="text-indigo-100 text-sm">{t('page.stats.smeHelped')}</div>
+              <div className="text-2xl font-bold text-white">{t('page.stats.diagnosticPrice')}</div>
+              <div className="text-indigo-100 text-sm">{t('page.stats.diagnostic')}</div>
             </div>
           </div>
 

@@ -238,17 +238,17 @@ export const seoPages: Record<string, SEOPageConfig> = {
   '/contact': {
     fr: {
       title: 'Contact | AInspiration, Givry (Hainaut)',
-      description: 'Une question, un devis, ou trente minutes pour regarder votre situation ? Basé à Givry, dans le Hainaut, je réponds sous 24 heures ouvrées.',
+      description: 'Une question, un devis, ou trente minutes pour regarder votre situation ? Basé à Givry, dans le Hainaut, je réponds personnellement à chaque message.',
       keywords: 'contact IA Belgique, diagnostic IA, devis IA PME, rendez-vous d\u00e9couverte, IA Hainaut'
     },
     en: {
       title: 'Contact | AInspiration, Givry (Hainaut)',
-      description: 'A question, a quote, or thirty minutes to look at your situation? Based in Givry, in Hainaut, I reply within 24 working hours.',
+      description: 'A question, a quote, or thirty minutes to look at your situation? Based in Givry, in Hainaut, I answer every message personally.',
       keywords: 'AI contact, AI diagnostic, AI quote request, AI appointment, discovery call'
     },
     nl: {
       title: 'Contact | AInspiration, Givry (Henegouwen)',
-      description: 'Een vraag, een offerte, of dertig minuten om uw situatie te bekijken? Vanuit Givry, in Henegouwen, antwoord ik binnen 24 werkuren.',
+      description: 'Een vraag, een offerte, of dertig minuten om uw situatie te bekijken? Vanuit Givry, in Henegouwen, beantwoord ik elk bericht persoonlijk.',
       keywords: 'AI contact, AI-diagnose, AI offerte aanvraag, AI afspraak, kennismakingsgesprek'
     }
   },

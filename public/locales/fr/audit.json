@@ -230,9 +230,10 @@
     "finalCtaTitle": "Prêt à découvrir ce que l'IA peut faire pour vous ?",
     "finalCtaSubtitle": "Le formulaire prend deux minutes. Je vous écris pour convenir d'un créneau.",
     "stats": {
-      "delivery": "Délai de livraison",
+      "discovery": "Rendez-vous de découverte",
       "noCommitment": "Sans engagement",
-      "smeHelped": "PME accompagnées"
+      "diagnosticPrice": "2 400 €",
+      "diagnostic": "Diagnostic IA, si vous allez plus loin"
     },
     "faq": {
       "title": "Questions fréquentes sur le rendez-vous de découverte",

@@ -230,9 +230,10 @@
     "finalCtaTitle": "Klaar om te ontdekken wat AI voor u kan doen?",
     "finalCtaSubtitle": "Het formulier neemt twee minuten. Ik schrijf u om een moment af te spreken.",
     "stats": {
-      "delivery": "Levertijd",
+      "discovery": "Kennismakingsgesprek",
       "noCommitment": "Zonder verplichting",
-      "smeHelped": "KMO's begeleid"
+      "diagnosticPrice": "€ 2.400",
+      "diagnostic": "AI-diagnose, als u verder gaat"
     },
     "faq": {
       "title": "Veelgestelde vragen over het kennismakingsgesprek",
