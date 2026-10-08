@@ -277,6 +277,38 @@ Contrôle par empreinte : `seopilot-web` et `seopilot-worker` restent seuls sur 
 `dreamoracle` seul sur `Oracle`, et les deux nouvelles clés répondent `limit_reset: daily`.
 **Aucune clé à supprimer** à la fin de cette étape.
 
+### Les dix clés sans plafond, supprimées le 08/10/2026
+
+Sur ordre de Laurent, « si elles ne sont pas utilisées ». Critère vérifié pour chacune :
+dernière utilisation selon la console (le seul signal qui couvre aussi les usages hors du
+VPS) à six mois ou plus, ou jamais ; et aucune n'est chargée par un conteneur du VPS.
+
+| Clé | Suffixe | Dernier usage | Total |
+|---|---|---|---|
+| `linkedin` | `51b…4e2` | 6 mois | 0,002 $ |
+| `enghien` (déjà désactivée) | `529…62b` | 8 mois | 0,065 $ |
+| `ville-enghien` (déjà désactivée) | `876…d77` | 8 mois | 0,045 $ |
+| `n8n2026` | `a29…cac` | jamais | 0 $ |
+| `nosta` | `ba1…61d` | jamais | 0 $ |
+| `Labo Nosta` | `368…430` | > 1 an | 3,98 $ |
+| `pour n8n cloud` | `2e9…f84` | > 1 an | 0,05 $ |
+| `pour n8n cloud` | `d21…c69` | > 1 an | 51,63 $ |
+| `test n8n` | `2f0…b2a` | > 1 an | 0,01 $ |
+| `base` | `90f…af8` | 9 mois | 30,96 $ |
+
+Résultat : **18 clés, toutes plafonnées au jour**, aucune clé inattendue ; les 13 conteneurs
+qui utilisent OpenRouter ont tous une clé valide (200).
+
+**Méthode qui marche dans la console, à rejouer** : le menu « Row actions » de la liste
+réagit mal aux clics automatisés. Passer par la **page de la clé**
+(`/workspaces/default/keys/<identifiant>`, identifiant lu dans la case « Select … » de la
+ligne), vérifier titre **et** suffixe avant tout clic, faire une **capture d'écran avant de
+cliquer** (sans elle le premier clic ne prend pas), puis lire le texte de la fenêtre de
+confirmation (« delete <nom>? ») avant de valider. Attention aux suffixes voisins :
+`pour n8n cloud` (`2e9…f84`) et `firecrawl-toolkit-prod` (`2e9…68c`) commencent pareil.
+Une fenêtre « Create API Key » existe en permanence, cachée, dans la page : la compter comme
+ouverte est une fausse alerte.
+
 ### Fait le 08/10/2026
 
 `firecrawl-toolkit` et `rampa-web` portent chacun leur clé (1 $/jour, `limit_reset: daily`,

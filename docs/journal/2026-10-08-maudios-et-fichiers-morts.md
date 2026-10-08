@@ -36,6 +36,12 @@ prochaine-action: Soumettre le formulaire d'accès Community Management de Linke
   recréés ; vérifié sur la clé chargée par chaque conteneur, sites en 200.
 - Droits corrigés sur quatre fichiers de secrets de `firecrawl-toolkit` et `rampa-rag`,
   lisibles par tout compte du VPS (644 → 600).
+- **Dix clés OpenRouter sans plafond supprimées**, sur ordre de Laurent et sous la condition
+  qu'elles ne servent plus : dernière utilisation à six mois ou plus (ou jamais) selon la
+  console, et aucune chargée par un conteneur. `linkedin`, `enghien`, `ville-enghien`,
+  `n8n2026`, `nosta`, `Labo Nosta`, deux `pour n8n cloud`, `test n8n`, `base`. Contrôle
+  final : 18 clés, toutes plafonnées au jour, aucune inattendue ; 13 conteneurs sur 13
+  avec une clé valide.
 - Point des chantiers ouverts fait pour Laurent, à partir du HANDOFF et de `ops/BACKLOG.md`.
 
 ## Cassé
@@ -58,6 +64,11 @@ prochaine-action: Soumettre le formulaire d'accès Community Management de Linke
   faux, Laurent a rectifié.
 - Le heredoc de Git Bash a encore mangé des barres obliques dans un script de traces :
   repris par l'outil d'écriture, rien n'avait été écrit entre-temps.
+- La console OpenRouter résiste à l'automatisation : le menu des lignes ne s'ouvre pas de
+  façon fiable, et un clic ne prend qu'après une capture d'écran. Contourné par la page de
+  chaque clé, avec vérification du nom et du suffixe avant chaque clic. Une fausse alerte
+  au passage : une fenêtre « Create API Key » cachée, toujours présente dans la page, que
+  j'ai d'abord crue ouverte — le décompte final (18 clés) confirme que rien n'a été créé.
 - `Maudios` survit dans une dizaine d'anciennes sauvegardes `.env.bak-*` du VPS. Inerte
   désormais (401), mais ces fichiers gardent aussi d'autres secrets périmés : à purger un
   jour, avec la même prudence.
