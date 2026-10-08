@@ -24,6 +24,10 @@ prochaine-action: Soumettre le formulaire d'accès Community Management de Linke
   abandonnée le 16/09. Aucun import, ni par chemin ni par symbole exporté. Typecheck,
   lint et 95 tests verts ; le manifeste est identique après build, donc le site servi n'a
   pas changé d'un octet et il n'y avait rien à déployer.
+- **Clé `re-enghien` plafonnée à 1 $ par jour**, sur ordre de Laurent. C'était la seule clé
+  en service sans aucun plafond. Mesure avant : 2,07 $ consommés depuis février, 0,03 $
+  sur 30 jours, 0 $ ce mois-ci. Vérifié par l'API après coup : `limit: 1`,
+  `limit_reset: daily`, clé toujours fonctionnelle.
 - Point des chantiers ouverts fait pour Laurent, à partir du HANDOFF et de `ops/BACKLOG.md`.
 
 ## Cassé
@@ -32,13 +36,18 @@ prochaine-action: Soumettre le formulaire d'accès Community Management de Linke
   OpenRouter. La console n'est ouverte que dans le Chrome de Laurent ; la suppression est
   donc passée par Claude in Chrome, la clé repérée à son nom et à son suffixe affiché, et la
   ligne montrée à Laurent avant de cliquer.
+- Piège évité sur `re-enghien` : la console n'active la remise à zéro qu'après la saisie
+  du montant, et la coche verte enregistre le montant seul. Valider 1 $ avec « Reset
+  limit » encore sur N/A aurait posé un plafond **à vie**, déjà dépassé par les 2,07 $
+  consommés : la clé aurait cessé de fonctionner sur-le-champ. Remise à zéro réglée sur
+  « Daily » d'abord (au clavier, le clic sur l'option ne prenait pas), montant ensuite.
 - `Maudios` survit dans une dizaine d'anciennes sauvegardes `.env.bak-*` du VPS. Inerte
   désormais (401), mais ces fichiers gardent aussi d'autres secrets périmés : à purger un
   jour, avec la même prudence.
 
 ## Reste
 
-- C20 : `Seo` (trois conteneurs **et** le shell local de Laurent), `Oracle` (deux
-  conteneurs), et `re-enghien`, la seule clé en service sans aucun plafond.
+- C20 : `Seo` (trois conteneurs **et** le shell local de Laurent) et `Oracle` (deux
+  conteneurs), toutes deux partagées entre plusieurs projets.
 - Arbitrages de Laurent : formulaire LinkedIn avant le 9/10, indexation des pages légales,
   délais « réponse sous 24 h », Traefik (C39), règles de pare-feu (C41), dépôt privé (C2).
