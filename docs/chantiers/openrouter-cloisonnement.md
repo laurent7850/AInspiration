@@ -317,3 +317,10 @@ plus qu'à `seopilot-web` et `seopilot-worker`, `Oracle` qu'à `dreamoracle`. Le
 répondent 200, aucun redémarrage en boucle. **Reste** : la variable Windows
 `OPENROUTER_API_KEY` du compte de Laurent, qui porte encore `Seo` — à supprimer, ou à
 remplacer par une clé `poste-laurent`.
+
+### Chantier clos le 08/10/2026
+
+Laurent a supprimé la variable Windows `OPENROUTER_API_KEY` de son compte ; vérifié absente
+des portées utilisateur et machine. Plus aucun poste ni conteneur ne partage une clé de
+production. **Si un usage local d'OpenRouter revient** : créer une clé dédiée au poste
+(`poste-laurent`, 1 $/jour), jamais réutiliser celle d'un projet.

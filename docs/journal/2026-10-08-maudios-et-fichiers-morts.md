@@ -42,6 +42,8 @@ prochaine-action: Soumettre le formulaire d'accès Community Management de Linke
   `n8n2026`, `nosta`, `Labo Nosta`, deux `pour n8n cloud`, `test n8n`, `base`. Contrôle
   final : 18 clés, toutes plafonnées au jour, aucune inattendue ; 13 conteneurs sur 13
   avec une clé valide.
+- **Variable Windows `OPENROUTER_API_KEY` retirée par Laurent** — elle portait la clé de
+  SEOPilot. Vérifié : absente des portées utilisateur et machine. **C20 clos.**
 - Point des chantiers ouverts fait pour Laurent, à partir du HANDOFF et de `ops/BACKLOG.md`.
 
 ## Cassé
@@ -75,7 +77,5 @@ prochaine-action: Soumettre le formulaire d'accès Community Management de Linke
 
 ## Reste
 
-- C20 : la variable Windows `OPENROUTER_API_KEY` de Laurent porte encore `Seo` — à
-  supprimer, ou à remplacer par une clé `poste-laurent`.
 - Arbitrages de Laurent : formulaire LinkedIn avant le 9/10, indexation des pages légales,
   délais « réponse sous 24 h », Traefik (C39), règles de pare-feu (C41), dépôt privé (C2).
