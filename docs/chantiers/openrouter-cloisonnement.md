@@ -59,8 +59,15 @@ l'historique, ni par une conversation :
 
 ```bash
 ssh -i ~/.ssh/vps767464_ed25519 root@193.203.191.251 \
-  'read -rs K && f=/docker/ainspiration/.env && sed -i "/^OPENROUTER_API_KEY=/d" "$f" && printf "OPENROUTER_API_KEY=%s\n" "$K" >> "$f" && chmod 600 "$f" && echo ecrit'
+  'printf "Colle la cle puis Entree : " >&2; read -rs K; K=$(printf %s "$K" | tr -d "\r\n\t "); if ! printf %s "$K" | grep -qE "^sk-or-v1-[0-9a-f]{64}$"; then echo; echo "REFUS : la valeur collee n a pas la forme sk-or-v1- + 64 caracteres hexa (${#K} car.)"; exit 1; fi; f=/docker/ainspiration/.env && sed -i "/^OPENROUTER_API_KEY=/d" "$f" && printf "OPENROUTER_API_KEY=%s\n" "$K" >> "$f" && chmod 600 "$f" && echo && echo ecrit'
 ```
+
+**Le contrôle de forme est indispensable (08/10).** Les deux clés collées ce jour-là ont été
+écrites avec **une lettre `n` en trop** à la fin (74 caractères au lieu de 73) — vraisemblablement
+un `\n` collé avec la valeur, dont la barre oblique a été avalée. OpenRouter les refusait (401) ;
+un redémarrage des conteneurs aurait coupé l'IA de Firecrawl et de Rampa. Trouvé avant le
+redémarrage, en interrogeant `/api/v1/key` sur le fichier, et corrigé en tronquant à 73. **Toujours
+vérifier la clé dans le fichier avant de recréer un conteneur.**
 
 Remplacer `f=` par le fichier de la ligne :
 
@@ -270,3 +277,11 @@ Contrôle par empreinte : `seopilot-web` et `seopilot-worker` restent seuls sur 
 `dreamoracle` seul sur `Oracle`, et les deux nouvelles clés répondent `limit_reset: daily`.
 **Aucune clé à supprimer** à la fin de cette étape.
 
+### Fait le 08/10/2026
+
+`firecrawl-toolkit` et `rampa-web` portent chacun leur clé (1 $/jour, `limit_reset: daily`,
+vérifié sur la clé **chargée par le conteneur**, pas seulement sur le fichier). `Seo` ne sert
+plus qu'à `seopilot-web` et `seopilot-worker`, `Oracle` qu'à `dreamoracle`. Les deux sites
+répondent 200, aucun redémarrage en boucle. **Reste** : la variable Windows
+`OPENROUTER_API_KEY` du compte de Laurent, qui porte encore `Seo` — à supprimer, ou à
+remplacer par une clé `poste-laurent`.

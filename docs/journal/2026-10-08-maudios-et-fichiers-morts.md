@@ -28,6 +28,14 @@ prochaine-action: Soumettre le formulaire d'accès Community Management de Linke
   en service sans aucun plafond. Mesure avant : 2,07 $ consommés depuis février, 0,03 $
   sur 30 jours, 0 $ ce mois-ci. Vérifié par l'API après coup : `limit: 1`,
   `limit_reset: daily`, clé toujours fonctionnelle.
+- **Firecrawl Toolkit et Rampa sortis des clés `Seo` et `Oracle`.** Inventaire par
+  empreinte : `Seo` servait SEOPilot, `firecrawl-toolkit` et le poste de Laurent ; `Oracle`
+  servait DreamOracle et `rampa-web`. Laurent a corrigé ma lecture : `Seo` **est** la clé de
+  SEOPilot et `Oracle` celle de DreamOracle — il ne s'agissait pas de les remplacer mais d'en
+  sortir les intrus. Deux clés créées par Laurent (1 $/jour chacune), posées, conteneurs
+  recréés ; vérifié sur la clé chargée par chaque conteneur, sites en 200.
+- Droits corrigés sur quatre fichiers de secrets de `firecrawl-toolkit` et `rampa-rag`,
+  lisibles par tout compte du VPS (644 → 600).
 - Point des chantiers ouverts fait pour Laurent, à partir du HANDOFF et de `ops/BACKLOG.md`.
 
 ## Cassé
@@ -41,13 +49,22 @@ prochaine-action: Soumettre le formulaire d'accès Community Management de Linke
   limit » encore sur N/A aurait posé un plafond **à vie**, déjà dépassé par les 2,07 $
   consommés : la clé aurait cessé de fonctionner sur-le-champ. Remise à zéro réglée sur
   « Daily » d'abord (au clavier, le clic sur l'option ne prenait pas), montant ensuite.
+- **Les deux clés collées portaient une lettre `n` en trop** (74 caractères au lieu de 73),
+  probablement le reste d'un `\n` collé avec la valeur. OpenRouter les refusait. Vu en
+  interrogeant l'API sur le fichier **avant** de redémarrer : sans ce contrôle, Firecrawl et
+  Rampa perdaient l'IA. Corrigé en tronquant à 73 ; la commande de pose refuse désormais
+  toute valeur qui n'a pas la forme `sk-or-v1-` + 64 caractères hexadécimaux.
+- J'avais d'abord présenté `Seo` et `Oracle` comme des clés partagées à remplacer : c'était
+  faux, Laurent a rectifié.
+- Le heredoc de Git Bash a encore mangé des barres obliques dans un script de traces :
+  repris par l'outil d'écriture, rien n'avait été écrit entre-temps.
 - `Maudios` survit dans une dizaine d'anciennes sauvegardes `.env.bak-*` du VPS. Inerte
   désormais (401), mais ces fichiers gardent aussi d'autres secrets périmés : à purger un
   jour, avec la même prudence.
 
 ## Reste
 
-- C20 : `Seo` (trois conteneurs **et** le shell local de Laurent) et `Oracle` (deux
-  conteneurs), toutes deux partagées entre plusieurs projets.
+- C20 : la variable Windows `OPENROUTER_API_KEY` de Laurent porte encore `Seo` — à
+  supprimer, ou à remplacer par une clé `poste-laurent`.
 - Arbitrages de Laurent : formulaire LinkedIn avant le 9/10, indexation des pages légales,
   délais « réponse sous 24 h », Traefik (C39), règles de pare-feu (C41), dépôt privé (C2).
