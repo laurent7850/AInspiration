@@ -44,6 +44,13 @@ prochaine-action: Soumettre le formulaire d'accès Community Management de Linke
   avec une clé valide.
 - **Variable Windows `OPENROUTER_API_KEY` retirée par Laurent** — elle portait la clé de
   SEOPilot. Vérifié : absente des portées utilisateur et machine. **C20 clos.**
+- **Vieilles sauvegardes de configuration mises en quarantaine sur le VPS.** 30 fichiers
+  `.env.bak*` / `.env.backup*` répartis dans 11 projets, tous en 600, aucun référencé par un
+  compose. Règle appliquée : garder la **sauvegarde la plus récente** de chaque fichier en
+  service (11 gardées, dont celles d'Audityo-dev datées du 07/10, filet d'un travail en
+  cours ailleurs) et déplacer les 19 autres dans `/root/quarantaine-env-20261008/` (700,
+  arborescence d'origine conservée). Rien n'est effacé : la suppression définitive revient
+  à Laurent. Composes revalidés ensuite ; tous les conteneurs concernés tournent.
 - Point des chantiers ouverts fait pour Laurent, à partir du HANDOFF et de `ops/BACKLOG.md`.
 
 ## Cassé
@@ -71,9 +78,10 @@ prochaine-action: Soumettre le formulaire d'accès Community Management de Linke
   chaque clé, avec vérification du nom et du suffixe avant chaque clic. Une fausse alerte
   au passage : une fenêtre « Create API Key » cachée, toujours présente dans la page, que
   j'ai d'abord crue ouverte — le décompte final (18 clés) confirme que rien n'a été créé.
-- `Maudios` survit dans une dizaine d'anciennes sauvegardes `.env.bak-*` du VPS. Inerte
-  désormais (401), mais ces fichiers gardent aussi d'autres secrets périmés : à purger un
-  jour, avec la même prudence.
+- Fausse alerte en vérifiant : le compose de CommunityOS échoue sans `--env-file` (variable
+  `POSTGRES_PASSWORD` absente) — ce projet reçoit son `.env` explicitement, comme le
+  montre le label `com.docker.compose.project.environment_file`. Avec lui, il est valide.
+  **Pour valider un compose, relire d'abord ce label sur le conteneur.**
 
 ## Reste
 
