@@ -1,0 +1,44 @@
+---
+date: 2026-10-08
+projet: AInspiration
+ou: Claude Code
+type: Avancée
+notion: non
+prochaine-action: Soumettre le formulaire d'accès Community Management de LinkedIn avant le 9 octobre
+---
+
+## Fait
+
+- **Clé OpenRouter `Maudios` supprimée**, l'ancienne clé maîtresse que sept conteneurs se
+  partageaient jusqu'au 25/09. Preuve d'inactivité réunie avant de toucher à quoi que ce
+  soit :
+  - interrogée avec sa propre valeur, lue dans une ancienne sauvegarde du VPS et jamais
+    affichée : 0 $ sur le jour, la semaine et le mois ;
+  - aucun des 48 conteneurs en marche ne la porte (comparaison par empreinte SHA-256) ;
+  - la console OpenRouter indique une dernière utilisation il y a 15 jours.
+  Supprimée dans la console, sur ordre de Laurent. Contrôle après coup : la clé répond
+  **401**, une clé en service prise comme témoin répond 200, et la recherche « Maudios » ne
+  renvoie plus rien dans la console.
+- **Trois fichiers morts supprimés** (C46, commit `625504b`) : `auditLiveProtocol.ts`,
+  `auditReportTemplate.ts`, `postAuditEmails.ts`, restes de l'offre d'audit gratuit
+  abandonnée le 16/09. Aucun import, ni par chemin ni par symbole exporté. Typecheck,
+  lint et 95 tests verts ; le manifeste est identique après build, donc le site servi n'a
+  pas changé d'un octet et il n'y avait rien à déployer.
+- Point des chantiers ouverts fait pour Laurent, à partir du HANDOFF et de `ops/BACKLOG.md`.
+
+## Cassé
+
+- Rien. Une surprise de méthode : le navigateur intégré n'est **pas** connecté à
+  OpenRouter. La console n'est ouverte que dans le Chrome de Laurent ; la suppression est
+  donc passée par Claude in Chrome, la clé repérée à son nom et à son suffixe affiché, et la
+  ligne montrée à Laurent avant de cliquer.
+- `Maudios` survit dans une dizaine d'anciennes sauvegardes `.env.bak-*` du VPS. Inerte
+  désormais (401), mais ces fichiers gardent aussi d'autres secrets périmés : à purger un
+  jour, avec la même prudence.
+
+## Reste
+
+- C20 : `Seo` (trois conteneurs **et** le shell local de Laurent), `Oracle` (deux
+  conteneurs), et `re-enghien`, la seule clé en service sans aucun plafond.
+- Arbitrages de Laurent : formulaire LinkedIn avant le 9/10, indexation des pages légales,
+  délais « réponse sous 24 h », Traefik (C39), règles de pare-feu (C41), dépôt privé (C2).
