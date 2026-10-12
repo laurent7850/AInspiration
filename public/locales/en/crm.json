@@ -151,7 +151,8 @@
     "messages": "Messages",
     "newsletter": "Newsletter",
     "linkedin": "LinkedIn",
-    "blog": "Articles"
+    "blog": "Articles",
+    "unreadMessages": "unread message(s)"
   },
   "pages": {
     "companies": {

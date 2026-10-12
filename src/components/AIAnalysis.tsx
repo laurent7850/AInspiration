@@ -69,12 +69,12 @@ export default function AIAnalysis() {
               <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs">
                 <Clock className="w-8 h-8 text-white mx-auto mb-2" />
                 <div className="text-3xl font-bold mb-1">30 min</div>
-                <div className="text-indigo-100">{t('animatedStats.audit')}</div>
+                <div className="text-indigo-100">{t('animatedStats.audit', { ns: 'common' })}</div>
               </div>
               <div className="bg-white/10 rounded-lg p-4 backdrop-blur-xs">
                 <ShieldCheck className="w-8 h-8 text-white mx-auto mb-2" />
                 <div className="text-3xl font-bold mb-1">100%</div>
-                <div className="text-indigo-100">{t('animatedStats.eu')}</div>
+                <div className="text-indigo-100">{t('animatedStats.eu', { ns: 'common' })}</div>
               </div>
             </div>
           </div>

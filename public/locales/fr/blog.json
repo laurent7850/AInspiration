@@ -3,6 +3,7 @@
   "subtitle": "Insights et actualités sur l'IA pour les entreprises",
   "noArticles": "Aucun article disponible pour le moment.",
   "loadError": "Erreur lors du chargement des articles",
+  "loading": "Chargement…",
   "readArticle": "Lire l'article",
   "minRead": "min",
   "enhancedContent": {

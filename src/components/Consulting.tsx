@@ -185,8 +185,8 @@ export default function Consulting() {
           buttonAction={() => setShowStartForm(true)}
           solid
           stats={[
-            { value: "30 min", label: t('animatedStats.audit'), icon: Zap },
-            { value: "15", label: t('animatedStats.live'), icon: Users },
+            { value: "30 min", label: t('animatedStats.audit', { ns: 'common' }), icon: Zap },
+            { value: "15", label: t('animatedStats.live', { ns: 'common' }), icon: Users },
           ]}
         />
       </div>

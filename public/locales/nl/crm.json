@@ -151,7 +151,8 @@
     "messages": "Berichten",
     "newsletter": "Nieuwsbrief",
     "linkedin": "LinkedIn",
-    "blog": "Artikels"
+    "blog": "Artikels",
+    "unreadMessages": "ongelezen bericht(en)"
   },
   "pages": {
     "companies": {
