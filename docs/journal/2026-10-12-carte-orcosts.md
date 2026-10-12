@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Avancée
 notion: non
-prochaine-action: rien — chantier clos ; revoir le cache de 5 min si Laurent veut des chiffres plus frais
+prochaine-action: le 13/10 après 10 h, ouvrir /crm-dashboard en admin et vérifier que « Dernière collecte » date du matin même — preuve que les lectures de 6 h et 10 h ont eu lieu
 ---
 
 ## Fait

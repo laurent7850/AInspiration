@@ -90,6 +90,11 @@ ou aux composants CRM.
 ### Ce qui tourne
 
 - Site public et CRM en production, cloisonnement démo/réel vérifié (15/09).
+- **Carte « Coûts OpenRouter » sur `/crm-dashboard` depuis le 12/10**, admin seulement
+  (vu par Laurent : affichée en admin, absente en démo). ORcosts lu par le serveur quatre
+  fois par jour (6/10/14/18 h Bruxelles) via `orcosts-app-1:3000`, jeton jamais côté
+  navigateur. Dépend de deux variables, `ORCOSTS_API_URL` et `ORCOSTS_API_TOKEN`, dans le
+  `.env` du VPS **et** dans le compose.
 - Les 4 formulaires du site créent une fiche dans le CRM, avec un champ `source`.
 - Authentification des workflows n8n par `SERVICE_SECRET` : indépendant de `JWT_SECRET`,
   sans expiration, n'ouvre que les deux routes nécessaires. 8 tests la verrouillent.
@@ -385,6 +390,17 @@ ou aux composants CRM.
 - **`npm ci` échoue parfois en `EBUSY` à cause d'OneDrive**, qui tient un fichier de `node_modules`
   pendant sa synchronisation. Ce n'est pas un problème de dépendances : `rm -rf node_modules` puis
   relancer. Vu deux fois le 18/09, toujours sur `lucide-react`.
+- **Une variable posée dans le `.env` du VPS n'atteint pas le conteneur tant que le compose ne
+  la transmet pas.** Le conteneur `web` n'a pas ce `.env` : dotenv y lit `/app/.env`, vide, et le
+  compose ne passe que les clés listées sous `environment:` du service, en `${VAR}`. Le 12/10,
+  `ORCOSTS_*` étaient dans `.env` et absentes du compose — la carte aurait dit « indisponible »
+  sans autre signe. Vérifier avec `docker compose config | grep -c "^\s*VAR: ."` **avant** le
+  recreate, et avec `docker exec web env | grep -c VAR` après. Même règle que `INGEST_SECRET`.
+- **Deux fichiers de test qui tirent leurs ports dans la même plage se font tomber l'un
+  l'autre, au hasard.** `node --test` lance les fichiers en parallèle ; `orcosts`, `audityo-probe`
+  et `task-secret` partageaient 3700-3799 : huit échecs un passage, zéro le suivant. Un nouveau
+  fichier qui lance `server.js` prend une plage **à lui** (`grep -n "const PORT" test/*.mjs`).
+  `audityo-probe` et `task-secret` se chevauchent encore, préexistant.
 - **Un fichier de test non listé dans `package.json` ne tourne jamais, en silence.** Le script
   `test` de `docker/backend/package.json` énumère les fichiers un par un. Un nouveau test y est
   invisible tant qu'on ne l'ajoute pas : même classe de panne muette que `files.txt`, qui liste
