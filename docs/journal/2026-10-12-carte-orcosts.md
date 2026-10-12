@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Avancée
 notion: non
-prochaine-action: Laurent valide, pousse, puis docker compose up -d --build dans /docker/ainspiration et vérifie la carte sur /crm-dashboard en admin
+prochaine-action: Laurent ouvre /crm-dashboard connecté en admin et regarde la carte (et en démo, son absence)
 ---
 
 ## Fait
@@ -51,9 +51,27 @@ prochaine-action: Laurent valide, pousse, puis docker compose up -d --build dans
   est enregistrée dans `server.js` ; le script `npm test` du backend inclut le nouveau
   fichier ; variables documentées dans `CLAUDE.md`.
 
+- **Déployé et vérifié le même jour, sur ordre de Laurent.** Push (CI verte), `npm run
+  build` (manifeste `01abfc7`), Netlify en production, recreate de `web`
+  (19 fichiers backend, 215 fichiers frontend). Contrôles : anonyme → 401 sur la
+  route ; l'`index` servi est celui du build et le chunk `CrmDashboardPage` contient la
+  carte ; dans le conteneur, les deux variables sont présentes et le **client de
+  production** lit ORcosts en 200 par `http://orcosts-app-1:3000` — la réponse réelle
+  passe le schéma strict (5 applications, 1 clé non rattachée, tendance chiffrée) ;
+  contrôle de santé **28/28**.
+- **Trouvé en déployant : le compose du VPS ne transmettait pas les variables.** Elles
+  étaient dans `/docker/ainspiration/.env`, mais rien ne les passait au service `web`
+  (le conteneur n'a pas ce `.env`, dotenv y lit `/app/.env`, vide). Ajoutées sur le
+  modèle des autres secrets, `ORCOSTS_API_URL: ${ORCOSTS_API_URL}` et
+  `ORCOSTS_API_TOKEN: ${ORCOSTS_API_TOKEN}`, sous `TASK_OWNER_EMAIL` ; sauvegarde
+  `docker-compose.yml.bak-20261012-orcosts`. Sans cela la carte aurait dit
+  « indisponible » (`not_configured`) et rien d'autre — c'est le comportement voulu,
+  mais ça aurait été muet. Règle inchangée : **une variable vit dans le `.env` ET dans
+  le compose**, voir la note de mémoire sur l'ingestion.
+
 ## Cassé
 
-- Rien. Rien n'est déployé : le code est commité, pas poussé.
+- Rien.
 
 ## Reste
 
@@ -64,10 +82,6 @@ prochaine-action: Laurent valide, pousse, puis docker compose up -d --build dans
   « Distr'Action SRL », entrée « ORcosts — API token »). Note : en dev, le proxy Vite
   envoie `/api` vers le VPS de production ; le backend local ne sert que si on le
   lance avec sa propre base.
-- **Déploiement, après validation de Laurent :** push, puis `docker compose up -d
-  --build` dans `/docker/ainspiration` (les deux variables y sont déjà, dans `.env`,
-  pas encore chargées par les conteneurs), puis contrôle : connecté en admin,
-  `/crm-dashboard` montre la carte ; connecté en démo, rien. `npm run build` n'a pas
-  été lancé, le manifeste de frontend est inchangé — à faire au déploiement.
-- **Pas de vérification visuelle dans un navigateur** : la carte n'apparaît qu'en
-  admin, et la production n'a pas encore la route. À regarder au premier déploiement.
+- **Vérification visuelle en admin** : la session n'a pas les identifiants (1Password)
+  et ne saisit pas de mot de passe. Laurent ouvre `/crm-dashboard` en admin : la carte
+  est sous les accès rapides ; en démo, elle est absente.
