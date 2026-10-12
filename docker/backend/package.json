@@ -9,16 +9,16 @@
     "test": "node --test test/sanitize.test.mjs test/seo-meta.test.mjs test/uuid-format.test.mjs test/auth-routes.test.mjs test/service-auth.test.mjs test/task-secret.test.mjs test/audityo-probe.test.mjs test/orcosts.test.mjs test/db-smoke.test.mjs"
   },
   "dependencies": {
-    "express": "^5.2.1",
-    "pg": "^8.23.0",
+    "express": "^5.3.0",
+    "pg": "^8.23.1",
     "cors": "^2.8.5",
     "dotenv": "^17.4.2",
     "uuid": "^14.0.2",
     "jsonwebtoken": "^9.0.2",
     "bcryptjs": "^3.0.3",
-    "compression": "^1.8.1",
+    "compression": "^1.8.2",
     "helmet": "^8.3.0",
-    "express-rate-limit": "^8.7.0",
-    "zod": "^4.6.2"
+    "express-rate-limit": "^8.7.1",
+    "zod": "^4.6.5"
   }
 }
