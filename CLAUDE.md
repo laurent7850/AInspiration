@@ -651,6 +651,7 @@ Le container télécharge le frontend depuis Netlify au démarrage selon `docker
 - `PORT` (3001)
 - `INGEST_SECRET` — ingestion des prospects, sonde de surveillance, relecture et purge de la sonde Audityo
 - `SERVICE_SECRET` — publication de l'auto-blog et lecture des abonnés par n8n
+- `ORCOSTS_API_TOKEN` + `ORCOSTS_API_URL` — carte « Coûts OpenRouter » du tableau de bord CRM (12/10/2026). Jeton lu par `docker/backend/orcosts.js` seulement, jamais côté navigateur ; variable absente = carte « Chiffres indisponibles », jamais un appel sans jeton. URL vide = `https://orcosts.distr-action.com` ; sur le VPS `http://orcosts-app-1:3000` (réseau `root_default`). Une seule route, `GET /api/admin/orcosts-summary`, réservée à `role = 'admin'` (le compte démo est public : 403), réponse déjà validée par Zod strict, tronquée aux cinq premières applications et mise en cache 5 min côté serveur. Verrouillé par `docker/backend/test/orcosts.test.mjs` et `src/components/crm/OpenRouterCostsCard.test.tsx`.
 
 ---
 

@@ -9,6 +9,7 @@ seo-meta.js
 crypto.js
 linkedin.js
 content-generator.js
+orcosts.js
 routes/auth.js
 routes/blog.js
 routes/crm.js
@@ -17,5 +18,6 @@ routes/webhooks.js
 routes/linkedin.js
 routes/seo.js
 routes/service-tasks.js
+routes/orcosts.js
 package.json
 package-lock.json

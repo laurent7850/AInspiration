@@ -34,4 +34,7 @@ export const qk = {
     list: ['products', 'list'] as const,
     detail: (id: string) => ['products', 'detail', id] as const,
   },
+  orcosts: {
+    card: ['orcosts', 'card'] as const,
+  },
 };

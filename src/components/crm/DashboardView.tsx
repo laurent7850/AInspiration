@@ -17,6 +17,7 @@ import { Opportunity, Task, Contact, Activity } from '../../utils/types';
 import PipelineChart from './charts/PipelineChart';
 import SalesPerformanceChart from './charts/SalesPerformanceChart';
 import CrmQuickLinks from './CrmQuickLinks';
+import OpenRouterCostsCard from './OpenRouterCostsCard';
 import AdvancedStats from './AdvancedStats';
 import AIInsights from './AIInsights';
 import LeadScoring from './LeadScoring';
@@ -203,6 +204,9 @@ const DashboardView: React.FC = () => {
         <>
           {/* Quick Links */}
           <CrmQuickLinks />
+
+          {/* OpenRouter costs (admin only — renders nothing for the demo account) */}
+          <OpenRouterCostsCard />
 
           {/* AI Insights Summary - Compact version */}
           <AIInsights

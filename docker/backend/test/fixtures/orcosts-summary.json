@@ -1,0 +1,91 @@
+{
+  "generatedAt": "2026-10-12T07:30:00.000Z",
+  "lastCollectionAt": "2026-10-12T07:00:02.000Z",
+  "dashboardUrl": "https://orcosts.distr-action.com",
+  "currency": "EUR",
+  "period": { "from": "2026-10-01", "to": "2026-10-12" },
+  "totals": {
+    "todayEur": 1.84,
+    "last7Eur": 12.4,
+    "monthEur": 38.12,
+    "periodEur": 38.12,
+    "periodUsd": 41.0132,
+    "periodRequests": 1532,
+    "billableEur": 46.9,
+    "previousPeriodEur": 31.05,
+    "trend": 0.228
+  },
+  "applications": [
+    {
+      "id": 3,
+      "name": "Paperclip (agents IA)",
+      "client": "Radio Horizon",
+      "eur": 20.1,
+      "usd": 21.62,
+      "requests": 800,
+      "marginPct": 25,
+      "billableEur": 25.13,
+      "trend": 0.12
+    },
+    {
+      "id": 1,
+      "name": "SEOPilot",
+      "client": null,
+      "eur": 8.2,
+      "usd": 8.82,
+      "requests": 310,
+      "marginPct": null,
+      "billableEur": null,
+      "trend": null
+    },
+    {
+      "id": 5,
+      "name": "DreamOracle",
+      "client": "Radio Horizon",
+      "eur": 4.2,
+      "usd": 4.52,
+      "requests": 190,
+      "marginPct": 25,
+      "billableEur": 5.25,
+      "trend": -0.05
+    },
+    {
+      "id": 7,
+      "name": "Chat AInspiration",
+      "client": null,
+      "eur": 2.9,
+      "usd": 3.12,
+      "requests": 120,
+      "marginPct": null,
+      "billableEur": null,
+      "trend": 0.4
+    },
+    {
+      "id": 2,
+      "name": "Auto-blog",
+      "client": null,
+      "eur": 1.6,
+      "usd": 1.72,
+      "requests": 70,
+      "marginPct": null,
+      "billableEur": null,
+      "trend": 0.02
+    },
+    {
+      "id": 9,
+      "name": "Firecrawl Toolkit",
+      "client": null,
+      "eur": 0.65,
+      "usd": 0.7,
+      "requests": 42,
+      "marginPct": null,
+      "billableEur": null,
+      "trend": null
+    }
+  ],
+  "clients": [
+    { "name": "Radio Horizon", "applications": 2, "eur": 24.3, "billableEur": 30.38 }
+  ],
+  "unassigned": { "eur": 0.47, "keys": 1 },
+  "legacyEur": 0
+}
