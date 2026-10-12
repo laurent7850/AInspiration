@@ -13,10 +13,12 @@
  *   1. tout ce qui vient du réseau passe par un schéma Zod STRICT — une clé
  *      inconnue, un type inattendu, un JSON tronqué = « indisponible », jamais
  *      une valeur partielle affichée comme vraie ;
- *   2. le résultat est mis en cache 5 minutes (ORcosts limite à 20 requêtes
- *      par minute et par IP, et un tableau de bord rechargé dix fois ne doit pas
- *      les consommer) ; un échec est lui aussi retenu, 60 s, ou le `Retry-After`
- *      d'un 429, pour ne pas marteler un service qui vient de refuser ;
+ *   2. ORcosts n'est lu que QUATRE fois par jour : à 6 h, 10 h, 14 h et 18 h,
+ *      heure de Bruxelles (décision de Laurent du 12/10/2026 — des chiffres
+ *      rafraîchis toutes les quatre heures entre 6 h et 20 h suffisent). Un
+ *      résultat est retenu jusqu'au créneau suivant ; de 18 h à 6 h, la carte
+ *      montre les chiffres de 18 h. Un échec, lui, est retenu 60 s, ou le
+ *      `Retry-After` d'un 429, pour réessayer sans marteler ;
  *   3. aucune erreur ne remonte brute : le résultat est `{ available: false,
  *      reason }` avec une raison parmi six mots-clés, et le message d'origine
  *      ne sort pas du serveur. Une variable absente FERME la porte
@@ -30,7 +32,9 @@ const DEFAULT_DASHBOARD_URL = 'https://orcosts.distr-action.com';
 const DEFAULT_API_URL = 'https://orcosts.distr-action.com';
 const SUMMARY_PATH = '/api/v1/summary';
 
-const CACHE_TTL_MS = 5 * 60 * 1000;
+// Heures (Europe/Brussels) auxquelles un résultat retenu devient périmé.
+const REFRESH_HOURS = [6, 10, 14, 18];
+const REFRESH_TIMEZONE = 'Europe/Brussels';
 const FAILURE_TTL_MS = 60 * 1000;
 const FAILURE_TTL_MAX_MS = 5 * 60 * 1000;
 const TIMEOUT_MS = 5000;
@@ -117,6 +121,27 @@ function toCard(summary) {
     })),
     unassignedKeys: summary.unassigned.keys,
   };
+}
+
+// Instant (ms UTC) du prochain créneau de rafraîchissement après `nowMs`.
+//
+// Calculé dans le fuseau de Bruxelles : la différence entre maintenant et le
+// créneau est prise en heures locales, puis retranchée en millisecondes. Le
+// seul écart possible est le changement d'heure, qui tombe toujours la nuit
+// entre 18 h et 6 h : deux jours par an, la lecture de 6 h se fait à 5 h ou à
+// 7 h. Acceptable pour des coûts lus quatre fois par jour.
+const brusselsParts = new Intl.DateTimeFormat('en-GB', {
+  timeZone: REFRESH_TIMEZONE,
+  hour: 'numeric', minute: 'numeric', second: 'numeric', hourCycle: 'h23',
+});
+
+function nextRefreshAt(nowMs) {
+  const parts = Object.fromEntries(brusselsParts.formatToParts(new Date(nowMs)).map((p) => [p.type, p.value]));
+  const hour = Number(parts.hour);
+  const sinceHourMs = Number(parts.minute) * 60_000 + Number(parts.second) * 1_000 + (nowMs % 1_000);
+  const next = REFRESH_HOURS.find((h) => h > hour);
+  const hoursAhead = next !== undefined ? next - hour : 24 - hour + REFRESH_HOURS[0];
+  return nowMs - sinceHourMs + hoursAhead * 3_600_000;
 }
 
 function unavailable(reason) {
@@ -206,7 +231,7 @@ function createOrcostsClient({
       return { value: unavailable('invalid'), ttl: FAILURE_TTL_MS };
     }
 
-    return { value: toCard(parsed.data), ttl: CACHE_TTL_MS };
+    return { value: toCard(parsed.data), ttl: nextRefreshAt(now()) - now() };
   }
 
   let inflight = null;
@@ -239,8 +264,9 @@ module.exports = {
   defaultClient,
   summarySchema,
   toCard,
+  nextRefreshAt,
   DEFAULT_DASHBOARD_URL,
-  CACHE_TTL_MS,
+  REFRESH_HOURS,
   FAILURE_TTL_MS,
   TIMEOUT_MS,
   TOP_APPLICATIONS,

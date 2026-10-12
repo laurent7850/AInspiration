@@ -20,8 +20,13 @@ prochaine-action: rien — chantier clos ; revoir le cache de 5 min si Laurent v
   `ORCOSTS_API_TOKEN` et `ORCOSTS_API_URL` au moment de l'appel, pose un délai de 5 s,
   valide la réponse avec un schéma Zod **strict** (clé inconnue ou type inattendu =
   indisponible), tronque aux cinq premières applications **côté serveur**, et retient
-  le résultat 5 minutes. Un échec est retenu lui aussi : 60 s, ou le `Retry-After`
-  d'un 429 (borné à 5 min), pour ne pas marteler un service qui vient de refuser.
+  le résultat. **D'abord 5 minutes ; puis, sur décision de Laurent le soir même,
+  quatre lectures par jour** — 6 h, 10 h, 14 h, 18 h heure de Bruxelles, le résultat
+  retenu jusqu'au créneau suivant, les chiffres de 18 h affichés jusqu'à 6 h. Calcul
+  dans le fuseau de Bruxelles ; les deux nuits de changement d'heure décalent la
+  lecture de 6 h d'une heure, assumé. Un échec est retenu 60 s, ou le `Retry-After`
+  d'un 429 (borné à 5 min), pour réessayer sans marteler un service qui vient de
+  refuser. Côté navigateur, `staleTime` passe à 15 min.
   Des appels simultanés ne font qu'une requête. Variable absente = porte fermée,
   jamais un appel sans jeton. Les journaux portent le code HTTP et les chemins
   fautifs du schéma, jamais le jeton, l'URL interne ni les valeurs.
@@ -84,3 +89,7 @@ prochaine-action: rien — chantier clos ; revoir le cache de 5 min si Laurent v
   lance avec sa propre base.
 - **Vérification visuelle faite par Laurent** dans son navigateur : la carte s'affiche
   connecté en admin, sous les accès rapides ; rien en démo. Chantier clos.
+- Trouvé en relançant la suite backend : **les tests de route d'`orcosts` tiraient
+  leurs ports dans 3700-3799, déjà pris par `audityo-probe` et `task-secret`** — huit
+  échecs transitoires une fois. Déplacés en 3600-3699. (`audityo-probe` et
+  `task-secret` se chevauchent toujours entre eux, préexistant, non touché.)

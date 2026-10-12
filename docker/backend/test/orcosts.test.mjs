@@ -3,7 +3,8 @@
  *
  * Deux niveaux :
  *   1. le client (orcosts.js), en mémoire, avec un `fetch` injecté : forme de
- *      la carte, schéma strict, cache 5 min, échecs retenus, 401/429/503/réseau
+ *      la carte, schéma strict, cache jusqu'au créneau suivant (6/10/14/18 h
+ *      Bruxelles), échecs retenus, 401/429/503/réseau
  *      transformés en « indisponible » sans fuite du message ni du jeton ;
  *   2. la route (routes/orcosts.js), contre un vrai server.js sans base et un
  *      faux ORcosts local : anonyme 401, authentifié non-admin 403, admin 200
@@ -22,7 +23,7 @@ import path from 'node:path';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
-const { createOrcostsClient, CACHE_TTL_MS, FAILURE_TTL_MS, TOP_APPLICATIONS } = require('../orcosts.js');
+const { createOrcostsClient, nextRefreshAt, FAILURE_TTL_MS, TOP_APPLICATIONS } = require('../orcosts.js');
 const jwt = require('jsonwebtoken');
 
 const FIXTURE = JSON.parse(readFileSync(path.join(here, 'fixtures', 'orcosts-summary.json'), 'utf8'));
@@ -175,21 +176,51 @@ describe('client ORcosts', () => {
     }
   });
 
-  test('un résultat est retenu 5 minutes, puis rafraîchi', async () => {
-    const clock = { t: 0 };
+  test('les créneaux de rafraîchissement sont 6 h, 10 h, 14 h et 18 h, heure de Bruxelles', () => {
+    const at = (iso) => Date.parse(iso);
+    // Été (CEST = UTC+2) : 10 h 30 à Bruxelles → prochain créneau 14 h = 12:00Z.
+    assert.equal(nextRefreshAt(at('2026-10-12T08:30:00Z')), at('2026-10-12T12:00:00Z'));
+    // Exactement sur un créneau : c'est le suivant qui compte.
+    assert.equal(nextRefreshAt(at('2026-10-12T08:00:00Z')), at('2026-10-12T12:00:00Z'));
+    // 19 h à Bruxelles → 6 h le lendemain = 04:00Z.
+    assert.equal(nextRefreshAt(at('2026-10-12T17:00:00Z')), at('2026-10-13T04:00:00Z'));
+    // 2 h du matin → 6 h le même jour.
+    assert.equal(nextRefreshAt(at('2026-10-12T00:15:00Z')), at('2026-10-12T04:00:00Z'));
+    // Hiver (CET = UTC+1) : 10 h 30 à Bruxelles → 14 h = 13:00Z.
+    assert.equal(nextRefreshAt(at('2026-12-01T09:30:00Z')), at('2026-12-01T13:00:00Z'));
+    // Jamais plus de 12 h d'attente, jamais dans le passé.
+    for (let h = 0; h < 48; h++) {
+      const t = at('2026-10-12T00:00:00Z') + h * 3_600_000 + 123;
+      const d = nextRefreshAt(t) - t;
+      assert.ok(d > 0 && d <= 12 * 3_600_000, `delta ${d} at +${h}h`);
+    }
+  });
+
+  test('un résultat est retenu jusqu’au créneau suivant, puis rafraîchi — quatre lectures par jour', async () => {
+    const clock = { t: Date.parse('2026-10-12T08:30:00Z') }; // 10 h 30 à Bruxelles
     const { client, calls } = makeClient({ responses: [json(FIXTURE), json(SPEC_EXAMPLE)], clock });
     const a = await client.getSummary();
-    clock.t = CACHE_TTL_MS - 1;
+    clock.t = Date.parse('2026-10-12T11:59:59Z'); // 13 h 59 — toujours la lecture de 10 h
     const b = await client.getSummary();
     assert.equal(calls.length, 1);
     assert.equal(a, b);
-    clock.t = CACHE_TTL_MS + 1;
+    clock.t = Date.parse('2026-10-12T12:00:01Z'); // 14 h 00 — nouvelle lecture
     const c = await client.getSummary();
     assert.equal(calls.length, 2);
     assert.equal(c.applications.length, 1);
+    // De 18 h à 6 h, rien : la carte garde les chiffres de 18 h.
+    clock.t = Date.parse('2026-10-12T16:30:00Z'); // 18 h 30
+    const { client: evening, calls: eveningCalls } = makeClient({ responses: [json(FIXTURE), json(FIXTURE)], clock });
+    await evening.getSummary();
+    clock.t = Date.parse('2026-10-13T03:59:00Z'); // 5 h 59 le lendemain
+    await evening.getSummary();
+    assert.equal(eveningCalls.length, 1);
+    clock.t = Date.parse('2026-10-13T04:00:30Z'); // 6 h 00
+    await evening.getSummary();
+    assert.equal(eveningCalls.length, 2);
   });
 
-  test('un échec est retenu 60 s, pas 5 minutes', async () => {
+  test('un échec est retenu 60 s, pas jusqu’au créneau suivant', async () => {
     const clock = { t: 0 };
     const { client, calls } = makeClient({ responses: [json({}, 503), json(FIXTURE)], clock });
     assert.equal((await client.getSummary()).available, false);
@@ -267,7 +298,9 @@ const sign = (role) => jwt.sign({ id: '00000000-0000-4000-8000-00000000000a', em
 const ROUTE = '/api/admin/orcosts-summary';
 
 describe('GET /api/admin/orcosts-summary', () => {
-  const PORT_OK = 3700 + Math.floor(Math.random() * 50);
+  // 3600-3699 : plage libre. 3700-3799 est déjà prise par audityo-probe et
+  // task-secret — une collision a fait tomber huit tests une fois (12/10/2026).
+  const PORT_OK = 3600 + Math.floor(Math.random() * 50);
   const PORT_DOWN = PORT_OK + 50;
   let okUpstream;
   let downUpstream;
