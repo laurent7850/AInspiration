@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Avancée
 notion: non
-prochaine-action: Laurent ouvre /crm-dashboard connecté en admin et regarde la carte (et en démo, son absence)
+prochaine-action: rien — chantier clos ; revoir le cache de 5 min si Laurent veut des chiffres plus frais
 ---
 
 ## Fait
@@ -82,6 +82,5 @@ prochaine-action: Laurent ouvre /crm-dashboard connecté en admin et regarde la 
   « Distr'Action SRL », entrée « ORcosts — API token »). Note : en dev, le proxy Vite
   envoie `/api` vers le VPS de production ; le backend local ne sert que si on le
   lance avec sa propre base.
-- **Vérification visuelle en admin** : la session n'a pas les identifiants (1Password)
-  et ne saisit pas de mot de passe. Laurent ouvre `/crm-dashboard` en admin : la carte
-  est sous les accès rapides ; en démo, elle est absente.
+- **Vérification visuelle faite par Laurent** dans son navigateur : la carte s'affiche
+  connecté en admin, sous les accès rapides ; rien en démo. Chantier clos.
