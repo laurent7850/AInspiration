@@ -75,6 +75,15 @@
         ],
         "createdAt": "2026-09-08T07:10:00.000Z",
         "reason": "false positive: the flagged element is the loading spinner (rounded-full + border-t/border-b), not a card with an accent border"
+      },
+      {
+        "rule": "ai-color-palette",
+        "value": "*",
+        "files": [
+          "src/components/crm/OpenRouterCostsCard.tsx"
+        ],
+        "createdAt": "2026-10-12T10:10:47.558Z",
+        "reason": "Project brand rule: indigo is the AInspiration identity colour (memory design-brand-name, text-indigo-600 on every CRM card: CrmQuickLinks, DashboardView KPI tiles, tab bar). Flat indigo-50/indigo-700 tile, no gradient."
       }
     ]
   }
