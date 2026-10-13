@@ -302,10 +302,7 @@
     "title": "CRM Dashboard",
     "subtitle": "Aangedreven door Kunstmatige Intelligentie",
     "tabs": {
-      "overview": "Overzicht",
-      "aiInsights": "AI-inzichten",
-      "leadScoring": "Lead Scoring",
-      "followUp": "Opvolgingen"
+      "overview": "Overzicht"
     },
     "kpi": {
       "pipelineValue": "Pipelinewaarde",

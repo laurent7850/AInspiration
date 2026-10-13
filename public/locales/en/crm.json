@@ -302,10 +302,7 @@
     "title": "CRM Dashboard",
     "subtitle": "Powered by Artificial Intelligence",
     "tabs": {
-      "overview": "Overview",
-      "aiInsights": "AI Insights",
-      "leadScoring": "Lead Scoring",
-      "followUp": "Follow-ups"
+      "overview": "Overview"
     },
     "kpi": {
       "pipelineValue": "Pipeline Value",

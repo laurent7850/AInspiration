@@ -302,10 +302,7 @@
     "title": "Tableau de bord CRM",
     "subtitle": "Propulsé par l'Intelligence Artificielle",
     "tabs": {
-      "overview": "Vue d'ensemble",
-      "aiInsights": "Insights IA",
-      "leadScoring": "Lead Scoring",
-      "followUp": "Relances"
+      "overview": "Vue d'ensemble"
     },
     "kpi": {
       "pipelineValue": "Valeur du pipeline",

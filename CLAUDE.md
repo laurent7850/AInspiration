@@ -83,7 +83,7 @@ Toutes ces pages sont wrappées dans `<PrivateRoute><CrmLayout>...</CrmLayout></
 
 | Route | Page | Namespace i18n | Composants CRM clés |
 |-------|------|----------------|---------------------|
-| `/crm-dashboard` | CrmDashboardPage | crm | DashboardView, AdvancedStats, AIInsights, LeadScoring |
+| `/crm-dashboard` | CrmDashboardPage | crm | DashboardView, AdvancedStats, OpenRouterCostsCard |
 | `/opportunities` | OpportunitiesPage | crm | OpportunityList, OpportunityKanban, OpportunityStats |
 | `/contacts` | ContactsPage | crm | ContactList, ContactDetail, ContactForm |
 | `/companies` | CompaniesPage | crm | CompanyList, CompanyDetail, CompanyForm |
@@ -143,10 +143,7 @@ CrmQuickLinks.tsx      → CrmDashboardPage
 DashboardView.tsx      → CrmDashboardPage
   ├── AdvancedStats
   ├── OpportunityStats
-  ├── LeadScoring      → n8nService (webhook)
-  ├── AIInsights       → n8nService (webhook)
   ├── ActivityFeed     → activityService
-  ├── FollowUpSuggestions → n8nService
   └── SmartRecommendations
 ContactList/Detail/Form → ContactsPage, liens depuis Opportunities, Tasks
 CompanyList/Detail/Form → CompaniesPage, liens depuis Contacts
@@ -204,7 +201,6 @@ Composant React
 | blogService | `/blog-posts` (fetch direct, pas api.ts) | BlogPage, BlogPostPage, BlogSidebar |
 | newsletterService | `/newsletter-subscribers`, `/newsletter-stats` | NewsletterAdminPage, PopupNewsletter |
 | accessLogService | `/access-logs` | AuthContext (login/logout tracking) |
-| n8nService | Webhooks N8N externes | LeadScoring, AIInsights, FollowUpSuggestions |
 | linkedinService | `/api/linkedin/*` (ou service externe) | LinkedinPage |
 | openRouterService | OpenRouter API (externe) | Génération contenu IA |
 
