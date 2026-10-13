@@ -4,7 +4,7 @@ projet: AInspiration
 ou: Claude Code
 type: Abandon
 notion: non
-prochaine-action: Dans l'interface n8n, cliquer « Archiver » sur « [ARCHIVÉ 2026-10-13] CRM Intelligent » et supprimer la credential « Header Auth account » (plus référencée, clé inconnue)
+prochaine-action: Dans l'interface n8n, cliquer « Archiver » sur « [ARCHIVÉ 2026-10-13] CRM Intelligent » (seul geste que l'API publique n'offre pas)
 ---
 
 ## Fait
@@ -38,5 +38,9 @@ prochaine-action: Dans l'interface n8n, cliquer « Archiver » sur « [ARCHIVÉ 
 
 ## Reste
 
-- Deux clics dans l'interface n8n (archiver le workflow, supprimer la credential orpheline).
+- Un clic dans l'interface n8n : « Archiver » le workflow.
+- **Credential « Header Auth account » (`DM6bbYVPNcmrmU3g`) supprimée** dans la foulée, sur
+  demande de Laurent, après relecture de l'export des 42 workflows : zéro référence par
+  identifiant comme par nom. Sa clé OpenRouter n'a jamais été identifiée ; si une clé de la
+  console n'a plus de porteur connu, c'est probablement celle-là.
 - `OpenRouter-AInspiration-Prod` ne sert plus que le chat du site et l'Audit IA Pipeline.
